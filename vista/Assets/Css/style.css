@@ -1,0 +1,12 @@
+.prev-slide {
+    transform: translateX(-33.33%);
+  }
+  
+  .current-slide {
+    transform: translateX(0%);
+  }
+  
+  .next-slide {
+    transform: translateX(33.33%);
+  }
+  
