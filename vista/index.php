@@ -9,7 +9,7 @@
 <main class="bg-dark">
     <div class="row m-3">
         <div id="carouselExampleCaptions"  data-bs-ride="carousel" class="carousel carousel-fade  mx-auto col-lg-5 col-sm-12 mb-3">
-            <div class="carousel-indicators">
+            <div class="carousel-indicators mb-0">
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
@@ -18,7 +18,7 @@
                 <div class="carousel-item active " data-bs-interval="2000">
                     <div class="d-flex justify-content-center">
                         <div class="nav-link" data-bs-toggle="tab" data-bs-target="#home-tab-pane">
-                            <img src="./Assets/Img/1.png" class="d-block imgCarousel" alt="..."/>
+                            <img src="./Assets/Img/1.png" class="d-block" alt="..." height="100px" />
                         </div>
                     </div>
 
@@ -26,7 +26,7 @@
                 <div class="carousel-item" data-bs-interval="2000">
                     <div class="d-flex justify-content-center">
                         <div class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-tab-pane">
-                            <img src="./Assets/Img/2.jpg" class="d-block imgCarousel" alt="..."/>
+                            <img src="./Assets/Img/2.jpg" class="d-block" alt="..." height="100px" />
                         </div>
                     </div>
 
@@ -34,7 +34,7 @@
                 <div class="carousel-item" data-bs-interval="2000">
                     <div class="d-flex justify-content-center">
                         <div class="nav-link" data-bs-toggle="tab" data-bs-target="#categoria3">
-                        <img src="./Assets/Img/queespumse2.jpg" class="d-block imgCarousel" alt="..."/>
+                        <img src="./Assets/Img/queespumse2.jpg" class="d-block" alt="..." height="100px" />
                     </div>
                     </div>
                     
@@ -118,7 +118,7 @@
 
 
 <div class="bg-success row p-3" style="--bs-bg-opacity: .25;">
-    Footer
+    Grupo 2
 </div>
 <script src="Assets/Js/script.js"></script>
 <?php include_once('common/footer.php') ?>
