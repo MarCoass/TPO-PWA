@@ -25,7 +25,7 @@
             <div class="carousel-inner nav "><!-- CONTENEDOR PADRE DEBE TENER CLASE NAV -->
                 <div class="carousel-item active " data-bs-interval="2000">
                     <div class="d-flex justify-content-center">
-                        <div class="nav-link" data-bs-toggle="tab" data-bs-target="#home-tab-pane">
+                        <div class="nav-link" data-bs-toggle="tab" data-bs-target="#infantilB">
                             <img src="./Assets/Img/thumbnails/infantiles b.jpg" class="rounded" alt="..." height="100px" />
                             <div class="pe-none carousel-caption">
                                 <h5>Infantiles B</h5>
@@ -36,7 +36,7 @@
                 </div>
                 <div class="carousel-item" data-bs-interval="2000">
                     <div class="d-flex justify-content-center">
-                        <div class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-tab-pane">
+                        <div class="nav-link" data-bs-toggle="tab" data-bs-target="#infantilA">
                             <img src="./Assets/Img/thumbnails/infantiles a.jpg" class="d-block rounded" alt="..." height="100px" />
                             <div class="pe-none carousel-caption d-none d-md-block">
                                 <h5>Infantiles A</h5>
@@ -47,7 +47,7 @@
                 </div>
                 <div class="carousel-item" data-bs-interval="2000">
                     <div class="d-flex justify-content-center">
-                        <div class="nav-link" data-bs-toggle="tab" data-bs-target="#categoria3">
+                        <div class="nav-link" data-bs-toggle="tab" data-bs-target="#cadete">
                             <img src="./Assets/Img/thumbnails/cadete 12-14.jpg" class="d-block rounded" alt="..." height="100px" />
                         </div>
                     </div>
@@ -70,13 +70,13 @@
         <div class="col-12 my-5">
             <div class="tab-content fs-5">
 
-                <div class="tab-pane fade" id="home-tab-pane">
+                <div class="tab-pane fade" id="infantilB">
                     <?php include_once('tabInfantilesB.php') ?>
                 </div>
 
 
 
-                <div class="tab-pane fade" id="profile-tab-pane">
+                <div class="tab-pane fade" id="infantilA">
                     <div class="row">
                         <div class="col-lg-8 col-sm-4 bg-warning border-1 border-dark p-3">
                             Informacion categoria 2
@@ -92,7 +92,7 @@
                 </div>
 
 
-                <div class="tab-pane fade" id="categoria3">
+                <div class="tab-pane fade" id="cadete">
                     <div class="row">
                         <div class="col-lg-8 col-sm-4 bg-success p-3">
                             Informacion categoria 3
@@ -116,11 +116,5 @@
 
 
 
-
-
-
-<div class="bg-success row p-3" style="--bs-bg-opacity: .25;">
-    Grupo 2
-</div>
 <script src="Assets/Js/script.js"></script>
 <?php include_once('common/footer.php') ?>
