@@ -1,10 +1,15 @@
-<?php include_once ('common/header.php') ?>
-
-<div class="bg-success row p-3" style="--bs-bg-opacity: .25;">
-    nav trucho
+<?php include_once('common/header.php') ?>
+<div class="bg-success row p-3 justify-content-center" style="--bs-bg-opacity: .25;">
+    <div class="col-1">
+        <img src="Assets/Img/World_Taekwondo.png" alt="" width="100px" />
+    </div>
 </div>
+
 <div class="bg-success row p-3" style="--bs-bg-opacity: .5;">
-    Poomsae reconocido individual elite
+    <div class="fs-2">
+        Individual Elite
+    </div>
+
 </div>
 
 <main class="bg-dark">
@@ -65,8 +70,8 @@
 
                 <div class="tab-pane fade" id="profile-tab-pane">
                     <div class="row">
-                        <div class="col-lg-8 col-sm-4 bg-warning p-3">
-                            Informacion cateogria 2
+                        <div class="col-lg-8 col-sm-4 bg-warning border-1 border-dark p-3">
+                            Informacion categoria 2
                         </div>
                         <div class="col-lg-4 col-sm-8 bg-success p-3" style="--bs-bg-opacity: .50;">
                             <img src="Assets/Img/2.jpg" alt="" class="img-fluid" id="imagenExpandida">
