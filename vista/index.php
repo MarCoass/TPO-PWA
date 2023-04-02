@@ -1,19 +1,21 @@
 <?php include_once('common/header.php') ?>
-<div class="bg-success row p-3 justify-content-center" style="--bs-bg-opacity: .25;">
-    <div class="col-1">
+<div class="row p-3 justify-content-center ">
+    <div class="col-12 justify-content-center">
         <img src="Assets/Img/World_Taekwondo.png" alt="" width="100px" />
+        <span class="fs-2 ">Poomsae Reconocido</span>
     </div>
+
 </div>
 
-<div class="bg-success row p-3" style="--bs-bg-opacity: .5;">
+<div class="row p-3 text-bg-danger">
     <div class="fs-2">
         Individual Elite
     </div>
 
 </div>
 
-<main class="bg-dark">
-    <div class="row m-3">
+<main class="">
+    <div class="row text-bg-danger">
         <div id="carouselExampleCaptions" data-bs-ride="carousel" class="carousel carousel-fade  mx-auto col-lg-5 col-sm-12 mb-3">
             <div class="carousel-indicators mb-0">
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -25,6 +27,9 @@
                     <div class="d-flex justify-content-center">
                         <div class="nav-link" data-bs-toggle="tab" data-bs-target="#home-tab-pane">
                             <img src="./Assets/Img/1.png" class="d-block" alt="..." height="100px" />
+                            <div class="pe-none carousel-caption d-none d-md-block mb-5">
+                                <h5>Infantiles B</h5>
+                            </div>
                         </div>
                     </div>
 
@@ -33,6 +38,9 @@
                     <div class="d-flex justify-content-center">
                         <div class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-tab-pane">
                             <img src="./Assets/Img/2.jpg" class="d-block" alt="..." height="100px" />
+                            <div class="pe-none carousel-caption d-none d-md-block">
+                                <h5>Infantiles A</h5>
+                            </div>
                         </div>
                     </div>
 
@@ -63,7 +71,7 @@
             <div class="tab-content">
 
                 <div class="tab-pane fade" id="home-tab-pane">
-                    <?php include_once('tabInfantilesB.php')?>
+                    <?php include_once('tabInfantilesB.php') ?>
                 </div>
 
 

@@ -1,15 +1,15 @@
 <div class="row">
-                        <div class="col-lg-8 col-sm-4 bg-warning p-3">
+                        <div class="col-lg-8 col-sm-4 p-3">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eu purus et est viverra imperdiet eu et quam. Donec et erat vehicula, euismod tortor nec, consequat urna. Duis commodo scelerisque magna eget tempor. Nulla iaculis sagittis pulvinar. Fusce molestie nec neque sit amet volutpat. Donec porta non erat quis elementum. Integer scelerisque ante leo, sed ornare turpis facilisis vitae. Praesent in tellus massa. In non metus tincidunt neque aliquam aliquet at sed urna.
 
                             Pellentesque eleifend id diam in dictum. Etiam non ante non ligula pellentesque efficitur vel sed est. Aliquam at augue in leo scelerisque dictum sit amet ac leo. Morbi ac ante eros. Quisque ornare purus at mollis viverra. Nulla suscipit elementum sem non iaculis. Suspendisse volutpat augue sed sapien ullamcorper, nec faucibus nibh condimentum. Praesent ante velit, sollicitudin a est ut, porttitor finibus quam. Sed gravida sollicitudin tristique. Nunc euismod dolor odio, a mattis velit viverra eu.
                         </div>
-                        <div class="col-lg-4 col-sm-8 bg-success p-3" style="--bs-bg-opacity: .50;">
+                        <div class="col-lg-4 col-sm-8" style="--bs-bg-opacity: .50;">
                             <img src="Assets/Img/1.png" alt="" class="img-fluid" id="imagenExpandida">
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-8 col-sm-8 bg-primary p-3" style="--bs-bg-opacity: .75;" id="tabla">
+                        <div class="col-lg-8 col-sm-8 p-3" style="--bs-bg-opacity: .75;" id="tabla">
                             <table class="table text-center m-auto bg-light rounded" style="width: 650px;">
                                 <thead>
                                     <tr>
@@ -62,5 +62,5 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="col-lg-4 col-sm-4 bg-primary p-3" id="parrafo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin velit tellus, euismod a dapibus nec, pellentesque vitae arcu. Nunc id mi ac justo venenatis congue. Donec nec ligula lectus. Nulla facilisi. Aenean tempor eros sit amet metus molestie mollis. Suspendisse potenti. Nunc at lacinia nibh.</div>
+                        <div class="col-lg-4 col-sm-4 p-3" id="parrafo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin velit tellus, euismod a dapibus nec, pellentesque vitae arcu. Nunc id mi ac justo venenatis congue. Donec nec ligula lectus. Nulla facilisi. Aenean tempor eros sit amet metus molestie mollis. Suspendisse potenti. Nunc at lacinia nibh.</div>
                     </div>
