@@ -26,8 +26,8 @@
                 <div class="carousel-item active " data-bs-interval="2000">
                     <div class="d-flex justify-content-center">
                         <div class="nav-link" data-bs-toggle="tab" data-bs-target="#home-tab-pane">
-                            <img src="./Assets/Img/1.png" class="d-block" alt="..." height="100px" />
-                            <div class="pe-none carousel-caption d-none d-md-block mb-5">
+                            <img src="./Assets/Img/thumbnails/infantiles b.jpg" class="rounded" alt="..." height="100px" />
+                            <div class="pe-none carousel-caption">
                                 <h5>Infantiles B</h5>
                             </div>
                         </div>
@@ -37,7 +37,7 @@
                 <div class="carousel-item" data-bs-interval="2000">
                     <div class="d-flex justify-content-center">
                         <div class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-tab-pane">
-                            <img src="./Assets/Img/2.jpg" class="d-block" alt="..." height="100px" />
+                            <img src="./Assets/Img/thumbnails/infantiles a.jpg" class="d-block rounded" alt="..." height="100px" />
                             <div class="pe-none carousel-caption d-none d-md-block">
                                 <h5>Infantiles A</h5>
                             </div>
@@ -48,7 +48,7 @@
                 <div class="carousel-item" data-bs-interval="2000">
                     <div class="d-flex justify-content-center">
                         <div class="nav-link" data-bs-toggle="tab" data-bs-target="#categoria3">
-                            <img src="./Assets/Img/queespumse2.jpg" class="d-block" alt="..." height="100px" />
+                            <img src="./Assets/Img/thumbnails/cadete 12-14.jpg" class="d-block rounded" alt="..." height="100px" />
                         </div>
                     </div>
 
@@ -68,7 +68,7 @@
     </div>
     <div class="row">
         <div class="col-12 my-5">
-            <div class="tab-content">
+            <div class="tab-content fs-5">
 
                 <div class="tab-pane fade" id="home-tab-pane">
                     <?php include_once('tabInfantilesB.php') ?>

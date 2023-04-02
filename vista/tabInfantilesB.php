@@ -1,11 +1,9 @@
 <div class="row">
                         <div class="col-lg-8 col-sm-4 p-3">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eu purus et est viverra imperdiet eu et quam. Donec et erat vehicula, euismod tortor nec, consequat urna. Duis commodo scelerisque magna eget tempor. Nulla iaculis sagittis pulvinar. Fusce molestie nec neque sit amet volutpat. Donec porta non erat quis elementum. Integer scelerisque ante leo, sed ornare turpis facilisis vitae. Praesent in tellus massa. In non metus tincidunt neque aliquam aliquet at sed urna.
-
-                            Pellentesque eleifend id diam in dictum. Etiam non ante non ligula pellentesque efficitur vel sed est. Aliquam at augue in leo scelerisque dictum sit amet ac leo. Morbi ac ante eros. Quisque ornare purus at mollis viverra. Nulla suscipit elementum sem non iaculis. Suspendisse volutpat augue sed sapien ullamcorper, nec faucibus nibh condimentum. Praesent ante velit, sollicitudin a est ut, porttitor finibus quam. Sed gravida sollicitudin tristique. Nunc euismod dolor odio, a mattis velit viverra eu.
+                        La categoría infantil B de Poomsae reconocido elite individual está diseñada para niños de 8 y 9 años y requiere precisión, fuerza, resistencia y concentración en una serie de movimientos y posturas elegantes. Es una oportunidad emocionante y gratificante para que los jóvenes competidores muestren su habilidad en el taekwondo.
                         </div>
-                        <div class="col-lg-4 col-sm-8" style="--bs-bg-opacity: .50;">
-                            <img src="Assets/Img/1.png" alt="" class="img-fluid" id="imagenExpandida">
+                        <div class="col-lg-4 col-sm-8 " style="--bs-bg-opacity: .50;">
+                            <img src="./Assets/Img/thumbnails/infantiles b.jpg" alt="" class="img-fluid rounded m-auto" id="imagenExpandida">
                         </div>
                     </div>
                     <div class="row">
@@ -62,5 +60,5 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="col-lg-4 col-sm-4 p-3" id="parrafo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin velit tellus, euismod a dapibus nec, pellentesque vitae arcu. Nunc id mi ac justo venenatis congue. Donec nec ligula lectus. Nulla facilisi. Aenean tempor eros sit amet metus molestie mollis. Suspendisse potenti. Nunc at lacinia nibh.</div>
+                        <div class="col-lg-4 col-sm-4 p-3" id="parrafo">Julian Serrano es el ganador de Poomsae Elite Individual en la categoría Infantil A. Con una gran habilidad técnica y física, mostró su talento en la competencia. "El secreto del éxito es la dedicación y la pasión", dijo Julian después de su victoria.</div>
                     </div>
