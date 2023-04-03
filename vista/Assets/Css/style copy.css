@@ -1,0 +1,9 @@
+.imgCarousel {
+  height: 100px;
+  object-fit: cover;
+}
+
+.carousel-item > .active {
+  height: 150px;
+}
+
