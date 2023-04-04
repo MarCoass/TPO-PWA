@@ -4,14 +4,12 @@
         <img src="Assets/Img/World_Taekwondo.png" alt="" width="100px" />
         <span class="fs-2 ">Poomsae Reconocido</span>
     </div>
-
 </div>
 
 <div class="row p-3 text-bg-danger">
     <div class="fs-2">
         Individual Elite
     </div>
-
 </div>
 
 
@@ -20,7 +18,7 @@
     <div class="row justify-content-center">
         <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner nav" role="listbox">
-
+                
                 <div class="carousel-item active">
                     <div class="col-md-3">
                         <div class="card">
@@ -104,7 +102,7 @@
                             <div class="card-img">
                                 <img src="../vista/Assets/Img/thumbnails/senior 2 menos 60.jpg" class="img-fluid rounded-circle p-5">
                             </div>
-                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#infantilA">Senior 2</div>
+                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#infantilB">Senior 2</div>
                         </div>
                     </div>
                 </div>
@@ -126,7 +124,7 @@
                             <div class="card-img">
                                 <img src="../vista/Assets/Img/thumbnails/master 2 mayor 65.jpg" class="img-fluid rounded-circle p-5">
                             </div>
-                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#infantilA">Master 2</div>
+                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#infantilB">Master 2</div>
                         </div>
                     </div>
                 </div>
