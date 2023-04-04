@@ -14,6 +14,7 @@
 
 </div>
 
+<<<<<<< Updated upstream
 <main class="">
     <div class="row text-bg-danger">
         <div id="carouselExampleCaptions" data-bs-ride="carousel" class="carousel carousel-fade  mx-auto col-lg-5 col-sm-12 mb-3">
@@ -21,6 +22,125 @@
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+=======
+
+
+<div class="text-center my-3">
+    <div class="row justify-content-center">
+        <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner nav" role="listbox">
+
+                <div class="carousel-item active">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-img">
+                                <img src="../vista/Assets/Img/thumbnails/infantiles a.jpg" class="img-fluid rounded-circle p-5" >
+                            </div>
+                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#infantilA">Infantiles A</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-img">
+                                <img src="../vista/Assets/Img/thumbnails/infantiles b.jpg" class="img-fluid rounded-circle p-5">
+                            </div>
+                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#infantilB">Infantiles B</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-img">
+                                <img src="../vista/Assets/Img/thumbnails/cadete 12-14.jpg" class="img-fluid rounded-circle p-5">
+                            </div>
+                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#infantilA">Cadete</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-img">
+                                <img src="../vista/Assets/Img/thumbnails/juveniles 15-17.jpg" class="img-fluid rounded-circle p-5">
+                            </div>
+                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#infantilB">Juveniles</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-img">
+                                <img src="../vista/Assets/Img/thumbnails/adulto 1 menos 30.jpg" class="img-fluid rounded-circle p-5">
+                            </div>
+                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#infantilA">Adulto 1</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-img">
+                                <img src="../vista/Assets/Img/thumbnails/adulto 2 menos 40.jpg" class="img-fluid rounded-circle p-5">
+                            </div>
+                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#infantilB">Adulto 2</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-img">
+                                <img src="../vista/Assets/Img/thumbnails/senior 1 menos 50.jpg" class="img-fluid rounded-circle p-5">
+                            </div>
+                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#infantilA">Senior 1</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-img">
+                                <img src="../vista/Assets/Img/thumbnails/senior 2 menos 60.jpg" class="img-fluid rounded-circle p-5">
+                            </div>
+                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#infantilA">Senior 2</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-img">
+                                <img src="../vista/Assets/Img/thumbnails/master 1  menos 65.jpg" class="img-fluid rounded-circle p-5">
+                            </div>
+                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#infantilA">Master 1</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-img">
+                                <img src="../vista/Assets/Img/thumbnails/master 2 mayor 65.jpg" class="img-fluid rounded-circle p-5">
+                            </div>
+                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#infantilA">Master 2</div>
+                        </div>
+                    </div>
+                </div>
+
+>>>>>>> Stashed changes
             </div>
             <div class="carousel-inner nav "><!-- CONTENEDOR PADRE DEBE TENER CLASE NAV -->
                 <div class="carousel-item active " data-bs-interval="2000">
@@ -66,6 +186,11 @@
 
 
     </div>
+<<<<<<< Updated upstream
+=======
+</div>
+
+>>>>>>> Stashed changes
     <div class="row">
         <div class="col-12 my-5">
             <div class="tab-content fs-5">
