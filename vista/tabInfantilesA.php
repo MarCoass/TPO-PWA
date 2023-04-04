@@ -1,16 +1,16 @@
 <div class="row">
     <div class="col-lg-4 col-sm-4 p-3">
-        <button class="btn btn-secondary" id="fem" onclick="miFuncion('fem','infantiles b')">Femenino</button>
-        <button class="btn btn-secondary" id="masc" onclick="miFuncion('masc','infantiles b')">Masculino</button>
+        <button class="btn btn-secondary" id="fem" onclick="miFuncion('fem','infantiles a')">Femenino</button>
+        <button class="btn btn-secondary" id="masc" onclick="miFuncion('masc','infantiles a')">Masculino</button>
         
-        <h4>Infantil B</h4>
+        <h4>Infantil A</h4>
         <p>
-            La categoría infantil B de Poomsae reconocido elite individual está diseñada para niños de 8 y 9 años y requiere precisión, fuerza, resistencia y concentración en una serie de movimientos y posturas elegantes. Es una oportunidad emocionante y gratificante para que los jóvenes competidores muestren su habilidad en el taekwondo.
+            La categoría infantil A de Poomsae reconocido elite individual está diseñada para niños de 8 y 9 años y requiere precisión, fuerza, resistencia y concentración en una serie de movimientos y posturas elegantes. Es una oportunidad emocionante y gratificante para que los jóvenes competidores muestren su habilidad en el taekwondo.
         </p>
     </div>
     
     <div class="col-lg-8 col-sm-8 " style="--bs-bg-opacity: .50;" >
-        <img id="imagen infantiles b" src="./Assets/Img/img/infantiles b f.jpg" alt="" class="img-fluid rounded" id="imagenExpandida">
+        <img id="imagen infantiles a" src="./Assets/Img/img/infantiles a f.jpg" alt="" class="img-fluid rounded" id="imagenExpandida">
     </div>
 </div>
 <hr>

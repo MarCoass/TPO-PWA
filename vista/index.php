@@ -18,7 +18,7 @@
     <div class="row justify-content-center">
         <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner nav" role="listbox">
-                
+
                 <div class="carousel-item active">
                     <div class="col-md-3">
                         <div class="card">
@@ -47,7 +47,7 @@
                             <div class="card-img">
                                 <img src="../vista/Assets/Img/thumbnails/cadete 12-14.jpg" class="img-fluid rounded-circle p-5">
                             </div>
-                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#infantilA">Cadete</div>
+                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#cadete">Cadete</div>
                         </div>
                     </div>
                 </div>
@@ -147,39 +147,16 @@
                     <?php include_once('tabInfantilesB.php') ?>
                 </div>
 
-
-
                 <div class="tab-pane fade" id="infantilA">
-                    <div class="row">
-                        <div class="col-lg-8 col-sm-4 bg-warning border-1 border-dark p-3">
-                            Informacion categoria 2
-                        </div>
-                        <div class="col-lg-4 col-sm-8 bg-success p-3" style="--bs-bg-opacity: .50;">
-                            <img src="Assets/Img/2.jpg" alt="" class="img-fluid" id="imagenExpandida">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-8 col-sm-8 bg-primary p-3" style="--bs-bg-opacity: .75;" id="tabla">Tabla</div>
-                        <div class="col-lg-4 col-sm-4 bg-primary p-3" id="parrafo">Parrafo</div>
-                    </div>
+                    <?php include_once('tabInfantilesA.php') ?>
                 </div>
-
 
                 <div class="tab-pane fade" id="cadete">
-                    <div class="row">
-                        <div class="col-lg-8 col-sm-4 bg-success p-3">
-                            Informacion categoria 3
-                        </div>
-                        <div class="col-lg-4 col-sm-8 bg-success p-3" style="--bs-bg-opacity: .50;">
-                            <img src="Assets/Img/queespumse2.jpg" alt="" class="img-fluid" id="imagenExpandida">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-8 col-sm-8 bg-primary p-3" style="--bs-bg-opacity: .75;" id="tabla">Tabla</div>
-                        <div class="col-lg-4 col-sm-4 bg-primary p-3" id="parrafo">Parrafo</div>
-                    </div>
-
+                    <?php include_once('tabcadetes.php') ?>
                 </div>
+
+
+                
             </div>
 
         </div>
