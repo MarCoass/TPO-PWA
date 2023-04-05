@@ -41,3 +41,10 @@
 .carousel-inner .carousel-item-start { 
 transform: translateX(0);
 }
+
+/*Estilos de la tabla*/
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  #tabla {
+    max-width: 600px; /* ajusta el valor para el ancho deseado */
+  }
+}
