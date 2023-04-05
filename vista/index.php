@@ -2,13 +2,14 @@
 <div class="row p-3 justify-content-center ">
     <div class="col-12 justify-content-center">
         <img src="Assets/Img/World_Taekwondo.png" alt="" width="100px" />
-        <span class="fs-2 ">Poomsae Reconocido</span>
+        <span class="fs-2 ms-3">Poomsae Reconocido</span>
     </div>
 </div>
 
 <div class="row p-3 text-bg-danger">
-    <div class="fs-5">
-        El Poomsae Reconocido Elite Individual es una categoría de competición de taekwondo en la que los participantes deben ejecutar una serie de movimientos complejos y técnicamente avanzados de forma individual. Esta categoría está destinada a competidores altamente experimentados y habilidosos.
+    <div class="fs-5 text-center">
+        <p>El <span class="text-decoration-underline">Poomsae Reconocido Elite Individual</span> es una categoría de competición de taekwondo en la que los participantes deben ejecutar una serie de movimientos complejos y técnicamente avanzados de forma individual.</p>
+        <p>Esta categoría está destinada a competidores altamente experimentados y habilidosos.</p>
     </div>
 </div>
 
