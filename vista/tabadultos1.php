@@ -108,14 +108,14 @@
                 <tr>
                     <th scope="row" class="d-none d-sm-table-cell">9</th>
                     <th class="d-none d-sm-table-cell">Mendoza</th>
-                    <td>Romina González</td>
+                    <td>Romina Perez</td>
                     <th class="">7.65</th>
                     <th class="position-relative"><span class="position-absolute top-50 start-75 translate-middle badge bg-danger">1° Lugar</span></th>
                 </tr>
                 <tr>
                     <th scope="row" class="d-none d-sm-table-cell">5</th>
                     <th class="d-none d-sm-table-cell">Córdoba</th>
-                    <td>Valentina García</td>
+                    <td>Laura García</td>
                     <th class="">7.23</th>
                     <th class="position-relative"><span class="position-absolute top-50 start-75 translate-middle badge bg-danger">2° Lugar</span></th>
                 </tr>
@@ -136,7 +136,7 @@
         </table>
     </div>
     <div class="col-lg-4 col-sm-4 p-3" id="parrafo">
-        Romina Gonzales es la ganadora de la categoría en la última competencia. 
+        Romina Perez es la ganadora de la categoría en la última competencia. 
         Con su dedicación y habilidades logró impresionar a todos los jueces con su desempeño. 
         "Siempre creí en mí misma, y eso me llevó a donde estoy hoy", dijo Romina después de su victoria.
     </div></div>
