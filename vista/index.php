@@ -14,7 +14,7 @@
 
 
 
-<div class="text-center my-3">
+<div class="text-center mt-3 mb-0">
     <div class="row justify-content-center">
         <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner nav" role="listbox">

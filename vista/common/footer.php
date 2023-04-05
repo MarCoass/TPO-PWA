@@ -1,7 +1,7 @@
 <div class="bg-danger row d-flex">
     <section class="mt-3" style="user-select: none;">
         <footer class="text-center text-white bg-danger">
-            <div class="container pb-2">
+            <div class="container">
                 <div class="row text-center">
                     <div class="col">
                         <a href="https://github.com/MarCoass">
@@ -38,7 +38,7 @@
                     </div>
                 </div>
             </div>
-            <div class="text-center p-3">
+            <div class="text-center mb-3">
                 Programación Web Avanzada - 2023 <img src="./Assets/Img/img/logo.png" class="mx-2" alt="FAI" title="FAI" width="40" height="40"> Universidad Nacional del Comahue
             </div>
         </footer>
