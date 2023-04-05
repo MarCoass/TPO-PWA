@@ -108,14 +108,14 @@
                 <tr>
                     <th scope="row" class="d-none d-sm-table-cell">9</th>
                     <th class="d-none d-sm-table-cell">Mendoza</th>
-                    <td>Romina Perez</td>
+                    <td>Romina González</td>
                     <th class="">7.65</th>
                     <th class="position-relative"><span class="position-absolute top-50 start-75 translate-middle badge bg-danger">1° Lugar</span></th>
                 </tr>
                 <tr>
                     <th scope="row" class="d-none d-sm-table-cell">5</th>
                     <th class="d-none d-sm-table-cell">Córdoba</th>
-                    <td>Laura García</td>
+                    <td>Valentina García</td>
                     <th class="">7.23</th>
                     <th class="position-relative"><span class="position-absolute top-50 start-75 translate-middle badge bg-danger">2° Lugar</span></th>
                 </tr>

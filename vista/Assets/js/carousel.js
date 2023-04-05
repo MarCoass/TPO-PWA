@@ -7,7 +7,7 @@ hermanos para agregarlos al final del elemento actual. Esto es para crear un efe
 con varios elementos por diapositiva. El número de elementos por diapositiva se determina 
 por la variable minPerSlide */
 items.forEach((el) => {
-  const minPerSlide = 10;
+  const minPerSlide = 12;
   let next = el.nextElementSibling;
   for (var i = 1; i < minPerSlide; i++) {
     if (!next) {
