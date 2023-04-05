@@ -15,8 +15,8 @@
 </div>
 <hr>
 <div class="row">
-    <div class="col-lg-8 col-sm-8 p-3" style="--bs-bg-opacity: .75;" id="tabla">
-        <table id="tabla" class="table-responsive text-center m-auto bg-light rounded" style="width: 650px;">
+    <div class="col-lg-8 col-sm-8 p-3 table-responsive-sm">
+        <table class="table text-center m-auto bg-light rounded">
             <thead>
                 <tr>
                     <th scope="col">
