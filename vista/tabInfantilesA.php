@@ -99,7 +99,7 @@
                 <tr>
                     <th scope="row" class="d-none d-sm-table-cell">9</th>
                     <th class="d-none d-sm-table-cell">Mendoza</th>
-                    <td>Martina González</td>
+                    <td>Romina González</td>
                     <th class="d-none d-sm-table-cell">7.65</th>
                     <th class="position-relative"><span class="position-absolute top-50 start-75 translate-middle badge bg-danger">1° Lugar</span></th>
                 </tr>
@@ -126,5 +126,5 @@
             </tbody>
         </table>
     </div>
-    <div class="col-lg-4 col-sm-4 p-3" id="parrafo">Martina Gonzales es la ganadora de la categoría en la última competencia. Con su dedicación y habilidades logró impresionar a todos los jueces con su desempeño. "Siempre creí en mí misma, y eso me llevó a donde estoy hoy", dijo Martina después de su victoria.</div>
+    <div class="col-lg-4 col-sm-4 p-3" id="parrafo">Romina Gonzales es la ganadora de la categoría en la última competencia. Con su dedicación y habilidades logró impresionar a todos los jueces con su desempeño. "Siempre creí en mí misma, y eso me llevó a donde estoy hoy", dijo Romina después de su victoria.</div>
 </div>

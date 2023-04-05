@@ -1,23 +1,22 @@
 <div class="row">
     <div class="col-lg-4 col-sm-4 p-3">
-        <button class="btn btn-secondary" id="fem" onclick="miFuncion('fem','infantiles b')">Femenino</button>
-        <button class="btn btn-secondary" id="masc" onclick="miFuncion('masc','infantiles b')">Masculino</button>
+        <button class="btn btn-secondary" id="fem" onclick="miFuncion('fem','master 1 menos 65')">Femenino</button>
+        <button class="btn btn-secondary" id="masc" onclick="miFuncion('masc','master 1 menos 65')">Masculino</button>
         <hr>
-        <h4>Infantil B</h4>
+        <h4>Cadetes</h4>
         <p>
-            En la competencia de poomsae reconocido elite, los competidores demostraron sus habilidades en el taekwondo con movimientos precisos y potentes. Los jueces evaluaron la técnica y la precisión, y los fanáticos apoyaron con entusiasmo. Después de muchas rondas, un ganador fue coronado, celebrando su increíble habilidad y dedicación.
+            La categoría cadetes de Poomsae reconocido elite individual está diseñada para niños de 8 y 9 años y requiere precisión, fuerza, resistencia y concentración en una serie de movimientos y posturas elegantes. Es una oportunidad emocionante y gratificante para que los jóvenes competidores muestren su habilidad en el taekwondo.
         </p>
     </div>
-
-    <div class="col-lg-8 col-sm-8 " style="--bs-bg-opacity: .50;">
-        <img id="imagen infantiles b" src="./Assets/Img/img/infantiles b f.jpg" alt="" class="img-fluid rounded" id="imagenExpandida">
+    
+    <div class="col-lg-8 col-sm-8 " style="--bs-bg-opacity: .50;" >
+        <img id="imagen master 1 menos 65" src="./Assets/Img/img/master 1 menos 65 f.jpg" alt="" class="img-fluid rounded" id="imagenExpandida">
     </div>
 </div>
 <hr>
-
-<div id="infoMascinfantiles b" class="row d-none">
-    <div class="col-lg-8 col-sm-8 p-3 table-responsive-sm">
-        <table class="table text-center m-auto bg-light rounded">
+<div id="infoMascmaster 1 menos 65" class="row d-none">
+    <div class="col-lg-8 col-sm-8 p-3" style="--bs-bg-opacity: .75;" id="tabla">
+        <table id="tabla" class="table-responsive text-center m-auto bg-light rounded" style="width: 650px;">
             <thead>
                 <tr>
                     <th scope="col">
@@ -72,7 +71,7 @@
     <div class="col-lg-4 col-sm-4 p-3" id="parrafo">Julian Serrano es el ganador de Poomsae Elite Individual en la categoría Infantil A. Con una gran habilidad técnica y física, mostró su talento en la competencia. "El secreto del éxito es la dedicación y la pasión", dijo Julian después de su victoria.</div>
 </div>
 
-<div id="infoFeminfantiles b" class="row">
+<div id="infoFemmaster 1 menos 65" class="row">
     <div class="col-lg-8 col-sm-8 p-3 table-responsive-sm">
         <table class="table text-center m-auto bg-light rounded">
             <thead>
@@ -126,5 +125,5 @@
             </tbody>
         </table>
     </div>
-    <div class="col-lg-4 col-sm-4 p-3" id="parrafo">Romina Gonzales es la ganadora de la categoría en la última competencia. Con su dedicación y habilidades logró impresionar a todos los jueces con su desempeño. "Siempre creí en mí misma, y eso me llevó a donde estoy hoy", dijo Romina después de su victoria.</div>
+    <div class="col-lg-4 col-sm-4 p-3" id="parrafo">Romina Gonzales es la ganadora de la categoría en la última competencia. Con su dedicación y habilidades logró impresionar a todos los jueces con su desempeño. "Siempre creí en mí misma, y eso me llevó a donde estoy hoy", dijo Martina después de su victoria.</div>
 </div>

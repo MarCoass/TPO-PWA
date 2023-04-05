@@ -25,7 +25,6 @@ esta funcion necesita la variable val la cual es fem o masc,
 y la variable cat representa la categoria y busca en la carpeta img la correspondiente */
 function miFuncion(val, cat) {
   /* alert(val + " - " + cat) */
-  console.log("infoFem"+cat)
   var infoFem = document.getElementById("infoFem"+cat);
   var infoMasc = document.getElementById("infoMasc"+cat);
  

@@ -58,7 +58,7 @@
                             <div class="card-img">
                                 <img src="../vista/Assets/Img/thumbnails/juveniles 15-17.jpg" class="img-fluid rounded-circle p-5">
                             </div>
-                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#infantilB">Juveniles</div>
+                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#juvenil">Juveniles</div>
                         </div>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                             <div class="card-img">
                                 <img src="../vista/Assets/Img/thumbnails/adulto 1 menos 30.jpg" class="img-fluid rounded-circle p-5">
                             </div>
-                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#infantilA">Adulto 1</div>
+                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#adulto1">Adulto 1</div>
                         </div>
                     </div>
                 </div>
@@ -80,7 +80,7 @@
                             <div class="card-img">
                                 <img src="../vista/Assets/Img/thumbnails/adulto 2 menos 40.jpg" class="img-fluid rounded-circle p-5">
                             </div>
-                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#infantilB">Adulto 2</div>
+                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#adulto2">Adulto 2</div>
                         </div>
                     </div>
                 </div>
@@ -91,7 +91,7 @@
                             <div class="card-img">
                                 <img src="../vista/Assets/Img/thumbnails/senior 1 menos 50.jpg" class="img-fluid rounded-circle p-5">
                             </div>
-                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#infantilA">Senior 1</div>
+                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#senior1">Senior 1</div>
                         </div>
                     </div>
                 </div>
@@ -102,7 +102,7 @@
                             <div class="card-img">
                                 <img src="../vista/Assets/Img/thumbnails/senior 2 menos 60.jpg" class="img-fluid rounded-circle p-5">
                             </div>
-                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#infantilB">Senior 2</div>
+                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#senior2">Senior 2</div>
                         </div>
                     </div>
                 </div>
@@ -113,7 +113,7 @@
                             <div class="card-img">
                                 <img src="../vista/Assets/Img/thumbnails/master 1  menos 65.jpg" class="img-fluid rounded-circle p-5">
                             </div>
-                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#infantilA">Master 1</div>
+                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#master1">Master 1</div>
                         </div>
                     </div>
                 </div>
@@ -124,7 +124,7 @@
                             <div class="card-img">
                                 <img src="../vista/Assets/Img/thumbnails/master 2 mayor 65.jpg" class="img-fluid rounded-circle p-5">
                             </div>
-                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#infantilB">Master 2</div>
+                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#master2">Master 2</div>
                         </div>
                     </div>
                 </div>
