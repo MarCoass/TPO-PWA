@@ -18,133 +18,109 @@
 <div class="text-center mt-3 mb-0">
     <div class="row justify-content-center ">
         <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner nav" role="listbox">
+            <div class="carousel-inner nav bg-secondary" role="listbox">
 
                 <div class="carousel-item active">
-                    <div class="col-md-3 m-2">
-                        <div class="card border-danger">
-                            <div class="card-img">
-                                <img src="../vista/Assets/Img/thumbnails/infantiles a.jpg" class="img-fluid rounded-circle p-5">
-                            </div>
-                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#infantilA">Infantiles A</div>
+                    <div class="col-md-3 p-5">
+                        <div class="card rounded-circle border-danger">
+                            <img src="../vista/Assets/Img/thumbnails/infantiles a.jpg" class="img-fluid rounded-circle" data-bs-toggle="tab" data-bs-target="#infantilA">
                         </div>
+                        <div class="fs-2" >Infantiles A</div>
                     </div>
                 </div>
 
                 <div class="carousel-item">
-                    <div class="col-md-3 m-2">
-                        <div class="card border-danger">
-                            <div class="card-img">
-                                <img src="../vista/Assets/Img/thumbnails/infantiles b.jpg" class="img-fluid rounded-circle p-5">
-                            </div>
-                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#infantilB">Infantiles B</div>
+                    <div class="col-md-3 p-5">
+                        <div class="card rounded-circle border-danger">
+                            <img src="../vista/Assets/Img/thumbnails/infantiles b.jpg" class="img-fluid rounded-circle" data-bs-toggle="tab" data-bs-target="#infantilB">
                         </div>
+                        <div class="fs-2">Infantiles B</div>
                     </div>
                 </div>
 
                 <div class="carousel-item">
-                    <div class="col-md-3 m-2">
-                        <div class="card border-danger">
-                            <div class="card-img">
-                                <img src="../vista/Assets/Img/thumbnails/cadete 12-14.jpg" class="img-fluid rounded-circle p-5">
-                            </div>
-                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#cadete">Cadete</div>
+                    <div class="col-md-3 p-5">
+                        <div class="card rounded-circle border-danger">
+                            <img src="../vista/Assets/Img/thumbnails/cadete 12-14.jpg" class="img-fluid rounded-circle" data-bs-toggle="tab" data-bs-target="#cadete">
                         </div>
+                        <div class="fs-2">Cadete</div>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="col-md-3 m-2">
-                        <div class="card border-danger">
-                            <div class="card-img">
-                                <img src="../vista/Assets/Img/thumbnails/cadeteExtra.png" class="img-fluid rounded-circle p-5">
-                            </div>
-                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#cadete">Cadete</div>
+                    <div class="col-md-3 p-5">
+                        <div class="card rounded-circle border-danger">
+                            <img src="../vista/Assets/Img/thumbnails/cadeteExtra.png" class="img-fluid rounded-circle" data-bs-toggle="tab" data-bs-target="#cadete">
                         </div>
+                        <div class="fs-2" >Cadete</div>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="col-md-3 m-2">
-                        <div class="card border-danger">
-                            <div class="card-img">
-                                <img src="../vista/Assets/Img/thumbnails/juveniles 15-17.jpg" class="img-fluid rounded-circle p-5">
-                            </div>
-                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#juvenil">Juveniles</div>
+                    <div class="col-md-3 p-5">
+                        <div class="card rounded-circle border-danger">
+                            <img src="../vista/Assets/Img/thumbnails/juveniles 15-17.jpg" class="img-fluid rounded-circle" data-bs-toggle="tab" data-bs-target="#juvenil">
                         </div>
+                        <div class="fs-2" >Juveniles</div>
                     </div>
                 </div>
 
                 <div class="carousel-item">
-                    <div class="col-md-3 m-2">
-                        <div class="card border-danger">
-                            <div class="card-img">
-                                <img src="../vista/Assets/Img/thumbnails/adulto 1 menos 30.jpg" class="img-fluid rounded-circle p-5">
-                            </div>
-                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#adulto1">Adulto 1</div>
+                    <div class="col-md-3 p-5">
+                        <div class="card rounded-circle border-danger">
+                            <img src="../vista/Assets/Img/thumbnails/adulto 1 menos 30.jpg" class="img-fluid rounded-circle" data-bs-toggle="tab" data-bs-target="#adulto1">
                         </div>
+                        <div class="fs-2" >Adulto 1</div>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="col-md-3 m-2">
-                        <div class="card border-danger">
-                            <div class="card-img">
-                                <img src="../vista/Assets/Img/thumbnails/AdultoExtra.jpg" class="img-fluid rounded-circle p-5">
-                            </div>
-                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#adulto1">Adulto 1</div>
+                    <div class="col-md-3 p-5">
+                        <div class="card rounded-circle border-danger">
+                            <img src="../vista/Assets/Img/thumbnails/AdultoExtra.jpg" class="img-fluid rounded-circle" data-bs-toggle="tab" data-bs-target="#adulto1">
                         </div>
+                        <div class="fs-2" >Adulto 1</div>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="col-md-3 m-2">
-                        <div class="card border-danger">
-                            <div class="card-img">
-                                <img src="../vista/Assets/Img/thumbnails/adulto 2 menos 40.jpg" class="img-fluid rounded-circle p-5">
-                            </div>
-                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#adulto2">Adulto 2</div>
+                    <div class="col-md-3 p-5">
+                        <div class="card rounded-circle border-danger">
+                            <img src="../vista/Assets/Img/thumbnails/adulto 2 menos 40.jpg" class="img-fluid rounded-circle" data-bs-toggle="tab" data-bs-target="#adulto2">
                         </div>
+                        <div class="fs-2" >Adulto 2</div>
                     </div>
                 </div>
 
                 <div class="carousel-item">
-                    <div class="col-md-3 m-2">
-                        <div class="card border-danger">
-                            <div class="card-img">
-                                <img src="../vista/Assets/Img/thumbnails/senior 1 menos 50.jpg" class="img-fluid rounded-circle p-5">
-                            </div>
-                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#senior1">Senior 1</div>
+                    <div class="col-md-3 p-5">
+                        <div class="card rounded-circle border-danger">
+                            <img src="../vista/Assets/Img/thumbnails/senior 1 menos 50.jpg" class="img-fluid rounded-circle" data-bs-toggle="tab" data-bs-target="#senior1">
                         </div>
+                        <div class="fs-2" >Senior 1</div>
                     </div>
                 </div>
 
                 <div class="carousel-item">
-                    <div class="col-md-3 m-2">
-                        <div class="card border-danger">
-                            <div class="card-img">
-                                <img src="../vista/Assets/Img/thumbnails/senior 2 menos 60.jpg" class="img-fluid rounded-circle p-5">
-                            </div>
-                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#senior2">Senior 2</div>
+                    <div class="col-md-3 p-5">
+                        <div class="card rounded-circle border-danger">
+                            <img src="../vista/Assets/Img/thumbnails/senior 2 menos 60.jpg" class="img-fluid rounded-circle" data-bs-toggle="tab" data-bs-target="#senior2">
                         </div>
+                        <div class="fs-2" >Senior 2</div>
                     </div>
                 </div>
 
                 <div class="carousel-item">
-                    <div class="col-md-3 m-2">
-                        <div class="card border-danger">
-                            <div class="card-img">
-                                <img src="../vista/Assets/Img/thumbnails/master 1  menos 65.jpg" class="img-fluid rounded-circle p-5">
-                            </div>
-                            <div class="card-img-overlay " data-bs-toggle="tab" data-bs-target="#master1">  Master 1</div>
+                    <div class="col-md-3 p-5">
+                        <div class="card rounded-circle border-danger">
+                            <img src="../vista/Assets/Img/thumbnails/master 1  menos 65.jpg" class="img-fluid rounded-circle"  data-bs-toggle="tab" data-bs-target="#master1">
                         </div>
+                        <div class="fs-2 ">  Master 1</div>
                     </div>
                 </div>
 
                 <div class="carousel-item">
-                    <div class="col-md-3 m-2">
-                        <div class="card border-danger">
-                            <div class="card-img">
-                                <img src="../vista/Assets/Img/thumbnails/master 2 mayor 65.jpg" class="img-fluid rounded-circle p-5">
-                            </div>
-                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#master2">Master 2</div>
+                    <div class="col-md-3 p-5">
+                        <div class="card rounded-circle border-danger">
+                            <img src="../vista/Assets/Img/thumbnails/master 2 mayor 65.jpg" class="img-fluid rounded-circle" data-bs-toggle="tab" data-bs-target="#master2">
                         </div>
+                        <div class="fs-2" >Master 2</div>
                     </div>
                 </div>
 
