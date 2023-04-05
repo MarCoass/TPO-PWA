@@ -8,15 +8,15 @@
             La categoría cadetes de Poomsae reconocido elite individual está diseñada para niños de 8 y 9 años y requiere precisión, fuerza, resistencia y concentración en una serie de movimientos y posturas elegantes. Es una oportunidad emocionante y gratificante para que los jóvenes competidores muestren su habilidad en el taekwondo.
         </p>
     </div>
-    
-    <div class="col-lg-8 col-sm-8 " style="--bs-bg-opacity: .50;" >
+
+    <div class="col-lg-8 col-sm-8 " style="--bs-bg-opacity: .50;">
         <img id="imagen cadete 12-14" src="./Assets/Img/img/cadete 12-14 f.jpg" alt="" class="img-fluid rounded" id="imagenExpandida">
     </div>
 </div>
 <hr>
 <div id="infoMasccadete 12-14" class="row d-none">
-    <div class="col-lg-8 col-sm-8 p-3" style="--bs-bg-opacity: .75;" id="tabla">
-        <table id="tabla" class="table-responsive text-center m-auto bg-light rounded" style="width: 650px;">
+    <div class="col-lg-8 col-sm-8 p-3 table-responsive-sm">
+        <table class="table text-center m-auto bg-light rounded">
             <thead>
                 <tr>
                     <th scope="col">
