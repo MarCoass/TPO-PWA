@@ -8,7 +8,7 @@
 
 <div class="row p-3 text-bg-danger">
     <div class="fs-5">
-    El Poomsae Reconocido Elite Individual es una categoría de competición de taekwondo en la que los participantes deben ejecutar una serie de movimientos complejos y técnicamente avanzados de forma individual. Esta categoría está destinada a competidores altamente experimentados y habilidosos.
+        El Poomsae Reconocido Elite Individual es una categoría de competición de taekwondo en la que los participantes deben ejecutar una serie de movimientos complejos y técnicamente avanzados de forma individual. Esta categoría está destinada a competidores altamente experimentados y habilidosos.
     </div>
 </div>
 
@@ -23,7 +23,7 @@
                     <div class="col-md-3">
                         <div class="card">
                             <div class="card-img">
-                                <img src="../vista/Assets/Img/thumbnails/infantiles a.jpg" class="img-fluid rounded-circle p-5" >
+                                <img src="../vista/Assets/Img/thumbnails/infantiles a.jpg" class="img-fluid rounded-circle p-5">
                             </div>
                             <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#infantilA">Infantiles A</div>
                         </div>
@@ -51,7 +51,16 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="carousel-item">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-img">
+                                <img src="../vista/Assets/Img/thumbnails/cadeteExtra.png" class="img-fluid rounded-circle p-5">
+                            </div>
+                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#cadete">Cadete</div>
+                        </div>
+                    </div>
+                </div>
                 <div class="carousel-item">
                     <div class="col-md-3">
                         <div class="card">
@@ -73,7 +82,16 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="carousel-item">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-img">
+                                <img src="../vista/Assets/Img/thumbnails/AdultoExtra.jpg" class="img-fluid rounded-circle p-5">
+                            </div>
+                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#adulto1">Adulto 1</div>
+                        </div>
+                    </div>
+                </div>
                 <div class="carousel-item">
                     <div class="col-md-3">
                         <div class="card">
@@ -128,16 +146,18 @@
                         </div>
                     </div>
                 </div>
-                
-            <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            </a>
-            <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            </a>
-        </div>    
+
+
+
+                <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </a>
+            </div>
+        </div>
     </div>
-</div>
 
     <div class="row">
         <div class="col-12 my-5">
@@ -158,23 +178,23 @@
                 <div class="tab-pane fade" id="juvenil">
                     <?php include_once('tabJuveniles.php') ?>
                 </div>
-                
+
                 <div class="tab-pane fade" id="adulto1">
                     <?php include_once('tabAdultos1.php') ?>
                 </div>
-                
+
                 <div class="tab-pane fade" id="adulto2">
                     <?php include_once('tabAdultos2.php') ?>
                 </div>
-                
+
                 <div class="tab-pane fade" id="senior1">
                     <?php include_once('tabSenior1.php') ?>
                 </div>
-                
+
                 <div class="tab-pane fade" id="senior2">
                     <?php include_once('tabSenior2.php') ?>
                 </div>
-                
+
                 <div class="tab-pane fade" id="master1">
                     <?php include_once('tabMaster1.php') ?>
                 </div>
@@ -183,13 +203,13 @@
                     <?php include_once('tabMaster2.php') ?>
                 </div>
 
-                
+
             </div>
 
         </div>
     </div>
 
-</main>
+    </main>
 
 
-<?php include_once('../vista/common/footer.php') ?>
+    <?php include_once('../vista/common/footer.php') ?>

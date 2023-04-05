@@ -5,7 +5,7 @@
         <hr>
         <h4>Cadetes</h4>
         <p>
-            La categoría cadetes de Poomsae reconocido elite individual está diseñada para niños de 8 y 9 años y requiere precisión, fuerza, resistencia y concentración en una serie de movimientos y posturas elegantes. Es una oportunidad emocionante y gratificante para que los jóvenes competidores muestren su habilidad en el taekwondo.
+        En la competencia de poomsae reconocido elite, los competidores demostraron sus habilidades en el taekwondo con movimientos precisos y potentes. Los jueces evaluaron la técnica y la precisión, y los fanáticos apoyaron con entusiasmo. Después de muchas rondas, un ganador fue coronado, celebrando su increíble habilidad y dedicación.
         </p>
     </div>
 
@@ -72,7 +72,7 @@
         </table>
     </div>
     <div class="col-lg-4 col-sm-4 p-3" id="parrafo">
-        Julian Serrano es el ganador de Poomsae Elite Individual en la categoría Infantil A. 
+        Julian Serrano es el ganador de Poomsae Elite Individual en la categoría Cadetes. 
         Con una gran habilidad técnica y física, mostró su talento en la competencia. 
         "El secreto del éxito es la dedicación y la pasión", dijo Julian después de su victoria.
     </div>
