@@ -15,6 +15,19 @@ background: linear-gradient(to right, #DD2476, #FF512F); /* W3C, IE 10+/ Edge, F
 
 }
 
+
+
+/* agregando efecto a los items de carrousel */
+
+.card { transition: 0.3s; }
+
+.card:hover { transform: scale(1.2); }
+
+.card:active { transform: scale(1.1); }
+/* fin */
+
+
+
 @media (max-width: 767px) {
   .carousel-inner .carousel-item > div {
       display: none;
