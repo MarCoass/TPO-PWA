@@ -7,8 +7,8 @@
 </div>
 
 <div class="row p-3 text-bg-danger">
-    <div class="fs-2">
-        Individual Elite
+    <div class="fs-5">
+    El Poomsae Reconocido Elite Individual es una categoría de competición de taekwondo en la que los participantes deben ejecutar una serie de movimientos complejos y técnicamente avanzados de forma individual. Esta categoría está destinada a competidores altamente experimentados y habilidosos.
     </div>
 </div>
 
