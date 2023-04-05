@@ -155,6 +155,33 @@
                     <?php include_once('tabcadetes.php') ?>
                 </div>
 
+                <div class="tab-pane fade" id="juvenil">
+                    <?php include_once('tabJuveniles.php') ?>
+                </div>
+                
+                <div class="tab-pane fade" id="adulto1">
+                    <?php include_once('tabAdultos1.php') ?>
+                </div>
+                
+                <div class="tab-pane fade" id="adulto2">
+                    <?php include_once('tabAdultos2.php') ?>
+                </div>
+                
+                <div class="tab-pane fade" id="senior1">
+                    <?php include_once('tabSenior1.php') ?>
+                </div>
+                
+                <div class="tab-pane fade" id="senior2">
+                    <?php include_once('tabSenior2.php') ?>
+                </div>
+                
+                <div class="tab-pane fade" id="master1">
+                    <?php include_once('tabMaster1.php') ?>
+                </div>
+
+                <div class="tab-pane fade" id="master2">
+                    <?php include_once('tabMaster2.php') ?>
+                </div>
 
                 
             </div>
