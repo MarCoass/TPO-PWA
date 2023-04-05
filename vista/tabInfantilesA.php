@@ -137,7 +137,7 @@
         </table>
     </div>
     <div class="col-lg-4 col-sm-4 p-3" id="parrafo">
-        Romina Gonzales es la ganadora de la categoría en la última competencia. 
+        Romina Gonzales es la ganadora de la categoría Infantiles A en la última competencia. 
         Con su dedicación y habilidades logró impresionar a todos los jueces con su desempeño. 
         "Siempre creí en mí misma, y eso me llevó a donde estoy hoy", dijo Romina después de su victoria.
     </div></div>
