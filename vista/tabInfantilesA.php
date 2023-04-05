@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-lg-4 col-sm-4 p-3">
-        <button class="btn btn-secondary" id="fem" onclick="miFuncion('fem','infantiles a')">Femenino</button>
-        <button class="btn btn-secondary" id="masc" onclick="miFuncion('masc','infantiles a')">Masculino</button>
+        <button class="btn btn-secondary" id="fem" onclick="btnCambioGen('fem','infantiles a')">Femenino</button>
+        <button class="btn btn-secondary" id="masc" onclick="btnCambioGen('masc','infantiles a')">Masculino</button>
         <hr>
         <h4>Infantil A</h4>
         <p>
