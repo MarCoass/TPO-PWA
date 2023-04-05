@@ -14,7 +14,8 @@
     </div>
 </div>
 <hr>
-<div id="infoMasc" class="row d-none">
+
+<div id="infoMascinfantiles b" class="row d-none">
     <div class="col-lg-8 col-sm-8 p-3 table-responsive-sm">
         <table class="table text-center m-auto bg-light rounded">
             <thead>
@@ -71,7 +72,7 @@
     <div class="col-lg-4 col-sm-4 p-3" id="parrafo">Julian Serrano es el ganador de Poomsae Elite Individual en la categoría Infantil A. Con una gran habilidad técnica y física, mostró su talento en la competencia. "El secreto del éxito es la dedicación y la pasión", dijo Julian después de su victoria.</div>
 </div>
 
-<div id="infoFem" class="row">
+<div id="infoFeminfantiles b" class="row">
     <div class="col-lg-8 col-sm-8 p-3 table-responsive-sm">
         <table class="table text-center m-auto bg-light rounded">
             <thead>
