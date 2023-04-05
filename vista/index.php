@@ -6,7 +6,7 @@
     </div>
 </div>
 
-<div class="row p-3 text-bg-danger">
+<div id="seccion2" class="row p-3 text-light bg-danger bg-gradient" >
     <div class="fs-5 text-center">
         <p>El <span class="text-decoration-underline">Poomsae Reconocido Elite Individual</span> es una categoría de competición de taekwondo en la que los participantes deben ejecutar una serie de movimientos complejos y técnicamente avanzados de forma individual.</p>
         <p>Esta categoría está destinada a competidores altamente experimentados y habilidosos.</p>
@@ -16,13 +16,13 @@
 
 
 <div class="text-center mt-3 mb-0">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center ">
         <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner nav" role="listbox">
 
                 <div class="carousel-item active">
-                    <div class="col-md-3">
-                        <div class="card">
+                    <div class="col-md-3 m-2">
+                        <div class="card border-danger">
                             <div class="card-img">
                                 <img src="../vista/Assets/Img/thumbnails/infantiles a.jpg" class="img-fluid rounded-circle p-5">
                             </div>
@@ -32,8 +32,8 @@
                 </div>
 
                 <div class="carousel-item">
-                    <div class="col-md-3">
-                        <div class="card">
+                    <div class="col-md-3 m-2">
+                        <div class="card border-danger">
                             <div class="card-img">
                                 <img src="../vista/Assets/Img/thumbnails/infantiles b.jpg" class="img-fluid rounded-circle p-5">
                             </div>
@@ -43,8 +43,8 @@
                 </div>
 
                 <div class="carousel-item">
-                    <div class="col-md-3">
-                        <div class="card">
+                    <div class="col-md-3 m-2">
+                        <div class="card border-danger">
                             <div class="card-img">
                                 <img src="../vista/Assets/Img/thumbnails/cadete 12-14.jpg" class="img-fluid rounded-circle p-5">
                             </div>
@@ -53,8 +53,8 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="col-md-3">
-                        <div class="card">
+                    <div class="col-md-3 m-2">
+                        <div class="card border-danger">
                             <div class="card-img">
                                 <img src="../vista/Assets/Img/thumbnails/cadeteExtra.png" class="img-fluid rounded-circle p-5">
                             </div>
@@ -63,8 +63,8 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="col-md-3">
-                        <div class="card">
+                    <div class="col-md-3 m-2">
+                        <div class="card border-danger">
                             <div class="card-img">
                                 <img src="../vista/Assets/Img/thumbnails/juveniles 15-17.jpg" class="img-fluid rounded-circle p-5">
                             </div>
@@ -74,8 +74,8 @@
                 </div>
 
                 <div class="carousel-item">
-                    <div class="col-md-3">
-                        <div class="card">
+                    <div class="col-md-3 m-2">
+                        <div class="card border-danger">
                             <div class="card-img">
                                 <img src="../vista/Assets/Img/thumbnails/adulto 1 menos 30.jpg" class="img-fluid rounded-circle p-5">
                             </div>
@@ -84,8 +84,8 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="col-md-3">
-                        <div class="card">
+                    <div class="col-md-3 m-2">
+                        <div class="card border-danger">
                             <div class="card-img">
                                 <img src="../vista/Assets/Img/thumbnails/AdultoExtra.jpg" class="img-fluid rounded-circle p-5">
                             </div>
@@ -94,8 +94,8 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="col-md-3">
-                        <div class="card">
+                    <div class="col-md-3 m-2">
+                        <div class="card border-danger">
                             <div class="card-img">
                                 <img src="../vista/Assets/Img/thumbnails/adulto 2 menos 40.jpg" class="img-fluid rounded-circle p-5">
                             </div>
@@ -105,8 +105,8 @@
                 </div>
 
                 <div class="carousel-item">
-                    <div class="col-md-3">
-                        <div class="card">
+                    <div class="col-md-3 m-2">
+                        <div class="card border-danger">
                             <div class="card-img">
                                 <img src="../vista/Assets/Img/thumbnails/senior 1 menos 50.jpg" class="img-fluid rounded-circle p-5">
                             </div>
@@ -116,8 +116,8 @@
                 </div>
 
                 <div class="carousel-item">
-                    <div class="col-md-3">
-                        <div class="card">
+                    <div class="col-md-3 m-2">
+                        <div class="card border-danger">
                             <div class="card-img">
                                 <img src="../vista/Assets/Img/thumbnails/senior 2 menos 60.jpg" class="img-fluid rounded-circle p-5">
                             </div>
@@ -127,19 +127,19 @@
                 </div>
 
                 <div class="carousel-item">
-                    <div class="col-md-3">
-                        <div class="card">
+                    <div class="col-md-3 m-2">
+                        <div class="card border-danger">
                             <div class="card-img">
                                 <img src="../vista/Assets/Img/thumbnails/master 1  menos 65.jpg" class="img-fluid rounded-circle p-5">
                             </div>
-                            <div class="card-img-overlay" data-bs-toggle="tab" data-bs-target="#master1">Master 1</div>
+                            <div class="card-img-overlay " data-bs-toggle="tab" data-bs-target="#master1">  Master 1</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="carousel-item">
-                    <div class="col-md-3">
-                        <div class="card">
+                    <div class="col-md-3 m-2">
+                        <div class="card border-danger">
                             <div class="card-img">
                                 <img src="../vista/Assets/Img/thumbnails/master 2 mayor 65.jpg" class="img-fluid rounded-circle p-5">
                             </div>
