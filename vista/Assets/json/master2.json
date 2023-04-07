@@ -1,0 +1,88 @@
+{
+  "nombre": "Master 2",
+  "imagenFem": "master 2 mayor 65 f.jpg",
+  "imagenMasc": "master 2 mayor 65 m.jpg",
+  "ganadorFem" : "Ana Rodríguez es la ganadora de la categoría Infantiles A en la última competencia. Con su dedicación y habilidades logró impresionar a todos los jueces con su desempeño. 'Siempre creí en mí misma, y eso me llevó a donde estoy hoy', dijo Ana después de su victoria.",
+  "ganadorMasc": "Julian Serrano es el ganador de Poomsae Elite Individual en la categoría Infantil A. Con una gran habilidad técnica y física, mostró su talento en la competencia. 'El secreto del éxito es la dedicación y la pasión', dijo Julian después de su victoria.",
+  "femenino": [
+    {
+      "nombre": "Ana Flores",
+      "puntaje": 8.6,
+      "lugar": "Córdoba",
+      "posicion": 152,
+      "orden": 3
+    },
+    {
+      "nombre": "Sofía González",
+      "puntaje": 9.2,
+      "lugar": "Buenos Aires",
+      "posicion": 17,
+      "orden": 1
+    },
+    {
+      "nombre": "María Alvarez",
+      "puntaje": 7.9,
+      "lugar": "Mendoza",
+      "posicion": 254,
+      "orden": 5
+    },
+    {
+      "nombre": "Lucía Romero",
+      "puntaje": 6.5,
+      "lugar": "Neuquén",
+      "posicion": 417,
+      "orden": 8
+    },
+    {
+      "nombre": "Carla Ortiz",
+      "puntaje": 8.1,
+      "lugar": "Tucumán",
+      "posicion": 189,
+      "orden": 4
+    }
+  ],
+  "masculino": [
+    {
+      "nombre": "Juan Pérez",
+      "puntaje": 9.6,
+      "lugar": "Buenos Aires",
+      "posicion": 5,
+      "orden": 1
+    },
+    {
+      "nombre": "Pedro Martínez",
+      "puntaje": 7.8,
+      "lugar": "Córdoba",
+      "posicion": 267,
+      "orden": 5
+    },
+    {
+      "nombre": "Pablo Gómez",
+      "puntaje": 8.3,
+      "lugar": "Santa Fe",
+      "posicion": 128,
+      "orden": 2
+    },
+    {
+      "nombre": "Miguel Fernández",
+      "puntaje": 6.9,
+      "lugar": "Entre Ríos",
+      "posicion": 382,
+      "orden": 7
+    },
+    {
+      "nombre": "Diego Rodríguez",
+      "puntaje": 7.2,
+      "lugar": "Mendoza",
+      "posicion": 337,
+      "orden": 6
+    },
+    {
+      "nombre": "Federico Gutiérrez",
+      "puntaje": 8.1,
+      "lugar": "CABA",
+      "posicion": 193,
+      "orden": 3
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "nombre": "Cadete",
+  "imagenFem": "cadete 12-14 f.jpg",
+  "imagenMasc": "cadete 12-14 m.jpg",
+  "ganadorFem" : "Ana Rodríguez es la ganadora de la categoría Infantiles A en la última competencia. Con su dedicación y habilidades logró impresionar a todos los jueces con su desempeño. 'Siempre creí en mí misma, y eso me llevó a donde estoy hoy', dijo Ana después de su victoria.",
+  "ganadorMasc": "Julian Serrano es el ganador de Poomsae Elite Individual en la categoría Infantil A. Con una gran habilidad técnica y física, mostró su talento en la competencia. 'El secreto del éxito es la dedicación y la pasión', dijo Julian después de su victoria.",
+  "femenino": [
+    {
+      "nombre": "Luciana",
+      "puntaje": 8.7,
+      "lugar": "Buenos Aires",
+      "posicion": 92,
+      "orden": 2
+    },
+    {
+      "nombre": "Carolina",
+      "puntaje": 9.2,
+      "lugar": "Córdoba",
+      "posicion": 16,
+      "orden": 1
+    },
+    {
+      "nombre": "María",
+      "puntaje": 7.5,
+      "lugar": "Mendoza",
+      "posicion": 205,
+      "orden": 5
+    },
+    {
+      "nombre": "Victoria",
+      "puntaje": 6.8,
+      "lugar": "Neuquén",
+      "posicion": 357,
+      "orden": 7
+    },
+    {
+      "nombre": "Julieta",
+      "puntaje": 8.1,
+      "lugar": "Santa Fe",
+      "posicion": 120,
+      "orden": 3
+    },
+    {
+      "nombre": "Laura",
+      "puntaje": 5.4,
+      "lugar": "Tucumán",
+      "posicion": 479,
+      "orden": 8
+    },
+    {
+      "nombre": "Valeria",
+      "puntaje": 6.9,
+      "lugar": "Salta",
+      "posicion": 310,
+      "orden": 6
+    }
+  ],
+  "masculino": [
+    {
+      "nombre": "Javier",
+      "puntaje": 9.5,
+      "lugar": "Buenos Aires",
+      "posicion": 4,
+      "orden": 1
+    },
+    {
+      "nombre": "Santiago",
+      "puntaje": 7.8,
+      "lugar": "Córdoba",
+      "posicion": 153,
+      "orden": 5
+    },
+    {
+      "nombre": "Alejandro",
+      "puntaje": 8.6,
+      "lugar": "Mendoza",
+      "posicion": 71,
+      "orden": 2
+    },
+    {
+      "nombre": "Gabriel",
+      "puntaje": 6.3,
+      "lugar": "Neuquén",
+      "posicion": 392,
+      "orden": 8
+    },
+    {
+      "nombre": "Luis",
+      "puntaje": 5.9,
+      "lugar": "Santa Fe",
+      "posicion": 447,
+      "orden": 7
+    },
+    {
+      "nombre": "Gustavo",
+      "puntaje": 8.1,
+      "lugar": "Tucumán",
+      "posicion": 113,
+      "orden": 4
+    },
+    {
+      "nombre": "Federico",
+      "puntaje": 7.2,
+      "lugar": "Salta",
+      "posicion": 247,
+      "orden": 6
+    },
+    {
+      "nombre": "Juan",
+      "puntaje": 8.3,
+      "lugar": "Buenos Aires",
+      "posicion": 51,
+      "orden": 3
+    }
+  ]
+}

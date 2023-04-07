@@ -1,0 +1,81 @@
+{
+  "nombre": "Adultos 1",
+  "imagenFem": "adulto 1 menos 30 f.jpg",
+  "imagenMasc": "adulto 1 menos 30 m.jpg",
+  "ganadorFem" : "Ana Rodríguez es la ganadora de la categoría Infantiles A en la última competencia. Con su dedicación y habilidades logró impresionar a todos los jueces con su desempeño. 'Siempre creí en mí misma, y eso me llevó a donde estoy hoy', dijo Ana después de su victoria.",
+  "ganadorMasc": "Julian Serrano es el ganador de Poomsae Elite Individual en la categoría Infantil A. Con una gran habilidad técnica y física, mostró su talento en la competencia. 'El secreto del éxito es la dedicación y la pasión', dijo Julian después de su victoria.",
+  "femenino": [
+    {
+      "nombre": "Camila Morales",
+      "puntaje": 9.5,
+      "lugar": "Córdoba",
+      "posicion": 125,
+      "orden": 2
+    },
+    {
+      "nombre": "María González",
+      "puntaje": 8.7,
+      "lugar": "Buenos Aires",
+      "posicion": 223,
+      "orden": 4
+    },
+    {
+      "nombre": "Luciana Peralta",
+      "puntaje": 7.9,
+      "lugar": "Mendoza",
+      "posicion": 341,
+      "orden": 6
+    },
+    {
+      "nombre": "Julieta Fernández",
+      "puntaje": 6.3,
+      "lugar": "San Juan",
+      "posicion": 487,
+      "orden": 8
+    },
+    {
+      "nombre": "Ana Ramírez",
+      "puntaje": 5.8,
+      "lugar": "Neuquén",
+      "posicion": 500,
+      "orden": 9
+    }
+  ],
+  "masculino": [
+    {
+      "nombre": "Juan García",
+      "puntaje": 9.9,
+      "lugar": "Buenos Aires",
+      "posicion": 67,
+      "orden": 1
+    },
+    {
+      "nombre": "Lucas Martínez",
+      "puntaje": 8.6,
+      "lugar": "Tucumán",
+      "posicion": 231,
+      "orden": 3
+    },
+    {
+      "nombre": "Alejandro Flores",
+      "puntaje": 7.8,
+      "lugar": "Salta",
+      "posicion": 353,
+      "orden": 5
+    },
+    {
+      "nombre": "Diego Fernández",
+      "puntaje": 6.5,
+      "lugar": "Córdoba",
+      "posicion": 468,
+      "orden": 7
+    },
+    {
+      "nombre": "Agustín Pérez",
+      "puntaje": 5.7,
+      "lugar": "Misiones",
+      "posicion": 500,
+      "orden": 10
+    }
+  ]
+}

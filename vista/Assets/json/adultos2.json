@@ -1,0 +1,109 @@
+{
+  "nombre": "Adultos 2",
+  "imagenFem": "adulto 2 menos 40 f.jpg",
+  "imagenMasc": "adulto 2 menos 40 m.jpg",
+  "ganadorFem" : "Ana Rodríguez es la ganadora de la categoría Infantiles A en la última competencia. Con su dedicación y habilidades logró impresionar a todos los jueces con su desempeño. 'Siempre creí en mí misma, y eso me llevó a donde estoy hoy', dijo Ana después de su victoria.",
+  "ganadorMasc": "Julian Serrano es el ganador de Poomsae Elite Individual en la categoría Infantil A. Con una gran habilidad técnica y física, mostró su talento en la competencia. 'El secreto del éxito es la dedicación y la pasión', dijo Julian después de su victoria.",
+  "femenino": [
+    {
+      "nombre": "Ana Aguilar",
+      "puntaje": 8.5,
+      "lugar": "Córdoba",
+      "posicion": 123,
+      "orden": 2
+    },
+    {
+      "nombre": "Sofía Hernández",
+      "puntaje": 9.2,
+      "lugar": "Buenos Aires",
+      "posicion": 31,
+      "orden": 1
+    },
+    {
+      "nombre": "María Fernández",
+      "puntaje": 7.8,
+      "lugar": "Santa Fe",
+      "posicion": 278,
+      "orden": 4
+    },
+    {
+      "nombre": "Lucía Martínez",
+      "puntaje": 6.9,
+      "lugar": "Mendoza",
+      "posicion": 419,
+      "orden": 6
+    },
+    {
+      "nombre": "Carla Pérez",
+      "puntaje": 8.1,
+      "lugar": "Tucumán",
+      "posicion": 190,
+      "orden": 3
+    },
+    {
+      "nombre": "Camila Rodríguez",
+      "puntaje": 7.4,
+      "lugar": "Neuquén",
+      "posicion": 333,
+      "orden": 5
+    },
+    {
+      "nombre": "Valentina Gómez",
+      "puntaje": 6.3,
+      "lugar": "Entre Ríos",
+      "posicion": 479,
+      "orden": 7
+    }
+  ],
+  "masculino": [
+    {
+      "nombre": "Juan López",
+      "puntaje": 8.9,
+      "lugar": "Buenos Aires",
+      "posicion": 89,
+      "orden": 1
+    },
+    {
+      "nombre": "Pedro González",
+      "puntaje": 7.2,
+      "lugar": "Misiones",
+      "posicion": 387,
+      "orden": 5
+    },
+    {
+      "nombre": "Manuel Martínez",
+      "puntaje": 9.6,
+      "lugar": "Córdoba",
+      "posicion": 6,
+      "orden": 2
+    },
+    {
+      "nombre": "Luis Torres",
+      "puntaje": 6.7,
+      "lugar": "Santa Fe",
+      "posicion": 452,
+      "orden": 7
+    },
+    {
+      "nombre": "Pablo Rodríguez",
+      "puntaje": 8.1,
+      "lugar": "Mendoza",
+      "posicion": 182,
+      "orden": 3
+    },
+    {
+      "nombre": "Javier Díaz",
+      "puntaje": 7.8,
+      "lugar": "Tucumán",
+      "posicion": 256,
+      "orden": 4
+    },
+    {
+      "nombre": "Diego Sánchez",
+      "puntaje": 5.9,
+      "lugar": "Neuquén",
+      "posicion": 498,
+      "orden": 8
+    }
+  ]
+}

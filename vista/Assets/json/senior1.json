@@ -1,0 +1,95 @@
+{
+  "nombre": "Senior 1",
+  "imagenFem": "senior 1 menos 50 f.jpg",
+  "imagenMasc": "senior 1 menos 50 m.jpg",
+  "ganadorFem" : "Ana Rodríguez es la ganadora de la categoría Infantiles A en la última competencia. Con su dedicación y habilidades logró impresionar a todos los jueces con su desempeño. 'Siempre creí en mí misma, y eso me llevó a donde estoy hoy', dijo Ana después de su victoria.",
+  "ganadorMasc": "Julian Serrano es el ganador de Poomsae Elite Individual en la categoría Infantil A. Con una gran habilidad técnica y física, mostró su talento en la competencia. 'El secreto del éxito es la dedicación y la pasión', dijo Julian después de su victoria.",
+  "femenino": [
+    {
+      "nombre": "Ana Ortiz",
+      "puntaje": 8.5,
+      "lugar": "Buenos Aires",
+      "posicion": 112,
+      "orden": 3
+    },
+    {
+      "nombre": "Carla Gómez",
+      "puntaje": 9.2,
+      "lugar": "Mendoza",
+      "posicion": 46,
+      "orden": 1
+    },
+    {
+      "nombre": "María García",
+      "puntaje": 7.1,
+      "lugar": "Córdoba",
+      "posicion": 312,
+      "orden": 7
+    },
+    {
+      "nombre": "Luciana Rodríguez",
+      "puntaje": 6.9,
+      "lugar": "Tucumán",
+      "posicion": 176,
+      "orden": 5
+    },
+    {
+      "nombre": "Sofía Sánchez",
+      "puntaje": 5.8,
+      "lugar": "Neuquén",
+      "posicion": 498,
+      "orden": 8
+    }
+  ],
+  "masculino": [
+    {
+      "nombre": "Juan Pérez",
+      "puntaje": 9.1,
+      "lugar": "Buenos Aires",
+      "posicion": 52,
+      "orden": 2
+    },
+    {
+      "nombre": "Pedro González",
+      "puntaje": 6.5,
+      "lugar": "Córdoba",
+      "posicion": 311,
+      "orden": 6
+    },
+    {
+      "nombre": "Luis Fernández",
+      "puntaje": 7.9,
+      "lugar": "Santa Fe",
+      "posicion": 189,
+      "orden": 4
+    },
+    {
+      "nombre": "Jorge Martínez",
+      "puntaje": 8.3,
+      "lugar": "Tucumán",
+      "posicion": 91,
+      "orden": 3
+    },
+    {
+      "nombre": "Miguel García",
+      "puntaje": 4.2,
+      "lugar": "Salta",
+      "posicion": 498,
+      "orden": 8
+    },
+    {
+      "nombre": "Gonzalo Romero",
+      "puntaje": 5.7,
+      "lugar": "Chubut",
+      "posicion": 376,
+      "orden": 7
+    },
+    {
+      "nombre": "Andrés Torres",
+      "puntaje": 7.8,
+      "lugar": "San Luis",
+      "posicion": 210,
+      "orden": 5
+    }
+  ]
+}

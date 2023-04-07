@@ -1,0 +1,95 @@
+{
+  "nombre": "Infantiles B",
+  "imagenFem": "infantiles b f.jpg",
+  "imagenMasc": "infantiles b m.jpg",
+  "ganadorFem" : "Ana Rodríguez es la ganadora de la categoría Infantiles A en la última competencia. Con su dedicación y habilidades logró impresionar a todos los jueces con su desempeño. 'Siempre creí en mí misma, y eso me llevó a donde estoy hoy', dijo Ana después de su victoria.",
+  "ganadorMasc": "Julian Serrano es el ganador de Poomsae Elite Individual en la categoría Infantil A. Con una gran habilidad técnica y física, mostró su talento en la competencia. 'El secreto del éxito es la dedicación y la pasión', dijo Julian después de su victoria.",
+  "femenino": [
+    {
+      "nombre": "Ana",
+      "puntaje": 8.3,
+      "lugar": "Buenos Aires",
+      "posicion": 46,
+      "orden": 2
+    },
+    {
+      "nombre": "María",
+      "puntaje": 9.7,
+      "lugar": "Córdoba",
+      "posicion": 12,
+      "orden": 1
+    },
+    {
+      "nombre": "Lucía",
+      "puntaje": 7.9,
+      "lugar": "Mendoza",
+      "posicion": 82,
+      "orden": 5
+    },
+    {
+      "nombre": "Julia",
+      "puntaje": 6.5,
+      "lugar": "Neuquén",
+      "posicion": 347,
+      "orden": 8
+    },
+    {
+      "nombre": "Lola",
+      "puntaje": 8.2,
+      "lugar": "Tucumán",
+      "posicion": 51,
+      "orden": 3
+    }
+  ],
+  "masculino": [
+    {
+      "nombre": "Juan",
+      "puntaje": 9.8,
+      "lugar": "Buenos Aires",
+      "posicion": 8,
+      "orden": 1
+    },
+    {
+      "nombre": "Pedro",
+      "puntaje": 8.5,
+      "lugar": "Misiones",
+      "posicion": 41,
+      "orden": 3
+    },
+    {
+      "nombre": "Diego",
+      "puntaje": 7.6,
+      "lugar": "Chaco",
+      "posicion": 103,
+      "orden": 6
+    },
+    {
+      "nombre": "Andrés",
+      "puntaje": 9.1,
+      "lugar": "Santa Fe",
+      "posicion": 19,
+      "orden": 2
+    },
+    {
+      "nombre": "Lucas",
+      "puntaje": 6.9,
+      "lugar": "La Pampa",
+      "posicion": 231,
+      "orden": 7
+    },
+    {
+      "nombre": "Jorge",
+      "puntaje": 7.8,
+      "lugar": "Jujuy",
+      "posicion": 89,
+      "orden": 5
+    },
+    {
+      "nombre": "Federico",
+      "puntaje": 6.2,
+      "lugar": "Corrientes",
+      "posicion": 410,
+      "orden": 8
+    }
+  ]
+}

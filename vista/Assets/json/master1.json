@@ -1,0 +1,81 @@
+{
+  "nombre": "Master 1",
+  "imagenFem": "master 1 menos 65 f.jpg",
+  "imagenMasc": "master 1 menos 65 m.jpg",
+  "ganadorFem" : "Ana Rodríguez es la ganadora de la categoría Infantiles A en la última competencia. Con su dedicación y habilidades logró impresionar a todos los jueces con su desempeño. 'Siempre creí en mí misma, y eso me llevó a donde estoy hoy', dijo Ana después de su victoria.",
+  "ganadorMasc": "Julian Serrano es el ganador de Poomsae Elite Individual en la categoría Infantil A. Con una gran habilidad técnica y física, mostró su talento en la competencia. 'El secreto del éxito es la dedicación y la pasión', dijo Julian después de su victoria.",
+  "femenino": [
+    {
+      "nombre": "Carla Ruiz",
+      "puntaje": 8.9,
+      "lugar": "Córdoba",
+      "posicion": 64,
+      "orden": 2
+    },
+    {
+      "nombre": "Lucía Moreno",
+      "puntaje": 7.2,
+      "lugar": "Misiones",
+      "posicion": 128,
+      "orden": 5
+    },
+    {
+      "nombre": "Ana Martínez",
+      "puntaje": 9.6,
+      "lugar": "Buenos Aires",
+      "posicion": 13,
+      "orden": 1
+    },
+    {
+      "nombre": "Florencia Díaz",
+      "puntaje": 6.3,
+      "lugar": "Tucumán",
+      "posicion": 212,
+      "orden": 7
+    },
+    {
+      "nombre": "Camila Castro",
+      "puntaje": 5.1,
+      "lugar": "Santa Fe",
+      "posicion": 389,
+      "orden": 8
+    }
+  ],
+  "masculino": [
+    {
+      "nombre": "Juan Pérez",
+      "puntaje": 9.1,
+      "lugar": "Buenos Aires",
+      "posicion": 23,
+      "orden": 1
+    },
+    {
+      "nombre": "Luis González",
+      "puntaje": 7.5,
+      "lugar": "Córdoba",
+      "posicion": 98,
+      "orden": 4
+    },
+    {
+      "nombre": "Marcos García",
+      "puntaje": 6.8,
+      "lugar": "Mendoza",
+      "posicion": 167,
+      "orden": 6
+    },
+    {
+      "nombre": "Matías Fernández",
+      "puntaje": 8.2,
+      "lugar": "Santa Fe",
+      "posicion": 45,
+      "orden": 3
+    },
+    {
+      "nombre": "Gabriel Rodríguez",
+      "puntaje": 5.9,
+      "lugar": "Tucumán",
+      "posicion": 289,
+      "orden": 7
+    }
+  ]
+}

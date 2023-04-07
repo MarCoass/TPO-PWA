@@ -1,0 +1,102 @@
+{
+  "nombre": "Juveniles",
+  "imagenFem": "juveniles 15-17 f.jpg",
+  "imagenMasc": "juveniles 15-17 m.jpg",
+  "ganadorFem" : "Ana Rodríguez es la ganadora de la categoría Infantiles A en la última competencia. Con su dedicación y habilidades logró impresionar a todos los jueces con su desempeño. 'Siempre creí en mí misma, y eso me llevó a donde estoy hoy', dijo Ana después de su victoria.",
+  "ganadorMasc": "Julian Serrano es el ganador de Poomsae Elite Individual en la categoría Infantil A. Con una gran habilidad técnica y física, mostró su talento en la competencia. 'El secreto del éxito es la dedicación y la pasión', dijo Julian después de su victoria.",
+  "femenino": [
+    {
+      "nombre": "Ana",
+      "puntaje": 8.3,
+      "lugar": "Buenos Aires",
+      "posicion": 254,
+      "orden": 2
+    },
+    {
+      "nombre": "Carla",
+      "puntaje": 9.2,
+      "lugar": "Mendoza",
+      "posicion": 42,
+      "orden": 1
+    },
+    {
+      "nombre": "Lucía",
+      "puntaje": 7.5,
+      "lugar": "Córdoba",
+      "posicion": 372,
+      "orden": 4
+    },
+    {
+      "nombre": "Luisa",
+      "puntaje": 6.8,
+      "lugar": "Salta",
+      "posicion": 143,
+      "orden": 6
+    },
+    {
+      "nombre": "María",
+      "puntaje": 8.9,
+      "lugar": "Tucumán",
+      "posicion": 98,
+      "orden": 3
+    },
+    {
+      "nombre": "Natalia",
+      "puntaje": 7.1,
+      "lugar": "Chubut",
+      "posicion": 486,
+      "orden": 5
+    }
+  ],
+  "masculino": [
+    {
+      "nombre": "Juan",
+      "puntaje": 7.8,
+      "lugar": "Santa Fe",
+      "posicion": 213,
+      "orden": 3
+    },
+    {
+      "nombre": "Miguel",
+      "puntaje": 9.7,
+      "lugar": "Neuquén",
+      "posicion": 11,
+      "orden": 1
+    },
+    {
+      "nombre": "Pedro",
+      "puntaje": 6.5,
+      "lugar": "La Pampa",
+      "posicion": 327,
+      "orden": 6
+    },
+    {
+      "nombre": "Ricardo",
+      "puntaje": 8.1,
+      "lugar": "Chaco",
+      "posicion": 186,
+      "orden": 4
+    },
+    {
+      "nombre": "Santiago",
+      "puntaje": 7.2,
+      "lugar": "Entre Ríos",
+      "posicion": 439,
+      "orden": 5
+    },
+    {
+      "nombre": "Tomás",
+      "puntaje": 8.5,
+      "lugar": "San Juan",
+      "posicion": 76,
+      "orden": 2
+    },
+    {
+      "nombre": "Víctor",
+      "puntaje": 6.9,
+      "lugar": "Jujuy",
+      "posicion": 267,
+      "orden": 7
+    }
+  ]
+}

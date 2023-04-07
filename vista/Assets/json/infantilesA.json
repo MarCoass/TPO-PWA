@@ -1,0 +1,95 @@
+{ 
+  "nombre": "Infantiles A",
+  "imagenFem": "infantiles a f.jpg",
+  "imagenMasc": "infantiles a m.jpg",
+  "ganadorFem" : "Ana Rodríguez es la ganadora de la categoría Infantiles A en la última competencia. Con su dedicación y habilidades logró impresionar a todos los jueces con su desempeño. 'Siempre creí en mí misma, y eso me llevó a donde estoy hoy', dijo Ana después de su victoria.",
+  "ganadorMasc": "Julian Serrano es el ganador de Poomsae Elite Individual en la categoría Infantil A. Con una gran habilidad técnica y física, mostró su talento en la competencia. 'El secreto del éxito es la dedicación y la pasión', dijo Julian después de su victoria.",
+  "femenino": [
+    {
+      "nombre": "María González",
+      "puntaje": 8.5,
+      "lugar": "Buenos Aires",
+      "posicion": 50,
+      "orden": 3
+    },
+    {
+      "nombre": "Ana Rodríguez",
+      "puntaje": 9.1,
+      "lugar": "Córdoba",
+      "posicion": 27,
+      "orden": 2
+    },
+    {
+      "nombre": "Laura Fernández",
+      "puntaje": 7.3,
+      "lugar": "Mendoza",
+      "posicion": 89,
+      "orden": 6
+    },
+    {
+      "nombre": "Carolina López",
+      "puntaje": 8.9,
+      "lugar": "Santa Fe",
+      "posicion": 12,
+      "orden": 1
+    },
+    {
+      "nombre": "Luciana Pérez",
+      "puntaje": 6.4,
+      "lugar": "Tucumán",
+      "posicion": 214,
+      "orden": 8
+    }
+  ],
+  "masculino": [
+    {
+      "nombre": "Juan Martínez",
+      "puntaje": 7.8,
+      "lugar": "Buenos Aires",
+      "posicion": 73,
+      "orden": 4
+    },
+    {
+      "nombre": "Pedro García",
+      "puntaje": 9.2,
+      "lugar": "Córdoba",
+      "posicion": 18,
+      "orden": 1
+    },
+    {
+      "nombre": "Carlos Gómez",
+      "puntaje": 8.1,
+      "lugar": "Mendoza",
+      "posicion": 59,
+      "orden": 3
+    },
+    {
+      "nombre": "Pablo López",
+      "puntaje": 6.7,
+      "lugar": "Santa Fe",
+      "posicion": 167,
+      "orden": 7
+    },
+    {
+      "nombre": "Federico Hernández",
+      "puntaje": 7.5,
+      "lugar": "Tucumán",
+      "posicion": 98,
+      "orden": 5
+    },
+    {
+      "nombre": "Diego Pérez",
+      "puntaje": 8.4,
+      "lugar": "Buenos Aires",
+      "posicion": 36,
+      "orden": 2
+    },
+    {
+      "nombre": "Jorge Romero",
+      "puntaje": 5.9,
+      "lugar": "Córdoba",
+      "posicion": 321,
+      "orden": 8
+    }
+  ]
+}
