@@ -1,8 +1,9 @@
 {
   "nombre": "Infantiles B",
+  "descripcion": "La categoría 'Infantiles B' en Poomsae Taekwondo es para niños y niñas de 9 a 11 años, donde se refuerzan las habilidades básicas de formas y se comienza a trabajar en formas más complejas, promoviendo la técnica y la elegancia en la ejecución.",
   "imagenFem": "infantiles b f.jpg",
   "imagenMasc": "infantiles b m.jpg",
-  "ganadorFem" : "Ana Rodríguez es la ganadora de la categoría Infantiles A en la última competencia. Con su dedicación y habilidades logró impresionar a todos los jueces con su desempeño. 'Siempre creí en mí misma, y eso me llevó a donde estoy hoy', dijo Ana después de su victoria.",
+  "ganadorFem": "Ana Rodríguez es la ganadora de la categoría Infantiles A en la última competencia. Con su dedicación y habilidades logró impresionar a todos los jueces con su desempeño. 'Siempre creí en mí misma, y eso me llevó a donde estoy hoy', dijo Ana después de su victoria.",
   "ganadorMasc": "Julian Serrano es el ganador de Poomsae Elite Individual en la categoría Infantil A. Con una gran habilidad técnica y física, mostró su talento en la competencia. 'El secreto del éxito es la dedicación y la pasión', dijo Julian después de su victoria.",
   "femenino": [
     {
@@ -90,6 +91,28 @@
       "lugar": "Corrientes",
       "posicion": 410,
       "orden": 8
+    }
+  ],
+  "posiciones": [
+    {
+      "posicion": "Poomsae Jitae",
+      "cantidad": 10,
+      "puntajeMaximo": 8.0
+    },
+    {
+      "posicion": "Poomsae Sipjin",
+      "cantidad": 12,
+      "puntajeMaximo": 9.0
+    },
+    {
+      "posicion": "Poomsae Jansu",
+      "cantidad": 15,
+      "puntajeMaximo": 9.5
+    },
+    {
+      "posicion": "Poomsae Ilyo",
+      "cantidad": 20,
+      "puntajeMaximo": 10
     }
   ]
 }

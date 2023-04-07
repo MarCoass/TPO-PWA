@@ -18,8 +18,9 @@ async function utilizarDatos(tipo) {
     const categoria = await cargarCategorias(tipo);
     console.table(categoria);
 
-    $("#nombreCategoria").empty();
-    $("#nombreCategoria").html(categoria.nombre); // INSERTAMOS NOMBRE DE LA CATEGORÍA
+    armarDescripcion(categoria.nombre, categoria.descripcion);
+
+    armarListaPosiciones(categoria.posiciones);
 
     armarTablaParticipantes(categoria.femenino, "Femenino");
     armarTablaParticipantes(categoria.masculino, "Masculino");
@@ -27,6 +28,32 @@ async function utilizarDatos(tipo) {
     armarParrafoGanadores(categoria.ganadorFem, categoria.ganadorMasc);
 
     armarImagenes(categoria.imagenFem, categoria.imagenMasc);
+}
+
+function armarDescripcion(nombreCategoria, descripcionCategoria){
+    $("#nombreCategoria").empty();
+    $("#descripcionCategoria").empty();
+
+    $("#nombreCategoria").html(nombreCategoria);
+    $("#descripcionCategoria").html(descripcionCategoria);
+}
+
+function armarListaPosiciones(arreglo){
+    $("#listaPosiciones").empty();
+
+    let contenidoLista = "";
+
+    contenidoLista += "<div class='row mb-2 align-items-center'><span class='col-5'>Posición</span><span class='col-5'>Veces Usadas</span><span class='col-2'>Puntaje Mayor</span></div>"
+
+    arreglo.forEach(posicion => {
+        contenidoLista += "<div class='row mb-2 align-items-center'>";
+        contenidoLista += "<span class='col-6 fw-bold'>"+posicion.posicion+"</span>";
+        contenidoLista += "<span class='col-4 text-warning fw-semibold'>"+posicion.cantidad+"</span>";
+        contenidoLista += "<span class='col-2 text-success fw-semibold'>"+posicion.puntajeMaximo+"</span>";
+        contenidoLista += "</div>";
+    });
+
+    $("#listaPosiciones").html(contenidoLista);
 }
 
 /* Recibe por parámetro el arreglo de participantes y una palabra clave que diferencia el id de las tablas para saber a cuál insertar el contenido, previamente

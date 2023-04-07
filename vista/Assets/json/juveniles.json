@@ -1,8 +1,9 @@
 {
   "nombre": "Juveniles",
+  "descripcion": "La categoría 'Juveniles' en Poomsae Taekwondo es para jóvenes de 15 a 17 años, donde se busca la perfección técnica, la creatividad y la originalidad en la ejecución de las formas. Se valora la interpretación musical y la presentación artística, así como el control emocional y la concentración.",
   "imagenFem": "juveniles 15-17 f.jpg",
   "imagenMasc": "juveniles 15-17 m.jpg",
-  "ganadorFem" : "Ana Rodríguez es la ganadora de la categoría Infantiles A en la última competencia. Con su dedicación y habilidades logró impresionar a todos los jueces con su desempeño. 'Siempre creí en mí misma, y eso me llevó a donde estoy hoy', dijo Ana después de su victoria.",
+  "ganadorFem": "Ana Rodríguez es la ganadora de la categoría Infantiles A en la última competencia. Con su dedicación y habilidades logró impresionar a todos los jueces con su desempeño. 'Siempre creí en mí misma, y eso me llevó a donde estoy hoy', dijo Ana después de su victoria.",
   "ganadorMasc": "Julian Serrano es el ganador de Poomsae Elite Individual en la categoría Infantil A. Con una gran habilidad técnica y física, mostró su talento en la competencia. 'El secreto del éxito es la dedicación y la pasión', dijo Julian después de su victoria.",
   "femenino": [
     {
@@ -97,6 +98,23 @@
       "lugar": "Jujuy",
       "posicion": 267,
       "orden": 7
+    }
+  ],
+  "posiciones": [
+    {
+      "posicion": "Poomsae Koryo",
+      "cantidad": 10,
+      "puntajeMaximo": 9.5
+    },
+    {
+      "posicion": "Poomsae Taebaek",
+      "cantidad": 5,
+      "puntajeMaximo": 8.2
+    },
+    {
+      "posicion": "Poomsae Pyongwon",
+      "cantidad": 7,
+      "puntajeMaximo": 8.9
     }
   ]
 }

@@ -1,8 +1,9 @@
 {
   "nombre": "Senior 1",
+  "descripcion":"La categoría 'Senior 1' en Poomsae Taekwondo es para personas mayores de 40 años, donde se busca un alto nivel técnico y artístico en la ejecución de las formas. Se valora la elegancia, la interpretación musical, la precisión y la creatividad, además de la capacidad de transmitir la experiencia y sabiduría del Taekwondo a través de la forma.",
   "imagenFem": "senior 1 menos 50 f.jpg",
   "imagenMasc": "senior 1 menos 50 m.jpg",
-  "ganadorFem" : "Ana Rodríguez es la ganadora de la categoría Infantiles A en la última competencia. Con su dedicación y habilidades logró impresionar a todos los jueces con su desempeño. 'Siempre creí en mí misma, y eso me llevó a donde estoy hoy', dijo Ana después de su victoria.",
+  "ganadorFem": "Ana Rodríguez es la ganadora de la categoría Infantiles A en la última competencia. Con su dedicación y habilidades logró impresionar a todos los jueces con su desempeño. 'Siempre creí en mí misma, y eso me llevó a donde estoy hoy', dijo Ana después de su victoria.",
   "ganadorMasc": "Julian Serrano es el ganador de Poomsae Elite Individual en la categoría Infantil A. Con una gran habilidad técnica y física, mostró su talento en la competencia. 'El secreto del éxito es la dedicación y la pasión', dijo Julian después de su victoria.",
   "femenino": [
     {
@@ -90,6 +91,23 @@
       "lugar": "San Luis",
       "posicion": 210,
       "orden": 5
+    }
+  ],
+  "posiciones": [
+    {
+      "posicion": "Koryo",
+      "cantidad": 15,
+      "puntajeMaximo": 8.8
+    },
+    {
+      "posicion": "Keumgang",
+      "cantidad": 30,
+      "puntajeMaximo": 6.5
+    },
+    {
+      "posicion": "Taebaek",
+      "cantidad": 7,
+      "puntajeMaximo": 9.3
     }
   ]
 }

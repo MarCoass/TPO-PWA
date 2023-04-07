@@ -3,9 +3,23 @@
 <div class="row">
     <div class="col-lg-4 col-sm-4 p-3">
         <h4 id="nombreCategoria"><!-- NOMBRE CATEGORÍA --></h4>
-        <p id="descripcionCategoria">
+        <div id="descripcionCategoria" class="fst-italic text-center mb-3">
             <!-- DESCRIPCIÓN CATEGORÍA -->
-        </p>
+        </div>
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Pommsae Más Populares
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body text-center me-5" id="listaPosiciones">
+                        <!-- LISTA DE LAS POSICIONES MÁS USADAS EN LA COMPETENCIA -->
+                    </div>
+                </div>
+            </div>
+        </div>
         <hr>
         <button class="btn btn-outline-danger" id="fem" onclick="btnCambioGen('fem')">Femenino</button>
         <button class="btn btn-outline-dark" id="masc" onclick="btnCambioGen('masc')">Masculino</button>
@@ -22,16 +36,16 @@
         <table class="table text-center m-auto bg-light rounded">
             <thead>
                 <tr>
-                    <th scope="col" class=" d-none d-sm-table-cell col-sm-6 col-md-4 col-lg col-xl-3 col-xxl-2">
+                    <th scope="col" class="d-none d-sm-table-cell">
                         <div>N°</div>
                     </th>
-                    <th scope="col" class=" d-none d-sm-table-cell col-sm-6 col-md-4 col-lg col-xl-3 col-xxl-2">
+                    <th scope="col" class="d-none d-sm-table-cell">
                         <div>Lugar</div>
                     </th>
-                    <th scope="col" class="col-sm-12 col-md-4 col-lg col-xl-6 col-xxl-8">
+                    <th scope="col">
                         <div class="">Nombre</div>
                     </th>
-                    <th scope="col" class="col-sm-12 col-md-4 col-lg col-xl-6 col-xxl-8">
+                    <th scope="col">
                         <div class="">Puntaje</div>
                     </th>
                 </tr>
@@ -51,17 +65,17 @@
         <table class="table text-center m-auto bg-light rounded">
             <thead>
                 <tr>
-                    <th scope="col" class=" d-none d-sm-table-cell">
+                    <th scope="col" class="d-none d-sm-table-cell">
                         <div>N°</div>
                     </th>
-                    <th scope="col" class=" d-none d-sm-table-cell">
+                    <th scope="col" class="d-none d-sm-table-cell">
                         <div>Lugar</div>
                     </th>
                     <th scope="col">
-                        <div class="">Nombre</div>
+                        <div">Nombre</div>
                     </th>
                     <th scope="col">
-                        <div class="">Puntaje</div>
+                        <div">Puntaje</div>
                     </th>
                 </tr>
             </thead>

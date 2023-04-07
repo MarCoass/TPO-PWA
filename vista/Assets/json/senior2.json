@@ -1,8 +1,9 @@
 {
   "nombre": "Senior 2",
+  "descripcion": "La categoría 'Senior 2' en Poomsae Taekwondo es para personas mayores de 50 años, donde se busca la perfección técnica, la elegancia y la interpretación artística en la ejecución de las formas. Se valora la experiencia, la sabiduría y la capacidad de transmitir la esencia del Taekwondo a través de la forma, demostrando que la edad no es una limitación para la práctica de este arte marcial.",
   "imagenFem": "senior 2 menos 60 f.jpg",
   "imagenMasc": "senior 2 menos 60 m.jpg",
-  "ganadorFem" : "Ana Rodríguez es la ganadora de la categoría Infantiles A en la última competencia. Con su dedicación y habilidades logró impresionar a todos los jueces con su desempeño. 'Siempre creí en mí misma, y eso me llevó a donde estoy hoy', dijo Ana después de su victoria.",
+  "ganadorFem": "Ana Rodríguez es la ganadora de la categoría Infantiles A en la última competencia. Con su dedicación y habilidades logró impresionar a todos los jueces con su desempeño. 'Siempre creí en mí misma, y eso me llevó a donde estoy hoy', dijo Ana después de su victoria.",
   "ganadorMasc": "Julian Serrano es el ganador de Poomsae Elite Individual en la categoría Infantil A. Con una gran habilidad técnica y física, mostró su talento en la competencia. 'El secreto del éxito es la dedicación y la pasión', dijo Julian después de su victoria.",
   "femenino": [
     {
@@ -104,6 +105,28 @@
       "lugar": "Tierra del Fuego",
       "posicion": 21,
       "orden": 2
+    }
+  ],
+  "posiciones": [
+    {
+      "posicion": "Poomsae Jitae",
+      "cantidad": 6,
+      "puntajeMaximo": 7.5
+    },
+    {
+      "posicion": "Poomsae Pyongwon",
+      "cantidad": 18,
+      "puntajeMaximo": 8.9
+    },
+    {
+      "posicion": "Poomsae Sipjin",
+      "cantidad": 10,
+      "puntajeMaximo": 8.2
+    },
+    {
+      "posicion": "Poomsae Hansoo",
+      "cantidad": 28,
+      "puntajeMaximo": 9.6
     }
   ]
 }

@@ -1,8 +1,9 @@
 {
   "nombre": "Adultos 1",
+  "descripcion": "La categoría 'Adultos 1' en Poomsae Taekwondo es para personas de 18 a 30 años, donde se busca un alto nivel técnico, interpretación artística y originalidad en la ejecución de las formas. Se valora el control emocional, la concentración y la capacidad de transmitir emociones a través de la forma.",
   "imagenFem": "adulto 1 menos 30 f.jpg",
   "imagenMasc": "adulto 1 menos 30 m.jpg",
-  "ganadorFem" : "Ana Rodríguez es la ganadora de la categoría Infantiles A en la última competencia. Con su dedicación y habilidades logró impresionar a todos los jueces con su desempeño. 'Siempre creí en mí misma, y eso me llevó a donde estoy hoy', dijo Ana después de su victoria.",
+  "ganadorFem": "Ana Rodríguez es la ganadora de la categoría Infantiles A en la última competencia. Con su dedicación y habilidades logró impresionar a todos los jueces con su desempeño. 'Siempre creí en mí misma, y eso me llevó a donde estoy hoy', dijo Ana después de su victoria.",
   "ganadorMasc": "Julian Serrano es el ganador de Poomsae Elite Individual en la categoría Infantil A. Con una gran habilidad técnica y física, mostró su talento en la competencia. 'El secreto del éxito es la dedicación y la pasión', dijo Julian después de su victoria.",
   "femenino": [
     {
@@ -76,6 +77,28 @@
       "lugar": "Misiones",
       "posicion": 500,
       "orden": 10
+    }
+  ],
+  "posiciones": [
+    {
+      "posicion": "Koryo",
+      "cantidad": 20,
+      "puntajeMaximo": 8.5
+    },
+    {
+      "posicion": "Keumgang",
+      "cantidad": 10,
+      "puntajeMaximo": 7.2
+    },
+    {
+      "posicion": "Taebaek",
+      "cantidad": 15,
+      "puntajeMaximo": 6.8
+    },
+    {
+      "posicion": "Jitae",
+      "cantidad": 25,
+      "puntajeMaximo": 9.1
     }
   ]
 }
