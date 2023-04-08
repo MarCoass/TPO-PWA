@@ -1,7 +1,7 @@
 <script src="./Assets/js/tab.js"></script>
 
 <div class="row">
-    <div class="col-lg-4 col-sm-4 p-3">
+    <div class="col-lg-4 col-md-12 p-3">
         <h4 id="nombreCategoria"><!-- NOMBRE CATEGORÍA --></h4>
         <div id="descripcionCategoria" class="fst-italic text-center mb-3">
             <!-- DESCRIPCIÓN CATEGORÍA -->
@@ -25,7 +25,7 @@
         <button class="btn btn-outline-dark" id="masc" onclick="btnCambioGen('masc')">Masculino</button>
     </div>
 
-    <div class="col-lg-8 col-sm-8 " style="--bs-bg-opacity: .50;">
+    <div class="col-lg-8 col-md-12 " style="--bs-bg-opacity: .50;">
         <img id="imagenFem" src="" alt="" class="img-fluid rounded"> <!-- IMAGEN COMPETIDOR FEMENINO -->
         <img id="imagenMasc" src="" alt="" class="img-fluid rounded d-none"> <!-- IMAGEN COMPETIDOR MASCULINO -->
     </div>
