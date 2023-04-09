@@ -16,7 +16,7 @@ async function cargarCategorias(tipo) {
 /* Se encarga de indicar cuál categoría se debe mostrar (parámetro) y arma el resto de la estructura*/
 async function utilizarDatos(tipo) {
     const categoria = await cargarCategorias(tipo);
-    console.table(categoria);
+    //console.table(categoria);
 
     armarDescripcion(categoria.nombre, categoria.descripcion);
 

@@ -1,0 +1,64 @@
+{
+  "items": [
+    {
+      "nombre": "Infantiles A",
+      "imagen": "infantilesA.jpg",
+      "funcion": "infantilesA"
+    },
+    {
+      "nombre": "Infantiles B",
+      "imagen": "infantilesB.jpg",
+      "funcion": "infantilesB"
+    },
+    {
+      "nombre": "Cadete",
+      "imagen": "cadete.jpg",
+      "funcion": "cadete"
+    },
+    {
+      "nombre": "Cadete",
+      "imagen": "cadeteExtra.png",
+      "funcion": "cadete"
+    },
+    {
+      "nombre": "Juveniles",
+      "imagen": "juveniles.jpg",
+      "funcion": "juveniles"
+    },
+    {
+      "nombre": "Adultos 1",
+      "imagen": "adulto1.jpg",
+      "funcion": "adultos1"
+    },
+    {
+      "nombre": "Adultos 1",
+      "imagen": "adulto1extra.jpg",
+      "funcion": "adultos1"
+    },
+    {
+      "nombre": "Adultos 2",
+      "imagen": "adulto2.jpg",
+      "funcion": "adultos2"
+    },
+    {
+      "nombre": "Senior 1",
+      "imagen": "senior1.jpg",
+      "funcion": "senior1"
+    },
+    {
+      "nombre": "Senior 2",
+      "imagen": "senior2.jpg",
+      "funcion": "senior2"
+    },
+    {
+      "nombre": "Master 1",
+      "imagen": "master1.jpg",
+      "funcion": "master1"
+    },
+    {
+      "nombre": "Master 2",
+      "imagen": "master2.jpg",
+      "funcion": "master2"
+    }
+  ]
+}
