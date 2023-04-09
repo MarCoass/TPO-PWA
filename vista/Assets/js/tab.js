@@ -30,15 +30,17 @@ async function utilizarDatos(tipo) {
     armarImagenes(categoria.imagenFem, categoria.imagenMasc);
 }
 
-function armarDescripcion(nombreCategoria, descripcionCategoria){
+/* Muestra el nombre de la categoría y su respectiva descripción */
+function armarDescripcion(nombreCategoria, descripcionCategoria) {
     $("#nombreCategoria").empty();
     $("#descripcionCategoria").empty();
 
-    $("#nombreCategoria").html(nombreCategoria);
-    $("#descripcionCategoria").html(descripcionCategoria);
+    $("#nombreCategoria").html(nombreCategoria).hide().fadeIn(750);
+    $("#descripcionCategoria").html(descripcionCategoria).hide().fadeIn(750);
 }
 
-function armarListaPosiciones(arreglo){
+/* Llena de contenido el accordion con una lista de posiciones "más usadas" en la competencia */
+function armarListaPosiciones(arreglo) {
     $("#listaPosiciones").empty();
 
     let contenidoLista = "";
@@ -47,13 +49,13 @@ function armarListaPosiciones(arreglo){
 
     arreglo.forEach(posicion => {
         contenidoLista += "<div class='row mb-2 align-items-center'>";
-        contenidoLista += "<span class='col-6 fw-bold'>"+posicion.posicion+"</span>";
-        contenidoLista += "<span class='col-4 text-warning fw-semibold'>"+posicion.cantidad+"</span>";
-        contenidoLista += "<span class='col-2 text-success fw-semibold'>"+posicion.puntajeMaximo+"</span>";
+        contenidoLista += "<span class='col-6 fw-bold'>" + posicion.posicion + "</span>";
+        contenidoLista += "<span class='col-4 text-warning fw-semibold'>" + posicion.cantidad + "</span>";
+        contenidoLista += "<span class='col-2 text-success fw-semibold'>" + posicion.puntajeMaximo + "</span>";
         contenidoLista += "</div>";
     });
 
-    $("#listaPosiciones").html(contenidoLista);
+    $("#listaPosiciones").append(contenidoLista).hide().fadeIn(750);
 }
 
 /* Recibe por parámetro el arreglo de participantes y una palabra clave que diferencia el id de las tablas para saber a cuál insertar el contenido, previamente
@@ -75,21 +77,21 @@ function armarTablaParticipantes(arreglo, id) {
         contenidoTabla += "</tr>";
     });
 
-    $("#tabla" + id).html(contenidoTabla); // ANIDAMOS LOS PARTICIPANTES A LA TABLA
+    $("#tabla" + id).append(contenidoTabla).hide().fadeIn(750); // ANIDAMOS LOS PARTICIPANTES A LA TABLA
 }
 
 /* Recibe por parámetro el texto de cada ganador, previamente vacia el contenido para que no se acumule la información*/
 function armarParrafoGanadores(ganadorFemenino, ganadorMasculino) {
     $("#parrafoGanadorFem").empty();
     $("#parrafoGanadorMasc").empty();
-    $("#parrafoGanadorFem").html(ganadorFemenino);
-    $("#parrafoGanadorMasc").html(ganadorMasculino);
+    $("#parrafoGanadorFem").append(ganadorFemenino).hide().fadeIn(750);
+    $("#parrafoGanadorMasc").append(ganadorMasculino).hide().fadeIn(750);
 }
 
 /* Recibe por parámetro el nombre de los archivos de cada categoría, en este caso no hace falta "vaciar" el src porque directamente reemplaza el valor*/
 function armarImagenes(imagenF, imagenM) {
     url = "./Assets/Img/img/";
 
-    $("#imagenFem").attr("src", url + imagenF);
-    $("#imagenMasc").attr("src", url + imagenM);
+    $("#imagenFem").attr("src", url + imagenF).hide().fadeIn(750);
+    $("#imagenMasc").attr("src", url + imagenM).hide().fadeIn(750);
 }
