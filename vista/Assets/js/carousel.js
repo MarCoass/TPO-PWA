@@ -34,7 +34,7 @@ function armarCarousel(arreglo) {
       itemsCarousel += "<div class='carousel-item'>";
     }
     itemsCarousel += "<div class='col-md-3 p-5'>";
-    itemsCarousel += "<div class='card rounded-circle border-danger shadow-lg' onclick='utilizarDatos(\"" + item.funcion + "\")'>";
+    itemsCarousel += "<div class='carru-card card rounded-circle border-danger shadow-lg' onclick='utilizarDatos(\"" + item.funcion + "\")'>";
     itemsCarousel += "<img src='../vista/Assets/Img/thumbnails/" + item.imagen + "' class='img-fluid rounded-circle'>";
     itemsCarousel += "</div>";
     itemsCarousel += "<div class='display-6 mt-2'>" + item.nombre + "</div>";

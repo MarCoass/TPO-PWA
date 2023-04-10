@@ -25,11 +25,11 @@ background: radial-gradient(circle, #DD2476 0%,  #FF512F 100%);
 
 /* agregando efecto a los items de carrousel */
 
-.card { transition: 0.3s; }
+.carru-card { transition: 0.3s; }
 
-.card:hover { transform: scale(1.2); }
+.carru-card:hover { transform: scale(1.2); }
 
-.card:active { transform: scale(1.1); }
+.carru-card:active { transform: scale(1.1); }
 /* fin */
 
 
