@@ -32,7 +32,7 @@
 </div>
 <hr>
 <div id="infoFem" class="row">
-    <div class="col-lg-8 col-sm-8 p-3 table-responsive-sm">
+    <div class="col-lg-8 col-sm-8 p-3 table-responsive-sm mb-5">
         <table class="table text-center m-auto bg-light rounded">
             <thead>
                 <tr>
@@ -61,7 +61,7 @@
 </div>
 
 <div id="infoMasc" class="row d-none">
-    <div class="col-lg-8 col-sm-8 p-3 table-responsive-sm">
+    <div class="col-lg-8 col-sm-8 p-3 table-responsive-sm mb-5">
         <table class="table text-center m-auto bg-light rounded">
             <thead>
                 <tr>
