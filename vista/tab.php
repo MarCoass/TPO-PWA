@@ -55,7 +55,12 @@
             </tbody>
         </table>
     </div>
-    <div class="col-lg-4 col-sm-4 p-3" id="parrafoGanadorFem">
+    <div class="card col-lg-4 col-sm-4 p-3">
+        <img class="card-img rounded-circle border-danger shadow-lg" src="../vista/Assets/Img/img/adulto1f.jpg" alt="" srcset="">
+        <div id="parrafoGanadorFem">
+
+        </div>
+
         <!-- DESCRIPCIÓN DE LA GANADORA -->
     </div>
 </div>
