@@ -16,7 +16,7 @@ async function cargarCategorias(tipo) {
 /* Se encarga de indicar cuál categoría se debe mostrar (parámetro) y arma el resto de la estructura*/
 async function utilizarDatos(tipo) {
   const categoria = await cargarCategorias(tipo);
-  console.table(categoria);
+  //console.table(categoria);
 
   armarDescripcion(categoria.nombre, categoria.descripcion);
 
@@ -96,8 +96,9 @@ function armarTablaParticipantes(arreglo, id) {
     .fadeIn(750); // ANIDAMOS LOS PARTICIPANTES A LA TABLA
 }
 
+/* Recibe por parámetro el objeto del ganador, el sexo es una palabra que puede ser "Ganador" o "Ganadora", y el id es para saber en que div insertar el card */
 function armarCardGanador(ganador, sexo, id) {
-  console.log(ganador);
+  //console.log(ganador);
     $("#cardGanador"+id).empty();
   card =
     "<div class='card position-relative shadow mx-auto' style='min-height: 350px; width: 300px'>";
