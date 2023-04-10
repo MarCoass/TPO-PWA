@@ -3,8 +3,20 @@
   "descripcion": "La categoría 'Master 1' en Poomsae Taekwondo está diseñada para competidores mayores de 60 años. Se busca la excelencia técnica y la elegancia en la ejecución de las formas, y se valora la experiencia y la sabiduría en la transmisión de la esencia del Taekwondo. Esta categoría promueve la disciplina, el respeto y la importancia de mantener la salud física y mental en la edad avanzada, demostrando que la práctica del Taekwondo puede continuar a cualquier edad.",
   "imagenFem": "master1f.jpg",
   "imagenMasc": "master1m.jpg",
-  "ganadorFem": "Ana Rodríguez es la ganadora de la categoría Infantiles A en la última competencia. Con su dedicación y habilidades logró impresionar a todos los jueces con su desempeño. 'Siempre creí en mí misma, y eso me llevó a donde estoy hoy', dijo Ana después de su victoria.",
-  "ganadorMasc": "Julian Serrano es el ganador de Poomsae Elite Individual en la categoría Infantil A. Con una gran habilidad técnica y física, mostró su talento en la competencia. 'El secreto del éxito es la dedicación y la pasión', dijo Julian después de su victoria.",
+  "ganadorFem": [
+    {
+      "nombre": "Ana Martínez",
+      "imagen": "master1f.jpg",
+      "frase": "Cada fracaso es una oportunidad para aprender, crecer y mejorar. Nunca dejes que el miedo te detenga, porque solo cuando te arriesgas puedes alcanzar tus sueños más grandes."
+    }
+  ],
+  "ganadorMasc": [
+    {
+      "nombre": "Juan Pérez",
+      "imagen": "master1m.jpg",
+      "frase": "La pasión y la perseverancia son la clave del éxito. Si amas lo que haces y estás dispuesto a trabajar duro por ello, puedes lograr todo lo que te propongas en la vida."
+    }
+  ],
   "femenino": [
     {
       "nombre": "Carla Ruiz",

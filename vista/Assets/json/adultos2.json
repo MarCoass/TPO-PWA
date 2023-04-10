@@ -3,8 +3,20 @@
   "descripcion": "La categoría 'Adultos 2' en Poomsae Taekwondo es para personas mayores de 30 años, donde se busca un alto nivel técnico y artístico en la ejecución de las formas. Se valora la elegancia, la interpretación musical, el control emocional y la capacidad de transmitir la esencia del Taekwondo a través de la forma.",
   "imagenFem": "adulto2f.jpg",
   "imagenMasc": "adulto2m.jpg",
-  "ganadorFem": "Ana Rodríguez es la ganadora de la categoría Infantiles A en la última competencia. Con su dedicación y habilidades logró impresionar a todos los jueces con su desempeño. 'Siempre creí en mí misma, y eso me llevó a donde estoy hoy', dijo Ana después de su victoria.",
-  "ganadorMasc": "Julian Serrano es el ganador de Poomsae Elite Individual en la categoría Infantil A. Con una gran habilidad técnica y física, mostró su talento en la competencia. 'El secreto del éxito es la dedicación y la pasión', dijo Julian después de su victoria.",
+  "ganadorFem": [
+    {
+      "nombre": "Sofía Hernández",
+      "imagen": "adultos2f.jpg",
+      "frase": "La felicidad no se encuentra en la perfección, sino en la aceptación de uno mismo y la gratitud por lo que tenemos. Ama tus imperfecciones y celebra tus logros, porque eres único y valioso."
+    }
+  ],
+  "ganadorMasc": [
+    {
+      "nombre": "Manuel Martínez",
+      "imagen": "adultos2m.jpg",
+      "frase": "La educación es el camino hacia un futuro mejor, pero no se trata solo de acumular conocimientos, sino de desarrollar habilidades para enfrentar los desafíos y crear soluciones innovadoras que mejoren el mundo."
+    }
+  ],
   "femenino": [
     {
       "nombre": "Ana Aguilar",

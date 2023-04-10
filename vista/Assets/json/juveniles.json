@@ -3,8 +3,20 @@
   "descripcion": "La categoría 'Juveniles' en Poomsae Taekwondo es para jóvenes de 15 a 17 años, donde se busca la perfección técnica, la creatividad y la originalidad en la ejecución de las formas. Se valora la interpretación musical y la presentación artística, así como el control emocional y la concentración.",
   "imagenFem": "juvenilesf.jpg",
   "imagenMasc": "juvenilesm.jpg",
-  "ganadorFem": "Ana Rodríguez es la ganadora de la categoría Infantiles A en la última competencia. Con su dedicación y habilidades logró impresionar a todos los jueces con su desempeño. 'Siempre creí en mí misma, y eso me llevó a donde estoy hoy', dijo Ana después de su victoria.",
-  "ganadorMasc": "Julian Serrano es el ganador de Poomsae Elite Individual en la categoría Infantil A. Con una gran habilidad técnica y física, mostró su talento en la competencia. 'El secreto del éxito es la dedicación y la pasión', dijo Julian después de su victoria.",
+  "ganadorFem": [
+    {
+      "nombre": "Carla",
+      "imagen": "juvenilesf.jpg",
+      "frase": "La vida es un viaje maravilloso lleno de aventuras y desafíos que nos hacen crecer. Aprende a disfrutar cada momento, agradecer por lo que tienes y ser feliz con lo que eres."
+    }
+  ],
+  "ganadorMasc": [
+    {
+      "nombre": "Miguel",
+      "imagen": "juvenilesm.jpg",
+      "frase": "El éxito no es un destino, sino un camino que se recorre con esfuerzo y dedicación. Aprovecha cada oportunidad para crecer y ser mejor, porque así alcanzarás tus metas y tus sueños."
+    }
+  ],
   "femenino": [
     {
       "nombre": "Ana",

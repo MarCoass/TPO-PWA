@@ -3,8 +3,20 @@
   "descripcion": "La categoría 'Senior 2' en Poomsae Taekwondo es para personas mayores de 50 años, donde se busca la perfección técnica, la elegancia y la interpretación artística en la ejecución de las formas. Se valora la experiencia, la sabiduría y la capacidad de transmitir la esencia del Taekwondo a través de la forma, demostrando que la edad no es una limitación para la práctica de este arte marcial.",
   "imagenFem": "senior2f.jpg",
   "imagenMasc": "senior2m.jpg",
-  "ganadorFem": "Ana Rodríguez es la ganadora de la categoría Infantiles A en la última competencia. Con su dedicación y habilidades logró impresionar a todos los jueces con su desempeño. 'Siempre creí en mí misma, y eso me llevó a donde estoy hoy', dijo Ana después de su victoria.",
-  "ganadorMasc": "Julian Serrano es el ganador de Poomsae Elite Individual en la categoría Infantil A. Con una gran habilidad técnica y física, mostró su talento en la competencia. 'El secreto del éxito es la dedicación y la pasión', dijo Julian después de su victoria.",
+  "ganadorFem": [
+    {
+      "nombre": "Camila López",
+      "imagen": "senior2f.jpg",
+      "frase": "La vida es una aventura increíble que nos regala experiencias únicas y valiosas. Aprovecha cada oportunidad para crecer, aprende de cada situación y sigue adelante con pasión y determinación."
+    }
+  ],
+  "ganadorMasc": [
+    {
+      "nombre": "Pablo Romero",
+      "imagen": "senior2m.jpg",
+      "frase": "El éxito no es cuestión de suerte, es el resultado del trabajo duro, la dedicación y la disciplina. Si mantienes tu visión clara, te enfocas en tus metas y trabajas incansablemente, alcanzarás el éxito que mereces."
+    }
+  ],
   "femenino": [
     {
       "nombre": "María Martínez",
