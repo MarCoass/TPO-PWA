@@ -13,6 +13,10 @@ class Competidor {
         this.validarDatos(); // También puede comentarse y usarse después de crear los objetos
     }
 
+    paisesAceptados() {
+        return ["Rusia", "Ucrania", "Estados Unidos", "Canadá", "Perú", "Chile", "Argentina", "México", "Brasil", "Bolivia", "Ecuador", "Venezuela", "Colombia", "Paraguay", "Uruguay"];
+    }
+
     validarDatos() {
         // Validación del legajo
         if (!/^[A-Z]{3}\d{7}$/.test(this.legajo)) {
@@ -33,8 +37,7 @@ class Competidor {
             throw new Error("El competidor debe tener al menos 6 años.");
         }
         // Validación del país de origen
-        const paisesAceptados = ["Rusia", "Ucrania", "Estados Unidos", "Canada", "Perú", "Chile", "Argentina", "México", "Brasil", "Bolivia", "Ecuador", "Venezuela", "Colombia", "Paraguay", "Uruguay"];
-        if (!paisesAceptados.includes(this.paisOrigen)) {
+        if (!this.paisesAceptados().includes(this.paisOrigen)) {
             throw new Error("El país de origen no está entre los países aceptados.");
         }
         // Validación del género
@@ -61,10 +64,6 @@ class Competidor {
             genero: this.genero,
         };
     }
-
-    static paisesAceptados() {
-        return ["Rusia", "Ucrania", "Estados Unidos", "Canadá", "Perú", "Chile", "Argentina", "México", "Brasil", "Bolivia", "Ecuador", "Venezuela", "Colombia", "Paraguay", "Uruguay"];
-    }
 }
 
 const datosCompetidor1 = {
@@ -83,7 +82,7 @@ const datosCompetidor1 = {
 const datosCompetidor2 = {
     legajo: "DEF2345678",
     apellido: "Coassin",
-    nombre: "María",
+    nombre: "Martina",
     du: "23456789",
     fechaNacimiento: "2001-08-25",
     paisOrigen: "Argentina",
@@ -107,10 +106,9 @@ const datosCompetidor3 = {
 };
 
 const competidor1 = new Competidor(datosCompetidor1);
-const competidor2 = new Competidor(datosCompetidor2);
-const competidor3 = new Competidor(datosCompetidor3);
-
 console.table(competidor1.verPerfil());
+const competidor2 = new Competidor(datosCompetidor2);
 console.table(competidor2.verPerfil());
+const competidor3 = new Competidor(datosCompetidor3);
 console.table(competidor3.verPerfil());
 
