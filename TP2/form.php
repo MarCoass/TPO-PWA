@@ -7,37 +7,54 @@
     <title>Formulario simple basico</title>
 </head>
 <body>
-<form>
-  <label for="legajo">Legajo:</label>
-  <input type="text" id="legajo" name="legajo"><br><br>
+    <form id="myForm">
+        <label for="legajo">Legajo:</label>
+        <input type="text" id="legajo" name="legajo"><br><br>
+        
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" name="apellido"><br><br>
+        
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre"><br><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br><br>
+        
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" name="edad"><br><br>
+        
+        <label for="pais">País:</label>
+        <input type="text" id="pais" name="pais"><br><br>
+        
+        <label for="genero">Género:</label>
+        <select id="genero" name="genero">
+            <option value="">Selecciona una opción</option>
+            <option value="masculino">Masculino</option>
+            <option value="femenino">Femenino</option>
+            <option value="otro">Otro</option>
+        </select><br><br>
 
-  <label for="apellido">Apellido:</label>
-  <input type="text" id="apellido" name="apellido"><br><br>
+        <label for="ranking">Ranking:</label>
+        <input type="number" id="ranking" name="ranking"><br><br>
 
-  <label for="nombre">Nombre:</label>
-  <input type="text" id="nombre" name="nombre"><br><br>
+        <input type="button" value="Enviar" onclick="convertirEnJSON()">
 
-  <label for="email">Email:</label>
-  <input type="email" id="email" name="email"><br><br>
+        <script>
+            function convertirEnJSON() {
+                var form = document.getElementById("myForm");
+                var data = new FormData(form);
+                var object = {};
+                data.forEach(function(value, key){
+                    object[key] = value;
+                });
+                var json = JSON.stringify(object);
+                console.log(json);
+            }
+        </script>
 
-  <label for="edad">Edad:</label>
-  <input type="number" id="edad" name="edad"><br><br>
 
-  <label for="pais">País:</label>
-  <input type="text" id="pais" name="pais"><br><br>
 
-  <label for="genero">Género:</label>
-  <select id="genero" name="genero">
-    <option value="">Selecciona una opción</option>
-    <option value="masculino">Masculino</option>
-    <option value="femenino">Femenino</option>
-    <option value="otro">Otro</option>
-  </select><br><br>
 
-  <label for="ranking">Ranking:</label>
-  <input type="number" id="ranking" name="ranking"><br><br>
-
-  <input type="submit" value="Enviar">
 </form>
 </body>
 </html>
