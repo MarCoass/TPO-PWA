@@ -8,7 +8,7 @@ header ("Cache-Control: no-cache, must-revalidate ");
 $PROYECTO ='TPO-PWA';
 
 //variable que almacena el directorio del proyecto
-$ROOT =$_SERVER['DOCUMENT_ROOT']."/$PROYECTO/";
+$ROOT =$_SERVER['DOCUMENT_ROOT']."/$PROYECTO/TPO";
 
 include_once($ROOT.'util/funciones.php');
 
