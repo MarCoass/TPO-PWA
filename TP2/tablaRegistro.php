@@ -29,130 +29,95 @@
         </div>
         <div class="row p-3 text-light bg-seccion2">
             <div class="text-center">
-                <span class="display-5">Agregar competidor</span>
+                <span class="display-5">Lista de Competidores Registrados</span>
             </div>
+        </div>
+        <div class="row">
+            .<div class="table-responsive">
+                <table id="tabla" class="table table-striped
+                table-hover	
+                table-borderless
+                table-primary
+                align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Legajo</th>
+                            <th>Apellido</th>
+                            <th>Nombre</th>
+                            <th>DU</th>
+                            <th>Email</th>
+                            <th>Edad</th>
+                            <th>País de origen</th>
+                            <th>Género</th>
+                            <th>Graduación</th>
+                            <th>Ranking nacional</th>
+                        </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            <tr class="table-primary" >
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            
+                        </tfoot>
+                </table>
+            </div>
+            
         </div>
 
 
+        <script>
 
-        <form class="row m-5" id="myForm">
-            <div class="col-lg-3 col-md-6 col-sm-12  pt-3">
-                <label class="form-label" for="legajo">Legajo:</label>
-                <input class="form-control" type="text" id="legajo" name="legajo">
-            </div>
 
-            <div class="col-lg-3 col-md-6 col-sm-12  pt-3">
-                <label class="form-label" for="apellido">Apellido:</label>
-                <input class="form-control" type="text" id="apellido" name="apellido">
-            </div>
 
-            <div class="col-lg-3 col-md-6 col-sm-12  pt-3">
-                <label class="form-label" for="nombre">Nombre:</label>
-                <input class="form-control" type="text" id="nombre" name="nombre">
-            </div>
+var datos = JSON.parse(document.cookie);
+console.log(datos)
 
-            <div class="col-lg-3 col-md-6 col-sm-12 pt-3">
-                <label class="form-label" for="dni">DNI:</label>
-                <input class="form-control" type="number" id="dni" name="dni">
-            </div>
+var tabla = document.getElementById("tabla");
+var row = tabla.insertRow();
+for (var key in datos) {
+    var cell = row.insertCell();
+    cell.innerHTML = datos[key];
+}
 
-            <div class="col-lg-6 col-md-6 col-sm-12  pt-3">
-                <label class="form-label" for="email">Email:</label>
-                <input class="form-control" type="email" id="email" name="email">
-            </div>
 
-            <div class="col-lg-3 col-md-6 col-sm-12  pt-3">
-                <label class="form-label" for="edad">Edad:</label>
-                <input class="form-control" type="number" id="edad" name="edad">
-
-            </div>
-
-            <div class="col-lg-3 col-md-6 col-sm-12  pt-3">
-                <label class="form-label" for="paisOrigen">País:</label>
-                <input class="form-control" type="text" id="paisOrigen" name="paisOrigen">
-
-            </div>
-
-            <div class="col-lg-3 col-md-6 col-sm-12  pt-3">
-                <label class="form-label" for="genero">Género:</label>
-                <select class="form-control" id="genero" name="genero">
-                    <option value="">Selecciona una opción</option>
-                    <option value="masculino">Masculino</option>
-                    <option value="femenino">Femenino</option>
-                    <option value="otro">Otro</option>
-                </select>
-
-            </div>
-
-            <div class="col-lg-3 col-md-6 col-sm-12  pt-3">
-                <label class="form-label" for="graduacion">Graduacion:</label>
-                <select class="form-control" id="graduacion" name="graduacion">
-                </select>
-
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12  pt-3">
-
-                <label class="form-label" for="rankingNacional">Ranking:</label>
-                <input class="form-control" type="number" id="rankingNacional" name="rankingNacional">
-            </div>
-
-            <div class="col-lg-3 col-md-6 col-sm-12  pt-3 m-auto">
-
-                <input class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal" type="button" value="Enviar" onclick="convertirEnJSON()">
-                <input class="btn btn-secondary" type="reset" value="Borrar datos">
-            </div>
-
-            <script>
-                function convertirEnJSON() {
-                    var form = document.getElementById("myForm");
-                    var data = new FormData(form);
-                    var object = {};
-                    data.forEach(function(value, key) {
-                        object[key] = value;
-                    });
-                    var json = JSON.stringify(object);
-                    //console.log(json);
-                    cargarDatos(json)
-                    /* usando por ahora una cookie */
-                    document.cookie = json
+            /* ESTO ES SOLO UNA IDEA */
+            /* QUE NO SIRVE */
+            /* fetch("tablaDatos.json")
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                var tabla = document.getElementById("tabla");
+                for (var i = 0; i < data.length; i++) {
+                    var fila = tabla.insertRow(i+1);
+                    var celda1 = fila.insertCell(0);
+                    var celda2 = fila.insertCell(1);
+                    var celda3 = fila.insertCell(2);
+                    var celda4 = fila.insertCell(3);
+                    var celda5 = fila.insertCell(4);
+                    var celda6 = fila.insertCell(5);
+                    var celda7 = fila.insertCell(6);
+                    var celda8 = fila.insertCell(7);
+                    var celda9 = fila.insertCell(8);
+                    var celda10 = fila.insertCell(9);
                     
+                    celda1.innerHTML = data[i].legajo;
+                    celda2.innerHTML = data[i].apellido;
+                    celda3.innerHTML = data[i].nombre;
+                    celda4.innerHTML = data[i].du;
+                    celda5.innerHTML = data[i].fechaNacimiento;
+                    celda6.innerHTML = data[i].paisOrigen;
+                    celda7.innerHTML = data[i].graduacion;
+                    celda8.innerHTML = data[i].rankingNacional;
+                    celda9.innerHTML = data[i].email;
+                    celda10.innerHTML = data[i].genero;
                 }
-                // Leer datos del archivo JSON
-                var xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        var myObj = JSON.parse(this.responseText);
-                        // Crear selector en el DOM
-                        var x = document.getElementById("graduacion");
-                        for (var i = 0; i < myObj.length; i++) {
-                            var option = document.createElement("option");
-                            option.text = myObj[i].graduacion;
-                            x.add(option);
-                        }
-                    }
-                };
-                xmlhttp.open("GET", "graduaciones.json", true);
-                xmlhttp.send();
-            </script>
+            }); */
+            
+    	</script>
 
-        </form>
-        <div id="modal" class="modal" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Competidor agregado</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div id="cuerpoModal" class="modal-body">
-                        
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
 
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <div class="bg-danger row d-flex">
             <section class="mt-3" style="user-select: none;">
                 <footer class="text-center text-white bg-danger">
@@ -203,8 +168,6 @@
     <!--Fin del div.container-fluid-->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
     </script>
-    <script src="agregarDatosModal.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
 </body>
 
