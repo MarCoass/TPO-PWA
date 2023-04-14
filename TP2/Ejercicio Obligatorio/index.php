@@ -29,7 +29,7 @@
                 </svg>
             </div>
         </div>
-        <form id="myForm"> <!-- INICIO FORM -->
+        <form id="cargaParticipante"> <!-- INICIO FORM -->
             <div class="tab-content">
                 <div class="tab-pane fade show active" id="paso1"> <!-- INICIO CONTENIDO PASO 1 -->
                     <div class="row">
@@ -118,27 +118,7 @@
     </div>
 </div>
 
-<script>
-    function showTab(tabId, link1, link2) {
-        // Obtener el tab actual
-        var currentTab = document.querySelector('.tab-pane.active');
-
-        // Ocultar el tab actual
-        currentTab.classList.remove('active');
-        currentTab.classList.remove('show');
-
-        // Mostrar el tab correspondiente al ID
-        var newTab = document.getElementById(tabId);
-        newTab.classList.add('active');
-        newTab.classList.add('show');
-
-        // Actualizar los nav-links
-        var enlace1 = document.getElementById(link1);
-        enlace1.classList.add('active');
-        var enlace2 = document.getElementById(link2);
-        enlace2.classList.remove('active');
-    }
-</script>
+<script src="./js/cargaParticipante.js"></script>
 
 
 <!--<form class="row m-5" id="myForm">
@@ -258,6 +238,7 @@
             </div>
         </div>
     </div>
-</div>-->
-<script src="./agregarDatosModal.js"></script>
+</div>
+<script src="./js/agregarDatosModal.js"></script>-->
+
 <?php include_once('./estructura/footer.php') ?>
