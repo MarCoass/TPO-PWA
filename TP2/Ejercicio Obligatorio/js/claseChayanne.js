@@ -51,18 +51,7 @@ class Competidor {
     }
 
     verPerfil() {
-        return {
-            legajo: this.legajo,
-            apellido: this.apellido,
-            nombre: this.nombre,
-            du: this.du,
-            fechaNacimiento: this.fechaNacimiento.toLocaleDateString(),
-            paisOrigen: this.paisOrigen,
-            graduacion: this.graduacion,
-            rankingNacional: this.rankingNacional,
-            email: this.email,
-            genero: this.genero,
-        };
+        return "Hola! Me llamo " + this.nombre + " " + this.apellido + ", nací el " + this.fechaNacimiento.toLocaleDateString() + " en " + this.paisOrigen + " y mi DNI es: " + this.du + ", \n Estoy en el puesto Nº: " + this.rankingNacional + " en el Ranking Nacional, mi graduación es: " + this.graduacion + ", \n Mi género es: " + this.genero + " y mi LEGAJO " + this.legajo + "\n";
     }
 }
 
