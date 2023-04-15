@@ -11,9 +11,9 @@
     }
 </style>
 
-<div class="row col-10 mx-auto my-5 shadow" style="min-height: 400px;">
+<div class="row col-10 mx-auto my-5 shadow" style="min-height: 400px; max-height: 500px; overflow: hidden;">
     <div class="col-4">
-        <img src="./estructura/form-foto.png" height="300" style="max-width: 100%; height: 100%; object-fit: cover;">
+        <img src="./estructura/form-foto.png" height="300" style="height: 100%; width: 100%; object-fit: contain;">
     </div>
     <div class="col-8 position-relative">
         <div class="nav justify-content-center">
