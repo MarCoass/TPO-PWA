@@ -13,7 +13,7 @@
 
 <div class="row col-10 mx-auto my-5 shadow" style="min-height: 400px;">
     <div class="col-4">
-        <img src="./estructura/adulto2m.jpg" height="300" style="max-width: 100%; height: 100%; object-fit: cover;">
+        <img src="./estructura/form-foto.png" height="300" style="max-width: 100%; height: 100%; object-fit: cover;">
     </div>
     <div class="col-8 position-relative">
         <div class="nav justify-content-center">
@@ -72,14 +72,14 @@
                                 <option value="otro">Otro</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="position-absolute bottom-0 end-0 mb-3 me-3">
-                        <button type="button" class="btn btn-outline-primary" onclick="showTab('paso2', 'link2', 'link1')">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                            </svg>
-                            Siguiente
-                        </button>
+                        <div class="my-3 ml-3 row justify-content-end">
+                            <button type="button" class="btn btn-outline-primary  col-md-4 col-sm-6" onclick="showTab('paso2', 'link2', 'link1')">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                                </svg>
+                                Siguiente
+                            </button>
+                        </div>
                     </div>
                 </div> <!-- FIN CONTENIDO PASO 1 -->
                 <div class="tab-pane fade" id="paso2"> <!-- INICIO CONTENIDO PASO 2 -->
