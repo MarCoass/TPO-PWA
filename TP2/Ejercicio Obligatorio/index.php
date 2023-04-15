@@ -1,4 +1,5 @@
 <?php include_once('./estructura/header.php') ?>
+<script src="js/cargarOpcionesForm.js"></script>
 <div class="row p-3 text-light bg-seccion2">
     <div class="text-center">
         <span class="display-5">Agregar competidor</span>
@@ -96,21 +97,7 @@
                             <label class="form-label" for="paisOrigen">País:</label>
                             <select class="form-control" type="text" id="paisOrigen" name="paisOrigen" autocomplete="off" required>
                                 <option disabled selected data-error="Por favor seleccione un país válido">Selecciona una opción</option>    
-                                <option value="Rusia">Rusia</option>
-                                <option value="Ucrania">Ucrania</option>
-                                <option value="EstadosUnidos">Estados Unidos</option>
-                                <option value="Canada">Canadá</option>
-                                <option value="Perú">Perú</option>
-                                <option value="Chile">Chile</option>
-                                <option value="Argentina">Argentina</option>
-                                <option value="México">México</option>
-                                <option value="Brasil">Brasil</option>
-                                <option value="Bolivia">Bolivia</option>
-                                <option value="Ecuador">Ecuador</option>
-                                <option value="Venezuela">Venezuela</option>
-                                <option value="Colombia">Colombia</option>
-                                <option value="Paraguay">Paraguay</option>
-                                <option value="Uruguay">Uruguay</option>
+                                
                             </select>
                             <div class="valid-feedback">
                                 ¡Correcto!
@@ -166,26 +153,7 @@
                         <div class="col-lg-12 col-md-12 col-sm-12  pt-3">
                             <label class="form-label" for="graduacion">Graduacion:</label>
                             <select class="form-control" id="graduacion" name="graduacion" required>
-                                <option disabled selected data-error="Por favor seleccione una graduacion">Selecciona una opción</option>
-                                <option value="1ro GUP">1ro GUP</option>
-                                <option value="2do GUP">2do GUP</option>
-                                <option value="3ro GUP">3ro GUP</option>
-                                <option value="4to GUP">4to GUP</option>
-                                <option value="5to GUP">5to GUP</option>
-                                <option value="6to GUP">6to GUP</option>
-                                <option value="7mo GUP">7mo GUP</option>
-                                <option value="8vo GUP">8vo GUP</option>
-                                <option value="9no GUP">9no GUP</option>
-                                <option value="10mo GUP">10mo GUP</option>
-                                <option value="1ro DAN">1ro DAN</option>
-                                <option value="2do DAN">2do DAN</option>
-                                <option value="3ro DAN">3ro DAN</option>
-                                <option value="4to DAN">4to DAN</option>
-                                <option value="5to DAN">5to DAN</option>
-                                <option value="6to DAN">6to DAN</option>
-                                <option value="7mo DAN">7mo DAN</option>
-                                <option value="8vo DAN">8vo DAN</option>
-                                <option value="9no DAN">9no DAN</option>
+                            <option disabled selected invalid data-error="Por favor seleccione una graduacion válida">Selecciona una opción</option>  
                             </select>
                             <div class="valid-feedback">
                                 ¡Correcto!
