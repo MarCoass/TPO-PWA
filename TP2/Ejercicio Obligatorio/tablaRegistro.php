@@ -1,5 +1,5 @@
 <?php include_once('./estructura/header.php') ?>
-
+<script src="js/cargarDatosTabla.js"></script>
 <div class="row p-3 text-light bg-seccion2">
     <div class="text-center">
         <span class="display-5">Lista de Competidores Registrados</span>
@@ -10,9 +10,9 @@
         <table id="tabla" class="table table-striped
                 table-hover	
                 table-borderless
-                table-primary
+                
                 align-middle">
-            <thead class="table-light">
+            <thead class="table-secondary">
                 <tr>
                     <th>Legajo</th>
                     <th>Apellido</th>
@@ -27,7 +27,7 @@
                 </tr>
             </thead>
             <tbody class="table-group-divider">
-                <tr class="table-primary">
+                <tr class="">
                 </tr>
             </tbody>
             <tfoot>

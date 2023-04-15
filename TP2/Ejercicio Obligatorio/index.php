@@ -153,7 +153,7 @@
                         <div class="col-lg-12 col-md-12 col-sm-12  pt-3">
                             <label class="form-label" for="graduacion">Graduacion:</label>
                             <select class="form-control" id="graduacion" name="graduacion" required>
-                            <option disabled selected invalid data-error="Por favor seleccione una graduacion válida">Selecciona una opción</option>  
+                            <option disabled selected data-error="Por favor seleccione una graduacion válida">Selecciona una opción</option>  
                             </select>
                             <div class="valid-feedback">
                                 ¡Correcto!
