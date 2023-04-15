@@ -35,32 +35,32 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-12  pt-3">
                             <label class="form-label" for="apellido">Apellido:</label>
-                            <input class="form-control" type="text" id="apellido" name="apellido">
+                            <input class="form-control" type="text" id="apellido" name="apellido" autocomplete="off">
                         </div>
 
                         <div class="col-lg-6 col-md-6 col-sm-12  pt-3">
                             <label class="form-label" for="nombre">Nombre:</label>
-                            <input class="form-control" type="text" id="nombre" name="nombre">
+                            <input class="form-control" type="text" id="nombre" name="nombre" autocomplete="off">
                         </div>
 
                         <div class="col-lg-3 col-md-6 col-sm-12 pt-3">
                             <label class="form-label" for="dni">DNI:</label>
-                            <input class="form-control" type="number" min="0" id="dni" name="dni">
+                            <input class="form-control" type="number" min="0" id="dni" name="dni" autocomplete="off">
                         </div>
 
                         <div class="col-lg-3 col-md-6 col-sm-12  pt-3">
-                            <label class="form-label" for="edad">Edad:</label>
-                            <input class="form-control" type="number" min="0" id="edad" name="edad">
+                            <label class="form-label" for="fechaNacimiento">Edad:</label>
+                            <input class="form-control" type="date" min="0" id="fechaNacimiento" name="fechaNacimiento">
                         </div>
 
                         <div class="col-lg-6 col-md-6 col-sm-12  pt-3">
                             <label class="form-label" for="email">Email:</label>
-                            <input class="form-control" type="email" id="email" name="email">
+                            <input class="form-control" type="email" id="email" name="email" autocomplete="off">
                         </div>
 
                         <div class="col-lg-6 col-md-6 col-sm-12  pt-3">
                             <label class="form-label" for="paisOrigen">País:</label>
-                            <input class="form-control" type="text" id="paisOrigen" name="paisOrigen">
+                            <input class="form-control" type="text" id="paisOrigen" name="paisOrigen" autocomplete="off">
                         </div>
 
                         <div class="col-lg-6 col-md-6 col-sm-12  pt-3">
@@ -86,15 +86,26 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-12  pt-3">
                             <label class="form-label" for="legajo">Legajo:</label>
-                            <input class="form-control" type="text" id="legajo" name="legajo">
+                            <input class="form-control" type="text" id="legajo" name="legajo" autocomplete="off">
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12  pt-3">
                             <label class="form-label" for="rankingNacional">Ranking:</label>
-                            <input class="form-control" type="number" min="0" id="rankingNacional" name="rankingNacional">
+                            <input class="form-control" type="number" min="0" id="rankingNacional" name="rankingNacional" autocomplete="off">
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12  pt-3">
                             <label class="form-label" for="graduacion">Graduacion:</label>
                             <select class="form-control" id="graduacion" name="graduacion">
+                                <option disabled selected>Selecciona una opción</option>
+                                <option value="1ro GUP">1ro GUP</option>
+                                <option value="2do GUP">2do GUP</option>
+                                <option value="3ero GUP">3ero GUP</option>
+                                <option value="4to GUP">4to GUP</option>
+                                <option value="5to GUP">5to GUP</option>
+                                <option value="6to GUP">6to GUP</option>
+                                <option value="7mo GUP">7mo GUP</option>
+                                <option value="8vo GUP">8vo GUP</option>
+                                <option value="9no GUP">9no GUP</option>
+                                <option value="10mo GUP">10mo GUP</option>
                             </select>
                         </div>
                     </div>
@@ -118,6 +129,58 @@
     </div>
 </div>
 
+<script>
+    const competidores = localStorage.getItem('competidores');
+    if (competidores === null) {
+        setearCompetidores();
+    }
+
+    function setearCompetidores() {
+        const datosCompetidor1 = {
+            legajo: "ABC1234567",
+            apellido: "Centurión",
+            nombre: "Braian",
+            du: "12345678",
+            fechaNacimiento: "2001-04-08",
+            paisOrigen: "Chile",
+            graduacion: "2do GUP",
+            rankingNacional: 750,
+            email: "braian.cent@example.com",
+            genero: "masculino",
+        };
+
+        const datosCompetidor2 = {
+            legajo: "DEF2345678",
+            apellido: "Coassin",
+            nombre: "Martina",
+            du: "23456789",
+            fechaNacimiento: "2001-08-25",
+            paisOrigen: "Argentina",
+            graduacion: "1er DAN",
+            rankingNacional: 600.5,
+            email: "mar.coassin@example.com",
+            genero: "femenino",
+        };
+
+        const datosCompetidor3 = {
+            legajo: "GHI3456789",
+            apellido: "Farfan",
+            nombre: "Matias",
+            du: "34567890",
+            fechaNacimiento: "1995-03-15",
+            paisOrigen: "Colombia",
+            graduacion: "5to GUP",
+            rankingNacional: 350,
+            email: "matias.farfan@example.com",
+            genero: "masculino",
+        };
+
+        const jsonCompetidores = JSON.stringify([datosCompetidor1, datosCompetidor2, datosCompetidor3]);
+
+        localStorage.setItem('competidores', jsonCompetidores);
+    }
+</script>
+<script src="./js/claseChayanne.js"></script>
 <script src="./js/cargaParticipante.js"></script>
 
 

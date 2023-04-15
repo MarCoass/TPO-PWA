@@ -1,22 +1,65 @@
+/* ########################################################## OBTENCIÓN COMPETIDORES ############################################################3 */
+/* Obtiene el JSON almacenado en el localStorage y lo convierte en un arreglo de objetos */
+function obtenerCompetidores() {
+    const competidoresJson = localStorage.getItem('competidores');
+    let arreglo = [];
+
+    if (competidoresJson !== null) {
+        // Si hay datos en localStorage, los parseamos
+        const competidores = JSON.parse(competidoresJson);
+
+        // Recorremos los competidores
+        for (const datosCompetidor of competidores) {
+            const competidor = new Competidor(datosCompetidor);
+            // Guardamos los objetos en el arreglo
+            // console.log(competidor.verPerfil());
+            arreglo.push(competidor);
+        }
+    }
+    // console.table(arreglo);
+
+    return arreglo;
+}
+
 /* ########################################################## CARGA PARTICIPANTE ############################################################3 */
-// Obtener el formulario por su ID
+// Obtenemos el formulario por su ID
 const form = document.getElementById('cargaParticipante');
 
-// Agregar un evento al formulario cuando se envíe
+// Submit del formulario
 form.addEventListener('submit', (event) => {
-  event.preventDefault(); // Evitar que el formulario se envíe de forma predeterminada
+    event.preventDefault(); // Evitar que el formulario se envíe de forma predeterminada
+    arrayCompetidores = obtenerCompetidores();
 
-  // Obtener los valores de los campos del formulario
-  const nombre = document.getElementById('nombre').value;
-  const edad = document.getElementById('edad').value;
-  const email = document.getElementById('email').value;
-  const telefono = document.getElementById('telefono').value;
+    // Obtener los valores de los campos del formulario
+    const legajo = document.getElementById('legajo').value;
+    const apellido = document.getElementById('apellido').value;
+    const nombre = document.getElementById('nombre').value;
+    const dni = document.getElementById('dni').value;
+    const fechaNacimiento = document.getElementById('fechaNacimiento').value;
+    const genero = document.getElementById('genero').value;
+    const email = document.getElementById('email').value;
+    const paisOrigen = document.getElementById('paisOrigen').value;
+    const rankingNacional = document.getElementById('rankingNacional').value;
+    const graduacion = document.getElementById('graduacion').value;
 
-  // Crear un objeto Competidor con los valores del formulario
-  const competidor = new Competidor(nombre, edad, email, telefono);
+    // Creamos el arreglo para cargar el Objeto
+    const nuevoCompetidor = {
+        legajo: legajo,
+        apellido: apellido,
+        nombre: nombre,
+        du: dni,
+        fechaNacimiento: fechaNacimiento,
+        paisOrigen: paisOrigen,
+        graduacion: graduacion,
+        rankingNacional: rankingNacional,
+        email: email,
+        genero: genero,
+    };
 
-  // Hacer lo que necesites con el objeto Competidor
-  console.log(competidor);
+    // Creamos el Objeto Competidor y lo sumamos a la colección
+    arrayCompetidores.push(new Competidor(nuevoCompetidor));
+    //console.log(arrayCompetidores)
+    localStorage.setItem("competidores", JSON.stringify(arrayCompetidores));
 });
 
 /* ########################################################## CAMBIAR TABS FORMULARIO ############################################################3 */
