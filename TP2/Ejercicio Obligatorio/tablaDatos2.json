@@ -1,0 +1,98 @@
+[
+    {
+        "legajo": "ABC1234567",
+        "apellido": "Pérez",
+        "nombre": "Juan",
+        "du": "koryo",
+        "fechaNacimiento": "01/01/1980",
+        "paisOrigen": "Argentina",
+        "graduacion": "4to dan",
+        "rankingNacional": "15",
+        "email": "juan.perez@gmail.com",
+        "genero": "masculino"
+    },
+    {
+        "legajo": "DEF2345678",
+        "apellido": "García",
+        "nombre": "María",
+        "du": "kumgang",
+        "fechaNacimiento": "15/03/1985",
+        "paisOrigen": "Chile",
+        "graduacion": "3er dan",
+        "rankingNacional": "25",
+        "email": "maria.garcia@gmail.com",
+        "genero": "femenino"
+    },
+    {
+        "legajo": "GHI3456789",
+        "apellido": "Rodríguez",
+        "nombre": "Carlos",
+        "du": "taebaek",
+        "fechaNacimiento": "20/06/1990",
+        "paisOrigen": "Perú",
+        "graduacion": "2do dan",
+        "rankingNacional": "35",
+        "email": "carlos.rodriguez@gmail.com",
+        "genero": "masculino"
+    },
+    {
+        "legajo": "JKL4567890",
+        "apellido": "López",
+        "nombre": "Ana",
+        "du": "pyongwon",
+        "fechaNacimiento": "10/09/1995",
+        "paisOrigen": "Uruguay",
+        "graduacion": "1er dan",
+        "rankingNacional": "45",
+        "email": "ana.lopez@gmail.com",
+        "genero": "femenino"
+    },
+    {
+        "legajo": "MNO5678901",
+        "apellido": "Sánchez",
+        "nombre": "Pedro",
+        "du": "sipjin",
+        "fechaNacimiento": "05/12/2000",
+        "paisOrigen": "Bolivia",
+        "graduacion": "9no dan",
+        "rankingNacional": "5",
+        "email": "pedro.sanchez@gmail.com",
+        "genero": "masculino"
+    },
+    {
+        "legajo": "PQR6789012",
+        "apellido": "González",
+        "nombre": "Laura",
+        "du": "jitae",
+        "fechaNacimiento": "25/02/1982",
+        "paisOrigen": "Ecuador",
+        "graduacion": "8vo dan",
+        "rankingNacional": "10",
+        "email": "laura.gonzalez@gmail.com",
+        "genero": "femenino"
+    },
+    {
+        "legajo": "STU7890123",
+        "apellido": "Díaz",
+        "nombre": "Luis",
+        "du": "cheonkwon",
+        "fechaNacimiento": "30/05/1987",
+        "paisOrigen": "Colombia",
+        "graduacion": "7mo dan",
+        "rankingNacional": "20",
+        "email": "luis.diaz@gmail.com",
+        "genero": "masculino"
+    },
+    {
+        "legajo": "VWX8901234",
+        "apellido": "Fernández",
+        "nombre": "Sofía",
+        "du": "hansu",
+        "fechaNacimiento": "04/08/1992",
+        "paisOrigen": "Venezuela",
+        "graduacion": "6to dan",
+        "rankingNacional": "30",
+        "email": "sofia.fernandez@gmail.com",
+        "genero": "femenino"
+    }
+]
