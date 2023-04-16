@@ -26,9 +26,8 @@
                     <th>Ranking nacional</th>
                 </tr>
             </thead>
-            <tbody class="table-group-divider">
-                <tr class="">
-                </tr>
+            <tbody class="table-group-divider align-items-center">
+                
             </tbody>
             <tfoot>
 
@@ -40,7 +39,7 @@
 
 
 <script>
-    var datos = JSON.parse(document.cookie);
+    /*var datos = JSON.parse(document.cookie);
     console.log(datos)
 
     var tabla = document.getElementById("tabla");

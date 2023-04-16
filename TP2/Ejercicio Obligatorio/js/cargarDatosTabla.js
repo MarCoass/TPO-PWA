@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Obtener referencia al select
   const tabla = document.getElementById("tabla");
 
+  
   // Obtener datos del archivo JSON
   fetch("tablaDatos.json")
     .then((response) => response.json())
@@ -31,7 +32,8 @@ document.addEventListener("DOMContentLoaded", function () {
         celdaFecNac.textContent = competidor.fechaNacimiento;
 
         const celdaPais = nuevaFila.insertCell();
-        celdaPais.textContent = competidor.paisOrigen;
+        celdaPais.innerHTML = '<img src="svg/'+ competidor.paisOrigen +'.svg" alt="" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Tooltip on top" width="20px">'
+        //celdaPais.textContent = competidor.paisOrigen;
 
         const celdaGenero = nuevaFila.insertCell();
         celdaGenero.textContent = competidor.genero;
@@ -41,8 +43,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const celdaRanking = nuevaFila.insertCell();
         celdaRanking.textContent = competidor.rankingNacional;
-
-
       });
     })
     .catch((error) => console.error(error));
