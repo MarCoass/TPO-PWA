@@ -19,6 +19,7 @@
                     event.stopPropagation()
                 }
                 form.classList.add('was-validated')
+                
             }, false)
             /* se añade al boton limpiar una funcion que remueve la clase was-validated del form para que vuelva a su estilo inicial*/
             form.addEventListener('reset', function () {

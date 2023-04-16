@@ -10,9 +10,10 @@ class Competidor {
         this.rankingNacional = datos.rankingNacional;
         this.email = datos.email;
         this.genero = datos.genero;
-        this.validarDatos(); // También puede comentarse y usarse después de crear los objetos
+        //this.validarDatos(); // También puede comentarse y usarse después de crear los objetos
     }
 
+    //Esto no hace falta por el json creo
     paisesAceptados() {
         return ["Rusia", "Ucrania", "Estados Unidos", "Canadá", "Perú", "Chile", "Argentina", "México", "Brasil", "Bolivia", "Ecuador", "Venezuela", "Colombia", "Paraguay", "Uruguay"];
     }
