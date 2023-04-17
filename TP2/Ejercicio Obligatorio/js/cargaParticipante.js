@@ -26,6 +26,7 @@ function obtenerCompetidores() {
 const form = document.getElementById('cargaParticipante');
 
 // Submit del formulario
+
 form.addEventListener('submit', (event) => {
     event.preventDefault(); // Evitar que el formulario se envíe de forma predeterminada
     arrayCompetidores = obtenerCompetidores();
@@ -57,7 +58,16 @@ form.addEventListener('submit', (event) => {
     };
 
     // Creamos el Objeto Competidor y lo sumamos a la colección
-    arrayCompetidores.push(new Competidor(nuevoCompetidor));
+
+    var competidor = new Competidor(nuevoCompetidor);
+    console.log(competidor.validarDatos())
+    console.log(competidor)
+    if(competidor.validarDatos()){
+        arrayCompetidores.push(new Competidor(nuevoCompetidor));
+    } else {
+        console.log("datos incorrectos")
+    }
+    
     //console.log(arrayCompetidores)
     localStorage.setItem("competidores", JSON.stringify(arrayCompetidores));
 });
