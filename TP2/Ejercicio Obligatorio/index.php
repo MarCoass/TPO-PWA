@@ -118,11 +118,11 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
                             <label class="form-label" for="legajo">Legajo:</label>
-                            <input class="form-control" type="text" id="legajo" name="legajo" autocomplete="off" pattern="^[a-zA-Z]{3}[0-9]{7}$" placeholder="Ej: ABC1234567" required>
+                            <input class="form-control" type="text" id="legajo" name="legajo" autocomplete="off" pattern="^[A-Z]{3}\d{7}$" placeholder="Ej: ABC1234567" required>
                             <div class="valid-feedback">
                                 ¡Correcto!
                             </div>
-                            <div class="invalid-feedback">Campo necesario, Ej: ABC1234567</div>
+                            <div class="invalid-feedback">Campo necesario, necesita 3 letras mayúsculas seguidas de 7 números</div>
 
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">

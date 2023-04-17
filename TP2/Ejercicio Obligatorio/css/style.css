@@ -1,10 +1,22 @@
-.bg-seccion2{
-  background: #FF512F;  /* fallback for old browsers */
-/* background: -webkit-linear-gradient(to right, #DD2476, #FF512F); */  /* Chrome 10-25, Safari 5.1-6 */
-/* background: linear-gradient(to right, #DD2476, #FF512F) */; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-background: radial-gradient(circle, #DD2476 0%,  #FF512F 100%);
+.bg-seccion2 {
+  background: #ff512f; /* fallback for old browsers */
+  /* background: -webkit-linear-gradient(to right, #DD2476, #FF512F); */ /* Chrome 10-25, Safari 5.1-6 */
+  /* background: linear-gradient(to right, #DD2476, #FF512F) */ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: radial-gradient(circle, #dd2476 0%, #ff512f 100%);
 }
 
+/* ESTILOS FORMULARIO CARGA COMPETIDORES*/
 .nav-link.active {
   color: red;
+}
+
+/* ESTILOS TABLA COMPETIDORES */
+td,
+th {
+  vertical-align: middle;
+}
+
+.table-cell {
+  display: table-cell;
+  vertical-align: middle;
 }

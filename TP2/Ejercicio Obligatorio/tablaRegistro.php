@@ -6,13 +6,14 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row mb-5">
     <div class="col-12">
         <div class="d-flex justify-content-end my-3">
             <div class="input-group" style="width: 350px;">
                 <select class="form-select" id="filtroTabla">
-                    <option value="1">Nombre</option>
-                    <option value="2">Apellido</option>
+                    <option value="0">Legajo</option>
+                    <option value="1">Apellido</option>
+                    <option value="2">Nombre</option>
                     <option value="3">DU</option>
                     <option value="4">Email</option>
                 </select>
@@ -26,13 +27,13 @@
                 <thead>
                     <tr class="table-danger">
                         <th>Legajo</th>
-                        <th>Apellido</th>
-                        <th>Nombre</th>
-                        <th>DU</th>
-                        <th>Email</th>
-                        <th>Edad</th>
-                        <th>País de origen</th>
-                        <th>Género</th>
+                        <th class="d-none d-sm-table-cell">Apellido</th>
+                        <th class="d-none d-sm-table-cell">Nombre</th>
+                        <th class="d-none d-md-table-cell">DU</th>
+                        <th class="d-none d-md-table-cell">Email</th>
+                        <th class="d-none d-lg-table-cell">Fecha Nacimiento</th>
+                        <th class="d-none d-lg-table-cell">País de origen</th>
+                        <th class="d-none d-lg-table-cell">Género</th>
                         <th>Graduación</th>
                         <th>Ranking nacional</th>
                     </tr>
