@@ -1,78 +1,38 @@
 [
-    {
-      "color": "Blanco",
-      "graduacion": "10mo gup"
-    },
-    {
-      "color": "Blanco punta amarilla",
-      "graduacion": "9no gup"
-    },
-    {
-      "color": "Amarillo",
-      "graduacion": "8vo gup"
-    },
-    {
-      "color": "Amarillo punta verde",
-      "graduacion": "7mo gup"
-    },
-    {
-      "color": "Verde",
-      "graduacion": "6to gup"
-    },
-    {
-      "color": "Verde punta azul",
-      "graduacion": "5to gup"
-    },
-    {
-      "color": "Azul",
-      "graduacion": "4to gup"
-    },
-    {
-      "color": "Azul punta roja",
-      "graduacion": "3er gup"
-    },
-    {
-      "color": "Rojo",
-      "graduacion": "2do gup"
-    },
-    {
-      "color": "Rojo punta negra",
-      "graduacion": "1er gup"
-    },
-    {
-      "color": "Negro",
-      "graduacion": "1er Dan"
-    },
-    {
-      "color": "Negro",
-      "graduacion": "2do Dan"
-    },
-    {
-      "color": "Negro",
-      "graduacion": "3er Dan"
-    },
-    {
-      "color": "Negro",
-      "graduacion": "4to Dan"
-    },
-    {
-      "color": "Negro",
-      "graduacion": "5to Dan"
-    },
-    {
-      "color": "Negro",
-      "graduacion": "6to Dan"
-    },
-    {
-      "color": "Negro",
-      "graduacion": "7mo Dan"
-    },
-    {
-      "color": "Negro",
-      "graduacion": "8vo Dan"
-    },
-    {
-      "color": "Negro",
-      "graduacion": "9no Dan"
-    }
+  {
+    "color": "Negro",
+    "graduacion": "1er Dan"
+  },
+  {
+    "color": "Negro",
+    "graduacion": "2do Dan"
+  },
+  {
+    "color": "Negro",
+    "graduacion": "3er Dan"
+  },
+  {
+    "color": "Negro",
+    "graduacion": "4to Dan"
+  },
+  {
+    "color": "Negro",
+    "graduacion": "5to Dan"
+  },
+  {
+    "color": "Negro",
+    "graduacion": "6to Dan"
+  },
+  {
+    "color": "Negro",
+    "graduacion": "7mo Dan"
+  },
+  {
+    "color": "Negro",
+    "graduacion": "8vo Dan"
+  },
+  {
+    "color": "Negro",
+    "graduacion": "9no Dan"
+  }
 ]
