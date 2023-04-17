@@ -6,12 +6,6 @@
     </div>
 </div>
 
-<style>
-    .nav-link.active {
-        color: red;
-    }
-</style>
-
 <div class="row col-10 mx-auto my-5 shadow" style="overflow: hidden;">
     <div class="col-4 align-self-start mt-2 d-none d-md-block">
         <img src="./estructura/form-foto.png" class="img-form rounded" style="height: 100%; width: 100%; object-fit: contain;">

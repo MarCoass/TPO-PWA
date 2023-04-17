@@ -4,3 +4,7 @@
 /* background: linear-gradient(to right, #DD2476, #FF512F) */; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 background: radial-gradient(circle, #DD2476 0%,  #FF512F 100%);
 }
+
+.nav-link.active {
+  color: red;
+}
