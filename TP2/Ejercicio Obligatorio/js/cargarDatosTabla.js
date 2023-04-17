@@ -9,43 +9,48 @@ document.addEventListener("DOMContentLoaded", function () {
   // Convierte el JSON a un array de objetos JavaScript
   const arrayCompetidores = JSON.parse(json);
 
-arrayCompetidores.forEach(competidor => {
-  const miTabla = document.getElementById("tabla");
-  const nuevaFila = miTabla.insertRow(); // crea una nueva fila vacía
-  const celdaLegajo = nuevaFila.insertCell();
-  celdaLegajo.textContent = competidor.legajo;
+  arrayCompetidores.forEach(competidor => {
+    const miTabla = document.getElementById("tabla");
+    const nuevaFila = miTabla.insertRow(); // crea una nueva fila vacía
+    const celdaLegajo = nuevaFila.insertCell();
+    celdaLegajo.textContent = competidor.legajo;
 
-  const celdaApellido = nuevaFila.insertCell(); // agrega una celda para la edad
-  celdaApellido.textContent = competidor.apellido; // agrega la edad a la celda
+    const celdaApellido = nuevaFila.insertCell(); // agrega una celda para la edad
+    celdaApellido.textContent = competidor.apellido; // agrega la edad a la celda
 
-  const celdaNombre = nuevaFila.insertCell(); // agrega una celda para el nombre
-  celdaNombre.textContent = competidor.nombre; // agrega el nombre a la celda
+    const celdaNombre = nuevaFila.insertCell(); // agrega una celda para el nombre
+    celdaNombre.textContent = competidor.nombre; // agrega el nombre a la celda
 
-  const celdaDU = nuevaFila.insertCell();
-  celdaDU.textContent = competidor.du;
+    const celdaDU = nuevaFila.insertCell();
+    celdaDU.textContent = competidor.du;
 
-  const celdaMail = nuevaFila.insertCell();
-  celdaMail.textContent = competidor.email;
+    const celdaMail = nuevaFila.insertCell();
+    celdaMail.textContent = competidor.email;
 
-  const celdaFecNac = nuevaFila.insertCell();
-  celdaFecNac.textContent = competidor.fechaNacimiento;
+    const celdaFecNac = nuevaFila.insertCell();
+    var fecha = new Date(competidor.fechaNacimiento);
+    var fechaFormateada = fecha.getDate() + '-' + (fecha.getMonth() + 1) + '-' + fecha.getFullYear();
 
-  const celdaPais = nuevaFila.insertCell();
-  celdaPais.innerHTML =
-    '<img src="svg/' +
-    competidor.paisOrigen +
-    '.svg" alt="" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Tooltip on top" width="20px">';
-  //celdaPais.textContent = competidor.paisOrigen;
+    celdaFecNac.textContent = fechaFormateada;
 
-  const celdaGenero = nuevaFila.insertCell();
-  celdaGenero.textContent = competidor.genero;
+    const celdaPais = nuevaFila.insertCell();
+    celdaPais.innerHTML =
+      '<img src="svg/' +
+      competidor.paisOrigen +
+      '.svg" alt="" data-bs-toggle="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="' + competidor.paisOrigen + '" width="20px">';
+    //celdaPais.textContent = competidor.paisOrigen;
 
-  const celdaGraduacion = nuevaFila.insertCell();
-  celdaGraduacion.textContent = competidor.graduacion;
+    const celdaGenero = nuevaFila.insertCell();
+    celdaGenero.textContent = competidor.genero;
 
-  const celdaRanking = nuevaFila.insertCell();
-  celdaRanking.textContent = competidor.rankingNacional;
+    const celdaGraduacion = nuevaFila.insertCell();
+    celdaGraduacion.textContent = competidor.graduacion;
 
-});
+    const celdaRanking = nuevaFila.insertCell();
+    celdaRanking.textContent = competidor.rankingNacional;
 
+  });
+
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 });
