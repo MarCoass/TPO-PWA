@@ -127,16 +127,6 @@ form.addEventListener('submit', (event) => {
         var modal = new bootstrap.Modal(miModal);
 
         var texto = "Legajo: " + competidor.legajo +
-<<<<<<< Updated upstream
-        "<br>Apellido: " + competidor.apellido +
-        "<br>Nombre: "+ competidor.nombre + 
-        "<br>DU: " + competidor.dni + 
-        "<br>Mail: " + competidor.email +
-        "<br>Pais: " + competidor.paisOrigen +
-        "<br>Genero: " + competidor.genero + 
-        "<br>Graduacion: " + competidor.graduacion + 
-        "<br>Ranking: " + competidor.rankingNacional ;
-=======
             "<br>Apellido: " + competidor.apellido +
             "<br>Nombre: " + competidor.nombre +
             "<br>DNI: " + competidor.du +
@@ -145,7 +135,6 @@ form.addEventListener('submit', (event) => {
             "<br>Genero: " + competidor.genero +
             "<br>Graduacion: " + competidor.graduacion +
             "<br>Ranking: " + competidor.rankingNacional ;
->>>>>>> Stashed changes
         $("#cuerpoModal").html(texto);
 
 
