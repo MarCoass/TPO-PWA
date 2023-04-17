@@ -1,4 +1,62 @@
 /* ########################################################## OBTENCIÓN COMPETIDORES ############################################################3 */
+/* Establece la fecha max de la inscripcion */
+var fechaActual = new Date();
+var fechaMaxima = new Date(fechaActual.getFullYear() - 6, fechaActual.getMonth(), fechaActual.getDate()).toISOString().split("T")[0];
+document.getElementById("fechaNacimiento").max = fechaMaxima;
+
+
+/* Carga competidores default en localstorage */
+const competidores = localStorage.getItem('competidores');
+if (competidores === null) {
+    setearCompetidores();
+}
+
+function setearCompetidores() {
+    const datosCompetidor1 = {
+        legajo: "ABC1234567",
+        apellido: "Centurión",
+        nombre: "Braian",
+        du: "12345678",
+        fechaNacimiento: "2001-04-08",
+        paisOrigen: "Chile",
+        graduacion: "2do GUP",
+        rankingNacional: 750,
+        email: "braian.cent@example.com",
+        genero: "masculino",
+    };
+
+    const datosCompetidor2 = {
+        legajo: "DEF2345678",
+        apellido: "Coassin",
+        nombre: "Martina",
+        du: "23456789",
+        fechaNacimiento: "2001-08-25",
+        paisOrigen: "Argentina",
+        graduacion: "1er DAN",
+        rankingNacional: 600.5,
+        email: "mar.coassin@example.com",
+        genero: "femenino",
+    };
+
+    const datosCompetidor3 = {
+        legajo: "GHI3456789",
+        apellido: "Farfan",
+        nombre: "Matias",
+        du: "34567890",
+        fechaNacimiento: "1995-03-15",
+        paisOrigen: "Colombia",
+        graduacion: "5to GUP",
+        rankingNacional: 350,
+        email: "matias.farfan@example.com",
+        genero: "masculino",
+    };
+
+    const jsonCompetidores = JSON.stringify([datosCompetidor1, datosCompetidor2, datosCompetidor3]);
+
+    localStorage.setItem('competidores', jsonCompetidores);
+}
+/* fin carga competidor default */
+
 /* Obtiene el JSON almacenado en el localStorage y lo convierte en un arreglo de objetos */
 function obtenerCompetidores() {
     const competidoresJson = localStorage.getItem('competidores');
@@ -62,13 +120,14 @@ form.addEventListener('submit', (event) => {
     var competidor = new Competidor(nuevoCompetidor);
     //console.log(competidor.validarDatos())
     //onsole.log(competidor)
-    if(competidor.validarDatos()){
+    if (competidor.validarDatos()) {
         arrayCompetidores.push(new Competidor(nuevoCompetidor));
 
         var miModal = document.querySelector('#modalForm');
         var modal = new bootstrap.Modal(miModal);
 
         var texto = "Legajo: " + competidor.legajo +
+<<<<<<< Updated upstream
         "<br>Apellido: " + competidor.apellido +
         "<br>Nombre: "+ competidor.nombre + 
         "<br>DU: " + competidor.dni + 
@@ -77,11 +136,22 @@ form.addEventListener('submit', (event) => {
         "<br>Genero: " + competidor.genero + 
         "<br>Graduacion: " + competidor.graduacion + 
         "<br>Ranking: " + competidor.rankingNacional ;
+=======
+            "<br>Apellido: " + competidor.apellido +
+            "<br>Nombre: " + competidor.nombre +
+            "<br>DNI: " + competidor.du +
+            "<br>Mail: " + competidor.email +
+            "<br>Pais: " + competidor.paisOrigen +
+            "<br>Genero: " + competidor.genero +
+            "<br>Graduacion: " + competidor.graduacion +
+            "<br>Ranking: " + competidor.rankingNacional ;
+>>>>>>> Stashed changes
         $("#cuerpoModal").html(texto);
+
 
         modal.show();
     }
-    
+
     //console.log(arrayCompetidores)
     localStorage.setItem("competidores", JSON.stringify(arrayCompetidores));
 });

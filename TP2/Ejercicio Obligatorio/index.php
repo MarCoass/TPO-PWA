@@ -59,11 +59,6 @@
                         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12  pt-3">
                             <label class="form-label" for="fechaNacimiento">Nacimiento:</label>
                             <input class="form-control" type="date" min="1900-01-01" id="fechaNacimiento" name="fechaNacimiento" required>
-                            <script>
-                                var fechaActual = new Date();
-                                var fechaMaxima = new Date(fechaActual.getFullYear() - 6, fechaActual.getMonth(), fechaActual.getDate()).toISOString().split("T")[0];
-                                document.getElementById("fechaNacimiento").max = fechaMaxima;
-                            </script>
                             <div class="valid-feedback">
                                 ¡Correcto!
                             </div>
@@ -182,62 +177,10 @@
     </div>
 </div>
 
-
 <!--        FIN MODAL                   -->
-<script>
-    const competidores = localStorage.getItem('competidores');
-    if (competidores === null) {
-        setearCompetidores();
-    }
 
-    function setearCompetidores() {
-        const datosCompetidor1 = {
-            legajo: "ABC1234567",
-            apellido: "Centurión",
-            nombre: "Braian",
-            du: "12345678",
-            fechaNacimiento: "2001-04-08",
-            paisOrigen: "Chile",
-            graduacion: "2do GUP",
-            rankingNacional: 750,
-            email: "braian.cent@example.com",
-            genero: "masculino",
-        };
-
-        const datosCompetidor2 = {
-            legajo: "DEF2345678",
-            apellido: "Coassin",
-            nombre: "Martina",
-            du: "23456789",
-            fechaNacimiento: "2001-08-25",
-            paisOrigen: "Argentina",
-            graduacion: "1er DAN",
-            rankingNacional: 600.5,
-            email: "mar.coassin@example.com",
-            genero: "femenino",
-        };
-
-        const datosCompetidor3 = {
-            legajo: "GHI3456789",
-            apellido: "Farfan",
-            nombre: "Matias",
-            du: "34567890",
-            fechaNacimiento: "1995-03-15",
-            paisOrigen: "Colombia",
-            graduacion: "5to GUP",
-            rankingNacional: 350,
-            email: "matias.farfan@example.com",
-            genero: "masculino",
-        };
-
-        const jsonCompetidores = JSON.stringify([datosCompetidor1, datosCompetidor2, datosCompetidor3]);
-
-        localStorage.setItem('competidores', jsonCompetidores);
-    }
-</script>
 <script src="./js/claseCompetidor.js"></script>
 <script src="./js/cargaParticipante.js"></script>
 <script src="./js/bs-form-validator.js"></script>
-
 
 <?php include_once('./estructura/footer.php') ?>
