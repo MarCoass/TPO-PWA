@@ -20,8 +20,9 @@ class Competidor {
 
     validarDatos() {
         // Validación del legajo
-        if (!/^[A-Z]{3}\d{7}$/.test(this.legajo)) {
+        if (!(/^[A-Z]{3}\d{7}$/.test(this.legajo))) {
             throw new Error("El legajo debe tener 9 caracteres: 3 letras y 7 números.");
+            
         }
         // Validación del apellido y nombre
         if (this.apellido.length > 100 || this.nombre.length > 100) {
@@ -30,6 +31,7 @@ class Competidor {
         // Validación del email
         if (!/\S+@\S+\.\S+/.test(this.email)) {
             throw new Error("El email no es válido.");
+
         }
         // Validación de la edad
         const hoy = new Date();
@@ -49,6 +51,7 @@ class Competidor {
         if (isNaN(this.rankingNacional) || this.rankingNacional < 0 || this.rankingNacional > 900) {
             throw new Error("El ranking debe ser un número entre 0 y 900.");
         }
+        return true;
     }
 
     verPerfil() {

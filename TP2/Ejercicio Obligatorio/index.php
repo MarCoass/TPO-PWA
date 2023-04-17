@@ -223,7 +223,6 @@
     }
 </script>
 <script src="./js/claseCompetidor.js"></script>
-<script src="./js/crearCompetidor.js"></script>
 <script src="./js/cargaParticipante.js"></script>
 <script src="./js/bs-form-validator.js"></script>
 
