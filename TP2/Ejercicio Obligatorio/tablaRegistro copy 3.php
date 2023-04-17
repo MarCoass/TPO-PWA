@@ -7,6 +7,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
+
     <style>
         table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before, table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before{
             background-color: orangered;
@@ -16,9 +17,8 @@
             background-color: #D1A637;
         }
     </style>
+    
 </head>
-
-
 
 <div class="row p-3 text-light bg-seccion2 mb-3">
     <div class="text-center">
@@ -60,9 +60,10 @@
         }
 
         async function datos() {
-            const data = await fetch("tablaDatos2.json")
+            /* const data = await fetch("tablaDatos2.json")
                 .then(value => value.json())
-                .then(value => value)
+                .then(value => value) */
+            const data = await JSON.parse(localStorage.getItem('competidores'));
 
             const columns = [{
                 targets: 0,
