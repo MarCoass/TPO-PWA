@@ -60,12 +60,26 @@ form.addEventListener('submit', (event) => {
     // Creamos el Objeto Competidor y lo sumamos a la colección
 
     var competidor = new Competidor(nuevoCompetidor);
-    console.log(competidor.validarDatos())
-    console.log(competidor)
+    //console.log(competidor.validarDatos())
+    //onsole.log(competidor)
     if(competidor.validarDatos()){
         arrayCompetidores.push(new Competidor(nuevoCompetidor));
-    } else {
-        console.log("datos incorrectos")
+
+        var miModal = document.querySelector('#modalForm');
+        var modal = new bootstrap.Modal(miModal);
+
+        var texto = "Legajo: " + competidor.legajo +
+        "<br>Apellido: " + competidor.apellido +
+        "<br>Nombre: "+ competidor.nombre + 
+        "<br>DNI: " + competidor.dni + 
+        "<br>Mail: " + competidor.email +
+        "<br>Pais: " + competidor.paisOrigen +
+        "<br>Genero: " + competidor.genero + 
+        "<br>Graduacion: " + competidor.graduacion + 
+        "<br>Ranking: " + competidor.rankingNacional ;
+        $("#cuerpoModal").html(texto);
+
+        modal.show();
     }
     
     //console.log(arrayCompetidores)
