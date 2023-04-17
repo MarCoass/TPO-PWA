@@ -12,11 +12,11 @@
     }
 </style>
 
-<div class="row col-10 mx-auto my-5 shadow" style="min-height: 400px; max-height: 500px; overflow: hidden;">
-    <div class="col-4">
-        <img src="./estructura/form-foto.png" height="300" style="height: 100%; width: 100%; object-fit: contain;">
+<div class="row col-10 mx-auto my-5 shadow" style="overflow: hidden;">
+    <div class="col-4 align-self-start mt-2 d-none d-md-block">
+        <img src="./estructura/form-foto.png" class="img-form rounded" style="height: 100%; width: 100%; object-fit: contain;">
     </div>
-    <div class="col-8 position-relative">
+    <div class="col-md-8 position-relative">
         <div class="nav justify-content-center">
             <div class="nav-link active" id="link1" data-bs-toggle="tab" data-bs-target="#paso1">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-1-circle" viewBox="0 0 16 16">
@@ -34,7 +34,7 @@
             <div class="tab-content">
                 <div class="tab-pane fade show active" id="paso1"> <!-- INICIO CONTENIDO PASO 1 -->
                     <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-12  pt-3">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
                             <label class="form-label" for="apellido">Apellido:</label>
                             <input class="form-control" type="text" id="apellido" name="apellido" maxlength="50" placeholder="Ej: Lopez" autocomplete="off" required>
                             <div class="valid-feedback">
@@ -44,7 +44,7 @@
 
                         </div>
 
-                        <div class="col-lg-6 col-md-6 col-sm-12  pt-3">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
                             <label class="form-label" for="nombre">Nombre:</label>
                             <input class="form-control" type="text" id="nombre" name="nombre" maxlength="50" placeholder="Ej: Lautaro" autocomplete="off" required>
                             <div class="valid-feedback">
@@ -53,7 +53,7 @@
                             <div class="invalid-feedback">Campo necesario, Ej: Pepe</div>
                         </div>
 
-                        <div class="col-lg-3 col-md-6 col-sm-12 pt-3">
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 pt-3">
                             <label class="form-label" for="dni">DNI:</label>
                             <input class="form-control " type="text" name="dni" id="dni" pattern="[0-9]{8}" maxlength="8" placeholder="Ej: 23456789" required>
                             <div class="valid-feedback">
@@ -62,8 +62,8 @@
                             <div class="invalid-feedback">Campo necesario, Ej: 23456789</div>
                         </div>
 
-                        <div class="col-lg-3 col-md-6 col-sm-12  pt-3">
-                            <label class="form-label" for="fechaNacimiento">Fecha Nacimiento:</label>
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12  pt-3">
+                            <label class="form-label" for="fechaNacimiento">Nacimiento:</label>
                             <input class="form-control" type="date" min="1900-01-01" id="fechaNacimiento" name="fechaNacimiento" required>
                             <script>
                                 var fechaActual = new Date();
@@ -76,7 +76,7 @@
                             <div class="invalid-feedback">Ingresa tu fecha de nacimiento!</div>
                         </div>
 
-                        <div class="col-lg-6 col-md-6 col-sm-12  pt-3">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
                             <label class="form-label" for="email">Email:</label>
                             <input class="form-control" type="email" id="email" name="email" autocomplete="off" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Ej: persona@correo.com" required>
                             <div class="valid-feedback">
@@ -85,7 +85,7 @@
                             <div class="invalid-feedback">Ej: persona@correo.com</div>
                         </div>
 
-                        <div class="col-lg-6 col-md-6 col-sm-12  pt-3">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
                             <label class="form-label" for="paisOrigen">País:</label>
                             <select class="form-control" type="text" id="paisOrigen" name="paisOrigen" autocomplete="off" required>
                                 <option value="" disabled selected data-error="Por favor seleccione un país válido">Selecciona una opción</option>
@@ -97,7 +97,7 @@
                             <div class="invalid-feedback">Seleccione una opcion valida.</div>
                         </div>
 
-                        <div class="col-lg-6 col-md-6 col-sm-12  pt-3">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
                             <label class="form-label" for="genero">Género:</label>
                             <select class="form-control" id="genero" name="genero" required>
                                 <option value="" disabled selected data-error="Por favor seleccione un genero">Selecciona una opción</option>
@@ -111,7 +111,7 @@
                             <div class="invalid-feedback">Seleccione una opcion valida.</div>
                         </div>
                         <div class="my-3 ml-3 row justify-content-center">
-                            <button type="button" class="btn btn-outline-primary  col-md-4 col-sm-6" onclick="showTab('paso2', 'link2', 'link1')">
+                            <button type="button" class="btn btn-outline-primary col-md-4 col-sm-6 col-xs-8" onclick="showTab('paso2', 'link2', 'link1')">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
                                 </svg>
@@ -122,7 +122,7 @@
                 </div> <!-- FIN CONTENIDO PASO 1 -->
                 <div class="tab-pane fade" id="paso2"> <!-- INICIO CONTENIDO PASO 2 -->
                     <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-12  pt-3">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
                             <label class="form-label" for="legajo">Legajo:</label>
                             <input class="form-control" type="text" id="legajo" name="legajo" autocomplete="off" pattern="^[a-zA-Z]{3}[0-9]{7}$" placeholder="Ej: ABC1234567" required>
                             <div class="valid-feedback">
@@ -131,7 +131,7 @@
                             <div class="invalid-feedback">Campo necesario, Ej: ABC1234567</div>
 
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12  pt-3">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
                             <label class="form-label" for="rankingNacional">Ranking:</label>
                             <input class="form-control" type="number" min="0" id="rankingNacional" name="rankingNacional" autocomplete="off" max="900" required>
                             <div class="valid-feedback">
@@ -139,7 +139,7 @@
                             </div>
                             <div class="invalid-feedback">Ingrese un numero entre 0 y 900</div>
                         </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12  pt-3">
+                        <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12  pt-3">
                             <label class="form-label" for="graduacion">Graduacion:</label>
                             <select class="form-control" id="graduacion" name="graduacion" required>
                                 <option value="" disabled selected data-error="Por favor seleccione una graduacion válida">Selecciona una opción</option>
@@ -150,13 +150,13 @@
                             <div class="invalid-feedback">Seleccione una opcion valida.</div>
                         </div>
                         <div class="my-3 ml-3 row justify-content-center">
-                            <button type="button" class="btn btn-outline-secondary col-md-4 col-sm-6" onclick="showTab('paso1', 'link1', 'link2')">
+                            <button type="button" class="btn btn-outline-secondary col-md-4 col-sm-6 col-xs-8" onclick="showTab('paso1', 'link1', 'link2')">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
                                 </svg>
                                 Volver
                             </button>
-                            <button type="submit" class="btn btn-outline-success col-md-4 col-sm-6" >
+                            <button type="submit" class="btn btn-outline-success col-md-4 col-sm-6  col-xs-8" >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-plus-fill" viewBox="0 0 16 16">
                                     <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM8.5 7v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 1 0z" />
                                 </svg>
