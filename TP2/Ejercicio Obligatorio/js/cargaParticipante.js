@@ -71,7 +71,7 @@ form.addEventListener('submit', (event) => {
         var texto = "Legajo: " + competidor.legajo +
         "<br>Apellido: " + competidor.apellido +
         "<br>Nombre: "+ competidor.nombre + 
-        "<br>DNI: " + competidor.dni + 
+        "<br>DU: " + competidor.dni + 
         "<br>Mail: " + competidor.email +
         "<br>Pais: " + competidor.paisOrigen +
         "<br>Genero: " + competidor.genero + 
