@@ -87,8 +87,31 @@ const form = document.getElementById('cargaParticipante');
 
 form.addEventListener('submit', (event) => {
     event.preventDefault(); // Evitar que el formulario se envíe de forma predeterminada
-    arrayCompetidores = obtenerCompetidores();
+    const inputsValidados = document.querySelectorAll(".form-control");
+    const todosValidados = Array.from(inputsValidados).every(input => input.checkValidity());
 
+    // Si todos los inputs están validados, hacer algo
+    if (todosValidados) {
+        arrayCompetidores = obtenerCompetidores();
+
+        nuevoCompetidor = obtenerValoresInputs();
+
+        // CREAMOS EL OBJETO CONTROL 
+        var controlCompetidor = new ControlCompetidor();
+        // RECIBE POR PARÁMETRO LOS DATOS VALIDADOS POR EL FORM, RETORNARA UNA ESTRUCTURA HTML CON LA INFO DEL COMPETIDOR SI ES QUE TODO ESTA BIEN
+        // EN CASO DE QUE ALGÚN DATO SEA ERRONEO RETORNARA UNA ESTRUCTURA LISTANDO TODOS LOS ERRORES ENCONTRADOS
+        estructuraRetorno = controlCompetidor.crearCompetidor(nuevoCompetidor, arrayCompetidores);
+
+        var miModal = document.querySelector('#modalForm');
+        var modal = new bootstrap.Modal(miModal);
+
+        $("#cuerpoModal").html(estructuraRetorno);
+
+        modal.show();
+    }
+});
+
+function obtenerValoresInputs() {
     // Obtener los valores de los campos del formulario
     const legajo = document.getElementById('legajo').value;
     const apellido = document.getElementById('apellido').value;
@@ -102,7 +125,7 @@ form.addEventListener('submit', (event) => {
     const graduacion = document.getElementById('graduacion').value;
 
     // Creamos el arreglo para cargar el Objeto
-    const nuevoCompetidor = {
+    return datosNuevoCompetidor = {
         legajo: legajo,
         apellido: apellido,
         nombre: nombre,
@@ -114,36 +137,7 @@ form.addEventListener('submit', (event) => {
         email: email,
         genero: genero,
     };
-
-    // Creamos el Objeto Competidor y lo sumamos a la colección
-
-    var competidor = new Competidor(nuevoCompetidor);
-    //console.log(competidor.validarDatos())
-    //onsole.log(competidor)
-    if (competidor.validarDatos()) {
-        arrayCompetidores.push(new Competidor(nuevoCompetidor));
-
-        var miModal = document.querySelector('#modalForm');
-        var modal = new bootstrap.Modal(miModal);
-
-        var texto = "Legajo: " + competidor.legajo +
-            "<br>Apellido: " + competidor.apellido +
-            "<br>Nombre: " + competidor.nombre +
-            "<br>DNI: " + competidor.du +
-            "<br>Mail: " + competidor.email +
-            "<br>Pais: " + competidor.paisOrigen +
-            "<br>Genero: " + competidor.genero +
-            "<br>Graduacion: " + competidor.graduacion +
-            "<br>Ranking: " + competidor.rankingNacional ;
-        $("#cuerpoModal").html(texto);
-
-
-        modal.show();
-    }
-
-    //console.log(arrayCompetidores)
-    localStorage.setItem("competidores", JSON.stringify(arrayCompetidores));
-});
+}
 
 /* ########################################################## CAMBIAR TABS FORMULARIO ############################################################3 */
 function showTab(tabId, link1, link2) {

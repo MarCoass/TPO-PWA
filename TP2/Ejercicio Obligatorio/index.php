@@ -92,7 +92,6 @@
                                 <option value="" disabled selected data-error="Por favor seleccione un genero">Selecciona una opción</option>
                                 <option value="masculino">Masculino</option>
                                 <option value="femenino">Femenino</option>
-                                <option value="otro">Otro</option>
                             </select>
                             <div class="valid-feedback">
                                 ¡Correcto!
@@ -112,7 +111,7 @@
                 <div class="tab-pane fade" id="paso2"> <!-- INICIO CONTENIDO PASO 2 -->
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
-                            <label class="form-label" for="legajo">Legajo:</label>
+                            <label class="form-label" for="legajo">GAL:</label>
                             <input class="form-control" type="text" id="legajo" name="legajo" autocomplete="off" pattern="^[A-Z]{3}\d{7}$" placeholder="Ej: ABC1234567" required>
                             <div class="valid-feedback">
                                 ¡Correcto!
@@ -155,29 +154,28 @@
                     </div>
                 </div> <!-- FIN CONTENIDO PASO 2 -->
             </div>
-
-            <!--        MODAL                   -->
-            <div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Participante cargado</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body" id="cuerpoModal">
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" onclick="location.reload()">Cerrar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </form> <!-- FIN FORM -->
     </div>
 </div>
 
-<!--        FIN MODAL                   -->
+<!-- MODAL -->
+<div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Participante cargado</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="cuerpoModal">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="location.reload()">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIN MODAL -->
 
 <script src="./js/claseCompetidor.js"></script>
 <script src="./js/cargaParticipante.js"></script>
