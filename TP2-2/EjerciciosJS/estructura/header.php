@@ -19,8 +19,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
-    <!-- JS DOMs -->
-    <script src="./js/atajosRapidos.js"></script>
+    
 
 
 </head>
@@ -29,19 +28,19 @@
 
     <div class="container-fluid ">
         <nav class="navbar navbar-expand-xxxl m-3">
-            <img src="./estructura/img/World_Taekwondo.png" alt="" width="100px" /><span class="fs-4 ms-3">Poomsae
+            <img src="./estructura/img/World_Taekwondo.png" alt="" width="100px" /><span class="fs-4 ms-3 d-none d-sm-block">Poomsae
                 Reconocido</span>
             <button id="menuNavBar" class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse ms-3" id="navbarNav">
+            <div id="navbarNav" class="collapse navbar-collapse ms-3" >
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="seccion1.php">
+                        <a id="seccion1" class="nav-link" aria-current="page" href="seccion1.php">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Слой_1" x="0px" y="0px"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" 
                                 viewBox="0 68.3 1024 636.1" enable-background="new 0 68.3 1024 636.1"
                                 xml:space="preserve">
                                 <path fill="#2993FC" stroke="" stroke-width="2" stroke-linecap="round"
@@ -52,9 +51,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="seccion2.php">
+                        <a id="seccion2" class="nav-link" href="seccion2.php">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Слой_1" x="0px" y="0px"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" 
                                 viewBox="0 68.3 1024 636.1" enable-background="new 0 68.3 1024 636.1"
                                 xml:space="preserve">
                                 <path fill="#2993FC" stroke="" stroke-width="2" stroke-linecap="round"
@@ -65,9 +64,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="seccion3.php">
+                        <a id="seccion3" class="nav-link" href="seccion3.php">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Слой_1" x="0px" y="0px"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" 
                                 viewBox="0 68.3 1024 636.1" enable-background="new 0 68.3 1024 636.1"
                                 xml:space="preserve">
                                 <path fill="#2993FC" stroke="" stroke-width="2" stroke-linecap="round"
@@ -78,9 +77,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="seccion4.php">
+                        <a id="seccion4" class="nav-link" href="seccion4.php">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Слой_1" x="0px" y="0px"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" 
                                 viewBox="0 68.3 1024 636.1" enable-background="new 0 68.3 1024 636.1"
                                 xml:space="preserve">
                                 <path fill="#2993FC" stroke="" stroke-width="2" stroke-linecap="round"
