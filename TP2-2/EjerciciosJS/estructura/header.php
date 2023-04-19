@@ -23,13 +23,13 @@
 
 <body >
 
-    <div class="container-fluid text-bg-light">
-        <nav id="menuHamburguesa" class="navbar navbar-expand-xxxl p-3 ">
+    <div class="container-fluid">
+        <nav id="menuHamburguesa" class="navbar navbar-expand-xxxl p-3  text-bg-light">
 
             <img src="./estructura/img/World_Taekwondo.png" alt="logo TKD" width="100px" /><span class="fs-4 ms-3 tituloPag">Poomsae
                 Reconocido</span>
-            <div class=""><i class="bi bi-moon-fill" id="botonTemaOscuro"></i>
-                <i class="bi bi-sun-fill d-none" id="botonTemaClaro"></i>
+            <div class=""><i class="bi bi-moon-fill mx-3" id="botonTemaOscuro"></i>
+                <i class="bi bi-sun-fill d-none mx-3" id="botonTemaClaro"></i>
             </div>
             <button id="menuNavBar" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
