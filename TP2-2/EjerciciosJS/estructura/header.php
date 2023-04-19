@@ -15,21 +15,22 @@
 
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 
 
 
 </head>
 
-<body>
+<body >
 
-    <div class="container-fluid ">
+    <div class="container-fluid text-bg-light">
+        <nav id="menuHamburguesa" class="navbar navbar-expand-xxxl p-3 ">
 
-
-
-        <nav id="menuHamburguesa" class="navbar navbar-expand-xxxl m-3 ">
             <img src="./estructura/img/World_Taekwondo.png" alt="logo TKD" width="100px" /><span class="fs-4 ms-3 tituloPag">Poomsae
                 Reconocido</span>
+            <div class=""><i class="bi bi-moon-fill" id="botonTemaOscuro"></i>
+                <i class="bi bi-sun-fill d-none" id="botonTemaClaro"></i>
+            </div>
             <button id="menuNavBar" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

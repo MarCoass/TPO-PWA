@@ -1,6 +1,6 @@
-<div class="bg-danger row d-flex">
+<div class="bg-danger row d-flex" id="footer">
     <section class="mt-3" style="user-select: none;">
-        <footer class="text-center text-white bg-danger">
+        <footer class="text-center text-white ">
             <div class="container">
                 <div class="row text-center">
                     <div class="col">
@@ -47,6 +47,7 @@
 </div> <!--Fin del div.container-fluid-->
 <!-- JS DOMs -->
 <script src="./js/atajosRapidos.js"></script>
+<script src="./js/cambioTema.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>

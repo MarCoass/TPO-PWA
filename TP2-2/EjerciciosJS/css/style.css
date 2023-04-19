@@ -3,6 +3,11 @@
   background: radial-gradient(circle, #dd2476 0%, #ff512f 100%);
 }
 
+.bg-seccion-dark {
+  background: #662fff;
+  background: radial-gradient(circle, #3024dd 0%, #dd2476 100%);
+}
+
 .nav-item{
   font-size: 1.3em;
 }
@@ -22,6 +27,7 @@
     border-radius: 1em;
     padding: 1em;
   }
+
   /* este le da tamaño a la lista */
   .nav-item{
     font-size: 1.5em;
