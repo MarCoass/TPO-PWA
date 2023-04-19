@@ -1,6 +1,7 @@
-<div class="bg-danger row d-flex transicion" id="footer">
+</div> <!--Fin del div.container-fluid-->
+<footer class="footer bg-danger transicion" id="footer">
     <section class="mt-3" style="user-select: none;">
-        <footer class="text-center text-white ">
+        <div class="text-center text-white ">
             <div class="container">
                 <div class="row text-center">
                     <div class="col">
@@ -41,10 +42,9 @@
             <div class="text-center mb-3">
                 Programación Web Avanzada - 2023 <img src="./estructura/img/logo.png" class="mx-2" alt="FAI" title="FAI" width="40" height="40"> Universidad Nacional del Comahue
             </div>
-        </footer>
+        </div>
     </section>
-</div>
-</div> <!--Fin del div.container-fluid-->
+</footer>
 <!-- JS DOMs -->
 <script src="./js/atajosRapidos.js"></script>
 <script src="./js/cambioTema.js"></script>
