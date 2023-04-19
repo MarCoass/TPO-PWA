@@ -8,6 +8,11 @@
   background: radial-gradient(circle, #3024dd 0%, #dd2476 100%);
 }
 
+.transicion {
+  /* Aplica la transición */
+  transition: background 2s;
+}
+
 .nav-item{
   font-size: 1.3em;
 }

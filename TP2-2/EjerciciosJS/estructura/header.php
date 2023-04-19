@@ -21,7 +21,7 @@
 
 </head>
 
-<body >
+<body class="transicion">
 
     <div class="container-fluid">
         <nav id="menuHamburguesa" class="navbar navbar-expand-xxxl p-3  text-bg-light">

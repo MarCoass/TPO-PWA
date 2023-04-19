@@ -1,13 +1,10 @@
-const ESTILOS = getComputedStyle(document.documentElement);
+const ESTILOS = getComputedStyle(document.documentElement); // no entiendo este D:
 const BOTONOSCURO = document.getElementById("botonTemaOscuro");
 const BOTONCLARO = document.getElementById("botonTemaClaro");
 const BODY = document.body;
-const CONTENIDO = document.getElementById("contenido");
+const CONTENIDO = document.getElementById("myTabContent");
 const SECCIONES = document.querySelectorAll(".bg-seccion2");
 const FOOTER = document.getElementById("footer");
-
-BODY.style.transitionProperty = "background";
-BODY.style.transitionDuration = "2s";
 
 function cambiarClaro() {
   BOTONOSCURO.classList.toggle("d-none");
@@ -18,8 +15,8 @@ function cambiarClaro() {
     SECCIONES[i].classList.add("bg-seccion2");
     SECCIONES[i].classList.remove("bg-seccion-dark");
   }
-  FOOTER.classList.remove("bg-seccion-dark");
   FOOTER.classList.add("bg-danger");
+  FOOTER.classList.remove("bg-seccion-dark");
 
   localStorage.setItem("tema", "claro");
 }

@@ -1,7 +1,7 @@
 <?php include_once('estructura/header.php')?>
 
 
-<div id="contenido" class="tab-content" id="myTabContent">
+<div class="tab-content rounded transicion" id="myTabContent">
   <div class="tab-pane fade active show" id="seccion1-pane" role="tabpanel" aria-labelledby="seccion1-tab" tabindex="0">
   <?php include_once('seccion1.php')?>
   </div>
