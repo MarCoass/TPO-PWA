@@ -7,13 +7,12 @@ document.addEventListener('keyup', function (event) {
     }
 });
 
-/* Código que toma el pathname y lo convierte en string para luego tomar el nombre del archivo.php */
-var title = String(window.location.pathname)
-var seccion = title.slice(title.lastIndexOf("/") + 1, title.lastIndexOf("."));
-/* Itera las 4 secciones y le aplica la clase active al link de la pagina actual */
-for (var i = 1; i < 5; i++) {
-    var activo = document.getElementById("seccion" + i)
-    if (activo.id === seccion) {
-        activo.classList.add("active");
-    }
-}
+var navItems = document.querySelectorAll('.nav-item');
+navItems.forEach(function (item) {
+    item.addEventListener('click', function() {
+        navItems.forEach(function (item) {
+            item.classList.remove('active');
+        });
+        this.classList.add('active');
+    });
+});
