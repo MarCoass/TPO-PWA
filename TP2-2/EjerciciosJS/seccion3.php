@@ -49,5 +49,5 @@
         </div>
     </div>
 </div>
+
 <script src="js/filtrarTabla.js"></script>
-<?php include_once('./estructura/footer.php') ?>

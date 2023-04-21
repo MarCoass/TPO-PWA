@@ -3,7 +3,7 @@
 
 
 <div class="tab-content rounded transicion" id="myTabContent">
-  <div class="tab-pane fade active show" id="seccion1-pane" role="tabpanel" aria-labelledby="seccion1-tab" tabindex="0">
+  <div class="tab-pane fade show active " id="seccion1-pane" role="tabpanel" aria-labelledby="seccion1-tab" tabindex="0">
   <?php include_once('seccion1.php')?>
   </div>
   <div class="tab-pane fade" id="seccion2-pane" role="tabpanel" aria-labelledby="seccion2-tab" tabindex="0">
