@@ -28,7 +28,6 @@
     <script>
         var countdownInterval, countupInterval; // CUENTAS REGRESIVAS
         var totalSeconds = 0; // SEGUNDOS TOTALES
-        let finalizado = false;
 
         var countdown = document.getElementById("countdown"); // NUMERO CUENTA REGRESIVA INICIAL
         var countup = document.getElementById("countup"); // NÚMERO CUENTA REGRESIVA OVERTIME
