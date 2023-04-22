@@ -1,14 +1,6 @@
-<?php include_once('../vista/common/header.php') ?>
-
-<div class="row p-3 justify-content-center ">
-    <div class="col-12 justify-content-center">
-        <img src="Assets/Img/World_Taekwondo.png" alt="" width="100px" />
-        <span class="fs-2 ms-3">Poomsae Reconocido</span>
-    </div>
-</div>
-
+<?php include_once('./estructura/header.php') ?>
 <div class="row p-3 text-light bg-seccion2">
-    <div class=" text-center">
+    <div class="text-center">
         <span class="display-5">Poomsae Reconocido Elite Individual</span>
         <p class="lead">es una categoría de competición de taekwondo en la que los participantes deben ejecutar una serie de movimientos complejos y técnicamente avanzados de forma individual.</p>
         <p class="lead">Esta categoría está destinada a competidores altamente experimentados y habilidosos.</p>
@@ -32,10 +24,10 @@
 <div class="text-center mt-3 mb-0 row">
 
     <div class="col-12 my-2">
-        <?php include_once('tab.php') ?>
+        <?php include_once('./tab.php') ?>
     </div>
 
 </div>
 
 
-<?php include_once('../vista/common/footer.php') ?>
+<?php include_once('./estructura/footer.php') ?>

@@ -1,4 +1,4 @@
-<script src="./Assets/js/tab.js"></script>
+<script src="../util/js/tab.js"></script>
 
 <div class="row">
     <div class="col-lg-4 col-md-12 p-3">

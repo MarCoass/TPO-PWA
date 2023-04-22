@@ -1,0 +1,89 @@
+/* ESTILOS FORMULARIO CARGA COMPETIDORES*/
+.nav-link.active {
+  color: red;
+}
+
+/* ESTILOS TABLA COMPETIDORES */
+td,
+th {
+  vertical-align: middle;
+}
+
+.table-cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.bg-seccion2 {
+  background: #ff512f; /* fallback for old browsers */
+  /* background: -webkit-linear-gradient(to right, #DD2476, #FF512F); */ /* Chrome 10-25, Safari 5.1-6 */
+  /* background: linear-gradient(to right, #DD2476, #FF512F) */ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: radial-gradient(circle, #dd2476 0%, #ff512f 100%);
+}
+
+.bg-carru {
+  background: rgb(116, 127, 244);
+  background: radial-gradient(
+    circle,
+    rgba(116, 127, 244, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
+}
+
+/* agregando efecto a los items de carrousel */
+
+.carru-card {
+  transition: 0.3s;
+}
+
+.carru-card:hover {
+  transform: scale(1.2);
+}
+
+.carru-card:active {
+  transform: scale(1.1);
+}
+/* fin */
+
+@media (max-width: 767px) {
+  .carousel-inner .carousel-item > div {
+    display: none;
+  }
+  .carousel-inner .carousel-item > div:first-child {
+    display: block;
+  }
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+  display: flex;
+}
+
+/* medium and up screens */
+@media (min-width: 768px) {
+  .carousel-inner .carousel-item-end.active,
+  .carousel-inner .carousel-item-next {
+    transform: translateX(25%);
+  }
+
+  .carousel-inner .carousel-item-start.active,
+  .carousel-inner .carousel-item-prev {
+    transform: translateX(-25%);
+  }
+}
+
+.carousel-inner .carousel-item-end,
+.carousel-inner .carousel-item-start {
+  transform: translateX(0);
+}
+
+@media (min-width: 992px) {
+  /* PANTALLA GRANDE*/
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  /* PANTALLA MEDIANA*/
+}
+@media (max-width: 767.98px) {
+  /* PANTALLA PEQUEÑA*/
+}
