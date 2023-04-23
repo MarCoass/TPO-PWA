@@ -1,12 +1,8 @@
 <?php include_once('./estructura/header.php') ?>
 <!-- paginacion usando jquery -->
-<script src="../util/js/librerias/pagination.js"></script>
-<link rel="stylesheet" href="../util/css/pagination.css">
-<!--<script src="../util/js/cargarDatosTabla.js"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
 
-
-
-
+<script src="../util/js/cargarDatosTabla.js"></script>
 <div class="row p-3 text-light bg-seccion2">
     <div class="text-center">
         <span class="display-5">Lista de Competidores Registrados</span>
@@ -45,18 +41,27 @@
                         <th>Ranking nacional</th>
                     </tr>
                 </thead>
-                <tbody id="tablaBody"></tbody>
-                
+                <tbody></tbody>
             </table>
         </div>
-
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
 
     </div>
 </div>
 
 
-
-<script src="../util/js/paginacion.js"></script>
 <script src="../util/js/filtrarTabla.js"></script>
 
 
