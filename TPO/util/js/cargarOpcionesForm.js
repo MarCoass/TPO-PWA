@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const selectPaises = document.getElementById("paisOrigen");
 
   // Obtener datos del archivo JSON
-  fetch("js/graduaciones.json")
+  fetch("../util/json/formulario/graduaciones.json")
     .then((response) => response.json())
     .then((data) => {
       // Iterar sobre los datos y crear opciones
@@ -18,7 +18,8 @@ document.addEventListener("DOMContentLoaded", function () {
     .catch((error) => console.error(error));
 
   // Obtener datos del archivo JSON
-  fetch("js/paises.json")
+  fetch("../util/json/formulario/paises.json")
+  
     .then((response) => response.json())
     .then((data) => {
       // Iterar sobre los datos y crear opciones
