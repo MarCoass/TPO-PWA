@@ -87,3 +87,25 @@ body {
   }
 
 }
+
+.anchoTabDesp {
+  width: 350px;
+}
+
+.overflowForm{
+  overflow: hidden;
+}
+
+.imgSideForm {
+  height: 100%; 
+  width: 100%; 
+  object-fit: contain;
+}
+
+.nav-link.active {
+  color: red;
+}
+
+.noUserSelect {
+  user-select: none;
+}

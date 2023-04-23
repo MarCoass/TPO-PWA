@@ -1,14 +1,13 @@
 
-<script src="js/cargarOpcionesForm.js"></script>
-<div class="row p-3 text-light bg-seccion2">
+<div class="row p-3 text-light bg-seccion2 mb-5">
     <div class="text-center">
         <span class="display-5">Agregar competidor</span>
     </div>
 </div>
 
-<div class="row col-10 mx-auto my-5 shadow" style="overflow: hidden;">
+<div class="row col-10 mx-auto my-5 shadow overflowForm">
     <div class="col-4 align-self-start mt-2 d-none d-md-block">
-        <img src="./estructura/img/form-foto.png" class="img-form rounded" style="height: 100%; width: 100%; object-fit: contain;">
+        <img src="./estructura/img/form-foto.png" class="img-form rounded imgSideForm">
     </div>
     <div class="col-md-8 position-relative">
         <div class="nav justify-content-center">
@@ -177,6 +176,7 @@
 </div>
 <!-- FIN MODAL -->
 
+<script src="js/cargarOpcionesFormDOM.js"></script>
 <script src="./js/claseCompetidor.js"></script>
 <script src="./js/cargaParticipante.js"></script>
 <script src="./js/bs-form-validator.js"></script>

@@ -9,13 +9,13 @@
 
     <!-- ICON -->
     <link rel="icon" type="image\x-icon" href="../util/img/logo.ico">
-    <!-- ESTILOS PROPIOS -->
-    <link rel="stylesheet" href="../util/css/style.css">
     <!-- Jquery 3.6.4 -->
     <script src="../util/js/jquery.min.js"></script>
-
+    
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="../util/bootstrap-5.2.3/css/bootstrap.min.css" rel="stylesheet">
+    <!-- ESTILOS PROPIOS -->
+    <link rel="stylesheet" href="../util/css/style.css">
 </head>
 
 <body>

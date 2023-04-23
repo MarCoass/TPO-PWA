@@ -1,5 +1,5 @@
 
-<div class="row p-3 text-light bg-seccion2 transicion">
+<div class="row p-3 text-light bg-seccion2 mb-5">
     <div class="text-center">
         <span class="display-5">Seccion 3 </span>
     </div>
@@ -15,7 +15,7 @@
 <div class="row mb-5">
     <div class="col-12">
         <div class="d-flex justify-content-end my-3">
-            <div class="input-group" style="width: 350px;">
+            <div class="input-group anchoTabDesp">
                 <select class="form-select" id="filtroTabla">
                     <option value="0">Legajo</option>
                     <option value="1">Apellido</option>
