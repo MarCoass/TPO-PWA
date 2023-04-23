@@ -9,7 +9,7 @@ $(function () {
   container.pagination({
     dataSource: arrayCompetidores,
     pageSize: 5,
-    className: 'paginationjs-theme-red paginationjs-big d-flex',
+    className: 'paginationjs-theme-red paginationjs-big ',
     showSizeChanger: true,
     callback: function (data, pagination) {
         $("#tablaBody").html("");
