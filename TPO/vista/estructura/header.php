@@ -10,7 +10,7 @@
     <!-- ICON -->
     <link rel="icon" type="image\x-icon" href="../util/img/logo.ico">
     <!-- Jquery 3.6.4 -->
-    <script src="../util/js/jquery.min.js"></script>
+    <script src="../util/js/librerias/jquery.min.js"></script>
     
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="../util/bootstrap-5.2.3/css/bootstrap.min.css" rel="stylesheet">
