@@ -5,7 +5,7 @@ window.addEventListener("load", () => {
 /* Recibe por parámetro el nombre del JSON al que debe consumir, retorna un objeto que más adelante será nombrado como "categoría"*/
 async function cargarCategorias(tipo) {
   try {
-    const response = await fetch("../util/json/" + tipo + ".json");
+    const response = await fetch("../util/json/categorias/" + tipo + ".json");
     const data = await response.json();
     return data;
   } catch (error) {
