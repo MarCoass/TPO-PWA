@@ -18,6 +18,80 @@
     -->
 </div>
 
+<!-- IMAGENES FAKE -->
+<div class="row ms-5 my-3 d-flex justify-content-center align-items-center" id="contenedorImagenesFake">
+    <div class="col-4">
+        <figure class="figure">
+            <svg class="bd-placeholder-img rounded card-img-top" width="300" height="290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <rect width="100%" height="100%" fill="#868e96"></rect>
+            </svg>
+            <figcaption class="figure-caption text-end ">
+                <a href='#' class=' placeholder-glow text-decoration-none text-secondary' data-bs-toggle='modal' data-bs-target='#modalImagen'>
+                    <p class="placeholder-glow">
+                        <span class="placeholder col-12"></span>
+                    </p>
+                </a>
+            </figcaption>
+        </figure>
+    </div>
+    <div class="col-4">
+        <figure class="figure">
+            <svg class="bd-placeholder-img rounded card-img-top" width="300" height="290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <rect width="100%" height="100%" fill="#868e96"></rect>
+            </svg>
+            <figcaption class="figure-caption text-end">
+                <a href='#' class=' placeholder-glow text-decoration-none text-secondary' data-bs-toggle='modal' data-bs-target='#modalImagen'>
+                    <p class="placeholder-glow">
+                        <span class="placeholder col-12"></span>
+                    </p>
+                </a>
+            </figcaption>
+        </figure>
+    </div>
+    <div class="col-4">
+        <figure class="figure">
+            <svg class="bd-placeholder-img rounded card-img-top" width="300" height="290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <rect width="100%" height="100%" fill="#868e96"></rect>
+            </svg>
+            <figcaption class="figure-caption text-end">
+                <a href='#' class=' placeholder-glow text-decoration-none text-secondary' data-bs-toggle='modal' data-bs-target='#modalImagen'>
+                    <p class="placeholder-glow">
+                        <span class="placeholder col-12"></span>
+                    </p>
+                </a>
+            </figcaption>
+        </figure>
+    </div>
+    <div class="col-4">
+        <figure class="figure">
+            <svg class="bd-placeholder-img rounded card-img-top" width="300" height="290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <rect width="100%" height="100%" fill="#868e96"></rect>
+            </svg>
+            <figcaption class="figure-caption text-end">
+                <a href='#' class=' placeholder-glow text-decoration-none text-secondary' data-bs-toggle='modal' data-bs-target='#modalImagen'>
+                    <p class="placeholder-glow">
+                        <span class="placeholder col-12"></span>
+                    </p>
+                </a>
+            </figcaption>
+        </figure>
+    </div>
+    <div class="col-4">
+        <figure class="figure">
+            <svg class="bd-placeholder-img rounded card-img-top" width="300" height="290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <rect width="100%" height="100%" fill="#868e96"></rect>
+            </svg>
+            <figcaption class="figure-caption text-end">
+                <a href='#' class=' placeholder-glow text-decoration-none text-secondary' data-bs-toggle='modal' data-bs-target='#modalImagen'>
+                    <p class="placeholder-glow">
+                        <span class="placeholder col-12"></span>
+                    </p>
+                </a>
+            </figcaption>
+        </figure>
+    </div>
+</div>
+
 <div class="modal fade" id="modalImagen" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

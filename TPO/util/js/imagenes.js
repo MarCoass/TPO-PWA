@@ -61,13 +61,19 @@ function armarFigure(photo) {
     contenido += "<a href='#' onclick='armarModal(" + photo.id + ")' class='text-decoration-none text-secondary' data-bs-toggle='modal' data-bs-target='#modalImagen'>" + photo.title + "</a>";
     contenido += "</figcaption></figure></div>";
 
-    $("#contenedorImagenes").append(contenido);
+    return contenido
 }
 
 $(document).ready(function () {
+    estructuraImagenes = "";
     for (var i = 0; i < 5; i++) {
         var numeroAleatorio = obtenerNumeroAleatorio(1, 5000);
         imagenJson = obtenerObjetoJson(numeroAleatorio);
-        armarFigure(imagenJson);
+        estructuraImagenes += armarFigure(imagenJson);
     }
+
+    setTimeout(function () {
+        $("#contenedorImagenesFake").addClass('d-none');
+        $("#contenedorImagenes").html(estructuraImagenes);
+    }, 1500);
 });
