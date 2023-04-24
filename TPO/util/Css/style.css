@@ -23,85 +23,11 @@ th {
   );
 }
 
-/* agregando efecto a los items de carrousel */
-
-.carru-card {
-  transition: 0.3s;
-}
-
-.carru-card:hover {
-  transform: scale(1.2);
-}
-
-.carru-card:active {
-  transform: scale(1.1);
-}
-/* fin */
-
-@media (max-width: 767px) {
-  .carousel-inner .carousel-item > div {
-    display: none;
-  }
-  .carousel-inner .carousel-item > div:first-child {
-    display: block;
-  }
-}
-
-.carousel-inner .carousel-item.active,
-.carousel-inner .carousel-item-next,
-.carousel-inner .carousel-item-prev {
-  display: flex;
-}
-
-/* medium and up screens */
-@media (min-width: 768px) {
-  .carousel-inner .carousel-item-end.active,
-  .carousel-inner .carousel-item-next {
-    transform: translateX(25%);
-  }
-
-  .carousel-inner .carousel-item-start.active,
-  .carousel-inner .carousel-item-prev {
-    transform: translateX(-25%);
-  }
-}
-
-.carousel-inner .carousel-item-end,
-.carousel-inner .carousel-item-start {
-  transform: translateX(0);
-}
-
-@media (min-width: 992px) {
-  /* PANTALLA GRANDE*/
-}
-@media (min-width: 768px) and (max-width: 991.98px) {
-  /* PANTALLA MEDIANA*/
-}
-@media (max-width: 767.98px) {
-  /* PANTALLA PEQUEÑA*/
-}
-
 html {
   position: relative;
   min-height: 100%;
 }
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 360px;
-}
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: auto;
-  line-height: 60px; /* Vertically center the text there */
-  background-color: #f5f5f5;
-}
 
-.masmb {
-  margin-bottom: 360px;
-}
 
 
 .bg-seccion2 {

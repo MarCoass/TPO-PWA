@@ -44,9 +44,7 @@
                 </button>
                 <div id="navbarNav" class="collapse navbar-collapse ms-3">
                     <ul class="navbar-nav" role="tablist">
-                        <li class="nav-item active" id="seccion1-tab" data-bs-toggle="tab"
-                            data-bs-target="#seccion1-pane" role="tab" aria-controls="seccion1-pane"
-                            aria-selected="true">
+                        <li class="nav-item active btn" id="seccion1-tab"  >
 
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 68.3 1024 636.1"
@@ -58,8 +56,7 @@
                             Seccion 1
 
                         </li>
-                        <li class="nav-item" id="seccion2-tab" data-bs-toggle="tab" data-bs-target="#seccion2-pane"
-                            role="tab" aria-controls="seccion2-pane" aria-selected="false">
+                        <li class="nav-item" id="seccion2-tab">
 
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 68.3 1024 636.1"
@@ -71,8 +68,7 @@
                             Seccion 2
 
                         </li>
-                        <li class="nav-item" id="seccion3-tab" data-bs-toggle="tab" data-bs-target="#seccion3-pane"
-                            role="tab" aria-controls="seccion3-pane" aria-selected="false">
+                        <li class="nav-item" id="seccion3-tab">
 
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 68.3 1024 636.1"
@@ -84,8 +80,7 @@
                             Seccion 3
 
                         </li>
-                        <li class="nav-item" id="seccion4-tab" data-bs-toggle="tab" data-bs-target="#seccion4-pane"
-                            role="tab" aria-controls="seccion4-pane" aria-selected="false">
+                        <li class="nav-item" id="seccion4-tab">
 
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 68.3 1024 636.1"
@@ -97,8 +92,7 @@
                             Seccion 4
 
                         </li>
-                        <li class="nav-item" id="seccion4-tab" data-bs-toggle="tab" data-bs-target="#seccion4-pane"
-                            role="tab" aria-controls="seccion4-pane" aria-selected="false">
+                        <li class="nav-item" id="seccion4-tab">
 
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 68.3 1024 636.1"
@@ -166,17 +160,16 @@
 
 
  -->
-
     </div>
     <div class="row p-3 text-light bg-seccion2 mb-5">
         <div class="text-center">
             <span class="display-5">Seccion 2 </span>
         </div>
     </div>
-    <div class="row">
+    <div class="row mb-5 justify-content-center">
         <a class="d-sm-none d-block" href="https://www.youtube.com/embed/CpEGREBGh2E">Ver video de la última competencia
             internacional de Poomsae</a>
-        <iframe title="ver video" class="d-sm-block  d-none col-12" width="560" height="315"
+        <iframe title="ver video" class="d-sm-block  d-none col-md-10 col-xl-8" width="560" height="315"
             src="https://www.youtube.com/embed/CpEGREBGh2E" frameborder="0" allow="autoplay; encrypted-media"
             allowfullscreen></iframe>
 
@@ -191,15 +184,8 @@
 
 
 
- --> -->
-    <!-- paginacion usando jquery -->
-
-    <!--<script src="../util/js/cargarDatosTabla.js"></script>-->
-
-
-
-
-    <div class="row p-3 text-light bg-seccion2">
+ -->
+    <div class="row p-3 text-light bg-seccion2  mb-3">
         <div class="text-center">
             <span class="display-5">Seccion 3 - Lista de Competidores Registrados</span>
         </div>
@@ -612,9 +598,9 @@
 
 
  -->
-    <div class="bg-danger row">
+    <footer class="bg-danger row" id="footer">
         <section class="mt-3" style="user-select: none;">
-            <footer class="text-center text-white bg-danger">
+            <div class="text-center text-white">
                 <div class="container">
                     <div class="row text-center">
                         <div class="col">
@@ -662,17 +648,21 @@
                     Programación Web Avanzada - 2023 <img src="../util/Img/img/logo.png" class="mx-2" alt="FAI"
                         title="FAI" width="40" height="40"> Universidad Nacional del Comahue
                 </div>
-            </footer>
+            </div>
         </section>
-    </div>
+    </footer>
     
     <!--Fin del div.container-fluid-->
     <script src="../util/js/librerias/popper.min.js"></script>
     <script src="../util/bootstrap-5.2.3/js/bootstrap.min.js"></script>
 
+    <!-- js principal -->
+    <script src="../util/js/atajosRapidosDOM.js"></script>
+    <script src="../util/js/cambioTemaDOM.js"></script>
+
 
     <!-- js seccion 1 -->
-    <script src="./js/botonCuentaRegresiva.js"></script>
+    <script src="../util/js/botonCuentaRegresiva.js"></script>
 
     <!-- js seccion 3 -->
     <script src="../util/js/paginacion.js"></script>
