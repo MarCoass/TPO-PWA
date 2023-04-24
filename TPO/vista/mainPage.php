@@ -207,7 +207,7 @@
             </div>
         </div>
         <div class="col-12">
-            <div class="table-responsive">
+            <div class="table-responsive" id="bfTabla">
                 <table id="tabla" class="table table-hover align-middle text-center">
                     <thead>
                         <tr class="table-danger">

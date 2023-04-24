@@ -26,7 +26,7 @@ function obtenerGenero(generoCompetidor) {
 }
 
 $(function () {
-  let container = $("#tabla");
+  let container = $("#bfTabla");
 
   // Obtenemos los competidores
   var arrayCompetidores = obtenerCompetidores();
@@ -35,7 +35,7 @@ $(function () {
   container.pagination({
     dataSource: arrayCompetidores,
     pageSize: 5,
-    className: 'paginationjs-theme-red paginationjs-big ',
+    className: 'paginationjs-theme-red paginationjs-big',
     showSizeChanger: true,
     callback: function (data, pagination) {
       $("#tablaBody").html("");
