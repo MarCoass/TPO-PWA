@@ -1,10 +1,22 @@
+function obtenerCompetidores() {
+  var competidoresObtenidos;
+  $.ajax({
+    url: '../util/json/competidoresGuardados.json',
+    dataType: 'json',
+    async: false, // Hacer la solicitud AJAX de manera síncrona
+    success: function (response) {
+      competidoresObtenidos = response;
+    }
+  });
+  return competidoresObtenidos;
+}
+
 $(function () {
   let container = $("#tabla");
-  // Recupera el array de objetos JSON del localStorage
-  const json = localStorage.getItem("competidores");
 
-  // Convierte el JSON a un array de objetos JavaScript
-  const arrayCompetidores = JSON.parse(json);
+  // Obtenemos los competidores
+  var arrayCompetidores = obtenerCompetidores();
+  console.log(arrayCompetidores)
 
   container.pagination({
     dataSource: arrayCompetidores,
@@ -79,6 +91,7 @@ $(function () {
     },
   });
 });
+
 
 /*
 ⢀⡴⠑⡄⠀⠀⠀⠀⠀⠀⠀⣀⣀⣤⣤⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 

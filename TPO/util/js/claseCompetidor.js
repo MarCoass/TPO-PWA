@@ -134,7 +134,7 @@ class ControlCompetidor {
         return estructuraCompetidor;
     }
 
-    crearCompetidor(datos, competidores) {
+    crearCompetidor(datos) {
         var errores = this.validarDatos(datos);
         var contenidoRetorno = "";
 
@@ -143,8 +143,6 @@ class ControlCompetidor {
         } else { // SINO CREAMOS EL NUEVO COMPETIDOR, RETORNAMOS UNA ESTRUCTURA HTML CON SUS DATOS Y LO SETEAMOS AL LOCALSTORAGE
             contenidoRetorno += this.armarCompetidorNuevo(datos);
             nuevoCompetidor = new Competidor(datos);
-            competidores.push(nuevoCompetidor) // AGREGAMOS PARA EL SETEO
-            localStorage.setItem("competidores", JSON.stringify(competidores)); // GUARDADISIMO MI REY
         }
 
         console.log(contenidoRetorno)
