@@ -5,7 +5,7 @@
     </div>
 </div>
 
-<div class="row my-3 d-flex justify-content-center align-items-center" id="contenedorImagenes">
+<div class="row my-3 d-flex justify-content-center d-none" id="contenedorImagenes">
     <!--
         <div class="col-4">
             <figure class="figure">
@@ -19,10 +19,10 @@
 </div>
 
 <!-- IMAGENES FAKE -->
-<div class="row ms-5 my-3 d-flex justify-content-center align-items-center" id="contenedorImagenesFake">
+<div class="row ms-5 my-3 d-flex justify-content-center" id="contenedorImagenesFake">
     <div class="col-4">
         <figure class="figure">
-            <svg class="bd-placeholder-img rounded card-img-top" width="300" height="290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <svg class="bd-placeholder-img rounded" width="280" height="280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
                 <rect width="100%" height="100%" fill="#868e96"></rect>
             </svg>
             <figcaption class="figure-caption text-end ">
@@ -36,7 +36,7 @@
     </div>
     <div class="col-4">
         <figure class="figure">
-            <svg class="bd-placeholder-img rounded card-img-top" width="300" height="290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <svg class="bd-placeholder-img rounded" width="280" height="280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
                 <rect width="100%" height="100%" fill="#868e96"></rect>
             </svg>
             <figcaption class="figure-caption text-end">
@@ -50,7 +50,7 @@
     </div>
     <div class="col-4">
         <figure class="figure">
-            <svg class="bd-placeholder-img rounded card-img-top" width="300" height="290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <svg class="bd-placeholder-img rounded" width="280" height="280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
                 <rect width="100%" height="100%" fill="#868e96"></rect>
             </svg>
             <figcaption class="figure-caption text-end">
@@ -64,7 +64,7 @@
     </div>
     <div class="col-4">
         <figure class="figure">
-            <svg class="bd-placeholder-img rounded card-img-top" width="300" height="290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <svg class="bd-placeholder-img rounded" width="280" height="280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
                 <rect width="100%" height="100%" fill="#868e96"></rect>
             </svg>
             <figcaption class="figure-caption text-end">
@@ -78,7 +78,7 @@
     </div>
     <div class="col-4">
         <figure class="figure">
-            <svg class="bd-placeholder-img rounded card-img-top" width="300" height="290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <svg class="bd-placeholder-img rounded" width="280" height="280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
                 <rect width="100%" height="100%" fill="#868e96"></rect>
             </svg>
             <figcaption class="figure-caption text-end">

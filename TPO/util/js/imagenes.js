@@ -72,8 +72,10 @@ $(document).ready(function () {
         estructuraImagenes += armarFigure(imagenJson);
     }
 
+    $("#contenedorImagenes").html(estructuraImagenes);
+
     setTimeout(function () {
         $("#contenedorImagenesFake").addClass('d-none');
-        $("#contenedorImagenes").html(estructuraImagenes);
+        $("#contenedorImagenes").removeClass('d-none');
     }, 1500);
 });
