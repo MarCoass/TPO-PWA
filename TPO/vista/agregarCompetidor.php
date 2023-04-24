@@ -76,10 +76,11 @@
 
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
                             <label class="form-label" for="paisOrigen">País:</label>
-                            <select class="form-control" type="text" id="paisOrigen" name="paisOrigen" autocomplete="off" required>
-                                <option value="" disabled selected data-error="Por favor seleccione un país válido">Selecciona una opción</option>
-
-                            </select>
+                            <input class="form-control" type="text" id="paisOrigen" name="paisOrigen" list="lipaises" required >
+                                <datalist id="lipaises">
+                                    
+                                </datalist>
+                            
                             <div class="valid-feedback">
                                 ¡Correcto!
                             </div>
