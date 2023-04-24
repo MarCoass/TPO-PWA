@@ -43,9 +43,14 @@ function renderLi(dom,lista){
       let li = document.createElement("li");
       // Crear el link falso
       let a = document.createElement("a");
+      let img = document.createElement("img")
+      // Agregar bandera
+      img.src = "https://flagcdn.com/" + `${item.nomenclatura}` + ".svg"
+      img.width = "27"
       // Asignar el texto usando la propiedad innerHTML
       a.innerHTML = `${item.pais}`;
-      // Agregar el elemento li al ul
+      // Agregar el elemento a sus papis
+      li.appendChild(img)
       li.appendChild(a)
       dom.appendChild(li);
     }
