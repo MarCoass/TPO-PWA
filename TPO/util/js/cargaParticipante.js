@@ -197,7 +197,7 @@ function obtenerValoresInputs() {
     const dni = document.getElementById('dni').value;
     const fechaNacimiento = document.getElementById('fechaNacimiento').value;
     const genero = document.getElementById('genero').value;
-    const email = document.getElementById('correo').value;
+    const email = document.getElementById('email').value;
     const paisOrigen = document.getElementById('paisOrigen').value;
     const rankingNacional = document.getElementById('rankingNacional').value;
     const graduacion = document.getElementById('graduacion').value;

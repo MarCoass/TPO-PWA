@@ -127,7 +127,7 @@ class ControlCompetidor {
         var estructuraCompetidor = "";
         estructuraCompetidor += "<div class='alert alert-info' role='alert'>";
         estructuraCompetidor += "Nombre Completo: " + data.nombre + " " + data.apellido + " - DU: " + data.du + "<br>";
-        estructuraCompetidor += "CORREO: " + data.correo + " - FECHA NACIMIENTO: " + data.fechaNacimiento + " <br>";
+        estructuraCompetidor += "CORREO: " + data.email + " - FECHA NACIMIENTO: " + data.fechaNacimiento + " <br>";
         estructuraCompetidor += "PAÍS DE ORIGEN: " + data.paisOrigen + " - GÉNERO: " + data.genero + "<br>";
         estructuraCompetidor += "GAL: " + data.legajo + " - RANKING NACIONAL: " + data.rankingNacional + "<br>";
         estructuraCompetidor += "</div>";
