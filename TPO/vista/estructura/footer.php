@@ -48,6 +48,7 @@
 <!--Fin del div.container-fluid-->
 <script src="../util/js/librerias/popper.min.js"></script>
 <script src="../util/bootstrap-5.2.3/js/bootstrap.min.js"></script>
+
 <script src="../util/js/carousel.js"></script>
 <script src="../util/js/botonCambioGenero.js"></script>
 </body>

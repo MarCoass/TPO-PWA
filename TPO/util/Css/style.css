@@ -14,13 +14,6 @@ th {
   vertical-align: middle;
 }
 
-.bg-seccion2 {
-  background: #ff512f; /* fallback for old browsers */
-  /* background: -webkit-linear-gradient(to right, #DD2476, #FF512F); */ /* Chrome 10-25, Safari 5.1-6 */
-  /* background: linear-gradient(to right, #DD2476, #FF512F) */ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background: radial-gradient(circle, #dd2476 0%, #ff512f 100%);
-}
-
 .bg-carru {
   background: rgb(116, 127, 244);
   background: radial-gradient(
@@ -86,4 +79,114 @@ th {
 }
 @media (max-width: 767.98px) {
   /* PANTALLA PEQUEÑA*/
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 360px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: auto;
+  line-height: 60px; /* Vertically center the text there */
+  background-color: #f5f5f5;
+}
+
+.masmb {
+  margin-bottom: 360px;
+}
+
+
+.bg-seccion2 {
+  background: #ff512f;
+  background: radial-gradient(circle, #dd2476 0%, #ff512f 100%);
+}
+
+.bg-seccion-dark {
+  background: #662fff;
+  background: radial-gradient(circle, #3024dd 0%, #dd2476 100%);
+}
+
+.transicion {
+  /* Aplica la transición */
+  transition: background 2s;
+}
+
+.nav-item {
+  font-size: 1.3em;
+}
+
+.nav-item.active {
+  font-size: 1.5em;
+  text-shadow: 0.05em 0.05em #b4b4b4;
+}
+
+#menuHamburguesa {
+  border-radius: 1em;
+  padding: 1em;
+}
+
+
+/* estilos cuando se achica la pantalla */
+@media (max-width: 480px) {
+  #menuHamburguesa {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    /* lo de abajo le da cuerpo al menu */
+    background: radial-gradient(circle, #aca9a988 0%, #d6d6d6 100%);
+    border-radius: 1em;
+    padding: 1em;
+    opacity: 0.9;
+  }
+
+  /* este le da tamaño a la lista */
+  .nav-item {
+    font-size: 1.5em;
+  }
+
+  .nav-item.active {
+    font-size: 1.5em;
+    text-shadow: 0.05em 0.05em #a54b4b;
+  }
+
+  /* este esconde el titulo */
+  .tituloPag {
+    display: none;
+  }
+
+  /* esto deja detras del menuBurger */
+  #footer {
+    z-index: -5;
+  }
+
+}
+
+.anchoTabDesp {
+  width: 350px;
+}
+
+.overflowForm{
+  overflow: hidden;
+}
+
+.imgSideForm {
+  height: 100%; 
+  width: 100%; 
+  object-fit: contain;
+}
+
+.nav-link.active {
+  color: red;
+}
+
+.noUserSelect {
+  user-select: none;
 }

@@ -4,6 +4,14 @@ let lista = []
 const listaPaises = document.getElementById("paises")
 const inputPaises = document.getElementById("paisOrigen")
 
+
+listaPaises.style.display = "none"
+
+inputPaises.addEventListener("onchange", function(){
+    listaPaises.style.display = ""
+})
+
+
 window.addEventListener("DOMContentLoaded", function () {
     // Listando paises para mostrar
     fetch('https://flagcdn.com/es/codes.json')
@@ -23,6 +31,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
 inputPaises.addEventListener('keyup', function(){
     borrarLi(listaPaises)
+    listaPaises.style.display = ""
         // Obtener el valor del input
         let valor = this.value;
         // Filtrar el array lista según el valor
@@ -41,6 +50,7 @@ function renderLi(dom,lista){
     for (let item of lista) {
       // Crear un nuevo elemento li
       let li = document.createElement("li");
+      li.classList.add("btn")
       // Crear el link falso
       let a = document.createElement("a");
       let img = document.createElement("img")
