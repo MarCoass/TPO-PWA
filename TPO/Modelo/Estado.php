@@ -1,6 +1,6 @@
 <?php
 include_once '../Modelo/Conector/BaseDatos.php';
-class Competidor
+class Estado
 {
     private $nombreestado;
     private $ubicacionpaisestado;
@@ -111,9 +111,9 @@ class Competidor
             if ($base->Ejecutar($sql)) {
                 $array = array();
                 while ($row2 = $base->Registro()) {
-                    $objCompetidor = new Competidor();
-                    $objCompetidor->buscar($row2['id']);
-                    $array[] = $objCompetidor;
+                    $objEstado = new Estado();
+                    $objEstado->buscar($row2['id']);
+                    $array[] = $objEstado;
                 }
             } else {
                 $this->setMensaje($base->getError());
@@ -136,7 +136,7 @@ class Competidor
     $nombreestado = $this->getnombreestado();
     
     // Creo la consulta
-    $sql = "INSERT INTO Competidor (id, ubicacionpaisestado, nombreestado) 
+    $sql = "INSERT INTO Estado (id, ubicacionpaisestado, nombreestado) 
             VALUES ('{$id}', '{$ubicacionpaisestado}', '{$nombreestado}')";
     if ($base->Iniciar()) {
         if ($base->Ejecutar($sql)) {
