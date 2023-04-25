@@ -1,5 +1,6 @@
 <?php
-include_once '../Modelo/Conector/BaseDatos.php';
+/* include_once '../Modelo/Conector/BaseDatos.php'; */
+include_once 'Conector/BaseDatos.php';
 class Pais
 {
     private $paisnombre;
@@ -66,7 +67,7 @@ class Pais
     public function buscar($id) {
         $base = new BaseDatos();
         $resp = false;
-        $sql = "SELECT * FROM Paises WHERE id = '" . $id . "'";
+        $sql = "SELECT * FROM Pais WHERE id = '" . $id . "'";
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 if ($row = $base->Registro()) {
@@ -89,7 +90,7 @@ class Pais
     {
         $array = null;
         $base = new BaseDatos();
-        $sql =  "select * from Paises";
+        $sql =  "select * from Pais";
         if ($condicion != '') {
             $sql = $sql . ' where ' . $condicion;
         }
@@ -144,7 +145,7 @@ class Pais
         $resp = false;
         $id = $this->getid();
         $paisnombre = $this->getpaisnombre();
-        $sql = "UPDATE Paises SET paisnombre = '{$paisnombre}' WHERE id = '{$id}'";
+        $sql = "UPDATE Pais SET paisnombre = '{$paisnombre}' WHERE id = '{$id}'";
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 $resp = true;
@@ -163,7 +164,7 @@ class Pais
     {
         $base = new BaseDatos();
         $rta = false;
-        $consulta = "DELETE FROM Paises WHERE id = " . $this->getid();
+        $consulta = "DELETE FROM Pais WHERE id = " . $this->getid();
         if ($base->Iniciar()) {
             if ($base->Ejecutar($consulta)) {
                 $rta = true;
@@ -176,3 +177,7 @@ class Pais
         return $rta;
     }
 }
+
+$neu = new Pais;
+
+print_r($neu->listar());

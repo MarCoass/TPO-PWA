@@ -173,7 +173,7 @@ class Competidor
     {
         $base = new BaseDatos();
         $resp = false;
-        $sql = "SELECT * FROM Competidores WHERE du = '" . $du . "'";
+        $sql = "SELECT * FROM competidores WHERE du = '" . $du . "'";
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 if ($row = $base->Registro()) {
@@ -212,7 +212,7 @@ class Competidor
     {
         $array = null;
         $base = new BaseDatos();
-        $sql =  "select * from Competidores";
+        $sql =  "select * from competidores";
         if ($condicion != '') {
             $sql = $sql . ' where ' . $condicion;
         }
@@ -251,7 +251,7 @@ class Competidor
         $email = $this->getEmail();
         $genero = $this->getGenero();
         // Creo la consulta
-        $sql = "INSERT INTO Competidores (du, legajo, nombre, apellido, fechaNacimiento, estadoOrigen, graduacion, rankingNacional, email, genero) 
+        $sql = "INSERT INTO competidores (du, legajo, nombre, apellido, fechaNacimiento, estadoOrigen, graduacion, rankingNacional, email, genero) 
             VALUES ('{$du}', '{$legajo}', '{$nombre}','{$apellido}', '{$fechaNacimiento}','{$estadoOrigen}', '{$graduacion}', '{$rankingNacional}', '{$email}', '{$genero}')";
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
@@ -283,7 +283,7 @@ class Competidor
         $email = $this->getEmail();
         $genero = $this->getGenero();
 
-        $sql = "UPDATE Competidores SET legajo = '{$legajo}', apellido = '{$apellido}', nombre = '{$nombre}', fechaNacimiento = '{$fechaNacimiento}', estadoOrigen = '{$estadoOrigen}',  graduacion = '{$graduacion}', rankingNacional = '{$rankingNacional}', email = '{$email}', genero = '{$genero}' WHERE du = '{$du}'";
+        $sql = "UPDATE competidores SET legajo = '{$legajo}', apellido = '{$apellido}', nombre = '{$nombre}', fechaNacimiento = '{$fechaNacimiento}', estadoOrigen = '{$estadoOrigen}',  graduacion = '{$graduacion}', rankingNacional = '{$rankingNacional}', email = '{$email}', genero = '{$genero}' WHERE du = '{$du}'";
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 $resp = true;
@@ -302,7 +302,7 @@ class Competidor
     {
         $base = new BaseDatos();
         $rta = false;
-        $consulta = "DELETE FROM Competidores WHERE du = " . $this->getDu();
+        $consulta = "DELETE FROM competidores WHERE du = " . $this->getDu();
         if ($base->Iniciar()) {
             if ($base->Ejecutar($consulta)) {
                 $rta = true;

@@ -79,7 +79,7 @@ class Estado
     public function buscar($id) {
         $base = new BaseDatos();
         $resp = false;
-        $sql = "SELECT * FROM Estados WHERE id = '" . $id . "'";
+        $sql = "SELECT * FROM estado WHERE id = '" . $id . "'";
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 if ($row = $base->Registro()) {
@@ -103,7 +103,7 @@ class Estado
     {
         $array = null;
         $base = new BaseDatos();
-        $sql =  "select * from Estados";
+        $sql =  "select * from estado";
         if ($condicion != '') {
             $sql = $sql . ' where ' . $condicion;
         }
@@ -136,7 +136,7 @@ class Estado
     $estadonombre = $this->getestadonombre();
     
     // Creo la consulta
-    $sql = "INSERT INTO Estado (id, ubicacionpaisestado, estadonombre) 
+    $sql = "INSERT INTO estado (id, ubicacionpaisestado, estadonombre) 
             VALUES ('{$id}', '{$ubicacionpaisestado}', '{$estadonombre}')";
     if ($base->Iniciar()) {
         if ($base->Ejecutar($sql)) {
@@ -160,7 +160,7 @@ class Estado
         $id = $this->getid();
         $ubicacionpaisestado = $this->getubicacionpaisestado();
         $estadonombre = $this->getestadonombre();
-        $sql = "UPDATE Estados SET ubicacionpaisestado = '{$ubicacionpaisestado}', estadonombre = '{$estadonombre}' WHERE id = '{$id}'";
+        $sql = "UPDATE estado SET ubicacionpaisestado = '{$ubicacionpaisestado}', estadonombre = '{$estadonombre}' WHERE id = '{$id}'";
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 $resp = true;
@@ -179,7 +179,7 @@ class Estado
     {
         $base = new BaseDatos();
         $rta = false;
-        $consulta = "DELETE FROM Estados WHERE id = " . $this->getid();
+        $consulta = "DELETE FROM estado WHERE id = " . $this->getid();
         if ($base->Iniciar()) {
             if ($base->Ejecutar($consulta)) {
                 $rta = true;
