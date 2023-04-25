@@ -1,28 +1,28 @@
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
     <label class="form-label" for="apellido">Apellido:</label>
-    <input class="form-control" type="text" id="apellido" name="apellido" maxlength="50" placeholder="Ej: Lopez" autocomplete="off" required>
+    <input class="form-control" type="text" id="apellido" name="apellido" maxlength="50" pattern="^(?=.{3,})([A-ZÁÉÍÓÚÜÑ][a-záéíóúüñ]{2,})(?:\s[A-ZÁÉÍÓÚÜÑ][a-záéíóúüñ]{2,})?$" placeholder="Ej: Lopez" autocomplete="off" required>
     <div class="valid-feedback">
         ¡Correcto!
     </div>
-    <div class="invalid-feedback">Campo necesario, Ej: Grillo</div>
+    <div class="invalid-feedback">La primer letra de cada apellido debe ser mayúscula</div>
 </div>
 
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
     <label class="form-label" for="nombre">Nombre:</label>
-    <input class="form-control" type="text" id="nombre" name="nombre" maxlength="50" placeholder="Ej: Lautaro" autocomplete="off" required>
+    <input class="form-control" type="text" id="nombre" name="nombre" maxlength="50" pattern="^(?=.{3,})([A-ZÁÉÍÓÚÜÑ][a-záéíóúüñ]{2,})(?:\s[A-ZÁÉÍÓÚÜÑ][a-záéíóúüñ]{2,})?$" placeholder="Ej: Lautaro" autocomplete="off" required>
     <div class="valid-feedback">
         ¡Correcto!
     </div>
-    <div class="invalid-feedback">Campo necesario, Ej: Pepe</div>
+    <div class="invalid-feedback">La primer letra de cada nombre debe ser mayúscula</div>
 </div>
 
 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 pt-3">
     <label class="form-label" for="dni">DNI:</label>
-    <input class="form-control " type="text" name="dni" id="dni" pattern="[0-9]{8}" maxlength="8" placeholder="Ej: 23456789" required>
+    <input class="form-control " type="text" name="dni" id="dni" pattern="[0-9]{8}" autocomplete="off" maxlength="8" placeholder="Ej: 23456789" required>
     <div class="valid-feedback">
         ¡Correcto!
     </div>
-    <div class="invalid-feedback">Campo necesario, Ej: 23456789</div>
+    <div class="invalid-feedback">Deben ser 8 números</div>
 </div>
 
 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12  pt-3">
@@ -36,7 +36,7 @@
 
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
     <label class="form-label" for="email">Email:</label>
-    <input class="form-control" type="email" id="email" name="email" autocomplete="off" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Ej: persona@correo.com" required>
+    <input class="form-control" type="email" id="email" name="email" autocomplete="off" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" placeholder="Ej: persona@correo.com" required>
     <div class="valid-feedback">
         ¡Correcto!
     </div>

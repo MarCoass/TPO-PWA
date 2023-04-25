@@ -9,7 +9,7 @@
 
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
     <label class="form-label" for="rankingNacional">Ranking:</label>
-    <input class="form-control" type="number" min="0" id="rankingNacional" name="rankingNacional" autocomplete="off" max="900" required>
+    <input class="form-control" type="number" min="0" id="rankingNacional" name="rankingNacional" pattern="^(?!900\.(?:00)?[1-9])(?!0*(?:\.0+)?$)([0-8]?\d{0,2}|900)(?:\.\d{1,2})?$" autocomplete="off" max="900" required>
     <div class="valid-feedback">
         ¡Correcto!
     </div>
