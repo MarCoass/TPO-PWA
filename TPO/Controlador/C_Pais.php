@@ -1,23 +1,22 @@
 <?php
-include_once '../Modelo/Estado.php';
+include_once '../Modelo/Pais.php';
 
-class C_Estado
+class C_Pais
 {
 
     /**
      * Espera como parametro un arreglo asociativo donde las claves coinciden con los nombre de las variables instancias del objeto
      * @param array $param
-     * @return Estado
+     * @return Pais
      */
     private function cargarObjeto($param)
     {
         $obj = null;
         if (array_key_exists('id', $param)) {
-            $obj = new Estado();
+            $obj = new Pais();
             $obj->cargar(
                 $param['id'],
-                $param['ubicacionpaisid'],
-                $param['estadonombre'],
+                $param['paisnombre'],
             );
         }
         return $obj;
@@ -33,8 +32,8 @@ class C_Estado
     {
         $obj = null;
         if (isset($param['id'])) {
-            $obj = new Estado();
-            $obj->cargar($param['id'], null, null);
+            $obj = new Pais();
+            $obj->cargar($param['id'], null);
         }
         return $obj;
     }
@@ -116,12 +115,10 @@ class C_Estado
             $where .= '';
             if (isset($param['id']))
                 $where .= " and id ='" . $param['id'] . "'";
-            if (isset($param['ubicacionpaisid']))
-                $where .= " and ubicacionpaisid ='" . $param['ubicacionpaisid'] . "'";
-            if (isset($param['estadonombre']))
-                $where .= " and estadonombre ='" . $param['estadonombre'] . "'";
+            if (isset($param['paisnombre']))
+                $where .= " and paisnombre ='" . $param['paisnombre'] . "'";
         }
-        $obj = new Estado();
+        $obj = new Pais();
         $arreglo = $obj->listar($where);
 
         return $arreglo;
