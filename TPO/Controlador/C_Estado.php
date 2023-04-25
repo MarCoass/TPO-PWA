@@ -1,5 +1,5 @@
 <?php
-include_once '../Modelo/Estado.php';
+/* include_once '../Modelo/Estado.php'; */
 
 class C_Estado
 {

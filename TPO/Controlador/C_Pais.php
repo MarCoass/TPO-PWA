@@ -1,5 +1,5 @@
 <?php
-include_once '../Modelo/Pais.php';
+/* include_once '../Modelo/Pais.php'; */
 
 class C_Pais
 {
@@ -120,7 +120,6 @@ class C_Pais
         }
         $obj = new Pais();
         $arreglo = $obj->listar($where);
-
         return $arreglo;
     }
 }

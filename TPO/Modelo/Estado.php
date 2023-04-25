@@ -1,11 +1,13 @@
 <?php
-include_once '../Modelo/Conector/BaseDatos.php';
+/* include_once '../Modelo/Conector/BaseDatos.php'; */
 class Estado
 {
-    private $estadonombre;
-    private $ubicacionpaisestado;
-    private $id;
-    private $mensaje;
+    /* los pase a public para que json_encode me los traduzca */
+
+    public $estadonombre;
+    public $ubicacionpaisestado;
+    public $id;
+    public $mensaje;
 
     public function __construct()
     {

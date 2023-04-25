@@ -1,10 +1,12 @@
 <?php
-include_once '../Modelo/Conector/BaseDatos.php';
+/* include_once '../Modelo/Conector/BaseDatos.php'; */
 class Pais
 {
-    private $paisnombre;
-    private $id;
-    private $mensaje;
+
+    /* los pase a public para que json_encode me los traduzca */
+    public $paisnombre;
+    public $id;
+    public $mensaje;
 
     public function __construct()
     {
@@ -66,7 +68,7 @@ class Pais
     public function buscar($id) {
         $base = new BaseDatos();
         $resp = false;
-        $sql = "SELECT * FROM Pais WHERE id = '" . $id . "'";
+        $sql = "SELECT * FROM pais WHERE id = '" . $id . "'";
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 if ($row = $base->Registro()) {
@@ -89,7 +91,7 @@ class Pais
     {
         $array = null;
         $base = new BaseDatos();
-        $sql =  "select * from Pais";
+        $sql =  "select * from pais";
         if ($condicion != '') {
             $sql = $sql . ' where ' . $condicion;
         }
@@ -121,7 +123,7 @@ class Pais
     $paisnombre = $this->getpaisnombre();
     
     // Creo la consulta
-    $sql = "INSERT INTO Pais (id, paisnombre) 
+    $sql = "INSERT INTO pais (id, paisnombre) 
             VALUES ('{$id}', '{$paisnombre}')";
     if ($base->Iniciar()) {
         if ($base->Ejecutar($sql)) {
@@ -144,7 +146,7 @@ class Pais
         $resp = false;
         $id = $this->getid();
         $paisnombre = $this->getpaisnombre();
-        $sql = "UPDATE Pais SET paisnombre = '{$paisnombre}' WHERE id = '{$id}'";
+        $sql = "UPDATE pais SET paisnombre = '{$paisnombre}' WHERE id = '{$id}'";
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 $resp = true;
@@ -163,7 +165,7 @@ class Pais
     {
         $base = new BaseDatos();
         $rta = false;
-        $consulta = "DELETE FROM Pais WHERE id = " . $this->getid();
+        $consulta = "DELETE FROM pais WHERE id = " . $this->getid();
         if ($base->Iniciar()) {
             if ($base->Ejecutar($consulta)) {
                 $rta = true;

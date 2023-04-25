@@ -1,4 +1,4 @@
-<?php include_once('./estructura/header.php') ?>
+<?php /*  include_once('./estructura/header.php')  */?>
 
 <style>
 #paises {
@@ -31,6 +31,7 @@
     </div>
 </form>
 
-<script src="../util/js/cargarPaisesForm.js"></script>
+<!-- <script src="../util/js/cargarPaisesForm.js"></script> -->
+<script src="../util/js/consulta.js"></script>
 
-<?php include_once('./estructura/footer.php') ?>
+<?php /* include_once('./estructura/footer.php') */ ?>

@@ -1,5 +1,5 @@
 <?php
-include_once '../Modelo/Competidor.php';
+/* include_once '../Modelo/Competidor.php'; */
 
 class C_Competidor
 {

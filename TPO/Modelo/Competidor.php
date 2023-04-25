@@ -1,18 +1,19 @@
 <?php
-include_once '../Modelo/Conector/BaseDatos.php';
+/* include_once '../Modelo/Conector/BaseDatos.php'; */
 class Competidor
 {
-    private $legajo;
-    private $apellido;
-    private $nombre;
-    private $du;
-    private $fechaNacimiento;
-    private $estadoOrigen;
-    private $graduacion;
-    private $rankingNacional;
-    private $email;
-    private $genero;
-    private $mensaje;
+    /* los pase a public para que json_encode me los traduzca */
+    public $legajo;
+    public $apellido;
+    public $nombre;
+    public $du;
+    public $fechaNacimiento;
+    public $estadoOrigen;
+    public $graduacion;
+    public $rankingNacional;
+    public $email;
+    public $genero;
+    public $mensaje;
 
     public function __construct()
     {
