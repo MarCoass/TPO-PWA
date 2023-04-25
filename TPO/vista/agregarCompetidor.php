@@ -9,16 +9,16 @@
             <div class="modal-body">
                 <div class="row" style="overflow: hidden;">
                     <div class="col-4 align-self-start my-1 d-md-block">
-                        <img src="../util/img/form-foto.png" class="img-form rounded" style="width: 100%; height: 400px; object-fit: cover;">
+                        <img src="../util/img/form-foto.png" class="img-form rounded" style="width: 100%; height: 480px; object-fit: cover;">
                     </div>
                     <div class="col-md-8 position-relative">
-                        <div class="nav justify-content-center">
-                            <div class="nav-link active" id="link1" data-bs-toggle="tab" data-bs-target="#paso1">
-                                <span class="fs-1"><i class="bi bi-1-square"></i></span>
-                            </div>
-                            <span class="mx-3"></span>
-                            <div class="nav-link" id="link2" data-bs-toggle="tab" data-bs-target="#paso2">
-                                <span class="fs-1"><i class="bi bi-2-square"></i></span>
+                        <div class="mx-auto" style="width: 350px">
+                            <div class="position-relative m-4">
+                                <div class="progress" style="height: 5px;">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <button type="button" onclick="showTab('paso1', 0, 'cambiar')" class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-primary rounded-pill" style="width: 2rem; height: 2rem;">1</button>
+                                <button type="button" onclick="showTab('paso2', 100, '')" id="botonForm2" class="position-absolute top-0 start-100 translate-middle btn btn-sm btn-secondary rounded-pill" style="width: 2rem; height: 2rem;">2</button>
                             </div>
                         </div>
                         <form id="cargaParticipante" class="needs-validation" novalidate> <!-- INICIO FORM -->

@@ -17,7 +17,7 @@
 </div>
 
 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 pt-3">
-    <label class="form-label" for="dni">DNI:</label>
+    <label class="form-label" for="dni">DU:</label>
     <input class="form-control " type="text" name="dni" id="dni" pattern="[0-9]{8}" autocomplete="off" maxlength="8" placeholder="Ej: 23456789" required>
     <div class="valid-feedback">
         ¡Correcto!
@@ -69,7 +69,7 @@
 </div>
 
 <div class="my-3 ml-3 row justify-content-center">
-    <button type="button" class="btn btn-outline-primary col-md-4 col-sm-6 col-xs-8" onclick="showTab('paso2', 'link2', 'link1')">
+    <button type="button" class="btn btn-outline-primary col-md-4 col-sm-6 col-xs-8" onclick="showTab('paso2', 100, '')">
         <i class="bi bi-arrow-right me-2"></i>Siguiente
     </button>
 </div>

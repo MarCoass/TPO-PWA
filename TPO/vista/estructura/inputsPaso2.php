@@ -28,7 +28,7 @@
 </div>
 
 <div class="my-3 ml-3 row justify-content-center">
-    <button type="button" class="btn btn-outline-primary col-md-4 col-sm-6 col-xs-8 me-2" onclick="showTab('paso1', 'link1', 'link2')">
+    <button type="button" class="btn btn-outline-primary col-md-4 col-sm-6 col-xs-8 me-2" onclick="showTab('paso1', 0, 'cambiar')">
         <i class="bi bi-arrow-left me-2"></i>Volver
     </button>
     <button type="submit" class="btn btn-outline-success col-md-4 col-sm-6 col-xs-8">

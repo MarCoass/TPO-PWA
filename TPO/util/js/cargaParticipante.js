@@ -108,7 +108,7 @@ function obtenerValoresInputs() {
 }
 
 /* ########################################################## CAMBIAR TABS FORMULARIO ############################################################ */
-function showTab(tabId, link1, link2) {
+function showTab(tabId, valorProgreso, cambiarAviso) {
     // Obtener el tab actual
     var currentTab = document.querySelector('.tab-pane.active');
 
@@ -121,9 +121,18 @@ function showTab(tabId, link1, link2) {
     newTab.classList.add('active');
     newTab.classList.add('show');
 
-    // Actualizar los nav-links
-    var enlace1 = document.getElementById(link1);
-    enlace1.classList.add('active');
-    var enlace2 = document.getElementById(link2);
-    enlace2.classList.remove('active');
+    // Avanzar o retrasaar progress bar
+    var progressBar = $('.progress-bar');
+    progressBar.animate({ 'aria-valuemax': valorProgreso, 'width': valorProgreso + '%' }, 250);
+
+    // Cambia el color del 2do botón
+    if (cambiarAviso == "cambiar") {
+        $("#botonForm2")
+            .removeClass('btn-primary')
+            .addClass('btn-secondary');
+    } else {
+        $("#botonForm2")
+            .removeClass('btn-secondary')
+            .addClass('btn-primary');
+    }
 }
