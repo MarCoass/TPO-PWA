@@ -7,7 +7,6 @@ class Competidor
     private $nombre;
     private $du;
     private $fechaNacimiento;
-    private $paisOrigen;
     private $estadoOrigen;
     private $graduacion;
     private $rankingNacional;
@@ -21,7 +20,6 @@ class Competidor
         $this->legajo = "";
         $this->du = "";
         $this->fechaNacimiento = "";
-        $this->paisOrigen = "";
         $this->estadoOrigen = "";
         $this->graduacion = "";
         $this->rankingNacional = "";
@@ -30,14 +28,13 @@ class Competidor
         $this->mensaje = "";
     }
 
-    public function cargar($nombre, $apellido, $du, $fechaNacimiento, $legajo, $paisOrigen, $estadoOrigen, $graduacion, $rankingNacional, $email, $genero)
+    public function cargar($nombre, $apellido, $du, $fechaNacimiento, $legajo, $estadoOrigen, $graduacion, $rankingNacional, $email, $genero)
     {
         $this->setLegajo($legajo);
         $this->setApellido($apellido);
         $this->setNombre($nombre);
         $this->setDu($du);
         $this->setFechaNacimiento($fechaNacimiento);
-        $this->setPaisOrigen($paisOrigen);
         $this->setEstadoOrigen($estadoOrigen);
         $this->setGraduacion($graduacion);
         $this->setRankingNacional($rankingNacional);
@@ -102,16 +99,6 @@ class Competidor
         $this->fechaNacimiento = $fechaNacimiento;
     }
 
-    public function getPaisOrigen()
-    {
-        return $this->paisOrigen;
-    }
-
-
-    public function setPaisOrigen($paisOrigen)
-    {
-        $this->paisOrigen = $paisOrigen;
-    }
     public function getGraduacion()
     {
         return $this->graduacion;
@@ -172,7 +159,6 @@ class Competidor
             "\ndu: " . $this->getDu() .
             "\nlegaoj: " . $this->getLegajo() .
             "\nfechaNacimiento: " . $this->getFechaNacimiento() .
-            "\npaisOrigen: " . $this->getPaisOrigen() .
             "\nestadoOrigen: " . $this->getEstadoOrigen() .
             "\ngraduacion: " . $this->getGraduacion() .
             "\nrankingNacional: " . $this->getRankingNacional() .
@@ -198,9 +184,6 @@ class Competidor
                     $this->setFechaNacimiento($row['fechaNacimiento']);
 
                     //Creo un objeto para buscar al id y setear el objeto
-                    $pais = new Pais();
-                    $pais->buscar($row['id']);
-                    $this->setPaisOrigen($pais);
                     $estado = new Estado();
                     $estado->buscar($row['id']);
                     $this->setEstadoOrigen($estado);
@@ -262,15 +245,14 @@ class Competidor
         $nombre = $this->getNombre();
         $du = $this->getDu();
         $fechaNacimiento = $this->getFechaNacimiento();
-        $paisOrigen = $this->getPaisOrigen();
         $estadoOrigen = $this->getEstadoOrigen();
         $graduacion = $this->getGraduacion();
         $rankingNacional = $this->getRankingNacional();
         $email = $this->getEmail();
         $genero = $this->getGenero();
         // Creo la consulta
-        $sql = "INSERT INTO Competidores (du, legajo, nombre, apellido, fechaNacimiento, paisOrigen, estadoOrigen, graduacion, rankingNacional, email, genero) 
-            VALUES ('{$du}', '{$legajo}', '{$nombre}','{$apellido}', '{$fechaNacimiento}', '{$paisOrigen}','{$estadoOrigen}', '{$graduacion}', '{$rankingNacional}', '{$email}', '{$genero}')";
+        $sql = "INSERT INTO Competidores (du, legajo, nombre, apellido, fechaNacimiento, estadoOrigen, graduacion, rankingNacional, email, genero) 
+            VALUES ('{$du}', '{$legajo}', '{$nombre}','{$apellido}', '{$fechaNacimiento}','{$estadoOrigen}', '{$graduacion}', '{$rankingNacional}', '{$email}', '{$genero}')";
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 $resp = true;
@@ -295,14 +277,13 @@ class Competidor
         $apellido = $this->getApellido();
         $nombre = $this->getNombre();
         $fechaNacimiento = $this->getFechaNacimiento();
-        $paisOrigen = $this->getPaisOrigen();
         $estadoOrigen = $this->getEstadoOrigen();
         $graduacion = $this->getGraduacion();
         $rankingNacional = $this->getRankingNacional();
         $email = $this->getEmail();
         $genero = $this->getGenero();
 
-        $sql = "UPDATE Competidores SET legajo = '{$legajo}', apellido = '{$apellido}', nombre = '{$nombre}', fechaNacimiento = '{$fechaNacimiento}', paisOrigen = '{$paisOrigen}', estadoOrigen = '{$estadoOrigen}',  graduacion = '{$graduacion}', rankingNacional = '{$rankingNacional}', email = '{$email}', genero = '{$genero}' WHERE du = '{$du}'";
+        $sql = "UPDATE Competidores SET legajo = '{$legajo}', apellido = '{$apellido}', nombre = '{$nombre}', fechaNacimiento = '{$fechaNacimiento}', estadoOrigen = '{$estadoOrigen}',  graduacion = '{$graduacion}', rankingNacional = '{$rankingNacional}', email = '{$email}', genero = '{$genero}' WHERE du = '{$du}'";
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 $resp = true;

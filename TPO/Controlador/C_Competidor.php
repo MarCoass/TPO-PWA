@@ -19,6 +19,7 @@ class C_Competidor
                 $param['apellido'],
                 $param['nombre'],
                 $param['fechaNacimiento'],
+                $param['legajo'],
                 $param['paisOrigen'],
                 $param['graduacion'],
                 $param['rankingNacional'],
@@ -40,7 +41,7 @@ class C_Competidor
         $obj = null;
         if (isset($param['du'])) {
             $obj = new Competidor();
-            $obj->cargar($param['du'], null, null, null, null, null, null, null, null);
+            $obj->cargar($param['du'], null, null, null, null, null, null, null, null, null);
         }
         return $obj;
     }

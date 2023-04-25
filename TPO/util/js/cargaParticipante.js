@@ -51,7 +51,7 @@ function validarFormulario(form) {
 
             $.ajax({
                 type: "POST",
-                url: "../Acciones/guardarCompetidor.php", // archivo PHP que guardará los datos
+                url: "./Acciones/guardarCompetidor.php", // archivo PHP que guardará los datos
                 data: { nuevoCompetidor },
                 success: function (response) {
                     console.log(response);
