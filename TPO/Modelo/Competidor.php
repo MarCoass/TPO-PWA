@@ -164,7 +164,6 @@ class Competidor
     public function setEstadoOrigen($estadoOrigen)
     {
         $this->estadoOrigen = $estadoOrigen;
-
     }
     public function __toString()
     {
@@ -184,7 +183,8 @@ class Competidor
     //Funciones BD
 
     //BUSCAR
-    public function buscar($du) {
+    public function buscar($du)
+    {
         $base = new BaseDatos();
         $resp = false;
         $sql = "SELECT * FROM Competidores WHERE du = '" . $du . "'";
@@ -196,13 +196,22 @@ class Competidor
                     $this->setNombre($row['nombre']);
                     $this->setDu($row['du']);
                     $this->setFechaNacimiento($row['fechaNacimiento']);
-                    $this->setPaisOrigen($row['paisOrigen']);
+
+                    //Creo un objeto para buscar al id y setear el objeto
+                    $pais = new Pais();
+                    $pais->buscar($row['id']);
+                    $this->setPaisOrigen($pais);
+                    $estado = new Estado();
+                    $estado->buscar($row['id']);
+                    $this->setEstadoOrigen($estado);
+
+
                     $this->setEstadoOrigen($row['estadoOrigen']);
                     $this->setGraduacion($row['graduacion']);
                     $this->setRankingNacional($row['rankingNacional']);
                     $this->setEmail($row['email']);
                     $this->setGenero($row['genero']);
-    
+
                     $resp = true;
                 }
             } else {
@@ -213,7 +222,7 @@ class Competidor
         }
         return $resp;
     }
-    
+
 
     //LISTAR
     public function listar($condicion = '')
@@ -244,37 +253,37 @@ class Competidor
 
     //INSERTAR
     public function insertar()
-{
-    $base = new BaseDatos();
-    $resp = false;
-    // Asigno los datos a variables
-    $legajo = $this->getLegajo();
-    $apellido = $this->getApellido();
-    $nombre = $this->getNombre();
-    $du = $this->getDu();
-    $fechaNacimiento = $this->getFechaNacimiento();
-    $paisOrigen = $this->getPaisOrigen();
-    $estadoOrigen = $this->getEstadoOrigen();
-    $graduacion = $this->getGraduacion();
-    $rankingNacional = $this->getRankingNacional();
-    $email = $this->getEmail();
-    $genero = $this->getGenero();
-    // Creo la consulta
-    $sql = "INSERT INTO Competidores (du, legajo, nombre, apellido, fechaNacimiento, paisOrigen, estadoOrigen, graduacion, rankingNacional, email, genero) 
+    {
+        $base = new BaseDatos();
+        $resp = false;
+        // Asigno los datos a variables
+        $legajo = $this->getLegajo();
+        $apellido = $this->getApellido();
+        $nombre = $this->getNombre();
+        $du = $this->getDu();
+        $fechaNacimiento = $this->getFechaNacimiento();
+        $paisOrigen = $this->getPaisOrigen();
+        $estadoOrigen = $this->getEstadoOrigen();
+        $graduacion = $this->getGraduacion();
+        $rankingNacional = $this->getRankingNacional();
+        $email = $this->getEmail();
+        $genero = $this->getGenero();
+        // Creo la consulta
+        $sql = "INSERT INTO Competidores (du, legajo, nombre, apellido, fechaNacimiento, paisOrigen, estadoOrigen, graduacion, rankingNacional, email, genero) 
             VALUES ('{$du}', '{$legajo}', '{$nombre}','{$apellido}', '{$fechaNacimiento}', '{$paisOrigen}','{$estadoOrigen}', '{$graduacion}', '{$rankingNacional}', '{$email}', '{$genero}')";
-    if ($base->Iniciar()) {
-        if ($base->Ejecutar($sql)) {
-            $resp = true;
+        if ($base->Iniciar()) {
+            if ($base->Ejecutar($sql)) {
+                $resp = true;
+            } else {
+                $this->setMensaje($base->getError());
+            }
         } else {
             $this->setMensaje($base->getError());
         }
-    } else {
-        $this->setMensaje($base->getError());
+        return $resp;
     }
-    return $resp;
-}
 
-    
+
 
     //MODIFICAR
     public function modificar()
@@ -292,7 +301,7 @@ class Competidor
         $rankingNacional = $this->getRankingNacional();
         $email = $this->getEmail();
         $genero = $this->getGenero();
-        
+
         $sql = "UPDATE Competidores SET legajo = '{$legajo}', apellido = '{$apellido}', nombre = '{$nombre}', fechaNacimiento = '{$fechaNacimiento}', paisOrigen = '{$paisOrigen}', estadoOrigen = '{$estadoOrigen}',  graduacion = '{$graduacion}', rankingNacional = '{$rankingNacional}', email = '{$email}', genero = '{$genero}' WHERE du = '{$du}'";
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
@@ -305,7 +314,7 @@ class Competidor
         }
         return $resp;
     }
-    
+
 
     //ELIMINAR
     public function eliminar()
@@ -324,6 +333,4 @@ class Competidor
         }
         return $rta;
     }
-
-  
 }
