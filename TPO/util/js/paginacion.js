@@ -15,10 +15,10 @@ function obtenerGenero(generoCompetidor) {
   icono = "";
   switch (generoCompetidor.toLowerCase()) {
     case "masculino":
-      icono += "<svg xmlns='http://www.w3.org/2000/svg' data-bs-toggle='tooltip' title='Masculino' width='16' height='16' fill='currentColor' class='bi bi-gender-male' viewBox='0 0 16 16'><path fill-rule='evenodd' d='M9.5 2a.5.5 0 0 1 0-1h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0V2.707L9.871 6.836a5 5 0 1 1-.707-.707L13.293 2H9.5zM6 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8z'/></svg>";
+      icono += "<i class='bi bi-gender-male' data-bs-toggle='tooltip' title='Masculino'></i>";
       break;
     case "femenino":
-      icono += "<svg xmlns='http://www.w3.org/2000/svg' data-bs-toggle='tooltip' title='Femenino' width='16' height='16' fill='currentColor' class='bi bi-gender-female' viewBox='0 0 16 16'><path fill-rule='evenodd' d='M8 1a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM3 5a5 5 0 1 1 5.5 4.975V12h2a.5.5 0 0 1 0 1h-2v2.5a.5.5 0 0 1-1 0V13h-2a.5.5 0 0 1 0-1h2V9.975A5 5 0 0 1 3 5z'/></svg>"
+      icono += "<i class='bi bi-gender-female' data-bs-toggle='tooltip' title='Femenino'></i>"
       break;
   }
 
@@ -94,9 +94,7 @@ $(function () {
         celdaGraduacion.innerHTML = botonGraduacion;
 
         const celdaRanking = nuevaFila.insertCell();
-        const contenidoRanking =
-          '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-award me-2" viewBox="0 0 16 16"><path d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68L9.669.864zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702 1.509.229z"/><path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"/></svg>' +
-          competidor.rankingNacional;
+        const contenidoRanking = "<i class='bi bi-award me-1'></i>" + competidor.rankingNacional;
         celdaRanking.innerHTML = contenidoRanking;
       });
 

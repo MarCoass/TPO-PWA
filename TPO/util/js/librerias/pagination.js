@@ -327,7 +327,7 @@
                 sizeChangerOptions.sort((a, b) => a - b);
               }
               for (let i = 0; i < sizeChangerOptions.length; i++) {
-                sizeSelect += `<option value="${sizeChangerOptions[i]}"${(sizeChangerOptions[i] === pageSize ? ' selected' : '')}>${sizeChangerOptions[i]} / page</option>`;
+                sizeSelect += `<option value="${sizeChangerOptions[i]}"${(sizeChangerOptions[i] === pageSize ? ' selected' : '')}>${sizeChangerOptions[i]} / Páginas</option>`;
               }
               sizeSelect += `</select>`;
               formattedString = sizeSelect;
