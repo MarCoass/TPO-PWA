@@ -28,8 +28,6 @@ html {
   min-height: 100%;
 }
 
-
-
 .bg-seccion2 {
   background: #ff512f;
   background: radial-gradient(circle, #dd2476 0%, #ff512f 100%);
@@ -58,7 +56,6 @@ html {
   border-radius: 1em;
   padding: 1em;
 }
-
 
 /* estilos cuando se achica la pantalla */
 @media (max-width: 480px) {
@@ -92,20 +89,19 @@ html {
   #footer {
     z-index: -5;
   }
-
 }
 
 .anchoTabDesp {
   width: 350px;
 }
 
-.overflowForm{
+.overflowForm {
   overflow: hidden;
 }
 
 .imgSideForm {
-  height: 100%; 
-  width: 100%; 
+  height: 100%;
+  width: 100%;
   object-fit: contain;
 }
 
@@ -115,4 +111,21 @@ html {
 
 .noUserSelect {
   user-select: none;
+}
+
+/* CARDS FAKE */
+.parpadear {
+  animation: parpadeo 1s linear infinite;
+}
+
+@keyframes parpadeo {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
