@@ -66,7 +66,7 @@
 <div class="row mb-5">
     <div class="col-12">
         <div class="d-flex align-items-center mx-3 py-3">
-            <button type="submit" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#modalFormCompetidor">
+            <button type="submit" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalFormCompetidor">
                 <i class="bi bi-person-plus me-2"></i>Agregar Competidor
             </button>
             <div class="d-flex ms-auto">
