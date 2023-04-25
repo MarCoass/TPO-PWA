@@ -20,10 +20,6 @@
     <!-- Estilos Propios -->
     <link rel="stylesheet" href="../util/css/style.css">
 
-    <script src="../util/js/librerias/pagination.js"></script>
-    <link rel="stylesheet" href="../util/css/pagination.css">
-
-
 </head>
 
 <body class="transicion">

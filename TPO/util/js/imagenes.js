@@ -77,5 +77,5 @@ $(document).ready(function () {
     setTimeout(function () {
         $("#contenedorImagenesFake").addClass('d-none');
         $("#contenedorImagenes").removeClass('d-none');
-    }, 1500);
+    }, 3000);
 });
