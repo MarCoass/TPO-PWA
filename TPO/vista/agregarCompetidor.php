@@ -25,12 +25,12 @@
                             <div class="tab-content">
                                 <div class="tab-pane fade show active" id="paso1"> <!-- INICIO CONTENIDO PASO 1 -->
                                     <div class="row">
-                                        <?php include_once("./inputsPaso1.php") ?>
+                                        <?php include_once("./estructura/inputsPaso1.php") ?>
                                     </div>
                                 </div> <!-- FIN CONTENIDO PASO 1 -->
                                 <div class="tab-pane fade" id="paso2"> <!-- INICIO CONTENIDO PASO 2 -->
                                     <div class="row">
-                                        <?php include_once("./inputsPaso2.php") ?>
+                                        <?php include_once("./estructura/inputsPaso2.php") ?>
                                     </div>
                                 </div> <!-- FIN CONTENIDO PASO 2 -->
                             </div>
