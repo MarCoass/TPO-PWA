@@ -1,6 +1,5 @@
 <?php
-/* include_once '../Modelo/Conector/BaseDatos.php'; */
-include_once 'Conector/BaseDatos.php';
+include_once '../Modelo/Conector/BaseDatos.php';
 class Pais
 {
     private $paisnombre;
@@ -177,7 +176,7 @@ class Pais
         return $rta;
     }
 }
-
+/* para testear consulta a bd
 $neu = new Pais;
 
-print_r($neu->listar());
+print_r($neu->listar()); */
