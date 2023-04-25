@@ -48,8 +48,6 @@
 <script src="../util/js/atajosRapidosDOM.js"></script>
 <script src="../util/js/cambioTemaDOM.js"></script>
 
-<script src="../util/js/cargarOpcionesForm.js"></script>
-
 <!-- js seccion 1 -->
 <script src="../util/js/botonCuentaRegresiva.js"></script>
 
@@ -60,10 +58,8 @@
 <link rel="stylesheet" href="../util/css/pagination.css">
 
 <!-- js seccion 4 -->
-<script src="../util/js/claseCompetidor.js"></script>
+<script src="../util/js/cargarOpcionesForm.js"></script>
 <script src="../util/js/cargaParticipante.js"></script>
-<script src="../util/js/bs-form-validator.js"></script>
-
 
 <!-- js seccion 6 -->
 <script src="../util/js/imagenes.js"></script>

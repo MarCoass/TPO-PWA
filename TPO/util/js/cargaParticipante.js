@@ -1,10 +1,9 @@
-/* ########################################################## OBTENCIÓN COMPETIDORES ############################################################3 */
 /* Establece la fecha max de la inscripcion */
 var fechaActual = new Date();
 var fechaMaxima = new Date(fechaActual.getFullYear() - 6, fechaActual.getMonth(), fechaActual.getDate()).toISOString().split("T")[0];
 document.getElementById("fechaNacimiento").max = fechaMaxima;
 
-/* ########################################################## CARGA PARTICIPANTE ############################################################3 */
+/* ########################################################## CARGA PARTICIPANTE ############################################################ */
 // Obtenemos el formulario por su ID
 const form = document.getElementById('cargaParticipante');
 
@@ -19,39 +18,21 @@ form.addEventListener('submit', (event) => {
     if (todosValidados) {
         nuevoCompetidor = obtenerValoresInputs();
 
-        // CREAMOS EL OBJETO CONTROL 
-        var controlCompetidor = new ControlCompetidor();
-        // RECIBE POR PARÁMETRO LOS DATOS VALIDADOS POR EL FORM, RETORNARA UNA ESTRUCTURA HTML CON LA INFO DEL COMPETIDOR SI ES QUE TODO ESTA BIEN
-        // EN CASO DE QUE ALGÚN DATO SEA ERRONEO RETORNARA UNA ESTRUCTURA LISTANDO TODOS LOS ERRORES ENCONTRADOS
-        estructuraRetorno = controlCompetidor.crearCompetidor(nuevoCompetidor);
+        $.ajax({
+            type: "POST",
+            url: "../Acciones/guardarCompetidor.php", // archivo PHP que guardará los datos
+            data: { nuevoCompetidor },
+            success: function (response) {
+                console.log(response);
+            }
+        });
 
-        var miModal = document.querySelector('#modalForm');
+        /*var miModal = document.querySelector('#modalForm');
         var modal = new bootstrap.Modal(miModal);
 
         $("#cuerpoModal").html(estructuraRetorno);
 
-        modal.show();
-
-        // Obtenemos los datos actuales del archivo JSON
-        $.getJSON("../util/json/competidoresGuardados.json", function (datos) {
-            // Agregamos el nuevo objeto al final del arreglo
-            datos.unshift(nuevoCompetidor);
-
-            // Convertimos los datos a formato JSON
-            var datosJSON = JSON.stringify(datos);
-
-            // Guardamos los datos en el archivo JSON
-            $.ajax({
-                type: "POST",
-                url: "guardarCompetidores.php", // archivo PHP que guardará los datos
-                data: {
-                    datos: datosJSON
-                },
-                success: function () {
-                    console.log("Datos guardados correctamente");
-                }
-            });
-        });
+        modal.show();*/
     }
 });
 
@@ -83,7 +64,39 @@ function obtenerValoresInputs() {
     };
 }
 
-/* ########################################################## CAMBIAR TABS FORMULARIO ############################################################3 */
+/* ########################################################## APLICAR CLASES VALID OR INVALID BOOTSTRAP ############################################################ */
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+    'use strict'
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                /* 
+                    Cuando se invoca el método checkValidity (), si el elemento es candidato para la validación de restricciones y no satisface sus restricciones, 
+                    el agente de usuario debe disparar un evento simple llamado inválido que es cancelable (pero en este caso no tiene una acción predeterminada) 
+                    en el elemento y devuelve falso. De lo contrario, solo debe volver a verdadero sin hacer nada más.
+                */
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+                form.classList.add('was-validated')
+            }, false)
+            /* se añade al boton limpiar una funcion que remueve la clase was-validated del form para que vuelva a su estilo inicial*/
+            form.addEventListener('reset', function () {
+                form.classList.remove('was-validated')
+            }, false)
+        })
+})()
+
+
+
+/* ########################################################## CAMBIAR TABS FORMULARIO ############################################################ */
 function showTab(tabId, link1, link2) {
     // Obtener el tab actual
     var currentTab = document.querySelector('.tab-pane.active');
