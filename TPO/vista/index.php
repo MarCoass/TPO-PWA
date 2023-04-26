@@ -1,12 +1,12 @@
 <?php include_once("./estructura/header.php") ?>
 
-<div class="row p-3 text-light bg-seccion2 mb-5">
+<div class="row p-3 text-light bg-seccion2 mb-5" id="seccion1">
     <div class="text-center">
         <span class="display-5">Seccion 1 </span>
     </div>
 </div>
 
-<div class="row text-center my-3">
+<div class="row text-center my-3 ">
     <div class="col-12">
         <button id="startButton" onclick="startCountdown()" type="button" class="btn btn-outline-success btn-lg me-2">
             <i class="bi bi-play me-1"></i>Iniciar
@@ -19,9 +19,9 @@
         </button>
     </div>
     <div class="col-12 mt-3">
-        <p id="inicio"><span id="countdown">90</span> Segundos</p>
-        <p id="pasado" class="d-none text-danger"><span id="countup">0</span> OVERTIME</p>
-        <p id="final" class="d-none text-success"><span id="total"></span> Segundos Totales</p>
+        <p id="inicio" class="textoContador"><span id="countdown">90</span> Segundos</p>
+        <p id="pasado" class="d-none text-danger textoContador"><span id="countup">0</span> OVERTIME</p>
+        <p id="final" class="d-none text-success textoContador"><span id="total"></span> Segundos Totales</p>
     </div>
 </div>
 <!-- 
@@ -34,7 +34,7 @@
 
 
  -->
-<div class="row p-3 text-light bg-seccion2 mb-5">
+<div class="row p-3 text-light bg-seccion2 mb-5"  id="seccion2">
     <div class="text-center">
         <span class="display-5">Seccion 2 </span>
     </div>
@@ -55,7 +55,7 @@
 
 
  -->
-<div class="row p-3 text-light bg-seccion2  mb-3">
+<div class="row p-3 text-light bg-seccion2  mb-3"  id="seccion3">
     <div class="text-center">
         <span class="display-5">Seccion 3 - Lista de Competidores Registrados</span>
     </div>
@@ -119,7 +119,7 @@
 
 
  -->
-<div class="row p-3 text-light bg-seccion2">
+<div class="row p-3 text-light bg-seccion2"  id="seccion4">
     <div class="text-center">
         <span class="display-5">Imágenes Random</span>
     </div>
