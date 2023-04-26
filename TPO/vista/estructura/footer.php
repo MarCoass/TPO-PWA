@@ -1,6 +1,6 @@
-<div class="bg-danger row d-flex">
+<div class="bg-danger row d-flex" id="footer">
     <section class="mt-3" style="user-select: none;">
-        <footer class="text-center text-white bg-danger">
+        <footer class="text-center text-white" >
             <div class="container">
                 <div class="row text-center">
                     <div class="col">
