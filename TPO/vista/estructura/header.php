@@ -23,7 +23,7 @@
 </head>
 
 <body class="transicion">
-    <header>
+    <header class="sticky-top border-bottom border-danger border-2">
         <div>
             <nav id="menuHamburguesa" class="navbar navbar-expand-xxxl p-3  text-bg-light">
 
