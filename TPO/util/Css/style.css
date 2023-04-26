@@ -129,3 +129,18 @@ html {
     opacity: 1;
   }
 }
+
+
+/* estilos para cronometro */
+@import url('https://fonts.cdnfonts.com/css/digital-7-mono');
+.bg-cronometro {
+  background: rgb(138, 155, 138);
+  border-radius: 4em;
+}
+.bg-cronometro p {
+  font-size: 2em;
+  font-weight: bolder;
+}
+.textoContador {
+  font-family: 'Digital-7 Mono', sans-serif;
+}

@@ -6,7 +6,7 @@
     </div>
 </div>
 
-<div class="row text-center my-3 ">
+<div class="row text-center my-3 justify-content-center">
     <div class="col-12">
         <button id="startButton" onclick="startCountdown()" type="button" class="btn btn-outline-success btn-lg me-2">
             <i class="bi bi-play me-1"></i>Iniciar
@@ -18,7 +18,7 @@
             <i class="bi bi-arrow-clockwise me-1"></i></i>Reiniciar
         </button>
     </div>
-    <div class="col-12 mt-3">
+    <div class="col-6 mt-3 bg-cronometro">
         <p id="inicio" class="textoContador"><span id="countdown">90</span> Segundos</p>
         <p id="pasado" class="d-none text-danger textoContador"><span id="countup">0</span> OVERTIME</p>
         <p id="final" class="d-none text-success textoContador"><span id="total"></span> Segundos Totales</p>
@@ -66,7 +66,8 @@
 <div class="row mb-5">
     <div class="col-12">
         <div class="d-flex align-items-center mx-3 py-3">
-            <button type="submit" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalFormCompetidor">
+            <label for="botonAgregarCompetidor">Seccion 5</label>
+            <button id="botonAgregarCompetidor" type="submit" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalFormCompetidor">
                 <i class="bi bi-person-plus me-2"></i>Agregar Competidor
             </button>
             <div class="d-flex ms-auto">

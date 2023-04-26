@@ -17,8 +17,12 @@
     <!-- Bootstrap Icons v1.10.4 -->
     <link rel="stylesheet" href="../util/bootstrap-5.2.3/bootstrap-icons-1.10.4/bootstrap-icons.css">
 
+    <!-- una font digital para cronometro -->
+    <link href="https://fonts.cdnfonts.com/css/digital-7-mono" rel="stylesheet">
+
     <!-- Estilos Propios -->
     <link rel="stylesheet" href="../util/css/style.css">
+
 
 </head>
 
