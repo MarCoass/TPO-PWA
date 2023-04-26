@@ -8,7 +8,7 @@
             </div>
             <div class="modal-body">
                 <div class="row" style="overflow: hidden;">
-                    <div class="col-4 align-self-start my-1 d-md-block">
+                    <div class="col-4 align-self-start my-1 d-none d-md-block">
                         <img src="../util/img/form-foto.png" class="img-form rounded" style="width: 100%; height: 480px; object-fit: cover;">
                     </div>
                     <div class="col-md-8 position-relative">
