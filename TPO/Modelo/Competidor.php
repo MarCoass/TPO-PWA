@@ -186,7 +186,7 @@ class Competidor
 
                     //Creo un objeto para buscar al id y setear el objeto
                     $estado = new Estado();
-                    $estado->buscar($row['id']);
+                    $estado->buscar($row['du']);
                     $this->setEstadoOrigen($estado);
 
 

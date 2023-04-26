@@ -1,7 +1,7 @@
 function obtenerCompetidores() {
   var competidoresObtenidos;
   $.ajax({
-    url: '../util/json/competidoresGuardados.json',
+    url: 'http://localhost/TPO-PWA/TPO/vista/Acciones/listarCompetidor.php',
     dataType: 'json',
     async: false, // Hacer la solicitud AJAX de manera síncrona
     success: function (response) {

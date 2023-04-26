@@ -85,7 +85,7 @@ class Estado
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 if ($row = $base->Registro()) {
-                    $this->setubicacionpaisestado($row['ubicacionpaisestado']);
+                    $this->setubicacionpaisestado($row['ubicacionpaisid']);
                     $this->setid($row['id']);
                     $this->setestadonombre($row['estadonombre']);
                     $resp = true;
@@ -138,7 +138,7 @@ class Estado
     $estadonombre = $this->getestadonombre();
     
     // Creo la consulta
-    $sql = "INSERT INTO estado (id, ubicacionpaisestado, estadonombre) 
+    $sql = "INSERT INTO estado (id, ubicacionpaisid, estadonombre) 
             VALUES ('{$id}', '{$ubicacionpaisestado}', '{$estadonombre}')";
     if ($base->Iniciar()) {
         if ($base->Ejecutar($sql)) {
@@ -162,7 +162,7 @@ class Estado
         $id = $this->getid();
         $ubicacionpaisestado = $this->getubicacionpaisestado();
         $estadonombre = $this->getestadonombre();
-        $sql = "UPDATE estado SET ubicacionpaisestado = '{$ubicacionpaisestado}', estadonombre = '{$estadonombre}' WHERE id = '{$id}'";
+        $sql = "UPDATE estado SET ubicacionpaisid = '{$ubicacionpaisestado}', estadonombre = '{$estadonombre}' WHERE id = '{$id}'";
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 $resp = true;
