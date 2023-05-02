@@ -25,6 +25,23 @@ function obtenerGenero(generoCompetidor) {
   return icono;
 }
 
+function obtenerBandera(pais) {
+  $.ajax({
+    url: 'https://flagcdn.com/es/codes.json',
+    dataType: 'json',
+    async: false, // Hacer la solicitud AJAX de manera síncrona
+    success: function (response) {
+      for (var nomcltr in response) {
+        var valor = response[nomcltr]
+        if(pais === valor){
+          dile = nomcltr
+        }
+    }
+    }
+  });
+  return dile;
+}
+
 $(function () {
   let container = $("#bfTabla");
 
@@ -75,7 +92,7 @@ $(function () {
         const celdaPais = nuevaFila.insertCell();
         celdaPais.innerHTML =
           '<img src="../util/svg/' +
-          competidor.paisOrigen +
+          obtenerBandera(competidor.paisOrigen) +
           '.svg" alt="..." data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="' +
           competidor.paisOrigen +
           '" width="20px">';
