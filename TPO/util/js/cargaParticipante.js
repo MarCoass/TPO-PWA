@@ -49,10 +49,11 @@ function validarFormulario(form) {
         if (form.checkValidity()) { // SI TODOS LOS INPUTS SON VÁLIDOS
             nuevoCompetidor = obtenerValoresInputs();
 
+            //console.log(nuevoCompetidor);
             $.ajax({
                 type: "POST",
                 url: "./Acciones/guardarCompetidor.php", // archivo PHP que guardará los datos
-                data: { nuevoCompetidor },
+                data: nuevoCompetidor,
                 success: function (response) {
                     console.log(response);
                 }
@@ -87,7 +88,7 @@ function obtenerValoresInputs() {
     const fechaNacimiento = $('#fechaNacimiento').val();
     const genero = $('#genero').val();
     const email = $('#email').val();
-    const paisOrigen = $('#paisOrigen').val();
+    const estadoOrigen = $('#estadoOrigen').val();
     const rankingNacional = $('#rankingNacional').val();
     const graduacion = $('#graduacion').val();
 
@@ -99,7 +100,7 @@ function obtenerValoresInputs() {
         nombre: nombre,
         du: dni,
         fechaNacimiento: fechaNacimiento,
-        paisOrigen: paisOrigen,
+        estadoOrigen: estadoOrigen,
         graduacion: graduacion,
         rankingNacional: rankingNacional,
         email: email,

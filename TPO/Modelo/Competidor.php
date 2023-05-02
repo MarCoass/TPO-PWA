@@ -8,7 +8,7 @@ class Competidor
     public $nombre;
     public $du;
     public $fechaNacimiento;
-    public $estadoOrigen;
+    public $objEstado;
     public $graduacion;
     public $rankingNacional;
     public $email;
@@ -21,7 +21,7 @@ class Competidor
         $this->legajo = "";
         $this->du = "";
         $this->fechaNacimiento = "";
-        $this->estadoOrigen = "";
+        $this->objEstado = "";
         $this->graduacion = "";
         $this->rankingNacional = "";
         $this->email = "";
@@ -29,14 +29,14 @@ class Competidor
         $this->mensaje = "";
     }
 
-    public function cargar($nombre, $apellido, $du, $fechaNacimiento, $legajo, $estadoOrigen, $graduacion, $rankingNacional, $email, $genero)
+    public function cargar($nombre, $apellido, $du, $fechaNacimiento, $legajo, $objEstado, $graduacion, $rankingNacional, $email, $genero)
     {
         $this->setLegajo($legajo);
         $this->setApellido($apellido);
         $this->setNombre($nombre);
         $this->setDu($du);
         $this->setFechaNacimiento($fechaNacimiento);
-        $this->setEstadoOrigen($estadoOrigen);
+        $this->setObjEstado($objEstado);
         $this->setGraduacion($graduacion);
         $this->setRankingNacional($rankingNacional);
         $this->setEmail($email);
@@ -145,13 +145,16 @@ class Competidor
         $this->mensaje = $mensaje;
     }
 
-    public function getEstadoOrigen()
+    /**
+     * @return  object
+     */
+    public function getObjEstado()
     {
-        return $this->estadoOrigen;
+        return $this->objEstado;
     }
-    public function setEstadoOrigen($estadoOrigen)
+    public function setObjEstado($objEstado)
     {
-        $this->estadoOrigen = $estadoOrigen;
+        $this->objEstado = $objEstado;
     }
     public function __toString()
     {
@@ -160,7 +163,7 @@ class Competidor
             "\ndu: " . $this->getDu() .
             "\nlegaoj: " . $this->getLegajo() .
             "\nfechaNacimiento: " . $this->getFechaNacimiento() .
-            "\nestadoOrigen: " . $this->getEstadoOrigen() .
+            "\nestadoOrigen: " . $this->getObjEstado()->getID() .
             "\ngraduacion: " . $this->getGraduacion() .
             "\nrankingNacional: " . $this->getRankingNacional() .
             "\nemail: " . $this->getEmail() .
@@ -186,11 +189,9 @@ class Competidor
 
                     //Creo un objeto para buscar al id y setear el objeto
                     $estado = new Estado();
-                    $estado->buscar($row['du']);
-                    $this->setEstadoOrigen($estado);
+                    $estado->buscar($row['estadoOrigen']);
+                    $this->setObjEstado($estado);
 
-
-                    $this->setEstadoOrigen($row['estadoOrigen']);
                     $this->setGraduacion($row['graduacion']);
                     $this->setRankingNacional($row['rankingNacional']);
                     $this->setEmail($row['email']);
@@ -246,7 +247,7 @@ class Competidor
         $nombre = $this->getNombre();
         $du = $this->getDu();
         $fechaNacimiento = $this->getFechaNacimiento();
-        $estadoOrigen = $this->getEstadoOrigen();
+        $estadoOrigen = $this->getObjEstado()->getID();
         $graduacion = $this->getGraduacion();
         $rankingNacional = $this->getRankingNacional();
         $email = $this->getEmail();
@@ -278,7 +279,7 @@ class Competidor
         $apellido = $this->getApellido();
         $nombre = $this->getNombre();
         $fechaNacimiento = $this->getFechaNacimiento();
-        $estadoOrigen = $this->getEstadoOrigen();
+        $estadoOrigen = $this->getObjEstado()->getID();
         $graduacion = $this->getGraduacion();
         $rankingNacional = $this->getRankingNacional();
         $email = $this->getEmail();

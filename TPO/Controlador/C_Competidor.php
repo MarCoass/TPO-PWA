@@ -12,15 +12,22 @@ class C_Competidor
     private function cargarObjeto($param)
     {
         $obj = null;
-        if (array_key_exists('du', $param)) {
+        if (array_key_exists('du', $param) && array_key_exists('estadoOrigen', $param)) {
+
+            $nombre = $this->modificarString($param['nombre']);
+            $apellido = $this->modificarString($param['apellido']);
+
+            $estado = new Estado();
+            $estado->buscar($param['estadoOrigen']);
+
             $obj = new Competidor();
             $obj->cargar(
+                $nombre,
+                $apellido,
                 $param['du'],
-                $param['apellido'],
-                $param['nombre'],
                 $param['fechaNacimiento'],
                 $param['legajo'],
-                $param['paisOrigen'],
+                $estado,
                 $param['graduacion'],
                 $param['rankingNacional'],
                 $param['email'],
@@ -144,5 +151,12 @@ class C_Competidor
         $arreglo = $obj->listar($where);
 
         return $arreglo;
+    }
+
+    /* RECIBE UN STRING PARA PONER QUE LA PRIMER LETRA DE CADA PALABRA SEA MAYÚSCULA MIENTRAS QUE EL RESTO SON MINÚSCULAS */
+    private function modificarString($string)
+    {
+        $retorno = ucwords(strtolower($string));
+        return $retorno;
     }
 }

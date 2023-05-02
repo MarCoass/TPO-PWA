@@ -126,4 +126,29 @@ class C_Estado
 
         return $arreglo;
     }
+
+    /*public function filtrar($filtro)
+    {
+        $where = " true ";
+        $where .= "AND estadonombre LIKE '%" . $filtro . "%'";
+        $obj = new Estado();
+        $arreglo = $obj->listar($where);
+
+        return $arreglo;
+    }*/
+
+    public function traerEstadosPorPais($param)
+    {
+        $retorno = [];
+        $list = $this->buscar(['ubicacionpaisid' => $param['ubicacionpaisid']]);
+        foreach ($list as $estadoActual) {
+            $item = [
+                'id' => $estadoActual->getID(),
+                'nombre' => $estadoActual->getNombre()
+            ];
+            array_push($retorno, $item);
+        }
+
+        return $retorno;
+    }
 }

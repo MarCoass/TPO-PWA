@@ -1,28 +1,26 @@
 <?php
-/* include_once '../Modelo/Conector/BaseDatos.php'; */
 class Estado
 {
     /* los pase a public para que json_encode me los traduzca */
 
     public $estadonombre;
-    public $ubicacionpaisestado;
+    public $objPais;
     public $id;
     public $mensaje;
 
     public function __construct()
     {
-        $this->ubicacionpaisestado = "";
+        $this->objPais = "";
         $this->id = "";
         $this->estadonombre = "";
         $this->mensaje = "";
     }
 
-    public function cargar($ubicacionpaisestado, $id, $estadonombre)
+    public function cargar($objPais, $id, $estadonombre)
     {
-        $this->setubicacionpaisestado($ubicacionpaisestado);
-        $this->setid($id);
-        $this->setestadonombre($estadonombre);
-       
+        $this->setObjPais($objPais);
+        $this->setID($id);
+        $this->setNombre($estadonombre);
     }
 
     //Metodos de acceso
@@ -32,37 +30,40 @@ class Estado
         return $this->mensaje;
     }
 
-    public function getubicacionpaisestado()
+    /**
+     * @return  object
+     */
+    public function getObjPais()
     {
-        return $this->ubicacionpaisestado;
+        return $this->objPais;
     }
 
-    public function setubicacionpaisestado($ubicacionpaisestado)
+    public function setObjPais($objPais)
     {
-        $this->ubicacionpaisestado = $ubicacionpaisestado;
+        $this->objPais = $objPais;
     }
 
-    public function getid()
+    public function getID()
     {
         return $this->id;
     }
 
-    public function setid($id)
+    public function setID($id)
     {
         $this->id = $id;
     }
 
-    public function getestadonombre()
+    public function getNombre()
     {
         return $this->estadonombre;
     }
 
-    public function setestadonombre($estadonombre)
+    public function setNombre($estadonombre)
     {
         $this->estadonombre = $estadonombre;
     }
 
-   
+
     public function setMensaje($mensaje)
     {
         $this->mensaje = $mensaje;
@@ -70,24 +71,27 @@ class Estado
 
     public function __toString()
     {
-        return "ubicacionpaisestado: " . $this->getubicacionpaisestado() .
-            "\nid: " . $this->getid() .
-            "\nestadonombre: " . $this->getestadonombre();
+        return "ubicacionpaisestado: " . $this->getObjPais()->getID() .
+            "\nid: " . $this->getID() .
+            "\nestadonombre: " . $this->getNombre();
     }
 
     //Funciones BD
 
     //BUSCAR
-    public function buscar($id) {
+    public function buscar($id)
+    {
         $base = new BaseDatos();
         $resp = false;
         $sql = "SELECT * FROM estado WHERE id = '" . $id . "'";
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 if ($row = $base->Registro()) {
-                    $this->setubicacionpaisestado($row['ubicacionpaisid']);
-                    $this->setid($row['id']);
-                    $this->setestadonombre($row['estadonombre']);
+
+                    $objPais = new Pais();
+                    $objPais->buscar($row['ubicacionpaisid']); // CARGAMOS EL OBJETO PAÍS
+
+                    $this->cargar($objPais, $row['id'], $row['estadonombre']); // CARGAMOS EL OBJETO ESTADO
                     $resp = true;
                 }
             } else {
@@ -98,16 +102,16 @@ class Estado
         }
         return $resp;
     }
-    
+
 
     //LISTAR
     public function listar($condicion = '')
     {
         $array = null;
         $base = new BaseDatos();
-        $sql =  "select * from estado";
+        $sql =  "SELECT * FROM estado";
         if ($condicion != '') {
-            $sql = $sql . ' where ' . $condicion;
+            $sql = $sql . ' WHERE ' . $condicion;
         }
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
@@ -129,30 +133,30 @@ class Estado
 
     //INSERTAR
     public function insertar()
-{
-    $base = new BaseDatos();
-    $resp = false;
-    // Asigno los datos a variables
-    $ubicacionpaisestado = $this->getubicacionpaisestado();
-    $id = $this->getid();
-    $estadonombre = $this->getestadonombre();
-    
-    // Creo la consulta
-    $sql = "INSERT INTO estado (id, ubicacionpaisid, estadonombre) 
+    {
+        $base = new BaseDatos();
+        $resp = false;
+        // Asigno los datos a variables
+        $ubicacionpaisestado = $this->getObjPais();
+        $id = $this->getid();
+        $estadonombre = $this->getNombre();
+
+        // Creo la consulta
+        $sql = "INSERT INTO estado (id, ubicacionpaisid, estadonombre) 
             VALUES ('{$id}', '{$ubicacionpaisestado}', '{$estadonombre}')";
-    if ($base->Iniciar()) {
-        if ($base->Ejecutar($sql)) {
-            $resp = true;
+        if ($base->Iniciar()) {
+            if ($base->Ejecutar($sql)) {
+                $resp = true;
+            } else {
+                $this->setMensaje($base->getError());
+            }
         } else {
             $this->setMensaje($base->getError());
         }
-    } else {
-        $this->setMensaje($base->getError());
+        return $resp;
     }
-    return $resp;
-}
 
-    
+
 
     //MODIFICAR
     public function modificar()
@@ -160,8 +164,8 @@ class Estado
         $base = new BaseDatos();
         $resp = false;
         $id = $this->getid();
-        $ubicacionpaisestado = $this->getubicacionpaisestado();
-        $estadonombre = $this->getestadonombre();
+        $ubicacionpaisestado = $this->getObjPais();
+        $estadonombre = $this->getNombre();
         $sql = "UPDATE estado SET ubicacionpaisid = '{$ubicacionpaisestado}', estadonombre = '{$estadonombre}' WHERE id = '{$id}'";
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
@@ -174,7 +178,7 @@ class Estado
         }
         return $resp;
     }
-    
+
 
     //ELIMINAR
     public function eliminar()

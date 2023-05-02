@@ -17,8 +17,8 @@ class Pais
 
     public function cargar($id, $paisnombre)
     {
-        $this->setid($id);
-        $this->setpaisnombre($paisnombre);
+        $this->setID($id);
+        $this->setNombre($paisnombre);
        
     }
 
@@ -30,22 +30,22 @@ class Pais
     }
 
 
-    public function getid()
+    public function getID()
     {
         return $this->id;
     }
 
-    public function setid($id)
+    public function setID($id)
     {
         $this->id = $id;
     }
 
-    public function getpaisnombre()
+    public function getNombre()
     {
         return $this->paisnombre;
     }
 
-    public function setpaisnombre($paisnombre)
+    public function setNombre($paisnombre)
     {
         $this->paisnombre = $paisnombre;
     }
@@ -59,7 +59,7 @@ class Pais
     public function __toString()
     {
         return "id: " . $this->getid() .
-            "\npaisnombre: " . $this->getpaisnombre();
+            "\npaisnombre: " . $this->getNombre();
     }
 
     //Funciones BD
@@ -72,8 +72,8 @@ class Pais
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 if ($row = $base->Registro()) {
-                    $this->setid($row['id']);
-                    $this->setpaisnombre($row['paisnombre']);
+                    $this->setID($row['id']);
+                    $this->setNombre($row['paisnombre']);
                     $resp = true;
                 }
             } else {
@@ -120,7 +120,7 @@ class Pais
     $resp = false;
     // Asigno los datos a variables
     $id = $this->getid();
-    $paisnombre = $this->getpaisnombre();
+    $paisnombre = $this->getNombre();
     
     // Creo la consulta
     $sql = "INSERT INTO pais (id, paisnombre) 
@@ -145,7 +145,7 @@ class Pais
         $base = new BaseDatos();
         $resp = false;
         $id = $this->getid();
-        $paisnombre = $this->getpaisnombre();
+        $paisnombre = $this->getNombre();
         $sql = "UPDATE pais SET paisnombre = '{$paisnombre}' WHERE id = '{$id}'";
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {

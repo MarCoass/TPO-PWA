@@ -1,19 +1,19 @@
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
     <label class="form-label" for="apellido">Apellido:</label>
-    <input class="form-control" type="text" id="apellido" name="apellido" maxlength="50" pattern="^(?=.{3,})([A-ZÁÉÍÓÚÜÑ][a-záéíóúüñ]{2,})(?:\s[A-ZÁÉÍÓÚÜÑ][a-záéíóúüñ]{2,})?$" placeholder="Ej: Lopez" autocomplete="off" required>
+    <input class="form-control" type="text" id="apellido" name="apellido" maxlength="50" pattern=".+" placeholder="Ej: Lopez" autocomplete="off" required>
     <div class="valid-feedback">
         ¡Correcto!
     </div>
-    <div class="invalid-feedback">La primer letra de cada apellido debe ser mayúscula</div>
+    <div class="invalid-feedback">Debe ingresar un apellido.</div>
 </div>
 
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
     <label class="form-label" for="nombre">Nombre:</label>
-    <input class="form-control" type="text" id="nombre" name="nombre" maxlength="50" pattern="^(?=.{3,})([A-ZÁÉÍÓÚÜÑ][a-záéíóúüñ]{2,})(?:\s[A-ZÁÉÍÓÚÜÑ][a-záéíóúüñ]{2,})?$" placeholder="Ej: Lautaro" autocomplete="off" required>
+    <input class="form-control" type="text" id="nombre" name="nombre" maxlength="50" pattern=".+" placeholder="Ej: Lautaro" autocomplete="off" required>
     <div class="valid-feedback">
         ¡Correcto!
     </div>
-    <div class="invalid-feedback">La primer letra de cada nombre debe ser mayúscula</div>
+    <div class="invalid-feedback">Debe ingresar un nombre.</div>
 </div>
 
 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 pt-3">
@@ -25,7 +25,7 @@
     <div class="invalid-feedback">Deben ser 8 números</div>
 </div>
 
-<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12  pt-3">
+<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 pt-3">
     <label class="form-label" for="fechaNacimiento">Nacimiento:</label>
     <input class="form-control" type="date" min="1900-01-01" id="fechaNacimiento" name="fechaNacimiento" required>
     <div class="valid-feedback">
@@ -43,19 +43,29 @@
     <div class="invalid-feedback">Ej: persona@correo.com</div>
 </div>
 
-<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
+<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 pt-3">
     <label class="form-label" for="paisOrigen">País:</label>
-    <input class="form-control" type="text" id="paisOrigen" name="paisOrigen" list="lipaises" required>
-    <datalist id="lipaises">
-    </datalist>
-
+    <select class="form-control" id="paisOrigen" name="paisOrigen" onChange="actualizarEstados()" required>
+        <!-- LISTA DE PAISES -->
+    </select>
     <div class="valid-feedback">
         ¡Correcto!
     </div>
-    <div class="invalid-feedback">Seleccione una opcion valida.</div>
+    <div class="invalid-feedback">Seleccione una opción válida.</div>
 </div>
 
-<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
+<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 pt-3">
+    <label class="form-label" for="estadoOrigen">Estado:</label>
+    <select class="form-control" id="estadoOrigen" name="estadoOrigen" required>
+        <!-- LISTA DE ESTADOS SEGÚN PAÍS -->
+    </select>
+    <div class="valid-feedback">
+        ¡Correcto!
+    </div>
+    <div class="invalid-feedback">Seleccione una opción válida.</div>
+</div>
+
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pt-3">
     <label class="form-label" for="genero">Género:</label>
     <select class="form-control" id="genero" name="genero" required>
         <option value="" disabled selected data-error="Por favor seleccione un genero">Selecciona una opción</option>
@@ -65,7 +75,7 @@
     <div class="valid-feedback">
         ¡Correcto!
     </div>
-    <div class="invalid-feedback">Seleccione una opcion valida.</div>
+    <div class="invalid-feedback">Seleccione una opción válida.</div>
 </div>
 
 <div class="my-3 ml-3 row justify-content-center">

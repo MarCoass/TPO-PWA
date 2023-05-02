@@ -1,8 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Obtener referencia al select
   const selectGraduacion = document.getElementById("graduacion");
-  const selectPaises = document.getElementById("lipaises");
-  let lista = [];
+  const selectPaises = $("#paisOrigen");
 
   // Obtener datos del archivo JSON
   fetch("../util/json/formulario/graduaciones.json")
@@ -19,29 +18,44 @@ document.addEventListener("DOMContentLoaded", function () {
     .catch((error) => console.error(error));
 
   // Listando paises para mostrar
-  fetch('https://flagcdn.com/es/codes.json')
-    .then(response => response.json()) // Convertir la respuesta a un objeto JSON
-    .then(data => {
-      
-      for (var nombre in data) {
-        var valor = data[nombre]
-        lista.push({ pais: valor, nomenclatura: nombre })
-      }
+  $.ajax({
+    url: './Acciones/listarPaises.php',
+    type: 'POST',
+    data: null,
+    success: function (data) {
+      paises = JSON.parse(data)
 
-      lista.forEach((list) => {
-        
-        const optionElement = document.createElement("option");
-        optionElement.setAttribute("data-value",list.pais);
-        optionElement.value = list.pais
-        selectPaises.appendChild(optionElement);
-
+      estructura = "";
+      estructura += "<option value='' disabled selected data-error='Por favor seleccione un país válido'>Selecciona una opción</option>";
+      $.each(paises, function (index, pais) {
+        estructura += "<option value=" + pais.id + ">" + pais.paisnombre + "</option>";
       });
-    })
-    .catch(error => {
-      // Manejar el error si ocurre
-      console.error(error);
-    })
 
-
-
+      selectPaises.html(estructura);
+    },
+  });
 });
+
+const selectEstados = $("#estadoOrigen");
+
+// Listando estados cada que un país es seleccionado
+function actualizarEstados() {
+  var valorSeleccionado = $('#paisOrigen').val();
+
+  $.ajax({
+    url: './Acciones/listarEstadosPais.php',
+    type: 'POST',
+    data: { ubicacionpaisid: valorSeleccionado },
+    success: function (data) {
+      estados = JSON.parse(data)
+
+      estructura = "";
+      estructura += "<option value='' disabled selected data-error='Por favor seleccione un estado válido'>Selecciona una opción</option>";
+      $.each(estados, function (index, estado) {
+        estructura += "<option value=" + estado.id + ">" + estado.nombre + "</option>";
+      });
+
+      selectEstados.html(estructura);
+    },
+  });
+}

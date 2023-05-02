@@ -1,4 +1,4 @@
-// declaro una variable en donde tendre alojado los paises 
+/*// declaro una variable en donde tendre alojado los paises 
 let lista = []
 
 const listaPaises = document.getElementById("paises")
@@ -75,3 +75,4 @@ function borrarLi(dom) {
       dom.removeChild(item);
     }
   }
+*/

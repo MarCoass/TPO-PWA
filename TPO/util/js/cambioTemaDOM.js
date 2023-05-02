@@ -28,7 +28,7 @@ function cambiarOscuro() {
   FOOTER.classList.remove("bg-danger");
 
   localStorage.setItem("tema", "oscuro");
-  console.log(localStorage)
+  //console.log(localStorage)
 }
 
 BOTONOSCURO.addEventListener("click", () => {
