@@ -159,4 +159,32 @@ class C_Competidor
         $retorno = ucwords(strtolower($string));
         return $retorno;
     }
+
+    public function listarCompetidores()
+    {
+        $retorno = [];
+        $list = $this->buscar(null);
+
+        foreach ($list as $competidorActual) {
+
+            $paisNombre = $competidorActual->getObjEstado()->getObjPais()->getNombre();
+            
+            $item = [
+                'legajo' => $competidorActual->getLegajo(),
+                'du' => $competidorActual->getDu(),
+                'nombre' => $competidorActual->getNombre(),
+                'apellido' => $competidorActual->getApellido(),
+                'email' => $competidorActual->getEmail(),
+                'fechaNacimiento' => $competidorActual->getFechaNacimiento(),
+                'genero' => $competidorActual->getGenero(),
+                'rankingNacional' => $competidorActual->getRankingNacional(),
+                'graduacion' => $competidorActual->getGraduacion(),
+                'paisOrigen' => $paisNombre
+            ];
+
+            array_push($retorno, $item);
+        }
+
+        return $retorno;
+    }
 }
