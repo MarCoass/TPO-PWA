@@ -187,4 +187,15 @@ class C_Competidor
 
         return $retorno;
     }
+
+    public function validarDU($param){
+        $respuesta = false;
+        $list = $this->buscar(null);
+
+        return $respuesta;
+    }
+
+    public function validarLegajo($param){
+
+    }
 }

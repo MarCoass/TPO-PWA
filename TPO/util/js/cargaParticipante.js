@@ -108,6 +108,33 @@ function obtenerValoresInputs() {
     };
 }
 
+/* VALIDACION DE SI YA EXISTE EL COMPETIDOR */
+
+$("dni").on("change", function () {
+    monitorearInput("#dni", "validarDU.php");
+});
+
+$("#legajo").on("change", function () {
+    monitorearInput("#legajo", "validarLegajo.php");
+});
+
+function monitorearInput(inputId, url) {
+    $(inputId).on("input", function () {
+        var valor = $(this).val();
+        var maxLenght = $(this).attr("maxlength");
+        if (valor.length >= maxLenght) {
+            $.ajax({
+                url: "./Acciones/" + url,
+                type: "POST",
+                data: { valor: valor },
+                success: function (response) {
+                    console.log(response);
+                }
+            });
+        }
+    });
+}
+
 /* ########################################################## CAMBIAR TABS FORMULARIO ############################################################ */
 function showTab(tabId, valorProgreso, cambiarAviso) {
     // Obtener el tab actual
