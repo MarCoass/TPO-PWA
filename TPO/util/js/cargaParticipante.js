@@ -20,6 +20,37 @@ function validarFormulario(form) {
             if (isValid) {
                 input.classList.remove("is-invalid");
                 input.classList.add("is-valid");
+
+                // Si el id del input es "dni", se realiza la validación adicional
+                if (input.id === "dni" && value.length === parseInt(input.getAttribute("maxlength"))) {
+                    $.ajax({
+                        url: "./Acciones/validarCompetidor.php",
+                        type: "POST",
+                        data: { valor: value, tipo: "Du" },
+                        success: function (response) {
+                            if (response) {
+                                input.classList.remove("is-valid");
+                                input.classList.add("is-invalid");
+                            }
+                        }
+                    });
+                }
+
+                // Si el id del input es "legajo", se realiza la validación adicional
+                if (input.id === "legajo") {
+                    $.ajax({
+                        url: "./Acciones/validarCompetidor.php",
+                        type: "POST",
+                        data: { valor: value, tipo: "Legajo" },
+                        success: function (response) {
+                            if (response) {
+                                input.classList.remove("is-valid");
+                                input.classList.add("is-invalid");
+                            }
+                        }
+                    });
+                }
+
             } else {
                 input.classList.remove("is-valid");
                 input.classList.add("is-invalid");
@@ -106,33 +137,6 @@ function obtenerValoresInputs() {
         email: email,
         genero: genero,
     };
-}
-
-/* VALIDACION DE SI YA EXISTE EL COMPETIDOR */
-
-$("dni").on("change", function () {
-    monitorearInput("#dni", "validarDU.php");
-});
-
-$("#legajo").on("change", function () {
-    monitorearInput("#legajo", "validarLegajo.php");
-});
-
-function monitorearInput(inputId, url) {
-    $(inputId).on("input", function () {
-        var valor = $(this).val();
-        var maxLenght = $(this).attr("maxlength");
-        if (valor.length >= maxLenght) {
-            $.ajax({
-                url: "./Acciones/" + url,
-                type: "POST",
-                data: { valor: valor },
-                success: function (response) {
-                    console.log(response);
-                }
-            });
-        }
-    });
 }
 
 /* ########################################################## CAMBIAR TABS FORMULARIO ############################################################ */

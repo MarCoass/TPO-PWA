@@ -168,7 +168,7 @@ class C_Competidor
         foreach ($list as $competidorActual) {
 
             $paisNombre = $competidorActual->getObjEstado()->getObjPais()->getNombre();
-            
+
             $item = [
                 'legajo' => $competidorActual->getLegajo(),
                 'du' => $competidorActual->getDu(),
@@ -188,14 +188,20 @@ class C_Competidor
         return $retorno;
     }
 
-    public function validarDU($param){
+    public function validarCompetidor($param)
+    {
         $respuesta = false;
         $list = $this->buscar(null);
+        $i = 0;
+
+        while (!$respuesta && $i < count($list)) {
+            if ($list[$i]->{'get' . $param['tipo']}() == $param['valor']) {
+                $respuesta = true;
+            } else {
+                $i++;
+            }
+        }
 
         return $respuesta;
-    }
-
-    public function validarLegajo($param){
-
     }
 }

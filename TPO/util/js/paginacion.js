@@ -30,7 +30,7 @@ $(function () {
 
   // Obtenemos los competidores
   var arrayCompetidores = obtenerCompetidores();
-  console.table(arrayCompetidores)
+  //console.table(arrayCompetidores)
 
   container.pagination({
     dataSource: arrayCompetidores,
