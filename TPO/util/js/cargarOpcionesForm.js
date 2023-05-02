@@ -40,6 +40,10 @@ const selectEstados = $("#estadoOrigen");
 
 // Listando estados cada que un país es seleccionado
 function actualizarEstados() {
+  if (selectEstados.hasClass("is-valid")) { // ESTO ES PARA QUE CON CADA CAMBIO DE PAÍS EL SELECT PIERDA SU VALIDACIÓN
+    selectEstados.removeClass("is-valid");
+  }
+
   var valorSeleccionado = $('#paisOrigen').val();
 
   $.ajax({
