@@ -40,16 +40,14 @@
 </div>
 </div>
 
+
 <!--Fin del div.container-fluid-->
 <script src="../util/js/librerias/popper.min.js"></script>
 <script src="../util/bootstrap-5.2.3/js/bootstrap.min.js"></script>
 
-<!-- js principal -->
-<script src="../util/js/atajosRapidosDOM.js"></script>
-<script src="../util/js/cambioTemaDOM.js"></script>
 
-<!-- js seccion 1 -->
-<script src="../util/js/botonCuentaRegresiva.js"></script>
+<!-- js principal -->
+<script type="module" src="../util/js/indexDOM.js"></script>
 
 <!-- js seccion 3 -->
 <script src="../util/js/paginacion.js"></script>

@@ -8,13 +8,13 @@
 
 <div class="row text-center my-3 justify-content-center">
     <div class="col-12">
-        <button id="startButton" onclick="startCountdown()" type="button" class="btn btn-outline-success btn-lg me-2">
+        <button id="startButton" type="button" class="btn btn-outline-success btn-lg me-2">
             <i class="bi bi-play me-1"></i>Iniciar
         </button>
-        <button id="stopButton" onclick="stopCountdown()" type="button" class="btn btn-outline-danger btn-lg me-2" disabled>
+        <button id="stopButton" type="button" class="btn btn-outline-danger btn-lg me-2" disabled>
             <i class="bi bi-stop me-1"></i>Finalizar
         </button>
-        <button id="restartButton" onclick="resetCountdown()" type="button" class="btn btn-outline-info btn-lg">
+        <button id="restartButton" type="button" class="btn btn-outline-info btn-lg">
             <i class="bi bi-arrow-clockwise me-1"></i></i>Reiniciar
         </button>
     </div>

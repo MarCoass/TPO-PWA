@@ -12,7 +12,7 @@ var inicio = document.getElementById("inicio"); // SPAN TEXTO CUENTA REGRESIVA I
 var pasado = document.getElementById("pasado"); // SPAN TEXTO CUENTA REGRESIVA OVERTIME
 var final = document.getElementById("final"); // SPAN TEXTO SEGUNDOS TOTALES
 
-function startCountdown() {
+export function startCountdown() {
     
     var seconds = parseInt(countdown.innerHTML);
     countdown.innerHTML = seconds;
@@ -42,7 +42,7 @@ function startCountdown() {
     stopButton.disabled = false;
 }
 
-function stopCountdown() {
+export function stopCountdown() {
     clearInterval(countdownInterval);
     clearInterval(countupInterval);
     totalSecondsSpan.innerHTML = totalSeconds;
@@ -50,7 +50,7 @@ function stopCountdown() {
     stopButton.disabled = true;
 }
 
-function resetCountdown() {
+export function resetCountdown() {
     clearInterval(countdownInterval);
     clearInterval(countupInterval);
     countdown.innerHTML = 90; // REINICIAMOS LOS SEGUNDOS DE LA CUENTA REGRESIVA INICIAL

@@ -22,6 +22,7 @@
 
     <!-- Estilos Propios -->
     <link rel="stylesheet" href="../util/css/style.css">
+    <link rel="stylesheet" href="../util/css/pagination.css">
 
 
 </head>
