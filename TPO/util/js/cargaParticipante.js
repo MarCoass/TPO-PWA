@@ -45,6 +45,19 @@ function validarVerificaciones(inputs) {
     return esValido;
 }
 
+function barrerFormulario(form) {
+    form.reset(); // BORRA LOS VALORES DE LOS INPUTS
+    const formControlElements = document.querySelectorAll('.form-control');
+    for (let i = 0; i < formControlElements.length; i++) { // QUITA LAS VALIDACIONES DE LOS INPUTS Y REMUEVE LOS valid-feedback
+        formControlElements[i].classList.remove('is-valid'); // REMOVEMOS LA CLASE "IS-VALID" PORQUE SI SE HIZO SUBMIT FUE PORQUE TODOS LOS INPUTS ESTABAN BIEN
+        const validFeedbackSibling = formControlElements[i].nextElementSibling;
+        if (validFeedbackSibling && validFeedbackSibling.classList.contains('valid-feedback')) { // OCULTAMOS TODOS LOS DIV valid-feedback
+            validFeedbackSibling.remove();
+        }
+    }
+}
+
+/* Recibe el formulario y aplica diversas validaciones a sus inputs, tambien esta atento al submit del mismo */
 function validarFormulario(form) {
     const inputs = form.querySelectorAll("input"); // OBTENGO LOS INPUTS DEL FORM
 
@@ -132,15 +145,7 @@ function validarFormulario(form) {
                 }
             });
 
-            form.reset(); // BORRA LOS VALORES DE LOS INPUTS
-            const formControlElements = document.querySelectorAll('.form-control');
-            for (let i = 0; i < formControlElements.length; i++) { // QUITA LAS VALIDACIONES DE LOS INPUTS Y REMUEVE LOS valid-feedback
-                formControlElements[i].classList.remove('is-valid'); // REMOVEMOS LA CLASE "IS-VALID" PORQUE SI SE HIZO SUBMIT FUE PORQUE TODOS LOS INPUTS ESTABAN BIEN
-                const validFeedbackSibling = formControlElements[i].nextElementSibling;
-                if (validFeedbackSibling && validFeedbackSibling.classList.contains('valid-feedback')) { // OCULTAMOS TODOS LOS DIV valid-feedback
-                    validFeedbackSibling.remove();
-                }
-            }
+            barrerFormulario(form);
         } else {
             // SI HAY ALGUN INPUT INVÁLIDO
             $(form).find(':input').each(function () {
