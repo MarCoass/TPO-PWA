@@ -3,6 +3,8 @@ const BOTONCLARO = document.getElementById("botonTemaClaro");
 const BODY = document.body;
 const SECCIONES = document.querySelectorAll(".bg-seccion2");
 const FOOTER = document.getElementById("footer");
+const MODALFORM = document.getElementById("ModalContenido");
+const MODALFORMTITULO = document.getElementById("ModalFormTitulo");
 
 function cambiarClaro() {
   BOTONOSCURO.classList.toggle("d-none");
@@ -15,6 +17,11 @@ function cambiarClaro() {
   FOOTER.classList.remove("bg-seccion-dark");
   FOOTER.classList.toggle("bg-danger");
   localStorage.setItem("tema", "claro");
+
+  //Cambio de temas del modal del form
+  MODALFORM.classList.add("text-bg-light");
+  MODALFORM.classList.remove("text-bg-dark");
+  
 }
 function cambiarOscuro() {
   BOTONOSCURO.classList.toggle("d-none");
@@ -28,7 +35,11 @@ function cambiarOscuro() {
   FOOTER.classList.remove("bg-danger");
 
   localStorage.setItem("tema", "oscuro");
-  //console.log(localStorage)
+ 
+  //Cambio de temas del modal del form
+  MODALFORM.classList.remove("text-bg-light");
+  MODALFORM.classList.add("text-bg-dark");
+  console.log(MODALFORM)
 }
 
 BOTONOSCURO.addEventListener("click", () => {
