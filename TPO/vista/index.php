@@ -2,7 +2,7 @@
 
 <div class="row p-3 text-light bg-seccion2 mb-5" id="seccion1">
     <div class="text-center">
-        <span class="display-5">Seccion 1 </span>
+        <span class="display-5">Cronómetro </span>
     </div>
 </div>
 
@@ -36,7 +36,7 @@
  -->
 <div class="row p-3 text-light bg-seccion2 mb-5"  id="seccion2">
     <div class="text-center">
-        <span class="display-5">Seccion 2 </span>
+        <span class="display-5">Video</span>
     </div>
 </div>
 
@@ -57,7 +57,7 @@
  -->
 <div class="row p-3 text-light bg-seccion2  mb-3"  id="seccion3">
     <div class="text-center">
-        <span class="display-5">Seccion 3 - Lista de Competidores Registrados</span>
+        <span class="display-5">Lista de Competidores Registrados</span>
     </div>
 </div>
 
@@ -113,11 +113,6 @@
 
 
 
-
-
-
-
-
  -->
 <div class="row p-3 text-light bg-seccion2"  id="seccion4">
     <div class="text-center">
@@ -162,13 +157,6 @@
     </div>
 </div>
 <!-- 
-
-
-
-
-
-
-
 
  -->
 <?php include_once("./estructura/footer.php") ?>
