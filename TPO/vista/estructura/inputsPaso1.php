@@ -80,7 +80,7 @@
 </div>
 
 <div class="col-md-12 my-3 d-flex justify-content-center align-items-center">
-    <button type="button" class="btn btn-outline-primary w-25" onclick="showTab('paso2', 100, '')">
+    <button id="botonSiguiente" type="button" class="btn btn-outline-primary w-25" onclick="showTab('paso2', 100, '')">
         <i class="bi bi-arrow-right me-2"></i>Siguiente
     </button>
 </div>

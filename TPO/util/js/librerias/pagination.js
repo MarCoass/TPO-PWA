@@ -242,7 +242,7 @@
         var nextClassName = attributes.nextClassName || '';
 
         var html = '';
-        var sizeSelect = `<select class="J-paginationjs-size-select">`;
+        var sizeSelect = `<select class="J-paginationjs-size-select bg-danger text-white">`;
         var goInput = '<input type="text" class="J-paginationjs-go-pagenumber">';
         var goButton = `<input type="button" class="J-paginationjs-go-button" value="${goButtonText}">`;
         var formattedString;
@@ -328,9 +328,9 @@
             }
             for (let i = 0; i < sizeChangerOptions.length; i++) {
               if (sizeChangerOptions[i] === 100) {
-                sizeSelect += `<option value="100" ${(pageSize === 100 ? 'selected' : '')}>Todos</option>`;
+                sizeSelect += `<option class='bg-danger text-white' value="100" ${(pageSize === 100 ? 'selected' : '')}>Todos</option>`;
               } else {
-                sizeSelect += `<option value="${sizeChangerOptions[i]}" ${(sizeChangerOptions[i] === pageSize ? 'selected' : '')}>${sizeChangerOptions[i]} / Páginas</option>`;
+                sizeSelect += `<option class='bg-danger text-white' value="${sizeChangerOptions[i]}" ${(sizeChangerOptions[i] === pageSize ? 'selected' : '')}>${sizeChangerOptions[i]} / Páginas</option>`;
               }
             }
             sizeSelect += `</select>`;

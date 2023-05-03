@@ -14,7 +14,7 @@
         <button id="stopButton" onclick="stopCountdown()" type="button" class="btn btn-outline-danger btn-lg me-2" disabled>
             <i class="bi bi-stop me-1"></i>Finalizar
         </button>
-        <button onclick="resetCountdown()" type="button" class="btn btn-outline-info btn-lg">
+        <button id="restartButton" onclick="resetCountdown()" type="button" class="btn btn-outline-info btn-lg">
             <i class="bi bi-arrow-clockwise me-1"></i></i>Reiniciar
         </button>
     </div>
@@ -71,16 +71,16 @@
             </button>
             <div class="d-flex ms-auto">
                 <div class="input-group" style="width: 350px;">
-                    <select class="form-select border-danger" id="filtroTabla">
-                        <option value="0">Legajo</option>
-                        <option value="1">Apellido</option>
-                        <option value="2">Nombre</option>
-                        <option value="3">DU</option>
-                        <option value="4">Email</option>
-                        <option value="5">Edad</option>
+                    <select class="form-select border-danger bg-danger text-white" id="filtroTabla">
+                        <option value="0" class="bg-danger text-white">Legajo</option>
+                        <option value="1" class="bg-danger text-white">Apellido</option>
+                        <option value="2" class="bg-danger text-white">Nombre</option>
+                        <option value="3" class="bg-danger text-white">DU</option>
+                        <option value="4" class="bg-danger text-white">Email</option>
+                        <option value="5" class="bg-danger text-white">Edad</option>
                     </select>
                     <input type="text" class="form-control border-danger" id="buscar" placeholder="Buscar" onkeyup="filtrarTabla()" aria-describedby="basic-addon2">
-                    <span class="input-group-text bg-danger text-white" id="basic-addon2"><i class="bi bi-search"></i></span>
+                    <span class="input-group-text border-danger bg-danger text-white" id="basic-addon2"><i class="bi bi-search"></i></span>
                 </div>
             </div>
         </div>

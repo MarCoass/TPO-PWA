@@ -29,10 +29,10 @@
 </div>
 
 <div class="col-md-12 my-3 d-flex justify-content-center align-items-center">
-    <button type="button" class="btn btn-outline-primary w-25 me-2" onclick="showTab('paso1', 0, 'cambiar')">
+    <button type="button" id="botonVolver" class="btn btn-outline-primary w-25 me-2" onclick="showTab('paso1', 0, 'cambiar')">
         <i class="bi bi-arrow-left me-2"></i>Volver
     </button>
-    <button type="submit" class="btn btn-outline-success w-25">
+    <button type="submit" id="botonGuardarCompetidor" class="btn btn-outline-success w-25">
         <i class="bi bi-cloud-arrow-up-fill me-2"></i>Guardar
     </button>
 </div>
