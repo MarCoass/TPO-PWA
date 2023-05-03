@@ -5,6 +5,7 @@ const SECCIONES = document.querySelectorAll(".bg-seccion2");
 const FOOTER = document.getElementById("footer");
 const MODALFORM = document.getElementById("ModalContenido");
 const MODALCONTENIDO = document.getElementById("modalResultadoContenido");
+const TABLA = document.getElementById("tabla");
 
 function cambiarClaro() {
   BOTONOSCURO.classList.toggle("d-none");
@@ -24,6 +25,10 @@ function cambiarClaro() {
   //Cambio de tema del modal de resultado
   MODALCONTENIDO.classList.add("text-bg-light");
   MODALCONTENIDO.classList.remove("text-bg-dark");
+
+  //Cambio de tema de la tabla
+  TABLA.classList.add("text-bg-light")
+  TABLA.classList.remove("text-bg-dark")
 
   //Guardo preferencia de tema en localStorage
   localStorage.setItem("tema", "claro");
@@ -46,6 +51,11 @@ function cambiarOscuro() {
   //Cambio de tema del modal de resultado
   MODALCONTENIDO.classList.remove("text-bg-light");
   MODALCONTENIDO.classList.add("text-bg-dark");
+
+  
+  //Cambio de tema de la tabla
+  TABLA.classList.remove("text-bg-light")
+  TABLA.classList.add("text-bg-dark")
 
   //Guardo preferencia de tema en localStorage
   localStorage.setItem("tema", "oscuro");
