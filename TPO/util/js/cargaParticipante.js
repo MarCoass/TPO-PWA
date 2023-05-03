@@ -45,6 +45,7 @@ function validarVerificaciones(inputs) {
     return esValido;
 }
 
+/* Recibe por parametro el formulario a resetear y se encarga de limpiar todos los inputs y las validaciones aplicadas */
 function barrerFormulario(form) {
     form.reset(); // BORRA LOS VALORES DE LOS INPUTS
     const formControlElements = document.querySelectorAll('.form-control');
