@@ -78,6 +78,7 @@
                         <option value="3" class="bg-danger text-white">DU</option>
                         <option value="4" class="bg-danger text-white">Email</option>
                         <option value="5" class="bg-danger text-white">Edad</option>
+                        <option value="6" class="bg-danger text-white">Pais</option>
                     </select>
                     <input type="text" class="form-control border-danger" id="buscar" placeholder="Buscar" onkeyup="filtrarTabla()" aria-describedby="basic-addon2">
                     <span class="input-group-text border-danger bg-danger text-white" id="basic-addon2"><i class="bi bi-search"></i></span>
