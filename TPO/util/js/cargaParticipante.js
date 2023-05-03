@@ -55,6 +55,10 @@ function barrerFormulario(form) {
             validFeedbackSibling.remove();
         }
     }
+
+    showTab('paso1', 0, 'cambiar'); //Dejamos activo el paso 1
+    selectEstados.prop('disabled', true); // Desactivamos el select de Estados
+    selectEstados.html(""); // Y lo vaciamos
 }
 
 /* Recibe el formulario y aplica diversas validaciones a sus inputs, tambien esta atento al submit del mismo */
