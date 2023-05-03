@@ -55,7 +55,7 @@ function armarModal(id) {
 function armarFigure(photo) {
     //console.log(photo);
     var contenido = "";
-    contenido += "<div class='col-2'><figure class='figure'>";
+    contenido += "<div class='col-5 col-sm-4 col-md-3 col-lg-2'><figure class='figure'>";
     contenido += "<img src='" + photo.url + "' class='figure-img img-fluid rounded' alt='...'>";
     contenido += "<figcaption class='figure-caption text-end'>";
     contenido += "<a href='#' onclick='armarModal(" + photo.id + ")' class='text-decoration-none text-secondary' data-bs-toggle='modal' data-bs-target='#modalImagen'>" + photo.title + "</a>";
