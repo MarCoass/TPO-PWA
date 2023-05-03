@@ -28,11 +28,11 @@
     <div class="invalid-feedback">Seleccione una opcion valida.</div>
 </div>
 
-<div class="my-3 ml-3 row justify-content-center">
-    <button type="button" class="btn btn-outline-primary col-md-4 col-sm-6 col-xs-8 me-2" onclick="showTab('paso1', 0, 'cambiar')">
+<div class="col-md-12 my-3 d-flex justify-content-center align-items-center">
+    <button type="button" class="btn btn-outline-primary w-25 me-2" onclick="showTab('paso1', 0, 'cambiar')">
         <i class="bi bi-arrow-left me-2"></i>Volver
     </button>
-    <button type="submit" class="btn btn-outline-success col-md-4 col-sm-6 col-xs-8">
+    <button type="submit" class="btn btn-outline-success w-25">
         <i class="bi bi-cloud-arrow-up-fill me-2"></i>Guardar
     </button>
 </div>
