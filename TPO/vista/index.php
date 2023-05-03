@@ -77,6 +77,7 @@
                         <option value="2">Nombre</option>
                         <option value="3">DU</option>
                         <option value="4">Email</option>
+                        <option value="5">Edad</option>
                     </select>
                     <input type="text" class="form-control border-danger" id="buscar" placeholder="Buscar" onkeyup="filtrarTabla()" aria-describedby="basic-addon2">
                     <span class="input-group-text bg-danger text-white" id="basic-addon2"><i class="bi bi-search"></i></span>
@@ -94,7 +95,7 @@
                         <th class="d-none d-sm-table-cell">Nombre</th>
                         <th class="d-none d-md-table-cell">DU</th>
                         <th class="d-none d-md-table-cell">Email</th>
-                        <th class="d-none d-lg-table-cell">Fecha Nacimiento</th>
+                        <th class="d-none d-lg-table-cell">Edad</th>
                         <th class="d-none d-lg-table-cell">País de origen</th>
                         <th class="d-none d-lg-table-cell">Género</th>
                         <th>Graduación</th>
@@ -135,27 +136,8 @@
 
 <?php include_once("./imagesFake.php") ?> <!-- IMAGENES FAKE -->
 
-<!-- MODAL VER DETALLE IMAGEN -->
-<div class="modal fade" id="modalImagen" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Información de la Imagen <span class="text-uppercase" id="nombreRandom"></span></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>ID del Albúm: <span id="idAlbumImagen"></span></p>
-                <p>ID de la Imagen: <span id="idImagen"></span></p>
-                <p>Título: <span id="tituloImagen"></span></p>
-                <p>Thumbnail URL: <span id="thumbUrlImagen"></span></p>
-                <p>URL: <span id="urlImagen"></span></p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cerrar Modal</button>
-            </div>
-        </div>
-    </div>
-</div>
+<?php include_once("./estructura/modalVerImagen.php") ?> <!-- MODAL VER DETALLE IMAGEN -->
+
 <!-- 
 
  -->

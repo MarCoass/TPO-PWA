@@ -83,14 +83,7 @@ function armarTabla() {
         celdaMail.classList.add("d-none", "d-md-table-cell");
 
         const celdaFecNac = nuevaFila.insertCell();
-        var fecha = new Date(competidor.fechaNacimiento);
-        var fechaFormateada =
-          fecha.getDate() +
-          "-" +
-          (fecha.getMonth() + 1) +
-          "-" +
-          fecha.getFullYear();
-        celdaFecNac.textContent = fechaFormateada;
+        celdaFecNac.textContent = competidor.edad;
         celdaFecNac.classList.add("d-none", "d-lg-table-cell");
 
         const celdaPais = nuevaFila.insertCell();
