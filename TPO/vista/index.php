@@ -86,7 +86,7 @@
     </div>
     <div class="col-12">
         <div class="table-responsive bg-light" id="bfTabla">
-            <table id="tabla" class="table table-hover align-middle text-center">
+            <table id="tabla" class="table table-hover align-middle text-center m-0">
                 <thead>
                     <tr class="table-danger">
                         <th>Legajo</th>

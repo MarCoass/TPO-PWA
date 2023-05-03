@@ -6,6 +6,7 @@
     sans-serif;
   font-size: 14px;
   box-sizing: initial;
+  background-color: #eccccf;
   
 }
 .paginationjs:after {
@@ -41,7 +42,6 @@
   height: 28px;
   line-height: 28px;
   display: block;
-  background: #fff;
   font-size: 14px;
   color: #333;
   text-decoration: none;
@@ -341,7 +341,7 @@
   color: #c9302c;
 }
 .paginationjs.paginationjs-theme-red .paginationjs-pages li > a:hover {
-  background: #faeaea;
+ 
 }
 .paginationjs.paginationjs-theme-red .paginationjs-pages li.active > a {
   background: #c9302c;

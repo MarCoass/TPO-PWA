@@ -109,7 +109,7 @@ function armarTabla() {
 
         const celdaGraduacion = nuevaFila.insertCell();
         const botonGraduacion =
-          '<button type="button" class="btn btn-outline-dark btn-sm">' +
+          '<button type="button" class="botonGraduacion btn btn-outline-dark btn-sm">' +
           competidor.graduacion +
           "</button>";
         celdaGraduacion.innerHTML = botonGraduacion;

@@ -6,6 +6,8 @@ const FOOTER = document.getElementById("footer");
 const MODALFORM = document.getElementById("ModalContenido");
 const MODALCONTENIDO = document.getElementById("modalResultadoContenido");
 const TABLA = document.getElementById("tabla");
+var PAGINACION;
+const BOTONESGRADUACION = document.getElementsByClassName("botonGraduacion");
 
 function cambiarClaro() {
   BOTONOSCURO.classList.toggle("d-none");
@@ -27,8 +29,14 @@ function cambiarClaro() {
   MODALCONTENIDO.classList.remove("text-bg-dark");
 
   //Cambio de tema de la tabla
-  TABLA.classList.add("table-light")
-  TABLA.classList.remove("table-dark")
+  TABLA.classList.add("table-light");
+  TABLA.classList.remove("table-dark");
+
+  //cambio de tema de los botones de graduacion
+  for (var i = 0; i < BOTONESGRADUACION.length; i++) {
+    BOTONESGRADUACION[i].classList.add("btn-outline-dark");
+    BOTONESGRADUACION[i].classList.remove("btn-outline-light");
+  }
 
   //Guardo preferencia de tema en localStorage
   localStorage.setItem("tema", "claro");
@@ -52,10 +60,15 @@ function cambiarOscuro() {
   MODALCONTENIDO.classList.remove("text-bg-light");
   MODALCONTENIDO.classList.add("text-bg-dark");
 
-  
   //Cambio de tema de la tabla
-  TABLA.classList.remove("table-light")
-  TABLA.classList.add("table-dark")
+  TABLA.classList.remove("table-light");
+  TABLA.classList.add("table-dark");
+
+  //cambio de tema de los botones de graduacion
+  for (var i = 0; i < BOTONESGRADUACION.length; i++) {
+    BOTONESGRADUACION[i].classList.add("btn-outline-light");
+    BOTONESGRADUACION[i].classList.remove("btn-outline-dark");
+  }
 
   //Guardo preferencia de tema en localStorage
   localStorage.setItem("tema", "oscuro");
