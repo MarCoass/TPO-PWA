@@ -13,6 +13,7 @@ var pasado = document.getElementById("pasado"); // SPAN TEXTO CUENTA REGRESIVA O
 var final = document.getElementById("final"); // SPAN TEXTO SEGUNDOS TOTALES
 
 function startCountdown() {
+    
     var seconds = parseInt(countdown.innerHTML);
     countdown.innerHTML = seconds;
 
