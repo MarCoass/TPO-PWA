@@ -87,6 +87,9 @@ function validarFormulario(form) {
                 data: nuevoCompetidor,
                 success: function (response) {
                     console.log(response);
+
+                    //Abrir modal de resultado
+                    $('#modalResultadoCarga').modal('show')
                 }
             });
 
