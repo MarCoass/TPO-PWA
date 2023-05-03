@@ -22,7 +22,6 @@ function consultaVerificacion(input, valor, tipo) {
             } else { // En caso de que no se encuentre, removemos la clase por si ya la tenia de antes
                 input.classList.remove("verificacion-invalid");
             }
-
             var errorDiv = input.parentNode.querySelector(".verificacion-invalid-feedback"); // Buscamos al div que cumple la misma función de los "invalid/valid-feedback"
             if (errorDiv) {
                 errorDiv.style.display = !respuesta ? "none" : "block"; // Lo quita o agrega según la respuesta

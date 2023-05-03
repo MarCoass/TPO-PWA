@@ -67,7 +67,7 @@ function actualizarEstados() {
       });
 
       selectEstados.html(estructura);
-      selectEstados.prop('disabled', false);
+      selectEstados.prop('disabled', false); //Vuelve a activar el select despues de volver a armar las opciones de estados
     },
   });
 
