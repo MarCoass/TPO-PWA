@@ -27,8 +27,8 @@ function cambiarClaro() {
   MODALCONTENIDO.classList.remove("text-bg-dark");
 
   //Cambio de tema de la tabla
-  TABLA.classList.add("text-bg-light")
-  TABLA.classList.remove("text-bg-dark")
+  TABLA.classList.add("table-light")
+  TABLA.classList.remove("table-dark")
 
   //Guardo preferencia de tema en localStorage
   localStorage.setItem("tema", "claro");
@@ -54,8 +54,8 @@ function cambiarOscuro() {
 
   
   //Cambio de tema de la tabla
-  TABLA.classList.remove("text-bg-light")
-  TABLA.classList.add("text-bg-dark")
+  TABLA.classList.remove("table-light")
+  TABLA.classList.add("table-dark")
 
   //Guardo preferencia de tema en localStorage
   localStorage.setItem("tema", "oscuro");
