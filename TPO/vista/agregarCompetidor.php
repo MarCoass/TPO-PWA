@@ -46,11 +46,11 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5 text-success" id="modalTitulo">Competidor cargado</h1>
+                <h1 class="modal-title fs-5">Resultado de Carga de Competidor</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body" id="cuerpoModal">
-                El competidor fue cargado correctamente.
+            <div class="modal-body">
+                <span id="mensajeCarga"></span>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary botonResultado">Cerrar</button>

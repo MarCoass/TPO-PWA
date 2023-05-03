@@ -115,11 +115,20 @@ function validarFormulario(form) {
                 data: nuevoCompetidor,
                 success: function (response) {
                     //console.log(response);
+                    respuestaCarga = JSON.parse(response)
 
                     //Ocultamos el modal del formulario
                     $('#modalFormCompetidor').modal('hide');
                     //Abrir modal de resultado
                     $('#modalResultadoCarga').modal('show');
+
+                    // Mostramos el mensaje en el modal según si la carga fue exitosa o no
+                    textoModal = document.getElementById("mensajeCarga");
+                    if (respuestaCarga) {
+                        textoModal.innerHTML = "<div class='alert alert-success' role='alert'><i class='bi bi-check2-circle me-1'></i>Competidor cargado correctamente!</div>";
+                    } else {
+                        textoModal.innerHTML = "<div class='alert alert-danger' role='alert'><i class='bi bi-x-circle me-1'></i>Error al cargar el competidor!</div>";
+                    }
                 }
             });
 
