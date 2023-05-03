@@ -4,7 +4,7 @@ const BODY = document.body;
 const SECCIONES = document.querySelectorAll(".bg-seccion2");
 const FOOTER = document.getElementById("footer");
 const MODALFORM = document.getElementById("ModalContenido");
-const MODALFORMTITULO = document.getElementById("ModalFormTitulo");
+const MODALCONTENIDO = document.getElementById("modalResultadoContenido");
 
 function cambiarClaro() {
   BOTONOSCURO.classList.toggle("d-none");
@@ -16,12 +16,17 @@ function cambiarClaro() {
   }
   FOOTER.classList.remove("bg-seccion-dark");
   FOOTER.classList.toggle("bg-danger");
-  localStorage.setItem("tema", "claro");
 
   //Cambio de temas del modal del form
   MODALFORM.classList.add("text-bg-light");
   MODALFORM.classList.remove("text-bg-dark");
-  
+
+  //Cambio de tema del modal de resultado
+  MODALCONTENIDO.classList.add("text-bg-light");
+  MODALCONTENIDO.classList.remove("text-bg-dark");
+
+  //Guardo preferencia de tema en localStorage
+  localStorage.setItem("tema", "claro");
 }
 function cambiarOscuro() {
   BOTONOSCURO.classList.toggle("d-none");
@@ -34,12 +39,16 @@ function cambiarOscuro() {
   FOOTER.classList.add("bg-seccion-dark");
   FOOTER.classList.remove("bg-danger");
 
-  localStorage.setItem("tema", "oscuro");
- 
   //Cambio de temas del modal del form
   MODALFORM.classList.remove("text-bg-light");
   MODALFORM.classList.add("text-bg-dark");
-  console.log(MODALFORM)
+
+  //Cambio de tema del modal de resultado
+  MODALCONTENIDO.classList.remove("text-bg-light");
+  MODALCONTENIDO.classList.add("text-bg-dark");
+
+  //Guardo preferencia de tema en localStorage
+  localStorage.setItem("tema", "oscuro");
 }
 
 BOTONOSCURO.addEventListener("click", () => {
