@@ -130,9 +130,8 @@ html {
   }
 }
 
-
 /* estilos para cronometro */
-@import url('https://fonts.cdnfonts.com/css/digital-7-mono');
+@import url("https://fonts.cdnfonts.com/css/digital-7-mono");
 .bg-cronometro {
   background: rgb(138, 155, 138);
   border-radius: 4em;
@@ -142,5 +141,17 @@ html {
   font-weight: bolder;
 }
 .textoContador {
-  font-family: 'Digital-7 Mono', sans-serif;
+  font-family: "Digital-7 Mono", sans-serif;
+}
+
+/* ESTILOS PARA LOS INPUTS DU Y LEGAJO */
+.verificacion-invalid {
+  border-color: orange;
+}
+
+.verificacion-invalid-feedback {
+  display: none;
+  color: orange;
+  font-size: 14px;
+  margin-top: 5px;
 }

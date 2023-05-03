@@ -7,6 +7,44 @@ document.getElementById("fechaNacimiento").max = fechaMaxima;
 const formulario = document.getElementById("cargaParticipante");
 validarFormulario(formulario);
 
+/* Se encarga de validar los datos del nuevo competidor, en caso de que ya existan agregara una nueva clase con otros colores */
+function consultaVerificacion(input, valor, tipo) {
+    $.ajax({
+        url: "./Acciones/validarCompetidor.php",
+        type: "POST",
+        data: { valor: valor, tipo: tipo },
+        success: function (response) {
+            //console.log(response);
+            respuesta = JSON.parse(response)
+            if (respuesta) { // Si el valor ya esta registrado, agregamos la nueva clase y removemos "is-valid"
+                input.classList.remove("is-valid");
+                input.classList.add("verificacion-invalid");
+            } else { // En caso de que no se encuentre, removemos la clase por si ya la tenia de antes
+                input.classList.remove("verificacion-invalid");
+            }
+
+            var errorDiv = input.parentNode.querySelector(".verificacion-invalid-feedback"); // Buscamos al div que cumple la misma función de los "invalid/valid-feedback"
+            if (errorDiv) {
+                errorDiv.style.display = !respuesta ? "none" : "block"; // Lo quita o agrega según la respuesta
+            }
+        }
+    });
+}
+
+/* Esta funcion es para verificar los inputs DU y Legajo ya que al no contar con la clase "is-invalid" la funcion checkValidity los tomará como OK */
+function validarVerificaciones(inputs) {
+    let esValido = true;
+
+    inputs.forEach((input) => {
+        if (!input.checkValidity() || input.classList.contains('verificacion-invalid')) {
+            // Si el campo de entrada no es válido o tiene la clase "verificacion-invalid"
+            esValido = false; // El formulario no es válido
+        }
+    });
+
+    return esValido;
+}
+
 function validarFormulario(form) {
     const inputs = form.querySelectorAll("input"); // OBTENGO LOS INPUTS DEL FORM
 
@@ -23,37 +61,25 @@ function validarFormulario(form) {
 
                 // Si el id del input es "dni", se realiza la validación adicional
                 if (input.id === "dni" && value.length === parseInt(input.getAttribute("maxlength"))) {
-                    $.ajax({
-                        url: "./Acciones/validarCompetidor.php",
-                        type: "POST",
-                        data: { valor: value, tipo: "Du" },
-                        success: function (response) {
-                            if (response) {
-                                input.classList.remove("is-valid");
-                                input.classList.add("is-invalid");
-                            }
-                        }
-                    });
+                    consultaVerificacion(input, value, "Du");
                 }
 
                 // Si el id del input es "legajo", se realiza la validación adicional
                 if (input.id === "legajo") {
-                    $.ajax({
-                        url: "./Acciones/validarCompetidor.php",
-                        type: "POST",
-                        data: { valor: value, tipo: "Legajo" },
-                        success: function (response) {
-                            if (response) {
-                                input.classList.remove("is-valid");
-                                input.classList.add("is-invalid");
-                            }
-                        }
-                    });
+                    consultaVerificacion(input, value, "Legajo");
                 }
 
             } else {
                 input.classList.remove("is-valid");
                 input.classList.add("is-invalid");
+
+                /* Condicional necesario, en esta instancia, puede que hayas ingresado un DU o Legajo ya existente, borras uno solo caracter y se agregará la clase
+                is-invalid, pero la razón por la que no desaparece el div VIF es porque la función para el input dni SOLO se llama cuando el valor de este iguala al
+                maxlength, osea que si tenemos menos caracteres del limite, la funcion nunca será llamada y por eso el VIF no se removerá*/
+                var errorDiv = input.parentNode.querySelector(".verificacion-invalid-feedback");
+                if (errorDiv) {
+                    errorDiv.style.display = "none" // Lo quitamos
+                }
             }
         });
     });
@@ -77,7 +103,9 @@ function validarFormulario(form) {
     form.addEventListener("submit", function (event) { // CUANDO SE INTENTA SUBMITEAR EL FORM
         event.preventDefault();
 
-        if (form.checkValidity()) { // SI TODOS LOS INPUTS SON VÁLIDOS
+        const inputsVerificables = form.querySelectorAll('.verificable');
+
+        if (form.checkValidity() && validarVerificaciones(inputsVerificables)) { // SI TODOS LOS INPUTS SON VÁLIDOS
             nuevoCompetidor = obtenerValoresInputs();
 
             //console.log(nuevoCompetidor);
@@ -86,19 +114,21 @@ function validarFormulario(form) {
                 url: "./Acciones/guardarCompetidor.php", // archivo PHP que guardará los datos
                 data: nuevoCompetidor,
                 success: function (response) {
-                    console.log(response);
+                    //console.log(response);
 
+                    //Ocultamos el modal del formulario
+                    $('#modalFormCompetidor').modal('hide');
                     //Abrir modal de resultado
-                    $('#modalResultadoCarga').modal('show')
+                    $('#modalResultadoCarga').modal('show');
                 }
             });
 
             form.reset(); // BORRA LOS VALORES DE LOS INPUTS
             const formControlElements = document.querySelectorAll('.form-control');
             for (let i = 0; i < formControlElements.length; i++) { // QUITA LAS VALIDACIONES DE LOS INPUTS Y REMUEVE LOS valid-feedback
-                formControlElements[i].classList.remove('is-valid');
+                formControlElements[i].classList.remove('is-valid'); // REMOVEMOS LA CLASE "IS-VALID" PORQUE SI SE HIZO SUBMIT FUE PORQUE TODOS LOS INPUTS ESTABAN BIEN
                 const validFeedbackSibling = formControlElements[i].nextElementSibling;
-                if (validFeedbackSibling && validFeedbackSibling.classList.contains('valid-feedback')) {
+                if (validFeedbackSibling && validFeedbackSibling.classList.contains('valid-feedback')) { // OCULTAMOS TODOS LOS DIV valid-feedback
                     validFeedbackSibling.remove();
                 }
             }
@@ -171,3 +201,9 @@ function showTab(tabId, valorProgreso, cambiarAviso) {
             .addClass('btn-primary');
     }
 }
+
+// Ocultamos el modal que muestra la carga exitosa y refresca la tabla
+$(".botonResultado").on("click", function () {
+    $("#modalResultadoCarga").modal('hide');
+    armarTabla();
+});

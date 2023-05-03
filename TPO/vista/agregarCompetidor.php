@@ -53,7 +53,7 @@
                 El competidor fue cargado correctamente.
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onclick="location.reload()">Cerrar</button>
+                <button type="button" class="btn btn-primary botonResultado">Cerrar</button>
             </div>
         </div>
     </div>
