@@ -1,6 +1,6 @@
 /* Establece la fecha max de la inscripcion */
 var fechaActual = new Date();
-var fechaMaxima = new Date(fechaActual.getFullYear() - 6, fechaActual.getMonth(), fechaActual.getDate()).toISOString().split("T")[0];
+var fechaMaxima = new Date(fechaActual.getTime() - (1000 * 60 * 60 * 24 * 365 * 6)).toISOString().split("T")[0];
 document.getElementById("fechaNacimiento").max = fechaMaxima;
 
 /* ########################################################## SUBMIT Y VALIDACIÓN DEL FORMULARIO ############################################################ */
