@@ -1,3 +1,7 @@
+$(document).ready(function () {
+  armarTabla();
+});
+
 function obtenerCompetidores() {
   var competidoresObtenidos;
   $.ajax({
@@ -33,16 +37,16 @@ function obtenerBandera(pais) {
     success: function (response) {
       for (var nomcltr in response) {
         var valor = response[nomcltr]
-        if(pais === valor){
+        if (pais === valor) {
           dile = nomcltr
         }
-    }
+      }
     }
   });
   return dile;
 }
 
-$(function () {
+function armarTabla() {
   let container = $("#bfTabla");
 
   // Obtenemos los competidores
@@ -120,7 +124,7 @@ $(function () {
       const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
     },
   });
-});
+}
 
 
 /*

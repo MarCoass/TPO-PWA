@@ -114,10 +114,12 @@ function validarFormulario(form) {
                 url: "./Acciones/guardarCompetidor.php", // archivo PHP que guardará los datos
                 data: nuevoCompetidor,
                 success: function (response) {
-                    console.log(response);
+                    //console.log(response);
 
+                    //Ocultamos el modal del formulario
+                    $('#modalFormCompetidor').modal('hide');
                     //Abrir modal de resultado
-                    $('#modalResultadoCarga').modal('show')
+                    $('#modalResultadoCarga').modal('show');
                 }
             });
 
@@ -199,3 +201,9 @@ function showTab(tabId, valorProgreso, cambiarAviso) {
             .addClass('btn-primary');
     }
 }
+
+// Ocultamos el modal que muestra la carga exitosa y refresca la tabla
+$(".botonResultado").on("click", function () {
+    $("#modalResultadoCarga").modal('hide');
+    armarTabla();
+});
