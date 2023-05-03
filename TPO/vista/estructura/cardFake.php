@@ -1,6 +1,6 @@
-<div class="col-2">
+<div class="col-5 col-sm-4 col-md-3 col-lg-2">
     <figure class="figure">
-        <svg class="rounded " width="190" height="190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" focusable="false">
+        <svg class="rounded img-fluid" width="190" height="190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" focusable="false">
             <rect width="100%" height="100%" fill="#868e96"></rect>
         </svg>
         <figcaption class="figure-caption text-end">

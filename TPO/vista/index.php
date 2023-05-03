@@ -125,7 +125,7 @@
     </div>
 </div>
 
-<div class="row my-3 justify-content-center d-none" id="contenedorImagenes">
+<div class="row my-3 justify-content-center d-none mx-3" id="contenedorImagenes">
     <!--
             <div class="col-4">
                 <figure class="figure">
