@@ -4,7 +4,7 @@
         <div class="modal-content" id="ModalContenido">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="ModalFormTitulo">Cargar Nuevo Competidor</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="row" style="overflow: hidden;">
@@ -44,7 +44,7 @@
 
 <div class="modal fade" id="modalResultadoCarga" tabindex="-1" aria-labelledby="modalResultadoCarga" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" id="modalResultadoContenido">
             <div class="modal-header">
                 <h1 class="modal-title fs-5">Resultado de Carga de Competidor</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
