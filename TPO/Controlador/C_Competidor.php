@@ -153,6 +153,14 @@ class C_Competidor
         return $arreglo;
     }
 
+    private function calcularEdad($fechaNacimiento)
+    {
+        $fechaActual = new DateTime();
+        $fechaNacimiento = new DateTime($fechaNacimiento);
+        $diferencia = $fechaActual->diff($fechaNacimiento);
+        return $diferencia->y;
+    }
+
     /* RECIBE UN STRING PARA PONER QUE LA PRIMER LETRA DE CADA PALABRA SEA MAYÚSCULA MIENTRAS QUE EL RESTO SON MINÚSCULAS */
     private function modificarString($string)
     {
@@ -168,6 +176,7 @@ class C_Competidor
         foreach ($list as $competidorActual) {
 
             $paisNombre = $competidorActual->getObjEstado()->getObjPais()->getNombre();
+            $edad = $this->calcularEdad($competidorActual->getFechaNacimiento());
 
             $item = [
                 'legajo' => $competidorActual->getLegajo(),
@@ -175,7 +184,7 @@ class C_Competidor
                 'nombre' => $competidorActual->getNombre(),
                 'apellido' => $competidorActual->getApellido(),
                 'email' => $competidorActual->getEmail(),
-                'fechaNacimiento' => $competidorActual->getFechaNacimiento(),
+                'edad' => $edad,
                 'genero' => $competidorActual->getGenero(),
                 'rankingNacional' => $competidorActual->getRankingNacional(),
                 'graduacion' => $competidorActual->getGraduacion(),

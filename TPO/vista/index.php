@@ -77,6 +77,7 @@
                         <option value="2">Nombre</option>
                         <option value="3">DU</option>
                         <option value="4">Email</option>
+                        <option value="5">Edad</option>
                     </select>
                     <input type="text" class="form-control border-danger" id="buscar" placeholder="Buscar" onkeyup="filtrarTabla()" aria-describedby="basic-addon2">
                     <span class="input-group-text bg-danger text-white" id="basic-addon2"><i class="bi bi-search"></i></span>
@@ -94,7 +95,7 @@
                         <th class="d-none d-sm-table-cell">Nombre</th>
                         <th class="d-none d-md-table-cell">DU</th>
                         <th class="d-none d-md-table-cell">Email</th>
-                        <th class="d-none d-lg-table-cell">Fecha Nacimiento</th>
+                        <th class="d-none d-lg-table-cell">Edad</th>
                         <th class="d-none d-lg-table-cell">País de origen</th>
                         <th class="d-none d-lg-table-cell">Género</th>
                         <th>Graduación</th>
