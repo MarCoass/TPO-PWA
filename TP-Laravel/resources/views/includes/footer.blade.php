@@ -37,8 +37,8 @@
                                     <h5 class="mx-2"><i class="bi bi-github"></i></h5>
                                 </button>
                             </a>
-                            <h5>Alhue Paillamilla</h5>
-                            <p>FAI - 0000</p>
+                            <h5>Micaela Aluhe Paillamilla Martinez</h5>
+                            <p>FAI - 2296</p>
                         </div> |
                         <div class="col">
                             <a href="#" style="text-decoration:none;">
