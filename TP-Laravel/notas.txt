@@ -1,0 +1,13 @@
+Active del navbar
+
+Los 'a' del navbar tienen dentro de la clase lo siguiente:
+{{ request()->is('imagenesRandom') ? 'active' : '' }}
+La función request()->is() es un método de Laravel que se utiliza para comparar 
+la URL actual de la solicitud con un patrón específico, entonces si la URL actual es imagenesRandom, se le asignara 
+al 'a' la clase active, sino no.
+
+------------------------------------------------------------------------
+Imagen del header
+
+Al utilizar una imagen en una plantilla Blade, se puede usar la función asset() para generar la URL completa 
+de la imagen de forma dinámica
