@@ -10,7 +10,7 @@
 
 @section('contenido')
  
-<div class="p-3" style="margin-bottom: 20px">
+<div class="p-3" style="margin-bottom: 100px">
 <div class="col-md-12 text-center">
         <h3 class="display-5" id="contador">90 seg.</h3>
 </div>
