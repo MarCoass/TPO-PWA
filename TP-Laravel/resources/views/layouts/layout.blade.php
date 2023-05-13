@@ -29,7 +29,7 @@
         <div>
             <nav id="menuHamburguesa" class="navbar navbar-expand-xxxl p-3  text-bg-light">
 
-                <img src="../util/Img/World_Taekwondo.png" alt="logo TKD" width="100px" /><span
+                <img src="{{ asset('images/World_Taekwondo.png') }}" alt="logo TKD" width="100px" /><span
                     class="fs-4 ms-3 tituloPag">Poomsae
                     Reconocido</span>
                 <div class=""><i class="bi bi-moon-fill mx-3" id="botonTemaOscuro"></i>
