@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 /**
- * Rutas creadas por el ejercicio 5.7
+ * Rutas creadas por el ejercicio 5
  */
 Route::get('/about', function () {
     return view('about');
@@ -31,4 +31,20 @@ Route::get('/logout', function () {
 });
 Route::get('/help', function () {
     return view('help');
+});
+
+/**
+ * Rutas creadas por el ejercicio 6
+ */
+Route::get('/cronometro', function () {
+    return view('cronometro');
+});
+Route::get('/video', function () {
+    return view('video');
+});
+Route::get('/tablaCompetidores', function () {
+    return view('tablaCompetidores');
+});
+Route::get('/imagenesRandom', function () {
+    return view('imagenesRandom');
 });
