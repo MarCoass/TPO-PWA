@@ -14,37 +14,45 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('ej6.home');
 });
 
 /**
- * Rutas creadas por el ejercicio 5
+ * Rutas creadas por el ejercicio 5.4
+ */
+Route::get('/materiaYTema', function () {
+    return view('ej5.materiaYTema');
+});
+  
+
+/**
+ * Rutas creadas por el ejercicio 5.6
  */
 Route::get('/about', function () {
-    return view('about');
+    return view('ej5.about');
 });
 Route::get('/login', function () {
-    return view('login');
+    return view('ej5.login');
 });
 Route::get('/logout', function () {
-    return view('logout');
+    return view('ej5.logout');
 });
 Route::get('/help', function () {
-    return view('help');
+    return view('ej5.help');
 });
 
 /**
  * Rutas creadas por el ejercicio 6
  */
 Route::get('/cronometro', function () {
-    return view('cronometro');
+    return view('ej6.cronometro');
 });
 Route::get('/video', function () {
-    return view('video');
+    return view('ej6.video');
 });
 Route::get('/tablaCompetidores', function () {
-    return view('tablaCompetidores');
+    return view('ej6.tablaCompetidores');
 });
 Route::get('/imagenesRandom', function () {
-    return view('imagenesRandom');
+    return view('ej6.imagenesRandom');
 });
