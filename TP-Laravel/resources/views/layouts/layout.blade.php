@@ -17,6 +17,10 @@
 
     <!-- una font digital para cronometro -->
     <link href="https://fonts.cdnfonts.com/css/digital-7-mono" rel="stylesheet">
+
+ 
+    <script type="module" src="{{ asset('js/index_dom.js') }}"></script>
+ 
 </head>
 
 <body class="transicion">
