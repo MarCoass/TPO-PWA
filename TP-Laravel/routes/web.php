@@ -14,5 +14,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
+});
+
+/**
+ * Rutas creadas por el ejercicio 5.7
+ */
+Route::get('/about', function () {
+    return view('about');
+});
+Route::get('/login', function () {
+    return view('login');
+});
+Route::get('/logout', function () {
+    return view('logout');
+});
+Route::get('/help', function () {
+    return view('help');
 });
