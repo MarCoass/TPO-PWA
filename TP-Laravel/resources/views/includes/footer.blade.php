@@ -7,7 +7,7 @@
                         <div class="col">
                             <a href="https://github.com/MarCoass">
                                 <button type="button" class="btn btn-outline-dark">
-                                    <h5 class="mx-2"><i class="bi bi-github"></i></h5>
+                                    <h5 class="mx-2 mt-1"><i class="bi bi-github"></i></h5>
                                 </button>
                             </a>
                             <h5>Martina Coassin</h5>
@@ -16,7 +16,7 @@
                         <div class="col">
                             <a href="https://github.com/BraianCenturion2001" style="text-decoration:none;">
                                 <button type="button" class="btn btn-outline-dark">
-                                    <h5 class="mx-2"><i class="bi bi-github"></i></h5>
+                                    <h5 class="mx-2 mt-1"><i class="bi bi-github"></i></h5>
                                 </button>
                             </a>
                             <h5>Braian Centurión</h5>
@@ -25,7 +25,7 @@
                         <div class="col">
                             <a href="https://github.com/matiasnqn16">
                                 <button type="button" class="btn btn-outline-dark">
-                                    <h5 class="mx-2"><i class="bi bi-github"></i></h5>
+                                    <h5 class="mx-2 mt-1"><i class="bi bi-github"></i></h5>
                                 </button>
                             </a>
                             <h5>Matias Farfan</h5>
@@ -34,7 +34,7 @@
                         <div class="col">
                             <a href="#">
                                 <button type="button" class="btn btn-outline-dark">
-                                    <h5 class="mx-2"><i class="bi bi-github"></i></h5>
+                                    <h5 class="mx-2 mt-1"><i class="bi bi-github"></i></h5>
                                 </button>
                             </a>
                             <h5>Micaela Aluhe Paillamilla Martinez</h5>
@@ -43,16 +43,16 @@
                         <div class="col">
                             <a href="https://github.com/Gonzalo-Olmos" style="text-decoration:none;">
                                 <button type="button" class="btn btn-outline-dark">
-                                    <h5 class="mx-2"><i class="bi bi-github"></i></h5>
+                                    <h5 class="mx-2 mt-1"><i class="bi bi-github"></i></h5>
                                 </button>
                             </a>
                             <h5>Gonzalo Olmos</h5>
                             <p>FAI - 1964</p>
                         </div> |
                         <div class="col">
-                            <a href="#">
+                            <a href="https://github.com/GustavoOliveros">
                                 <button type="button" class="btn btn-outline-dark">
-                                    <h5 class="mx-2"><i class="bi bi-github"></i></h5>
+                                    <h5 class="mx-2 mt-1"><i class="bi bi-github"></i></h5>
                                 </button>
                             </a>
                             <h5>Gustavo Oliveros</h5>
