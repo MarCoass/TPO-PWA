@@ -23,9 +23,9 @@
                     <th data-priority="1"> Nombre </th>
                     <th data-priority="1"> DU </th>
                     <th data-priority="3"> Fecha de Nacimiento </th>
-                    <th data-priority="3"> Pais | Estado </th>
-                    <th data-priority="3"> Graduacion</th>
+                    <th data-priority="3"> Pais</th>
                     <th data-priority="3"> Ranking </th>
+                    <th data-priority="3"> Graduacion</th>
                     <th data-priority="3"> Email </th>
                     <th data-priority="3"> Genero </th>
                 </tr>
@@ -40,9 +40,9 @@
                     <th> Nombre </th>
                     <th> DU </th>
                     <th> Fecha de Nacimiento </th>
-                    <th> Pais | Estado </th>
-                    <th> Graduacion</th>
+                    <th> Pais</th>
                     <th> Ranking </th>
+                    <th> Graduacion</th>
                     <th> Email </th>
                     <th> Genero </th>
                 </tr>

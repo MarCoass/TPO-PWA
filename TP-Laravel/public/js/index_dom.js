@@ -1,6 +1,6 @@
 import { boton_contador_inicio, boton_contador_fin } from './cronometro.js';
 import { cambio_de_tema } from './tema.js';
-import { competidores_tabla } from './tablaCompetidores.js';
+//import { competidores_tabla } from './tablaCompetidores.js';
 import './eventosMenu.js';
 
 //Cronometro

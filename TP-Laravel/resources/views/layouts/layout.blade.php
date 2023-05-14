@@ -45,6 +45,7 @@
 
     <script src="{{ asset('bootstrap-5.2.3/js/bootstrap.bundle.min.js') }}"></script>
     <script type="module" src="{{ asset('js/index_dom.js') }}"></script>
+    <script type="module" src="{{ asset('js/tablaCompetidores.js') }}"></script>
 
 
 </body>
