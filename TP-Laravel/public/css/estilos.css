@@ -1,0 +1,41 @@
+/* estilos para navbar responsive y otros */
+
+/* estilos cuando se achica la pantalla */
+@media (max-width: 480px) {
+    #menuHamburguesa {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      /* lo de abajo le da cuerpo al menu */
+      background: radial-gradient(circle, #aca9a988 0%, #d6d6d6 100%);
+      border-radius: 1em;
+      padding: 1em;
+      opacity: 0.9;
+    }
+  
+    /* este le da tamaño a la lista */
+    .nav-item {
+      font-size: 1.5em;
+    }
+  
+    .nav-item.active {
+      font-size: 1.5em;
+      text-shadow: 0.05em 0.05em #a54b4b;
+    }
+  
+    /* este esconde el titulo */
+    .tituloPag {
+      display: none;
+    }
+  
+    /* esto deja detras del menuBurger */
+    #footer {
+      z-index: -5;
+    }
+  }
+  
+/* transicion para fondos al aplicar cambios de tema */
+.transicion {
+    /* Aplica la transición */
+    transition: background 2s;
+  }

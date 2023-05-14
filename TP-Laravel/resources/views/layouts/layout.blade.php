@@ -18,8 +18,10 @@
     <!-- una font digital para cronometro -->
     <link href="https://fonts.cdnfonts.com/css/digital-7-mono" rel="stylesheet">
 
+    <!-- estilos propios -->
+    <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
+
  
-    <script type="module" src="{{ asset('js/index_dom.js') }}"></script>
  
 </head>
 
@@ -37,6 +39,8 @@
 
     <script src="{{ asset('bootstrap-5.2.3/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('bootstrap-5.2.3/js/bootstrap.min.js') }}"></script>
+    <script type="module" src="{{ asset('js/index_dom.js') }}"></script>
+
 
 </body>
 
