@@ -41,13 +41,13 @@
                             <p>FAI - 2296</p>
                         </div> |
                         <div class="col">
-                            <a href="#" style="text-decoration:none;">
+                            <a href="https://github.com/Gonzalo-Olmos" style="text-decoration:none;">
                                 <button type="button" class="btn btn-outline-dark">
                                     <h5 class="mx-2"><i class="bi bi-github"></i></h5>
                                 </button>
                             </a>
                             <h5>Gonzalo Olmos</h5>
-                            <p>FAI - 0000</p>
+                            <p>FAI - 1964</p>
                         </div> |
                         <div class="col">
                             <a href="#">
