@@ -9,5 +9,15 @@
 @endsection
 
 @section('contenido')
-    Este es texto de relleno para la vista Imagenes random
+    <div class="row my-3 justify-content-center d-none mx-3" id="contenedorImagenes"></div>
+
+    <div class="row my-3 justify-content-center parpadear" id="contenedorImagenesFake">
+        @for ($i = 0; $i < 5; $i++)
+            @include('includes.cardPlaceholder')
+        @endfor
+    </div>
+
+    @include('includes.modalVerImagen')
+
+    <script src="{{ asset('js/imagenes.js') }}"></script>
 @endsection
