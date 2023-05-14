@@ -38,7 +38,6 @@
     @include('includes.footer')
 
     <script src="{{ asset('bootstrap-5.2.3/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('bootstrap-5.2.3/js/bootstrap.min.js') }}"></script>
     <script type="module" src="{{ asset('js/index_dom.js') }}"></script>
 
 
