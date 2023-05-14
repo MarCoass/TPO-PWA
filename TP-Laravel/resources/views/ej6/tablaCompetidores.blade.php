@@ -1,13 +1,54 @@
 @extends('layouts/layout')
 
 @section('titulo')
-    Table de competidores
+    Tabla de competidores
 @endsection
 
 @section('encabezado')
-    Table de competidores
+    Tabla de competidores
 @endsection
 
 @section('contenido')
-    Este es texto de relleno para la vista Table de competidores
+    
+
+
+<div class="row ">
+    <div class="table-responsive">
+        <table id="competidores_tabla"
+            class="table hover table-light table-bordered nowrap border">
+            <thead class="flip-content">
+                <tr>
+                    <th data-priority="1"> GAL </th>
+                    <th data-priority="1"> Apellido </th>
+                    <th data-priority="1"> Nombre </th>
+                    <th data-priority="1"> DU </th>
+                    <th data-priority="3"> Fecha de Nacimiento </th>
+                    <th data-priority="3"> Pais | Estado </th>
+                    <th data-priority="3"> Graduacion</th>
+                    <th data-priority="3"> Ranking </th>
+                    <th data-priority="3"> Email </th>
+                    <th data-priority="3"> Genero </th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th> GAL </th>
+                    <th> Apellido </th>
+                    <th> Nombre </th>
+                    <th> DU </th>
+                    <th> Fecha de Nacimiento </th>
+                    <th> Pais | Estado </th>
+                    <th> Graduacion</th>
+                    <th> Ranking </th>
+                    <th> Email </th>
+                    <th> Genero </th>
+                </tr>
+            </tfoot>
+
+        </table>
+    </div>
+</div>
 @endsection
