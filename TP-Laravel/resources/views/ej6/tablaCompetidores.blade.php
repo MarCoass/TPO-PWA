@@ -12,7 +12,7 @@
     
 <div class="my-3">
         <table id="competidores_tabla"
-            class="table hover table-light table-bordered nowrap border" width="100%">
+            class="table hover table-light table-bordered nowrap border dataTable dtr-inline collapsed" width="100%">
             <thead class="flip-content">
                 <tr>
                     <th data-priority="1"> GAL </th>

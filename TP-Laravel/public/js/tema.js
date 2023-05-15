@@ -8,7 +8,7 @@ export const cambio_de_tema = (tema) => {
     if(tema === "dark"){
 
       if($tabla){
-        $tabla.classList['value'] = 'table hover table-dark table-bordered nowrap border';
+        $tabla.classList['value'] = 'table hover table-dark table-bordered nowrap border dataTable dtr-inline collapsed';
       }
      
       document.body.classList.add('text-bg-dark');
@@ -25,7 +25,7 @@ export const cambio_de_tema = (tema) => {
       document.body.classList.remove('text-bg-dark');
       document.body.classList.add('text-bg-light');
       if($tabla){
-        $tabla.classList['value'] = 'table hover table-light table-bordered nowrap border';
+        $tabla.classList['value'] = 'table hover table-light table-bordered nowrap border dataTable dtr-inline collapsed';
       }
       let negro = document.getElementById("cambiarVista_negro");
       negro.style.display = "block";
