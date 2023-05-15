@@ -30,7 +30,7 @@
 
 </head>
 
-<body class="transicion conteiner-fluid">
+<body class="transicion container-fluid">
     <!-- NAVBAR -->
     @include('includes.navbar')
 

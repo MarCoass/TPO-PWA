@@ -1,5 +1,5 @@
-<header class="sticky-top border-bottom border-danger border-2">
-    <nav id="menuHamburguesa" class="navbar navbar-expand-xxxl p-3  text-bg-light">
+<header class="sticky-top">
+    <nav id="menuHamburguesa" class="navbar navbar-expand-xxxl p-3  text-bg-light rounded">
         <a href="/">
             <img src="{{ asset('images/World_Taekwondo.png') }}" alt="logo TKD" width="100px" />
         </a>
