@@ -22,14 +22,9 @@
     <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
 
     <!-- Datatable -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
-
-    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
-
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.dataTables.min.css">
 
-    <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
     
 
 </head>
@@ -46,7 +41,16 @@
     <!-- FOOTER -->
     @include('includes.footer')
 
+    <!-- librerias -->
     <script src="{{ asset('bootstrap-5.2.3/js/bootstrap.bundle.min.js') }}"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
+
+
+    <!-- index dom -->
     <script type="module" src="{{ asset('js/index_dom.js') }}"></script>
 
     <!--ESTE SERIA MEJOR DEJARLO SOLO EN LA VISTA DE LA TABLA O ACA ESTA BIEN?-->
