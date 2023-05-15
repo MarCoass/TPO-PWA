@@ -3,13 +3,16 @@
  * @param {string} tema light o dark
  */
 export const cambio_de_tema = (tema) => {
-       
+    let $tabla = document.querySelector('.table');
+
     if(tema === "dark"){
 
-      //document.body.style.backgroundColor = "var(--bs-dark)";
-
-      document.body.classList.add('text-bg-dark')
-      document.body.classList.remove('text-bg-light')
+      if($tabla){
+        $tabla.classList['value'] = 'table hover table-dark table-bordered nowrap border';
+      }
+     
+      document.body.classList.add('text-bg-dark');
+      document.body.classList.remove('text-bg-light');
 
       let negro = document.getElementById("cambiarVista_negro");
       negro.style.display = "none";
@@ -19,10 +22,11 @@ export const cambio_de_tema = (tema) => {
 
       localStorage.setItem("background", "dark");
     }else{
-      //document.body.style.backgroundColor = "#FFFFFF";
-      document.body.classList.remove('text-bg-dark')
-      document.body.classList.add('text-bg-light')
-
+      document.body.classList.remove('text-bg-dark');
+      document.body.classList.add('text-bg-light');
+      if($tabla){
+        $tabla.classList['value'] = 'table hover table-light table-bordered nowrap border';
+      }
       let negro = document.getElementById("cambiarVista_negro");
       negro.style.display = "block";
 
