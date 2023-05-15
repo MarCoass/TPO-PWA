@@ -1,7 +1,7 @@
 <header class="sticky-top">
     <nav id="menuHamburguesa" class="navbar navbar-expand-xxxl p-3  text-bg-light rounded">
         <a href="/">
-            <img src="{{ asset('images/World_Taekwondo.png') }}" alt="logo TKD" width="100px" />
+            <img class="logoHome" src="{{ asset('images/World_Taekwondo.png') }}" alt="logo TKD" width="100px" />
         </a>
         <span class="fs-4 ms-3 tituloPag">Poomsae
             Reconocido</span>
