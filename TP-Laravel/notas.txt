@@ -11,3 +11,19 @@ Imagen del header
 
 Al utilizar una imagen en una plantilla Blade, se puede usar la función asset() para generar la URL completa 
 de la imagen de forma dinámica
+
+------------------------------------------------------------------------
+@include
+En Laravel, al usar la función @include('includes.footer') en Blade, estás indicando que se incluya el archivo footer.blade.php en la carpeta includes.
+Esto se debe a que Laravel busca automáticamente el archivo en la carpeta resources/views, que es la ubicación predeterminada para las vistas de la aplicación.
+La convención de nomenclatura utilizada es 'nombreCarpeta.nombreArchivo', lo que significa que buscará el archivo footer.blade.php dentro de resources/views/includes.
+Sin embargo, si deseas especificar una ubicación diferente, puedes proporcionar la ruta completa en lugar de utilizar la convención predeterminada.
+
+La convención de nomenclatura en Laravel sigue el formato 'nombreCarpeta.nombreArchivo'.
+La primera parte, nombreCarpeta, se refiere al nombre de la carpeta relativa a la carpeta resources/views.
+La segunda parte, nombreArchivo, se refiere al nombre del archivo que deseas incluir.
+
+Entonces, si tienes una estructura de carpetas como resources/views/texto/footer.blade.php, al utilizar @include('texto.footer') se incluirá el archivo correctamente.
+Sin embargo, si el archivo footer.blade.php se encuentra en una ubicación diferente, deberás proporcionar la ruta completa en lugar de utilizar la convención de nomenclatura.
+
+En resumen, la convención 'nombreCarpeta.nombreArchivo' en Laravel se utiliza para organizar las vistas en subcarpetas dentro de resources/views y para especificar la ruta al incluir archivos con @include.
