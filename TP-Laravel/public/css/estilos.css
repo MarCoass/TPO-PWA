@@ -1,3 +1,5 @@
+/* estilos para el layout */
+
 /* estilos para navbar responsive y otros */
 
 /* estilos cuando se achica la pantalla */
@@ -47,4 +49,42 @@
 #contenedorImagenes .figure:hover{
   opacity: 0.8;
   transition: 0.5s;
+}
+
+/**ESTILOS DE LA TABLA**/
+
+#competidores_tabla_filter{
+  background-color: var(--bs-red);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#competidores_tabla_filter input{
+  background-color: antiquewhite;
+}
+
+.dataTables_info, .dataTables_paginate, .dataTables_length {
+ margin-top: 10px;
+}
+
+
+
+.dataTables_length select{
+  border-color: var(--bs-red)!important;
+}
+
+.paginate_button{
+  background-color: antiquewhite !important;
+  border-color: var(--bs-red) !important;
+}
+
+.paginate_button:hover {
+  background-color: #ccc !important;
+  color: #fff !important;
+}
+
+.paginate_button.current{
+  background-color: var(--bs-red) !important;
+  color:white !important;
 }

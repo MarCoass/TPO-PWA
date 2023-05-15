@@ -12,7 +12,7 @@
     
 
 
-<div class="row ">
+<div class="row my-3">
     <div class="table-responsive">
         <table id="competidores_tabla"
             class="table hover table-light table-bordered nowrap border">

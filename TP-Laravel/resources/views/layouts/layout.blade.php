@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Poomsae Reconocido Individual Élite</title>
+    <title>@yield('titulo', 'Poomsae Reconocido Individual Élite')</title>
 
     <!-- ICON -->
     <link rel="icon" type="image\x-icon" href="{{ asset('images/logo.ico') }}">
@@ -28,15 +28,14 @@
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
     
 
-
 </head>
 
-<body class="transicion">
+<body class="transicion conteiner-fluid">
     <!-- NAVBAR -->
     @include('includes.navbar')
 
-    <main>
-        <h1>@yield('encabezado')</h1>
+    <main class="">
+        <h1 class="display-5 text-center">@yield('encabezado')</h1>
         @yield('contenido')
     </main>
 
@@ -45,6 +44,8 @@
 
     <script src="{{ asset('bootstrap-5.2.3/js/bootstrap.bundle.min.js') }}"></script>
     <script type="module" src="{{ asset('js/index_dom.js') }}"></script>
+
+    <!--ESTE SERIA MEJOR DEJARLO SOLO EN LA VISTA DE LA TABLA O ACA ESTA BIEN?-->
     <script type="module" src="{{ asset('js/tablaCompetidores.js') }}"></script>
 
 

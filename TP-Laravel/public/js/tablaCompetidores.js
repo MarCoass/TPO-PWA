@@ -6,6 +6,7 @@ $(document).ready(function () {
             dataSrc: "",
             data: {},
         },
+        dom: '<"top"f>t<"bottom"lip>',
         columns: [
             { data: "GAL" }, 
             { data: "Apellido" }, 
