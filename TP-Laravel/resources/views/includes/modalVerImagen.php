@@ -1,4 +1,4 @@
-<div class="modal fade" id="modalImagen" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalImagen" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-theme="light">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
