@@ -53,6 +53,9 @@ Route::get('/video', function () {
 Route::get('/tablaCompetidores', function () {
     return view('ej6.tablaCompetidores');
 });
+Route::get('/cargarCompetidor', function () {
+    return view('ej6.cargarCompetidor');
+});
 Route::get('/imagenesRandom', function () {
     return view('ej6.imagenesRandom');
 });
