@@ -10,12 +10,9 @@
 
 @section('contenido')
     
-
-
-<div class="row my-3">
-    <div class="table-responsive">
+<div class="my-3">
         <table id="competidores_tabla"
-            class="table hover table-light table-bordered nowrap border">
+            class="table hover table-light table-bordered nowrap border dataTable dtr-inline collapsed" width="100%">
             <thead class="flip-content">
                 <tr>
                     <th data-priority="1"> GAL </th>
@@ -47,8 +44,6 @@
                     <th> Genero </th>
                 </tr>
             </tfoot>
-
         </table>
-    </div>
 </div>
 @endsection

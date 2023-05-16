@@ -89,3 +89,12 @@
   background-color: var(--bs-red) !important;
   color:white !important;
 }
+
+
+.logoHome { 
+  transition: 0.3s;
+}
+
+.logoHome:hover { 
+  transform: scale(1.2);
+}
