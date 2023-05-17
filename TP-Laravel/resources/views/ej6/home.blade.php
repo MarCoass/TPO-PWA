@@ -61,6 +61,16 @@
               </div>
               
           
+              <div class="seccion_item">
+                <a href="https://docs.google.com/document/d/1vK01hZtZk4RDvsVPbSjwtKjx1IgAGy3Qf3QWT0bZlcM/edit?usp=sharing" class="seccion-item_link">
+                  <div class="seccion-item_bg"></div>
+                  <div class="seccion-item_title">
+                    Respuestas teoricas
+                  </div>
+                </a>
+              </div>
+              
+          
               
           
             </div>
