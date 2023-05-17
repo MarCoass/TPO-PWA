@@ -5,7 +5,7 @@
 @endsection
 
 @section('encabezado')
-<h1 class="display-2">Video</h1> 
+Video
 @endsection
 
 @section('contenido')

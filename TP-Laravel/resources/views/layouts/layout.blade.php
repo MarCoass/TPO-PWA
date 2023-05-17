@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -20,6 +20,7 @@
 
     <!-- estilos propios -->
     <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/cards.css') }}">
 
     <!-- Datatable -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
@@ -29,11 +30,11 @@
 
 </head>
 
-<body class="transicion container-fluid">
+<body class="transicion container-fluid" >
     <!-- NAVBAR -->
     @include('includes.navbar')
 
-    <main class="">
+    <main class="justify-content-center">
         <h1 class="display-5 text-center">@yield('encabezado')</h1>
         @yield('contenido')
     </main>

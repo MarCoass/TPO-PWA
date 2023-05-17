@@ -5,7 +5,7 @@
 @endsection
 
 @section('encabezado')
-   <h1 class="display-2">Cronometro</h1> 
+   Cronometro
 @endsection
 
 @section('contenido')

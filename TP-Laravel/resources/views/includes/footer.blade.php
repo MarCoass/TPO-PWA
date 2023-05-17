@@ -1,4 +1,4 @@
-<div class="bg-danger">
+<div class="bg-danger footer">
     <div class="bg-danger row d-flex" id="footer">
         <section class="mt-3" style="user-select: none;">
             <footer class="text-center text-white">
