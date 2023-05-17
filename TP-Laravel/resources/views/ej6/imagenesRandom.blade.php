@@ -19,5 +19,5 @@
 
     @include('includes.modalVerImagen')
 
-    <script src="{{ asset('js/imagenes.js') }}"></script>
+    <script defer src="{{ asset('js/imagenes.js') }}"></script>
 @endsection

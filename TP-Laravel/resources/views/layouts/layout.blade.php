@@ -30,17 +30,19 @@
 
 </head>
 
-<body class="transicion container-fluid" >
-    <!-- NAVBAR -->
-    @include('includes.navbar')
+<body class="transicion" >
+    <div id="wrapper">
+        <!-- NAVBAR -->
+        @include('includes.navbar')
 
-    <main class="justify-content-center">
-        <h1 class="display-5 text-center">@yield('encabezado')</h1>
-        @yield('contenido')
-    </main>
+        <main class="justify-content-center container-fluid p-3">
+            <h1 class="display-5 text-center">@yield('encabezado')</h1>
+            @yield('contenido')
+        </main>
 
-    <!-- FOOTER -->
-    @include('includes.footer')
+        <!-- FOOTER -->
+        @include('includes.footer')
+    </div>
 
     <!-- librerias -->
     <script src="{{ asset('bootstrap-5.2.3/js/bootstrap.bundle.min.js') }}"></script>
