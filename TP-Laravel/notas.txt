@@ -139,4 +139,8 @@ Ejecutar seeder: php artisan db:seed --class=NombreTableSeeder
 1) php artisan db:seed --class=PaisesTableSeeder
 2) php artisan db:seed --class=EstadosTableSeeder
 
+
+1) php artisan db:seed --class=RolesTableSeeder
+2) php artisan db:seed --class=UsuariosTableSeeder
+
 Importante cargar primero paises porque estado tiene la clave foranea idPais
