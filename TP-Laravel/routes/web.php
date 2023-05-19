@@ -80,4 +80,3 @@ Route::middleware([RolMiddleware::class . ':administrador'])->group(function () 
         // Accede al objeto $user y realiza las acciones necesarias
     });
 });*/
-
