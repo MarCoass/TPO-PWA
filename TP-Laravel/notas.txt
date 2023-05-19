@@ -71,6 +71,15 @@ Entre otros métodos para relaciones como belongsToMany, morphTo, morphMany, etc
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
 
+MIGRACIONES
+
+Crear migracion: php artisan make:migration create_nombreTabla_table
+Correr migraciones: php artisan migrate 
+
+Las migraciones se ejecutan de manera alfabetica, es importante saberlo para cuando una tabla tiene clave foranea que esta se cree 
+despues de la tabla donde esta la clave.
+------------------------------------------------------------------------------------------------------------------------------------------------
+
 CONTROLADORES
 
 php artisan make:controller NombreDelControlador
@@ -111,3 +120,19 @@ Algunos de los métodos más utilizados son:
 
 * destroy($id): Este método se utiliza para eliminar un registro de la base de datos.
     Recibe el $id del registro que se va a eliminar. Puedes encontrar y eliminar el registro correspondiente de la base de datos.
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+SEEDERS
+
+Un seeder en Laravel es una clase que se utiliza para poblar la base de datos con datos predefinidos
+Toma los datos de un array o json y con un foreach va creando los objetos.
+
+Crear seeder: php artisan make:seeder NombreTableSeeder
+Ejecutar seeder: php artisan db:seed --class=NombreTableSeeder 
+
+---- COMO CARGAR LOS DATOS -----
+1) php artisan db:seed --class=PaisesTableSeeder
+2) php artisan db:seed --class=EstadosTableSeeder
+
+Importante cargar primero paises porque estado tiene la clave foranea idPais
