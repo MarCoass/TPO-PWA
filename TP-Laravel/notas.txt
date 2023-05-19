@@ -1,3 +1,23 @@
+
+------------------------------------------------------------------------
+
+COMO ARMAR LA BASE DE DATOS Y CARGARLE DATOS
+1) Crear la base de datos con nombre db_pwa
+2) En el archivo .env cambiar la variable DB_DATABASE  al nombre de la base de datos.
+3) En la consola ejecutar el comando php artisan migrate
+4) Cargar los datos de prueba usando los seeders con los siguientes comandos
+     a) php artisan db:seed --class=PaisesTableSeeder
+     b) php artisan db:seed --class=EstadosTableSeeder
+     c) php artisan db:seed --class=RolesTableSeeder
+     d) php artisan db:seed --class=UsuariosTableSeeder
+     e) php artisan db:seed --class=CompetidoresTableSeeder
+
+
+** COMO RESETEAR LA BASE DE DATOS **
+1) Ejecutar el comando php artisan migrate:refresh
+2) Ejecutar los comandos de los seeders (en el mismo orden que arribita)
+
+------------------------------------------------------------------------
 Active del navbar
 
 Los 'a' del navbar tienen dentro de la clase lo siguiente:
@@ -6,7 +26,7 @@ La función request()->is() es un método de Laravel que se utiliza para compara
 la URL actual de la solicitud con un patrón específico, entonces si la URL actual es imagenesRandom, se le asignara 
 al 'a' la clase active, sino no.
 
-------------------------------------------------------------------------
+
 Imagen del header
 
 Al utilizar una imagen en una plantilla Blade, se puede usar la función asset() para generar la URL completa 
