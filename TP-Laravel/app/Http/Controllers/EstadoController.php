@@ -10,7 +10,7 @@ class EstadoController extends Controller
     public function index()
     {      
         $estados = Estado::all();
-        return view('estados.index', compact('estados'));
+        return $estados;
     }
 
     /*public function create()
