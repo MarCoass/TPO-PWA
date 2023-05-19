@@ -1,11 +1,11 @@
 @extends('layouts/layout')
 
 @section('titulo')
-    Video
+    Presentacion
 @endsection
 
 @section('encabezado')
-Video
+Presentacion del Torneo
 @endsection
 
 @section('contenido')
@@ -21,6 +21,20 @@ Video
         <div class="col-12">
         <iframe width="560" height="315" src="https://www.youtube.com/embed/ermNRSmkGF8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
+    </div>
+    <div class="row">
+        <section class="col-12 col-md-4">
+            <h3>Invitacion</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non necessitatibus earum, velit inventore assumenda cupiditate molestiae ullam, ea nobis esse totam aliquid, vitae perspiciatis accusantium quae! Voluptate inventore porro quod?</p>
+        </section>
+        <section class="col-12 col-md-4">
+            <h3>Bases</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non necessitatibus earum, velit inventore assumenda cupiditate molestiae ullam, ea nobis esse totam aliquid, vitae perspiciatis accusantium quae! Voluptate inventore porro quod?</p>
+        </section>
+        <section class="col-12 col-md-4">
+            <h3>Flyer</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non necessitatibus earum, velit inventore assumenda cupiditate molestiae ullam, ea nobis esse totam aliquid, vitae perspiciatis accusantium quae! Voluptate inventore porro quod?</p>
+        </section>
     </div>
 </div>
 @endsection
