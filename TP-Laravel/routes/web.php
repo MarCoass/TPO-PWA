@@ -1,17 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Middleware\RolMiddleware;
+use Illuminate\Contracts\Auth\Authenticatable;
 
 Route::get('/', function () {
     return view('ej6.home');
@@ -23,7 +14,7 @@ Route::get('/', function () {
 Route::get('/materiaYTema', function () {
     return view('ej5.materiaYTema');
 });
-  
+
 
 /**
  * Rutas creadas por el ejercicio 5.6
@@ -59,3 +50,24 @@ Route::get('/cargarCompetidor', function () {
 Route::get('/imagenesRandom', function () {
     return view('ej6.imagenesRandom');
 });
+
+// Rutas verificadas por rol
+
+/*Route::middleware([RolMiddleware::class . ':competidor'])->group(function () {
+    Route::get('/ruta', function (Authenticatable $user) {
+        // Accede al objeto $user y realiza las acciones necesarias
+    });
+});
+
+Route::middleware([RolMiddleware::class . ':juez'])->group(function () {
+    Route::get('/ruta', function (Authenticatable $user) {
+        // Accede al objeto $user y realiza las acciones necesarias
+    });
+});
+
+Route::middleware([RolMiddleware::class . ':administrador'])->group(function () {
+    Route::get('/ruta', function (Authenticatable $user) {
+        // Accede al objeto $user y realiza las acciones necesarias
+    });
+});*/
+

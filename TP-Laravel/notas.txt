@@ -27,3 +27,87 @@ Entonces, si tienes una estructura de carpetas como resources/views/texto/footer
 Sin embargo, si el archivo footer.blade.php se encuentra en una ubicación diferente, deberás proporcionar la ruta completa en lugar de utilizar la convención de nomenclatura.
 
 En resumen, la convención 'nombreCarpeta.nombreArchivo' en Laravel se utiliza para organizar las vistas en subcarpetas dentro de resources/views y para especificar la ruta al incluir archivos con @include.
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+MODELOS
+
+php artisan make:model NombreModelo
+
+Laravel generará automáticamente un archivo para tu modelo en el directorio 'app' de tu proyecto como NombreModelo.php.
+
+Laravel proporciona una serie de métodos y funcionalidades predefinidas
+en el modelo base (Illuminate\Database\Eloquent\Model) que tu modelo Usuario hereda automáticamente. Estos métodos incluyen:
+
+1. Creación y guardado de registros:
+
+* create(array $attributes): Crea un nuevo registro en la base de datos con los atributos proporcionados.
+* save(array $options = []): Guarda el modelo en la base de datos.
+* fill(array $attributes): Rellena los atributos del modelo con los valores proporcionados.
+
+2. Actualización y eliminación de registros:
+
+* update(array $attributes = [], array $options = []): Actualiza uno o varios registros con los atributos proporcionados.
+* delete(): bool|null: Elimina el registro de la base de datos.
+* destroy(mixed $ids): Elimina uno o varios registros por sus claves primarias.
+
+3. Consultas y recuperación de registros:
+
+* find(mixed $id, array $columns = ['*']): Recupera un registro por su clave primaria.
+* findOrFail(mixed $id, array $columns = ['*']): Recupera un registro por su clave primaria o lanza una excepción si no se encuentra.
+* where(string|array|\Closure $column, mixed $operator = null, mixed $value = null, string $boolean = 'and'): Agrega una cláusula WHERE a la consulta.
+* get(array|string $columns = ['*']): Recupera todos los registros que coinciden con la consulta.
+* first(array|string $columns = ['*']): Recupera el primer registro que coincide con la consulta.
+* count(): Obtiene el número de registros que coinciden con la consulta.
+* paginate(int $perPage = 15, array $columns = ['*'], string $pageName = 'page', int|null $page = null): Pagina los resultados de la consulta.
+
+4. Relaciones con otros modelos:
+
+* belongsTo(string $related, string|null $foreignKey = null, string|null $ownerKey = null, string $relation = null): Define una relación de pertenencia a otro modelo.
+* hasMany(string $related, string|null $foreignKey = null, string|null $localKey = null): Define una relación de "tiene muchos" con otro modelo.
+* hasOne(string $related, string|null $foreignKey = null, string|null $localKey = null): Define una relación de "tiene uno" con otro modelo.
+
+Entre otros métodos para relaciones como belongsToMany, morphTo, morphMany, etc.
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+CONTROLADORES
+
+php artisan make:controller NombreDelControlador
+
+Esto creará un archivo en la carpeta "app/Http/Controllers"
+con el nombre que especificaste, seguido de "Controller.php" (por ejemplo, "NombreDelControladorController.php").
+Abre el archivo recién creado y encontrarás una clase llamada "NombreDelControladorController" que extiende la clase base "Controller".
+
+Una vez que hayas definido tus métodos de controlador, puedes utilizarlos en tus rutas para 
+manejar las solicitudes HTTP entrantes y realizar las acciones necesarias en tu modelo.
+
+Laravel proporciona varios métodos predefinidos en el controlador que puedes utilizar para realizar acciones comunes.
+Algunos de los métodos más utilizados son:
+
+* index(): Este método se utiliza para mostrar una lista de registros. 
+    Por lo general, se utiliza para la página principal o de índice de una entidad.
+    Puedes recuperar los registros necesarios del modelo y pasarlos a una vista para su visualización.
+
+* create(): Este método muestra el formulario para crear un nuevo registro.
+    Puedes mostrar una vista que contenga el formulario de creación.
+
+* store(Request $request): Este método se utiliza para almacenar un nuevo registro en la base de datos.
+    Recibe la instancia de la clase Request que contiene los datos enviados desde el formulario de creación.
+    Puedes crear una nueva instancia del modelo, asignar los valores del formulario y guardar el registro en la base de datos.
+
+* show($id): Este método muestra los detalles de un registro específico. 
+    Generalmente se utiliza para mostrar una vista con información detallada sobre un registro en particular,
+    identificado por su $id.
+
+* edit($id): Este método muestra el formulario para editar un registro existente.
+    Se utiliza para mostrar una vista que contiene el formulario de edición, prellenando los campos con los valores actuales
+    del registro identificado por su $id.
+
+* update(Request $request, $id): Este método se utiliza para actualizar un registro existente en la base de datos.
+    Recibe la instancia de la clase Request que contiene los datos enviados desde el formulario de edición, así como
+    el $id del registro que se va a actualizar. Puedes recuperar el registro existente, actualizar sus valores y guardar
+    los cambios en la base de datos.
+
+* destroy($id): Este método se utiliza para eliminar un registro de la base de datos.
+    Recibe el $id del registro que se va a eliminar. Puedes encontrar y eliminar el registro correspondiente de la base de datos.
