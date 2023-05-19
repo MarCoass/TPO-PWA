@@ -28,7 +28,7 @@
                 <a href="/video" class="seccion-item_link">
                   <div class="seccion-item_bg"></div>
                   <div class="seccion-item_title">
-                    Video
+                    Presentacion del torneo
                   </div>
                 </a>
               </div>

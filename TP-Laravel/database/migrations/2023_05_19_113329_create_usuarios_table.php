@@ -20,8 +20,11 @@ return new class extends Migration
             $table->string('usuario')->unique();
             $table->string('correo')->unique();
             $table->string('clave');
+            $table->unsignedBigInteger('idRol');
             $table->rememberToken();
             $table->timestamps();
+
+            $table->foreign('idRol')->references('idRol')->on('roles');
         });
     }
 
@@ -32,6 +35,9 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::table('usuarios', function (Blueprint $table) {
+            $table->dropForeign(['idRol']);
+        });
         Schema::dropIfExists('usuarios');
     }
 };
