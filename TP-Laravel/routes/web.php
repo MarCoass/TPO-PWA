@@ -1,8 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\RolMiddleware;
-use Illuminate\Contracts\Auth\Authenticatable;
+//use App\Http\Middleware\RolMiddleware;
+//use Illuminate\Contracts\Auth\Authenticatable;
+use App\Http\Controllers\PaisController;
+use App\Http\Controllers\EstadoController;
+use App\Http\Controllers\CompetidorController;
 
 Route::get('/', function () {
     return view('ej6.home');
@@ -50,6 +53,13 @@ Route::get('/cargarCompetidor', function () {
 Route::get('/imagenesRandom', function () {
     return view('ej6.imagenesRandom');
 });
+
+// Trae todos los países
+Route::get('/paises', [PaisController::class, 'index']);
+// Trae todos los estados
+Route::get('/estados', [EstadoController::class, 'index']);
+// Trae todos los estados
+Route::get('/competidores', [CompetidorController::class, 'index']);
 
 // Rutas verificadas por rol
 
