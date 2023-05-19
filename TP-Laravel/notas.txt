@@ -128,6 +128,10 @@ SEEDERS
 Un seeder en Laravel es una clase que se utiliza para poblar la base de datos con datos predefinidos
 Toma los datos de un array o json y con un foreach va creando los objetos.
 
+Se debe agregar los modelos que se usen -> use App\Models\Pais;
+
+Si se utiliza un JSON es necesario agregar lo siguiente -> use Illuminate\Support\Facades\File;
+
 Crear seeder: php artisan make:seeder NombreTableSeeder
 Ejecutar seeder: php artisan db:seed --class=NombreTableSeeder 
 
