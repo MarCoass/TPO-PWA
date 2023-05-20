@@ -7,9 +7,9 @@ use App\Http\Controllers\PaisController;
 use App\Http\Controllers\EstadoController;
 use App\Http\Controllers\CompetidorController;
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('ej6.home');
-});
+}); */
 
 /**
  * Rutas creadas por el ejercicio 5.4
@@ -22,7 +22,7 @@ Route::get('/materiaYTema', function () {
 /**
  * Rutas creadas por el ejercicio 5.6
  */
-Route::get('/about', function () {
+/* Route::get('/about', function () {
     return view('ej5.about');
 });
 Route::get('/login', function () {
@@ -33,7 +33,7 @@ Route::get('/logout', function () {
 });
 Route::get('/help', function () {
     return view('ej5.help');
-});
+}); */
 
 /**
  * Rutas creadas por el ejercicio 6
@@ -80,3 +80,41 @@ Route::middleware([RolMiddleware::class . ':administrador'])->group(function () 
         // Accede al objeto $user y realiza las acciones necesarias
     });
 });*/
+
+
+
+/* LO DE ABAJO TODAVIA ESTA SIENDO TRABAJADO, UNA VEZ QUE FUNCIONE SE UNIRA AL PROYECTO */
+
+Route::group(['namespace' => 'App\Http\Controllers'], function()
+{   
+    /**
+     * Home Routes
+     */
+    Route::get('/', 'HomeController@index')->name('home.index');
+
+    /* esta son las rutas para invitados */
+    Route::group(['middleware' => ['guest']], function() {
+        /**
+         * registro Routes
+         */
+        Route::get('/registro', 'RegistroController@show')->name('registro.show');
+        Route::post('/registro', 'RegistroController@register')->name('registro.perform');
+
+        /**
+         * Login Routes
+         */
+        Route::get('/login', 'LoginController@show')->name('login.show');
+        Route::post('/login', 'LoginController@login')->name('login.perform');
+
+    });
+
+
+    /* esta es la ruta para los registrados */
+    Route::group(['middleware' => ['auth']], function() {
+        /**
+         * Logout Routes
+         */
+        Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
+    });
+
+});
