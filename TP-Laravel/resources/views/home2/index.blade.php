@@ -1,9 +1,12 @@
-<!-- este appmaster deberia ser la plantilla layout -->
-
+<!-- este carga la plantilla app-master -->
 @extends('layouts.app-master')
 
-@section('content')
-    <div class="bg-light p-5 rounded">
+@section('titulo')
+    Home
+@endsection
+
+@section('contenido')
+    <div>
 
     <!-- despliega mensaje cuando se crea la cuenta -->
     @include('layouts.partials.messages')
@@ -20,5 +23,8 @@
         <h1>No logueado</h1>
         <p class="lead">esto se muestra porque no estas logueado.</p>
         @endguest
+
     </div>
+    
 @endsection
+    

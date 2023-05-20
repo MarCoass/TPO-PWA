@@ -7,29 +7,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <title>Registros</title>
+    <title>@yield('titulo', 'Poomsae Reconocido Individual Élite')</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{!! url('assets/bootstrap/css/bootstrap.min.css') !!}" rel="stylesheet">
-    <link href="{!! url('assets/css/signin.css') !!}" rel="stylesheet">
+    <!-- ICON -->
+    <link rel="icon" type="image\x-icon" href="{{ asset('images/logo.ico') }}">
     
-
-    <!-- meter este estilo a un .css -->
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
+    <link href="{!! url('bootstrap-5.2.3/css/bootstrap.min.css') !!}" rel="stylesheet">
+    <link href="{!! url('css/signin.css') !!}" rel="stylesheet">
+    <link href="{!! url('css/registro.css') !!}" rel="stylesheet">
 
     
 </head>
@@ -37,7 +23,7 @@
     
     <main class="form-signin">
 
-        @yield('content')
+        @yield('contenido')
         
     </main>
     

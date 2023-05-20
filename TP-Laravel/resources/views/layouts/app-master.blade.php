@@ -4,43 +4,54 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <title>Pagina principal, que no es</title>
+    <title>@yield('titulo', 'Poomsae Reconocido Individual Élite')</title>
+
+    <!-- ICON -->
+    <link rel="icon" type="image\x-icon" href="{{ asset('images/logo.ico') }}">
 
     <!-- esta deberia ser la plantilla principal del home -->
+    <!-- Bootstrap v5.2.3 -->
+    <link rel="stylesheet" href="{{ asset('bootstrap-5.2.3/css/bootstrap.min.css') }}">
 
-    <!-- Bootstrap core CSS -->
-    <link href="{!! url('assets/bootstrap/css/bootstrap.min.css') !!}" rel="stylesheet">
+    <!-- Bootstrap Icons v1.10.4 -->
+    <link rel="stylesheet" href="{{ asset('bootstrap-5.2.3/bootstrap-icons-1.10.4/bootstrap-icons.css') }}">
 
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
+    <!-- una font digital para cronometro -->
+    <link href="https://fonts.cdnfonts.com/css/digital-7-mono" rel="stylesheet">
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
+    <!-- estilos propios -->
+    <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/cards.css') }}">
 
-    
-    <!-- Custom styles for this template -->
-    <link href="{!! url('assets/css/app.css') !!}" rel="stylesheet">
+    <!-- Datatable -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.dataTables.min.css">
+
 </head>
-<body>
+<body class="transicion">
     <!-- este deberia ser el navbar -->
     @include('layouts.partials.navbar')
 
-    <main class="container">
-        @yield('content')
+    <main class="container-fluid my-4">
+    @yield('contenido')
     </main>
 
+    @include('layouts.partials.footer')
 
-    <script src="{!! url('assets/bootstrap/js/bootstrap.bundle.min.js') !!}"></script>
+        <!-- librerias -->
+        <script src="{{ asset('bootstrap-5.2.3/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        
+        <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
+        
+        
+        <!-- index dom -->
+        <script type="module" src="{{ asset('js/index_dom.js') }}"></script>
+        
+        <!--ESTE SERIA MEJOR DEJARLO SOLO EN LA VISTA DE LA TABLA O ACA ESTA BIEN?-->
+        <script type="module" src="{{ asset('js/tablaCompetidores.js') }}"></script>
+
       
   </body>
 </html>

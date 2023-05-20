@@ -1,10 +1,16 @@
 @extends('layouts.auth-master')
 
-@section('content')
+@section('titulo')
+    Registro
+@endsection
+
+@section('contenido')
     <form method="post" action="{{ route('registro.perform') }}">
 
+        <!-- vvvv - ver que es esto - vvvv -->
         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-        <img class="mb-4" src="{!! url('images/bootstrap-logo.svg') !!}" alt="" width="72" height="57">
+
+        <img class="mb-4" src="{{ url('images/World_Taekwondo.png') }}" alt="logo TKD" width="300px" />
         
         <h1 class="h3 mb-3 fw-normal">Registro</h1>
 
