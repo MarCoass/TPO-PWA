@@ -7,37 +7,7 @@ use App\Http\Controllers\PaisController;
 use App\Http\Controllers\EstadoController;
 use App\Http\Controllers\CompetidorController;
 
-/* Route::get('/', function () {
-    return view('ej6.home');
-}); */
 
-/**
- * Rutas creadas por el ejercicio 5.4
- */
-Route::get('/materiaYTema', function () {
-    return view('ej5.materiaYTema');
-});
-
-
-/**
- * Rutas creadas por el ejercicio 5.6
- */
-/* Route::get('/about', function () {
-    return view('ej5.about');
-});
-Route::get('/login', function () {
-    return view('ej5.login');
-});
-Route::get('/logout', function () {
-    return view('ej5.logout');
-});
-Route::get('/help', function () {
-    return view('ej5.help');
-}); */
-
-/**
- * Rutas creadas por el ejercicio 6
- */
 Route::get('/cronometro', function () {
     return view('ej6.cronometro');
 });
