@@ -53,8 +53,6 @@ Route::middleware([RolMiddleware::class . ':administrador'])->group(function () 
 
 
 
-/* LO DE ABAJO TODAVIA ESTA SIENDO TRABAJADO, UNA VEZ QUE FUNCIONE SE UNIRA AL PROYECTO */
-
 Route::group(['namespace' => 'App\Http\Controllers'], function()
 {   
     /**
