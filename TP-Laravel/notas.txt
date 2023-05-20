@@ -167,3 +167,41 @@ Ejecutar seeder: php artisan db:seed --class=NombreTableSeeder
 ) php artisan db:seed --class=CompetidoresTableSeeder
 
 Importante cargar primero paises porque estado tiene la clave foranea idPais
+
+
+Link del cual hice el registro y el login
+
+https://codeanddeploy.com/blog/laravel/laravel-8-authentication-login-and-registration-with-username-or-email#Hr6YnMWTWSm8nd46fz6EJdsWW
+
+vitacora xd
+
+empece haciendo el login y el registro con variables al español, incluido el modelo usuarios, cuestion que al terminar me generaba 
+problemas auth, por lo cual de todo este embrollo llegue a la conclusion de que el campo password es !necesario!, se puede cambiar
+aplicando una funcion, pero para no tener que tocar de mas lo deje asi, asi tambien el controlador usuarios quedara para
+que el administrador pueda gestionar, tuve que crear otro modelo a parte de Usuarios (ver si quedo acorde a su controlador y 
+ver de hacer uso de Users (falta la manipulacion de roles)), el otro modelo es user, ahi estan los campos en español excepto por
+password
+
+cree otra migracion que crea la tabla Users, es identico a la tabla usuarios, pero el idUsuario ahora es solo id()
+
+arme las vistas del link de arriba y las comente para saber cuales son plantillas y cuales son las paginas principales
+habria que ver de copiar las formas y mandarlas a nuestro proyecto ( 
+        views/auth (registro y login), 
+        views/layouts(estan las plantillas de registro/login y home2, ""habria que copiarse los botones de login del navbar"")
+        views/home2(esta el home de registro, cambiar a nuestro home una vez pasado los botones de login del navbar que trae)   
+    )
+
+copie en public/asset otro bootstrap, habria que volarlos una vez se haga lo de arriba, pasar los styles sueltos a archivos .class
+
+cree la carpeta /lang/es que es donde se deberia pasar a español las validaciones, que tambien nos va a servir para cargar Competidores 
+
+los controladores estan comentados, en homeController se puede cambiar esa ruta home2.index que seria el home
+
+en web.php estan establecidas las rutas por grupo, en las cuales estan las paginas habilitadas para los registrados y los no.
+se podria ver de hacer una sentencia que verifique si el usuario posee roles que le permita visitar paginas particulares
+
+si no despierto visiten a mi mami xd
+
+continuara...
+
+
