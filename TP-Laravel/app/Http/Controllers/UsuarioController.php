@@ -1,5 +1,9 @@
 <?php
 
+/* habria que ver de cambiar el nombre a user, mas que nada por compatibilidad, cambiar lo necesario */
+
+/* modificar campos: clave -> password  */
+
 namespace App\Http\Controllers;
 
 use App\Models\Usuario;
