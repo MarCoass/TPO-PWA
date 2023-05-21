@@ -30,7 +30,7 @@ class RolMiddleware
      if ($request->user()->idRol == $role) { // if the current role is Administrator
         return $next($request);
      }
-     return redirect('/')->with('success', "no tiene permisos para acceder a esta seccion");
+     return redirect('/')->with('restringed', "no tiene permisos para acceder a esta seccion");
 
 }
 
