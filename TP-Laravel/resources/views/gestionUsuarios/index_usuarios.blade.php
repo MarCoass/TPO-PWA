@@ -15,9 +15,12 @@ Gestion de Usuarios
      <table class="table">
         <thead>
             <tr>
-                <th>ID</th>
+                <th>Id</th>
                 <th>Nombre</th>
-                <th>Correo electrónico</th>
+                <th>Apellido</th>
+                <th>Usuario</th>
+                <th>Correo</th>
+                <th>Rol</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -27,7 +30,15 @@ Gestion de Usuarios
                 <td>{{ $user->id }}</td>
                 <td>{{ $user->nombre }}</td>
                 <td>{{ $user->apellido }}</td>
+                <td>{{ $user->usuario}}</td>
                 <td>{{ $user->correo }}</td>
+                @if ($user->idRol == 1)
+                    <td>Administrador</td>
+                @elseif ($user->idRol == 2)
+                    <td>Juez</td>
+                @else
+                    <td>Competidor</td>
+                @endif
                 <td>
                     <form action="{{ route('delete_usuario',['id' =>  $user->id]) }}" method="POST">
                         @csrf
