@@ -1,3 +1,9 @@
+
+<!-- 
+  dejo esto por si hay que rescatar algo del tp 3.1, sino borrarlo
+ -->
+
+
 @extends('layouts/layout')
 
 @section('titulo')

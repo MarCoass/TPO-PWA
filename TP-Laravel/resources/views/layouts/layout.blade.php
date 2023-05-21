@@ -1,3 +1,5 @@
+<!-- se podria usar para otras  -->
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -34,7 +36,7 @@
 <body class="transicion" >
     <div id="wrapper">
         <!-- NAVBAR -->
-        @include('includes.navbar')
+        @include('layouts.partials.navbar')
 
         <main class="justify-content-center container-fluid p-3">
             <h1 class="display-5 text-center">@yield('encabezado')</h1>
@@ -42,7 +44,7 @@
         </main>
 
         <!-- FOOTER -->
-        @include('includes.footer')
+        @include('layouts.partials.footer')
     </div>
 
     <!-- librerias -->
