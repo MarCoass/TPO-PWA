@@ -13,7 +13,15 @@
               </svg></button>
               
         @auth
-        {{auth()->user()->name}}
+
+        
+        <div class="d-flex text-end">
+            <p class="text-center" style="height: 30px ">
+                <b>Usuario:</b> <br> {{auth()->user()->usuario}}
+            </p>
+          <a href="{{ route('logout.perform') }}" class="btn btn-outline-dark">Cerrar Sesion</a>
+        </div>
+
         <button id="menuNavBar" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -63,9 +71,7 @@
         </div>
 
 
-        <div class="text-end">
-          <a href="{{ route('logout.perform') }}" class="btn btn-outline-dark me-2">Cerrar Sesion</a>
-        </div>
+        
         @endauth
 
         @guest
