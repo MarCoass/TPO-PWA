@@ -83,13 +83,22 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
          * Logout Routes
          */
         Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
+
+        Route::get('/index_usuarios', [UsuarioController::class, 'index'])->middleware(['rol:1']);
+
+        
     });
+    
+
+
+    
+
 
 });
 
 
 //Rutas de Gestion de Usuarios se pueden mejorar
-Route::get('/index_usuarios', [UsuarioController::class, 'index']);
+/* Route::get('/index_usuarios', [UsuarioController::class, 'index']); */
 
 Route::get('/delete_usuario/{id}', [UsuarioController::class, 'destroy'])->name('delete_usuario');
 
