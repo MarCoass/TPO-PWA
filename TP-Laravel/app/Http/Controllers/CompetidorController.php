@@ -10,11 +10,19 @@ use Illuminate\Http\Request;
 
 class CompetidorController extends Controller
 {
+ 
     public function index()
     {
         $competidores = Competidor::all();
-        return $competidores;
+    
+        return view('ej6\tablaCompetidores', compact('competidores'));
     }
+
+   public function obtenerRegistros()
+    {
+        $competidores = Competidor::all();
+        return response()->json($competidores);
+    } 
 
     public function create()
     {
@@ -29,7 +37,7 @@ class CompetidorController extends Controller
         $competidor->nombre = $request->input('nombre');
         $competidor->apellido = $request->input('apellido');
         $competidor->fechaNacimiento = $request->input('fechaNacimiento');
-        $competidor->correo = $request->input('correo');
+        $competidor->email = $request->input('correo');
         $competidor->ranking = $request->input('ranking');
         $competidor->graduacion = $request->input('graduacion');
         $competidor->genero = $request->input('genero');
@@ -86,4 +94,8 @@ class CompetidorController extends Controller
 
         return redirect()->route('usuarios.index')->with('success', 'Usuario eliminado exitosamente.');
     }
+
 }
+
+
+

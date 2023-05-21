@@ -44,22 +44,22 @@ Route::get('/cronometro', function () {
 Route::get('/video', function () {
     return view('ej6.video');
 });
-Route::get('/tablaCompetidores', function () {
-    return view('ej6.tablaCompetidores');
-});
+
+Route::get('/competidores', [CompetidorController::class, 'index']);
+
 Route::get('/cargarCompetidor', function () {
     return view('ej6.cargarCompetidor');
 });
 Route::get('/imagenesRandom', function () {
     return view('ej6.imagenesRandom');
-});
+}); 
 
 // Trae todos los países
 Route::get('/paises', [PaisController::class, 'index']);
 // Trae todos los estados
 Route::get('/estados', [EstadoController::class, 'index']);
-// Trae todos los estados
-Route::get('/competidores', [CompetidorController::class, 'index']);
+// Trae todos los Competidores de la bd
+Route::get('/competidores/data', [CompetidorController::class, 'obtenerRegistros']);
 
 // Rutas verificadas por rol
 

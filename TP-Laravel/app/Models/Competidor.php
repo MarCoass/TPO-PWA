@@ -16,12 +16,13 @@ class Competidor extends Model
     // Relación con la clase Rol y clave foránea
     public function pais()
     {
-        return $this->belongsTo(Pais::class, 'idPais');
+        return $this->belongsTo(Pais::class, 'idPais', 'idPais');
     }
 
     public function estado()
     {
-        return $this->belongsTo(Estado::class, 'idEstado');
+        return $this->belongsTo(Estado::class, 'idEstado', 'idEstado');
     }
+
 
 }

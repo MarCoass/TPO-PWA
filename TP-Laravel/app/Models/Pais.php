@@ -15,10 +15,10 @@ class Pais extends Model
 
     //protected $hidden = ['clave']; // Atributos ocultos al serializar el modelo
 
-    // Relación con la clase Usuario
+    // Relación con la clase Competidor
     public function competidor()
     {
-        return $this->hasMany(Competidor::class, 'idPais');
+        return $this->hasMany(Competidor::class, 'idPais', 'idPais');
     }
 
 }
