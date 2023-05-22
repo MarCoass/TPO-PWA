@@ -102,9 +102,19 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::post('/pais', 'PaisController@obtenerPaisPorNombre')->name('pais.autocomplete');
 
         /**
-         * Usuarios routes
+         * Rutas de Gestion de Usuarios se pueden mejorar
          */
         Route::get('/index_usuarios', [UsuarioController::class, 'index'])->middleware(['rol:1']);
+
+        Route::post('/delete_usuario/{id}', [UsuarioController::class, 'destroy'])->middleware(['rol:1'])->name('delete_usuario');
+
+        Route::get('/create_usuario', [UsuarioController::class, 'create'])->middleware(['rol:1'])->name('create_usuario');
+   
+        Route::get('/edit_usuario/{id}', [UsuarioController::class, 'edit'])->middleware(['rol:1'])->name('edit_usuario');
+   
+        Route::post('/store_usuario', [UsuarioController::class, 'store'])->middleware(['rol:1'])->name('store_usuario');
+   
+        Route::post('/update_usuario/{id}', [UsuarioController::class, 'update'])->middleware(['rol:1'])->name('update_usuario');
         
     });
     
@@ -114,19 +124,3 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
 
 });
-
-
-//Rutas de Gestion de Usuarios se pueden mejorar
-/* Route::get('/index_usuarios', [UsuarioController::class, 'index']); */
-
-Route::post('/delete_usuario/{id}', [UsuarioController::class, 'destroy'])->name('delete_usuario');
-
-Route::get('/create_usuario', [UsuarioController::class, 'create'])->name('create_usuario');
-
-Route::get('/edit_usuario/{id}', [UsuarioController::class, 'edit'])->name('edit_usuario');
-
-Route::post('/store_usuario', [UsuarioController::class, 'store'])->name('store_usuario');
-
-Route::post('/update_usuario/{id}', [UsuarioController::class, 'update'])->name('update_usuario');
-
-
