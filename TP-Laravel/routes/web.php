@@ -15,7 +15,7 @@ Route::get('/video', function () {
     return view('ej6.video');
 });
 
-Route::get('/competidores', [CompetidorController::class, 'index']);
+Route::get('/competidores', [CompetidorController::class, 'index'])->name('tablaCompetidores');
 
 Route::get('/cargarCompetidor', function () {
     return view('ej6.cargarCompetidor');
