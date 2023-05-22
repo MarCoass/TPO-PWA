@@ -10,6 +10,8 @@ Gestion de Usuarios
 @endsection
 
  @section('contenido')
+ <!-- despliega mensajes -->
+ @include('layouts.partials.messages')
     <h3>Usuarios</h3>
      <a href="{{ route('create_usuario') }}" class="btn btn-outline-primary mb-3">Nuevo usuario</a>
      <table id="tabla_usuarios" class="table hover table-light table-bordered nowrap border dataTable dtr-inline collapsed" width="100%">
