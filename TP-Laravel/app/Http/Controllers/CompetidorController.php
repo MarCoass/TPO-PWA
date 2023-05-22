@@ -13,14 +13,16 @@ class CompetidorController extends Controller
  
     public function index()
     {
-        $competidores = Competidor::all();
-    
-        return view('ej6\tablaCompetidores', compact('competidores'));
+        return view('ej6\tablaCompetidores',);
     }
 
    public function obtenerRegistros()
     {
-        $competidores = Competidor::all();
+        
+        $competidores = Competidor::select('competidores.*', 'paises.nombrePais as nombre_pais')
+        ->join('paises', 'competidores.idPais', '=', 'paises.idPais')
+        ->get();
+    
         return response()->json($competidores);
     } 
 

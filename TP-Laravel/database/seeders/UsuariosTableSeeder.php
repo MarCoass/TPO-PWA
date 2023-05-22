@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Usuario;
+use App\Models\User;
 use App\Models\Rol;
 
 class usuariosTableSeeder extends Seeder
@@ -22,23 +22,23 @@ class usuariosTableSeeder extends Seeder
                 'apellido' => 'Competidor',
                 'usuario' => 'Competidor',
                 'correo' => 'competidor@example.com',
-                'clave' => 'competidor',
+                'password' => 'competidor',
                 'idRol' => 3
             ],
             [
                 'nombre' => 'Juez',
                 'apellido' => 'Juez',
-                'usuario' => 'Juez',
+                'usuario' => 'juez',
                 'correo' => 'juez@example.com',
-                'clave' => 'juez',
+                'password' => 'juez',
                 'idRol' => 2
             ],
             [
                 'nombre' => 'Administrador',
                 'apellido' => 'Administrador',
-                'usuario' => 'Administrador',
+                'usuario' => 'administrador',
                 'correo' => 'administrador@example.com',
-                'clave' => 'administrador',
+                'password' => 'administrador',
                 'idRol' => 1
             ]
         ];
@@ -46,12 +46,12 @@ class usuariosTableSeeder extends Seeder
         //por cada elemento de roles, va a crear el objeto rol
         foreach ($usuarios as $usuario) {
             
-            Usuario::create([
+            User::create([
                 'nombre' => $usuario['nombre'],
                 'apellido' =>$usuario['apellido'],
                 'usuario' => $usuario['usuario'],
                 'correo' => $usuario['correo'],
-                'clave' => $usuario['clave'],
+                'password' => $usuario['password'],
                 'idRol' => $usuario['idRol']
             ]);
         }

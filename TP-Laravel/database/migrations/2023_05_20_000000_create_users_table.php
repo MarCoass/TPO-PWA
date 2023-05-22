@@ -32,7 +32,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
 
-            $table->foreign('idRol')->references('idRol')->on('roles');
+            $table->foreign('idRol')->references('id')->on('roles');
         });
     }
 
@@ -43,6 +43,9 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign(['idRol']);
+        });
         Schema::dropIfExists('users');
     }
 };

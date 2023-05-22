@@ -1,24 +1,7 @@
-$(document).ready(function () {
+export var tabla_usuarios = document.getElementById('tabla_usuarios');
+if(tabla_usuarios){
 
-    $("#competidores_tabla").DataTable({
-        ajax: {
-            type: "GET",
-            url: "/competidores/data",
-            dataSrc: "",
-        },
-        dom: '<"top"f>t<"bottom"lip>',
-     columns: [
-            { data: "gal" }, 
-            { data: "apellido" }, 
-            { data: "nombre" }, 
-            { data: "du" }, 
-            { data: "fechaNacimiento" },
-            { data: "nombre_pais" },
-            { data: "ranking" }, 
-            { data: "graduacion" }, 
-            { data: "email" }, 
-            { data: "genero" },
-        ],  
+    tabla_usuarios = $("#tabla_usuarios").DataTable({
         processing: true,
         responsive: true,
         ordering: true,
@@ -39,11 +22,9 @@ $(document).ready(function () {
                 previous: "Anterior",
             },
         },
-
         lengthMenu: [
             [5, 10, 15, -1],
             [5, 10, 15, "Todos"],
         ],
     });
-});
-
+}
