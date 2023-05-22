@@ -27,7 +27,7 @@ class RolMiddleware
     
     public function handle(Request $request, Closure $next, $role)
 {
-     if ($request->user()->idRol == $role) { // if the current role is Administrator
+     if ($request->user()->idRol == $role) {
         return $next($request);
      }
      return redirect('/')->with('restringed', "no tiene permisos para acceder a esta seccion");
