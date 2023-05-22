@@ -1,23 +1,30 @@
 $(document).ready(function () {
+
+    // Obtencion del token CSRF
+    var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
     $("#competidores_tabla").DataTable({
         ajax: {
-            type: "POST",
-            url: "js/MOCK_Competidores.json",
+            type: "GET",
+            url: "/competidores/data",
             dataSrc: "",
-            data: {},
+            data: {
+                // Agregar el token CSRF a los datos de la solicitud
+                _token: csrfToken
+            }
         },
         dom: '<"top"f>t<"bottom"lip>',
         columns: [
-            { data: "GAL" }, 
-            { data: "Apellido" }, 
-            { data: "Nombre" }, 
-            { data: "DU" }, 
-            { data: "FechaNacimiento" }, 
-            { data: "Pais" }, 
-            { data: "Ranking" }, 
-            { data: "Graduacion" }, 
-            { data: "Email" }, 
-            { data: "Genero" }
+            { data: "gal" }, 
+            { data: "apellido" }, 
+            { data: "nombre" }, 
+            { data: "du" }, 
+            { data: "fechaNacimiento" }, 
+            { data: "idPais" }, 
+            { data: "ranking" }, 
+            { data: "graduacion" }, 
+            { data: "email" }, 
+            { data: "genero" }
         ],
         processing: true,
         responsive: true,
@@ -46,3 +53,4 @@ $(document).ready(function () {
         ],
     });
 });
+

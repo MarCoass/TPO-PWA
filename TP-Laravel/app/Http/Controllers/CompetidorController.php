@@ -10,11 +10,19 @@ use Illuminate\Http\Request;
 
 class CompetidorController extends Controller
 {
+ 
     public function index()
     {
         $competidores = Competidor::all();
-        return $competidores;
+    
+        return view('ej6\tablaCompetidores', compact('competidores'));
     }
+
+   public function obtenerRegistros()
+    {
+        $competidores = Competidor::all();
+        return response()->json($competidores);
+    } 
 
     public function create()
     {
@@ -115,3 +123,6 @@ class CompetidorController extends Controller
         return response()->json($result);
     }
 }
+
+
+

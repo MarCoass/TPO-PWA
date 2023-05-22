@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaisController;
 use App\Http\Controllers\EstadoController;
 use App\Http\Controllers\CompetidorController;
-
+use App\Http\Controllers\UsuarioController;
 
 Route::get('/cronometro', function () {
     return view('ej6.cronometro');
@@ -14,22 +14,22 @@ Route::get('/cronometro', function () {
 Route::get('/video', function () {
     return view('ej6.video');
 });
-Route::get('/tablaCompetidores', function () {
-    return view('ej6.tablaCompetidores');
-})->name('tablaCompetidores');
+
+Route::get('/competidores', [CompetidorController::class, 'index']);
+
 Route::get('/cargarCompetidor', function () {
     return view('ej6.cargarCompetidor');
 });
 Route::get('/imagenesRandom', function () {
     return view('ej6.imagenesRandom');
-});
+}); 
 
 // Trae todos los países
 Route::get('/paises', [PaisController::class, 'index']);
 // Trae todos los estados
 Route::get('/estados', [EstadoController::class, 'index']);
-// Trae todos los estados
-Route::get('/competidores', [CompetidorController::class, 'index']);
+// Trae todos los Competidores de la bd
+Route::get('/competidores/data', [CompetidorController::class, 'obtenerRegistros']);
 
 // Rutas verificadas por rol
 
@@ -100,6 +100,33 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
          * Pais Routes
          */
         Route::post('/pais', 'PaisController@obtenerPaisPorNombre')->name('pais.autocomplete');
+
+        /**
+         * Usuarios routes
+         */
+        Route::get('/index_usuarios', [UsuarioController::class, 'index'])->middleware(['rol:1']);
+        
     });
+    
+
+
+    
+
 
 });
+
+
+//Rutas de Gestion de Usuarios se pueden mejorar
+/* Route::get('/index_usuarios', [UsuarioController::class, 'index']); */
+
+Route::post('/delete_usuario/{id}', [UsuarioController::class, 'destroy'])->name('delete_usuario');
+
+Route::get('/create_usuario', [UsuarioController::class, 'create'])->name('create_usuario');
+
+Route::get('/edit_usuario/{id}', [UsuarioController::class, 'edit'])->name('edit_usuario');
+
+Route::post('/store_usuario', [UsuarioController::class, 'store'])->name('store_usuario');
+
+Route::post('/update_usuario/{id}', [UsuarioController::class, 'update'])->name('update_usuario');
+
+
