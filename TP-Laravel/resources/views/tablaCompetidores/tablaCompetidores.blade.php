@@ -17,6 +17,9 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 @endif
+
+<!-- despliega mensaje cuando se crea la cuenta -->
+@include('layouts.partials.messages')
     
 <div class="my-3">
         <table id="competidores_tabla"
