@@ -9,6 +9,8 @@ class Competidor extends Model
     
     protected $table = 'competidores'; // Nombre de la tabla asociada al modelo
 
+    protected $primaryKey = 'idCompetidor'; // Nombre del id de la tabla (importante)
+
     protected $fillable = ['gal', 'apellido', 'nombre', 'du', 'fechaNacimiento', 'ranking', 'graduacion', 'email', 'genero', 'idEstado', 'idPais' ]; // Atributos
 
     //protected $hidden = ['clave']; // Atributos ocultos al serializar el modelo

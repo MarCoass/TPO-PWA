@@ -14,6 +14,23 @@ class PaisController extends Controller
         return $paises;
     }
 
+    /**
+     * Realiza un busqueda de pais en la db dado un texto
+     * Retorna un JSON en el formato que requiere jquery ui
+     */
+    public function obtenerPaisPorNombre(Request $request){
+        // where arma la consulta, get la ejecuta
+        $paises = Pais::where('nombrePais', 'LIKE', '%'.$request->input('term').'%')->get();
+        $respuesta = [];
+
+        // Construcción del arreglo en el formato que pide jquery ui
+        foreach($paises as $pais){
+            $respuesta[] = ['value' => $pais->idPais, 'label' => $pais->nombrePais];
+        }
+        // Devolver una respuesta JSON
+        return response()->json($respuesta);
+    }
+
     /*public function create()
     {
         return view('paises.create');

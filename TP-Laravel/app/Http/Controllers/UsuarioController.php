@@ -6,7 +6,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Usuario;
+use App\Models\User;
 use App\Models\Rol;
 use Illuminate\Http\Request;
 
@@ -14,64 +14,61 @@ class UsuarioController extends Controller
 {
     public function index()
     {
-        $usuarios = Usuario::all();
-        return view('usuarios.index', compact('usuarios'));
+        $usuarios = User::all();
+        return view('gestionUsuarios.index_usuarios', compact('usuarios'));
     }
 
     public function create()
     {
-        return view('usuarios.create');
+        return view('gestionUsuarios.create_usuario');
     }
 
     public function store(Request $request)
     {
-        $usuario = new Usuario();
+        $usuario = new User();
         $usuario->nombre = $request->input('nombre');
         $usuario->apellido = $request->input('apellido');
         $usuario->usuario = $request->input('usuario');
         $usuario->correo = $request->input('correo');
-        $usuario->clave = $request->input('clave');
-
-        // Por defecto le asignamos el rol Competidor
-        $rol = Rol::find($request['idRol']);
-        $usuario->rol()->associate($rol);
+        $usuario->password = $request->input('clave');
+        $usuario->idRol = $request->input('rol');
 
         $usuario->save();
 
-        return redirect()->route('usuarios.index')->with('success', 'Usuario creado exitosamente.');
+        return redirect()->route('index_usuarios')->with('success', 'Usuario creado exitosamente.');
     }
 
     public function show($id)
     {
-        $usuario = Usuario::find($id);
-        return view('usuarios.show', compact('usuario'));
+        $usuario = User::find($id);
+        return view('gestionUsuarios.show', compact('usuario'));
     }
 
     public function edit($id)
     {
-        $usuario = Usuario::find($id);
-        return view('usuarios.edit', compact('usuario'));
+        $usuario = User::find($id);
+        return view('gestionUsuarios.edit_usuario', compact('usuario'));
     }
 
     public function update(Request $request, $id)
     {
-        $usuario = Usuario::find($id);
+        $usuario = User::find($id);
         $usuario->nombre = $request->input('nombre');
         $usuario->apellido = $request->input('apellido');
         $usuario->usuario = $request->input('usuario');
         $usuario->correo = $request->input('correo');
-        $usuario->clave = $request->input('clave');
+        $usuario->password = $request->input('clave');
         $usuario->idRol = $request->input('idRol');
         $usuario->save();
 
-        return redirect()->route('usuarios.index')->with('success', 'Usuario actualizado exitosamente.');
+        return redirect()->route('index_usuarios')->with('success', 'Usuario actualizado exitosamente.');
     }
 
     public function destroy($id)
     {
-        $usuario = Usuario::find($id);
+        $usuario = User::find($id);
         $usuario->delete();
 
-        return redirect()->route('usuarios.index')->with('success', 'Usuario eliminado exitosamente.');
+        return redirect()->route('index_usuarios')->with('success', 'Usuario eliminado exitosamente.');
     }
 }

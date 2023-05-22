@@ -9,6 +9,8 @@ class Estado extends Model
 
     protected $table = 'estados'; // Nombre de la tabla asociada al modelo
 
+    protected $primaryKey = 'idEstado'; // Nombre del id de la tabla (Importante)
+
     protected $fillable = ['nombreEstado']; // Atributos
 
     //protected $hidden = ['clave']; // Atributos ocultos al serializar el modelo

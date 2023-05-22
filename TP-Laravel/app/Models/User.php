@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Rol;
 
 class User extends Authenticatable
 {
@@ -26,8 +27,7 @@ class User extends Authenticatable
      */
 /*     protected $fillable = ['nombre', 'apellido', 'usuario', 'correo', 'clave', 'idRol']; // Atributos
  */    
-    protected $fillable = ['nombre', 'apellido', 'usuario', 'correo', 'password']; // Atributos
-
+    protected $fillable = ['id', 'nombre', 'apellido', 'usuario', 'correo', 'password', 'idRol']; // Atributos
 
     /**
      * The attributes that should be hidden for serialization.
@@ -61,7 +61,16 @@ class User extends Authenticatable
     }
 
    
+    // Relación con la clase Rol y clave foránea
+    public function rol()
+    {
+        return $this->belongsTo(Rol::class);
+    }
 
+    public function tieneRol($rol)
+    {
+        return $this->rol && $this->rol->nombreRol === $rol;
+    }
 
 
 }

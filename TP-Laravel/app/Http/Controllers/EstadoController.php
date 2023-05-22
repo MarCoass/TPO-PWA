@@ -13,6 +13,23 @@ class EstadoController extends Controller
         return $estados;
     }
 
+    /**
+     * Realiza un busqueda de estado en la db dado un texto y el idpais
+     * Retorna un JSON en el formato que requiere jquery ui
+     */
+    public function obtenerEstadoPorNombre(Request $request){
+        // where arma la consulta, get la ejecuta
+        $estados = Estado::where('nombreEstado', 'LIKE', '%'.$request->input('term').'%')->where('idPais', '=', $request->input('idPais'))->get();
+        $respuesta = [];
+
+        // Construcción del arreglo en formato que pide jquery ui
+        foreach($estados as $estado){
+            $respuesta[] = ['value' => $estado->idEstado, 'label' => $estado->nombreEstado];
+        }
+        // Devolver una respuesta JSON
+        return response()->json($respuesta);
+    }
+
     /*public function create()
     {
         return view('estados.create');

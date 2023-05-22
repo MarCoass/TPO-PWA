@@ -54,7 +54,14 @@ class CompetidorController extends Controller
 
         $competidor->save();
 
-        return $competidor;
+        // Respuesta JSON
+        $data = [
+            'message' => 'El competidor se ha registrado correctamente',
+            'data' => $request->all()
+        ];
+
+        // Devolver una respuesta JSON
+        return response()->json($data, 200);
     }
 
     public function show($id)
@@ -97,6 +104,26 @@ class CompetidorController extends Controller
         return redirect()->route('usuarios.index')->with('success', 'Usuario eliminado exitosamente.');
     }
 
+    /**
+     * Dado un campo especial (gal, du, email), valida si este ya existe en la db
+     * @return JSON claves "success" (1 si no existe | 0 si existe) y "error" (mensaje de error)
+     */
+    public function validar(Request $request){
+        $result = [];
+
+        $duplicado = Competidor::where($request->input('campo'), "=", $request->input('valor'))->first();
+
+        if(!is_null($duplicado)){
+            $result["success"] = 0;
+            $result["error"] = "Este " . strtoupper($request->input('campo')) . " ya se encuentra registrado.";
+        }
+
+        if(count($result) == 0){
+            $result['success'] = 1;
+        }
+
+        return response()->json($result);
+    }
 }
 
 
