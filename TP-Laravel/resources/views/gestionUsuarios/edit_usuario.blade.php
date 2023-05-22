@@ -82,8 +82,8 @@
 
 
         <div class="col-lg-6 col-12 button-group mb-3 d-flex justify-content-end align-items-center">
-            <button type="submit" class="btn btn-outline-primary mx-2">Guardar</button>
-            <button type="button" class="btn btn-outline-secondary" onclick="history.back()">Volver</button>
+            <button type="submit" class="btn btn-outline-primary mx-2"><i class="bi bi-cloud-upload-fill me-2"></i>Guardar cambios</button>
+            <button type="button" class="btn btn-outline-secondary" onclick="history.back()"><i class="bi bi-arrow-left me-2"></i>Volver</button>
         </div>
 
     </form>
