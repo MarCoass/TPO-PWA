@@ -71,7 +71,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         
         
         /* rutas para jueces */
-        Route::get('/cronometro', function () {return view('reloj.cronometro');})->middleware(['rol:1']);
+        Route::get('/cronometro', function () {return view('reloj.cronometro');})->middleware(['rol:2']);
         
         
         /* rutas para Competidores */
