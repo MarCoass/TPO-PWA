@@ -30,7 +30,7 @@
             @endif
         </div>
 
-        <a class="w-100 btn btn-lg btn-outline-primary" type="submit"><i class="bi bi-box-arrow-in-right me-2"></i>Login</a>
+        <button class="w-100 btn btn-lg btn-outline-primary" type="submit"><i class="bi bi-box-arrow-in-right me-2"></i>Login</button>
         <a class="w-100 btn btn-lg btn-outline-success mt-2" href="{{ asset('/registro')}}"><i class="bi bi-person-add me-2"></i>Registrarse</a>
         <a class="w-100 btn btn-lg btn-outline-secondary mt-2" href="{{ asset('/')}}"><i class="bi bi-arrow-left me-2"></i>Volver al inicio</a>
 

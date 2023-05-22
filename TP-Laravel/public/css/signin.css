@@ -12,6 +12,7 @@ body {
 }
 
 .form-signin {
+  z-index: 3;
   width: 100%;
   max-width: 400px;
   padding: 15px;
