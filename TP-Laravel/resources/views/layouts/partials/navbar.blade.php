@@ -68,6 +68,7 @@
 
                 </a>
                 @endif
+                
                 @if( auth()->user()->idRol == 1 )
                 <a href="{{ route('index_usuarios') }}" class="nav-item btn {{ request()->is('administrador') ? 'active' : '' }}">
 
