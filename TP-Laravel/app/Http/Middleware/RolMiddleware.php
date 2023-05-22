@@ -27,9 +27,19 @@ class RolMiddleware
     
     public function handle(Request $request, Closure $next, $role)
 {
-     if ($request->user()->idRol == $role) {
-        return $next($request);
-     }
+
+    if (is_array($role)) {
+        foreach ($role as $r) {
+            if ($request->user()->idRol == $r) {
+                return $next($request);
+            }
+        }
+    } else {
+        if ($request->user()->idRol == $role) {
+            return $next($request);
+        }
+    }
+     
      return redirect('/')->with('restringed', "no tiene permisos para acceder a esta seccion");
 
 }
