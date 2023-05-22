@@ -14,7 +14,7 @@
         <!-- aca se vuelven a ver los grupos -->
 
         @auth
-            <h1>Bienvenido</h1>
+            <h1>Bienvenido <u>{{auth()->user()->usuario}}</u></h1> 
 
             <div class="row justify-content-around">
 

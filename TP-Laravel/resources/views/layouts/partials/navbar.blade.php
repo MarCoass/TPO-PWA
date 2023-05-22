@@ -19,7 +19,7 @@
             <p class="text-center mx-5" style="height: 25px ">
                 <b>Usuario:</b> <br> {{auth()->user()->usuario}}
             </p>
-          <a href="{{ route('logout.perform') }}" class="btn btn-outline-dark">Cerrar Sesion</a>
+          <a href="{{ route('logout.perform') }}" class="btn btn-outline-dark"><i class="bi bi-door-open me-2"></i>Cerrar Sesion</a>
         </div>
 
         <button id="menuNavBar" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
