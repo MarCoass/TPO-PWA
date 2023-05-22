@@ -35,7 +35,7 @@ class UsuarioController extends Controller
 
         $usuario->save();
 
-        return redirect()->route('gestionUsuarios.index_usuarios')->with('success', 'Usuario creado exitosamente.');
+        return redirect()->route('index_usuarios')->with('success', 'Usuario creado exitosamente.');
     }
 
     public function show($id)
@@ -57,7 +57,7 @@ class UsuarioController extends Controller
         $usuario->apellido = $request->input('apellido');
         $usuario->usuario = $request->input('usuario');
         $usuario->correo = $request->input('correo');
-        $usuario->clave = $request->input('clave');
+        $usuario->password = $request->input('clave');
         $usuario->idRol = $request->input('idRol');
         $usuario->save();
 

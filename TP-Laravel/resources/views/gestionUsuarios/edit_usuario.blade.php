@@ -18,7 +18,6 @@ Editar Usuario
      <form class="m-5" method="POST" action="{{ route('update_usuario',['id' =>$usuario->id]) }}">
         @csrf
         @method('PUT')
-
         <div class="form-group form-floating mb-3">
             <input type="text" class="form-control" id="nombre" name="nombre" value="{{ $usuario->nombre }}" placeholder="nombre" required="required" autofocus>
             <label for="floatingnombre">Nombre</label>

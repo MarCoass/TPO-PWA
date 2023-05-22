@@ -104,7 +104,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         /**
          * Rutas de Gestion de Usuarios se pueden mejorar
          */
-        Route::get('/index_usuarios', [UsuarioController::class, 'index'])->middleware(['rol:1']);
+        Route::get('/index_usuarios', [UsuarioController::class, 'index'])->middleware(['rol:1'])->name('index_usuarios');
 
         Route::get('/delete_usuario/{id}', [UsuarioController::class, 'destroy'])->middleware(['rol:1'])->name('delete_usuario');
 
@@ -114,7 +114,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
    
         Route::post('/store_usuario', [UsuarioController::class, 'store'])->middleware(['rol:1'])->name('store_usuario');
    
-        Route::post('/update_usuario/{id}', [UsuarioController::class, 'update'])->middleware(['rol:1'])->name('update_usuario');
+        Route::put('/update_usuario/{id}', [UsuarioController::class, 'update'])->middleware(['rol:1'])->name('update_usuario');
         
     });
     
