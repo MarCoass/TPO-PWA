@@ -1,4 +1,4 @@
-import paisesAceptados from './paisesAceptados.json' assert {type: 'json'};
+import paisesAceptados from '../json/paisesAceptados.json' assert {type: 'json'};
 
 // Carga del arreglo de paises aceptados en el JSON
 const arreglo_paises = paisesAceptados;

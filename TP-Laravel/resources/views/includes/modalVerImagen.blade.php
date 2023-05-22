@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>ID del Albúm: <span id="idAlbumImagen"></span></p>
+                <p>ID del Album: <span id="idAlbumImagen"></span></p>
                 <p>ID de la Imagen: <span id="idImagen"></span></p>
                 <p>Título: <span id="tituloImagen"></span></p>
                 <p>Thumbnail URL: <a href="#" id="thumbUrlImagen" target="_blank"></a></p>

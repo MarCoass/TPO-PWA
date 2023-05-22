@@ -1,0 +1,132 @@
+{
+  "nombre": "Juveniles",
+  "descripcion": "La categoría 'Juveniles' en Poomsae Taekwondo es para jóvenes de 15 a 17 años, donde se busca la perfección técnica, la creatividad y la originalidad en la ejecución de las formas. Se valora la interpretación musical y la presentación artística, así como el control emocional y la concentración.",
+  "imagenFem": "juvenilesf.jpg",
+  "imagenMasc": "juvenilesm.jpg",
+  "ganadorFem": [
+    {
+      "nombre": "Carla",
+      "imagen": "juvenilesf.jpg",
+      "frase": "La vida es un viaje maravilloso lleno de aventuras y desafíos que nos hacen crecer. Aprende a disfrutar cada momento, agradecer por lo que tienes y ser feliz con lo que eres."
+    }
+  ],
+  "ganadorMasc": [
+    {
+      "nombre": "Miguel",
+      "imagen": "juvenilesm.jpg",
+      "frase": "El éxito no es un destino, sino un camino que se recorre con esfuerzo y dedicación. Aprovecha cada oportunidad para crecer y ser mejor, porque así alcanzarás tus metas y tus sueños."
+    }
+  ],
+  "femenino": [
+    {
+      "nombre": "Ana",
+      "puntaje": 8.3,
+      "lugar": "Buenos Aires",
+      "posicion": 254,
+      "orden": 2
+    },
+    {
+      "nombre": "Carla",
+      "puntaje": 9.2,
+      "lugar": "Mendoza",
+      "posicion": 42,
+      "orden": 1
+    },
+    {
+      "nombre": "Lucía",
+      "puntaje": 7.5,
+      "lugar": "Córdoba",
+      "posicion": 372,
+      "orden": 4
+    },
+    {
+      "nombre": "Luisa",
+      "puntaje": 6.8,
+      "lugar": "Salta",
+      "posicion": 143,
+      "orden": 6
+    },
+    {
+      "nombre": "María",
+      "puntaje": 8.9,
+      "lugar": "Tucumán",
+      "posicion": 98,
+      "orden": 3
+    },
+    {
+      "nombre": "Natalia",
+      "puntaje": 7.1,
+      "lugar": "Chubut",
+      "posicion": 486,
+      "orden": 5
+    }
+  ],
+  "masculino": [
+    {
+      "nombre": "Juan",
+      "puntaje": 7.8,
+      "lugar": "Santa Fe",
+      "posicion": 213,
+      "orden": 3
+    },
+    {
+      "nombre": "Miguel",
+      "puntaje": 9.7,
+      "lugar": "Neuquén",
+      "posicion": 11,
+      "orden": 1
+    },
+    {
+      "nombre": "Pedro",
+      "puntaje": 6.5,
+      "lugar": "La Pampa",
+      "posicion": 327,
+      "orden": 6
+    },
+    {
+      "nombre": "Ricardo",
+      "puntaje": 8.1,
+      "lugar": "Chaco",
+      "posicion": 186,
+      "orden": 4
+    },
+    {
+      "nombre": "Santiago",
+      "puntaje": 7.2,
+      "lugar": "Entre Ríos",
+      "posicion": 439,
+      "orden": 5
+    },
+    {
+      "nombre": "Tomás",
+      "puntaje": 8.5,
+      "lugar": "San Juan",
+      "posicion": 76,
+      "orden": 2
+    },
+    {
+      "nombre": "Víctor",
+      "puntaje": 6.9,
+      "lugar": "Jujuy",
+      "posicion": 267,
+      "orden": 7
+    }
+  ],
+  "posiciones": [
+    {
+      "posicion": "Poomsae Koryo",
+      "cantidad": 10,
+      "puntajeMaximo": 9.5
+    },
+    {
+      "posicion": "Poomsae Taebaek",
+      "cantidad": 5,
+      "puntajeMaximo": 8.2
+    },
+    {
+      "posicion": "Poomsae Pyongwon",
+      "cantidad": 7,
+      "puntajeMaximo": 8.9
+    }
+  ]
+}

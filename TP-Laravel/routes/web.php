@@ -23,6 +23,9 @@ Route::get('/cargarCompetidor', function () {
 Route::get('/imagenesRandom', function () {
     return view('ej6.imagenesRandom');
 }); 
+Route::get('/resultados', function(){
+    return view('ej6.resultados');
+});
 
 // Trae todos los países
 Route::get('/paises', [PaisController::class, 'index']);
