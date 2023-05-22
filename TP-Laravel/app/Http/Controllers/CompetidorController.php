@@ -13,7 +13,7 @@ class CompetidorController extends Controller
  
     public function index()
     {
-        return view('ej6\tablaCompetidores',);
+        return view('tablaCompetidores.tablaCompetidores',);
     }
 
    public function obtenerRegistros()
