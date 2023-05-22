@@ -15,8 +15,8 @@
         @auth
 
         
-        <div class="d-flex text-end">
-            <p class="text-center" style="height: 30px ">
+        <div class="d-inline-flex text-center" >
+            <p class="text-center mx-5" style="height: 25px ">
                 <b>Usuario:</b> <br> {{auth()->user()->usuario}}
             </p>
           <a href="{{ route('logout.perform') }}" class="btn btn-outline-dark">Cerrar Sesion</a>
