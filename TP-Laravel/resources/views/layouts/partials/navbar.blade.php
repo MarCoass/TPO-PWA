@@ -97,8 +97,8 @@
 
         @guest
         <div class="text-end">
-          <a href="{{ route('login.perform') }}" class="btn btn-outline-dark me-2">Login</a>
-          <a href="{{ route('registro.perform') }}" class="btn btn-warning">Registrarse</a>
+          <a href="{{ route('login.perform') }}" class="btn btn-outline-primary me-2"><i class="bi bi-box-arrow-in-right me-2"></i>Login</a>
+          <a href="{{ route('registro.perform') }}" class="btn btn-outline-success"><i class="bi bi-person-add me-2"></i>Registrarse</a>
         </div>
         @endguest
       
