@@ -106,7 +106,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
          */
         Route::get('/index_usuarios', [UsuarioController::class, 'index'])->middleware(['rol:1']);
 
-        Route::post('/delete_usuario/{id}', [UsuarioController::class, 'destroy'])->middleware(['rol:1'])->name('delete_usuario');
+        Route::get('/delete_usuario/{id}', [UsuarioController::class, 'destroy'])->middleware(['rol:1'])->name('delete_usuario');
 
         Route::get('/create_usuario', [UsuarioController::class, 'create'])->middleware(['rol:1'])->name('create_usuario');
    

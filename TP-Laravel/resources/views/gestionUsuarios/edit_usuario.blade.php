@@ -10,33 +10,71 @@ Editar Usuario
 @endsection
 
 @section('contenido')
+
+<img class="mb-4" src="{{ url('images/World_Taekwondo.png') }}" alt="logo TKD" width="150px" />
+<button type="button" class="btn btn-outline-info" onclick="history.back()">Volver</button>
+
     <h3>Editar usuario #{{ $usuario->id }}</h3>
-     <form method="POST" action="{{ route('update_usuario',['id' =>$usuario->id]) }}">
+     <form class="m-5" method="POST" action="{{ route('update_usuario',['id' =>$usuario->id]) }}">
         @csrf
         @method('PUT')
-         <div class="form-group">
-            <label for="name">Nombre</label>
-            <input type="text" class="form-control" id="nombre" name="nombre" value="{{ $usuario->nombre }}" required>
+
+        <div class="form-group form-floating mb-3">
+            <input type="text" class="form-control" id="nombre" name="nombre" value="{{ $usuario->nombre }}" placeholder="nombre" required="required" autofocus>
+            <label for="floatingnombre">Nombre</label>
+            @if ($errors->has('nombre'))
+                <span class="text-danger text-left">{{ $errors->first('nombre') }}</span>
+            @endif
         </div>
-        <div class="form-group">
-         <label for="name">Apellido</label>
-         <input type="text" class="form-control" id="apellido" name="apellido" value="{{ $usuario->nombre }}" required>
+
+        <div class="form-group form-floating mb-3">
+            <input type="text" class="form-control" name="apellido" id="apellido" value="{{ $usuario->apellido }}" placeholder="apellido" required="required" autofocus>
+            <label for="floatingName">Apellido</label>
+            @if ($errors->has('apellido'))
+                <span class="text-danger text-left">{{ $errors->first('apellido') }}</span>
+            @endif
         </div>
-         <div class="form-group">
-            <label for="email">Correo electrónico</label>
-            <input type="email" class="form-control" id="correo" name="correo" value="{{ $usuario->correo }}" required>
+
+        <div class="form-group form-floating mb-3">
+            <input type="email" class="form-control" name="correo" value="{{ $usuario->correo }}" placeholder="name@example.com" required="required" autofocus>
+            <label for="floatingcorreo">Correo</label>
+            @if ($errors->has('correo'))
+                <span class="text-danger text-left">{{ $errors->first('correo') }}</span>
+            @endif
         </div>
-        <div class="form-group">
-         <label for="usuario">Usuario</label>
-         <input type="text" class="form-control" id="usuario" name="usuario" value="{{ $usuario->usuario }}" required>
+
+        <div class="form-group form-floating mb-3">
+            <input type="text" class="form-control" name="usuario" value="{{ $usuario->usuario }}" placeholder="usuario" required="required" autofocus>
+            <label for="floatingName">Usuario</label>
+            @if ($errors->has('usuario'))
+                <span class="text-danger text-left">{{ $errors->first('usuario') }}</span>
+            @endif
         </div>
-        <div class="form-group">
-         <label for="pass">Nueva Password</label>
-         <input type="password" class="form-control" id="password" name="password" required>
+        
+        <div class="form-group form-floating mb-3">
+            <input type="password" class="form-control" id="password" name="password" value="{{ $usuario->password }}" placeholder="Password" required="required">
+            <label for="floatingPassword">Password</label>
+            @if ($errors->has('password'))
+                <span class="text-danger text-left">{{ $errors->first('password') }}</span>
+            @endif
         </div>
-        <div class="form-group">
-         <label for="pass">Confirmar Clave</label>
-         <input type="password" class="form-control" id="password" name="password" required>
+
+        <div class="form-group form-floating mb-3">
+            <input type="password" class="form-control" id="confirmacion_clave" name="confirmacion_clave" value="{{ $usuario->password }}" placeholder="Confirm Password" required="required">
+            <label for="floatingConfirmPassword">Confirmar clave</label>
+            @if ($errors->has('confirmacion_clave'))
+                <span class="text-danger text-left">{{ $errors->first('confirmacion_clave') }}</span>
+            @endif
+        </div>
+
+        <div class="form-group mb-3">
+        <label for="select">Roles:</label>
+        <select name="rol" id="rol" class="form-control">
+            <option value="">Selecciona un rol</option>
+            <option value="1">Administrador</option>
+            <option value="2">Juez</option>
+            <option value="3">Competidor</option>
+        </select>
         </div>
          <button type="submit" class="btn btn-primary">Guardar</button>
     </form>

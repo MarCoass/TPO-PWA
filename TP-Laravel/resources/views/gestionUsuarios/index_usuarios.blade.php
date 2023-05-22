@@ -40,12 +40,8 @@ Gestion de Usuarios
                     <td>Competidor</td>
                 @endif
                 <td>
-                    <form action="{{ route('delete_usuario',['id' =>  $user->id]) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
                         <a href="{{ route('edit_usuario', ['id' => $user->id ]) }}" class="btn btn-info">Editar</a>
-                        <button type="submit" class="btn btn-danger">Eliminar</button>
-                    </form>
+                        <a href="{{ route('delete_usuario', ['id' => $user->id ]) }}" class="btn btn-danger">Eliminar</a>
                 </td>
             </tr>
             @endforeach

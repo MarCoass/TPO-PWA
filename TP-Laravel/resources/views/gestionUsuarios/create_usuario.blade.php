@@ -12,7 +12,7 @@
 @section('contenido')
 <img class="mb-4" src="{{ url('images/World_Taekwondo.png') }}" alt="logo TKD" width="150px" />
 <button type="button" class="btn btn-outline-info" onclick="history.back()">Volver</button>
-    <form method="post" action="{{ route('store_usuario') }}">
+    <form class="m-5" method="post" action="{{ route('store_usuario') }}">
 
         <!-- vvvv - ver que es esto - vvvv -->
         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
@@ -78,6 +78,5 @@
 
         <button class="w-100 btn btn-lg btn-primary" type="submit">Guardar</button>
         
-        @include('auth.partials.copy')
     </form>
 @endsection
