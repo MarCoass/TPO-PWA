@@ -5,7 +5,7 @@
 @endsection
 
 @section('contenido')
-    <form method="post" action="{{ route('login.perform') }}">
+    <form method="post" action="{{ route('login.perform') }}" class=" bg-light rounded p-5">
         
         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
         <img class="mb-4" src="{{ url('images/World_Taekwondo.png') }}" alt="logo TKD" width="300px" />

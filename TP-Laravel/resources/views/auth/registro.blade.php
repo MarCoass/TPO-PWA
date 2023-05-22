@@ -5,7 +5,7 @@
 @endsection
 
 @section('contenido')
-    <form method="post" action="{{ route('registro.perform') }}">
+    <form method="post" action="{{ route('registro.perform') }}" class=" bg-light rounded p-5">
 
         <!-- vvvv - ver que es esto - vvvv -->
         <input type="hidden" name="_token" value="{{ csrf_token() }}" />

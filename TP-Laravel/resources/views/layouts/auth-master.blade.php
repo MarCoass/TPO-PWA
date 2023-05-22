@@ -18,16 +18,31 @@
     <link href="{!! url('bootstrap-5.2.3/css/bootstrap.min.css') !!}" rel="stylesheet">
     <link href="{!! url('css/signin.css') !!}" rel="stylesheet">
     <link href="{!! url('css/registro.css') !!}" rel="stylesheet">
+    <link href="{!! url('css/fondosAuth.css') !!}" rel="stylesheet">
 
     
 </head>
-<body class="text-center">
+<body class="text-center area">
     
     <main class="form-signin">
 
         @yield('contenido')
         
     </main>
+
+    <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+    </ul>
+    
     
 
 </body>
