@@ -10,13 +10,14 @@
 @endsection
 
 @section('contenido')
+<img class="mb-4" src="{{ url('images/World_Taekwondo.png') }}" alt="logo TKD" width="150px" />
+<button type="button" class="btn btn-outline-info" onclick="history.back()">Volver</button>
     <form method="post" action="{{ route('store_usuario') }}">
 
         <!-- vvvv - ver que es esto - vvvv -->
         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
 
-        <img class="mb-4" src="{{ url('images/World_Taekwondo.png') }}" alt="logo TKD" width="300px" />
-
+        
         <div class="form-group form-floating mb-3">
             <input type="text" class="form-control" name="nombre" value="{{ old('nombre') }}" placeholder="nombre" required="required" autofocus>
             <label for="floatingnombre">Nombre</label>
