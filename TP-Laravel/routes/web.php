@@ -70,8 +70,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::put('/update_usuario/{id}', [UsuarioController::class, 'update'])->middleware(['rol:1'])->name('update_usuario');
         
         
-        /* rutas para jueces */
-        Route::get('/cronometro', function () {return view('reloj.cronometro');})->middleware(['rol:2']);
+        /* rutas para jueces y administradores */
+        Route::get('/cronometro', function () {return view('reloj.cronometro');})->middleware(['rol:1,2']);
         
         
         /* rutas para Competidores */
