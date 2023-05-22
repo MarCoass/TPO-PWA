@@ -33,26 +33,5 @@ class RolController extends Controller
         return view('roles.show', compact('rol'));
     }
 
-    /*public function edit($id)
-    {
-        $rol = Rol::find($id);
-        return view('roles.edit', compact('rol'));
-    }*/
-
-    /*public function update(Request $request, $id)
-    {
-        $rol = Rol::find($id);
-        $rol->nombreRol = $request->input('nombreRol');
-        $rol->save();
-
-        return redirect()->route('roles.index')->with('success', 'Rol actualizado exitosamente.');
-    }*/
-
-    /*public function destroy($id)
-    {
-        $rol = Rol::find($id);
-        $rol->delete();
-
-        return redirect()->route('roles.index')->with('success', 'Rol eliminado exitosamente.');
-    }*/
+    
 }
