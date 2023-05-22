@@ -8,7 +8,7 @@
 @section('contenido')
     <div>
 
-        <!-- despliega mensaje cuando se crea la cuenta -->
+        <!-- despliega mensajes -->
         @include('layouts.partials.messages')
 
         <!-- aca se vuelven a ver los grupos -->
