@@ -1,4 +1,4 @@
-<!-- create.blade.php -->
+
 @extends('layouts/layout')
 
 @section('titulo')
@@ -6,12 +6,17 @@
 @endsection
 
 @section('encabezado')
-Crear Usuario
+    Crear Usuario
 @endsection
 
- @section('contenido')
-     <form method="POST" action="{{ route('store_usuario') }}">
-        @csrf
+@section('contenido')
+    <form method="post" action="{{ route('store_usuario') }}">
+
+        <!-- vvvv - ver que es esto - vvvv -->
+        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+
+        <img class="mb-4" src="{{ url('images/World_Taekwondo.png') }}" alt="logo TKD" width="300px" />
+
         <div class="form-group form-floating mb-3">
             <input type="text" class="form-control" name="nombre" value="{{ old('nombre') }}" placeholder="nombre" required="required" autofocus>
             <label for="floatingnombre">Nombre</label>
@@ -59,6 +64,19 @@ Crear Usuario
                 <span class="text-danger text-left">{{ $errors->first('confirmacion_clave') }}</span>
             @endif
         </div>
-         <button type="submit" class="btn btn-primary">Guardar</button>
+
+        <div class="form-group mb-3">
+        <label for="select">Roles:</label>
+        <select name="rol" id="rol" class="form-control">
+            <option value="">Selecciona un rol</option>
+            <option value="1">Administrador</option>
+            <option value="2">Juez</option>
+            <option value="3">Competidor</option>
+        </select>
+        </div>
+
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Guardar</button>
+        
+        @include('auth.partials.copy')
     </form>
 @endsection

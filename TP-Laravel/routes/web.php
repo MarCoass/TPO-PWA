@@ -100,14 +100,14 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 //Rutas de Gestion de Usuarios se pueden mejorar
 /* Route::get('/index_usuarios', [UsuarioController::class, 'index']); */
 
-Route::get('/delete_usuario/{id}', [UsuarioController::class, 'destroy'])->name('delete_usuario');
+Route::post('/delete_usuario/{id}', [UsuarioController::class, 'destroy'])->name('delete_usuario');
 
 Route::get('/create_usuario', [UsuarioController::class, 'create'])->name('create_usuario');
 
 Route::get('/edit_usuario/{id}', [UsuarioController::class, 'edit'])->name('edit_usuario');
 
-Route::get('/store_usuario', [UsuarioController::class, 'store'])->name('store_usuario');
+Route::post('/store_usuario', [UsuarioController::class, 'store'])->name('store_usuario');
 
-Route::get('/update_usuario/{id}', [UsuarioController::class, 'update'])->name('update_usuario');
+Route::post('/update_usuario/{id}', [UsuarioController::class, 'update'])->name('update_usuario');
 
 

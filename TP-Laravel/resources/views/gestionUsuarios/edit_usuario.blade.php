@@ -16,19 +16,27 @@ Editar Usuario
         @method('PUT')
          <div class="form-group">
             <label for="name">Nombre</label>
-            <input type="text" class="form-control" id="name" name="name" value="{{ $usuario->nombre }}" required>
+            <input type="text" class="form-control" id="nombre" name="nombre" value="{{ $usuario->nombre }}" required>
+        </div>
+        <div class="form-group">
+         <label for="name">Apellido</label>
+         <input type="text" class="form-control" id="apellido" name="apellido" value="{{ $usuario->nombre }}" required>
         </div>
          <div class="form-group">
             <label for="email">Correo electrónico</label>
-            <input type="email" class="form-control" id="email" name="email" value="{{ $usuario->correo }}" required>
+            <input type="email" class="form-control" id="correo" name="correo" value="{{ $usuario->correo }}" required>
         </div>
-         <div class="form-group">
-            <label for="password">Contraseña</label>
-            <input type="password" class="form-control" id="password" name="password">
+        <div class="form-group">
+         <label for="usuario">Usuario</label>
+         <input type="text" class="form-control" id="usuario" name="usuario" value="{{ $usuario->usuario }}" required>
         </div>
-         <div class="form-group">
-            <label for="password_confirmation">Confirmar contraseña</label>
-            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
+        <div class="form-group">
+         <label for="pass">Nueva Password</label>
+         <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+         <label for="pass">Confirmar Clave</label>
+         <input type="password" class="form-control" id="password" name="password" required>
         </div>
          <button type="submit" class="btn btn-primary">Guardar</button>
     </form>

@@ -30,15 +30,12 @@ class UsuarioController extends Controller
         $usuario->apellido = $request->input('apellido');
         $usuario->usuario = $request->input('usuario');
         $usuario->correo = $request->input('correo');
-        $usuario->clave = $request->input('clave');
-
-        // Por defecto le asignamos el rol Competidor
-        $rol = Rol::find($request['idRol']);
-        $usuario->rol()->associate($rol);
+        $usuario->password = $request->input('clave');
+        $usuario->idRol = $request->input('rol');
 
         $usuario->save();
 
-        return redirect()->route('gestionUsuarios.index_usuarios')->with('success', 'Usuario creado exitosamente.');
+        return redirect()->route('index_usuarios')->with('success', 'Usuario creado exitosamente.');
     }
 
     public function show($id)
@@ -64,7 +61,7 @@ class UsuarioController extends Controller
         $usuario->idRol = $request->input('idRol');
         $usuario->save();
 
-        return redirect()->route('gestionUsuarios.index_usuarios')->with('success', 'Usuario actualizado exitosamente.');
+        return redirect()->route('index_usuarios')->with('success', 'Usuario actualizado exitosamente.');
     }
 
     public function destroy($id)
@@ -72,6 +69,6 @@ class UsuarioController extends Controller
         $usuario = User::find($id);
         $usuario->delete();
 
-        return redirect()->route('gestionUsuarios.index_usuarios')->with('success', 'Usuario eliminado exitosamente.');
+        return redirect()->route('index_usuarios')->with('success', 'Usuario eliminado exitosamente.');
     }
 }
