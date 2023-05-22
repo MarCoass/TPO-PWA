@@ -13,7 +13,7 @@ Gestion de Usuarios
  <!-- despliega mensajes -->
  @include('layouts.partials.messages')
     <h3>Usuarios</h3>
-     <a href="{{ route('create_usuario') }}" class="btn btn-outline-primary mb-3">Nuevo usuario</a>
+     <a href="{{ route('create_usuario') }}" class="btn btn-outline-primary mb-3"><i class="bi bi-universal-access me-2"></i>Nuevo usuario</a>
      <table id="tabla_usuarios" class="table hover table-light table-bordered nowrap border dataTable dtr-inline collapsed" width="100%">
         <thead class="flip-content">
             <tr>
@@ -40,8 +40,8 @@ Gestion de Usuarios
                     {{ ($user->idRol == 3) ? 'Competidor' : '' }}
                 </td>
                 <td>
-                        <a href="{{ route('edit_usuario', ['id' => $user->id ]) }}" class="btn btn-outline-info">Editar</a>
-                        <a href="{{ route('delete_usuario', ['id' => $user->id ]) }}" class="btn btn-outline-danger">Eliminar</a>
+                        <a href="{{ route('edit_usuario', ['id' => $user->id ]) }}" class="btn btn-outline-info"><i class="bi bi-pencil-square me-2"></i>Editar</a>
+                        <a href="{{ route('delete_usuario', ['id' => $user->id ]) }}" class="btn btn-outline-danger"><i class="bi bi-trash me-2"></i>Eliminar</a>
                 </td>
             </tr>
             @endforeach
