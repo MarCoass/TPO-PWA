@@ -58,7 +58,7 @@ class UsuarioController extends Controller
         $usuario->usuario = $request->input('usuario');
         $usuario->correo = $request->input('correo');
         $usuario->password = $request->input('clave');
-        $usuario->idRol = $request->input('idRol');
+        $usuario->idRol = $request->input('rol');
         $usuario->save();
 
         return redirect()->route('index_usuarios')->with('success', 'Usuario actualizado exitosamente.');

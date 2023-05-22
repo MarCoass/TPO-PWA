@@ -11,9 +11,9 @@ Gestion de Usuarios
 
  @section('contenido')
     <h3>Usuarios</h3>
-     <a href="{{ route('create_usuario') }}" class="btn btn-primary mb-3">Nuevo usuario</a>
-     <table class="table">
-        <thead>
+     <a href="{{ route('create_usuario') }}" class="btn btn-outline-primary mb-3">Nuevo usuario</a>
+     <table id="tabla_usuarios" class="table hover table-light table-bordered nowrap border dataTable dtr-inline collapsed" width="100%">
+        <thead class="flip-content">
             <tr>
                 <th>Id</th>
                 <th>Nombre</th>
@@ -32,16 +32,14 @@ Gestion de Usuarios
                 <td>{{ $user->apellido }}</td>
                 <td>{{ $user->usuario}}</td>
                 <td>{{ $user->correo }}</td>
-                @if ($user->idRol == 1)
-                    <td>Administrador</td>
-                @elseif ($user->idRol == 2)
-                    <td>Juez</td>
-                @else
-                    <td>Competidor</td>
-                @endif
                 <td>
-                        <a href="{{ route('edit_usuario', ['id' => $user->id ]) }}" class="btn btn-info">Editar</a>
-                        <a href="{{ route('delete_usuario', ['id' => $user->id ]) }}" class="btn btn-danger">Eliminar</a>
+                    {{ ($user->idRol == 1) ? 'Administrador' : '' }}
+                    {{ ($user->idRol == 2) ? 'Juez' : '' }}
+                    {{ ($user->idRol == 3) ? 'Competidor' : '' }}
+                </td>
+                <td>
+                        <a href="{{ route('edit_usuario', ['id' => $user->id ]) }}" class="btn btn-outline-info">Editar</a>
+                        <a href="{{ route('delete_usuario', ['id' => $user->id ]) }}" class="btn btn-outline-danger">Eliminar</a>
                 </td>
             </tr>
             @endforeach

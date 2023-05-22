@@ -76,7 +76,7 @@
         </select>
         </div>
 
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Guardar</button>
+        <button class="w-100 btn btn-lg btn-outline-primary" type="submit">Guardar</button>
         
     </form>
 @endsection

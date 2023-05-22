@@ -69,12 +69,14 @@ Editar Usuario
         <div class="form-group mb-3">
         <label for="select">Roles:</label>
         <select name="rol" id="rol" class="form-control">
+        
             <option value="">Selecciona un rol</option>
-            <option value="1">Administrador</option>
-            <option value="2">Juez</option>
-            <option value="3">Competidor</option>
+            <option value="1" {{ ($usuario->idRol == 1) ? 'selected' : '' }} >Administrador</option>
+            <option value="2" {{ ($usuario->idRol == 2) ? 'selected' : '' }} >Juez</option>
+            <option value="3" {{ ($usuario->idRol == 3) ? 'selected' : '' }}>Competidor</option>
+       
         </select>
         </div>
-         <button type="submit" class="btn btn-primary">Guardar</button>
+         <button type="submit" class="w-100 btn btn-outline-primary">Guardar</button>
     </form>
 @endsection
