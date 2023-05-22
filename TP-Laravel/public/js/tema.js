@@ -13,6 +13,9 @@ export const cambio_de_tema = (tema) => {
      
       document.body.classList.add('text-bg-dark');
       document.body.classList.remove('text-bg-light');
+      document.querySelectorAll('.card').forEach((el) => {
+        el.classList.add('bg-dark');
+      })
 
       let negro = document.getElementById("cambiarVista_negro");
       negro.style.display = "none";
@@ -24,6 +27,9 @@ export const cambio_de_tema = (tema) => {
     }else{
       document.body.classList.remove('text-bg-dark');
       document.body.classList.add('text-bg-light');
+      document.querySelectorAll('.card').forEach((el) => {
+        el.classList.remove('bg-dark');
+      })
       if($tabla){
         $tabla.classList['value'] = 'table hover table-light table-bordered nowrap border dataTable dtr-inline collapsed';
       }

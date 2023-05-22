@@ -9,6 +9,14 @@
 @endsection
 
 @section('contenido')
+
+{{-- Muestra un mensaje de exito enviado por GET. Lo utiliza el cargarCompetidor --}}
+@if(Request::input('mensaje'))
+    <div class="alert alert-success alert-dismissible fade show" id="mensajeExitoso" role="alert">
+        {{ Request::input('mensaje') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
     
 <div class="my-3">
         <table id="competidores_tabla"

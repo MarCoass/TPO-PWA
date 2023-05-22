@@ -1,6 +1,6 @@
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
-    <label class="form-label" for="legajo">GAL:</label>
-    <input class="form-control" type="text" id="legajo" name="legajo" autocomplete="off" pattern="^[A-Z]{3}\d{7}$" placeholder="Ej: ABC1234567" required>
+    <label class="form-label" for="gal">GAL: <span class="spinner-border spinner-border-sm d-none"></span></label>
+    <input class="form-control validarEspecial" type="text" id="gal" name="gal" autocomplete="off" pattern="^[A-Z]{3}\d{7}$" maxlength="10" placeholder="Ej: ABC1234567" required>
     <div class="valid-feedback">
         ¡Correcto!
     </div>
@@ -8,8 +8,8 @@
 </div>
 
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
-    <label class="form-label" for="rankingNacional">Ranking:</label>
-    <input class="form-control" type="number" min="0" id="rankingNacional" name="rankingNacional" pattern="^(?!900\.(?:00)?[1-9])(?!0*(?:\.0+)?$)([0-8]?\d{0,2}|900)(?:\.\d{1,2})?$" autocomplete="off" max="900" required>
+    <label class="form-label" for="ranking">Ranking:</label>
+    <input class="form-control validar" type="number" min="0" id="ranking" name="ranking" pattern="^(?!900\.(?:00)?[1-9])(?!0*(?:\.0+)?$)([0-8]?\d{0,2}|900)(?:\.\d{1,2})?$" autocomplete="off" max="900" required>
     <div class="valid-feedback">
         ¡Correcto!
     </div>
@@ -18,7 +18,7 @@
 
 <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12  pt-3">
     <label class="form-label" for="graduacion">Graduacion:</label>
-    <select class="form-control" id="graduacion" name="graduacion" required>
+    <select class="form-control validar" id="graduacion" name="graduacion" required>
         <option value="" disabled selected data-error="Por favor seleccione una graduacion válida">Selecciona una graduación.</option>
         <option value="1er Dan">1er Dan</option>
         <option value="2do Dan">2do Dan</option>
@@ -40,6 +40,6 @@
         <i class="bi bi-arrow-left me-2"></i>Volver
     </button>
     <button type="submit" id="botonGuardarCompetidor" class="btn btn-outline-success w-25">
-        <i class="bi bi-cloud-arrow-up-fill me-2"></i>Guardar
+        <span class="spinner-border spinner-border-sm d-none"></span> <i class="bi bi-cloud-arrow-up-fill me-2"></i>Guardar
     </button>
 </div>

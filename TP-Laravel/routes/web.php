@@ -16,7 +16,7 @@ Route::get('/video', function () {
 });
 Route::get('/tablaCompetidores', function () {
     return view('ej6.tablaCompetidores');
-});
+})->name('tablaCompetidores');
 Route::get('/cargarCompetidor', function () {
     return view('ej6.cargarCompetidor');
 });
@@ -83,6 +83,23 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
          * Logout Routes
          */
         Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
+
+        /**
+         * Competidor Routes
+         */
+        Route::post('/cargarCompetidor/add', 'CompetidorController@store')->name('cargarCompetidor.perform');
+        Route::post('/cargarCompetidor/validar', 'CompetidorController@validar')->name('cargarCompetidor.validar');
+        
+
+        /**
+         * Estado Routes
+         */
+        Route::post('/estado', 'EstadoController@obtenerEstadoPorNombre')->name('estado.autocomplete');
+
+        /**
+         * Pais Routes
+         */
+        Route::post('/pais', 'PaisController@obtenerPaisPorNombre')->name('pais.autocomplete');
     });
 
 });

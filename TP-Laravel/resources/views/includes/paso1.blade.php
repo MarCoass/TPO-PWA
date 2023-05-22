@@ -1,6 +1,6 @@
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
     <label class="form-label" for="apellido">Apellido:</label>
-    <input class="form-control" type="text" id="apellido" name="apellido" maxlength="50" pattern=".+" placeholder="Ej: Lopez" autocomplete="off" required>
+    <input class="form-control validar" type="text" id="apellido" name="apellido" maxlength="50" pattern=".+" placeholder="Ej: Lopez" autocomplete="off" required>
     <div class="valid-feedback">
         ¡Correcto!
     </div>
@@ -9,7 +9,7 @@
 
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
     <label class="form-label" for="nombre">Nombre:</label>
-    <input class="form-control" type="text" id="nombre" name="nombre" maxlength="50" pattern=".+" placeholder="Ej: Lautaro" autocomplete="off" required>
+    <input class="form-control validar" type="text" id="nombre" name="nombre" maxlength="50" pattern=".+" placeholder="Ej: Lautaro" autocomplete="off" required>
     <div class="valid-feedback">
         ¡Correcto!
     </div>
@@ -17,8 +17,8 @@
 </div>
 
 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 pt-3">
-    <label class="form-label" for="dni">DU:</label>
-    <input class="form-control" type="text" name="dni" id="dni" pattern="[0-9]{7}" autocomplete="off" maxlength="7" placeholder="Ej: 23456789" required>
+    <label class="form-label" for="du">DU: <span class="spinner-border spinner-border-sm d-none"></span></label>
+    <input class="form-control validarEspecial" type="text" name="du" id="du" pattern="[0-9]{7}" autocomplete="off" maxlength="7" placeholder="Ej: 23456789" required>
     <div class="valid-feedback">
         ¡Correcto!
     </div>
@@ -27,7 +27,7 @@
 
 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 pt-3">
     <label class="form-label" for="fechaNacimiento">Nacimiento:</label>
-    <input class="form-control" type="date" min="1900-01-01" id="fechaNacimiento" name="fechaNacimiento" required>
+    <input class="form-control validar" type="date" min="1900-01-01" max="{{ date('Y-m-d',strtotime('- 6 year'.date('Y-m-d'))); }}" id="fechaNacimiento" name="fechaNacimiento" required>
     <div class="valid-feedback">
         ¡Correcto!
     </div>
@@ -35,8 +35,8 @@
 </div>
 
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
-    <label class="form-label" for="email">Email:</label>
-    <input class="form-control" type="email" id="email" name="email" autocomplete="off" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" placeholder="Ej: persona@correo.com" required>
+    <label class="form-label" for="correo">Email: <span class="spinner-border spinner-border-sm d-none"></span></label>
+    <input class="form-control validarEspecial" type="email" id="correo" name="correo" autocomplete="off" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" placeholder="Ej: persona@correo.com" required>
     <div class="valid-feedback">
         ¡Correcto!
     </div>
@@ -44,12 +44,10 @@
 </div>
 
 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 pt-3">
-    <label class="form-label" for="paisOrigen">País:</label>
-    <select class="form-control" id="paisOrigen" name="paisOrigen" onChange="actualizarEstados()" required>
-        <option value='' disabled selected data-error='Por favor seleccione un país válido'>Selecciona un país.</option>
-        <option value="Argentina">Argentina</option>
-        <option value="2do">Fancia</option>
-    </select>
+    <label class="form-label" for="pais">País:</label>
+    <input type='text' class="form-control tt-input validar" name="pais" id="pais" required>
+
+    <input type='hidden' name="idPais" id="idPais" value="5">
     <div class="valid-feedback">
         ¡Correcto!
     </div>
@@ -57,13 +55,9 @@
 </div>
 
 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 pt-3">
-    <label class="form-label" for="estadoOrigen">Estado:</label>
-    <select class="form-control" id="estadoOrigen" name="estadoOrigen" required>
-        <option value='' disabled selected data-error='Por favor seleccione un estado válido'>Selecciona un estado.</option>
-        <option value="Neuquén">Neuquén</option>
-        <option value="Cipolleti">Cipolleti</option>
-        <option value="Plottier">Plottier</option>
-    </select>
+    <label class="form-label" for="estado">Estado:</label>
+    <input type='text' class="form-control tt-input validar" name="estado" id="estado" required>
+    <input type='hidden' name="idEstado" id="idEstado" value="1832">
     <div class="valid-feedback">
         ¡Correcto!
     </div>
@@ -72,7 +66,7 @@
 
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pt-3">
     <label class="form-label" for="genero">Género:</label>
-    <select class="form-control" id="genero" name="genero" required>
+    <select class="form-control validar" id="genero" name="genero" required>
         <option value="" disabled selected data-error="Por favor seleccione un genero">Selecciona una opción</option>
         <option value="masculino">Masculino</option>
         <option value="femenino">Femenino</option>
