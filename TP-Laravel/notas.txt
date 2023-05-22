@@ -219,3 +219,20 @@ la carpeta "layouts/partials" contiene el footer y navbar, ademas de un include 
 y/o validaciones de registro, se podria usar para las otras secciones
 
 
+----------------------------------------------------------------------------------------------------------------------------------
+TRAER REGISTROS DE LA BD
+
+1)se crea una ruta: Route::get('/competidores', [CompetidorController::class, 'index']);
+esta ruta solo carga la vista de la tabla, ahi mismo se carga el js con el jquery de datatable.
+2)En el js se inicializa un datatable con una peticion ajax donde busca los datosen la url: "/competidores/data"(ruta que se encuentra en web.php),
+esa ruta invoca el metodo obtenerRegistros que se encuentra en CompetidorController, 
+3)El Metodo obtenerRegistros obtiene registros utilizando la funcion select de Eloquent ORM para seleccionar las columnas necesarias de la tabla "competidores". 
+Luego se utiliza la función "join" para unir la tabla "paises" basándose en la columna "idPais".
+Finalmente, se utiliza la función "get" de Eloquent ORM para recuperar todos los registros afectados por la consulta 
+y se devuelve un objeto JSON que contiene los registros de "competidores" junto con el nombre del país correspondiente utilizando la sintaxis "nombre_pais" como un alias para la columna "nombrePais"
+
+4)Una vez obtenido el objeto JSON con los registros en la arreglo COLUMNS de datatable se especifican los campos que se van a necesitar para llenar los campos de la tabla
+los nombres de los campos van a ser los que se encuentren en el JSON obtenido. el campo { data: "nombre_pais" }, es un campo del join con las tablas competidores y paises.
+
+5)El datatable hace su magia y pobla la tabla con los datos en la vista.
+

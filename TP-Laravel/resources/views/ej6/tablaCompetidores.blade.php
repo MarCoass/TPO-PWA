@@ -28,20 +28,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($competidores as $competidor)
-                <tr>
-                    <td>{{ $competidor->gal }}</td>
-                    <td>{{ $competidor->apellido }}</td>
-                    <td>{{ $competidor->nombre }}</td>
-                    <td>{{ $competidor->du }}</td>
-                    <td>{{ $competidor->fechaNacimiento }}</td>
-                    <td>{{ $competidor->pais->nombrePais }}</td> 
-                    <td>{{ $competidor->ranking }}</td>
-                    <td>{{ $competidor->graduacion }}</td>
-                    <td>{{ $competidor->email }}</td>
-                    <td>{{ $competidor->genero }}</td>
-                </tr>
-                @endforeach
+
             </tbody>
             <tfoot>
                 <tr>
