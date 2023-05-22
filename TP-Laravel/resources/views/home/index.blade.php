@@ -8,7 +8,7 @@
 @section('contenido')
     <div>
 
-        <!-- despliega mensaje cuando se crea la cuenta -->
+        <!-- despliega mensajes -->
         @include('layouts.partials.messages')
 
         <!-- aca se vuelven a ver los grupos -->
@@ -45,7 +45,7 @@
 
                         @if (auth()->user()->idRol == 1)
                             <div class="seccion_item">
-                                <a href="/tablaCompetidores" class="seccion-item_link">
+                                <a href="/competidores" class="seccion-item_link">
                                     <div class="seccion-item_bg"></div>
                                     <div class="seccion-item_title">
                                         Ver competidores
