@@ -32,7 +32,7 @@ Formulario de carga de competidor
 
                     {{-- Rutas varias utilizadas con AJAX (ver cargaCompetidor.js y autocompletado.js) --}}
                     <input type="hidden" id="validar" value="{{ route('cargarCompetidor.validar') }}" />
-                    <input type="hidden" id="postEnvio" value="{{ route('tablaCompetidores') }}" />
+                    <input type="hidden" id="postEnvio" value="{{ route('home.index') }}" />
                     <input type="hidden" id="rutaPais" value="{{ route('pais.autocomplete') }}" />
                     <input type="hidden" id="rutaEstado" value="{{ route('estado.autocomplete') }}" />
 

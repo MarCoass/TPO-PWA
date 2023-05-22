@@ -61,8 +61,8 @@ class CompetidorController extends Controller
         ];
 
         // Devolver una respuesta JSON
-        /* return response()->json($data, 200); */
-        return redirect('/competidores')->with('success', "El competidor se ha registrado correctamente");
+        return response()->json($data, 200);
+        // return redirect('/competidores')->with('success', "El competidor se ha registrado correctamente");
     }
 
     public function show($id)

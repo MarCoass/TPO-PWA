@@ -48,3 +48,11 @@
         </div>
     @endif
 @endif
+
+{{-- Muestra un mensaje de exito enviado por GET. Lo utiliza el cargarCompetidor --}}
+@if(Request::input('message'))
+    <div class="alert alert-success alert-dismissible fade show" id="mensajeExitoso" role="alert">
+        {{ Request::input('message') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif

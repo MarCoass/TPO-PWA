@@ -115,6 +115,7 @@ const validarFormulario = () => {
 
     // Listener al presionar el botón de guardar (submit)
     $form.addEventListener('submit', (event) => {
+        event.preventDefault();
         // Valida otra vez
         $inputs.forEach((el) => {
             chequearValidez(el);
@@ -130,7 +131,6 @@ const validarFormulario = () => {
 
         }else{
             // Caso contrario, prevenimos que se envíe y mostramos mensaje de ayuda.
-            event.preventDefault();
             $('#error-js').removeClass('d-none');
         }
     });
@@ -161,7 +161,7 @@ const enviarFormulario = (formulario) => {
             // Si todo sale bien, redireccionamos a la tabla con un mensaje de éxito
             let mensaje = response.message;
             // encodeURIComponente convierte un string común en un string amigable para URLs
-            window.location.href = redireccion+'?mensaje='+encodeURIComponent(mensaje); 
+            window.location.href = redireccion+'?message='+encodeURIComponent(mensaje); 
         },
         error: function(xhr, status, error) {
             // Ocurrió un error al procesar la solicitud
