@@ -35,7 +35,7 @@
 
 
                         <div class="seccion_item">
-                            <a href="/video" class="seccion-item_link">
+                            <a href="/presentacion" class="seccion-item_link">
                                 <div class="seccion-item_bg"></div>
                                 <div class="seccion-item_title">
                                     Presentacion del torneo
@@ -65,7 +65,7 @@
                             </div>
                         @endif
 
-                       
+
                         <div class="seccion_item">
                             <a href="/resultados" class="seccion-item_link">
                                 <div class="seccion-item_bg"></div>
@@ -74,18 +74,17 @@
                                 </div>
                             </a>
                         </div>
-                        
 
-                        @if( auth()->user()->idRol == 1 )
-                        <div class="seccion_item">
-                            <a href="{{ route('index_usuarios') }}"
-                                class="seccion-item_link">
-                                <div class="seccion-item_bg"></div>
-                                <div class="seccion-item_title">
-                                    Gestion de usuarios
-                                </div>
-                            </a>
-                        </div>
+
+                        @if (auth()->user()->idRol == 1)
+                            <div class="seccion_item">
+                                <a href="{{ route('index_usuarios') }}" class="seccion-item_link">
+                                    <div class="seccion-item_bg"></div>
+                                    <div class="seccion-item_title">
+                                        Gestion de usuarios
+                                    </div>
+                                </a>
+                            </div>
                         @endif
                     </div>
                 </div><!-- /.col-lg-4 -->
@@ -94,9 +93,33 @@
         @endauth
 
         @guest
-            <h1>No logueado</h1>
-            <p class="lead">esto se muestra porque no estas logueado.</p>
-        @endguest
+            <h1>Usted no esta registrado</h1>
+            <div class="row justify-content-around">
 
-    </div>
-@endsection
+                <div class="format-container">
+
+                    <div class="seccion_box">
+                        <div class="seccion_item">
+                            <a href="{{ route('login.perform') }}" class="seccion-item_link">
+                                <div class="seccion-item_bg"></div>
+                                <div class="seccion-item_title">
+                                    Iniciar sesion
+                                </div>
+                            </a>
+                        </div>
+
+
+                        <div class="seccion_item">
+                            <a href="{{ route('registro.perform') }}" class="seccion-item_link">
+                                <div class="seccion-item_bg"></div>
+                                <div class="seccion-item_title">
+                                    Registrarse
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            @endguest
+
+        </div>
+    @endsection
