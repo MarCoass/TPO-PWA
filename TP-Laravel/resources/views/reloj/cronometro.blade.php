@@ -16,9 +16,9 @@
 </div>
 
 <div class="col-md-12 text-center">
-    <button class="btn btn-primary" id="inicio-contador">Inicia</button>
+    <button class="btn btn-outline-primary btn-lg me-2" id="inicio-contador"><i class="bi bi-play me-1"></i>Inicia</button>
 
-    <button class="btn btn-secondary disabled" id="fin-contador">Termina</button>
+    <button class="btn btn-outline-warning btn-lg disabled" id="fin-contador"><i class="bi bi-stop me-1"></i>Termina</button>
 </div>
 <div class="col-md-12 text-center">
         <p class="display-6" id="tiempo-total"></p>
