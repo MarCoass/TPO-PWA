@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaisController;
 use App\Http\Controllers\EstadoController;
 use App\Http\Controllers\CompetidorController;
+use App\Http\Controllers\EscuelaController;
 use App\Http\Controllers\UsuarioController;
 
 
@@ -21,6 +22,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
     
     // Trae todos los países
     Route::get('/paises', [PaisController::class, 'index']);
+
     // Trae todos los estados
     Route::get('/estados', [EstadoController::class, 'index']);
     // Trae todos los Competidores de la bd
