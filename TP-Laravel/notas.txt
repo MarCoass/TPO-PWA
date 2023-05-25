@@ -6,11 +6,12 @@ COMO ARMAR LA BASE DE DATOS Y CARGARLE DATOS
 2) En el archivo .env cambiar la variable DB_DATABASE  al nombre de la base de datos.
 3) En la consola ejecutar el comando php artisan migrate
 4) Cargar los datos de prueba usando los seeders con los siguientes comandos
-     a) php artisan db:seed --class=PaisesTableSeeder
-     b) php artisan db:seed --class=EstadosTableSeeder
-     c) php artisan db:seed --class=RolesTableSeeder
-     d) php artisan db:seed --class=UsuariosTableSeeder
-     e) php artisan db:seed --class=CompetidoresTableSeeder
+     a) php artisan db:seed --class=EscuelasTableSeeder
+     b) php artisan db:seed --class=PaisesTableSeeder
+     c) php artisan db:seed --class=EstadosTableSeeder
+     d) php artisan db:seed --class=RolesTableSeeder
+     e) php artisan db:seed --class=UsuariosTableSeeder
+     f) php artisan db:seed --class=CompetidoresTableSeeder
 
 
 ** COMO RESETEAR LA BASE DE DATOS **
