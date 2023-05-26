@@ -16,7 +16,7 @@ Registro
     <div class="row">
         <div class="form-group form-floating col-6 mb-3">
             <input type="text" class="form-control" name="nombre" value="{{ old('nombre') }}" placeholder="nombre" required="required" autofocus>
-            <label for="floatingnombre "  class="mx-2">Nombre</label>
+            <label for="floatingnombre " class="mx-2">Nombre</label>
             @if ($errors->has('nombre'))
             <span class="text-danger text-left">{{ $errors->first('nombre') }}</span>
             @endif
@@ -32,7 +32,7 @@ Registro
 
         <div class="form-group form-floating col-6 mb-3">
             <input type="email" class="form-control" name="correo" value="{{ old('correo') }}" placeholder="name@example.com" required="required" autofocus>
-            <label for="floatingcorreo"  class="mx-2">Correo</label>
+            <label for="floatingcorreo" class="mx-2">Correo</label>
             @if ($errors->has('correo'))
             <span class="text-danger text-left">{{ $errors->first('correo') }}</span>
             @endif
@@ -40,7 +40,7 @@ Registro
 
         <div class="form-group form-floating col-6 mb-3">
             <input type="text" class="form-control" name="usuario" value="{{ old('usuario') }}" placeholder="usuario" required="required" autofocus>
-            <label for="floatingName"  class="mx-2">Nombre de usuario</label>
+            <label for="floatingName" class="mx-2">Nombre de usuario</label>
             @if ($errors->has('usuario'))
             <span class="text-danger text-left">{{ $errors->first('usuario') }}</span>
             @endif
@@ -48,7 +48,7 @@ Registro
 
         <div class="form-group form-floating col-6 mb-3">
             <input type="password" class="form-control" name="password" value="{{ old('password') }}" placeholder="Password" required="required">
-            <label for="floatingPassword"  class="mx-2">Contraseña</label>
+            <label for="floatingPassword" class="mx-2">Contraseña</label>
             @if ($errors->has('password'))
             <span class="text-danger text-left">{{ $errors->first('password') }}</span>
             @endif
@@ -56,13 +56,27 @@ Registro
 
         <div class="form-group form-floating col-6 mb-3">
             <input type="password" class="form-control" name="confirmacion_clave" value="{{ old('confirmacion_clave') }}" placeholder="Confirm Password" required="required">
-            <label for="floatingConfirmPassword"  class="mx-2">Confirmar contraseña</label>
+            <label for="floatingConfirmPassword" class="mx-2">Confirmar contraseña</label>
             @if ($errors->has('confirmacion_clave'))
             <span class="text-danger text-left">{{ $errors->first('confirmacion_clave') }}</span>
             @endif
         </div>
 
-        <input type="hidden" name="idRol" value="3" />
+        <div class="form-group form-floating col-6 mb-3">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="idRol" id="idRol1" value="3" checked>
+                <label class="form-check-label" for="idRol1">
+                    Competidor
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="idRol" id="idRol2" value="2">
+                <label class="form-check-label" for="idRol2">
+                    Juez
+                </label>
+            </div>
+        </div>
+
     </div>
 
     <button class="w-50 btn btn-lg btn-outline-success" type="submit"><i class="bi bi-person-add me-2"></i>Registrarse</button>

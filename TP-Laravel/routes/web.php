@@ -69,6 +69,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/edit_usuario/{id}', [UsuarioController::class, 'edit'])->middleware(['rol:1'])->name('edit_usuario');
         Route::post('/store_usuario', [UsuarioController::class, 'store'])->middleware(['rol:1'])->name('store_usuario');
         Route::put('/update_usuario/{id}', [UsuarioController::class, 'update'])->middleware(['rol:1'])->name('update_usuario');
+        Route::get('/habilitar_usuario/{id}', [UsuarioController::class, 'habilitar'])->middleware(['rol:1'])->name('habilitar_usuario');
         
         
         /* rutas para jueces y administradores */

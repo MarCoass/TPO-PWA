@@ -33,7 +33,6 @@ class RegisterRequest extends FormRequest
             'password' => 'required|min:8',
             'confirmacion_clave' => 'required|same:password',
             'idRol' => 'required'
-
         ];
     }
 }

@@ -64,6 +64,14 @@ class UsuarioController extends Controller
         return redirect()->route('index_usuarios')->with('success', 'Usuario actualizado exitosamente.');
     }
 
+    public function habilitar($id){
+        $usuario = User::find($id);
+        $usuario->estado = true;
+        $usuario->save();
+
+        return redirect()->route('index_usuarios')->with('success', 'Usuario habilitado exitosamente.');
+    }
+
     public function destroy($id)
     {
         $usuario = User::find($id);
