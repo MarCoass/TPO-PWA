@@ -2,124 +2,124 @@
 @extends('layouts.app-master')
 
 @section('titulo')
-    Home
+NeuPoom
 @endsection
 
 @section('contenido')
-    <div>
+<div>
 
-        <!-- despliega mensajes -->
-        @include('layouts.partials.messages')
+    <!-- despliega mensajes -->
+    @include('layouts.partials.messages')
 
-        <!-- aca se vuelven a ver los grupos -->
+    <!-- aca se vuelven a ver los grupos -->
 
-        @auth
-            <h1>Bienvenido <u>{{auth()->user()->usuario}}</u></h1> 
+    @auth
+    <span class="fs-1">Bienvenido <b class="text-danger">{{auth()->user()->usuario}}</b>.</span>
 
-            <div class="row justify-content-around">
+    <div class="row justify-content-around">
 
-                <div class="format-container">
+        <div class="format-container">
 
-                    <div class="seccion_box">
+            <div class="seccion_box">
 
-                        @if (auth()->user()->idRol == 2 || auth()->user()->idRol == 1)
-                            <div class="seccion_item">
-                                <a href="/cronometro" class="seccion-item_link">
-                                    <div class="seccion-item_bg"></div>
-                                    <div class="seccion-item_title">
-                                        Cronometro
-                                    </div>
-                                </a>
-                            </div>
-                        @endif
-
-
-                        <div class="seccion_item">
-                            <a href="/presentacion" class="seccion-item_link">
-                                <div class="seccion-item_bg"></div>
-                                <div class="seccion-item_title">
-                                    Presentacion del torneo
-                                </div>
-                            </a>
+                @if (auth()->user()->idRol == 2 || auth()->user()->idRol == 1)
+                <div class="seccion_item">
+                    <a href="/cronometro" class="seccion-item_link">
+                        <div class="seccion-item_bg"></div>
+                        <div class="seccion-item_title">
+                            Cronómetro
                         </div>
-
-                        @if (auth()->user()->idRol == 1)
-                            <div class="seccion_item">
-                                <a href="/competidores" class="seccion-item_link">
-                                    <div class="seccion-item_bg"></div>
-                                    <div class="seccion-item_title">
-                                        Ver competidores
-                                    </div>
-                                </a>
-                            </div>
-                        @endif
-
-                        @if (auth()->user()->idRol == 3)
-                            <div class="seccion_item">
-                                <a href="/cargarCompetidor" class="seccion-item_link">
-                                    <div class="seccion-item_bg"></div>
-                                    <div class="seccion-item_title">
-                                        Cargar competidor
-                                    </div>
-                                </a>
-                            </div>
-                        @endif
-
-
-                        <div class="seccion_item">
-                            <a href="/resultados" class="seccion-item_link">
-                                <div class="seccion-item_bg"></div>
-                                <div class="seccion-item_title">
-                                    Resultados
-                                </div>
-                            </a>
-                        </div>
-
-
-                        @if (auth()->user()->idRol == 1)
-                            <div class="seccion_item">
-                                <a href="{{ route('index_usuarios') }}" class="seccion-item_link">
-                                    <div class="seccion-item_bg"></div>
-                                    <div class="seccion-item_title">
-                                        Gestion de usuarios
-                                    </div>
-                                </a>
-                            </div>
-                        @endif
-                    </div>
-                </div><!-- /.col-lg-4 -->
-
-            </div>
-        @endauth
-
-        @guest
-            <h1>Usted no esta registrado</h1>
-            <div class="row justify-content-around">
-
-                <div class="format-container">
-
-                    <div class="seccion_box">
-                        <div class="seccion_item">
-                            <a href="{{ route('login.perform') }}" class="seccion-item_link">
-                                <div class="seccion-item_bg"></div>
-                                <div class="seccion-item_title">
-                                    Iniciar sesion
-                                </div>
-                            </a>
-                        </div>
-
-
-                        <div class="seccion_item">
-                            <a href="{{ route('registro.perform') }}" class="seccion-item_link">
-                                <div class="seccion-item_bg"></div>
-                                <div class="seccion-item_title">
-                                    Registrarse
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                    </a>
                 </div>
-            @endguest
+                @endif
 
+
+                <div class="seccion_item">
+                    <a href="/presentacion" class="seccion-item_link">
+                        <div class="seccion-item_bg"></div>
+                        <div class="seccion-item_title">
+                            Presentacion del torneo
+                        </div>
+                    </a>
+                </div>
+
+                @if (auth()->user()->idRol == 1)
+                <div class="seccion_item">
+                    <a href="/competidores" class="seccion-item_link">
+                        <div class="seccion-item_bg"></div>
+                        <div class="seccion-item_title">
+                            Ver competidores
+                        </div>
+                    </a>
+                </div>
+                @endif
+
+                @if (auth()->user()->idRol == 3)
+                <div class="seccion_item">
+                    <a href="/cargarCompetidor" class="seccion-item_link">
+                        <div class="seccion-item_bg"></div>
+                        <div class="seccion-item_title">
+                            Inscribirse a una Competencia
+                        </div>
+                    </a>
+                </div>
+                @endif
+
+
+                <div class="seccion_item">
+                    <a href="/resultados" class="seccion-item_link">
+                        <div class="seccion-item_bg"></div>
+                        <div class="seccion-item_title">
+                            Resultados
+                        </div>
+                    </a>
+                </div>
+
+
+                @if (auth()->user()->idRol == 1)
+                <div class="seccion_item">
+                    <a href="{{ route('index_usuarios') }}" class="seccion-item_link">
+                        <div class="seccion-item_bg"></div>
+                        <div class="seccion-item_title">
+                            Gestion de usuarios
+                        </div>
+                    </a>
+                </div>
+                @endif
+            </div>
+        </div><!-- /.col-lg-4 -->
+
+    </div>
+    @endauth
+
+    @guest
+    <h1>Usted no esta registrado</h1>
+    <div class="row justify-content-around">
+
+        <div class="format-container">
+
+            <div class="seccion_box">
+                <div class="seccion_item">
+                    <a href="{{ route('login.perform') }}" class="seccion-item_link">
+                        <div class="seccion-item_bg"></div>
+                        <div class="seccion-item_title">
+                            Iniciar sesion
+                        </div>
+                    </a>
+                </div>
+
+
+                <div class="seccion_item">
+                    <a href="{{ route('registro.perform') }}" class="seccion-item_link">
+                        <div class="seccion-item_bg"></div>
+                        <div class="seccion-item_title">
+                            Registrarse
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
+        @endguest
+
+    </div>
     @endsection

@@ -1,11 +1,11 @@
 @extends('layouts/layout')
 
 @section('titulo')
-    Cronometro
+    Cronómetro
 @endsection
 
 @section('encabezado')
-   Cronometro
+   Cronómetro
 @endsection
 
 @section('contenido')
