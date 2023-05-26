@@ -26,10 +26,12 @@ return new class extends Migration
             $table->string('genero');
             $table->unsignedBigInteger('idEstado');
             $table->unsignedBigInteger('idPais');
+            $table->unsignedBigInteger('idUser');
             $table->timestamps();
 
             $table->foreign('idEstado')->references('idEstado')->on('estados');
             $table->foreign('idPais')->references('idPais')->on('paises');
+            $table->foreign('idUser')->references('id')->on('users');
         });
     }
 
@@ -43,6 +45,7 @@ return new class extends Migration
         Schema::table('competidores', function (Blueprint $table) {
             $table->dropForeign(['idEstado']);
             $table->dropForeign(['idPais']);
+            $table->dropForeign(['idUser']);
         });
         Schema::dropIfExists('competidores');
     }

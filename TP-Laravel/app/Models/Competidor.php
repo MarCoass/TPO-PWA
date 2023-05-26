@@ -11,7 +11,7 @@ class Competidor extends Model
 
     protected $primaryKey = 'idCompetidor'; // Nombre del id de la tabla (importante)
 
-    protected $fillable = ['gal', 'apellido', 'nombre', 'du', 'fechaNacimiento', 'ranking', 'graduacion', 'email', 'genero', 'idEstado', 'idPais' ]; // Atributos
+    protected $fillable = ['gal', 'apellido', 'nombre', 'du', 'fechaNacimiento', 'ranking', 'graduacion', 'email', 'genero', 'idEstado', 'idPais', 'idUser' ]; // Atributos
 
     //protected $hidden = ['clave']; // Atributos ocultos al serializar el modelo
  
@@ -26,5 +26,10 @@ class Competidor extends Model
         return $this->belongsTo(Estado::class, 'idEstado', 'idEstado');
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'idUser', 'id');
+    }
+    
 
 }
