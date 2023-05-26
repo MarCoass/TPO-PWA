@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('competecias', function (Blueprint $table) {
+        Schema::create('competencias', function (Blueprint $table) {
             $table->id('idCompetencia');
             $table->string('nombre');
             $table->date('fecha');
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('competecias');
+        Schema::dropIfExists('competencias');
     }
 };
