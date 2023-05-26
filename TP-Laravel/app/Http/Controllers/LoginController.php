@@ -45,7 +45,7 @@ class LoginController extends Controller
             $redireccion = "/login";
             $arregloMensaje = [
                 'tipo' => 'restringed',
-                'mensaje' => 'Tu cuenta aún sigue sin ser verificada.'
+                'mensaje' => 'Tu cuenta aún no está verificada.'
             ];
         } else {
             Auth::login($user);
