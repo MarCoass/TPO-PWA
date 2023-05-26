@@ -12,6 +12,7 @@ COMO ARMAR LA BASE DE DATOS Y CARGARLE DATOS
      d) php artisan db:seed --class=RolesTableSeeder
      e) php artisan db:seed --class=UsuariosTableSeeder
      f) php artisan db:seed --class=CompetidoresTableSeeder
+     g) php artisan db:seed --class=CompetenciasTableSeeder
 
 
 ** COMO RESETEAR LA BASE DE DATOS **
