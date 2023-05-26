@@ -27,6 +27,7 @@ return new class extends Migration
             $table->unsignedBigInteger('idEstado');
             $table->unsignedBigInteger('idPais');
             $table->unsignedBigInteger('idUser');
+            $table->boolean('estado');
             $table->timestamps();
 
             $table->foreign('idEstado')->references('idEstado')->on('estados');

@@ -38,7 +38,8 @@ class CompetidoresTableSeeder extends Seeder
                 'ranking'=> $competidor['ranking'],
                 'graduacion'=> $competidor['graduacion'],
                 'email'=> $competidor['correo'],
-                'genero'=> $competidor['genero']
+                'genero'=> $competidor['genero'],
+                'estado'=> false,//los del seeder por defecto van a estar todos sin aceptar
             ]);
         }
     

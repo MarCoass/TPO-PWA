@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('usuario')->unique();
             $table->string('password');
             $table->unsignedBigInteger('idRol')->nullable();
+            $table->boolean('estado')->default(false);
             /* $table->unsignedBigInteger('idRol'); */
             $table->rememberToken();
             $table->timestamps();
