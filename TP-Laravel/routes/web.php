@@ -7,6 +7,7 @@ use App\Http\Controllers\PaisController;
 use App\Http\Controllers\EstadoController;
 use App\Http\Controllers\CompetidorController;
 use App\Http\Controllers\EscuelaController;
+use App\Http\Controllers\GraduacionController;
 use App\Http\Controllers\UsuarioController;
 
 
@@ -30,8 +31,6 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
     
     Route::post('/estado', 'EstadoController@obtenerEstadoPorNombre')->name('estado.autocomplete');
     Route::post('/pais', 'PaisController@obtenerPaisPorNombre')->name('pais.autocomplete');
-    
-    
     
     /* esta son las rutas para invitados */
     Route::group(['middleware' => ['guest']], function() {
