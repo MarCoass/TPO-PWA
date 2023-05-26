@@ -43,7 +43,7 @@ Gestion de Usuarios
             </td>
             <td>
                 @if ($user->estado == 0)
-                <a href="{{ route('habilitar_usuario', ['id' => $user->id ]) }}" class="btn btn-outline-success"><i class="bi bi-pencil-square me-2"></i>Habilitar</a>
+                <a href="{{ route('habilitar_usuario', ['id' => $user->id ]) }}" class="btn btn-outline-success"><i class="bi bi-check2-square me-2"></i>Verificar</a>
                 @endif
                 <a href="{{ route('edit_usuario', ['id' => $user->id ]) }}" class="btn btn-outline-info"><i class="bi bi-pencil-square me-2"></i>Editar</a>
                 <a href="{{ route('delete_usuario', ['id' => $user->id ]) }}" class="btn btn-outline-danger"><i class="bi bi-trash me-2"></i>Eliminar</a>

@@ -30,23 +30,37 @@ class LoginController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function login(LoginRequest $request)
+    public function login(LoginRequest $request)
     {
         $credentials = $request->getCredentials();
 
-        if(!Auth::validate($credentials)):
+        if (!Auth::validate($credentials)) :
             return redirect()->to('login')
                 ->withErrors(trans('auth.failed'));
         endif;
 
         $user = Auth::getProvider()->retrieveByCredentials($credentials);
 
-        Auth::login($user);
+        if ($user->estado == 0) {
+            $redireccion = "/login";
+            $arregloMensaje = [
+                'tipo' => 'restringed',
+                'mensaje' => 'Tu cuenta aún sigue sin ser verificada.'
+            ];
+        } else {
+            Auth::login($user);
+            $redireccion = "/";
+            $arregloMensaje = [
+                'tipo' => 'success',
+                'mensaje' => 'Login exitoso.'
+            ];
+        }
 
-        return $this->authenticated($request, $user);
+        return redirect($redireccion)->with($arregloMensaje['tipo'], $arregloMensaje['mensaje']);
+        //return $this->authenticated($request, $user);
     }
 
-   /**
+    /**
      * Handle response after user authenticated
      * 
      * @param Request $request
@@ -54,9 +68,8 @@ class LoginController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    protected function authenticated(Request $request, $user) 
+    protected function authenticated(Request $request, $user)
     {
         return redirect()->intended();
     }
-
 }

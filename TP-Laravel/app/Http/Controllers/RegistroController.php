@@ -31,10 +31,7 @@ class RegistroController extends Controller
         /* se valida los datos */
         $user = User::create($request->validated());
 
-        /* autologuea el registro creado */
-        auth()->login($user);
-
         /* redirecciona al home ya logueado */
-        return redirect('/')->with('success', "cuenta creada");
+        return redirect('/login')->with('success', "Cuenta creada exitosamente. Quedó en espera de verificación.");
     }
 }
