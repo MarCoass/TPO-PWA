@@ -1,7 +1,7 @@
 [{
     "gal": "OJA8276650",
-    "apellido": "Paddemore",
-    "nombre": "Orion",
+    "apellido": "Oliveros",
+    "nombre": "Gustavo",
     "du": 26526633,
     "fechaNacimiento": "1980-12-15",
     "pais": 5,
@@ -9,7 +9,8 @@
     "ranking": 636.5,
     "graduacion": "5º Gup",
     "correo": "opaddemore0@google.pl",
-    "genero": "Male"
+    "genero": "Male",
+    "idUser" : 4
   }, {
     "gal": "FPE6632295",
     "apellido": "Stokey",

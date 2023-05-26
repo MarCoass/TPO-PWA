@@ -40,6 +40,14 @@ class usuariosTableSeeder extends Seeder
                 'correo' => 'administrador@example.com',
                 'password' => 'administrador',
                 'idRol' => 1
+            ],
+            [
+                'nombre' => 'Gustavo',
+                'apellido' => 'Oliveros',
+                'usuario' => 'GusOliveros',
+                'correo' => 'gusOliveros@example.com',
+                'password' => 'GusOliveros',
+                'idRol' => 3
             ]
         ];
 

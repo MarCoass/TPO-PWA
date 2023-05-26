@@ -25,6 +25,7 @@ class CompetidoresTableSeeder extends Seeder
         //por cada elemento de paises, va a crear el objeto Pais
         foreach ($competidores as $competidor) {
 
+
             Competidor::create([
                 'gal'=> $competidor['gal'],
                 'apellido'=> $competidor['apellido'],
@@ -33,6 +34,7 @@ class CompetidoresTableSeeder extends Seeder
                 'fechaNacimiento'=> $competidor['fechaNacimiento'],
                 'idPais'=> $competidor['pais'],
                 'idEstado'=> $competidor['estado'],
+                'idUser'=> $competidor['idUser'],
                 'ranking'=> $competidor['ranking'],
                 'graduacion'=> $competidor['graduacion'],
                 'email'=> $competidor['correo'],
