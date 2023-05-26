@@ -122,7 +122,7 @@ Algunos de los métodos más utilizados son:
     Puedes recuperar los registros necesarios del modelo y pasarlos a una vista para su visualización.
 
 * create(): Este método muestra el formulario para crear un nuevo registro.
-    Puedes mostrar una vista que contenga el formulario de creación.
+    Puedes mostrar una vista   que contenga el formulario de creación.
 
 * store(Request $request): Este método se utiliza para almacenar un nuevo registro en la base de datos.
     Recibe la instancia de la clase Request que contiene los datos enviados desde el formulario de creación.
