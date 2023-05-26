@@ -1,19 +1,29 @@
 <?php
 
-namespace Database\Seeders;
-
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Database\Seeders\CompetidoresTableSeeder;
+use Database\Seeders\EscuelasTableSeeder;
+use Database\Seeders\EstadosTableSeeder;
+use Database\Seeders\GraduacionesTableSeeder;
+use Database\Seeders\PaisesTableSeeder;
+use Database\Seeders\RolesTableSeeder;
+use Database\Seeders\UsuariosTableSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeders.
      *
      * @return void
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $this->call(GraduacionesTableSeeder::class);
+        $this->call(EscuelasTableSeeder::class);
+        $this->call(PaisesTableSeeder::class);
+        $this->call(EstadosTableSeeder::class);
+        $this->call(RolesTableSeeder::class);
+        $this->call(UsuariosTableSeeder::class);
+        $this->call(CompetidoresTableSeeder::class);
     }
 }
