@@ -34,7 +34,7 @@ class CompetidoresTableSeeder extends Seeder
                 'fechaNacimiento'=> $competidor['fechaNacimiento'],
                 'idPais'=> $competidor['pais'],
                 'idEstado'=> $competidor['estado'],
-                'idUser'=> $idUser,
+                'idUser'=> $competidor['idUser'],
                 'ranking'=> $competidor['ranking'],
                 'graduacion'=> $competidor['graduacion'],
                 'email'=> $competidor['correo'],
