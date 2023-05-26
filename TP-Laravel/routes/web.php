@@ -9,6 +9,12 @@ use App\Http\Controllers\CompetidorController;
 use App\Http\Controllers\EscuelaController;
 use App\Http\Controllers\GraduacionController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RegistroController;
+use App\Http\Controllers\LoginController;
+
+
 
 
 
@@ -19,7 +25,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
     /**
      * Home Routes
      */
-    Route::get('/', 'HomeController@index')->name('home.index');
+    Route::get('/', [HomeController::class, 'index'])->name('home.index');
     
     // Trae todos los países
     Route::get('/paises', [PaisController::class, 'index']);
@@ -29,22 +35,22 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
     // Trae todos los Competidores de la bd
     Route::get('/competidores/data', [CompetidorController::class, 'obtenerRegistros']);
     
-    Route::post('/estado', 'EstadoController@obtenerEstadoPorNombre')->name('estado.autocomplete');
-    Route::post('/pais', 'PaisController@obtenerPaisPorNombre')->name('pais.autocomplete');
+    Route::post('/estado', [EstadoController::class, 'obtenerEstadoPorNombre'])->name('estado.autocomplete');
+    Route::post('/pais', [PaisController::class, 'obtenerPaisPorNombre'])->name('pais.autocomplete');
     
     /* esta son las rutas para invitados */
     Route::group(['middleware' => ['guest']], function() {
         /**
          * registro Routes
          */
-        Route::get('/registro', 'RegistroController@show')->name('registro.show');
-        Route::post('/registro', 'RegistroController@register')->name('registro.perform');
+        Route::get('/registro', [RegistroController::class, 'show'])->name('registro.show');
+        Route::post('/registro', [RegistroController::class, 'register'])->name('registro.perform');
         
         /**
          * Login Routes
          */
-        Route::get('/login', 'LoginController@show')->name('login.show');
-        Route::post('/login', 'LoginController@login')->name('login.perform');
+        Route::get('/login', [LoginController::class, 'show'])->name('login.show');
+        Route::post('/login', [LoginController::class, 'perform'])->name('login.perform');
         
     });
     
@@ -57,7 +63,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         /* reloj */
         Route::get('/resultados', function(){return view('resultados.resultados');});
         /* Logout Routes   */
-        Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
+        Route::get('/logout', [LogoutController::class, 'perform'])->name('logout.perform');
         
         
         /* rutas para administradores */
@@ -78,8 +84,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         
         /* rutas para Competidores */
         Route::get('/cargarCompetidor', function () {return view('cargarCompetidor.cargarCompetidor');})->middleware(['rol:3'])->name('cargarCompetidor');
-        Route::post('/cargarCompetidor/add', 'CompetidorController@store')->middleware(['rol:3'])->name('cargarCompetidor.perform');
-        Route::post('/cargarCompetidor/validar', 'CompetidorController@validar')->middleware(['rol:3'])->name('cargarCompetidor.validar');
+        Route::post('/cargarCompetidor/add', [CompetidorController::class, 'store'])->middleware(['rol:3'])->name('cargarCompetidor.perform');
+        Route::post('/cargarCompetidor/validar', [CompetidorController::class, 'validar'])->middleware(['rol:3'])->name('cargarCompetidor.validar');
         
     });
     
