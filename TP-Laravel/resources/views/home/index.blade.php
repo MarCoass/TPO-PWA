@@ -2,7 +2,7 @@
 @extends('layouts.app-master')
 
 @section('titulo')
-NeuPoom
+NeuPoom 
 @endsection
 
 @section('contenido')
