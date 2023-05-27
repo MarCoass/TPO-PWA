@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CompetenciaController;
 use Illuminate\Support\Facades\Route;
 //use App\Http\Middleware\RolMiddleware;
 //use Illuminate\Contracts\Auth\Authenticatable;
@@ -13,6 +14,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CompetenciaCompetidorController;
 
 
 
@@ -84,12 +86,14 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         /* rutas para jueces y administradores */
         Route::get('/cronometro', function () {return view('reloj.cronometro');})->middleware(['rol:1,2']);
         
-        
         /* rutas para Competidores */
         Route::get('/cargarCompetidor',  [CompetidorController::class, 'cargarCompetidor'])->middleware(['rol:3'])->name('cargarCompetidor');
         Route::post('/cargarCompetidor/add', [CompetidorController::class, 'store'])->middleware(['rol:3'])->name('cargarCompetidor.perform');
         Route::post('/cargarCompetidor/validar', [CompetidorController::class, 'validar'])->middleware(['rol:3'])->name('cargarCompetidor.validar');
         
+        /* Rutas de Puntuador se pueden mejorar */
+        Route::get('puntuador/index',  [CompetenciaCompetidorController::class, 'Puntuadorindex'])->middleware(['rol:2'])->name('PuntuadorIndex');
+       
     });
     
 });
