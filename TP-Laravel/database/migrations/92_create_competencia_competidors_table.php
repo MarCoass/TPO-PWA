@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('competenciaCompetidor', function (Blueprint $table) {
-            $table->id();
+        Schema::create('competencia_competidors', function (Blueprint $table) {
+            $table->id('idCompetenciaCompetidor');
             $table->unsignedBigInteger('idCompetidor');
             $table->unsignedBigInteger('idCompetencia');
             $table->unsignedBigInteger('idPoomsae');
-            $table->decimal('puntaje');
-            $table->int('contadorPasadas');
+            $table->float('puntaje');
+            $table->integer('contadorPasadas');
             $table->string('estado');
             $table->timestamps();
 
