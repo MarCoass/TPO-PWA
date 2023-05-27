@@ -11,14 +11,19 @@ class CompetenciaCompetidor extends Model
 
     protected $table = 'competenciaCompetidor';
 
-    protected $fillable = ['idCompetencia' , 'idCompetidor', 'estado'];
+    protected $fillable = ['idCompetencia' , 'idCompetidor','idPoomsae', 'estado'];
 
     public function competencia()
     {
-        return $this->belongsTo(Pais::class, 'idCompetencia', 'idCompetencia');
+        return $this->belongsTo(Competencia::class, 'idCompetencia', 'idCompetencia');
     }
     public function competidor()
     {
-        return $this->belongsTo(Pais::class, 'idCompetidor', 'idCompetidor');
+        return $this->belongsTo(Competidor::class, 'idCompetidor', 'idCompetidor');
+    }
+
+    public function poomsae()
+    {
+        return $this->belongsTo(Poomsae::class, 'idPoomsae', 'idPoomsae');
     }
 }
