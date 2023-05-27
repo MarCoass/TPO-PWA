@@ -61,6 +61,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/presentacion', function () {return view('presentacion.video');});
         Route::get('/verPerfil', function (){return view('verPerfil.verPerfil');})->name('verPerfil');
         Route::post('/actualizarDatosPersonales', [UsuarioController::class, 'actualizarDatosPersonales'])->name('actualizarDatosPersonales');
+        Route::post('/actualizarPassword', [UsuarioController::class, 'actualizarPassword'])->name('actualizarPassword');
 
         /* reloj */
         Route::get('/resultados', function(){return view('resultados.resultados');});

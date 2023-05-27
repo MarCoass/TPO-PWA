@@ -110,5 +110,36 @@ class UsuarioController extends Controller
         return redirect()->route('verPerfil')->with($arregloMensaje['tipo'], $arregloMensaje['mensaje']);
     }
 
+    public function actualizarPassword(Request $request)
+    {
+        $usuario = User::find($request->input('id'));
+
+        if($request->input('passwordnueva') == $request->input('passwordnueva2')){
+            if(password_verify($request->input('passwordactual'), $usuario->password) ) {
+            
+                $usuario->password = $request->input('passwordnueva');
+                $usuario->save();
+    
+                $arregloMensaje = [
+                    'tipo' => 'success',
+                    'mensaje' => 'Tus datos se actualizaron exitosamente.'
+                ];
+    
+            }else {
+                $arregloMensaje = [
+                    'tipo' => 'restringed',
+                    'mensaje' => 'Contraseña Incorrecta.'
+                ];
+            }
+        }else{
+            $arregloMensaje = [
+                'tipo' => 'restringed',
+                'mensaje' => 'Las contraseñas deben coincidir.'
+            ];
+        }
+
+        return redirect()->route('verPerfil')->with($arregloMensaje['tipo'], $arregloMensaje['mensaje']);
+    }
+
 
 }
