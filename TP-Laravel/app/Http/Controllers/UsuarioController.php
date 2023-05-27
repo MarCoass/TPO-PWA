@@ -79,4 +79,36 @@ class UsuarioController extends Controller
 
         return redirect()->route('index_usuarios')->with('success', 'Usuario eliminado exitosamente.');
     }
+
+
+    public function actualizarDatosPersonales(Request $request)
+    {
+        $usuario = User::find($request->input('id'));
+
+    
+        if (password_verify($request->input('password'), $usuario->password) ) {
+            
+            $usuario->nombre = $request->input('nombre');
+            $usuario->apellido = $request->input('apellido');
+            $usuario->usuario = $request->input('usuario');
+            $usuario->correo = $request->input('correo');
+            $usuario->save();
+
+            $arregloMensaje = [
+                'tipo' => 'success',
+                'mensaje' => 'Tus datos se actualizaron exitosamente.'
+            ];
+
+        }else {
+            
+            $arregloMensaje = [
+                'tipo' => 'restringed',
+                'mensaje' => 'Contraseña Incorrecta.'
+            ];
+        }
+
+        return redirect()->route('verPerfil')->with($arregloMensaje['tipo'], $arregloMensaje['mensaje']);
+    }
+
+
 }
