@@ -88,17 +88,38 @@ class UsuarioController extends Controller
     
         if (password_verify($request->input('password'), $usuario->password) ) {
             
-            $usuario->nombre = $request->input('nombre');
-            $usuario->apellido = $request->input('apellido');
-            $usuario->usuario = $request->input('usuario');
-            $usuario->correo = $request->input('correo');
-            $usuario->save();
+        
+            $duplicadoUser = User::where('usuario', "=",$request->input('usuario'))->first();
+            $duplicadoCorreo = User::where('correo', "=",$request->input('correo'))->first();
 
-            $arregloMensaje = [
-                'tipo' => 'success',
-                'mensaje' => 'Tus datos se actualizaron exitosamente.'
-            ];
+            //Verificar que el el noombre de usuario no este registrado en la tabla usuarios y despues verifica si el nombre del usuario
+            //actual se puede modificar
+            if ($duplicadoUser != null && $usuario->usuario != $request->input('usuario') ) {
+        
+                $arregloMensaje = [
+                    'tipo' => 'restringed',
+                    'mensaje' => 'Nombre de usuario ya existe, por favor ingrese otro.'
+                ];
 
+                //este hace lo mismo pero con el campo correo
+            }elseif ($duplicadoCorreo != null && $usuario->correo != $request->input('correo')) {
+                
+                $arregloMensaje = [
+                    'tipo' => 'restringed',
+                    'mensaje' => 'El Correo ya existe, por favor ingrese otro.'
+                ];
+            }else {
+                $usuario->nombre = $request->input('nombre');
+                $usuario->apellido = $request->input('apellido');
+                $usuario->usuario = $request->input('usuario');
+                $usuario->correo = $request->input('correo');
+                $usuario->save();
+                $arregloMensaje = [
+                    'tipo' => 'success',
+                    'mensaje' => 'Datos Actualizados Correctamente.'
+                ];
+            }
+               
         }else {
             
             $arregloMensaje = [
