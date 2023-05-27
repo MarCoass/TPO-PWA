@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <title>@yield('titulo', 'Poomsae Reconocido Individual Élite')</title>
+    <title>@yield('titulo', 'NeuPoom')</title>
 
     <!-- ICON -->
     <link rel="icon" type="image\x-icon" href="{{ asset('images/logo.ico') }}">
@@ -33,7 +33,8 @@
     @include('layouts.partials.navbar')
 
     <main class="container-fluid my-4">
-    @yield('contenido')
+        <h1 class="display-5 text-center">@yield('encabezado')</h1>
+        @yield('contenido')
     </main>
 
     @include('layouts.partials.footer')

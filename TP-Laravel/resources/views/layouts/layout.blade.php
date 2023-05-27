@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>@yield('titulo', 'Poomsae Reconocido Individual Élite')</title>
+    <title>@yield('titulo', 'NeuPoom')</title>
 
     <!-- IMPORTANTE - etiqueta meta para acceder al token mediante el header -->
     <meta name="csrf-token" content="{{ csrf_token() }}" />
