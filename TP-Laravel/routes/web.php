@@ -86,7 +86,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         
         
         /* rutas para Competidores */
-        Route::get('/cargarCompetidor', function () {return view('cargarCompetidor.cargarCompetidor');})->middleware(['rol:3'])->name('cargarCompetidor');
+        Route::get('/cargarCompetidor',  [CompetidorController::class, 'cargarCompetidor'])->middleware(['rol:3'])->name('cargarCompetidor');
         Route::post('/cargarCompetidor/add', [CompetidorController::class, 'store'])->middleware(['rol:3'])->name('cargarCompetidor.perform');
         Route::post('/cargarCompetidor/validar', [CompetidorController::class, 'validar'])->middleware(['rol:3'])->name('cargarCompetidor.validar');
         

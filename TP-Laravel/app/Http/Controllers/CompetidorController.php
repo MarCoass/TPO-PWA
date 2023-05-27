@@ -5,11 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\Estado;
 use App\Models\Pais;
 use App\Models\Competidor;
+use App\Models\Graduacion;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class CompetidorController extends Controller
 {
+
+    public function cargarCompetidor(){
+        $graduaciones = Graduacion::all();
+        return view('cargarCompetidor.cargarCompetidor', compact('graduaciones'));
+
+    }
  
     public function index()
     {

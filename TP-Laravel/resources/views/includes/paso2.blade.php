@@ -20,14 +20,9 @@
     <label class="form-label" for="graduacion">Graduacion:</label>
     <select class="form-control validar" id="graduacion" name="graduacion" required>
         <option value="" disabled selected data-error="Por favor seleccione una graduacion válida">Selecciona una graduación.</option>
-        <option value="1er Dan">1er Dan</option>
-        <option value="2do Dan">2do Dan</option>
-        <option value="3er Dan">3er Dan</option>
-        <option value="4to Dan">4to Dan</option>
-        <option value="5to Dan">5to Dan</option>
-        <option value="6to Dan">6to Dan</option>
-        <option value="7mo Dan">7mo Dan</option>
-        <option value="8vo Dan">8vo Dan</option>
+        @foreach ($graduaciones as $row)
+        <option value="{{$row->idGraduacion}}">{{$row->nombre}}</option>
+        @endforeach
     </select>
     <div class="valid-feedback">
         ¡Correcto!
