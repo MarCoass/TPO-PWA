@@ -86,14 +86,17 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         /* rutas para jueces y administradores */
         Route::get('/cronometro', function () {return view('reloj.cronometro');})->middleware(['rol:1,2']);
         
+        
+        Route::get('/puntuador', function(){return view('puntuador.puntuador');})->middleware(['rol:2'])->name('puntuador');
+        
         /* rutas para Competidores */
         Route::get('/cargarCompetidor',  [CompetidorController::class, 'cargarCompetidor'])->middleware(['rol:3'])->name('cargarCompetidor');
         Route::post('/cargarCompetidor/add', [CompetidorController::class, 'store'])->middleware(['rol:3'])->name('cargarCompetidor.perform');
         Route::post('/cargarCompetidor/validar', [CompetidorController::class, 'validar'])->middleware(['rol:3'])->name('cargarCompetidor.validar');
         
         /* Rutas de Puntuador se pueden mejorar */
-        Route::get('puntuador/index',  [CompetenciaCompetidorController::class, 'Puntuadorindex'])->middleware(['rol:2'])->name('PuntuadorIndex');
-       
+        Route::get('/puntuador/index',  [CompetenciaCompetidorController::class, 'puntuadorindex'])->middleware(['rol:2'])->name('puntuador');;
+        Route::get('/opciones_competidor', [CompetenciaCompetidorController::class, 'obtenerOpcionesCompetidor']);
     });
     
 });

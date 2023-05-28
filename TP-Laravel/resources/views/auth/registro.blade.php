@@ -62,7 +62,7 @@ Registro
             @endif
         </div>
 
-        <div class="form-group form-floating col-6 mb-3">
+       {{--  <div class="form-group form-floating col-6 mb-3">
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="idRol" id="idRol1" value="3" checked>
                 <label class="form-check-label" for="idRol1">
@@ -75,7 +75,21 @@ Registro
                     Juez
                 </label>
             </div>
-        </div>
+        </div> --}}
+<p>Registrarse como:</p>
+        <div class="wrapper">
+            
+            <input type="radio" name="select" id="idRol1" value="3" checked>
+            <input type="radio" name="select" id="idRol2" value="2">
+              <label for="idRol1" class="option option-1">
+                <div class="dot"></div>
+                 <span>Competidor</span>
+                 </label>
+              <label for="idRol2" class="option option-2">
+                <div class="dot"></div>
+                 <span>Juez</span>
+              </label>
+           </div>
 
     </div>
 
