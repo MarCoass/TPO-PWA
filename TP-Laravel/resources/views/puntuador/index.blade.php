@@ -14,6 +14,20 @@ Puntuador
 <form class="m-5 row" method="post" action="{{ route('store_usuario') }}">
 
 <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12  pt-3">
+        <label class="form-label" for="competencia_puntuador">Competencia:</label>
+        <select class="form-control validar" id="competencia_puntuador" name="competencia_puntuador" required>
+            <option value="" disabled selected data-error="Por favor seleccione una competencia válida">Selecciona una Competencia.</option>
+            @foreach ($competencias as $row)
+            <option value="{{$row->idCompetencia}}">{{$row->nombre}}</option>
+            @endforeach
+        </select>
+        <div class="valid-feedback">
+            ¡Correcto!
+        </div>
+        <div class="invalid-feedback">Seleccione una opcion valida.</div>
+</div>
+
+<div class="col-lg-12 col-md-12 col-sm-6 col-xs-12  pt-3">
     <label class="form-label" for="graduacion_puntuador">Graduacion:</label>
     <select class="form-control validar" id="graduacion_puntuador" name="graduacion_puntuador" required>
         <option value="" disabled selected data-error="Por favor seleccione una graduacion válida">Selecciona una graduación.</option>

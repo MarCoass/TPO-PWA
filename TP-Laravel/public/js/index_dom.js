@@ -39,7 +39,8 @@ $('#graduacion_puntuador').on('click', function() {
   $.ajax({
     type:"GET",
     url: '/opciones_competidor',
-    data: { graduacion_puntuador: $('#graduacion_puntuador').val()},
+    data: { graduacion_puntuador: $('#graduacion_puntuador').val(),
+    competencia_puntuador: $('#competencia_puntuador').val()},
     dataType: 'json',
     success: function(data) {
         $('#competidor_puntuador').empty();
