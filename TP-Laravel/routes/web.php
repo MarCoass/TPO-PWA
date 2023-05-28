@@ -92,11 +92,11 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('gestionCompetencias/edit/{id}', [CompetenciaController::class, 'edit'])->middleware(['rol:1'])->name('edit_competencia');
         Route::post('gestionCompetencias/store', [CompetenciaController::class, 'store'])->middleware(['rol:1'])->name('store_competencia');
         Route::put('/update_competidor/{id}', [CompetenciaController::class, 'update'])->middleware(['rol:1'])->name('update_competencia');
-       
-       //competencia competidor
-        Route::get('/inscribir_competidor/{id_competidor}', [CompetenciaCompetidorController::class, 'inscribir_competidor'])->middleware(['rol:1'])->name('inscribir_competidor');
         Route::get('/ver_inscriptos_competencia/{id}', [CompetenciaCompetidorController::class, 'listarCompetidoresPorId'])->middleware(['rol:1'])->name('ver_inscriptos_competencia');
         
+       //inscripcion admi y competidor
+        Route::get('/inscribir_competidor/{id_competidor}', [CompetenciaCompetidorController::class, 'inscribir_competidor'])->middleware(['rol:1,3'])->name('inscribir_competidor');
+       
 //ver_inscriptos_competencia
 
         /* lista competidores de una competencia */
