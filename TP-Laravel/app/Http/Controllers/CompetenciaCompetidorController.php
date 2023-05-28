@@ -30,6 +30,19 @@ class CompetenciaCompetidorController extends Controller
 
     }
 
+    public function iniciar_puntaje(Request $request){
+        $id_graduacion = $request->input('graduacion_puntuador');
+        $id_competencia = $request->input('competencia_puntuador');
+        $id_competidor = $request->input('competidor_puntuador');
+
+        $graduacion = Graduacion::find($id_graduacion);
+        $competencia = Competencia::find($id_competencia);
+        $competidor = Competidor::find($id_competidor);
+
+        return view('puntuador', compact('graduacion','competencia','competidor'));
+
+    }
+
     public function habilitar($id){
 
         $CompetidorCompetencia = CompetenciaCompetidor::find($id);
