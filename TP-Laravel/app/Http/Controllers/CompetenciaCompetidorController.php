@@ -61,7 +61,8 @@ class CompetenciaCompetidorController extends Controller
     public function listarCompetidoresPorId($id)
     {
         $competidoresCompetencia = CompetenciaCompetidor::where('idCompetencia', $id)->get();
+        $nombreCompetencia = Competencia::find($id);
 
-        return view('tablaCompetenciaCompetidores.index_CompetenciaCompetidores', ['competidoresCompetencia' => $competidoresCompetencia]);
+        return view('tablaCompetenciaCompetidores.index_CompetenciaCompetidores', ['competidoresCompetencia' => $competidoresCompetencia, 'nombreCompetencia' => $nombreCompetencia]);
     }
 }
