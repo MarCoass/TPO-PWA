@@ -53,7 +53,7 @@
         left: 4px;
         width: 12px;
         height: 12px;
-        background: #0069d9;
+        background: #f86170;
         border-radius: 50%;
         opacity: 0;
         transform: scale(1.5);
@@ -64,8 +64,8 @@
       }
       #idRol1:checked:checked ~ .option-1,
       #idRol2:checked:checked ~ .option-2{
-        border-color: #0069d9;
-        background: #0069d9;
+        border-color: #f86170;
+        background: #f86170;
       }
       #idRol1:checked:checked ~ .option-1 .dot,
       #idRol2:checked:checked ~ .option-2 .dot{
