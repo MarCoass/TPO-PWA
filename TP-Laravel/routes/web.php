@@ -39,8 +39,6 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
     Route::post('/estado', [EstadoController::class, 'obtenerEstadoPorNombre'])->name('estado.autocomplete');
     Route::post('/pais', [PaisController::class, 'obtenerPaisPorNombre'])->name('pais.autocomplete');
 
-    Route::get('/competidoresCompetencia/{id}', [CompetenciaCompetidorController::class, 'listarCompetidoresPorId'])->name('tabla_competidores');
-    Route::get('/habilitar_competidor/{id}', [CompetenciaCompetidorController::class, 'habilitar'])->name('habilitar_competidor');
 
 
 
@@ -87,7 +85,10 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::post('/store_usuario', [UsuarioController::class, 'store'])->middleware(['rol:1'])->name('store_usuario');
         Route::put('/update_usuario/{id}', [UsuarioController::class, 'update'])->middleware(['rol:1'])->name('update_usuario');
         Route::get('/habilitar_usuario/{id}', [UsuarioController::class, 'habilitar'])->middleware(['rol:1'])->name('habilitar_usuario');
-       
+        /* lista competidores de una competencia */
+        Route::get('/competidoresCompetencia/{id}', [CompetenciaCompetidorController::class, 'listarCompetidoresPorId'])->middleware(['rol:1'])->name('tabla_competidores');
+        Route::get('/habilitar_competidor/{id}', [CompetenciaCompetidorController::class, 'habilitar'])->middleware(['rol:1'])->name('habilitar_competidor');
+
         /* rutas para jueces y administradores */
         Route::get('/cronometro', function () {return view('reloj.cronometro');})->middleware(['rol:1,2']);
 
@@ -101,7 +102,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/puntuador/index',  [CompetenciaCompetidorController::class, 'puntuadorindex'])->middleware(['rol:2'])->name('puntuador_index');
         Route::get('/opciones_competidor', [CompetenciaCompetidorController::class, 'obtenerOpcionesCompetidor'])->middleware(['rol:2']);
         Route::post('/iniciar_puntaje', [CompetenciaCompetidorController::class, 'iniciar_puntaje'])->middleware(['rol:2'])->name('iniciar_puntaje');
-        
+
     });
 
 });
