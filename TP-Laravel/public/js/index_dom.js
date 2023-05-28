@@ -34,3 +34,20 @@ document.getElementById("cambiarVista_negro").addEventListener("click", () => {
 document.getElementById("cambiarVista_blanco").addEventListener("click", () => {
   cambio_de_tema("light")
 });
+
+$('#graduacion_puntuador').on('click', function() {
+  $.ajax({
+    type:"GET",
+    url: '/opciones_competidor',
+    data: { graduacion_puntuador: $('#graduacion_puntuador').val()},
+    dataType: 'json',
+    success: function(data) {
+        $('#competidor_puntuador').empty();
+        $('#competidor_puntuador').append('<option value="" disabled selected data-error="Por favor seleccione una graduacion válida">Selecciona un competidor.</option>');
+        $.each(data, function(key, value) {// 'idCompetidor', 'apellido','nombre'
+            
+          $('#competidor_puntuador').append('<option value="'+value.idCompetidor+'">'+value.apellido+' '+value.nombre+'</option>');
+        });
+    }
+});
+});

@@ -92,8 +92,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::post('/cargarCompetidor/validar', [CompetidorController::class, 'validar'])->middleware(['rol:3'])->name('cargarCompetidor.validar');
         
         /* Rutas de Puntuador se pueden mejorar */
-        Route::get('puntuador/index',  [CompetenciaCompetidorController::class, 'Puntuadorindex'])->middleware(['rol:2'])->name('PuntuadorIndex');
-       
+        Route::get('/puntuador/index',  [CompetenciaCompetidorController::class, 'puntuadorindex'])->middleware(['rol:2'])->name('puntuador');;
+        Route::get('/opciones_competidor', [CompetenciaCompetidorController::class, 'obtenerOpcionesCompetidor']);
     });
     
 });
