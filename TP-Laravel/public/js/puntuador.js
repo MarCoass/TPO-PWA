@@ -1,5 +1,4 @@
 const PUNTAJE = $('.puntaje');
-PUNTAJE.text(10);
 
 $( ".pulsadorIzq" ).on( "click", function() {
     let puntaje = parseFloat(PUNTAJE.text())  - 0.3;
@@ -17,5 +16,6 @@ $(".modalPuntuacion").on("click",function(){
     $('.competidorModal').text('aqui va el nombre del competidor')
     $('.poomseModal').text('aqui va el poomse evaluado')
     $('.puntajeModal').text($('.puntaje').text())
+    $('#puntaje').val($('.puntaje').text());
     $('#modal').show();
 })

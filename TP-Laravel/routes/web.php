@@ -114,7 +114,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/puntuador/index',  [CompetenciaCompetidorController::class, 'puntuadorindex'])->middleware(['rol:2'])->name('puntuador_index');
         Route::get('/opciones_competidor', [CompetenciaCompetidorController::class, 'obtenerOpcionesCompetidor'])->middleware(['rol:2']);
         Route::post('/iniciar_puntaje', [CompetenciaCompetidorController::class, 'iniciar_puntaje'])->middleware(['rol:2'])->name('iniciar_puntaje');
-
+        Route::post('/actualizar_puntaje', [CompetenciaCompetidorController::class, 'actualizar_puntaje'])->middleware(['rol:2'])->name('actualizar_puntaje');
+        
     });
 
 });

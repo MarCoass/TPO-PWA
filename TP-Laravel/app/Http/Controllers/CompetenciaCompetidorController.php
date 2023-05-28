@@ -31,6 +31,17 @@ class CompetenciaCompetidorController extends Controller
 
     }
 
+    public function actualizar_puntaje(Request $request){
+        //lacantidad de pasadas como deberiamos saberlo?
+        $id = $request->input('id');
+        $competenciacompetidor = CompetenciaCompetidor::find($id);
+        
+        $competenciacompetidor->puntaje =  $request->input('puntaje'); 
+
+        $competenciacompetidor->save();
+
+        return $this->puntuadorindex();
+    }
     public function create()
     {
         //ni idea momento de locura

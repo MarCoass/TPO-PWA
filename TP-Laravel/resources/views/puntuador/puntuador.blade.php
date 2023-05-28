@@ -32,7 +32,7 @@
             <div class="infoCompetidor col-4">
                 <p>Competidor:{{$competidor[0]->nombre}} {{$competidor[0]->apellido}}</p>
                 <p>Poomse:{{$poomsae[0]->nombre}}</p>
-                <p>Puntaje:{{$competencia_competidor[0]->puntaje}}
+                <p>Puntaje:<span class="puntaje">{{$competencia_competidor[0]->puntaje}}</span>
                 </p>
                 <button type="button" class="btn btn-success modalPuntuacion" data-bs-toggle="modal" data-bs-target="#modal">
                     Terminar
@@ -46,22 +46,29 @@
             <!-- Modal -->
             <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
                 <div class="modal-dialog text-dark">
-                    <div class="modal-content">
+                    <form method="POST" action="{{ route('actualizar_puntaje') }}">
+                      
+                        <div class="modal-content">
                         <div class="modal-header">
                             <h1 class="modal-title fs-5" id="modalLabel">Confirmar puntuacion</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
+                        @csrf
                         <!--ESTO DEBERIA SER UN FORM PROBABLEMENTE-->
                         <div class="modal-body">
                             <p>Competidor: <span class="competidorModal"></span> </p>
                             <p>Poomse: <span class="poomseModal"></span></p>
                             <p>Puntaje: <span class="puntajeModal"></span></p>
+
+                            <input type="hidden" id="puntaje" name="puntaje">
+                            <input type="hidden" id="id" name="id" value="{{$competencia_competidor[0]->idCompetenciaCompetidor}}">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary">Enviar puntuacion</button>
+                            <button type="submit" class="btn btn-primary">Enviar puntuacion</button>
                         </div>
                     </div>
+                    </form>
                 </div>
             </div>
 
