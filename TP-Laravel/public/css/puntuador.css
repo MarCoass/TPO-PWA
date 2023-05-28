@@ -1,0 +1,48 @@
+
+/* Este css falta mejorarlo pq el responsive es medio meh */
+
+
+@media (min-device-width: 916px) {
+    .mobile{
+        display: none;
+    }
+} 
+
+@media (max-device-width: 915px) {
+    /* Estilos para dispositivos móviles */
+
+    .desktop{
+        display: none;
+        
+    }
+
+    @media (orientation: portrait) {
+        /* Estilos para dispositivos móviles en posición vertical */
+        .horizontal {
+            display: none;
+        }
+    }
+
+    @media (orientation: landscape) {
+        /* Estilos para dispositivos móviles en posición horizontal */
+    .vertical {
+        display: none;
+    }
+    }
+}
+
+.pulsadorDer, .pulsadorIzq{
+    height: 200px;
+}
+
+
+.pulsadorIzq{
+    border-top-right-radius: 10em;
+    border-bottom-right-radius: 10em;
+}
+
+.pulsadorDer{
+    border-top-left-radius: 10em;
+    border-bottom-left-radius: 10em;
+}
+
