@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('competencia_competidors', function (Blueprint $table) {
+        Schema::create('competenciacompetidor', function (Blueprint $table) {
             $table->id('idCompetenciaCompetidor');
             $table->unsignedBigInteger('idCompetidor');
             $table->unsignedBigInteger('idCompetencia');
@@ -46,6 +46,6 @@ return new class extends Migration
         Schema::table('poomsae', function (Blueprint $table) {
             $table->dropForeign(['idPoomsae']);
         });
-        Schema::dropIfExists('competencia_competidors');
+        Schema::dropIfExists('competenciacompetidor');
     }
 };
