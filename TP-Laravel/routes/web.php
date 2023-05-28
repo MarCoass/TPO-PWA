@@ -95,7 +95,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/ver_inscriptos_competencia/{id}', [CompetenciaCompetidorController::class, 'listarCompetidoresPorId'])->middleware(['rol:1'])->name('ver_inscriptos_competencia');
         
        //inscripcion admi y competidor
-        Route::get('/inscribir_competidor/{id_competidor}', [CompetenciaCompetidorController::class, 'inscribir_competidor'])->middleware(['rol:1,3'])->name('inscribir_competidor');
+        Route::post('/inscribir_competidor', [CompetenciaCompetidorController::class, 'inscribir_competidor'])->middleware(['rol:1,3'])->name('inscribir_competidor');
        
 //ver_inscriptos_competencia
 

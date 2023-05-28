@@ -31,8 +31,27 @@ class CompetenciaCompetidorController extends Controller
 
     }
 
-    public function inscribir_competidor($id_competidor){
+    public function inscribir_competidor(Request $request){
+            $competenciacompetidor = new CompetenciaCompetidor();
+            $competenciacompetidor->idCompetidor = $request->input('id_competidor');
+            $competenciacompetidor->idCompetencia = $request->input('id_competencia');
+            $competenciacompetidor->idPoomsae = $request->input('id_poomsae');
+            $competenciacompetidor->puntaje =  10; 
+            $competenciacompetidor->contadorPasadas =  0; 
+            $competenciacompetidor->estado =  0; 
+    
+            $competidor = Competidor::find($request['id_competidor']);
+            $competenciacompetidor->competidor()->associate($competidor);
+    
+            $competencia = Competencia::find($request['id_competencia']);
+            $competidor->competencia()->associate($competencia);
 
+            $poomsae = Poomsae::find($request['id_poomsae']);
+            $competidor->poomsae()->associate($poomsae);
+    
+            $competenciacompetidor->save();
+    
+            return redirect()->with('success', "Se ha registrado correctamente");
     }
 
     public function iniciar_puntaje(Request $request){
@@ -59,8 +78,6 @@ class CompetenciaCompetidorController extends Controller
         /* todavia tengo que arreglar la redireccion */
         return redirect()->route('tabla_competidores', ['id' => $CompetidorCompetencia->idCompetencia])->with('success', 'Competidor habilitado exitosamente.');
     }
-
-
 
     public function listarCompetidoresPorId($id)
     {

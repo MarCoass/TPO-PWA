@@ -31,7 +31,6 @@ Gestion de Competencias
             <td>{{ $row->fecha }}</td>
             <td>
                 <a href="{{ route('edit_competencia', ['id' => $row->idCompetencia ]) }}" class="btn btn-outline-info"><i class="bi bi-pencil-square me-2"></i>Editar</a>
-                <a href="{{ route('inscribir_competidor', ['id_competidor' => $row->idCompetencia ]) }}" class="btn btn-outline-info">Inscribir Competidor</a>
                 <a href="{{ route('ver_inscriptos_competencia', ['id' => $row->idCompetencia ]) }}" class="btn btn-outline-info">Ver inscriptos</a>
             </td>
         </tr>
