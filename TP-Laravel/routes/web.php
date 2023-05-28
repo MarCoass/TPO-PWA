@@ -22,12 +22,12 @@ use App\Http\Controllers\CompetenciaCompetidorController;
 
 
 Route::group(['namespace' => 'App\Http\Controllers'], function()
-{   
+{
     /**
      * Home Routes
      */
     Route::get('/', [HomeController::class, 'index'])->name('home.index');
-    
+
     // Trae todos los países
     Route::get('/paises', [PaisController::class, 'index']);
 
@@ -35,10 +35,16 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
     Route::get('/estados', [EstadoController::class, 'index']);
     // Trae todos los Competidores de la bd
     Route::get('/competidores/data', [CompetidorController::class, 'obtenerRegistros']);
-    
+
     Route::post('/estado', [EstadoController::class, 'obtenerEstadoPorNombre'])->name('estado.autocomplete');
     Route::post('/pais', [PaisController::class, 'obtenerPaisPorNombre'])->name('pais.autocomplete');
-    
+
+    Route::get('/competidoresCompetencia/{id}', [CompetenciaCompetidorController::class, 'listarCompetidoresPorId'])->name('tabla_competidores');
+    Route::get('/habilitar_competidor/{id}', [CompetenciaCompetidorController::class, 'habilitar'])->name('habilitar_competidor');
+
+
+
+
     /* esta son las rutas para invitados */
     Route::group(['middleware' => ['guest']], function() {
         /**
@@ -46,19 +52,19 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
          */
         Route::get('/registro', [RegistroController::class, 'show'])->name('registro.show');
         Route::post('/registro', [RegistroController::class, 'register'])->name('registro.perform');
-        
+
         /**
          * Login Routes
          */
         Route::get('/login', [LoginController::class, 'show'])->name('login.show');
         Route::post('/login', [LoginController::class, 'perform'])->name('login.perform');
-        
+
     });
-    
-    
+
+
     /* esta es la ruta para los que iniciaron sesion */
     Route::group(['middleware' => ['auth']], function() {
-        
+
         /* rutas para todes */
         Route::get('/presentacion', function () {return view('presentacion.video');});
         Route::get('/verPerfil', function (){return view('verPerfil.verPerfil');})->name('verPerfil');
@@ -69,8 +75,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/resultados', function(){return view('resultados.resultados');});
         /* Logout Routes   */
         Route::get('/logout', [LogoutController::class, 'perform'])->name('logout.perform');
-        
-        
+
+
         /* rutas para administradores */
         Route::get('/competidores', [CompetidorController::class, 'index'])->middleware(['rol:1'])->name('tablaCompetidores');
         /* Rutas de Gestion de Usuarios se pueden mejorar */
@@ -81,22 +87,19 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::post('/store_usuario', [UsuarioController::class, 'store'])->middleware(['rol:1'])->name('store_usuario');
         Route::put('/update_usuario/{id}', [UsuarioController::class, 'update'])->middleware(['rol:1'])->name('update_usuario');
         Route::get('/habilitar_usuario/{id}', [UsuarioController::class, 'habilitar'])->middleware(['rol:1'])->name('habilitar_usuario');
-        
-        
+
+
         /* rutas para jueces y administradores */
         Route::get('/cronometro', function () {return view('reloj.cronometro');})->middleware(['rol:1,2']);
-        
-        
-        Route::get('/puntuador', function(){return view('puntuador.puntuador');})->middleware(['rol:2'])->name('puntuador');
-        
+
         /* rutas para Competidores */
         Route::get('/cargarCompetidor',  [CompetidorController::class, 'cargarCompetidor'])->middleware(['rol:3'])->name('cargarCompetidor');
         Route::post('/cargarCompetidor/add', [CompetidorController::class, 'store'])->middleware(['rol:3'])->name('cargarCompetidor.perform');
         Route::post('/cargarCompetidor/validar', [CompetidorController::class, 'validar'])->middleware(['rol:3'])->name('cargarCompetidor.validar');
-        
+
         /* Rutas de Puntuador se pueden mejorar */
-        Route::get('/puntuador/index',  [CompetenciaCompetidorController::class, 'puntuadorindex'])->middleware(['rol:2'])->name('puntuador');;
-        Route::get('/opciones_competidor', [CompetenciaCompetidorController::class, 'obtenerOpcionesCompetidor']);
+        Route::get('puntuador/index',  [CompetenciaCompetidorController::class, 'Puntuadorindex'])->middleware(['rol:2'])->name('PuntuadorIndex');
+
     });
-    
+
 });
