@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('du')->unique();
             $table->date('fechaNacimiento');
             $table->float('ranking');
-            $table->string('graduacion');
+            $table->unsignedBigInteger('idGraduacion');
             $table->string('email');
             $table->string('genero');
             $table->unsignedBigInteger('idEstado');
@@ -30,6 +30,7 @@ return new class extends Migration
             $table->boolean('estado');
             $table->timestamps();
 
+            $table->foreign('idGraduacion')->references('idGraduacion')->on('graduaciones');
             $table->foreign('idEstado')->references('idEstado')->on('estados');
             $table->foreign('idPais')->references('idPais')->on('paises');
             $table->foreign('idUser')->references('id')->on('users');

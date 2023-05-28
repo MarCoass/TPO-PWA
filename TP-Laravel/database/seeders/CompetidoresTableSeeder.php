@@ -36,12 +36,12 @@ class CompetidoresTableSeeder extends Seeder
                 'idEstado'=> $competidor['estado'],
                 'idUser'=> $competidor['idUser'],
                 'ranking'=> $competidor['ranking'],
-                'graduacion'=> $competidor['graduacion'],
+                'idGraduacion'=> $competidor['idGraduacion'],
                 'email'=> $competidor['correo'],
                 'genero'=> $competidor['genero'],
                 'estado'=> false,//los del seeder por defecto van a estar todos sin aceptar
             ]);
         }
-    
+
     }
 }

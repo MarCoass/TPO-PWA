@@ -14,4 +14,10 @@ class Graduacion extends Model
     protected $privateKey = 'idGraduacion';
 
     protected $fillable = ['idGraduacion', 'nombre', 'color' , 'tipo'];
+
+    // Relación con la clase Competidor
+    public function competidor()
+    {
+        return $this->hasMany(Competidor::class, 'idGraduacion');
+    }
 }
