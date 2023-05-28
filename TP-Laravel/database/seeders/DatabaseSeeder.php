@@ -7,6 +7,8 @@ use Database\Seeders\GraduacionesTableSeeder;
 use Database\Seeders\PaisesTableSeeder;
 use Database\Seeders\RolesTableSeeder;
 use Database\Seeders\UsuariosTableSeeder;
+use Database\seeders\CompetenciasTableSeeder;
+use Database\seeders\PoomsaeTableSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
