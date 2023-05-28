@@ -32,7 +32,7 @@ Gestion de Competencias
                   <label for="competidor">Competidor</label>
                   <select class="form-control" id="competidor" name="competidor">
                     @foreach ($competidores as $row)
-                      <option value="{{ $row->idCompetidor }}">{{ $row->nombre }}</option>
+                      <option value="{{ $row->idCompetidor }}">{{ $row->nombre }} {{ $row->apellido }}</option>
                     @endforeach
                   </select>
                 </div>
@@ -54,8 +54,8 @@ Gestion de Competencias
                   </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary">Generar Inscripcion</button>
         </div>
       </div>
     </form>
