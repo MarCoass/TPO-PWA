@@ -50,8 +50,11 @@ class CompetidorController extends Controller
         $competidor->fechaNacimiento = $request->input('fechaNacimiento');
         $competidor->email = $request->input('correo');
         $competidor->ranking = $request->input('ranking');
-        $competidor->graduacion = $request->input('graduacion');
         $competidor->genero = $request->input('genero');
+
+        // Creamos el objeto Graduacion
+        $graduacion = Graduacion::find($request['idGraduacion']);
+        $competidor->graduacion()->associate($graduacion);
 
         // Creamos el objeto Pais
         $pais = Pais::find($request['idPais']);

@@ -18,10 +18,10 @@
 
 <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12  pt-3">
     <label class="form-label" for="graduacion">Graduacion:</label>
-    <select class="form-control validar" id="graduacion" name="graduacion" required>
+    <select class="form-control validar" id="idGraduacion" name="idGraduacion" required>
         <option value="" disabled selected data-error="Por favor seleccione una graduacion válida">Selecciona una graduación.</option>
         @foreach ($graduaciones as $row)
-        <option value="{{$row->idGraduacion}}">{{$row->nombre}}</option>
+        <option value="{{$row->idGraduacion}}">{{$row->nombre}} - {{$row->color}}</option>
         @endforeach
     </select>
     <div class="valid-feedback">
