@@ -12,11 +12,10 @@ use Illuminate\Http\Request;
 class CompetenciaCompetidorController extends Controller
 {
     public function  puntuadorindex(){
-        $poomsae = Poomsae::all();
         $graduaciones = Graduacion::all();
         $competencias = Competencia::all();
 
-        return view('puntuador.index', compact('graduaciones','poomsae','competencias'));
+        return view('puntuador.index', compact('graduaciones','competencias'));
 
     }
 
@@ -24,7 +23,9 @@ class CompetenciaCompetidorController extends Controller
     {
         $graduacion = $request->input('graduacion_puntuador');
         $competencia = $request->input('competencia_puntuador');
-        $opciones =  Competidor::leftJoin('competencia_competidors', 'competidor.idCompetidor', '=', 'competencia_competidors.idCompetidor')->where('graduacion', $graduacion, 'competencia_competidors.idCompetencia',$competencia)->get();
+        $opciones =  Competidor::leftJoin('competencia_competidors', 'competidores.idCompetidor', '=', 'competencia_competidors.idCompetidor')
+        ->where('graduacion', '=', $graduacion)
+        ->where('competencia_competidors.idCompetencia', '=', $competencia)->get();
         return response()->json($opciones);
 
     }
