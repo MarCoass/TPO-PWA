@@ -16,7 +16,7 @@ class CompetenciaController extends Controller
     public function index()
     {
         $competencias = Competencia::all();
-        return view('Competencias.index', compact('competencias'));
+        return view('gestionCompetencias.index', compact('competencias'));
     }
 
     /**
@@ -27,7 +27,7 @@ class CompetenciaController extends Controller
     public function create()
     {
         //Solo pueden crearlo los administradores
-        return view('Competencias.create');
+        return view('gestionCompetencias.create');
     }
 
     /**
@@ -44,7 +44,7 @@ class CompetenciaController extends Controller
 
         $competencia->save();
 
-        return redirect()->route('index')->with('success', 'Competidor creado exitosamente.');
+        return redirect()->route('gestionCompetencias.index')->with('success', 'Competidor creado exitosamente.');
     }
 
     /**
@@ -56,7 +56,7 @@ class CompetenciaController extends Controller
     public function show($id)
     {
         $competencia = Competencia::find($id);
-        return view('Competencias.show', compact('competencia'));
+        return view('gestionCompetencias.show', compact('competencia'));
     }
 
     /**
@@ -68,7 +68,7 @@ class CompetenciaController extends Controller
     public function edit($id)
     {
         $competencia = Competencia::find($id);
-        return view('Competencias.edit', compact('competencia'));
+        return view('gestionCompetencias.edit', compact('competencia'));
     }
 
     /**
@@ -85,7 +85,7 @@ class CompetenciaController extends Controller
         $competencia->apellido = $request->input('fecha');
         $competencia->save();
 
-        return redirect()->route('index')->with('success', 'Competencia actualizado exitosamente.');
+        return redirect()->route('gestionCompetencias.index')->with('success', 'Competencia actualizado exitosamente.');
     }
 
     /**
@@ -99,7 +99,7 @@ class CompetenciaController extends Controller
         $competencia = Competencia::find($id);
         $competencia->delete();
 
-        return redirect()->route('index')->with('success', 'Competencia eliminada exitosamente.');
+        return redirect()->route('gestionCompetencias.index')->with('success', 'Competencia eliminada exitosamente.');
     
     }
 }

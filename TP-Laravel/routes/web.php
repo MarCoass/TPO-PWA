@@ -85,6 +85,20 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::post('/store_usuario', [UsuarioController::class, 'store'])->middleware(['rol:1'])->name('store_usuario');
         Route::put('/update_usuario/{id}', [UsuarioController::class, 'update'])->middleware(['rol:1'])->name('update_usuario');
         Route::get('/habilitar_usuario/{id}', [UsuarioController::class, 'habilitar'])->middleware(['rol:1'])->name('habilitar_usuario');
+        
+        /* Rutas de Gestion de Competencias se pueden mejorar */
+        Route::get('gestionCompetencias/index', [CompetenciaController::class, 'index'])->middleware(['rol:1'])->name('index_competencia');
+        Route::get('gestionCompetencias/create', [CompetenciaController::class, 'create'])->middleware(['rol:1'])->name('create_competencia');
+        Route::get('gestionCompetencias/edit/{id}', [CompetenciaController::class, 'edit'])->middleware(['rol:1'])->name('edit_competencia');
+        Route::post('gestionCompetencias/store', [CompetenciaController::class, 'store'])->middleware(['rol:1'])->name('store_competencia');
+        Route::put('/update_competidor/{id}', [CompetenciaController::class, 'update'])->middleware(['rol:1'])->name('update_competencia');
+       
+       //competencia competidor
+        Route::get('/inscribir_competidor/{id_competidor}', [CompetenciaCompetidorController::class, 'inscribir_competidor'])->middleware(['rol:1'])->name('inscribir_competidor');
+        Route::get('/ver_inscriptos_competencia/{id}', [CompetenciaCompetidorController::class, 'listarCompetidoresPorId'])->middleware(['rol:1'])->name('ver_inscriptos_competencia');
+        
+//ver_inscriptos_competencia
+
         /* lista competidores de una competencia */
         Route::get('/competidoresCompetencia/{id}', [CompetenciaCompetidorController::class, 'listarCompetidoresPorId'])->middleware(['rol:1'])->name('tabla_competidores');
         Route::get('/habilitar_competidor/{id}', [CompetenciaCompetidorController::class, 'habilitar'])->middleware(['rol:1'])->name('habilitar_competidor');

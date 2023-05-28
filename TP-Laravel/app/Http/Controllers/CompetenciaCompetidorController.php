@@ -31,6 +31,10 @@ class CompetenciaCompetidorController extends Controller
 
     }
 
+    public function inscribir_competidor($id_competidor){
+
+    }
+
     public function iniciar_puntaje(Request $request){
         $id_graduacion = $request->input('graduacion_puntuador');
         $id_competencia = $request->input('competencia_puntuador');
