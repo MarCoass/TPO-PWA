@@ -13,5 +13,5 @@ class Graduacion extends Model
 
     protected $privateKey = 'idGraduacion';
 
-    protected $fillable = ['nombre', 'color' , 'tipo'];
+    protected $fillable = ['idGraduacion', 'nombre', 'color' , 'tipo'];
 }

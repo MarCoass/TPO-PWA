@@ -35,11 +35,11 @@ class CompetenciaCompetidorController extends Controller
         $id_competencia = $request->input('competencia_puntuador');
         $id_competidor = $request->input('competidor_puntuador');
 
-        $graduacion = Graduacion::find($id_graduacion);
-        $competencia = Competencia::find($id_competencia);
-        $competidor = Competidor::find($id_competidor);
+        $graduacion = Graduacion::where('idGraducion','=',$id_graduacion);
+        $competencia = Competencia::where('idCompetencia','=',$id_competencia);
+        $competidor = Competidor::where('idCompetidor','=',$id_competidor);
 
-        return view('puntuador', compact('graduacion','competencia','competidor'));
+        return view('puntuador.puntuador', compact('graduacion','competencia','competidor'));
 
     }
 

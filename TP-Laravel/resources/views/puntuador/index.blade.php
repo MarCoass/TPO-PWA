@@ -9,8 +9,8 @@ Puntuador
 @endsection
 
 @section('contenido')
-<form class="m-5 row" method="post" action="{{ route('iniciar_puntaje') }}">
-
+<form class="m-5 row" method="post" action="{{ url('/iniciar_puntaje') }}">
+    @csrf
 <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12  pt-3">
         <label class="form-label" for="competencia_puntuador">Competencia:</label>
         <select class="form-control validar" id="competencia_puntuador" name="competencia_puntuador" required>
