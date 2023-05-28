@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 
 class CompetenciaCompetidorController extends Controller
 {
+
     public function  puntuadorindex(){
         $graduaciones = Graduacion::all();
         $competencias = Competencia::all();
@@ -23,9 +24,9 @@ class CompetenciaCompetidorController extends Controller
     {
         $graduacion = $request->input('graduacion_puntuador');
         $competencia = $request->input('competencia_puntuador');
-        $opciones =  Competidor::leftJoin('competencia_competidors', 'competidores.idCompetidor', '=', 'competencia_competidors.idCompetidor')
+        $opciones =  Competidor::leftJoin('competenciacompetidor', 'competidores.idCompetidor', '=', 'competenciacompetidor.idCompetidor')
         ->where('graduacion', '=', $graduacion)
-        ->where('competencia_competidors.idCompetencia', '=', $competencia)->get();
+        ->where('competenciacompetidor.idCompetencia', '=', $competencia)->get();
         return response()->json($opciones);
 
     }
@@ -35,11 +36,13 @@ class CompetenciaCompetidorController extends Controller
         $id_competencia = $request->input('competencia_puntuador');
         $id_competidor = $request->input('competidor_puntuador');
 
-        $graduacion = Graduacion::where('idGraducion','=',$id_graduacion);
-        $competencia = Competencia::where('idCompetencia','=',$id_competencia);
-        $competidor = Competidor::where('idCompetidor','=',$id_competidor);
-
-        return view('puntuador.puntuador', compact('graduacion','competencia','competidor'));
+        $graduacion = Graduacion::where('idGraduacion','=',$id_graduacion)->get();
+        $competencia = Competencia::where('idCompetencia','=',$id_competencia)->get();
+        $competidor = Competidor::where('idCompetidor','=',$id_competidor)->get();
+        $competencia_competidor = CompetenciaCompetidor::where('idCompetidor','=',$id_competidor)->where('idCompetencia','=',$id_competidor)->get();
+        $poomsae = Poomsae::where('idPoomsae','=',$competencia_competidor[0]->idPoomsae)->get();
+     
+        return view('puntuador.puntuador', ['graduacion' => $graduacion,'competencia' => $competencia,'poomsae' => $poomsae, 'competidor' => $competidor,'competencia_competidor'=>$competencia_competidor]);
 
     }
 

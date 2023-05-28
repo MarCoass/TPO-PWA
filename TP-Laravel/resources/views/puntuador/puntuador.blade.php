@@ -30,9 +30,9 @@
                 <span class="display-2">- 0.3</span>
             </div>
             <div class="infoCompetidor col-4">
-                <p>Competidor:</p>
-                <p>Poomse:</p>
-                <p>Puntaje: <span class="puntaje"></span>
+                <p>Competidor:{{$competidor[0]->nombre}} {{$competidor[0]->apellido}}</p>
+                <p>Poomse:{{$poomsae[0]->nombre}}</p>
+                <p>Puntaje:{{$competencia_competidor[0]->puntaje}}
                 </p>
                 <button type="button" class="btn btn-success modalPuntuacion" data-bs-toggle="modal" data-bs-target="#modal">
                     Terminar

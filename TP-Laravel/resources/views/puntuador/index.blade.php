@@ -1,11 +1,11 @@
 @extends('layouts/layout')
 
 @section('titulo')
-Puntuador
+Iniciar Puntuador
 @endsection
 
 @section('encabezado')
-Puntuador
+Iniciar Puntuador
 @endsection
 
 @section('contenido')
