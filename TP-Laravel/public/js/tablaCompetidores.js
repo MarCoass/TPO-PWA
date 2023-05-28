@@ -1,24 +1,8 @@
-$(document).ready(function () {
 
-    $("#competidores_tabla").DataTable({
-        ajax: {
-            type: "GET",
-            url: "/competidores/data",
-            dataSrc: "",
-        },
-        dom: '<"top"f>t<"bottom"lip>',
-     columns: [
-            { data: "gal" },
-            { data: "apellido" },
-            { data: "nombre" },
-            { data: "du" },
-            { data: "fechaNacimiento" },
-            { data: "nombre_pais" },
-            { data: "ranking" },
-            { data: "idGraduacion" },
-            { data: "email" },
-            { data: "genero" },
-        ],
+export var competidores_tabla = document.getElementById('competidores_tabla');
+if (competidores_tabla) {
+
+    competidores_tabla = $("#competidores_tabla").DataTable({
         processing: true,
         responsive: true,
         ordering: true,
@@ -45,5 +29,5 @@ $(document).ready(function () {
             [5, 10, 15, "Todos"],
         ],
     });
-});
+}
 

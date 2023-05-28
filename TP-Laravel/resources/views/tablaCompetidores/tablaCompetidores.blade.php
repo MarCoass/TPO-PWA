@@ -31,22 +31,27 @@
                 </tr>
             </thead>
             <tbody>
-
-            </tbody>
-            <tfoot>
+                @foreach ($competidores as $competidor)
                 <tr>
-                    <th> GAL </th>
-                    <th> Apellido </th>
-                    <th> Nombre </th>
-                    <th> DU </th>
-                    <th> Fecha de Nacimiento </th>
-                    <th> Pais</th>
-                    <th> Ranking </th>
-                    <th> Graduacion</th>
-                    <th> Email </th>
-                    <th> Genero </th>
+                    <td>{{ $competidor->gal }}</td>
+                    <td>{{ $competidor->apellido }}</td>
+                    <td>{{ $competidor->nombre }}</td>
+                    <td>{{ $competidor->du }}</td>
+                    <td>{{ $competidor->fechaNacimiento }}</td>
+                    <td>
+                        <img
+                        src="https://flagcdn.com/{{ strtolower($competidor->pais->nomenclatura) }}.svg"
+                        width="30"
+                        alt="{{ $competidor->pais->nomenclatura }}"
+                        >
+                        {{ $competidor->pais->nombrePais }}</td>
+                    <td>{{ $competidor->ranking }}</td>
+                    <td>{{ $competidor->graduacion->nombre }}, {{ $competidor->graduacion->color }}</td>
+                    <td>{{ $competidor->email }}</td>
+                    <td>{{ $competidor->genero }}</td>
                 </tr>
-            </tfoot>
+                @endforeach
+            </tbody>
         </table>
 </div>
 

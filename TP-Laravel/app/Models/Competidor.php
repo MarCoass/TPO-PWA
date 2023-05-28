@@ -16,10 +16,11 @@ class Competidor extends Model
     //protected $hidden = ['clave']; // Atributos ocultos al serializar el modelo
 
     // Relación con la clase Rol y clave foránea
-    public function Graduacion()
+    public function graduacion()
     {
         return $this->belongsTo(Graduacion::class, 'idGraduacion', 'idGraduacion');
     }
+    
     public function pais()
     {
         return $this->belongsTo(Pais::class, 'idPais', 'idPais');

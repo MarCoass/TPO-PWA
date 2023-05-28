@@ -20,7 +20,9 @@ class CompetidorController extends Controller
  
     public function index()
     {
-        return view('tablaCompetidores.tablaCompetidores',);
+        $competidores = Competidor::all();
+
+        return view('tablaCompetidores.tablaCompetidores',['competidores' => $competidores]);
     }
 
    public function obtenerRegistros()
