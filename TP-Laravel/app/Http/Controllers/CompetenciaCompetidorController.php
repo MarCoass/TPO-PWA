@@ -23,8 +23,8 @@ class CompetenciaCompetidorController extends Controller
     public function obtenerOpcionesCompetidor(Request $request)
     {
         $graduacion = $request->input('graduacion_puntuador');
-        $graduacion = $request->input('competencia_puntuador');
-        $opciones =  Competidor::where('graduacion', $graduacion)->get();
+        $competencia = $request->input('competencia_puntuador');
+        $opciones =  Competidor::leftJoin('competencia_competidors', 'competidor.idCompetidor', '=', 'competencia_competidors.idCompetidor')->where('graduacion', $graduacion, 'competencia_competidors.idCompetencia',$competencia)->get();
         return response()->json($opciones);
 
     }
