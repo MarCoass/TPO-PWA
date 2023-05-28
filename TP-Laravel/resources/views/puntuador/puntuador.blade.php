@@ -12,7 +12,9 @@
     <div class="desktop">
         <div class="alert alert-danger" role="alert">
             Acceda desde un celular.
+            
         </div>
+        
     </div>
 
     <div class="mobile">
