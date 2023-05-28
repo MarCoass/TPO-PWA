@@ -89,13 +89,12 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::post('gestionCompetencias/store', [CompetenciaController::class, 'store'])->middleware(['rol:1'])->name('store_competencia');
         Route::put('/update_competidor/{id}', [CompetenciaController::class, 'update'])->middleware(['rol:1'])->name('update_competencia');
         Route::get('/ver_inscriptos_competencia/{id}', [CompetenciaCompetidorController::class, 'listarCompetidoresPorId'])->middleware(['rol:1'])->name('ver_inscriptos_competencia');
-        
-        //inscripcion admi y competidor
-        //  Route::post('/inscribir_competidor', [CompetenciaCompetidorController::class, 'inscribir_competidor'])->middleware(['rol:1,3'])->name('inscribir_competidor');
        
-        //rutas Competencia Competidor
-        Route::get('inscripcion/create/{idCompetidor}', [CompetenciaCompetidor::class, 'create'])->middleware(['rol:1'])->name('create_competencia_competidor');
-        Route::get('inscripcion/store', [CompetenciaCompetidor::class, 'store'])->middleware(['rol:1'])->name('store_competencia_competidor');
+        //ruta de ejemplo para hacer la inscripcion desde un competidor
+        Route::get('inscripcion/create/{idCompetidor}', [CompetenciaCompetidorController::class, 'create'])->middleware(['rol:1'])->name('create_competencia_competidor');
+        
+        //guardar inscripcion de competidor
+        Route::post('inscripcion/store', [CompetenciaCompetidorController::class, 'store'])->middleware(['rol:1,3'])->name('store_competencia_competidor');
         
 
         /* lista competidores de una competencia */

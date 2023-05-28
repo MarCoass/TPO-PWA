@@ -33,31 +33,31 @@ class CompetenciaCompetidorController extends Controller
 
     public function create()
     {
-        //Solo pueden crearlo los administradores
+        //ni idea momento de locura
         return view('inscripcion.create');
     }
 
     public function store(Request $request){
             $competenciacompetidor = new CompetenciaCompetidor();
-            $competenciacompetidor->idCompetidor = $request->input('id_competidor');
-            $competenciacompetidor->idCompetencia = $request->input('id_competencia');
-            $competenciacompetidor->idPoomsae = $request->input('id_poomsae');
+            $competenciacompetidor->idCompetidor = $request->input('competidor');
+            $competenciacompetidor->idCompetencia = $request->input('competencia');
+            $competenciacompetidor->idPoomsae = $request->input('poomsae');
             $competenciacompetidor->puntaje =  10; 
             $competenciacompetidor->contadorPasadas =  0; 
             $competenciacompetidor->estado =  0; 
     
-            $competidor = Competidor::find($request['id_competidor']);
+            $competidor = Competidor::find($request['competidor']);
             $competenciacompetidor->competidor()->associate($competidor);
     
-            $competencia = Competencia::find($request['id_competencia']);
-            $competidor->competencia()->associate($competencia);
+            $competencia = Competencia::find($request['competencia']);
+            $competenciacompetidor->competencia()->associate($competencia);
 
-            $poomsae = Poomsae::find($request['id_poomsae']);
-            $competidor->poomsae()->associate($poomsae);
+            $poomsae = Poomsae::find($request['poomsae']);
+            $competenciacompetidor->poomsae()->associate($poomsae);
     
             $competenciacompetidor->save();
     
-            return redirect()->with('success', "Se ha registrado correctamente");
+            return redirect('gestionCompetencias/index')->with('success', "Se ha registrado correctamente");
     }
 
     public function iniciar_puntaje(Request $request){
