@@ -44,7 +44,7 @@ class CompetenciaController extends Controller
 
         $competencia->save();
 
-        return redirect()->route('gestionCompetencias.index')->with('success', 'Competidor creado exitosamente.');
+        return redirect()->route('index_competencia')->with('success', 'Competidor creado exitosamente.');
     }
 
     /**
@@ -82,10 +82,10 @@ class CompetenciaController extends Controller
     {
         $competencia = Competencia::find($id);
         $competencia->nombre = $request->input('nombre');
-        $competencia->apellido = $request->input('fecha');
+        $competencia->fecha = $request->input('fecha');
         $competencia->save();
 
-        return redirect()->route('gestionCompetencias.index')->with('success', 'Competencia actualizado exitosamente.');
+        return redirect()->route('index_competencia')->with('success', 'Competencia actualizado exitosamente.');
     }
 
     /**
@@ -99,7 +99,7 @@ class CompetenciaController extends Controller
         $competencia = Competencia::find($id);
         $competencia->delete();
 
-        return redirect()->route('gestionCompetencias.index')->with('success', 'Competencia eliminada exitosamente.');
+        return redirect()->route('index_competencia')->with('success', 'Competencia eliminada exitosamente.');
     
     }
 }
