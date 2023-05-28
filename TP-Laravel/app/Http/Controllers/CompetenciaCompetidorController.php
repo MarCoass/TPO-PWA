@@ -38,6 +38,14 @@ class CompetenciaCompetidorController extends Controller
     }
 
     public function store(Request $request){
+
+            $duplicado = CompetenciaCompetidor::where('idCompetencia','=', $request->input('competencia'))->
+            where('idCompetidor','=', $request->input('competidor'))->first();
+
+            if( $duplicado != null){
+                return redirect('gestionCompetencias/index')->with('error', "Ya tiene una inscripcion hecha.");
+            }
+
             $competenciacompetidor = new CompetenciaCompetidor();
             $competenciacompetidor->idCompetidor = $request->input('competidor');
             $competenciacompetidor->idCompetencia = $request->input('competencia');
