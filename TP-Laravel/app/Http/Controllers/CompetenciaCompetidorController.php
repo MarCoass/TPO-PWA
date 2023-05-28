@@ -31,7 +31,13 @@ class CompetenciaCompetidorController extends Controller
 
     }
 
-    public function inscribir_competidor(Request $request){
+    public function create()
+    {
+        //Solo pueden crearlo los administradores
+        return view('inscripcion.create');
+    }
+
+    public function store(Request $request){
             $competenciacompetidor = new CompetenciaCompetidor();
             $competenciacompetidor->idCompetidor = $request->input('id_competidor');
             $competenciacompetidor->idCompetencia = $request->input('id_competencia');
