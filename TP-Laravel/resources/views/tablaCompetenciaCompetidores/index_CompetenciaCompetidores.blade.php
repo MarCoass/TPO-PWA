@@ -12,7 +12,7 @@ Gestion de Competidores de la competencia
 @section('contenido')
 <!-- despliega mensajes -->
 @include('layouts.partials.messages')
-<h3>Competencia "  "</h3>
+<h3>Estas viendo la <b>{{ $nombreCompetencia->nombre }}</b></h3>
 <table id="tabla_CompetenciaCompetidores" class="table hover table-light table-bordered nowrap border dataTable dtr-inline collapsed" width="100%">
     <thead class="flip-content">
         <tr>
@@ -29,10 +29,10 @@ Gestion de Competidores de la competencia
             <td>{{ $competidor->competidor->gal }}</td>
             <td>{{ $competidor->competidor->nombre }}</td>
             <td>{{ $competidor->competidor->apellido }}</td>
-            <td>{{ ($competidor->estado == 0) ? 'Sin Verificar' : 'Verificado' }}</td>
+            <td>{{ ($competidor->estado == 0) ? 'Sin Habilitar' : 'Habilitado' }}</td>
             <td>
                 @if ($competidor->estado == 0)
-                <a href="{{ route('habilitar_competidor', ['id' => $competidor->idCompetenciaCompetidor ]) }}" class="btn btn-outline-success"><i class="bi bi-check2-square me-2"></i>Verificar</a>
+                <a href="{{ route('habilitar_competidor', ['id' => $competidor->idCompetenciaCompetidor ]) }}" class="btn btn-outline-success"><i class="bi bi-check2-square me-2"></i>Habilitar</a>
                 @endif
                 <a class="btn btn-outline-info"><i class="bi bi-pencil-square me-2"></i>Editar</a>
 
