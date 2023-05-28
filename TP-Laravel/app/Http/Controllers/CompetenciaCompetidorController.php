@@ -35,7 +35,8 @@ class CompetenciaCompetidorController extends Controller
         $CompetidorCompetencia->estado = true;
         $CompetidorCompetencia->save();
 
-        return redirect()->route('competidoresCompetencia/1')->with('success', 'Competidor habilitado exitosamente.');
+        /* todavia tengo que arreglar la redireccion */
+        return redirect()->route('tabla_competidores', ['id' => $CompetidorCompetencia->idCompetencia])->with('success', 'Competidor habilitado exitosamente.');
     }
 
 
