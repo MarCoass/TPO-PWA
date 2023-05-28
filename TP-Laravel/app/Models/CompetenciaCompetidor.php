@@ -9,7 +9,9 @@ class CompetenciaCompetidor extends Model
 {
     use HasFactory;
 
-    protected $table = 'competenciaCompetidor';
+    protected $table = 'competenciacompetidor';
+
+    protected $primaryKey = 'idCompetenciaCompetidor';
 
     protected $fillable = ['idCompetencia' , 'idCompetidor','idPoomsae', 'estado'];
 

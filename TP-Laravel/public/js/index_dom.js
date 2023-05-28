@@ -3,6 +3,8 @@ import { cambio_de_tema } from './tema.js';
 //import { competidores_tabla } from './tablaCompetidores.js';
 import {tabla_usuarios} from './tablaUsuarios.js';
 import './eventosMenu.js';
+import {tabla_CompetenciaCompetidores} from './tablaCompetenciaCompetidores.js';
+
 
 //Cronometro
 boton_contador_inicio;
@@ -10,6 +12,9 @@ boton_contador_fin;
 
 //Gestion de usuarios tabla
 tabla_usuarios;
+
+//tabla competidores de la competencia
+tabla_CompetenciaCompetidores;
 
 /*
 Si o si poner http://127.0.0.1:800/ruta sino no anda, os advierte su querido Braian <3
