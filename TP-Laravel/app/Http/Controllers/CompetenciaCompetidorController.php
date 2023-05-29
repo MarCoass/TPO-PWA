@@ -87,7 +87,7 @@ class CompetenciaCompetidorController extends Controller
         $graduacion = Graduacion::where('idGraduacion','=',$id_graduacion)->get();
         $competencia = Competencia::where('idCompetencia','=',$id_competencia)->get();
         $competidor = Competidor::where('idCompetidor','=',$id_competidor)->get();
-        $competencia_competidor = CompetenciaCompetidor::where('idCompetidor','=',$id_competidor)->where('idCompetencia','=',$id_competidor)->get();
+        $competencia_competidor = CompetenciaCompetidor::where('idCompetidor','=',$id_competidor)->where('idCompetencia','=',$id_competencia)->get();
         $poomsae = Poomsae::where('idPoomsae','=',$competencia_competidor[0]->idPoomsae)->get();
      
         return view('puntuador.puntuador', ['graduacion' => $graduacion,'competencia' => $competencia,'poomsae' => $poomsae, 'competidor' => $competidor,'competencia_competidor'=>$competencia_competidor]);
