@@ -11,7 +11,7 @@ Iniciar Puntuador
 @section('contenido')
 <form class="m-5 row" method="post" action="{{ url('/iniciar_puntaje') }}">
     @csrf
-<div class="col-lg-12 col-md-12 col-sm-6 col-xs-12  pt-3">
+<div class="col-lg-6 col-md-12 col-sm-12  pt-3">
         <label class="form-label" for="competencia_puntuador">Competencia:</label>
         <select class="form-control validar" id="competencia_puntuador" name="competencia_puntuador" required>
             <option value="" disabled selected data-error="Por favor seleccione una competencia válida">Selecciona una Competencia.</option>
@@ -25,7 +25,7 @@ Iniciar Puntuador
         <div class="invalid-feedback">Seleccione una opcion valida.</div>
 </div>
 
-<div class="col-lg-12 col-md-12 col-sm-6 col-xs-12  pt-3">
+<div class="col-lg-6 col-md-12 col-sm-12  pt-3">
     <label class="form-label" for="graduacion_puntuador">Graduacion:</label>
     <select class="form-control validar" id="graduacion_puntuador" name="graduacion_puntuador" required>
         <option value="" disabled selected data-error="Por favor seleccione una graduacion válida">Selecciona una graduación.</option>
@@ -38,7 +38,7 @@ Iniciar Puntuador
     </div>
     <div class="invalid-feedback">Seleccione una opcion valida.</div>
 </div>
-<div class="col-lg-12 col-md-12 col-sm-6 col-xs-12  pt-3">
+<div class="col-lg-6 col-md-12 col-sm-12  pt-3">
     <label class="form-label" for="competidor_puntuador">Competidor:</label>
     <select class="form-control validar" id="competidor_puntuador" name="competidor_puntuador" required>
         <option value="" disabled selected data-error="Por favor seleccione una graduacion válida">Selecciona un competidor.</option>
