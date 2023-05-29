@@ -14,14 +14,27 @@
               
         @auth
 
-        
-        <div class="d-inline-flex text-center" >
+
+              <div id="botonesBasicos" class="d-flex justify-content-between align-items-center">
+
+                <div > 
+                    <a  href="{{ route('verPerfil') }}" class="btn btn-outline-dark"><i class="bi bi-person me-1"></i>{{auth()->user()->usuario}}</a> 
+                </div>
+                  
+                <div >
+                    <a href="{{ route('logout.perform') }}" class="btn btn-outline-dark"><i class="bi bi-door-open me-1"></i>Cerrar Sesion</a>
+                </div>
+
+              </div>
+
+
+   {{--      <div class="d-inline-flex text-center" >
             <p class="text-center mx-5" style="height: 25px ">
                 <b>Usuario:</b> <br> {{auth()->user()->usuario}}
             </p>
           <a href="{{ route('logout.perform') }}" class="btn btn-outline-dark"><i class="bi bi-door-open me-2"></i>Cerrar Sesion</a>
         </div>
-
+ --}}
         <button id="menuNavBar" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

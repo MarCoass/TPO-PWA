@@ -170,3 +170,7 @@ transform: translateX(0);
 @media (max-width: 767.98px) {
   /* PANTALLA PEQUEÑA*/
 }
+
+#botonesBasicos {
+ width: 295px;  
+}
