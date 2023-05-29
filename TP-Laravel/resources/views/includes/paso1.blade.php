@@ -1,6 +1,6 @@
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
     <label class="form-label" for="apellido">Apellido:</label>
-    <input class="form-control validar" type="text" id="apellido" name="apellido" maxlength="50" pattern=".+" placeholder="Ej: Lopez" value="{{ auth()->user()->apellido }}" disabled autocomplete="off" required>
+    <input class="form-control validar" type="text" id="apellido" name="apellido" maxlength="50" pattern=".+" placeholder="Ej: Lopez" value="{{ auth()->user()->apellido }}" readonly autocomplete="off" required>
     <div class="valid-feedback">
         ¡Correcto!
     </div>
@@ -9,7 +9,7 @@
 
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
     <label class="form-label" for="nombre">Nombre:</label>
-    <input class="form-control validar" type="text" id="nombre" name="nombre" maxlength="50" pattern=".+" placeholder="Ej: Lautaro" value="{{ auth()->user()->nombre }}" disabled autocomplete="off" required>
+    <input class="form-control validar" type="text" id="nombre" name="nombre" maxlength="50" pattern=".+" placeholder="Ej: Lautaro" value="{{ auth()->user()->nombre }}" readonly autocomplete="off" required>
     <div class="valid-feedback">
         ¡Correcto!
     </div>
@@ -36,7 +36,7 @@
 
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
     <label class="form-label" for="correo">Email: <span class="spinner-border spinner-border-sm d-none"></span></label>
-    <input class="form-control validarEspecial" type="email" id="correo" name="correo" autocomplete="off" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" value="{{ auth()->user()->correo }}" disabled placeholder="Ej: persona@correo.com" required>
+    <input class="form-control validarEspecial" type="email" id="correo" name="correo" autocomplete="off" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" value="{{ auth()->user()->correo }}" readonly placeholder="Ej: persona@correo.com" required>
     <div class="valid-feedback">
         ¡Correcto!
     </div>
@@ -47,7 +47,7 @@
     <label class="form-label" for="pais">País:</label>
     <input type='text' class="form-control tt-input validar" name="pais" id="pais" required>
 
-    <input type='hidden' name="idPais" id="idPais" value="5">
+    <input type='hidden' name="idPais" id="idPais">
     <div class="valid-feedback">
         ¡Correcto!
     </div>
@@ -57,7 +57,7 @@
 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 pt-3">
     <label class="form-label" for="estado">Estado:</label>
     <input type='text' class="form-control tt-input validar" name="estado" id="estado" required>
-    <input type='hidden' name="idEstado" id="idEstado" value="1832">
+    <input type='hidden' name="idEstado" id="idEstado">
     <div class="valid-feedback">
         ¡Correcto!
     </div>

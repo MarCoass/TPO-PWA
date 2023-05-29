@@ -53,6 +53,9 @@ class CompetidorController extends Controller
         $competidor->ranking = $request->input('ranking');
         $competidor->genero = $request->input('genero');
 
+        // Estado base
+        $competidor->estado = false;
+
         // Creamos el objeto Graduacion
         $graduacion = Graduacion::find($request['idGraduacion']);
         $competidor->graduacion()->associate($graduacion);
@@ -71,6 +74,8 @@ class CompetidorController extends Controller
 
         $competidor->save();
 
+  
+
         // Respuesta JSON
         $data = [
             'message' => 'El competidor se ha registrado correctamente',
@@ -78,8 +83,8 @@ class CompetidorController extends Controller
         ];
 
         // Devolver una respuesta JSON
-        return response()->json($data, 200);
-        // return redirect('/competidores')->with('success', "El competidor se ha registrado correctamente");
+        // return response()->json($data, 200);
+        return redirect('/')->with('success', "Se ha inscripto correctamente");
     }
 
     public function show($id)

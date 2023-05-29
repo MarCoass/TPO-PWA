@@ -115,7 +115,6 @@ const validarFormulario = () => {
 
     // Listener al presionar el botón de guardar (submit)
     $form.addEventListener('submit', (event) => {
-        event.preventDefault();
         // Valida otra vez
         $inputs.forEach((el) => {
             chequearValidez(el);
@@ -125,13 +124,10 @@ const validarFormulario = () => {
         })
 
         // Si es válido, enviamos por AJAX
-        if($form.checkValidity()){
-            // llamada ajax
-            enviarFormulario($form);
-
-        }else{
+        if(!$form.checkValidity()){
             // Caso contrario, prevenimos que se envíe y mostramos mensaje de ayuda.
             $('#error-js').removeClass('d-none');
+            event.preventDefault();
         }
     });
 }

@@ -11,7 +11,7 @@ class Graduacion extends Model
 
     protected $table = 'graduaciones';
 
-    protected $privateKey = 'idGraduacion';
+    protected $primaryKey = 'idGraduacion';
 
     protected $fillable = ['idGraduacion', 'nombre', 'color' , 'tipo'];
 
