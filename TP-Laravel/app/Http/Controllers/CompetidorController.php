@@ -6,6 +6,7 @@ use App\Models\Estado;
 use App\Models\Pais;
 use App\Models\Competidor;
 use App\Models\Graduacion;
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,7 @@ class CompetidorController extends Controller
         return view('cargarCompetidor.cargarCompetidor', compact('graduaciones'));
 
     }
- 
+
     public function index()
     {
         $competidores = Competidor::all();
@@ -27,13 +28,13 @@ class CompetidorController extends Controller
 
    public function obtenerRegistros()
     {
-        
+
         $competidores = Competidor::select('competidores.*', 'paises.nombrePais as nombre_pais')
         ->join('paises', 'competidores.idPais', '=', 'paises.idPais')
         ->get();
-    
+
         return response()->json($competidores);
-    } 
+    }
 
     public function create()
     {
@@ -63,6 +64,10 @@ class CompetidorController extends Controller
         // Creamos el objeto Estado
         $estado = Estado::find($request['idEstado']);
         $competidor->estado()->associate($estado);
+
+        // Creamos el objeto User
+        $user = User::find($request['idUser']);
+        $competidor->user()->associate($user);
 
         $competidor->save();
 
@@ -99,10 +104,11 @@ class CompetidorController extends Controller
         $competidor->fechaNacimiento = $request->input('fechaNacimiento');
         $competidor->correo = $request->input('correo');
         $competidor->ranking = $request->input('ranking');
-        $competidor->graduacion = $request->input('graduacion');
+        $competidor->idGraduacion = $request->input('idGraduacion');
         $competidor->genero = $request->input('genero');
         $competidor->idPais = $request->input('idPais');
         $competidor->idEstado = $request->input('idEstado');
+        $competidor->idUser = $request->input('idUser');
 
         $competidor->save();
 

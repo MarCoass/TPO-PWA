@@ -1,6 +1,6 @@
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
     <label class="form-label" for="apellido">Apellido:</label>
-    <input class="form-control validar" type="text" id="apellido" name="apellido" maxlength="50" pattern=".+" placeholder="Ej: Lopez" autocomplete="off" required>
+    <input class="form-control validar" type="text" id="apellido" name="apellido" maxlength="50" pattern=".+" placeholder="Ej: Lopez" value="{{ auth()->user()->apellido }}" disabled autocomplete="off" required>
     <div class="valid-feedback">
         ¡Correcto!
     </div>
@@ -9,7 +9,7 @@
 
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
     <label class="form-label" for="nombre">Nombre:</label>
-    <input class="form-control validar" type="text" id="nombre" name="nombre" maxlength="50" pattern=".+" placeholder="Ej: Lautaro" autocomplete="off" required>
+    <input class="form-control validar" type="text" id="nombre" name="nombre" maxlength="50" pattern=".+" placeholder="Ej: Lautaro" value="{{ auth()->user()->nombre }}" disabled autocomplete="off" required>
     <div class="valid-feedback">
         ¡Correcto!
     </div>
@@ -36,7 +36,7 @@
 
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
     <label class="form-label" for="correo">Email: <span class="spinner-border spinner-border-sm d-none"></span></label>
-    <input class="form-control validarEspecial" type="email" id="correo" name="correo" autocomplete="off" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" placeholder="Ej: persona@correo.com" required>
+    <input class="form-control validarEspecial" type="email" id="correo" name="correo" autocomplete="off" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" value="{{ auth()->user()->correo }}" disabled placeholder="Ej: persona@correo.com" required>
     <div class="valid-feedback">
         ¡Correcto!
     </div>

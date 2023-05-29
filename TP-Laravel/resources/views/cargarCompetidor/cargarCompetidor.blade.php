@@ -1,4 +1,4 @@
-@extends('layouts/layout')
+@extends('layouts/carga-competidor')
 
 @section('titulo')
 Cargar Competidor
@@ -28,13 +28,15 @@ Formulario de carga de competidor
                 <div class="alert alert-danger d-none" id="error">Ocurrió un error. Por favor, intente otra vez más tarde.</div>
                 <form method="post" id="cargaParticipante" action="{{ route('cargarCompetidor.perform') }}" class="needs-validation" novalidate> <!-- INICIO FORM -->
                     {{-- CSRF token para poder enviar el formulario --}}
-                    <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}" /> 
+                    <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}" />
 
                     {{-- Rutas varias utilizadas con AJAX (ver cargaCompetidor.js y autocompletado.js) --}}
                     <input type="hidden" id="validar" value="{{ route('cargarCompetidor.validar') }}" />
                     <input type="hidden" id="postEnvio" value="{{ route('home.index') }}" />
                     <input type="hidden" id="rutaPais" value="{{ route('pais.autocomplete') }}" />
                     <input type="hidden" id="rutaEstado" value="{{ route('estado.autocomplete') }}" />
+
+                    <input type="hidden" id="idUser" name="idUser" value="{{ auth()->user()->id }}">
 
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="paso1"> <!-- INICIO CONTENIDO PASO 1 -->
@@ -53,7 +55,4 @@ Formulario de carga de competidor
         </div>
     </div>
 </div>
-
-<script src="{{ asset('js/cargaCompetidor.js') }}"></script>
-<script src="{{ asset('js/autocompletado.js') }}" type="module"></script>
 @endsection

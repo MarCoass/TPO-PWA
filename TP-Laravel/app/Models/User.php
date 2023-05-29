@@ -26,7 +26,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
 /*     protected $fillable = ['nombre', 'apellido', 'usuario', 'correo', 'clave', 'idRol']; // Atributos
- */    
+ */
     protected $fillable = ['id', 'nombre', 'apellido', 'usuario', 'correo', 'password', 'idRol', 'estado']; // Atributos
 
     /**
@@ -60,7 +60,7 @@ class User extends Authenticatable
         $this->attributes['password'] = bcrypt($value);
     }
 
-   
+
     // Relación con la clase Rol y clave foránea
     public function rol()
     {
@@ -70,6 +70,12 @@ class User extends Authenticatable
     public function tieneRol($rol)
     {
         return $this->rol && $this->rol->nombreRol === $rol;
+    }
+
+    // Relación con la clase Competidor
+    public function competidor()
+    {
+    return $this->hasMany(Competidor::class, 'id', 'idUser');
     }
 
 
