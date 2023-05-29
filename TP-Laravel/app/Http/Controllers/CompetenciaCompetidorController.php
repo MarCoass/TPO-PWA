@@ -25,7 +25,7 @@ class CompetenciaCompetidorController extends Controller
         $graduacion = $request->input('graduacion_puntuador');
         $competencia = $request->input('competencia_puntuador');
         $opciones =  Competidor::leftJoin('competenciacompetidor', 'competidores.idCompetidor', '=', 'competenciacompetidor.idCompetidor')
-        ->where('graduacion', '=', $graduacion)
+        ->where('idGraduacion', '=', $graduacion)
         ->where('competenciacompetidor.idCompetencia', '=', $competencia)->get();
         return response()->json($opciones);
 
