@@ -79,8 +79,8 @@ Registro
 <p>Registrarse como:</p>
         <div class="wrapper">
             
-            <input type="radio" name="select" id="idRol1" value="3" checked>
-            <input type="radio" name="select" id="idRol2" value="2">
+            <input type="radio" name="idRol" id="idRol1" value="3" checked>
+            <input type="radio" name="idRol" id="idRol2" value="2">
               <label for="idRol1" class="option option-1">
                 <div class="dot"></div>
                  <span>Competidor</span>
