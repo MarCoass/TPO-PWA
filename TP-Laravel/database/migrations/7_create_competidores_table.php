@@ -24,7 +24,7 @@ return new class extends Migration
             $table->unsignedBigInteger('idGraduacion');
             $table->string('email');
             $table->string('genero');
-            $table->unsignedBigInteger('idEstado')->nullable();
+            $table->unsignedBigInteger('idEstado');
             $table->unsignedBigInteger('idPais');
             $table->unsignedBigInteger('idUser');
             $table->boolean('estado');
