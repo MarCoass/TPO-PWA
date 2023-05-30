@@ -41,7 +41,7 @@
         <div id="navbarNav" class="collapse navbar-collapse ms-3">
             <ul class="navbar-nav" role="tablist">
 
-                @if( auth()->user()->idRol == 2 || auth()->user()->idRol == 1 )
+                @if(auth()->user()->idRol == 1 )
                 <a href="/cronometro" class="nav-item btn {{ request()->is('cronometro') ? 'active' : '' }}" id="seccion1-tab">
 
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 68.3 1024 636.1" enable-background="new 0 68.3 1024 636.1" xml:space="preserve">

@@ -22,12 +22,23 @@ NeuPoom
 
             <div class="seccion_box">
 
-                @if (auth()->user()->idRol == 2 || auth()->user()->idRol == 1)
+                @if (auth()->user()->idRol == 1)
                 <div class="seccion_item">
                     <a href="/cronometro" class="seccion-item_link">
                         <div class="seccion-item_bg"></div>
                         <div class="seccion-item_title">
                             Cronómetro
+                        </div>
+                    </a>
+                </div>
+                @endif
+
+                @if (auth()->user()->idRol == 2)
+                <div class="seccion_item">
+                    <a href="/puntuador/index" class="seccion-item_link">
+                        <div class="seccion-item_bg"></div>
+                        <div class="seccion-item_title">
+                            Puntuador
                         </div>
                     </a>
                 </div>

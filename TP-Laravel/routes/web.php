@@ -15,7 +15,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CompetenciaCompetidorController;
+use App\Http\Controllers\PuntajeController;
 use App\Models\CompetenciaCompetidor;
+use App\Models\Puntaje;
 
 Route::group(['namespace' => 'App\Http\Controllers'], function()
 {
@@ -116,6 +118,11 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::post('/iniciar_puntaje', [CompetenciaCompetidorController::class, 'iniciar_puntaje'])->middleware(['rol:2'])->name('iniciar_puntaje');
         Route::post('/actualizar_puntaje', [CompetenciaCompetidorController::class, 'actualizar_puntaje'])->middleware(['rol:2'])->name('actualizar_puntaje');
         
+        /** Rutas usando el controlador de puntaje */
+        Route::post('/puntuador/cargar', [PuntajeController::class, 'store'])->middleware(['rol:2'])->name('puntuador.store');
+       //esta mal creo
+        Route::get('/puntuador/{id}', [PuntajeController::class, 'show'])->middleware(['rol:2'])->name('puntaje.show');
+
     });
 
 });

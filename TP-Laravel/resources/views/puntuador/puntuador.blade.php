@@ -1,11 +1,11 @@
 @extends('layouts/puntuador')
 
 @section('titulo')
-    Puntuador
+    Puntuador de exactitud.
 @endsection
 
 @section('encabezado')
-    Puntuador
+    Puntuador de exactitud.
 @endsection
 
 @section('contenido')
@@ -32,7 +32,7 @@
             <div class="infoCompetidor col-4">
                 <p>Competidor:{{$competidor[0]->nombre}} {{$competidor[0]->apellido}}</p>
                 <p>Poomse:{{$poomsae[0]->nombre}}</p>
-                <p>Puntaje:<span class="puntaje">{{$competencia_competidor[0]->puntaje}}</span>
+                <p>Puntaje:<span class="puntaje">4</span>
                 </p>
                 <button type="button" class="btn btn-success modalPuntuacion" data-bs-toggle="modal" data-bs-target="#modal">
                     Terminar
@@ -62,6 +62,7 @@
 
                             <input type="hidden" id="puntaje" name="puntaje">
                             <input type="hidden" id="id" name="id" value="{{$competencia_competidor[0]->idCompetenciaCompetidor}}">
+                            <input type="hidden" id="id" name="id" value="{{$competencia_juez[0]->idCompetenciaJuez}}">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
