@@ -68,10 +68,23 @@ class PuntajeController extends Controller
     }
 
     public function  puntuadorindex(){
-        $graduaciones = Graduacion::all();
         $competencias = Competencia::all();
 
-        return view('puntuador.index', compact('graduaciones','competencias'));
+        return view('puntuador.index', compact('competencias'));
+
+    }
+
+    public function iniciar_puntaje(Request $request){
+        $id_competencia = $request->input('competencia_puntuador');
+        $id_competidor = $request->input('competidor_puntuador');
+
+        $competidor = Competidor::where('idCompetidor','=',$id_competidor)->get();
+        $graduacion = Graduacion::where('idGraduacion','=',$competidor[0]->idGraduacion)->get();
+        $competencia = Competencia::where('idCompetencia','=',$id_competencia)->get();
+        $competencia_competidor = CompetenciaCompetidor::where('idCompetidor','=',$id_competidor)->where('idCompetencia','=',$id_competencia)->get();
+        $poomsae = Poomsae::where('idPoomsae','=',$competencia_competidor[0]->idPoomsae)->get();
+     
+        return view('puntuador.puntuador', ['graduacion' => $graduacion,'competencia' => $competencia,'poomsae' => $poomsae, 'competidor' => $competidor,'competencia_competidor'=>$competencia_competidor]);
 
     }
 
@@ -87,18 +100,5 @@ class PuntajeController extends Controller
         return $this->puntuadorindex();
     }
 
-        public function iniciar_puntaje(Request $request){
-        $id_graduacion = $request->input('graduacion_puntuador');
-        $id_competencia = $request->input('competencia_puntuador');
-        $id_competidor = $request->input('competidor_puntuador');
-
-        $graduacion = Graduacion::where('idGraduacion','=',$id_graduacion)->get();
-        $competencia = Competencia::where('idCompetencia','=',$id_competencia)->get();
-        $competidor = Competidor::where('idCompetidor','=',$id_competidor)->get();
-        $competencia_competidor = CompetenciaCompetidor::where('idCompetidor','=',$id_competidor)->where('idCompetencia','=',$id_competencia)->get();
-        $poomsae = Poomsae::where('idPoomsae','=',$competencia_competidor[0]->idPoomsae)->get();
-     
-        return view('puntuador.puntuador', ['graduacion' => $graduacion,'competencia' => $competencia,'poomsae' => $poomsae, 'competidor' => $competidor,'competencia_competidor'=>$competencia_competidor]);
-
-    }
+  
 }
