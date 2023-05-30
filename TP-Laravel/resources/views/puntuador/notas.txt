@@ -1,0 +1,28 @@
+Cambios:
+- la ruta que modifica el objeto ahora deberia apuntar al controlador de puntaje, ya que se creo esta tabla.
+
+Pasos: (sin considerar el reloj ni 3 jueces)
+1) El juez elige la competencia y el competidor a juzgar - Listo
+2) Se accede a la vista de "Puntuacion por exactitud" 
+3) Se accede a la vista de "Puntuacion por presentacion" (la misma que la de exactitud pero con otro puntaje)
+4) Se crea una tupla "Puntaje" con el id del juez y de competenciaCompetidor, asignandole 1 al atributo "pasada".
+5) Se muestra una vista con el puntaje de la primera pasada y un boton para ir a la puntuacion de la 2da pasada.
+6) Se repiten (2) y (3).
+7) Se repite (4) asignandole 2 al atributo "pasada"
+8) Se calcula el puntaje final y se le asigna a la tupla "competenciaCompetidor" que fue juzgada.
+9) Se muestra una vista con las opciones "Juzgar otro competidor" e "Ir a resultados".
+9.1) "Juzgar otro competidor": vuelve a (1) donde puede elegir otro competidor (no debe salir otra vez el mismo que se juzgo recien)(como hacemos eso? yo pensaba validarlo en el controladdor y mandar un error).
+9.2) "Ir a resultados": se accede a una pagina donde se veran los resultados de los competidores que ya hicieron sus pasadas.
+
+Pasos: (sin considerar el reloj pero si los 3 jueces)
+1) El juez elige la competencia a juzgar
+2) Se accede a la vista de "Puntuacion por exactitud"
+3) Se accede a la vista de "Puntuacion por presentacion" (la misma que la de exactitud pero con otro puntaje)
+4) Se crea una tupla "Puntaje" con el id del juez y de competenciaCompetidor, asignandole 1 al atributo "pasada".
+5) Cuando los 3 jueces envien sus puntajes, se desbloquea el boton para puntuar la 2da pasada.
+6) Se repiten (2) y (3).
+7) Se repite (4) asignandole 2 al atributo "pasada".
+8) Cuando los 3 jueces envien sus puntajes, se calcula el puntaje final y se le asigna a la tupla "competenciaCompetidor" que fue juzgada.
+9) Se muestra una vista con las opciones "Juzgar otro competidor" e "Ir a resultados".
+9.1) "Juzgar otro competidor": vuelve a (1) donde puede elegir otro competidor (no debe salir otra vez el mismo que se juzgo recien).
+9.2) "Ir a resultados": se accede a una pagina donde se veran los resultados de los competidores que ya hicieron sus pasadas.
