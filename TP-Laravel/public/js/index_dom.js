@@ -43,11 +43,11 @@ document.getElementById("cambiarVista_blanco").addEventListener("click", () => {
   cambio_de_tema("light")
 });
 
-$('#graduacion_puntuador').on('click', function() {
+$('#competencia_puntuador').on('click', function() {
   $.ajax({
     type:"GET",
     url: '/opciones_competidor',
-    data: { graduacion_puntuador: $('#graduacion_puntuador').val(),
+    data: {
     competencia_puntuador: $('#competencia_puntuador').val()},
     dataType: 'json',
     success: function(data) {
