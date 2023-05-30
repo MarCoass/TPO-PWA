@@ -17,7 +17,7 @@ class PuntajeController extends Controller
     public function show($id)
     {
         $puntaje = Puntaje::find($id);
-        
+
         //No se cual es la ruta jeje
         //return view('resultadoPasada', ['puntaje' => $puntaje]);
     }
@@ -27,7 +27,6 @@ class PuntajeController extends Controller
         $puntaje = new Puntaje();
         /* $puntaje->idCompetenciaCompetidor = $request['idCompetenciaCompetidor'];
         $puntaje->idCompetenciaJuez = $request['idCompetenciaJuez']; */
-        $puntaje->puntajePresentacion = $request['puntajePresentacion'];
         $puntaje->puntajePresentacion = $request['puntajePresentacion'];
         $puntaje->puntajeExactitud = $request['puntajeExactitud'];
         $puntaje->pasada = $request['pasada'];

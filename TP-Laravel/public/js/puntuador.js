@@ -15,7 +15,7 @@ $( ".pulsadorDer" ).on( "click", function() {
 $(".modalPuntuacion").on("click",function(){
     $('.competidorModal').text('aqui va el nombre del competidor')
     $('.poomseModal').text('aqui va el poomse evaluado')
-    $('.puntajeModal').text($('.puntaje').text())
-    $('#puntaje').val($('.puntaje').text());
+    $('.puntajeExactitudModal').text($('.puntajeExactitud').text())
+    $('#puntajeExactitud').val($('.puntajeExactitud').text());
     $('#modal').show();
 })
