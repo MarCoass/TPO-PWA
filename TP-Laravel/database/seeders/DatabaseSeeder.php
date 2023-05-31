@@ -1,5 +1,6 @@
 <?php
 
+use Database\Seeders\CategoriasGraduacionesTableSeeder;
 use Database\Seeders\CategoriasTableSeeder;
 use Database\Seeders\CompetidoresTableSeeder;
 use Database\Seeders\EscuelasTableSeeder;
@@ -31,6 +32,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PoomsaeTableSeeder::class);
         $this->call(CompetenciasTableSeeder::class);
         $this->call(CategoriasTableSeeder::class);
+        $this->call(CategoriasGraduacionesTableSeeder::class);
         //competenciacompetidor
     }
 }
