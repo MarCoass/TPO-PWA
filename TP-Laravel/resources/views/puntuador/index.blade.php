@@ -25,6 +25,19 @@ Iniciar Puntuador
         <div class="invalid-feedback">Seleccione una opcion valida.</div>
 </div>
 <div class="col-lg-6 col-md-12 col-sm-12  pt-3">
+    <label class="form-label" for="poomsae_puntuador">Poomsae:</label>
+    <select class="form-control validar" id="poomsae_puntuador" name="poomsae_puntuador" required>
+        <option value="" disabled selected data-error="Por favor seleccione una competencia válida">Selecciona un Poomsae.</option>
+        @foreach ($poomsae as $row)
+        <option value="{{$row->idPoomsae}}">{{$row->nombre}}</option>
+        @endforeach
+    </select>
+    <div class="valid-feedback">
+        ¡Correcto!
+    </div>
+    <div class="invalid-feedback">Seleccione una opcion valida.</div>
+</div>
+<div class="col-lg-6 col-md-12 col-sm-12  pt-3">
     <label class="form-label" for="competidor_puntuador">Competidor:</label>
     <select class="form-control validar" id="competidor_puntuador" name="competidor_puntuador" required>
         <option value="" disabled selected data-error="Por favor seleccione una graduacion válida">Selecciona un competidor.</option>

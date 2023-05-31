@@ -70,9 +70,12 @@ class PuntajeController extends Controller
 
     public function  puntuadorindex()
     {
+        //filtrar competencias por incripcion de juez
         $competencias = Competencia::all();
+        //filtrar poomsae por graduacion de competidor
+        $poomsae = Poomsae::all();
 
-        return view('puntuador.index', compact('competencias'));
+        return view('puntuador.index', compact('competencias', 'poomsae'));
     }
 
     public function iniciar_puntaje(Request $request)
@@ -81,15 +84,19 @@ class PuntajeController extends Controller
 
         $id_competencia = $request->input('competencia_puntuador');
         $id_competidor = $request->input('competidor_puntuador');
+        $id_pomsae = $request->input('poomsae_puntuador');
 
 
         $competidor = Competidor::where('idCompetidor', '=', $id_competidor)->get();
-        $graduacion = Graduacion::where('idGraduacion', '=', $competidor[0]->idGraduacion)->get();
+        //$categoria_graduacion = Graduacion::leftJoin('categoriagraduacion', 'graduaciones.idGraduacion', '=', 'categoriagraduacion.idGraduacion')
+        //    ->where('categoriagraduacion.idGraduacion', '=', $competidor[0]->idGraduacion)->get();
         $competencia = Competencia::where('idCompetencia', '=', $id_competencia)->get();
+        $graduacion = Graduacion::where('idGraduacion', '=', $competidor[0]->idGraduacion)->get();
         $competencia_competidor = CompetenciaCompetidor::where('idCompetidor', '=', $id_competidor)->where('idCompetencia', '=', $id_competencia)->get();
-        $poomsae = Poomsae::where('idPoomsae', '=', $competencia_competidor[0]->idPoomsae)->get();
+        $poomsae = Poomsae::where('idPoomsae', '=', $id_pomsae)->get();
+    
 
-        $existePrimeraPasada = Puntaje::where('idCompetenciaCompetidor', "=", $competencia_competidor->idCompetenciaCompetidor)->where('idCompetenciaJuez', "=", "2")->get()!=null;
+        $existePrimeraPasada = Puntaje::where('idCompetenciaCompetidor', "=", $competencia_competidor[0]->idCompetenciaCompetidor)->where('idCompetenciaJuez', "=", "2")->get()!=null;
         $pasada = $existePrimeraPasada? 2 : 1;
         return view('puntuador.puntuador', ['graduacion' => $graduacion, 'competencia' => $competencia, 'poomsae' => $poomsae, 'competidor' => $competidor, 'competencia_competidor' => $competencia_competidor, 'competencia_juez' => '2', 'pasada'=>$pasada]);
     }
