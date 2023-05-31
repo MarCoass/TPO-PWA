@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\RegisterRequest;
+use App\Models\Escuela;
 
 class RegistroController extends Controller
 {
@@ -15,7 +16,8 @@ class RegistroController extends Controller
      */
     public function show()
     {
-        return view('auth.registro');
+        $escuelas = Escuela::all();
+        return view('auth.registro', compact('escuelas'));
     }
 
     /**

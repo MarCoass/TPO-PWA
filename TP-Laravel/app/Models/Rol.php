@@ -11,7 +11,7 @@ class Rol extends Model
 
     protected $table = 'roles'; // Nombre de la tabla asociada al modelo
 
-    protected $primaryKey = 'idRol';
+    protected $primaryKey = 'id';
 
     protected $fillable = ['nombreRol']; // Atributos
 

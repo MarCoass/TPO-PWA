@@ -29,11 +29,13 @@ return new class extends Migration
             $table->string('password');
             $table->unsignedBigInteger('idRol')->nullable();
             $table->boolean('estado')->default(false);
+            $table->unsignedBigInteger('idEscuela')->nullable();
             /* $table->unsignedBigInteger('idRol'); */
             $table->rememberToken();
             $table->timestamps();
 
             $table->foreign('idRol')->references('id')->on('roles');
+            $table->foreign('idEscuela')->references('idEscuela')->on('escuelas');
         });
     }
 
