@@ -171,6 +171,6 @@ transform: translateX(0);
   /* PANTALLA PEQUEÑA*/
 }
 
-#botonesBasicos {
- width: 295px;  
+.boton-container {
+  margin-right: 8px;
 }
