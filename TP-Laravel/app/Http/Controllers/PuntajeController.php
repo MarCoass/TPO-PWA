@@ -21,7 +21,9 @@ class PuntajeController extends Controller
     public function show($id)
     {
         $puntaje = Puntaje::find($id);
-        return view('puntuador/verPuntaje', compact('puntaje'));
+        $competencia_competidor = CompetenciaCompetidor::find($puntaje->idCompetenciaCompetidor);
+        $competidor = Competidor::find($competencia_competidor->idCompetidor);
+        return view('puntuador/verPuntaje', ['puntaje'=>$puntaje, 'competidor'=>$competidor]);
     }
 
     public function store(Request $request)
