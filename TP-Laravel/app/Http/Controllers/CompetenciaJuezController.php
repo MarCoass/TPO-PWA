@@ -44,7 +44,10 @@ class CompetenciaJuezController extends Controller
 
     public function listarJuecesPorIdCompetencia($id)
     {
-        $competencia_juez = CompetenciaJuez::where('idCompetencia', $id)->get();
+        
+        $competencia_juez = CompetenciaJuez::select('competenciajueces.*', 'users.nombre','users.apellido','users.id')
+        ->join('users', 'competenciajueces.idJuez', '=', 'users.id')
+        ->get();
         $nombreCompetencia = Competencia::find($id);
 
         return view('tablaCompetenciaJueces.index', ['JuecesCompetencia' => $competencia_juez, 'nombreCompetencia' => $nombreCompetencia]);

@@ -32,7 +32,7 @@ Gestion de Jueces de la competencia
             <td>{{ ($row->estado == 0) ? 'Sin Habilitar' : 'Habilitado' }}</td>
             <td>
                 @if ($row->estado == 0)
-                <a href="{{ route('habilitar_juez', ['id' => $row->id ]) }}" class="btn btn-outline-success"><i class="bi bi-check2-square me-2"></i>Habilitar</a>
+                <a href="{{ route('habilitar_juez', ['id' => $row->idCompetenciaJuez ]) }}" class="btn btn-outline-success"><i class="bi bi-check2-square me-2"></i>Habilitar</a>
                 @endif
             </td>
         </tr>
