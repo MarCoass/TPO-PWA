@@ -73,7 +73,10 @@ class PuntajeController extends Controller
     public function  puntuadorindex()
     {
         //filtrar competencias por incripcion de juez
-        $competencias = Competencia::all();
+        $user = auth()->user();
+        $competencias = Competencia::select('competencias.*')
+        ->join('competenciajueces', 'competencias.idCompetencia', '=', 'competenciajueces.idCompetencia')->where('competenciajueces.idJuez','=',$user->id)->where('competenciajueces.estado','=','1')->get();
+
         //filtrar poomsae por graduacion de competidor
         $poomsae = Poomsae::all();
 
