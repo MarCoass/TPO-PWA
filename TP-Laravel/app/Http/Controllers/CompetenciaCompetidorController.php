@@ -7,6 +7,7 @@ use App\Models\Competencia;
 use App\Models\Poomsae;
 use App\Models\CompetenciaCompetidor;
 use Illuminate\Http\Request;
+use App\Models\Puntaje;
 
 class CompetenciaCompetidorController extends Controller
 {
@@ -64,5 +65,28 @@ class CompetenciaCompetidorController extends Controller
         $nombreCompetencia = Competencia::find($id);
 
         return view('tablaCompetenciaCompetidores.index_CompetenciaCompetidores', ['competidoresCompetencia' => $competidoresCompetencia, 'nombreCompetencia' => $nombreCompetencia]);
+    }
+
+    public function puntajeFinal($id){
+        $CompetidorCompetencia = CompetenciaCompetidor::find($id);
+
+        //busca las 2 pasadas
+        $primeraPasada = Puntaje::where('idCompetenciaCompetidor', '=', $CompetidorCompetencia->idCompetenciaCompetidor)->where('pasada', '=', '1')->first();
+        $segundaPasada = Puntaje::where('idCompetenciaCompetidor', '=', $CompetidorCompetencia->idCompetenciaCompetidor)->where('pasada', '=', '2')->first();
+        
+        //calcula el puntaje de exactitud
+        $exactitud = ($primeraPasada->puntajeExactitud + $segundaPasada->puntajeExactitud)/2;
+
+        //calcula el puntaje de presentacion
+        $presentacion = ($primeraPasada->puntajePresentacion + $segundaPasada->puntajePresentacion)/2;
+
+        $total = $exactitud + $presentacion;
+
+        //le asigno el total al competidorCompetencia
+        $CompetidorCompetencia->puntaje = $total;
+
+        $competidor = Competidor::find($CompetidorCompetencia->idCompetidor);
+        return view('puntuador/puntajeFinal', ['competenciaCompetidor'=>$CompetidorCompetencia, 'primeraPasada'=>$primeraPasada, 'segundaPasada'=>$segundaPasada, 'competidor'=>$competidor]);
+    
     }
 }
