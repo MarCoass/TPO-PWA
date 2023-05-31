@@ -84,6 +84,7 @@ class CompetenciaCompetidorController extends Controller
 
         //le asigno el total al competidorCompetencia
         $CompetidorCompetencia->puntaje = $total;
+        $CompetidorCompetencia->save();
 
         $competidor = Competidor::find($CompetidorCompetencia->idCompetidor);
         return view('puntuador/puntajeFinal', ['competenciaCompetidor'=>$CompetidorCompetencia, 'primeraPasada'=>$primeraPasada, 'segundaPasada'=>$segundaPasada, 'competidor'=>$competidor]);
