@@ -1,5 +1,6 @@
 <?php
 
+use Database\Seeders\CategoriasTableSeeder;
 use Database\Seeders\CompetidoresTableSeeder;
 use Database\Seeders\EscuelasTableSeeder;
 use Database\Seeders\EstadosTableSeeder;
@@ -29,6 +30,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CompetidoresTableSeeder::class);
         $this->call(PoomsaeTableSeeder::class);
         $this->call(CompetenciasTableSeeder::class);
+        $this->call(CategoriasTableSeeder::class);
         //competenciacompetidor
     }
 }
