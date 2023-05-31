@@ -17,11 +17,11 @@
 
               <div id="botonesBasicos" class="d-flex justify-content-between align-items-center">
 
-                <div > 
+                <div class="boton-container" > 
                     <a  href="{{ route('verPerfil') }}" class="btn btn-outline-dark"><i class="bi bi-person me-1"></i>{{auth()->user()->usuario}}</a> 
                 </div>
                   
-                <div >
+                <div class="boton-container">
                     <a href="{{ route('logout.perform') }}" class="btn btn-outline-dark"><i class="bi bi-door-open me-1"></i>Cerrar Sesion</a>
                 </div>
 

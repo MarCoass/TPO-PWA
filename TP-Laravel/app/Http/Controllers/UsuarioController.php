@@ -28,25 +28,36 @@ class UsuarioController extends Controller
 
     public function store(Request $request)
     {
-        $usuario = new User();
-        $usuario->nombre = $request->input('nombre');
-        $usuario->apellido = $request->input('apellido');
-        $usuario->usuario = $request->input('usuario');
-        $usuario->correo = $request->input('correo');
-        $usuario->password = $request->input('clave');
-        $usuario->estado = true;
+        try{
+            $request->validate($this->rules());
 
-        // Rol
-        $rol = Rol::find($request->input('rol'));
-        $usuario->rol()->associate($rol);
+            $usuario = new User();
+            $usuario->nombre = $request->input('nombre');
+            $usuario->apellido = $request->input('apellido');
+            $usuario->usuario = $request->input('usuario');
+            $usuario->correo = $request->input('correo');
+            $usuario->password = $request->input('clave');
+            $usuario->estado = true;
+    
+            // Rol
+            $rol = Rol::find($request->input('rol'));
+            $usuario->rol()->associate($rol);
+    
+            // Escuela
+            $escuela = Escuela::find($request->input('idEscuela'));
+            $usuario->escuela()->associate($escuela);
+    
+            $usuario->save();
+    
+            return redirect()->route('index_usuarios')->with('success', 'Usuario creado exitosamente.');
+        }catch (\Illuminate\Validation\ValidationException $e){
+            return redirect()
+                    ->route('create_usuario')
+                    ->withErrors($e->errors())
+                    ->withInput();
+        }
 
-        // Escuela
-        $escuela = Escuela::find($request->input('idEscuela'));
-        $usuario->escuela()->associate($escuela);
-
-        $usuario->save();
-
-        return redirect()->route('index_usuarios')->with('success', 'Usuario creado exitosamente.');
+       
     }
 
     public function show($id)
@@ -65,28 +76,36 @@ class UsuarioController extends Controller
 
     public function update(Request $request, $id)
     {
-        $usuario = User::find($id);
-        $usuario->nombre = $request->input('nombre');
-        $usuario->apellido = $request->input('apellido');
-        $usuario->usuario = $request->input('usuario');
-        $usuario->correo = $request->input('correo');
+        try{
+            $request->validate($this->rulesEditar($id));
 
-        // Rol
-        $rol = Rol::find($request->input('rol'));
-        $usuario->rol()->associate($rol);
-
-        // Si es admin, no tiene escuela
-        if($request->input('rol') == 1){
-            $usuario->idEscuela = null;
-        }else{
-            // Escuela
-            $escuela = Escuela::find($request->input('idEscuela'));
-            $usuario->escuela()->associate($escuela);
+            $usuario = User::find($id);
+            $usuario->nombre = $request->input('nombre');
+            $usuario->apellido = $request->input('apellido');
+            $usuario->usuario = $request->input('usuario');
+            $usuario->correo = $request->input('correo');
+    
+            // Rol
+            $rol = Rol::find($request->input('rol'));
+            $usuario->rol()->associate($rol);
+    
+            // Si es admin, no tiene escuela
+            if($request->input('rol') == 1){
+                $usuario->idEscuela = null;
+            }else{
+                // Escuela
+                $escuela = Escuela::find($request->input('idEscuela'));
+                $usuario->escuela()->associate($escuela);
+            }
+    
+            $usuario->save();
+    
+            return redirect()->route('index_usuarios')->with('success', 'Usuario actualizado exitosamente.');
+        }catch (\Illuminate\Validation\ValidationException $e){
+            return redirect('edit_usuario/' . $id)
+                    ->withErrors($e->errors());
         }
-
-        $usuario->save();
-
-        return redirect()->route('index_usuarios')->with('success', 'Usuario actualizado exitosamente.');
+        
     }
 
     public function habilitar($id){
@@ -185,6 +204,29 @@ class UsuarioController extends Controller
         }
 
         return redirect()->route('verPerfil')->with($arregloMensaje['tipo'], $arregloMensaje['mensaje']);
+    }
+
+    public function rules(){
+        return [
+            'nombre' => 'required|max:50|string',
+            'apellido' => 'required|max:50|string',
+            'usuario' => 'required|unique:users,usuario|max:50',
+            'correo' => 'required|email:rfc,dns|unique:users,correo',
+            'password' => 'required|min:8',
+            'confirmacion_clave' => 'required|same:password',
+            'rol' => 'required'
+        ];
+    }
+
+    
+    public function rulesEditar($id){
+        return [
+            'nombre' => 'required|max:50|string',
+            'apellido' => 'required|max:50|string',
+            'usuario' => 'required|unique:users,usuario,'. $id .'|max:50',
+            'correo' => 'required|email:rfc,dns|unique:users,correo, '. $id,
+            'rol' => 'required'
+        ];
     }
 
 
