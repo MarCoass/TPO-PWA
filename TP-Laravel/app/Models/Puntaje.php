@@ -14,7 +14,7 @@ class Puntaje extends Model
 
     protected $fillable = ['idCompetenciaCompetidor', 'idCompetenciaJuez', 'puntajePresentacion', 'puntajeExactitud', 'pasada', 'overtime'];
 
-    public function competenciaCompetidor()
+    /* public function competenciaCompetidor()
     {
         return $this->hasMany(CompetenciaCompetidor::class, 'idCompetenciaCompetidor');
     }
@@ -23,5 +23,15 @@ class Puntaje extends Model
     public function competenciaJuez()
     {
         return $this->hasMany(CompetenciaJuez::class, 'idCompetenciaJuez');
+    } */
+
+    public function competenciaCompetidor()
+    {
+        return $this->belongsTo(CompetenciaCompetidor::class, 'idCompetenciaCompetidor', 'idCompetenciaCompetidor');
+    }
+    
+    public function competenciaJuez()
+    {
+        return $this->belongsTo(CompetenciaCompetidor::class, 'idCompetenciaJuez', 'idCompetenciaJuez');
     }
 }

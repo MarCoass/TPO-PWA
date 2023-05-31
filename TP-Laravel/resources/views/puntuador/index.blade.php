@@ -7,7 +7,7 @@ Iniciar Puntuador
 @section('encabezado')
 Iniciar Puntuador
 @endsection
-
+@include('layouts.partials.messages')
 @section('contenido')
 <form class="m-5 row" method="post" action="{{ url('/iniciar_puntaje') }}">
     @csrf

@@ -28,4 +28,10 @@ class CompetenciaCompetidor extends Model
     {
         return $this->belongsTo(Poomsae::class, 'idPoomsae', 'idPoomsae');
     }
+
+    public function puntajes()
+    {
+        return $this->hasMany(Puntaje::class,  'idPuntaje', 'idPuntaje');
+    }
+    
 }

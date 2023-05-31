@@ -23,7 +23,7 @@ class PuntajeController extends Controller
         $puntaje = Puntaje::find($id);
 
         //No se cual es la ruta jeje
-        //return view('resultadoPasada', ['puntaje' => $puntaje]);
+        return view('resultadoPasada', compact('puntaje'));
     }
 
     public function store(Request $request)
@@ -41,8 +41,9 @@ class PuntajeController extends Controller
         $puntaje->competenciaCompetidor()->associate($idCompetenciaCompetidor);
 
         //busco el obj competenciajuez
-        $competenciaJuez = CompetenciaJuez::find($request['idCompetenciaJuez']);
+        $competenciaJuez = CompetenciaJuez::find(1);
         $puntaje->competenciaJuez()->associate($competenciaJuez);
+
 
         //guardo el nuevo puntaje
         $puntaje->save();
@@ -50,8 +51,8 @@ class PuntajeController extends Controller
         //busco el id para la ruta show
         $puntajeId = $puntaje->id;
 
-        //redirecciono a la vista de paso (5) (ver notas.txt de puntuador);
-        return redirect()->route('puntaje.show', ['id' => $puntajeId]);
+
+         return redirect()->route('puntuador_index')->with('success', 'Puntaje creado exitosamente.');
     }
 
     public function update(Request $request, $id)
@@ -83,8 +84,9 @@ class PuntajeController extends Controller
         $competencia = Competencia::where('idCompetencia','=',$id_competencia)->get();
         $competencia_competidor = CompetenciaCompetidor::where('idCompetidor','=',$id_competidor)->where('idCompetencia','=',$id_competencia)->get();
         $poomsae = Poomsae::where('idPoomsae','=',$competencia_competidor[0]->idPoomsae)->get();
+
      
-        return view('puntuador.puntuador', ['graduacion' => $graduacion,'competencia' => $competencia,'poomsae' => $poomsae, 'competidor' => $competidor,'competencia_competidor'=>$competencia_competidor]);
+        return view('puntuador.puntuador', ['graduacion' => $graduacion,'competencia' => $competencia,'poomsae' => $poomsae, 'competidor' => $competidor,'competencia_competidor'=>$competencia_competidor,'competencia_juez'=>'2']);
 
     }
 

@@ -31,10 +31,13 @@
             </div>
             <div class="infoCompetidor col-4">
                 <p>Competidor:{{$competidor[0]->nombre}} {{$competidor[0]->apellido}}</p>
-                <p>Poomse:{{$poomsae[0]->nombre}}</p>
-                <p>Puntaje:<span class="puntaje">{{$competencia_competidor[0]->puntaje}}</span>
+                <p>Poomse:(todavia no hay)</p>
+                <p>Puntaje:<span class="puntaje">4</span>
                 </p>
-                <button type="button" class="btn btn-success modalPuntuacion" data-bs-toggle="modal" data-bs-target="#modal">
+                <button type="button" class="btn btn-success" id="siguientePuntuacion">
+                    Siguiente
+                </button>
+                <button type="button" class="btn btn-success d-none" data-bs-toggle="modal" data-bs-target="#modal" id="terminarPuntuacion">
                     Terminar
                 </button>
             </div>
@@ -46,7 +49,7 @@
             <!-- Modal -->
             <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
                 <div class="modal-dialog text-dark">
-                    <form method="POST" action="{{ route('actualizar_puntaje') }}">
+                    <form method="POST" action="{{ route('puntaje.store') }}">
                       
                         <div class="modal-content">
                         <div class="modal-header">
@@ -56,12 +59,18 @@
                         @csrf
                         <!--ESTO DEBERIA SER UN FORM PROBABLEMENTE-->
                         <div class="modal-body">
-                            <p>Competidor: <span class="competidorModal"></span> </p>
-                            <p>Poomse: <span class="poomseModal"></span></p>
-                            <p>Puntaje: <span class="puntajeModal"></span></p>
+                            <p>Competidor: {{$competidor[0]->nombre}} {{$competidor[0]->apellido}}</span> </p>
+                            <p>Poomse: (todavia no hay)</p>
+                            <p>Puntaje exactitud: <span class="puntajeExactitudModal"></span></p>
+                            <p>Puntaje presentacion: <span class="puntajePresentacionModal"></span></p>
 
-                            <input type="hidden" id="puntaje" name="puntaje">
-                            <input type="hidden" id="id" name="id" value="{{$competencia_competidor[0]->idCompetenciaCompetidor}}">
+                            <input type="hidden" id="puntajeExactitudInput" name="puntajeExactitud">
+                            <input type="hidden" id="puntajePresentacionInput" name="puntajePresentacion">
+                            <input type="hidden" id="pasada" name="pasada" value='1'>
+                            <input type="hidden" id="overtime" name="overtime" value='0'>
+                            <input type="hidden" id="idCompetenciaCompetidor" name="idCompetenciaCompetidor" value='{{$competencia_competidor[0]->idCompetenciaCompetidor}}'>
+                            <input type="hidden" id="idCompetenciaJuez" name="idCompetenciaJuez" value='{{$competencia_juez}}'>
+                            
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>

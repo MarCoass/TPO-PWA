@@ -117,6 +117,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::post('/iniciar_puntaje', [PuntajeController::class, 'iniciar_puntaje'])->middleware(['rol:2'])->name('iniciar_puntaje');
         Route::post('/actualizar_puntaje', [PuntajeController::class, 'actualizar_puntaje'])->middleware(['rol:2'])->name('actualizar_puntaje');
         
+        Route::post('/cargarPuntaje', [PuntajeController::class, 'store'])->middleware(['rol:2'])->name('puntaje.store');
+        Route::get('/puntajePasada/{id}', [PuntajeController::class, 'show'])->middleware(['rol:2'])->name('puntaje.show');
+        
     });
 
 });
