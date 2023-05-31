@@ -15,6 +15,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CompetenciaCompetidorController;
+use App\Http\Controllers\CompetenciaJuezController;
 use App\Http\Controllers\PuntajeController;
 use App\Models\CompetenciaCompetidor;
 
@@ -104,6 +105,10 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         /* lista competidores de una competencia */
         Route::get('/competidoresCompetencia/{id}', [CompetenciaCompetidorController::class, 'listarCompetidoresPorId'])->middleware(['rol:1'])->name('tabla_competidores');
         Route::get('/habilitar_competidor/{id}', [CompetenciaCompetidorController::class, 'habilitar'])->middleware(['rol:1'])->name('habilitar_competidor');
+
+        /* lista jueces de una competencia */
+        Route::get('/JuezCompetencia/{id}', [CompetenciaJuezController::class, 'listarJuecesPorIdCompetencia'])->middleware(['rol:1'])->name('tabla_jueces');
+        Route::get('/habilitar_juez/{id}', [CompetenciaJuezController::class, 'habilitar'])->middleware(['rol:1'])->name('habilitar_juez');
 
         /* rutas para jueces y administradores */
         Route::get('/cronometro', function () {return view('reloj.cronometro');})->middleware(['rol:1,2']);

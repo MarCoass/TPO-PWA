@@ -39,12 +39,15 @@ class CompetenciaJuezController extends Controller
         $competencia_juez->estado = 1;
         $competencia_juez->save();
 
-        return redirect()->route('tabla_competidores', ['id' => $competencia_juez->idCompetencia])->with('success', 'Juez habilitado exitosamente.');
+        return redirect()->route('tabla_jueces', ['id' => $competencia_juez->idCompetencia])->with('success', 'Juez habilitado exitosamente.');
     }
 
-    public function listarJuecesPorId($id)
+    public function listarJuecesPorIdCompetencia($id)
     {
-        $competencia_juez = CompetenciaJuez::where('idCompetencia', $id)->get();
+        
+        $competencia_juez = CompetenciaJuez::select('competenciajueces.*', 'users.nombre','users.apellido','users.id')
+        ->join('users', 'competenciajueces.idJuez', '=', 'users.id')
+        ->get();
         $nombreCompetencia = Competencia::find($id);
 
         return view('tablaCompetenciaJueces.index', ['JuecesCompetencia' => $competencia_juez, 'nombreCompetencia' => $nombreCompetencia]);
