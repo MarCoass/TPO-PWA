@@ -25,7 +25,7 @@ return new class extends Migration
 
             $table->foreign('idCompetidor')->references('idCompetidor')->on('competidores');
             $table->foreign('idCompetencia')->references('idCompetencia')->on('competencias');
-            $table->foreign('idCategoria')->references('idCategoria')->on('categrias');
+            $table->foreign('idCategoria')->references('idCategoria')->on('categorias');
 
         });
     }
@@ -43,7 +43,7 @@ return new class extends Migration
         Schema::table('competencias', function (Blueprint $table) {
             $table->dropForeign(['idCompetencia']);
         });
-        Schema::table('categrias', function (Blueprint $table) {
+        Schema::table('categorias', function (Blueprint $table) {
             $table->dropForeign(['idCategoria']);
         });
         Schema::dropIfExists('competenciacompetidor');

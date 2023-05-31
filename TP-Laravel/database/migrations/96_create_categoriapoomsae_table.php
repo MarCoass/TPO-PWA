@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('categoriaGraduacion', function (Blueprint $table) {
-            $table->id('idCategoriaGraduacion');
+        Schema::create('categoriaPoomsae', function (Blueprint $table) {
+            $table->id('idCategoriaPoomsae');
             $table->unsignedBigInteger('idCategoria');
-            $table->unsignedBigInteger('idGraduacion');
+            $table->unsignedBigInteger('idPoomsae');
             $table->timestamps();
 
             $table->foreign('idCategoria')->references('idCategoria')->on('categorias');
-            $table->foreign('idGraduacion')->references('idGraduacion')->on('graduaciones');
+            $table->foreign('idPoomsae')->references('idPoomsae')->on('poomsae');
         });
     }
 
@@ -34,10 +34,10 @@ return new class extends Migration
         Schema::table('categorias', function (Blueprint $table) {
             $table->dropForeign(['idCategoria']);
         });
-        Schema::table('graduaciones', function (Blueprint $table) {
-            $table->dropForeign(['idGraduacion']);
+        Schema::table('poomsae', function (Blueprint $table) {
+            $table->dropForeign(['idPoomsae']);
         });
 
-        Schema::dropIfExists('categoriaGraduacion');
+        Schema::dropIfExists('categoriaPoomsae');
     }
 };

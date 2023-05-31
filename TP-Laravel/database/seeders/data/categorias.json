@@ -1,0 +1,33 @@
+[
+    {
+        "nombre": "Juveniles",
+        "edadMax": "17",
+        "edadMin": "15",
+        "genero": "0",
+        "esElite": "0"
+    },
+
+    {
+        "nombre": "Senior 1",
+        "edadMax": "18",
+        "edadMin": "30",
+        "genero": "0",
+        "esElite": "0"
+    },
+
+    {
+        "nombre": "Senior1-Master1",
+        "edadMax": "31",
+        "edadMin": "50",
+        "genero": "0",
+        "esElite": "0"
+    },
+
+    {
+        "nombre": "Master 2",
+        "edadMax": "-1",
+        "edadMin": "51",
+        "genero": "0",
+        "esElite": "0"
+    }
+]
