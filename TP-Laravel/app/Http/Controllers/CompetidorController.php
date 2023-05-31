@@ -93,7 +93,7 @@ class CompetidorController extends Controller
 
         // Devolver una respuesta JSON
         // return response()->json($data, 200);
-        return redirect('/')->with('success', "Se ha inscripto correctamente");
+        return redirect('/')->with('success', "Se ha inscripto correctamente. Quedó en espera de verificación.");
     }
 
     public function show($id)
