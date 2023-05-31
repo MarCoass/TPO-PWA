@@ -24,7 +24,8 @@ class usuariosTableSeeder extends Seeder
                 'correo' => 'competidor@example.com',
                 'password' => 'competidor',
                 'idRol' => 3,
-                'estado' => true
+                'estado' => true,
+                'idEscuela' => 4
             ],
             [
                 'nombre' => 'Juez',
@@ -33,7 +34,8 @@ class usuariosTableSeeder extends Seeder
                 'correo' => 'juez@example.com',
                 'password' => 'juez',
                 'idRol' => 2,
-                'estado' => true
+                'estado' => true,
+                'idEscuela' => 7
             ],
             [
                 'nombre' => 'Administrador',
@@ -42,7 +44,8 @@ class usuariosTableSeeder extends Seeder
                 'correo' => 'administrador@example.com',
                 'password' => 'administrador',
                 'idRol' => 1,
-                'estado' => true
+                'estado' => true,
+                'idEscuela' => null
             ],
             [
                 'nombre' => 'Gustavo',
@@ -51,7 +54,8 @@ class usuariosTableSeeder extends Seeder
                 'correo' => 'gusOliveros@example.com',
                 'password' => 'GusOliveros',
                 'idRol' => 3,
-                'estado' => false
+                'estado' => false,
+                'idEscuela' => 15
             ]
         ];
 
@@ -65,7 +69,8 @@ class usuariosTableSeeder extends Seeder
                 'correo' => $usuario['correo'],
                 'password' => $usuario['password'],
                 'idRol' => $usuario['idRol'],
-                'estado' => $usuario['estado']
+                'estado' => $usuario['estado'],
+                'idEscuela' => $usuario['idEscuela']
             ]);
         }
     }

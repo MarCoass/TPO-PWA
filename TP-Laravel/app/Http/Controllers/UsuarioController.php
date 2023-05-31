@@ -8,6 +8,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Rol;
+use App\Models\Escuela;
 use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
@@ -20,7 +21,9 @@ class UsuarioController extends Controller
 
     public function create()
     {
-        return view('gestionUsuarios.create_usuario');
+        $escuelas = Escuela::all();
+        $roles = Rol::all();
+        return view('gestionUsuarios.create_usuario', compact('escuelas', 'roles'));
     }
 
     public function store(Request $request)
@@ -31,7 +34,15 @@ class UsuarioController extends Controller
         $usuario->usuario = $request->input('usuario');
         $usuario->correo = $request->input('correo');
         $usuario->password = $request->input('clave');
-        $usuario->idRol = $request->input('rol');
+        $usuario->estado = true;
+
+        // Rol
+        $rol = Rol::find($request->input('rol'));
+        $usuario->rol()->associate($rol);
+
+        // Escuela
+        $escuela = Escuela::find($request->input('idEscuela'));
+        $usuario->escuela()->associate($escuela);
 
         $usuario->save();
 
@@ -47,7 +58,9 @@ class UsuarioController extends Controller
     public function edit($id)
     {
         $usuario = User::find($id);
-        return view('gestionUsuarios.edit_usuario', compact('usuario'));
+        $escuelas = Escuela::all();
+        $roles = Rol::all();
+        return view('gestionUsuarios.edit_usuario', compact('usuario', 'escuelas', 'roles'));
     }
 
     public function update(Request $request, $id)
@@ -57,8 +70,20 @@ class UsuarioController extends Controller
         $usuario->apellido = $request->input('apellido');
         $usuario->usuario = $request->input('usuario');
         $usuario->correo = $request->input('correo');
-        $usuario->password = $request->input('clave');
-        $usuario->idRol = $request->input('rol');
+
+        // Rol
+        $rol = Rol::find($request->input('rol'));
+        $usuario->rol()->associate($rol);
+
+        // Si es admin, no tiene escuela
+        if($request->input('rol') == 1){
+            $usuario->idEscuela = null;
+        }else{
+            // Escuela
+            $escuela = Escuela::find($request->input('idEscuela'));
+            $usuario->escuela()->associate($escuela);
+        }
+
         $usuario->save();
 
         return redirect()->route('index_usuarios')->with('success', 'Usuario actualizado exitosamente.');

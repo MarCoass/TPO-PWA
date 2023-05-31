@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Escuela;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Rol;
 
@@ -27,7 +28,7 @@ class User extends Authenticatable
      */
 /*     protected $fillable = ['nombre', 'apellido', 'usuario', 'correo', 'clave', 'idRol']; // Atributos
  */
-    protected $fillable = ['id', 'nombre', 'apellido', 'usuario', 'correo', 'password', 'idRol', 'estado']; // Atributos
+    protected $fillable = ['id', 'nombre', 'apellido', 'usuario', 'correo', 'password', 'idRol', 'estado', 'idEscuela']; // Atributos
 
     /**
      * The attributes that should be hidden for serialization.
@@ -64,7 +65,7 @@ class User extends Authenticatable
     // Relación con la clase Rol y clave foránea
     public function rol()
     {
-        return $this->belongsTo(Rol::class);
+        return $this->belongsTo(Rol::class, 'idRol');
     }
 
     public function tieneRol($rol)
@@ -76,6 +77,12 @@ class User extends Authenticatable
     public function competidor()
     {
     return $this->hasMany(Competidor::class, 'id', 'idUser');
+    }
+
+    // Relación con la clase Escuela
+    public function escuela()
+    {
+        return $this->belongsTo(Escuela::class, 'idEscuela');
     }
 
 

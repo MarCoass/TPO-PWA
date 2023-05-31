@@ -22,6 +22,7 @@ Gestion de Usuarios
             <th>Apellido</th>
             <th>Usuario</th>
             <th>Correo</th>
+            <th>Escuela</th>
             <th>Estado</th>
             <th>Rol</th>
             <th>Acciones</th>
@@ -35,6 +36,7 @@ Gestion de Usuarios
             <td>{{ $user->apellido }}</td>
             <td>{{ $user->usuario}}</td>
             <td>{{ $user->correo }}</td>
+            <td>{{ (isset($user->escuela) ? $user->escuela->nombre : 'N/A') }}</td>
             <td>{{ ($user->estado == 0) ? 'Sin Verificar' : 'Verificado' }}</td>
             <td>
                 {{ ($user->idRol == 1) ? 'Administrador' : '' }}

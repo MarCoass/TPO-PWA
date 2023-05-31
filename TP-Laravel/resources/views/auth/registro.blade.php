@@ -62,6 +62,23 @@ Registro
             @endif
         </div>
 
+        <div class="form-group form-floating col-12 mb-3">
+            <select name="idEscuela" id="idEscuela" class="form-select" required>
+                @if(!isset($escuelas) || empty($escuelas))
+                    <option value="" selected>No hay escuelas cargadas. Contactar administrador.</option>
+                @else
+                    <option value="" selected></option>
+                    @foreach($escuelas as $escuela)
+                        <option value="{{ $escuela->idEscuela }}">{{ $escuela->nombre }}</option>
+                    @endforeach
+                @endif
+            </select>
+            <label for="floatingSelect" class="mx-2">Seleccionar escuela</label>
+            @if ($errors->has('idEscuela'))
+                <span class="text-danger text-left">{{ $errors->first('idEscuela') }}</span>
+            @endif
+        </div>
+
        {{--  <div class="form-group form-floating col-6 mb-3">
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="idRol" id="idRol1" value="3" checked>
