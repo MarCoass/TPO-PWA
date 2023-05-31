@@ -29,19 +29,19 @@ class PuntajeController extends Controller
     public function store(Request $request)
     {
         $puntaje = new Puntaje();
-        /* $puntaje->idCompetenciaCompetidor = $request['idCompetenciaCompetidor'];
-        $puntaje->idCompetenciaJuez = $request['idCompetenciaJuez']; */
-        $puntaje->puntajePresentacion = $request['puntajePresentacion'];
-        $puntaje->puntajeExactitud = $request['puntajeExactitud'];
-        $puntaje->pasada = $request['pasada'];
-        $puntaje->overtime = $request['overtime'];
+        $puntaje->idCompetenciaCompetidor = $request->input('idCompetenciaCompetidor');
+        $puntaje->idCompetenciaJuez = $request->input('idCompetenciaJuez');
+        $puntaje->puntajePresentacion = $request->input('puntajePresentacion');
+        $puntaje->puntajeExactitud = $request->input('puntajeExactitud');
+        $puntaje->pasada = $request->input('pasada');
+        $puntaje->overtime = $request->input('overtime');
 
         //busco el obj competenciaCompetidor
-        $idCompetenciaCompetidor = CompetenciaCompetidor::find($request['idCompetenciaCompetidor']);
+        $idCompetenciaCompetidor = CompetenciaCompetidor::find($request->input('idCompetenciaCompetidor'));
         $puntaje->competenciaCompetidor()->associate($idCompetenciaCompetidor);
 
         //busco el obj competenciajuez
-        $competenciaJuez = CompetenciaJuez::find(1);
+        $competenciaJuez = CompetenciaJuez::find($request->input('idCompetenciaJuez'));
         $puntaje->competenciaJuez()->associate($competenciaJuez);
 
 
