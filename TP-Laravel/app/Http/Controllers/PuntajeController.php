@@ -21,9 +21,7 @@ class PuntajeController extends Controller
     public function show($id)
     {
         $puntaje = Puntaje::find($id);
-
-        //No se cual es la ruta jeje
-        return view('resultadoPasada', compact('puntaje'));
+        return view('puntuador/verPuntaje', compact('puntaje'));
     }
 
     public function store(Request $request)
@@ -49,10 +47,10 @@ class PuntajeController extends Controller
         $puntaje->save();
 
         //busco el id para la ruta show
-        $puntajeId = $puntaje->id;
+        $puntajeId = $puntaje->idPuntaje;
 
 
-         return redirect()->route('puntuador_index')->with('success', 'Puntaje creado exitosamente.');
+         return redirect()->route('puntuador.show', ['puntaje' => $puntajeId]);
     }
 
     public function update(Request $request, $id)

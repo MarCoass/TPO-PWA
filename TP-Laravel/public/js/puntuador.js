@@ -12,7 +12,7 @@ $(".pulsadorIzq").on("click", function () {
 });
 
 $(".pulsadorDer").on("click", function () {
-    let puntaje = parseFloat(PUNTAJE.text()) - 1.0;
+    let puntaje = parseFloat(PUNTAJE.text()) - 0.1;
     if(puntaje>0){
       PUNTAJE.text(puntaje.toFixed(1));
     }

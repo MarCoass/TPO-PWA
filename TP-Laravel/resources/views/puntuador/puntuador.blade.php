@@ -42,7 +42,7 @@
                 </button>
             </div>
             <div class="pulsadorDer bg-primary col-4 d-flex justify-content-start align-items-center">
-                <span class="display-2">- 1.0</span>
+                <span class="display-2">- 0.1</span>
             </div>
 
 
