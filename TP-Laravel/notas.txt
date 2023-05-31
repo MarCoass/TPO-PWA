@@ -15,6 +15,7 @@ COMO ARMAR LA BASE DE DATOS Y CARGARLE DATOS
      f) php artisan db:seed --class=CompetidoresTableSeeder
      g) php artisan db:seed --class=CompetenciasTableSeeder
      h) php artisan db:seed --class=PoomsaeTableSeeder
+     i) php artisan db:seed --class=CategoriasTableSeeder
 
 ** COMO RESETEAR LA BASE DE DATOS **
 1) Ejecutar el comando php artisan migrate:refresh
