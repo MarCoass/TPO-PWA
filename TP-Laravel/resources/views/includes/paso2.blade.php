@@ -30,6 +30,20 @@
     <div class="invalid-feedback">Seleccione una opcion valida.</div>
 </div>
 
+<div class="col-lg-12 col-md-12 col-sm-6 col-xs-12  pt-3">
+    <label class="form-label" for="competencia">Competencia:</label>
+    <select class="form-control validar" id="competencia" name="competencia" required>
+        <option value="" disabled selected data-error="Por favor seleccione una Competencia válida">Selecciona una Competencia.</option>
+        @foreach ($competencias as $row)
+        <option value="{{$row->idCompetencia}}">{{$row->nombre}}</option>
+        @endforeach
+    </select>
+    <div class="valid-feedback">
+        ¡Correcto!
+    </div>
+    <div class="invalid-feedback">Seleccione una opcion valida.</div>
+</div>
+
 <div class="col-md-12 my-3 d-flex justify-content-center align-items-center">
     <button type="button" id="botonVolver" class="btn btn-outline-primary w-25 me-2" onclick="showTab('paso1', 0)">
         <i class="bi bi-arrow-left me-2"></i>Volver

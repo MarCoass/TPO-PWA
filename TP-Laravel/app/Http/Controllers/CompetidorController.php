@@ -6,8 +6,10 @@ use App\Models\Estado;
 use App\Models\Pais;
 use App\Models\Competidor;
 use App\Models\Graduacion;
+use App\Models\Competencia;
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\CompetenciaCompetidorController;
 use Illuminate\Http\Request;
 
 class CompetidorController extends Controller
@@ -15,7 +17,8 @@ class CompetidorController extends Controller
 
     public function cargarCompetidor(){
         $graduaciones = Graduacion::all();
-        return view('cargarCompetidor.cargarCompetidor', compact('graduaciones'));
+        $competencias = Competencia::all();
+        return view('cargarCompetidor.cargarCompetidor', compact('graduaciones','competencias'));
 
     }
 
@@ -74,6 +77,12 @@ class CompetidorController extends Controller
 
         $competidor->save();
 
+        $CompetenciaCompetidorController = new CompetenciaCompetidorController();
+
+        $categoria = Graduacion::select('categoriagraduacion.idCategoria')
+        ->join('categoriagraduacion', 'graduaciones.idGraduacion', '=', 'categoriagraduacion.idGraduacion')->where('graduaciones.idGraduacion','=',$request['idGraduacion'])->get();
+
+        $CompetenciaCompetidorController->guardar_preinscripcion($competidor->idCompetidor,$request->input('competencia'),$categoria[0]->idCategoria);
   
 
         // Respuesta JSON

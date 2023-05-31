@@ -18,6 +18,35 @@ class CompetenciaCompetidorController extends Controller
         return view('inscripcion.create');
     }
 
+    public function guardar_preinscripcion($id_competidor,$id_competencia,$id_categoria){
+        $duplicado = CompetenciaCompetidor::where('idCompetencia','=', $id_competencia)->
+        where('idCompetidor','=', $id_competidor)->first();
+
+        if( $duplicado != null){
+            return false;
+        }
+
+        $competenciacompetidor = new CompetenciaCompetidor();
+        $competenciacompetidor->idCompetidor = $id_competidor;
+        $competenciacompetidor->idCompetencia = $id_competencia;
+        $competenciacompetidor->idCategoria = $id_categoria;
+        $competenciacompetidor->puntaje =  10; 
+        $competenciacompetidor->contadorPasadas =  0; 
+        $competenciacompetidor->estado =  0; 
+    
+        $competidor = Competidor::find($id_competidor);
+        $competenciacompetidor->competidor()->associate($competidor);
+    
+        $competencia = Competencia::find($id_competencia);
+        $competenciacompetidor->competencia()->associate($competencia);
+
+        $categoria = Categoria::find($id_categoria);
+        $competenciacompetidor->categoria()->associate($categoria);
+    
+        $competenciacompetidor->save();
+
+        return true;
+    }
     public function store(Request $request){
 
             $duplicado = CompetenciaCompetidor::where('idCompetencia','=', $request->input('competencia'))->
