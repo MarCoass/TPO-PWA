@@ -95,9 +95,10 @@ class PuntajeController extends Controller
         $competencia_competidor = CompetenciaCompetidor::where('idCompetidor', '=', $id_competidor)->where('idCompetencia', '=', $id_competencia)->get();
         $poomsae = Poomsae::where('idPoomsae', '=', $id_pomsae)->get();
     
-
-        $existePrimeraPasada = Puntaje::where('idCompetenciaCompetidor', "=", $competencia_competidor[0]->idCompetenciaCompetidor)->where('idCompetenciaJuez', "=", "2")->get()!=null;
-        $pasada = $existePrimeraPasada? 2 : 1;
+      
+        //->where('idCompetenciaJuez', "=", "2") no olvidarse de no harcodear eso
+        $existePrimeraPasada = Puntaje::where('idCompetenciaCompetidor', "=", $competencia_competidor[0]->idCompetenciaCompetidor)->where('idCompetenciaJuez', "=", "2")->get();
+        $pasada = (($existePrimeraPasada->count() === 0 )? 1 : 2);
         return view('puntuador.puntuador', ['graduacion' => $graduacion, 'competencia' => $competencia, 'poomsae' => $poomsae, 'competidor' => $competidor, 'competencia_competidor' => $competencia_competidor, 'competencia_juez' => '2', 'pasada'=>$pasada]);
     }
 
