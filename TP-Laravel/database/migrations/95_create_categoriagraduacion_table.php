@@ -13,20 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('competenciacompetidor', function (Blueprint $table) {
-            $table->id('idCompetenciaCompetidor');
-            $table->unsignedBigInteger('idCompetidor');
-            $table->unsignedBigInteger('idCompetencia');
+        Schema::create('categoriaGraduacion', function (Blueprint $table) {
+            $table->id('idCategoriaGraduacion');
             $table->unsignedBigInteger('idCategoria');
-            $table->float('puntaje');
-            $table->integer('contadorPasadas');
-            $table->boolean('estado');
+            $table->unsignedBigInteger('idGraduacion');
             $table->timestamps();
 
-            $table->foreign('idCompetidor')->references('idCompetidor')->on('competidores');
-            $table->foreign('idCompetencia')->references('idCompetencia')->on('competencias');
-            $table->foreign('idCategoria')->references('idCategoria')->on('categrias');
-
+            $table->foreign('idCategoria')->references('idCategoria')->on('categorias');
+            $table->foreign('idGraduacion')->references('idGraduacion')->on('graduaciones');
         });
     }
 
@@ -37,15 +31,13 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('competidores', function (Blueprint $table) {
-            $table->dropForeign(['idCompetidor']);
-        });
-        Schema::table('competencias', function (Blueprint $table) {
-            $table->dropForeign(['idCompetencia']);
-        });
-        Schema::table('categrias', function (Blueprint $table) {
+        Schema::table('categorias', function (Blueprint $table) {
             $table->dropForeign(['idCategoria']);
         });
-        Schema::dropIfExists('competenciacompetidor');
+        Schema::table('graduaciones', function (Blueprint $table) {
+            $table->dropForeign(['idGraduacion']);
+        });
+
+        Schema::dropIfExists('categoriaGraduacion');
     }
 };
