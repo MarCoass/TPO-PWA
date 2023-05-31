@@ -14,7 +14,7 @@ class CompetenciaJuezController extends Controller
         where('idJuez','=', $request->input('juez'))->first();
 
         if( $duplicado != null){
-            return redirect('gestionCompetencias/index')->with('error', "Ya tiene una inscripcion hecha.");
+            return redirect('/')->with('error', "Ya tiene una inscripcion hecha.");
         }
 
         $competencia_juez = new CompetenciaJuez();
@@ -30,7 +30,7 @@ class CompetenciaJuezController extends Controller
 
         $competencia_juez->save();
 
-        return redirect('gestionCompetencias/index')->with('success', "Se ha registrado correctamente el Juez");
+        return redirect('/')->with('success', "Se ha registrado correctamente el Juez");
     }
 
     public function habilitar($id){

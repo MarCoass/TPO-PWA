@@ -19,14 +19,8 @@ class CompetenciaController extends Controller
     public function index()
     {
         $competencias = Competencia::all();
-        //solo listar competidores verificados
-        $competidores = Competidor::where('estado','=','1')->get();
-        //solo listar jueces verificados
-        $jueces = User::where('estado','=','1')->where('idRol','=','2')->get();
-
-        //los pooomsae hay que filtrarlos por la graduacion del competidor seleccionado.
-        $poomsae = Poomsae::all();
-        return view('gestionCompetencias.index', compact('competencias','competidores','poomsae','jueces'));
+   
+        return view('gestionCompetencias.index', compact('competencias'));
     }
 
     /**

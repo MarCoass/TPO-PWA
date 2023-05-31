@@ -46,7 +46,7 @@ class CompetenciaCompetidorController extends Controller
     
             $competenciacompetidor->save();
     
-            return redirect('gestionCompetencias/index')->with('success', "Se ha registrado correctamente");
+            return redirect('/')->with('success', "Se ha registrado correctamente");
     }
 
     public function habilitar($id){
