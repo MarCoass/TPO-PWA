@@ -8,15 +8,6 @@
 </div>
 
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
-    <label class="form-label" for="ranking">Ranking:</label>
-    <input class="form-control validar" type="number" min="0" id="ranking" name="ranking" pattern="^(?!900\.(?:00)?[1-9])(?!0*(?:\.0+)?$)([0-8]?\d{0,2}|900)(?:\.\d{1,2})?$" autocomplete="off" max="900" required>
-    <div class="valid-feedback">
-        ¡Correcto!
-    </div>
-    <div class="invalid-feedback">Ingrese un numero entre 0 y 900</div>
-</div>
-
-<div class="col-lg-12 col-md-12 col-sm-6 col-xs-12  pt-3">
     <label class="form-label" for="graduacion">Graduacion:</label>
     <select class="form-control validar" id="idGraduacion" name="idGraduacion" required>
         <option value="" disabled selected data-error="Por favor seleccione una graduacion válida">Selecciona una graduación.</option>

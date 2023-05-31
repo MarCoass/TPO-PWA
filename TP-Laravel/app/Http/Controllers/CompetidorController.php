@@ -53,7 +53,7 @@ class CompetidorController extends Controller
         $competidor->apellido = $request->input('apellido');
         $competidor->fechaNacimiento = $request->input('fechaNacimiento');
         $competidor->email = $request->input('correo');
-        $competidor->ranking = $request->input('ranking');
+        $competidor->ranking = 0; // 0 por defecto
         $competidor->genero = $request->input('genero');
 
         // Estado base
