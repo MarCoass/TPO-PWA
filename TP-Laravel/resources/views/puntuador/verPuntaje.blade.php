@@ -50,18 +50,30 @@
                         <div class="card-block">
                             <h6 class="m-b-20">Total pasada</h6>
                             <h2 class="text-right">
-                                <span>{{ $puntaje->puntajeExactitud + $puntaje->puntajePresentacion }}</span></h2>
+                                <span>{{ $puntaje->puntajeExactitud + $puntaje->puntajePresentacion }}</span>
+                            </h2>
 
                         </div>
                     </div>
                 </div>
             </div>
-            @if ($puntaje->pasada==1)
-            <button class="btn btn-primary btn-lg">Siguiente pasada <i class="bi bi-arrow-right"></i></button>
+            @if ($puntaje->pasada == 1)
+                <form action="{{ route('iniciar_puntaje') }}" method="post">
+                    @csrf
+                    <input type="hidden" name="competencia_puntuador" id="competencia_puntuador"
+                        value={{ $competencia_puntuador }}>
+                    <input type="hidden" name="competidor_puntuador" id="competidor_puntuador"
+                        value={{ $competidor->idCompetidor }}>
+                    <input type="hidden" name="juez_puntuador" id="juez_puntuador" value={{ $juez_puntuador }}>
+                    <button type="submit" class="btn btn-primary btn-lg">Siguiente pasada <i
+                            class="bi bi-arrow-right"></i></button></a>
+                </form>
             @else
-           <button class="btn btn-primary btn-lg">Ver resultado final <i class="bi bi-arrow-right"></i></button>
+                
+                
+                <a href="{{route('puntajeFinal.show', ['competenciaCompetidor' => $competencia_competidor])}}"><button class="btn btn-primary btn-lg">Ver resultado final <i class="bi bi-arrow-right"></i></button></a>
             @endif
-            
+
         </div>
 
 

@@ -70,7 +70,7 @@
                             <input type="hidden" id="pasada" name="pasada" value='{{$pasada}}'>
                             <input type="hidden" id="overtime" name="overtime" value='0'>
                             <input type="hidden" id="idCompetenciaCompetidor" name="idCompetenciaCompetidor" value='{{$competencia_competidor[0]->idCompetenciaCompetidor}}'>
-                            <input type="hidden" id="idCompetenciaJuez" name="idCompetenciaJuez" value='{{$competencia_juez}}'>
+                            <input type="hidden" id="idCompetenciaJuez" name="idCompetenciaJuez" value='{{$competencia_juez[0]->idCompetenciaJuez}}'>
                             
                         </div>
                         <div class="modal-footer">

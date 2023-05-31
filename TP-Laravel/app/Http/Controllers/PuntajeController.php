@@ -23,7 +23,9 @@ class PuntajeController extends Controller
         $puntaje = Puntaje::find($id);
         $competencia_competidor = CompetenciaCompetidor::find($puntaje->idCompetenciaCompetidor);
         $competidor = Competidor::find($competencia_competidor->idCompetidor);
-        return view('puntuador/verPuntaje', ['puntaje' => $puntaje, 'competidor' => $competidor]);
+        $competenciaJuez = CompetenciaJuez::where('idCompetencia', '=', $competencia_competidor->idCompetenciaCompetidor)->where('idJuez', '=', auth()->user()->id)->get();
+        
+        return view('puntuador/verPuntaje', ['puntaje' => $puntaje, 'competidor' => $competidor, 'competencia_puntuador' => $competencia_competidor->idCompetencia, 'juez_puntuador' => $competenciaJuez, 'competencia_competidor'=>$competencia_competidor->idCompetenciaCompetidor]);
     }
 
     public function store(Request $request)
@@ -88,18 +90,19 @@ class PuntajeController extends Controller
 
 
         $competidor = Competidor::where('idCompetidor', '=', $id_competidor)->get();
-        //$categoria_graduacion = Graduacion::leftJoin('categoriagraduacion', 'graduaciones.idGraduacion', '=', 'categoriagraduacion.idGraduacion')
-        //    ->where('categoriagraduacion.idGraduacion', '=', $competidor[0]->idGraduacion)->get();
         $competencia = Competencia::where('idCompetencia', '=', $id_competencia)->get();
-        $graduacion = Graduacion::where('idGraduacion', '=', $competidor[0]->idGraduacion)->get();
+        //$graduacion = Graduacion::where('idGraduacion', '=', $competidor[0]->idGraduacion)->get();
         $competencia_competidor = CompetenciaCompetidor::where('idCompetidor', '=', $id_competidor)->where('idCompetencia', '=', $id_competencia)->get();
         $poomsae = Poomsae::where('idPoomsae', '=', $id_pomsae)->get();
-    
-      
+
+        //busco el idCompetenciaJuez que corresponde a la competencia
+        $competenciaJuez = CompetenciaJuez::where('idCompetencia', '=', $id_competencia)->where('idJuez', '=', auth()->user()->id)->get();
+
+
         //->where('idCompetenciaJuez', "=", "2") no olvidarse de no harcodear eso
-        $existePrimeraPasada = Puntaje::where('idCompetenciaCompetidor', "=", $competencia_competidor[0]->idCompetenciaCompetidor)->where('idCompetenciaJuez', "=", "2")->get();
-        $pasada = (($existePrimeraPasada->count() === 0 )? 1 : 2);
-        return view('puntuador.puntuador', ['graduacion' => $graduacion, 'competencia' => $competencia, 'poomsae' => $poomsae, 'competidor' => $competidor, 'competencia_competidor' => $competencia_competidor, 'competencia_juez' => '2', 'pasada'=>$pasada]);
+        $existePrimeraPasada = Puntaje::where('idCompetenciaCompetidor', "=", $competencia_competidor[0]->idCompetenciaCompetidor)->where('idCompetenciaJuez', "=", $competenciaJuez[0]->idCompetenciaJuez)->get();
+        $pasada = (($existePrimeraPasada->count() === 0) ? 1 : 2);
+        return view('puntuador.puntuador', ['competencia' => $competencia, 'poomsae' => $poomsae, 'competidor' => $competidor, 'competencia_competidor' => $competencia_competidor, 'competencia_juez' => $competenciaJuez, 'pasada' => $pasada]);
     }
 
     public function actualizar_puntaje(Request $request)
@@ -114,6 +117,4 @@ class PuntajeController extends Controller
 
         return $this->puntuadorindex();
     }
-
-
 }
