@@ -15,8 +15,6 @@ Gestion de Competencias
 <h3>Competencias</h3>
 <a href="{{ route('create_competencia') }}" class="btn btn-outline-primary mb-3"><i class="bi bi-universal-access me-2"></i>Nueva Competencia</a>
 
-
-
 <table id="tabla_competencia" class="table hover table-light table-bordered nowrap border dataTable dtr-inline collapsed" width="100%">
     <thead class="flip-content">
         <tr>
@@ -41,40 +39,4 @@ Gestion de Competencias
         @endforeach
     </tbody>
 </table>
-
-   <!-- Modal -->
-   <div class="modal fade" id="competitorModal" tabindex="-1" role="dialog" aria-labelledby="competitorModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="competitorModalLabel">Seleccionar competidor</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form method="POST" action="{{ route('store_competencia_competidor') }}">
-            @csrf
-            <div class="form-group">
-              <label for="competidor">Competidor</label>
-              <select class="form-control" id="competidor" name="competidor">
-                @foreach ($competidores as $row)
-                  <option value="{{ $row->idCompetidor }}">{{ $row->nombre }}</option>
-                @endforeach
-              </select>
-            </div>
-            <div class="form-group">
-                <label for="poomsae">Poomsae</label>
-                <select class="form-control" id="poomsae" name="poomsae">
-                  @foreach ($poomsae as $row)
-                    <option value="{{ $row->idPoomsae }}">{{ $row->nombre }}</option>
-                  @endforeach
-                </select>
-              </div>
-            <button type="submit" class="btn btn-primary">Generar inscripcion</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
 @endsection
