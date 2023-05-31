@@ -7,7 +7,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\File;
 
-class CategoriasTableSeeder extends Seeder
+class CategoriasGraduacionesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
