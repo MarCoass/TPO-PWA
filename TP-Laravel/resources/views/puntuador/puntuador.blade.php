@@ -5,7 +5,7 @@
 @endsection
 
 @section('encabezado')
-    Puntuador
+    Puntuador pasada n°{{$pasada}}
 @endsection
 
 @section('contenido')
@@ -31,6 +31,7 @@
             </div>
             <div class="infoCompetidor col-4">
                 <p>Competidor:{{$competidor[0]->nombre}} {{$competidor[0]->apellido}}</p>
+                <p></p>
                 <p>Poomse:(todavia no hay)</p>
                 <p>Puntaje:<span class="puntaje">4</span>
                 </p>
@@ -66,7 +67,7 @@
 
                             <input type="hidden" id="puntajeExactitudInput" name="puntajeExactitud">
                             <input type="hidden" id="puntajePresentacionInput" name="puntajePresentacion">
-                            <input type="hidden" id="pasada" name="pasada" value='1'>
+                            <input type="hidden" id="pasada" name="pasada" value='{{$pasada}}'>
                             <input type="hidden" id="overtime" name="overtime" value='0'>
                             <input type="hidden" id="idCompetenciaCompetidor" name="idCompetenciaCompetidor" value='{{$competencia_competidor[0]->idCompetenciaCompetidor}}'>
                             <input type="hidden" id="idCompetenciaJuez" name="idCompetenciaJuez" value='{{$competencia_juez}}'>

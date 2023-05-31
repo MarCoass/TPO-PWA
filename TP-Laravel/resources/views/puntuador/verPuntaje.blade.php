@@ -56,8 +56,12 @@
                     </div>
                 </div>
             </div>
-            
+            @if ($puntaje->pasada==1)
             <button class="btn btn-primary btn-lg">Siguiente pasada <i class="bi bi-arrow-right"></i></button>
+            @else
+            <button class="btn btn-primary btn-lg">Ver resultado final <i class="bi bi-arrow-right"></i></button>
+            @endif
+            
         </div>
 
 

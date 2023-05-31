@@ -23,7 +23,7 @@ class PuntajeController extends Controller
         $puntaje = Puntaje::find($id);
         $competencia_competidor = CompetenciaCompetidor::find($puntaje->idCompetenciaCompetidor);
         $competidor = Competidor::find($competencia_competidor->idCompetidor);
-        return view('puntuador/verPuntaje', ['puntaje'=>$puntaje, 'competidor'=>$competidor]);
+        return view('puntuador/verPuntaje', ['puntaje' => $puntaje, 'competidor' => $competidor]);
     }
 
     public function store(Request $request)
@@ -52,7 +52,7 @@ class PuntajeController extends Controller
         $puntajeId = $puntaje->idPuntaje;
 
 
-         return redirect()->route('puntuador.show', ['puntaje' => $puntajeId]);
+        return redirect()->route('puntuador.show', ['puntaje' => $puntajeId]);
     }
 
     public function update(Request $request, $id)
@@ -60,47 +60,51 @@ class PuntajeController extends Controller
         // Lógica para actualizar un registro existente basado en los datos del Request
     }
 
-    public function obtenerOpcionesCompetidor(Request $request){
+    public function obtenerOpcionesCompetidor(Request $request)
+    {
         $competencia = $request->input('competencia_puntuador');
         $opciones =  Competidor::leftJoin('competenciacompetidor', 'competidores.idCompetidor', '=', 'competenciacompetidor.idCompetidor')
-        ->where('competenciacompetidor.idCompetencia', '=', $competencia)->get();
+            ->where('competenciacompetidor.idCompetencia', '=', $competencia)->get();
         return response()->json($opciones);
-
     }
 
-    public function  puntuadorindex(){
+    public function  puntuadorindex()
+    {
         $competencias = Competencia::all();
 
         return view('puntuador.index', compact('competencias'));
-
     }
 
-    public function iniciar_puntaje(Request $request){
+    public function iniciar_puntaje(Request $request)
+    {
+
+
         $id_competencia = $request->input('competencia_puntuador');
         $id_competidor = $request->input('competidor_puntuador');
 
-        $competidor = Competidor::where('idCompetidor','=',$id_competidor)->get();
-        $graduacion = Graduacion::where('idGraduacion','=',$competidor[0]->idGraduacion)->get();
-        $competencia = Competencia::where('idCompetencia','=',$id_competencia)->get();
-        $competencia_competidor = CompetenciaCompetidor::where('idCompetidor','=',$id_competidor)->where('idCompetencia','=',$id_competencia)->get();
-        $poomsae = Poomsae::where('idPoomsae','=',$competencia_competidor[0]->idPoomsae)->get();
+        $competidor = Competidor::where('idCompetidor', '=', $id_competidor)->get();
+        $graduacion = Graduacion::where('idGraduacion', '=', $competidor[0]->idGraduacion)->get();
+        $competencia = Competencia::where('idCompetencia', '=', $id_competencia)->get();
+        $competencia_competidor = CompetenciaCompetidor::where('idCompetidor', '=', $id_competidor)->where('idCompetencia', '=', $id_competencia)->get();
+        $poomsae = Poomsae::where('idPoomsae', '=', $competencia_competidor[0]->idPoomsae)->get();
 
-     
-        return view('puntuador.puntuador', ['graduacion' => $graduacion,'competencia' => $competencia,'poomsae' => $poomsae, 'competidor' => $competidor,'competencia_competidor'=>$competencia_competidor,'competencia_juez'=>'2']);
-
+        $existePrimeraPasada = Puntaje::where('idCompetenciaCompetidor', "=", $id_competidor)->where('idCompetenciaJuez', "=", "1")->get()!=null;
+        $pasada = $existePrimeraPasada? 2 : 1;
+        return view('puntuador.puntuador', ['graduacion' => $graduacion, 'competencia' => $competencia, 'poomsae' => $poomsae, 'competidor' => $competidor, 'competencia_competidor' => $competencia_competidor, 'competencia_juez' => '2', 'pasada'=>$pasada]);
     }
 
-      public function actualizar_puntaje(Request $request){
+    public function actualizar_puntaje(Request $request)
+    {
         //lacantidad de pasadas como deberiamos saberlo?
         $id = $request->input('id');
         $competenciacompetidor = CompetenciaCompetidor::find($id);
-        
-        $competenciacompetidor->puntaje =  $request->input('puntaje'); 
+
+        $competenciacompetidor->puntaje =  $request->input('puntaje');
 
         $competenciacompetidor->save();
 
         return $this->puntuadorindex();
     }
 
-  
+
 }
