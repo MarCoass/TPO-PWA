@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use App\Models\Competidor;
 use App\Models\Competencia;
-use App\Models\Poomsae;
 use App\Models\CompetenciaCompetidor;
 use Illuminate\Http\Request;
 use App\Models\Puntaje;
@@ -30,7 +30,7 @@ class CompetenciaCompetidorController extends Controller
             $competenciacompetidor = new CompetenciaCompetidor();
             $competenciacompetidor->idCompetidor = $request->input('competidor');
             $competenciacompetidor->idCompetencia = $request->input('competencia');
-            $competenciacompetidor->idPoomsae = $request->input('poomsae');
+            $competenciacompetidor->idCategoria = $request->input('categoria');
             $competenciacompetidor->puntaje =  10; 
             $competenciacompetidor->contadorPasadas =  0; 
             $competenciacompetidor->estado =  0; 
@@ -41,8 +41,8 @@ class CompetenciaCompetidorController extends Controller
             $competencia = Competencia::find($request['competencia']);
             $competenciacompetidor->competencia()->associate($competencia);
 
-            $poomsae = Poomsae::find($request['poomsae']);
-            $competenciacompetidor->poomsae()->associate($poomsae);
+            $categoria = Categoria::find($request['categoria']);
+            $competenciacompetidor->categoria()->associate($categoria);
     
             $competenciacompetidor->save();
     
