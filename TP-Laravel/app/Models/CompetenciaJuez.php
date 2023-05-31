@@ -21,8 +21,12 @@ class CompetenciaJuez extends Model
         return $this->belongsTo(User::class, 'idJuez', 'id');
     }
 
+    /**
+     * para que es eso??  
     public function puntajes()
     {
         return $this->hasMany(Puntaje::class);
     }
+     */
+   
 }

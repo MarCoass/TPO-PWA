@@ -14,9 +14,10 @@ Gestion de Competencias
 @include('layouts.partials.messages')
 <h3>Competencias</h3>
 <a href="{{ route('create_competencia') }}" class="btn btn-outline-primary mb-3"><i class="bi bi-universal-access me-2"></i>Nueva Competencia</a>
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Nueva inscripcion</button>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Nueva inscripcion Competidor</button>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#inscripcionJuez">Nueva inscripcion Juez</button>
   
-  <!-- Modal -->
+  <!-- Modal INSCRIPCION COMPETIDOR -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <form method="POST" action="{{ route('store_competencia_competidor') }}">
@@ -49,6 +50,44 @@ Gestion de Competencias
                     <select class="form-control" id="poomsae" name="poomsae">
                       @foreach ($poomsae as $row)
                         <option value="{{ $row->idPoomsae }}">{{ $row->nombre }}</option>
+                      @endforeach
+                    </select>
+                  </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary">Generar Inscripcion</button>
+        </div>
+      </div>
+    </form>
+    </div>
+  </div>
+
+   <!-- Modal INSCRIPCION JUEZ -->
+   <div class="modal fade" id="inscripcionJuez" tabindex="-1" aria-labelledby="inscripcionJuezLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form method="POST" action="{{ route('store_competencia_juez') }}">
+           
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="inscripcionJuezLabel">Inscripcion Juez</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+               @csrf
+                <div class="form-group">
+                  <label for="juez">Juez</label>
+                  <select class="form-control" id="juez" name="juez">
+                    @foreach ($jueces as $row)
+                      <option value="{{ $row->id }}">{{ $row->nombre }} {{ $row->apellido }}</option>
+                    @endforeach
+                  </select>
+                </div>
+                <div class="form-group">
+                    <label for="competencia">Competencia</label>
+                    <select class="form-control" id="competencia" name="competencia">
+                      @foreach ($competencias as $row)
+                        <option value="{{ $row->idCompetencia }}">{{ $row->nombre }}</option>
                       @endforeach
                     </select>
                   </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Competencia;
 use App\Models\Competidor;
+use App\Models\User;
 use App\Models\Poomsae;
 use Illuminate\Http\Request;
 
@@ -20,8 +21,12 @@ class CompetenciaController extends Controller
         $competencias = Competencia::all();
         //solo listar competidores verificados
         $competidores = Competidor::where('estado','=','1')->get();
+        //solo listar jueces verificados
+        $jueces = User::where('estado','=','1')->where('idRol','=','2')->get();
+
+        //los pooomsae hay que filtrarlos por la graduacion del competidor seleccionado.
         $poomsae = Poomsae::all();
-        return view('gestionCompetencias.index', compact('competencias','competidores','poomsae'));
+        return view('gestionCompetencias.index', compact('competencias','competidores','poomsae','jueces'));
     }
 
     /**

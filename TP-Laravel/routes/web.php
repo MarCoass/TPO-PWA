@@ -97,6 +97,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         //guardar inscripcion de competidor
         Route::post('inscripcion/store', [CompetenciaCompetidorController::class, 'store'])->middleware(['rol:1,3'])->name('store_competencia_competidor');
         
+        //guardar inscripcion de Juez
+        Route::post('inscripcionJuez/store', [CompetenciaJuezController::class, 'store'])->middleware(['rol:1,2'])->name('store_competencia_juez');
+       
 
         /* lista competidores de una competencia */
         Route::get('/competidoresCompetencia/{id}', [CompetenciaCompetidorController::class, 'listarCompetidoresPorId'])->middleware(['rol:1'])->name('tabla_competidores');
