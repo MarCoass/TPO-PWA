@@ -1,15 +1,16 @@
 @extends('layouts/layout')
 
 @section('titulo')
-    Presentacion
+    {{$competencia->nombre}}
 @endsection
 
 @section('encabezado')
-    Presentacion del Torneo
+    {{$competencia->nombre}}
 @endsection
 
 @section('contenido')
     <div class="text-center">
+        <p>Fecha: {{$competencia->fecha}}</p>
         <div class="row my-5 d-block d-md-none">
             <div class="col-12">
                 <a href="https://www.youtube.com/watch?v=ermNRSmkGF8" target="_blank" class="btn btn-danger">Haga clic acá para
