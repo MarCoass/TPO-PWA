@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('solicitudes', function (Blueprint $table) {
             $table->id('idSolicitud');
             $table->integer('estadoSolicitud');
-            $table->string('tipo');
-            $table->integer('dato');
+            $table->integer('newEscuela');
+            $table->integer('newGraduacion');
             $table->unsignedBigInteger('idUser');
             $table->timestamps();
 

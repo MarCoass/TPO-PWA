@@ -13,7 +13,7 @@ class Solicitud extends Model
 
     protected $primaryKey = 'idSolicitud';
 
-    protected $fillable = ['idSolicitud , estadoSolicitud, tipo, dato, idUser'];
+    protected $fillable = ['idSolicitud , estadoSolicitud, newEscuela, newGraduacion, idUser, created_at'];
 
 
     public function user()

@@ -2,6 +2,7 @@ import { boton_contador_inicio, boton_contador_fin } from './cronometro.js';
 import { cambio_de_tema } from './tema.js';
 import { competidores_tabla } from './tablaCompetidores.js';
 import {tabla_usuarios} from './tablaUsuarios.js';
+import {tabla_solicitud} from './tablaSolicitudes.js';
 import './eventosMenu.js';
 import {tabla_CompetenciaCompetidores} from './tablaCompetenciaCompetidores.js';
 
@@ -12,6 +13,9 @@ boton_contador_fin;
 
 //Gestion de usuarios tabla
 tabla_usuarios;
+
+//Gestion de solicitudes tabla
+tabla_solicitud;
 
 //tabla de competidores
 competidores_tabla;
@@ -54,7 +58,7 @@ $('#competencia_puntuador').on('click', function() {
         $('#competidor_puntuador').empty();
         $('#competidor_puntuador').append('<option value="" disabled selected data-error="Por favor seleccione una graduacion válida">Selecciona un competidor.</option>');
         $.each(data, function(key, value) {// 'idCompetidor', 'apellido','nombre'
-            
+
           $('#competidor_puntuador').append('<option value="'+value.idCompetidor+'">'+value.apellido+' '+value.nombre+'</option>');
         });
     }

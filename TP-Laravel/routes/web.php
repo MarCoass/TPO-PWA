@@ -17,6 +17,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CompetenciaCompetidorController;
 use App\Http\Controllers\CompetenciaJuezController;
 use App\Http\Controllers\PuntajeController;
+use App\Http\Controllers\SolicitudController;
 use App\Models\CompetenciaCompetidor;
 
 Route::group(['namespace' => 'App\Http\Controllers'], function()
@@ -67,6 +68,14 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::post('/actualizarDatosPersonales', [UsuarioController::class, 'actualizarDatosPersonales'])->name('actualizarDatosPersonales');
         Route::post('/actualizarPassword', [UsuarioController::class, 'actualizarPassword'])->name('actualizarPassword');
 
+
+        Route::get('/index_solicitudes', [SolicitudController::class, 'index'])->name('index_solicitudes');
+        Route::get('/ocultar_solicitud/{id}', [SolicitudController::class, 'ocultarSolicitud'])->name('ocultar_solicitud');
+        Route::get('/aceptar_solicitud/{id}', [SolicitudController::class, 'aceptarSolicitud'])->name('aceptar_solicitud');
+        Route::get('/rechazar_solicitud/{id}', [SolicitudController::class, 'rechazarSolicitud'])->name('rechazar_solicitud');
+
+
+
         /* reloj */
         Route::get('/resultados', function(){return view('resultados.resultados');});
         /* Logout Routes   */
@@ -83,7 +92,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::post('/store_usuario', [UsuarioController::class, 'store'])->middleware(['rol:1'])->name('store_usuario');
         Route::put('/update_usuario/{id}', [UsuarioController::class, 'update'])->middleware(['rol:1'])->name('update_usuario');
         Route::get('/habilitar_usuario/{id}', [UsuarioController::class, 'habilitar'])->middleware(['rol:1'])->name('habilitar_usuario');
-        
+
         /* Rutas de Gestion de Competencias se pueden mejorar */
         Route::get('gestionCompetencias/index', [CompetenciaController::class, 'index'])->middleware(['rol:1'])->name('index_competencia');
         Route::get('gestionCompetencias/create', [CompetenciaController::class, 'create'])->middleware(['rol:1'])->name('create_competencia');
@@ -91,16 +100,16 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::post('gestionCompetencias/store', [CompetenciaController::class, 'store'])->middleware(['rol:1'])->name('store_competencia');
         Route::put('/update_competidor/{id}', [CompetenciaController::class, 'update'])->middleware(['rol:1'])->name('update_competencia');
         Route::get('/ver_inscriptos_competencia/{id}', [CompetenciaCompetidorController::class, 'listarCompetidoresPorId'])->middleware(['rol:1'])->name('ver_inscriptos_competencia');
-       
+
         //ruta de ejemplo para hacer la inscripcion desde un competidor
         Route::get('inscripcion/create/{idCompetidor}', [CompetenciaCompetidorController::class, 'create'])->middleware(['rol:1'])->name('create_competencia_competidor');
-        
+
         //guardar inscripcion de competidor
         Route::post('inscripcion/store', [CompetenciaCompetidorController::class, 'store'])->middleware(['rol:1,3'])->name('store_competencia_competidor');
-        
+
         //guardar inscripcion de Juez
         Route::post('inscripcionJuez/store', [CompetenciaJuezController::class, 'store'])->middleware(['rol:1,2'])->name('store_competencia_juez');
-       
+
 
         /* lista competidores de una competencia */
         Route::get('/competidoresCompetencia/{id}', [CompetenciaCompetidorController::class, 'listarCompetidoresPorId'])->middleware(['rol:1'])->name('tabla_competidores');
@@ -124,7 +133,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/opciones_competidor', [PuntajeController::class, 'obtenerOpcionesCompetidor'])->middleware(['rol:2']);
         Route::post('/iniciar_puntaje', [PuntajeController::class, 'iniciar_puntaje'])->middleware(['rol:2'])->name('iniciar_puntaje');
         Route::post('/actualizar_puntaje', [PuntajeController::class, 'actualizar_puntaje'])->middleware(['rol:2'])->name('actualizar_puntaje');
-        
+
         Route::post('/cargarPuntaje', [PuntajeController::class, 'store'])->middleware(['rol:2'])->name('puntaje.store');
         //Route::get('/verPuntaje', [PuntajeController::class, 'show'])->middleware(['rol:2'])->name('puntaje.show');
         Route::get('/verPuntaje/{puntaje}', [PuntajeController::class, 'show'])->name('puntuador.show');
