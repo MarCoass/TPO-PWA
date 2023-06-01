@@ -128,44 +128,35 @@ class UsuarioController extends Controller
     public function actualizarDatosPersonales(Request $request)
     {
         $usuario = User::find($request->input('id'));
+        $id = $usuario->id;
 
     
         if (password_verify($request->input('password'), $usuario->password) ) {
-            
-        
-            $duplicadoUser = User::where('usuario', "=",$request->input('usuario'))->first();
-            $duplicadoCorreo = User::where('correo', "=",$request->input('correo'))->first();
-
-            //Verificar que el el noombre de usuario no este registrado en la tabla usuarios y despues verifica si el nombre del usuario
-            //actual se puede modificar
-            if ($duplicadoUser != null && $usuario->usuario != $request->input('usuario') ) {
-        
-                $arregloMensaje = [
-                    'tipo' => 'restringed',
-                    'mensaje' => 'Nombre de usuario ya existe, por favor ingrese otro.'
-                ];
-
-                //este hace lo mismo pero con el campo correo
-            }elseif ($duplicadoCorreo != null && $usuario->correo != $request->input('correo')) {
-                
-                $arregloMensaje = [
-                    'tipo' => 'restringed',
-                    'mensaje' => 'El Correo ya existe, por favor ingrese otro.'
-                ];
-            }else {
+            try{
+                $request->validate($this->rulesActualizarDatos($id));
+    
+                $usuario = User::find($id);
                 $usuario->nombre = $request->input('nombre');
                 $usuario->apellido = $request->input('apellido');
                 $usuario->usuario = $request->input('usuario');
                 $usuario->correo = $request->input('correo');
+        
                 $usuario->save();
+        
                 $arregloMensaje = [
                     'tipo' => 'success',
-                    'mensaje' => 'Datos Actualizados Correctamente.'
+                    'mensaje' => 'Se han actualizado sus datos correctamente.'
+                ];
+            }catch (\Illuminate\Validation\ValidationException $e){
+                $errors = $e->validator->errors();
+                $errorMessages = implode(' ', $errors->all());
+                $arregloMensaje = [
+                    'tipo' => 'restringed',
+                    'mensaje' => $errorMessages
                 ];
             }
                
         }else {
-            
             $arregloMensaje = [
                 'tipo' => 'restringed',
                 'mensaje' => 'Contraseña Incorrecta.'
@@ -226,6 +217,15 @@ class UsuarioController extends Controller
             'usuario' => 'required|unique:users,usuario,'. $id .'|max:50',
             'correo' => 'required|email:rfc,dns|unique:users,correo, '. $id,
             'rol' => 'required'
+        ];
+    }
+
+    public function rulesActualizarDatos($id){
+        return [
+            'nombre' => 'required|max:50|string',
+            'apellido' => 'required|max:50|string',
+            'usuario' => 'required|unique:users,usuario,'. $id .'|max:50',
+            'correo' => 'required|email:rfc,dns|unique:users,correo, '. $id
         ];
     }
 
