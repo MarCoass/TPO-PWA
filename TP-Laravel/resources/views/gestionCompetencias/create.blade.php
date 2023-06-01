@@ -31,8 +31,21 @@
                 <span class="text-danger text-left">{{ $errors->first('fecha') }}</span>
             @endif
         </div>
-        <div class="col-lg-6 col-12 form-group form-floating mb-3">
-            <input type="file" name="flyer" id="flyer">
+       
+
+        <div class="col-lg-6 col-12 form-group mb-3">
+            <label for="formFile" class="form-label">Seleccione el flyer</label>
+            <input class="form-control" type="file" name="flyer" id="flyer">
+        </div>
+
+        <div class="col-lg-6 col-12 form-group mb-3" >
+            <label for="formFile" class="form-label">Seleccione las bases</label>
+            <input class="form-control" type="file" name="bases" id="bases" accept="application/pdf">
+        </div>
+
+        <div class="col-lg-6 col-12 form-group mb-3">
+            <label for="formFile" class="form-label">Seleccione la invitacion</label>
+            <input class="form-control" type="file" name="invitacion" id="invitacion" accept="application/pdf">
         </div>
 
         <div class="col-lg-6 col-12 button-group mb-3 d-flex justify-content-end align-items-center">

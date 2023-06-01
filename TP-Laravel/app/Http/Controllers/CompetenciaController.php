@@ -49,11 +49,23 @@ class CompetenciaController extends Controller
        
         $extension = $request->file('flyer')->getClientOriginalExtension();
 
-        $nombreFlyer = $request->input('nombre').'Flyer.' . $extension;
-        $path = $request->file('flyer')->storeAs(
-            'public/img', $nombreFlyer
+        $nombreSinEspacios = str_replace(' ', '', $request->input('nombre'));
+        $nombreFlyer = $nombreSinEspacios.'Flyer.' . $extension;
+        $pathFlyer = $request->file('flyer')->storeAs(
+            '/img', $nombreFlyer, 'public'
         );
-        $competencia->flyer = $path;
+        $competencia->flyer = $pathFlyer;
+
+
+        $competencia->bases = $request->file('bases')->storeAs(
+            '/pdf', $nombreSinEspacios.'Bases.pdf', 'public'
+        );
+
+        $competencia->invitacion = $request->file('invitacion')->storeAs(
+            '/pdf', $nombreSinEspacios.'Invitacion.pdf', 'public'
+        );
+        
+
         $competencia->save();
 
         return redirect()->route('index_competencia')->with('success', 'Competencia creada exitosamente.');
@@ -97,7 +109,7 @@ class CompetenciaController extends Controller
         $competencia->fecha = $request->input('fecha');
         $nombreFlyer = $request->input('nombre').'Flyer';
         $path = $request->file('flyer')->storeAs(
-            'public/img', $nombreFlyer
+            '', $nombreFlyer
         );
         $competencia->flyer = $path;
         $competencia->save();
@@ -123,6 +135,8 @@ class CompetenciaController extends Controller
     public function verPresentacion($id){
         //busco la competencia
         $competencia = Competencia::find($id);
+
+
         return view('presentacion/video', compact('competencia'));
     }
 }
