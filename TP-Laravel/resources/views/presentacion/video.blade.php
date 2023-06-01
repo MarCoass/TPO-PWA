@@ -1,19 +1,20 @@
 @extends('layouts/layout')
 
 @section('titulo')
-    {{$competencia->nombre}}
+    {{ $competencia->nombre }}
 @endsection
 
 @section('encabezado')
-    {{$competencia->nombre}}
+    {{ $competencia->nombre }}
 @endsection
 
 @section('contenido')
     <div class="text-center">
-        @if(auth()->user()->idRol == 1)
-        <a href="{{ route('edit_competencia', ['id' => $competencia->idCompetencia ]) }}" class="btn btn-outline-info"><i class="bi bi-pencil-square me-2"></i>Editar competencia</a>
+        @if (auth()->user()->idRol == 1)
+            <a href="{{ route('edit_competencia', ['id' => $competencia->idCompetencia]) }}" class="btn btn-outline-info"><i
+                    class="bi bi-pencil-square me-2"></i>Editar competencia</a>
         @endif
-        <p>Fecha: {{$competencia->fecha}}</p>
+        <p>Fecha: {{ $competencia->fecha }}</p>
         <div class="row my-5 d-block d-md-none">
             <div class="col-12">
                 <a href="https://www.youtube.com/watch?v=ermNRSmkGF8" target="_blank" class="btn btn-danger">Haga clic acá para
@@ -31,26 +32,26 @@
         </div>
         <div class="row">
             <section class="col-12 col-md-4">
-                <h3>Invitacion</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non necessitatibus earum, velit inventore
-                    assumenda cupiditate molestiae ullam, ea nobis esse totam aliquid, vitae perspiciatis accusantium quae!
-                    Voluptate inventore porro quod?</p>
+                <p class="display-5 mx-3">Invitacion</p>
+                <a href="{{ asset('storage/' . $competencia->invitacion) }}" download><button
+                        class="btn btn-outline-dark">Descargar<i class="bi bi-download px-2"></i></button>
+                </a>
             </section>
             <section class="col-12 col-md-4">
-                <h3>Bases</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non necessitatibus earum, velit inventore
-                    assumenda cupiditate molestiae ullam, ea nobis esse totam aliquid, vitae perspiciatis accusantium quae!
-                    Voluptate inventore porro quod?</p>
+                <p class="display-5 mx-3">Bases</p>
+                <a href="{{ asset('storage/' . $competencia->bases) }}" download><button
+                        class="btn btn-outline-dark">Descargar<i class="bi bi-download px-2"></i></button>
+                </a>
             </section>
             <section class="col-12 col-md-4">
                 <div class="d-flex flex-row justify-content-center align-items-center">
-                <p class="display-5 mx-3">Flyer</p>
-                <a href="{{ asset('storage/' . $competencia->flyer) }}" download>
-                    <button class="btn btn-outline-dark">Descargar<i class="bi bi-download px-2"></i></button>
-                  </a>
-                  
+                    <p class="display-5 mx-3">Flyer</p>
+                    <a href="{{ asset('storage/' . $competencia->flyer) }}" download>
+                        <button class="btn btn-outline-dark">Descargar<i class="bi bi-download px-2"></i></button>
+                    </a>
+
                 </div>
-                <img class="img-fluid" src="{{ asset('storage/' . $competencia->flyer) }}" alt="">
+                <img class="img-fluid" src={{ asset('storage/'.$competencia->flyer)}} alt="">
             </section>
         </div>
     </div>

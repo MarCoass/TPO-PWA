@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('nombre');
             $table->date('fecha');
             $table->string('flyer')->nullable();
+            $table->string('bases')->nullable();
+            $table->string('invitacion')->nullable();
             $table->timestamps();
         });
     }
