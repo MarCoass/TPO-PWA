@@ -54,6 +54,10 @@ class PuntajeController extends Controller
         $puntajeId = $puntaje->idPuntaje;
 
 
+        //Le aumento el contador de pasadas
+        $idCompetenciaCompetidor->contadorPasadas = $idCompetenciaCompetidor->contadorPasadas+1;
+        $idCompetenciaCompetidor->save();
+
         return redirect()->route('puntuador.show', ['puntaje' => $puntajeId]);
     }
 

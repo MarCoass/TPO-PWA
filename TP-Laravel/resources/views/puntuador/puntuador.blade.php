@@ -10,17 +10,13 @@
 
 @section('contenido')
     <div class="desktop">
-        <div class="alert alert-danger" role="alert">
-            Acceda desde un celular.
-            
-        </div>
+        @include('puntuador.partials.vistaNoDisponible')
         
     </div>
 
     <div class="mobile">
-        <div class="vertical alert alert-danger" role="alert">
-            Gire la pantalla.
-            @include('layouts.partials.navbar')
+        <div class="vertical">
+            @include('puntuador.partials.vistaNoDisponible')
         </div>
 
 
