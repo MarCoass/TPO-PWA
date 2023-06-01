@@ -7,6 +7,7 @@ use App\Models\Competidor;
 use App\Models\User;
 use App\Models\Poomsae;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 
 class CompetenciaController extends Controller
@@ -45,10 +46,17 @@ class CompetenciaController extends Controller
         $competencia = new Competencia();
         $competencia->nombre = $request->input('nombre');
         $competencia->fecha = $request->input('fecha');
+       
+        $extension = $request->file('flyer')->getClientOriginalExtension();
 
+        $nombreFlyer = $request->input('nombre').'Flyer.' . $extension;
+        $path = $request->file('flyer')->storeAs(
+            'public/img', $nombreFlyer
+        );
+        $competencia->flyer = $path;
         $competencia->save();
 
-        return redirect()->route('index_competencia')->with('success', 'Competidor creado exitosamente.');
+        return redirect()->route('index_competencia')->with('success', 'Competencia creada exitosamente.');
     }
 
     /**
@@ -87,6 +95,11 @@ class CompetenciaController extends Controller
         $competencia = Competencia::find($id);
         $competencia->nombre = $request->input('nombre');
         $competencia->fecha = $request->input('fecha');
+        $nombreFlyer = $request->input('nombre').'Flyer';
+        $path = $request->file('flyer')->storeAs(
+            'public/img', $nombreFlyer
+        );
+        $competencia->flyer = $path;
         $competencia->save();
 
         return redirect()->route('index_competencia')->with('success', 'Competencia actualizado exitosamente.');
@@ -105,5 +118,11 @@ class CompetenciaController extends Controller
 
         return redirect()->route('index_competencia')->with('success', 'Competencia eliminada exitosamente.');
     
+    }
+
+    public function verPresentacion($id){
+        //busco la competencia
+        $competencia = Competencia::find($id);
+        return view('presentacion/video', compact('competencia'));
     }
 }

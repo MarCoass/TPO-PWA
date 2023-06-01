@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id('idCompetencia');
             $table->string('nombre');
             $table->date('fecha');
+            $table->string('flyer')->nullable();
             $table->timestamps();
         });
     }

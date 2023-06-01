@@ -33,7 +33,8 @@ Presentacion del Torneo
         </section>
         <section class="col-12 col-md-4">
             <h3>Flyer</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non necessitatibus earum, velit inventore assumenda cupiditate molestiae ullam, ea nobis esse totam aliquid, vitae perspiciatis accusantium quae! Voluptate inventore porro quod?</p>
+           
+            <img src="{{asset('storage/'.$competencia->flyer)}}" alt="">
         </section>
     </div>
 </div>

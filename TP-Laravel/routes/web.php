@@ -75,6 +75,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/rechazar_solicitud/{id}', [SolicitudController::class, 'rechazarSolicitud'])->name('rechazar_solicitud');
 
 
+        //Rutas de presentacion
+        Route::get('/verPresentacion/{id}', [CompetenciaController::class, 'verPresentacion'])->name('verPresentacion');
 
         /* reloj */
         Route::get('/resultados', function(){return view('resultados.resultados');});
@@ -136,7 +138,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
         Route::post('/cargarPuntaje', [PuntajeController::class, 'store'])->middleware(['rol:2'])->name('puntaje.store');
         //Route::get('/verPuntaje', [PuntajeController::class, 'show'])->middleware(['rol:2'])->name('puntaje.show');
-        Route::get('/verPuntaje/{puntaje}', [PuntajeController::class, 'show'])->name('puntuador.show');
+        Route::get('/verPuntaje/{puntaje}', [PuntajeController::class, 'show'])->middleware(['rol:2'])->name('puntuador.show');
         Route::get('/verPuntajeFinal/{competenciaCompetidor}', [CompetenciaCompetidorController::class, 'puntajeFinal'])->name('puntajeFinal.show');
     });
 
