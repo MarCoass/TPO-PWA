@@ -10,6 +10,9 @@
 
 @section('contenido')
     <div class="text-center">
+        @if(auth()->user()->idRol == 1)
+        <a href="{{ route('edit_competencia', ['id' => $competencia->idCompetencia ]) }}" class="btn btn-outline-info"><i class="bi bi-pencil-square me-2"></i>Editar competencia</a>
+        @endif
         <p>Fecha: {{$competencia->fecha}}</p>
         <div class="row my-5 d-block d-md-none">
             <div class="col-12">
