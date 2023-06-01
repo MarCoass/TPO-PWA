@@ -241,3 +241,13 @@ los nombres de los campos van a ser los que se encuentren en el JSON obtenido. e
 
 5)El datatable hace su magia y pobla la tabla con los datos en la vista.
 
+
+----------------------------------------------------------------------------------------------------------------------------------
+ACCEDER AL STORAGE
+
+Para que muestre el flyer, las bases y la invitación en la vista de presentación
+de la competencia, se tiene que ejecutar el comando:
+
+ php artisan storage:link
+
+Básicamente, permite acceder a los archivos almacenados en el storage desde la web.
