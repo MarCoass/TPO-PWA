@@ -32,16 +32,24 @@
         </div>
         <div class="row">
             <section class="col-12 col-md-4">
-                <p class="display-5 mx-3">Invitacion</p>
-                <a href="{{ asset('storage/' . $competencia->invitacion) }}" download><button
-                        class="btn btn-outline-dark">Descargar<i class="bi bi-download px-2"></i></button>
-                </a>
+                <div class="d-flex flex-row justify-content-center align-items-center">
+                    <p class="display-5 mx-3">Invitacion</p>
+                    <a href="{{ asset('storage/' . $competencia->invitacion) }}" download><button
+                            class="btn btn-outline-dark">Descargar<i class="bi bi-download px-2"></i></button>
+                    </a>
+                </div>
+                <iframe width="400" height="400" src="{{ asset('storage/' . $competencia->invitacion) }}"
+                    frameborder="0"></iframe>
             </section>
             <section class="col-12 col-md-4">
-                <p class="display-5 mx-3">Bases</p>
-                <a href="{{ asset('storage/' . $competencia->bases) }}" download><button
-                        class="btn btn-outline-dark">Descargar<i class="bi bi-download px-2"></i></button>
-                </a>
+                <div class="d-flex flex-row justify-content-center align-items-center">
+                    <p class="display-5 mx-3">Bases</p>
+                    <a href="{{ asset('storage/' . $competencia->bases) }}" download><button
+                            class="btn btn-outline-dark">Descargar<i class="bi bi-download px-2"></i></button>
+                    </a>
+                </div>
+                <iframe width="400" height="400" src="{{ asset('storage/' . $competencia->bases) }}"
+                    frameborder="0"></iframe>
             </section>
             <section class="col-12 col-md-4">
                 <div class="d-flex flex-row justify-content-center align-items-center">
@@ -51,7 +59,7 @@
                     </a>
 
                 </div>
-                <img class="img-fluid" src={{ asset('storage/'.$competencia->flyer)}} alt="">
+                <img class="img-fluid" src={{ asset('storage/' . $competencia->flyer) }} alt="">
             </section>
         </div>
     </div>
