@@ -32,22 +32,23 @@
             @endif
         </div>
 
-        <div class="col-lg-6 col-12 form-group mb-3">
-            <label for="cantidadJueces" class="form-label">Cantidad de Jueces</label>
-            <select name="cantidadJueces" id="cantidadJueces" class="form-control" required>
-                @for($i = 3; $i <= 7; $i = $i+2)
-                    @if($i == $competencia->cantidadJueces)
-                        <option value="{{$i}}" selected>{{$i}}</option>
-                    @else
-                        <option value="{{$i}}">{{$i}}</option>
-                    @endif
-                @endfor
-            </select>
-     
-        </div>
+        @if($competencia->estadoJueces == false)
+            <div class="col-lg-6 col-12 form-group mb-3">
+                <label for="cantidadJueces" class="form-label">Cantidad de Jueces</label>
+                <select name="cantidadJueces" id="cantidadJueces" class="form-control" required>
+                    @for($i = 3; $i <= 7; $i = $i+2)
+                        @if($i == $competencia->cantidadJueces)
+                            <option value="{{$i}}" selected>{{$i}}</option>
+                        @else
+                            <option value="{{$i}}">{{$i}}</option>
+                        @endif
+                    @endfor
+                </select>
+            </div>
+        @endif
 
 
-        <div class="col-lg-6 col-12 button-group mb-3 d-flex justify-content-end align-items-center">
+        <div class="col-lg-12 col-12 button-group mb-3 d-flex justify-content-end align-items-center">
             <button type="submit" class="btn btn-outline-primary mx-2"><i class="bi bi-cloud-upload-fill me-2"></i>Guardar cambios</button>
             <button type="button" class="btn btn-outline-secondary" onclick="history.back()"><i class="bi bi-arrow-left me-2"></i>Volver</button>
         </div>
