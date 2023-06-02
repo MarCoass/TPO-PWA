@@ -13,5 +13,5 @@ class Competencia extends Model
 
     protected $primaryKey = 'idCompetencia';
 
-    protected $fillable = ['nombre','fecha', 'flyer', 'bases', 'invitacion'];
+    protected $fillable = ['nombre','fecha', 'flyer', 'bases', 'invitacion', 'cantidadJueces','estadoJueces'];
 }

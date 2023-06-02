@@ -28,6 +28,8 @@ class CompetenciasTableSeeder extends Seeder
             competencia::create([
                 'nombre' => $competencia['nombre'],
                 'fecha' => $competencia['fecha'],
+                'cantidadJueces' => $competencia['cantidadJueces'],
+                'estadoJueces' => $competencia['estadoJueces']
             ]);
         }
     

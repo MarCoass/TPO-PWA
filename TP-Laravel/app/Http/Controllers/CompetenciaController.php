@@ -46,6 +46,8 @@ class CompetenciaController extends Controller
         $competencia = new Competencia();
         $competencia->nombre = $request->input('nombre');
         $competencia->fecha = $request->input('fecha');
+        // estadoJueces tiene por defecto false en la db
+        $competencia->cantidadJueces = $request->input('cantidadJueces');
        
         $extension = $request->file('flyer')->getClientOriginalExtension();
 
@@ -64,6 +66,8 @@ class CompetenciaController extends Controller
         $competencia->invitacion = $request->file('invitacion')->storeAs(
             '/pdf', $nombreSinEspacios.'Invitacion.pdf', 'public'
         );
+
+        
         
 
         $competencia->save();
@@ -107,6 +111,8 @@ class CompetenciaController extends Controller
         $competencia = Competencia::find($id);
         $competencia->nombre = $request->input('nombre');
         $competencia->fecha = $request->input('fecha');
+        // estadoJueces tiene por defecto false en la db
+        $competencia->cantidadJueces = $request->input('cantidadJueces');
         $nombreFlyer = $request->input('nombre').'Flyer';
         $path = $request->file('flyer')->storeAs(
             '', $nombreFlyer

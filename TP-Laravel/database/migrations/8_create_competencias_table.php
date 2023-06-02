@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('flyer')->nullable();
             $table->string('bases')->nullable();
             $table->string('invitacion')->nullable();
+            $table->integer('cantidadJueces');
+            $table->boolean('estadoJueces')->default(false);
             $table->timestamps();
         });
     }
