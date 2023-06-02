@@ -5,13 +5,15 @@
 @endsection
 
 @section('encabezado')
-    Competencias
+    Competencias 
 @endsection
 
 @section('contenido')
+
 <div class="row" data-masonry='{"percentPosition": true }'>
+    
     @foreach ($competencias as $competencia)
-        <div class="card" style="width: 18rem;">
+        <div class="card m-4" style="width: 18rem;">
             @if ($competencia->flyer != '')
                 <img src="{{ asset('storage/' . $competencia->flyer) }}" class="card-img-top" alt="...">
             @else
@@ -28,6 +30,7 @@
             </div>
         </div>
     @endforeach
+  
 </div>
 @endsection
 <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>

@@ -48,7 +48,7 @@ NeuPoom
                     <a href="/presentacion" class="seccion-item_link">
                         <div class="seccion-item_bg"></div>
                         <div class="seccion-item_title">
-                            Presentacion del torneo
+                            Ver Competencias
                         </div>
                     </a>
                 </div>
