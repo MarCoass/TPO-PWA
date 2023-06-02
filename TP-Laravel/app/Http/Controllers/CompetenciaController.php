@@ -111,8 +111,13 @@ class CompetenciaController extends Controller
         $competencia = Competencia::find($id);
         $competencia->nombre = $request->input('nombre');
         $competencia->fecha = $request->input('fecha');
-        // estadoJueces tiene por defecto false en la db
-        $competencia->cantidadJueces = $request->input('cantidadJueces');
+
+        // No permite modificar la cantidad si ya la competencia
+        // está abierta a competidores
+        if($competencia->estadoJueces == false){
+            $competencia->cantidadJueces = $request->input('cantidadJueces');
+        }
+
         $nombreFlyer = $request->input('nombre').'Flyer';
         $path = $request->file('flyer')->storeAs(
             '', $nombreFlyer

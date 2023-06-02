@@ -22,6 +22,7 @@ Gestion de Competencias
             <th>Nombre</th>
             <th>Fecha</th>
             <th>Inscripciones</th>
+            <th>Cantidad de Jueces</th>
             <th>Acciones</th>
         </tr>
     </thead>
@@ -32,6 +33,7 @@ Gestion de Competencias
             <td>{{ $row->nombre }}</td>
             <td>{{ $row->fecha }}</td>
             <td>{{ ($row->estadoJueces) ? 'Abierto a Competidores' : 'Abierto a Jueces'}}</td>
+            <td>{{ '0 de ' . $row->cantidadJueces }}</td>
             <td>
                 <a href="{{ route('edit_competencia', ['id' => $row->idCompetencia ]) }}" class="btn btn-outline-info"><i class="bi bi-pencil-square me-2"></i>Editar</a>
                 <a href="{{ route('ver_inscriptos_competencia', ['id' => $row->idCompetencia ]) }}" class="btn btn-outline-info">Ver Competidores inscriptos</a>
