@@ -148,6 +148,11 @@ class CompetenciaController extends Controller
         $competencia = Competencia::find($id);
 
 
-        return view('presentacion/video', compact('competencia'));
+        return view('presentacion/verCompetencia', compact('competencia'));
+    }
+
+    public function verCompetencias(){
+        $competencias = Competencia::all();
+        return view('presentacion.competencias', compact('competencias'));
     }
 }
