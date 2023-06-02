@@ -75,7 +75,7 @@ NeuPoom
                                 @csrf
                                     <div class="form-group">
                                     <label for="juez">Juez</label>
-                                    <select class="form-control" id="juez" name="juez">
+                                    <select class="form-control" id="juez" name="juez" required>
                                         @foreach ($jueces as $row)
                                         @if($row->id == auth()->user()->id){
                                         <option value="{{ $row->id }}">{{ $row->nombre }} {{ $row->apellido }}</option>
@@ -85,10 +85,14 @@ NeuPoom
                                     </div>
                                     <div class="form-group">
                                         <label for="competencia">Competencia</label>
-                                        <select class="form-control" id="competencia" name="competencia">
-                                        @foreach ($competencias as $row)
-                                            <option value="{{ $row->idCompetencia }}">{{ $row->nombre }}</option>
-                                        @endforeach
+                                        <select class="form-control" id="competencia" name="competencia" required>
+                                            @if(!isset($competencias) || count($competencias) == 0)
+                                                <option value="" disabled selected>No hay competencias habilitadas. Vuelva más tarde.</option>
+                                            @else
+                                                @foreach ($competencias as $row)
+                                                <option value="{{$row->idCompetencia}}">{{$row->nombre}}</option>
+                                                @endforeach
+                                            @endif
                                         </select>
                                     </div>
                             </div>

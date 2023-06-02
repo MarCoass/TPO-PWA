@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
     public function index() 
     {
-        $competencias = Competencia::all();
+        $competencias = Competencia::where('estadoJueces', false)->get();
         //solo listar jueces verificados
         $jueces = User::where('estado','=','1')->where('idRol','=','2')->get();
 

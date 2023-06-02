@@ -34,22 +34,58 @@ class CompetenciaJuezController extends Controller
     }
 
     public function habilitar($id){
+        // Habilitar solo si hay menos que la cantidad definida en competencia
+        // Caso contrario msj de error
+        // Habría que deshabilitar el botón
+        // Hacer que estadoJueces cambie al aceptar al ultimo juez requerido
 
+        // El competenciaJuez actual
         $competencia_juez = CompetenciaJuez::find($id);
-        $competencia_juez->estado = 1;
-        $competencia_juez->save();
 
-        return redirect()->route('tabla_jueces', ['id' => $competencia_juez->idCompetencia])->with('success', 'Juez habilitado exitosamente.');
+        // La lista completa de jueces aceptados para esta competencia
+        $juecesAceptados = CompetenciaJuez::
+                where('estado', true)
+                ->where('idCompetencia', $competencia_juez->idCompetencia)
+                ->get();
+
+
+        $mensaje = [];
+        $cantJueces = $competencia_juez->competencia->cantidadJueces;
+        $cantJuecesAceptados = count($juecesAceptados);
+
+        if($cantJuecesAceptados + 1 > $cantJueces){
+            // Mayor muestra msj de error
+            $mensaje = ["tipo" => 'restringed', 'mensaje' => 'No puede habilitar más jueces. La competencia ya está completa.'];
+        }elseif($cantJuecesAceptados + 1 == $cantJueces){
+            // Igual carga y cambia estadoJueces
+            $competencia_juez->competencia->estadoJueces = true;
+            $competencia_juez->competencia->save();
+            $competencia_juez->estado = 1;
+            $competencia_juez->save();
+            $mensaje = ["tipo" => 'success', 'mensaje' => 'Juez habilitado exitosamente. La competencia ya está completa.'];
+        }elseif($cantJuecesAceptados + 1 < $cantJueces){
+            // Menor solo carga
+            $competencia_juez->estado = 1;
+            $competencia_juez->save();
+            $mensaje =["tipo" => 'success', 'mensaje' => 'Juez habilitado exitosamente.'];
+        }
+
+
+
+
+        return redirect()->route('tabla_jueces', ['id' => $competencia_juez->idCompetencia])->with($mensaje['tipo'], $mensaje['mensaje']);
     }
 
     public function listarJuecesPorIdCompetencia($id)
     {
         
-        $competencia_juez = CompetenciaJuez::select('competenciajueces.*', 'users.nombre','users.apellido','users.id')
-        ->join('users', 'competenciajueces.idJuez', '=', 'users.id')
-        ->get();
+        $competencia_juez = CompetenciaJuez::where('idCompetencia', $id)->get();
         $nombreCompetencia = Competencia::find($id);
+        $juecesAceptados = CompetenciaJuez::
+                where('estado', true)
+                ->where('idCompetencia', $id)
+                ->get();
 
-        return view('tablaCompetenciaJueces.index', ['JuecesCompetencia' => $competencia_juez, 'nombreCompetencia' => $nombreCompetencia]);
+        return view('tablaCompetenciaJueces.index', ['CompetenciaJuez' => $competencia_juez, 'nombreCompetencia' => $nombreCompetencia, 'juecesAceptados' => $juecesAceptados]);
     }
 }

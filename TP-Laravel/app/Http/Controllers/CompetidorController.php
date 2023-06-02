@@ -17,7 +17,8 @@ class CompetidorController extends Controller
 
     public function cargarCompetidor(){
         $graduaciones = Graduacion::all();
-        $competencias = Competencia::all();
+        // Obtiene todas las competencias que ya tienen todos los jueces requeridos
+        $competencias = Competencia::where('estadoJueces', true)->get();
         return view('cargarCompetidor.cargarCompetidor', compact('graduaciones','competencias'));
 
     }

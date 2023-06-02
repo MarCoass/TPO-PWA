@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Competencia;
 use App\Models\Competidor;
+use App\Models\CompetenciaJuez;
 use App\Models\User;
 use App\Models\Poomsae;
 use Illuminate\Http\Request;
@@ -20,8 +21,16 @@ class CompetenciaController extends Controller
     public function index()
     {
         $competencias = Competencia::all();
+        $competenciaJuez = [];
+
+        foreach($competencias as $competencia){
+            $competenciaJuez[$competencia->idCompetencia] = CompetenciaJuez::
+                where('estado', true)
+                ->where('idCompetencia', $competencia->idCompetencia)
+                ->get();
+        }
    
-        return view('gestionCompetencias.index', compact('competencias'));
+        return view('gestionCompetencias.index', compact('competencias', 'competenciaJuez'));
     }
 
     /**
@@ -118,11 +127,11 @@ class CompetenciaController extends Controller
             $competencia->cantidadJueces = $request->input('cantidadJueces');
         }
 
-        $nombreFlyer = $request->input('nombre').'Flyer';
-        $path = $request->file('flyer')->storeAs(
-            '', $nombreFlyer
-        );
-        $competencia->flyer = $path;
+        // $nombreFlyer = $request->input('nombre').'Flyer';
+        // $path = $request->file('flyer')->storeAs(
+        //     '', $nombreFlyer
+        // );
+        // $competencia->flyer = $path;
         $competencia->save();
 
         return redirect()->route('index_competencia')->with('success', 'Competencia actualizado exitosamente.');
