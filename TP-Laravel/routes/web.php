@@ -63,7 +63,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
     Route::group(['middleware' => ['auth']], function() {
 
         /* rutas para todes */
-        Route::get('/presentacion', function () {return view('presentacion.video');});
+        Route::get('/presentacion', [CompetenciaController::class, 'verCompetencias']);
         Route::get('/verPerfil', function (){return view('verPerfil.verPerfil');})->name('verPerfil');
         Route::post('/actualizarDatosPersonales', [UsuarioController::class, 'actualizarDatosPersonales'])->name('actualizarDatosPersonales');
         Route::post('/actualizarPassword', [UsuarioController::class, 'actualizarPassword'])->name('actualizarPassword');
