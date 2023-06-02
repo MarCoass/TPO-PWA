@@ -11,7 +11,7 @@
 
 @section('contenido')
     <h3>Editar Competencia #{{ $competencia->idCompetencia }}</h3>
-    <form class="row m-5" method="POST" action="{{ route('update_competencia', ['id' => $competencia->idCompetencia ]) }}">
+    <form class="row m-5" method="POST"  enctype="multipart/form-data" action="{{ route('update_competencia', ['id' => $competencia->idCompetencia ]) }}">
         @csrf
         @method('PUT')
         <div class="col-lg-6 col-12 form-group form-floating mb-3">
@@ -47,6 +47,20 @@
             </div>
         @endif
 
+        <div class="col-lg-6 col-12 form-group mb-3">
+            <label for="formFile" class="form-label">Seleccione el flyer</label>
+            <input class="form-control" type="file" name="flyer" id="flyer">
+        </div>
+
+        <div class="col-lg-6 col-12 form-group mb-3" >
+            <label for="formFile" class="form-label">Seleccione las bases</label>
+            <input class="form-control" type="file" name="bases" id="bases" accept="application/pdf">
+        </div>
+
+        <div class="col-lg-6 col-12 form-group mb-3">
+            <label for="formFile" class="form-label">Seleccione la invitacion</label>
+            <input class="form-control" type="file" name="invitacion" id="invitacion" accept="application/pdf">
+        </div>
 
         <div class="col-lg-12 col-12 button-group mb-3 d-flex justify-content-end align-items-center">
             <button type="submit" class="btn btn-outline-primary mx-2"><i class="bi bi-cloud-upload-fill me-2"></i>Guardar cambios</button>

@@ -67,9 +67,6 @@ class CompetenciaController extends Controller
             '/pdf', $nombreSinEspacios.'Invitacion.pdf', 'public'
         );
 
-        
-        
-
         $competencia->save();
 
         return redirect()->route('index_competencia')->with('success', 'Competencia creada exitosamente.');
@@ -118,11 +115,33 @@ class CompetenciaController extends Controller
             $competencia->cantidadJueces = $request->input('cantidadJueces');
         }
 
-        $nombreFlyer = $request->input('nombre').'Flyer';
-        $path = $request->file('flyer')->storeAs(
-            '', $nombreFlyer
-        );
-        $competencia->flyer = $path;
+$nombreSinEspacios = str_replace(' ', '', $request->input('nombre'));
+        if ($request->hasFile('flyer')) {
+          
+            $extension = $request->file('flyer')->getClientOriginalExtension();
+            $nombreFlyer = $nombreSinEspacios . 'Flyer.' . $extension;
+            $pathFlyer = $request->file('flyer')->storeAs(
+                '/img',
+                $nombreFlyer,
+                'public'
+            );
+            $competencia->flyer = $pathFlyer;
+        }
+
+        if ($request->file('bases') != null) {
+        $competencia->bases = $request->file('bases')->storeAs(
+            '/pdf',
+            $nombreSinEspacios . 'Bases.pdf',
+            'public'
+        );}
+
+        if ($request->file('invitacion') != null) {
+        $competencia->invitacion = $request->file('invitacion')->storeAs(
+            '/pdf',
+            $nombreSinEspacios . 'Invitacion.pdf',
+            'public'
+        );}
+
         $competencia->save();
 
         return redirect()->route('index_competencia')->with('success', 'Competencia actualizado exitosamente.');
