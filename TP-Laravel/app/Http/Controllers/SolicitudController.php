@@ -7,8 +7,7 @@ use App\Models\Escuela;
 use App\Models\Competidor;
 use App\Models\Graduacion;
 use App\Models\User;
-use App\Http\Requests\StoreSolicitudRequest;
-use App\Http\Requests\UpdateSolicitudRequest;
+use Illuminate\Http\Request;
 
 class SolicitudController extends Controller
 {
@@ -29,6 +28,20 @@ class SolicitudController extends Controller
         } */
 
         return view('gestionSolicitudes.index_solicitudes', compact('solicitudes','escuelas','graduaciones','competidores'));
+    }
+
+    public function crearSolicitud($id)
+    {
+        $escuelas = Escuela::all();
+        $graduaciones = Graduacion::all();
+        $idSolicitante = $id;
+
+        $competidor = Competidor::where('idUser', $id)->first();
+        if (!$competidor) {
+            $competidor = null;
+        }
+
+        return view('gestionSolicitudes.solicitar_cambios', compact('escuelas','graduaciones','competidor','idSolicitante'));
     }
 
     public function aceptarSolicitud($id){
@@ -81,23 +94,35 @@ class SolicitudController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreSolicitudRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreSolicitudRequest $request)
+    public function generarSolicitud(Request $request)
     {
         $solicitud = new Solicitud();
-        $solicitud->estadoSolicitud = $request->input('estadoSolicitud');
-        $solicitud->newEscuela = $request->input('newEscuelaSolicitud');
-        $solicitud->newGraduacion = $request->input('newGraduacionSolicitud');
+        $solicitud->estadoSolicitud = 4;
+        $solicitud->newEscuela = $request->input('newEscuela');
+        $solicitud->newGraduacion = $request->input('newGraduacion');
 
         // User
         $user = User::find($request->input('idUser'));
-        $solicitud->User()->asociate($user);
+        $solicitud->user()->associate($user);
+        // si los inputs de escuela o solicitud es 0 (osea sin cambios) no se guardara nada
+        if($request->input('newEscuela') != 0 || $request->input('newGraduacion') != 0){
 
-        $solicitud->save();
+            $solicitud->save();
+            $arregloMensaje = [
+            'tipo' => 'success',
+            'mensaje' => 'Tu solicitud ha sido creada.'
+            ];
+        } else {
 
-        return redirect()->route('home.index')->with('success', 'Solicitud Creada');
+            $arregloMensaje = [
+            'tipo' => 'success',
+            'mensaje' => 'la solicitud no sugeria cambios'
+            ];
+        }
+
+        return redirect()->route('home.index')->with($arregloMensaje['tipo'], $arregloMensaje['mensaje']);
     }
 
 }
