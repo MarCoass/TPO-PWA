@@ -32,9 +32,11 @@ Gestion de Competidores de la competencia
             <td>{{ ($competidor->estado == 0) ? 'Sin Habilitar' : 'Habilitado' }}</td>
             <td>
                 @if ($competidor->estado == 0)
-                <a href="{{ route('habilitar_competidor', ['id' => $competidor->idCompetenciaCompetidor ]) }}" class="btn btn-outline-success"><i class="bi bi-check2-square me-2"></i>Habilitar</a>
+                    <a href="{{ route('habilitar_competidor', ['id' => $competidor->idCompetenciaCompetidor ]) }}" class="btn btn-outline-success"><i class="bi bi-check2-square me-2"></i>Habilitar</a>
                 @endif
-                <a class="btn btn-outline-info"><i class="bi bi-pencil-square me-2"></i>Editar</a>
+                @if ($competidor->estado == 1)
+                    <a href="{{ route('asignar_poomsae_competidor', ['id_competencia_competidor' => $competidor->idCompetenciaCompetidor ]) }}" class="btn btn-outline-success"><i class="bi bi-check2-square me-2"></i>Asignar Poomsae</a>
+                @endif
 
             </td>
         </tr>

@@ -18,6 +18,7 @@ use App\Http\Controllers\CompetenciaCompetidorController;
 use App\Http\Controllers\CompetenciaJuezController;
 use App\Http\Controllers\PuntajeController;
 use App\Http\Controllers\SolicitudController;
+use App\Http\Controllers\CompetenciaCompetidorPoomsaeController;
 use App\Models\CompetenciaCompetidor;
 
 Route::group(['namespace' => 'App\Http\Controllers'], function()
@@ -103,8 +104,10 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::post('gestionCompetencias/store', [CompetenciaController::class, 'store'])->name('store_competencia');
             Route::put('/update_competidor/{id}', [CompetenciaController::class, 'update'])->name('update_competencia');
             Route::get('/ver_inscriptos_competencia/{id}', [CompetenciaCompetidorController::class, 'listarCompetidoresPorId'])->name('ver_inscriptos_competencia');
-
-                //ruta de ejemplo para hacer la inscripcion desde un competidor
+            Route::get('/asignar_poomsae_competencia/{id_competencia_competidor}', [CompetenciaCompetidorPoomsaeController::class, 'create'])->name('asignar_poomsae_competidor');
+            Route::post('/store_asignar_poomsae', [CompetenciaCompetidorPoomsaeController::class, 'store'])->name('store_asignar_poomsae');
+                
+            //ruta de ejemplo para hacer la inscripcion desde un competidor
             Route::get('inscripcion/create/{idCompetidor}', [CompetenciaCompetidorController::class, 'create'])->name('create_competencia_competidor');
 
                 /* Lista de competidores */
