@@ -15,6 +15,7 @@ Gestion de Competencias
 <h3>Competencias</h3>
 <a href="{{ route('create_competencia') }}" class="btn btn-outline-primary mb-3"><i class="bi bi-universal-access me-2"></i>Nueva Competencia</a>
 
+<div class="table-responsive">
 <table id="tabla_competencia" class="table hover table-light table-bordered nowrap border dataTable dtr-inline collapsed" width="100%">
     <thead class="flip-content">
         <tr>
@@ -44,4 +45,5 @@ Gestion de Competencias
         @endforeach
     </tbody>
 </table>
+</div>
 @endsection

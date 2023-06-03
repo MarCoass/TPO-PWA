@@ -5,6 +5,7 @@ import {tabla_usuarios} from './tablaUsuarios.js';
 import {tabla_solicitud} from './tablaSolicitudes.js';
 import './eventosMenu.js';
 import {tabla_CompetenciaCompetidores} from './tablaCompetenciaCompetidores.js';
+import {tabla_competencia} from './tablaCompetencias.js';
 
 
 //Cronometro
@@ -23,6 +24,8 @@ competidores_tabla;
 //tabla competidores de la competencia
 tabla_CompetenciaCompetidores;
 
+//TABLA DE COMPETENCIAS NO VOLVER A BORRAR
+tabla_competencia
 /*
 Si o si poner http://127.0.0.1:800/ruta sino no anda, os advierte su querido Braian <3
   $.ajax({
