@@ -8,7 +8,6 @@ use App\Models\Puntaje;
 use App\Models\Competidor;
 use App\Models\Competencia;
 use App\Models\Poomsae;
-use App\Models\Graduacion;
 use Illuminate\Http\Request;
 
 class PuntajeController extends Controller
@@ -74,6 +73,30 @@ class PuntajeController extends Controller
         return response()->json($opciones);
     }
 
+    public function obtenerOpcionesPoomsae(Request $request)
+    {
+        $id_competidor = $request->input('competidor_puntuador');
+        $id_competencia = $request->input('id_competencia');
+
+        //busco el idCompetenciaJuez que corresponde a la competencia
+        $competenciaJuez = CompetenciaJuez::where('idCompetencia', '=', $id_competencia)->where('idJuez', '=', auth()->user()->id)->get();
+
+        $existePrimeraPasada = Puntaje::leftJoin('competenciacompetidor', 'puntajes.idCompetenciaCompetidor', '=', 'competenciacompetidor.idCompetenciaCompetidor')->
+        where('competenciacompetidor.idCompetencia', '=', $id_competencia)
+        ->where('competenciacompetidor.idCompetidor','=',$id_competidor)
+        ->where('idCompetenciaJuez', "=", $competenciaJuez[0]->idCompetenciaJuez)->get();
+
+        $pasada = (($existePrimeraPasada->count() === 0) ? 1 : 2);
+
+        $opciones =  Poomsae::leftJoin('competenciacompetidorpoomsae', 'poomsae.idPoomsae', '=', 'competenciacompetidorpoomsae.idPoomsae')->
+        leftJoin('competenciacompetidor','competenciacompetidorpoomsae.idCompetenciaCompetidor','competenciacompetidor.idCompetenciaCompetidor')->
+        where('competenciacompetidor.idCompetencia', '=', $id_competencia)->
+        where('competenciacompetidor.idCompetidor','=',$id_competidor)->
+        where('competenciacompetidorpoomsae.pasadas','=',$pasada)->get();
+
+        return response()->json($opciones);
+    }
+
     public function  puntuadorindex()
     {
         //filtrar competencias por incripcion de juez
@@ -81,10 +104,7 @@ class PuntajeController extends Controller
         $competencias = Competencia::select('competencias.*')
         ->join('competenciajueces', 'competencias.idCompetencia', '=', 'competenciajueces.idCompetencia')->where('competenciajueces.idJuez','=',$user->id)->where('competenciajueces.estado','=','1')->get();
 
-        //filtrar poomsae por graduacion de competidor
-        $poomsae = Poomsae::all();
-
-        return view('puntuador.index', compact('competencias', 'poomsae'));
+        return view('puntuador.index', compact('competencias'));
     }
 
     public function iniciar_puntaje(Request $request)

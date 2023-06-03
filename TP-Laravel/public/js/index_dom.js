@@ -67,3 +67,22 @@ $('#competencia_puntuador').on('click', function() {
     }
 });
 });
+
+$('#competidor_puntuador').on('click', function() {
+  $.ajax({
+    type:"GET",
+    url: '/opciones_poomsae',
+    data: {
+    competidor_puntuador: $('#competidor_puntuador').val(),
+    id_competencia: $('#competencia_puntuador').val()
+    },
+    dataType: 'json',
+    success: function(data) {
+        $('#poomsae_puntuador').empty();
+        $('#poomsae_puntuador').append('<option value="" disabled selected data-error="Por favor seleccione un Poomsae">Selecciona un Poomsae.</option>');
+        $.each(data, function(key, value) {
+          $('#poomsae_puntuador').append('<option value="'+value.idPoomsae+'">'+value.nombre+'</option>');
+        });
+    }
+});
+});
