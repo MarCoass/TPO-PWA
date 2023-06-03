@@ -17,12 +17,13 @@
           <div class="card-body text-center">
             <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
               class="rounded-circle img-fluid" style="width: 150px;">
-            <h5 class="my-3">{{auth()->user()->usuario}}</h5>         
+            <h5 class="my-3">{{auth()->user()->usuario}}</h5>
             <p class="text-muted mb-1">{{auth()->user()->escuela->nombre}}</p>
             <p class="text-muted mb-4"> {{auth()->user()->rol->nombreRol}} </p>
             <div class="d-flex justify-content-center mb-2">
               <button type="button" class="btn btn-primary">Follow</button>
               <button type="button" class="btn btn-outline-primary ms-1">Message</button>
+              <a href="/solicitar_cambios/{{auth()->user()->id}}" class="btn btn-outline-primary ms-1">Solicitar cambios</a>
             </div>
           </div>
         </div>
@@ -82,7 +83,7 @@
                 <p class="text-muted mb-0">{{auth()->user()->usuario}}</p>
               </div>
             </div>
-           
+
           </div>
         </div>
         <div class="row">
@@ -120,7 +121,7 @@
 
                   <button class="btn btn-outline-primary" type="submit"> Actualizar </button>
 
-              </div> 
+              </div>
             </div>
           </div>
         </form>
