@@ -82,6 +82,7 @@
                         <p>No se ha cargado el archivo.</p>
                     @endif
             </section>
+            <button type="button" class="btn btn-outline-secondary" onclick="history.back()"><i class="bi bi-arrow-left me-2"></i>Volver</button>
         </div>
     </div>
 @endsection
