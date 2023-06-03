@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\CompetenciaJuez;
 
 class Competencia extends Model
 {
@@ -14,4 +15,8 @@ class Competencia extends Model
     protected $primaryKey = 'idCompetencia';
 
     protected $fillable = ['nombre','fecha', 'flyer', 'bases', 'invitacion', 'cantidadJueces','estadoJueces'];
+
+    public function competenciaJuez(){
+        return $this->hasMany(CompetenciaJuez::class,  'idCompetencia', 'idCompetencia');
+    }
 }

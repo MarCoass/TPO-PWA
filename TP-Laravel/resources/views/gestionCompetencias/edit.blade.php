@@ -32,7 +32,7 @@
             @endif
         </div>
 
-        @if($competencia->estadoJueces == false)
+        @if($competencia->estadoJueces == false && count($juecesAceptados) == 0)
             <div class="col-lg-6 col-12 form-group mb-3">
                 <label for="cantidadJueces" class="form-label">Cantidad de Jueces</label>
                 <select name="cantidadJueces" id="cantidadJueces" class="form-control" required>

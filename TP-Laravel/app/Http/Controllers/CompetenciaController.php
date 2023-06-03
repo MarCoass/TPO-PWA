@@ -20,17 +20,11 @@ class CompetenciaController extends Controller
      */
     public function index()
     {
-        $competencias = Competencia::all();
-        $competenciaJuez = [];
-
-        foreach($competencias as $competencia){
-            $competenciaJuez[$competencia->idCompetencia] = CompetenciaJuez::
-                where('estado', true)
-                ->where('idCompetencia', $competencia->idCompetencia)
-                ->get();
-        }
-   
-        return view('gestionCompetencias.index', compact('competencias', 'competenciaJuez'));
+        $competencias = Competencia::withCount(['competenciaJuez' => function($query) {
+            $query->where('estado', true);
+        }])->get();
+    
+        return view('gestionCompetencias.index', compact('competencias'));
     }
 
     /**
@@ -102,7 +96,11 @@ class CompetenciaController extends Controller
     public function edit($id)
     {
         $competencia = Competencia::find($id);
-        return view('gestionCompetencias.edit', compact('competencia'));
+        $juecesAceptados = CompetenciaJuez::
+                where('estado', true)
+                ->where('idCompetencia', $id)
+                ->get();
+        return view('gestionCompetencias.edit', compact('competencia','juecesAceptados'));
     }
 
     /**
@@ -118,9 +116,14 @@ class CompetenciaController extends Controller
         $competencia->nombre = $request->input('nombre');
         $competencia->fecha = $request->input('fecha');
 
+        $juecesAceptados = CompetenciaJuez::
+                where('estado', true)
+                ->where('idCompetencia', $competencia->idCompetencia)
+                ->get();
+
         // No permite modificar la cantidad si ya la competencia
-        // está abierta a competidores
-        if($competencia->estadoJueces == false){
+        // está abierta a competidores o si ya existe al menos un juez cargado
+        if($competencia->estadoJueces == false && count($juecesAceptados) == 0){
             $competencia->cantidadJueces = $request->input('cantidadJueces');
         }
 
