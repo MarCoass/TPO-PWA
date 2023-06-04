@@ -50,7 +50,7 @@ document.getElementById("cambiarVista_blanco").addEventListener("click", () => {
   cambio_de_tema("light")
 });
 
-$('#competencia_puntuador').on('click', function() {
+/* $('#competencia_puntuador').on('click', function() {
   $.ajax({
     type:"GET",
     url: '/opciones_competidor',
@@ -66,8 +66,9 @@ $('#competencia_puntuador').on('click', function() {
         });
     }
 });
-});
+}); */
 
+//esta ya no sirve creo
 $('#competidor_puntuador').on('click', function() {
   $.ajax({
     type:"GET",
@@ -82,6 +83,29 @@ $('#competidor_puntuador').on('click', function() {
         $('#poomsae_puntuador').append('<option value="" disabled selected data-error="Por favor seleccione un Poomsae">Selecciona un Poomsae.</option>');
         $.each(data, function(key, value) {
           $('#poomsae_puntuador').append('<option value="'+value.idPoomsae+'">'+value.nombre+'</option>');
+        });
+    }
+});
+});
+
+//probando weas
+$('#categoria_puntuador').on('click', function() {
+   console.log($('#categoria_puntuador').val());
+  $.ajax({
+    type:"GET",
+    url: '/opciones_competidor',
+    data: {
+    competencia_puntuador: $('#competencia_puntuador').val(),
+    categoria_puntuador: $('#categoria_puntuador').val()
+    },
+    
+    dataType: 'json',
+    success: function(data) {
+     
+        $('#competidor_puntuador').empty();
+        $('#competidor_puntuador').append('<option value="" disabled selected data-error="Por favor seleccione un competidor">Selecciona un competidor.</option>');
+        $.each(data, function(key, value) {
+          $('#competidor_puntuador').append('<option value="'+value.idCompetidor+'">'+value.nombre+" " +value.apellido+'</option>');
         });
     }
 });

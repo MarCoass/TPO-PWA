@@ -71,10 +71,11 @@ class PuntajeController extends Controller
     {
         $competencia = $request->input('competencia_puntuador');
         $opciones =  Competidor::leftJoin('competenciacompetidor', 'competidores.idCompetidor', '=', 'competenciacompetidor.idCompetidor')
-            ->where('competenciacompetidor.idCompetencia', '=', $competencia)->where('competenciacompetidor.contadorPasadas','<','2')->get();
-     
+            ->where('competenciacompetidor.idCompetencia', '=', $competencia)->where('competenciacompetidor.contadorPasadas', '<', '2')->get();
+
         return response()->json($opciones);
     }
+
 
     public function obtenerOpcionesPoomsae(Request $request)
     {
@@ -101,8 +102,8 @@ class PuntajeController extends Controller
         $user = auth()->user();
         $competencias = Competencia::select('competencias.*')
             ->join('competenciajueces', 'competencias.idCompetencia', '=', 'competenciajueces.idCompetencia')->where('competenciajueces.idJuez', '=', $user->id)->where('competenciajueces.estado', '=', '1')->where('estadoJueces', '=', 1)->get();
-   //por el momento muestra todas las categorias, seria buena idea solo mostrar las que tienen participantes
-   $categorias = Categoria::all();
+        //por el momento muestra todas las categorias, seria buena idea solo mostrar las que tienen participantes
+        $categorias = Categoria::all();
         return view('puntuador.index', compact('competencias', 'categorias'));
     }
 
@@ -154,5 +155,16 @@ class PuntajeController extends Controller
         $competenciacompetidor->save();
 
         return $this->puntuadorindex();
+    }
+
+    //probando weas
+    public function obtenerOpcionesCompetidorCategoria(Request $request)
+    {
+        $categoria = $request->input('categoria_puntuador');
+        $competencia = $request->input('competencia_puntuador');
+        $opciones =  Competidor::leftJoin('competenciacompetidor', 'competidores.idCompetidor', '=', 'competenciacompetidor.idCompetidor')
+            ->where('competenciacompetidor.idCompetencia', '=', $competencia)->where('competenciacompetidor.contadorPasadas', '<', '2')->where('competenciacompetidor.idCategoria', '=', $categoria)->get();
+
+        return response()->json($opciones);
     }
 }

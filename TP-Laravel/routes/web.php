@@ -166,7 +166,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         /* Rutas de Puntuador se pueden mejorar */
         Route::get('/puntuador/puntuador', function(){return view('puntuador.puntuador');})->middleware(['rol:2'])->name('puntuador');
         Route::get('/puntuador/index',  [PuntajeController::class, 'puntuadorindex'])->middleware(['rol:2'])->name('puntuador_index');
-        Route::get('/opciones_competidor', [PuntajeController::class, 'obtenerOpcionesCompetidor'])->middleware(['rol:2']);
+        Route::get('/opciones_competidor', [PuntajeController::class, 'obtenerOpcionesCompetidorCategoria'])->middleware(['rol:2']);
         Route::get('/opciones_poomsae', [PuntajeController::class, 'obtenerOpcionesPoomsae'])->middleware(['rol:2']);
         Route::post('/iniciar_puntaje', [PuntajeController::class, 'iniciar_puntaje'])->middleware(['rol:2'])->name('iniciar_puntaje');
         Route::post('/actualizar_puntaje', [PuntajeController::class, 'actualizar_puntaje'])->middleware(['rol:2'])->name('actualizar_puntaje');
