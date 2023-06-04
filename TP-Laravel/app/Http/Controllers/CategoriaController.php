@@ -16,8 +16,9 @@ class CategoriaController extends Controller
     public function index()
     {
         //
-        $categoria = Categoria::all();
-        return $categoria;
+        $categorias = Categoria::all();
+            
+        return view('gestionCategorias.index', compact('categorias'));
     }
 
     /**
@@ -27,7 +28,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        //
+        return view('gestionCategorias.create');
     }
 
     /**
@@ -38,7 +39,17 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $categoria = new Categoria();
+        $categoria->nombre = $request->input('nombre');
+        $categoria->edadMax = $request->input('edadMax');
+        $categoria->edadMin = $request->input('edadMin');
+        $categoria->genero = $request->input('genero');
+        $categoria->esElite = $request->input('esElite');
+     
+        $categoria->save();
+
+        return redirect()->route('index_categoria')->with('success', 'Categoria creada exitosamente.');
+    
     }
 
     /**
@@ -49,7 +60,8 @@ class CategoriaController extends Controller
      */
     public function show($id)
     {
-        //
+        $categoria = Categoria::find($id);
+        return view('gestionCategorias.show', compact('categoria'));
     }
 
     /**
@@ -60,7 +72,9 @@ class CategoriaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $categoria = Categoria::find($id);
+        return view('gestionCategorias.edit', compact('categoria'));
+   
     }
 
     /**
@@ -72,7 +86,17 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $categoria = Categoria::find($id);
+        $categoria->nombre = $request->input('nombre');
+        $categoria->edadMax = $request->input('edadMax');
+        $categoria->edadMin = $request->input('edadMin');
+        $categoria->genero = $request->input('genero');
+        $categoria->esElite = $request->input('esElite');
+     
+        $categoria->save();
+
+        return redirect()->route('index_categoria')->with('success', 'Categoria actualizado exitosamente.');
+   
     }
 
     /**
@@ -83,6 +107,10 @@ class CategoriaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $categoria = Categoria::find($id);
+        $categoria->delete();
+
+        return redirect()->route('index_categoria')->with('success', 'Categoria eliminada exitosamente.');
+    
     }
 }

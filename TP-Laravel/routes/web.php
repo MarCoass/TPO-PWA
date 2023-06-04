@@ -19,6 +19,7 @@ use App\Http\Controllers\CompetenciaJuezController;
 use App\Http\Controllers\PuntajeController;
 use App\Http\Controllers\SolicitudController;
 use App\Http\Controllers\CompetenciaCompetidorPoomsaeController;
+use App\Http\Controllers\CategoriaController;
 use App\Models\CompetenciaCompetidor;
 
 Route::group(['namespace' => 'App\Http\Controllers'], function()
@@ -106,7 +107,16 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::get('/ver_inscriptos_competencia/{id}', [CompetenciaCompetidorController::class, 'listarCompetidoresPorId'])->name('ver_inscriptos_competencia');
             Route::get('/asignar_poomsae_competencia/{id_competencia_competidor}', [CompetenciaCompetidorPoomsaeController::class, 'create'])->name('asignar_poomsae_competidor');
             Route::post('/store_asignar_poomsae', [CompetenciaCompetidorPoomsaeController::class, 'store'])->name('store_asignar_poomsae');
-                
+            
+            /* Rutas de Gestion de Categorias se pueden mejorar */
+            Route::get('gestionCategorias/index', [CategoriaController::class, 'index'])->name('index_categoria');
+            Route::get('gestionCategorias/create', [CategoriaController::class, 'create'])->name('create_categoria');
+            Route::get('gestionCategorias/edit/{id}', [CategoriaController::class, 'edit'])->name('edit_categoria');
+            Route::post('gestionCategorias/store', [CategoriaController::class, 'store'])->name('store_categoria');
+            Route::put('/update_categoria/{id}', [CategoriaController::class, 'update'])->name('update_categoria');
+          //  Route::get('/ver_graduaciones/{id}', [CompetenciaCompetidorController::class, 'listarCompetidoresPorId'])->name('ver_inscriptos_competencia');
+          //  Route::get('/ver_poomsae/{id}', [CompetenciaCompetidorController::class, 'listarCompetidoresPorId'])->name('ver_inscriptos_competencia');
+           
             //ruta de ejemplo para hacer la inscripcion desde un competidor
             Route::get('inscripcion/create/{idCompetidor}', [CompetenciaCompetidorController::class, 'create'])->name('create_competencia_competidor');
 
