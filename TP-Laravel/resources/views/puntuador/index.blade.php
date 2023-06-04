@@ -24,6 +24,20 @@ Iniciar Puntuador
         </div>
         <div class="invalid-feedback">Seleccione una opcion valida.</div>
 </div>
+    
+<div class="col-lg-6 col-md-12 col-sm-12  pt-3">
+        <label class="form-label" for="categoria_puntuador">Categoria:</label>
+        <select class="form-control validar" id="categoria_puntuador" name="categoria_puntuador" required>
+            <option value="" disabled selected data-error="Por favor seleccione una categoria válida">Selecciona una categoria.</option>
+            @foreach ($categorias as $row)
+            <option value="{{$row->idCategoria}}">{{$row->nombre}}</option>
+            @endforeach
+        </select>
+        <div class="valid-feedback">
+            ¡Correcto!
+        </div>
+        <div class="invalid-feedback">Seleccione una opcion valida.</div>
+</div>
 <div class="col-lg-6 col-md-12 col-sm-12  pt-3">
     <label class="form-label" for="competidor_puntuador">Competidor:</label>
     <select class="form-control validar" id="competidor_puntuador" name="competidor_puntuador" required>
