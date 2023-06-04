@@ -103,7 +103,7 @@ class PuntajeController extends Controller
         //filtrar competencias por incripcion de juez
         $user = auth()->user();
         $competencias = Competencia::select('competencias.*')
-        ->join('competenciajueces', 'competencias.idCompetencia', '=', 'competenciajueces.idCompetencia')->where('competenciajueces.idJuez','=',$user->id)->where('competenciajueces.estado','=','1')->get();
+        ->join('competenciajueces', 'competencias.idCompetencia', '=', 'competenciajueces.idCompetencia')->where('competenciajueces.idJuez','=',$user->id)->where('competenciajueces.estado','=','1')->where('estadoJueces','=', 1)->get();
 
         return view('puntuador.index', compact('competencias'));
     }
