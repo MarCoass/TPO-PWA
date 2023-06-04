@@ -51,8 +51,8 @@
         </div>
 
         <div class="col-lg-6 col-12 form-group mb-3">
-            <label for="genero" class="form-label">Especialidad</label>
-            <select name="genero" id="genero" class="form-control" required>
+            <label for="esElite" class="form-label">Especialidad</label>
+            <select name="esElite" id="esElite" class="form-control" required>
                 <option value="0"  {{($categoria->esElite == 0 ? 'selected' : '')}}>Promocional</option>
                 <option value="1"  {{($categoria->esElite == 1 ? 'selected' : '')}}>Elite</option>
             </select>

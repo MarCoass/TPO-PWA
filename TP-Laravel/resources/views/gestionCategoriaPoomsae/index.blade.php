@@ -2,11 +2,11 @@
 @extends('layouts/layout')
 
 @section('titulo')
-Gestion de Graduacion
+Gestion de Poomsae
 @endsection
 
 @section('encabezado')
-Gestion de Graduacion
+Gestion de Poomsae
 @endsection
 
 @section('contenido')
@@ -14,12 +14,12 @@ Gestion de Graduacion
 @include('layouts.partials.messages')
 <button type="button" class="btn btn-outline-secondary mb-3" onclick="history.back()"><i class="bi bi-arrow-left me-2"></i>Volver</button>
        
-<h3>Gestion de Graduacion de Categoria: {{$categoria->nombre}}</h3>
+<h3>Gestion de Poomsae de Categoria: {{$categoria->nombre}}</h3>
 
-<a href="{{ route('create_categoria_graduacion',['idCategoria' => $categoria->idCategoria ]) }}" class="btn btn-outline-primary mb-3"><i class="bi bi-universal-access me-2"></i>Nueva Graduacion de Categoria</a>
+<a href="{{ route('create_categoria_poomsae',['idCategoria' => $categoria->idCategoria ]) }}" class="btn btn-outline-primary mb-3"><i class="bi bi-universal-access me-2"></i>Nueva Poomsae de Categoria</a>
 
 <div class="table-responsive">
-<table id="tabla_graduaciones" class="table hover table-light table-bordered nowrap border dataTable dtr-inline collapsed" width="100%">
+<table id="tabla_poomsae" class="table hover table-light table-bordered nowrap border dataTable dtr-inline collapsed" width="100%">
     <thead class="flip-content">
         <tr>
             <th>#</th>
@@ -28,12 +28,12 @@ Gestion de Graduacion
         </tr>
     </thead>
     <tbody>
-        @foreach ($categoriaGraduacion as $row)
+        @foreach ($categoriaPoomsae as $row)
         <tr>
-            <td>{{ $row->idCategoriaGraduacion }}</td>
+            <td>{{ $row->idCategoriaPoomsae }}</td>
             <td>{{ $row->nombre }}</td>
            <td>
-                <a href="{{ route('delete_categoria_graduacion', ['id' => $row->idCategoriaGraduacion ]) }}" class="btn btn-outline-info">Eliminar</a>
+                <a href="{{ route('delete_categoria_poomsae', ['id' => $row->idCategoriaPoomsae ]) }}" class="btn btn-outline-info">Eliminar</a>
           </td>
         </tr>
         @endforeach

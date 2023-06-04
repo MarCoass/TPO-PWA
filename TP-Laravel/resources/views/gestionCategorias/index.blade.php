@@ -40,6 +40,8 @@ Gestion de Categorias
            <td>
                 <a href="{{ route('edit_categoria', ['id' => $row->idCategoria ]) }}" class="btn btn-outline-info"><i class="bi bi-pencil-square me-2"></i>Editar</a>
                 <a href="{{ route('ver_graduaciones', ['idCategoria' => $row->idCategoria ]) }}" class="btn btn-outline-info">Ver Graduaciones</a>
+                <a href="{{ route('ver_poomsae', ['idCategoria' => $row->idCategoria ]) }}" class="btn btn-outline-info">Ver Poomsae</a>
+            
             </td>
         </tr>
         @endforeach

@@ -21,6 +21,7 @@ use App\Http\Controllers\SolicitudController;
 use App\Http\Controllers\CompetenciaCompetidorPoomsaeController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\CategoriaGraduacionController;
+use App\Http\Controllers\CategoriaPoomsaeController;
 use App\Models\CompetenciaCompetidor;
 
 Route::group(['namespace' => 'App\Http\Controllers'], function()
@@ -116,13 +117,19 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::post('gestionCategorias/store', [CategoriaController::class, 'store'])->name('store_categoria');
             Route::put('/update_categoria/{id}', [CategoriaController::class, 'update'])->name('update_categoria');
             Route::get('/gestionCategoriaGraduaciones/index/{idCategoria}', [CategoriaGraduacionController::class, 'index'])->name('ver_graduaciones');
-          //  Route::get('/ver_poomsae/{id}', [CompetenciaCompetidorController::class, 'listarCompetidoresPorId'])->name('ver_inscriptos_competencia');
+            Route::get('/gestionCategoriaPoomsae/index/{idCategoria}', [CategoriaPoomsaeController::class, 'index'])->name('ver_poomsae');
            
             /* Rutas de Gestion de Categorias Graduacion se pueden mejorar */
             Route::get('gestionCategoriaGraduaciones/create/{idCategoria}', [CategoriaGraduacionController::class, 'create'])->name('create_categoria_graduacion');
             Route::post('gestionCategoriaGraduaciones/store', [CategoriaGraduacionController::class, 'store'])->name('store_categoria_graduacion');
             Route::get('/delete_categoria_graduacion/{id}', [CategoriaGraduacionController::class, 'destroy'])->name('delete_categoria_graduacion');
             
+            /* Rutas de Gestion de Categorias Poomsae se pueden mejorar */
+            Route::get('gestionCategoriaPoomsae/create/{idCategoria}', [CategoriaPoomsaeController::class, 'create'])->name('create_categoria_poomsae');
+            Route::post('gestionCategoriaPoomsae/store', [CategoriaPoomsaeController::class, 'store'])->name('store_categoria_poomsae');
+            Route::get('/delete_categoria_poomsae/{id}', [CategoriaPoomsaeController::class, 'destroy'])->name('delete_categoria_poomsae');
+            
+
             //ruta de ejemplo para hacer la inscripcion desde un competidor
             Route::get('inscripcion/create/{idCompetidor}', [CompetenciaCompetidorController::class, 'create'])->name('create_competencia_competidor');
 
