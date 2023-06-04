@@ -34,7 +34,7 @@ Iniciar Puntuador
     </div>
     <div class="invalid-feedback">Seleccione una opcion valida.</div>
 </div>
-<div class="col-lg-6 col-md-12 col-sm-12  pt-3">
+{{-- <div class="col-lg-6 col-md-12 col-sm-12  pt-3">
     <label class="form-label" for="poomsae_puntuador">Poomsae:</label>
     <select class="form-control validar" id="poomsae_puntuador" name="poomsae_puntuador" required>
     </select>
@@ -42,7 +42,7 @@ Iniciar Puntuador
         ¡Correcto!
     </div>
     <div class="invalid-feedback">Seleccione una opcion valida.</div>
-</div>
+</div> --}}
 
 <div class="col-lg-6 col-12 button-group mb-3 d-flex justify-content-end align-items-center">
     <button class="btn btn-outline-primary mx-2" type="submit">Iniciar Puntaje</button>

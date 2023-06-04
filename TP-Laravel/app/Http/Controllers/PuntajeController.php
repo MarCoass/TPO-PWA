@@ -7,6 +7,7 @@ use App\Models\CompetenciaJuez;
 use App\Models\Puntaje;
 use App\Models\Competidor;
 use App\Models\Competencia;
+use App\Models\CompetenciaCompetidorPoomsae;
 use App\Models\Poomsae;
 use Illuminate\Http\Request;
 
@@ -118,17 +119,27 @@ class PuntajeController extends Controller
 
         $competidor = Competidor::where('idCompetidor', '=', $id_competidor)->get();
         $competencia = Competencia::where('idCompetencia', '=', $id_competencia)->get();
-        //$graduacion = Graduacion::where('idGraduacion', '=', $competidor[0]->idGraduacion)->get();
+       
         $competencia_competidor = CompetenciaCompetidor::where('idCompetidor', '=', $id_competidor)->where('idCompetencia', '=', $id_competencia)->get();
-        $poomsae = Poomsae::where('idPoomsae', '=', $id_pomsae)->get();
+        //$poomsae = Poomsae::where('idPoomsae', '=', $id_pomsae)->get();
+
+        
 
         //busco el idCompetenciaJuez que corresponde a la competencia
         $competenciaJuez = CompetenciaJuez::where('idCompetencia', '=', $id_competencia)->where('idJuez', '=', auth()->user()->id)->get();
 
 
-        //->where('idCompetenciaJuez', "=", "2") no olvidarse de no harcodear eso
         $existePrimeraPasada = Puntaje::where('idCompetenciaCompetidor', "=", $competencia_competidor[0]->idCompetenciaCompetidor)->where('idCompetenciaJuez', "=", $competenciaJuez[0]->idCompetenciaJuez)->get();
         $pasada = (($existePrimeraPasada->count() === 0) ? 1 : 2);
+
+        //Busco el poomsae que corresponde a la pasada actual
+        $competenciaCompetidorPoomsae = CompetenciaCompetidorPoomsae::where('idCompetenciaCompetidor','=', $competencia_competidor[0]->idCompetenciaCompetidor)->where('pasadas','=', $pasada)->get();
+        
+        //dd(CompetenciaCompetidorPoomsae::where('idCompetenciaCompetidor','=', $competencia_competidor[0]->idCompetenciaCompetidor)->where('pasadas','=', $pasada));
+        $poomsae = Poomsae::find($competenciaCompetidorPoomsae[0]->idPoomsae);
+        //dd($competenciaCompetidorPoomsae[0]->idPoomsae);
+        
+        
         return view('puntuador.puntuador', ['competencia' => $competencia, 'poomsae' => $poomsae, 'competidor' => $competidor, 'competencia_competidor' => $competencia_competidor, 'competencia_juez' => $competenciaJuez, 'pasada' => $pasada]);
     }
 

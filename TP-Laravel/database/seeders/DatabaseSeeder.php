@@ -2,6 +2,7 @@
 
 use Database\Seeders\CategoriasGraduacionesTableSeeder;
 use Database\Seeders\CategoriasTableSeeder;
+use Database\Seeders\CompetenciasJuecesTableSeeder;
 use Database\Seeders\CompetidoresTableSeeder;
 use Database\Seeders\EscuelasTableSeeder;
 use Database\Seeders\EstadosTableSeeder;
@@ -33,6 +34,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CompetenciasTableSeeder::class);
         $this->call(CategoriasTableSeeder::class);
         $this->call(CategoriasGraduacionesTableSeeder::class);
+        $this->call(CompetenciasJuecesTableSeeder::class);
         //competenciacompetidor
     }
 }

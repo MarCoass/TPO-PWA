@@ -1,6 +1,6 @@
 [
   {
-    "gal": "OJA8276650",
+    "gal": "TKD1111111",
     "apellido": "Oliveros",
     "nombre": "Gustavo",
     "du": 26526633,
@@ -8,8 +8,37 @@
     "pais": 5,
     "estado": 1826,
     "idGraduacion": 4,
-    "correo": "opaddemore0@google.pl",
+    "correo": "correo@gmail.com",
     "genero": "masculino",
-    "idUser" : 4
+    "idUser" : 4,
+    "estadoAceptacion" : false
+  },
+  {
+    "gal": "TKD2222222",
+    "apellido": "Farfan",
+    "nombre": "Matias",
+    "du": 26524663,
+    "fechaNacimiento": "1980-12-15",
+    "pais": 5,
+    "estado": 1826,
+    "idGraduacion": 4,
+    "correo": "correo@gmail.com",
+    "genero": "masculino",
+    "idUser" : 4,
+    "estadoAceptacion" : true
+  },
+  {
+    "gal": "TKD3333333",
+    "apellido": "Paillamilla",
+    "nombre": "Micaela",
+    "du": 26526993,
+    "fechaNacimiento": "1980-12-15",
+    "pais": 5,
+    "estado": 1826,
+    "idGraduacion": 4,
+    "correo": "correo@gmail.com",
+    "genero": "femenino",
+    "idUser" : 4,
+    "estadoAceptacion" : true
   }
 ]
