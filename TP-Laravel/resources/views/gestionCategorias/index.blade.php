@@ -39,9 +39,8 @@ Gestion de Categorias
             <td>{{ ($row->esElite == 1) ? 'Elite' : 'Promocional' }}</td>
            <td>
                 <a href="{{ route('edit_categoria', ['id' => $row->idCategoria ]) }}" class="btn btn-outline-info"><i class="bi bi-pencil-square me-2"></i>Editar</a>
-                <a href="{{ route('ver_graduaciones', ['id' => $row->idCategoria ]) }}" class="btn btn-outline-info">Ver Graduaciones</a>
-                <a href="{{ route('ver_poomsae', ['id' => $row->idCategoria ]) }}" class="btn btn-outline-info">Ver Poomsae</a>
-           </td>
+                <a href="{{ route('ver_graduaciones', ['idCategoria' => $row->idCategoria ]) }}" class="btn btn-outline-info">Ver Graduaciones</a>
+            </td>
         </tr>
         @endforeach
     </tbody>
