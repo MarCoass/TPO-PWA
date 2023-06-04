@@ -28,7 +28,11 @@
             <div class="infoCompetidor col-4">
                 <p>Competidor:{{$competidor[0]->nombre}} {{$competidor[0]->apellido}}</p>
                 <p></p>
-                <p>Poomse: {{$poomsae->nombre}}</p>
+                <p>Poomsae:<ul>
+                    @foreach($arrayPoomsaes as $poomsae)
+                        <li>{{ $poomsae->nombre }}</li>
+                    @endforeach
+                </ul></p>
                 <p>Puntaje:<span class="puntaje">4</span>
                 </p>
                 <button type="button" class="btn btn-success" id="siguientePuntuacion">
@@ -57,7 +61,11 @@
                         <!--ESTO DEBERIA SER UN FORM PROBABLEMENTE-->
                         <div class="modal-body">
                             <p>Competidor: {{$competidor[0]->nombre}} {{$competidor[0]->apellido}}</span> </p>
-                            <p>Poomse: {{$poomsae->nombre}}</p>
+                            <p>Poomsae:<ul>
+                                @foreach($arrayPoomsaes as $poomsae)
+                                    <li>{{ $poomsae->nombre }}</li>
+                                @endforeach
+                            </ul></p>
                             <p>Puntaje exactitud: <span class="puntajeExactitudModal"></span></p>
                             <p>Puntaje presentacion: <span class="puntajePresentacionModal"></span></p>
 

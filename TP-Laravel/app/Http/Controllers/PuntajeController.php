@@ -121,11 +121,10 @@ class PuntajeController extends Controller
         $competencia = Competencia::where('idCompetencia', '=', $id_competencia)->get();
        
         $competencia_competidor = CompetenciaCompetidor::where('idCompetidor', '=', $id_competidor)->where('idCompetencia', '=', $id_competencia)->get();
-        //$poomsae = Poomsae::where('idPoomsae', '=', $id_pomsae)->get();
-
         
+        /* Viejo
+        $poomsae = Poomsae::where('idPoomsae', '=', $id_pomsae)->get(); */
 
-        //busco el idCompetenciaJuez que corresponde a la competencia
         $competenciaJuez = CompetenciaJuez::where('idCompetencia', '=', $id_competencia)->where('idJuez', '=', auth()->user()->id)->get();
 
 
@@ -136,11 +135,14 @@ class PuntajeController extends Controller
         $competenciaCompetidorPoomsae = CompetenciaCompetidorPoomsae::where('idCompetenciaCompetidor','=', $competencia_competidor[0]->idCompetenciaCompetidor)->where('pasadas','=', $pasada)->get();
         
         //dd(CompetenciaCompetidorPoomsae::where('idCompetenciaCompetidor','=', $competencia_competidor[0]->idCompetenciaCompetidor)->where('pasadas','=', $pasada));
-        $poomsae = Poomsae::find($competenciaCompetidorPoomsae[0]->idPoomsae);
-        //dd($competenciaCompetidorPoomsae[0]->idPoomsae);
+        //$poomsae = Poomsae::find($competenciaCompetidorPoomsae[0]->idPoomsae);
+        $arrayPoomsaes = [];
+        //cambios para que al poomsae lo trate como array
+        foreach($competenciaCompetidorPoomsae as $item){
+            $arrayPoomsaes[] = Poomsae::find($item->idPoomsae);
+        }
         
-        
-        return view('puntuador.puntuador', ['competencia' => $competencia, 'poomsae' => $poomsae, 'competidor' => $competidor, 'competencia_competidor' => $competencia_competidor, 'competencia_juez' => $competenciaJuez, 'pasada' => $pasada]);
+        return view('puntuador.puntuador', ['competencia' => $competencia, 'arrayPoomsaes' => $arrayPoomsaes, 'competidor' => $competidor, 'competencia_competidor' => $competencia_competidor, 'competencia_juez' => $competenciaJuez, 'pasada' => $pasada]);
     }
 
     public function actualizar_puntaje(Request $request)
