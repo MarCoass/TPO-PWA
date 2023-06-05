@@ -47,7 +47,7 @@
 
     <div class="col-lg-6 col-12 form-group mb-3">
             <label for="formFile" class="form-label">Seleccione el flyer</label>
-            <input class="form-control" type="file" name="flyer" id="flyer">
+            <input class="form-control" accept=".jpg,.png,.jpeg" type="file" name="flyer" id="flyer">
         </div>
 
         <div class="col-lg-6 col-12 form-group mb-3" >
