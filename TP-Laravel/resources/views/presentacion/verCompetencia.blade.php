@@ -36,8 +36,8 @@
                     <p class="display-5 mx-3">Invitacion</p>
 
                     @if ($competencia->invitacion != '' )
-                        <a href="{{ asset('storage/' . $competencia->invitacion) }}" download><button
-                                class="btn btn-outline-dark">Descargar<i class="bi bi-download px-2"></i></button>
+                        <a href="{{ asset('storage/' . $competencia->invitacion) }}" download>
+                            <button id="botones" class="btn btn-outline-dark mb-2 ">Descargar<i class="bi bi-download px-2"></i></button>
                         </a>
 
                         <iframe width="400" height="400" src="{{ asset('storage/' . $competencia->invitacion) }}"
@@ -53,8 +53,8 @@
                 <div class="row justify-content-center align-items-center">
                     <p class="display-5 mx-3">Bases</p>
                     @if ($competencia->bases != '')
-                        <a href="{{ asset('storage/' . $competencia->bases) }}" download><button
-                                class="btn btn-outline-dark col">Descargar<i class="bi bi-download px-2"></i></button>
+                        <a href="{{ asset('storage/' . $competencia->bases) }}" download>
+                            <button id="botones" class="btn btn-outline-dark col mb-2">Descargar<i class="bi bi-download px-2"></i></button>
                         </a>
 
                         <iframe class="col" width="400" height="400" src="{{ asset('storage/' . $competencia->bases) }}"
@@ -71,8 +71,8 @@
                 <div class="row justify-content-center align-items-center">
                     <p class="display-5 mx-3">Flyer</p>
                     @if ($competencia->flyer !='')
-                        <a href="{{ asset('storage/' . $competencia->flyer) }}" download><button
-                                class="btn btn-outline-dark">Descargar<i class="bi bi-download px-2"></i></button>
+                        <a href="{{ asset('storage/' . $competencia->flyer) }}" download>
+                            <button id="botones" class="btn btn-outline-dark mb-2">Descargar<i class="bi bi-download px-2"></i></button>
                         </a>
                     </div>
                       
@@ -82,7 +82,7 @@
                         <p>No se ha cargado el archivo.</p>
                     @endif
             </section>
-            <button type="button" class="btn btn-outline-secondary" onclick="history.back()"><i class="bi bi-arrow-left me-2"></i>Volver</button>
+            <button type="button" id="botones" class="btn btn-outline-secondary mt-3" onclick="history.back()" style="width: 25%; margin:auto"><i class="bi bi-arrow-left me-2"></i>Volver</button>
         </div>
     </div>
 @endsection

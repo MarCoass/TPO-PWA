@@ -30,8 +30,13 @@ export const cambio_de_tema = (tema) => {
       document.body.classList.remove('text-bg-light');
       document.querySelectorAll('.card').forEach((el) => {
         el.classList.add('bg-dark');
-      })
+      }) 
 
+      document.querySelectorAll('#botones').forEach((btn) => {
+          btn.classList.add('btn-outline-light');
+          btn.classList.remove('btn-outline-dark');
+      })
+      
       let negro = document.getElementById("cambiarVista_negro");
       negro.style.display = "none";
 
@@ -45,6 +50,12 @@ export const cambio_de_tema = (tema) => {
       document.querySelectorAll('.card').forEach((el) => {
         el.classList.remove('bg-dark');
       })
+
+      document.querySelectorAll('#botones').forEach((btn) => {
+        btn.classList.add('btn-outline-dark');
+        btn.classList.remove('btn-outline-light');
+    })
+    
       if($tabla){
         $tabla.classList['value'] = 'table hover table-light table-bordered nowrap border dataTable dtr-inline collapsed';
       }
