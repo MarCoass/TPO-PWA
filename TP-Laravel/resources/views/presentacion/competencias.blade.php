@@ -32,5 +32,9 @@
     @endforeach
   
 </div>
+<div class="contenedor-btn-volver ">
+    <button type="button" id="botones" class="btn btn-outline-secondary mt-3" onclick="history.back()" ><i class="bi bi-arrow-left me-2"></i>Volver</button>
+</div>
+
 @endsection
 <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>

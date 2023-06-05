@@ -174,3 +174,7 @@ transform: translateX(0);
 .boton-container {
   margin-right: 8px;
 }
+
+.contenedor-btn-volver {
+ text-align: center;
+}
