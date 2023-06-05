@@ -6,6 +6,7 @@ import {tabla_solicitud} from './tablaSolicitudes.js';
 import './eventosMenu.js';
 import {tabla_CompetenciaCompetidores} from './tablaCompetenciaCompetidores.js';
 import {tabla_competencia} from './tablaCompetencias.js';
+import './notificaciones.js';
 
 
 //Cronometro

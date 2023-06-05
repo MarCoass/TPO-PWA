@@ -8,6 +8,7 @@ use App\Models\Competidor;
 use App\Models\Graduacion;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SolicitudController extends Controller
 {
@@ -80,6 +81,13 @@ class SolicitudController extends Controller
         return redirect()->route('index_solicitudes')->with('success', 'Solicitud archivada');
     }
 
+    public function solicitudLeida($id){
+        $solicitud = Solicitud::find($id);
+        $solicitud->estadoSolicitud = 1;
+        $solicitud->save();
+        return response()->noContent(); // retorna una respuesta vacía con código 204
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -123,6 +131,20 @@ class SolicitudController extends Controller
         }
 
         return redirect()->route('home.index')->with($arregloMensaje['tipo'], $arregloMensaje['mensaje']);
+    }
+
+    public function misSolicitudes($id){
+        // asume que tienes las relaciones definidas en el modelo Solicitud
+        $solicitudes = Solicitud::where('idUser',$id)
+          ->with(['escuela' => function ($query) {
+            $query->select('idEscuela', 'nombre');
+          }])
+          ->with(['graduacion' => function ($query) {
+            $query->select('idGraduacion', 'nombre');
+          }])
+          ->get();
+        
+        return response()->json($solicitudes);
     }
 
 }

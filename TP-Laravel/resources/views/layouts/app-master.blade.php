@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
+    <!-- otros elementos del head -->
+    <meta name="csrf-token" content="{{ csrf_token() }}"> <!-- agrega el elemento meta con el token CSRF -->
     <title>@yield('titulo', 'NeuPoom')</title>
 
     <!-- ICON -->

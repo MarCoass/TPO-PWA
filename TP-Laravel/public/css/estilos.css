@@ -15,6 +15,40 @@
       opacity: 0.9;
       
     }
+
+    #notiCasera {
+      position: fixed;
+      top: 0;
+      left: 0;
+      /* lo de abajo le da cuerpo al menu */
+      background: radial-gradient(circle, #aca9a988 50%, #d6d6d6 100%);
+      border-radius: 0.2em;
+      padding: 0.2em;
+      
+    }
+
+     /* define el estilo del icono de notificaciones */
+     .bi-bell {
+      color: black;
+      animation: shake 1s ease-in-out; /* define la animación del icono con una duración de 2 segundos y 4 pasos */
+      animation-iteration-count: infinite; /* hace que la animación se repita indefinidamente */
+      animation-delay: 2s; /* hace que la animación se inicie después de 3 segundos */
+    }
+    
+    
+    
+    /* define los estados de la animación */
+    @keyframes shake {
+        0% {
+            transform: rotate(-15deg);
+        }
+        50% {
+            transform: rotate(15deg);
+        }
+        100% {
+            transform: rotate(-15deg);
+        }
+    }
   
     /* este le da tamaño a la lista */
     .nav-item {

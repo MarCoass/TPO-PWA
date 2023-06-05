@@ -44,6 +44,7 @@ Solicitar cambios
 <hr>
 <h2>Solicitar cambiar de graduacion</h2>
 @if ( $competidor == null )
+<input type="hidden"  id="newGraduacion" name="newGraduacion" value="0">
 <h3>aun no te has registrado como competidor para generar cambio alguno</h3>
 @else
 <h3>Su graduacion actual es: </h3>

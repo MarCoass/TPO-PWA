@@ -27,14 +27,25 @@
 
               </div>
 
+                    
+        <input type="hidden" id='idUsuarioActual' value="{{auth()->user()->id}}">
+        <button type="button" class="btn btn-outline-dark d-flex" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-bell me-2"></i> <span id="notiCantidad"></span>
+        </button>
+        <ul id="notiCasera" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li><a class="dropdown-item" href="#">
+                Tienes un nuevo mensaje <span class="badge bg-primary rounded-pill">1</span>
+            </a></li>
+        </ul>
 
-   {{--      <div class="d-inline-flex text-center" >
-            <p class="text-center mx-5" style="height: 25px ">
-                <b>Usuario:</b> <br> {{auth()->user()->usuario}}
-            </p>
-          <a href="{{ route('logout.perform') }}" class="btn btn-outline-dark"><i class="bi bi-door-open me-2"></i>Cerrar Sesion</a>
-        </div>
- --}}
+
+
+        <script>
+        
+        </script>
+
+        
+
         <button id="menuNavBar" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
