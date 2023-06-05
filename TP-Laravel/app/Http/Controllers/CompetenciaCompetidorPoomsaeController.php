@@ -51,7 +51,7 @@ class CompetenciaCompetidorPoomsaeController extends Controller
         $duplicado = CompetenciaCompetidorPoomsae::where('idCompetenciaCompetidor','=', $id_competencia_competidor)->first();
 
         if( $duplicado != null){
-            return redirect('tablaCompetenciaCompetidores/asignarpoomsecompetidor')->with('error', "Ya tiene los poomsae asignados.");
+            return redirect('/')->with('error', "Ya tiene los poomsae asignados.");
         }
 
         $poomsae_uno = $request->input('poomsae_uno');
