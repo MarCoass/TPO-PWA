@@ -77,6 +77,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
         //Rutas de presentacion
         Route::get('/verPresentacion/{id}', [CompetenciaController::class, 'verPresentacion'])->name('verPresentacion');
+        Route::get('/ver_resultados_competencia/{id}', [CompetenciaController::class, 'verResultados'])->name('verResultados');
 
         /* reloj */
         Route::get('/resultados', function(){return view('resultados.resultados');});

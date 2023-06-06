@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Competencia;
 use App\Models\Competidor;
+use App\Models\CompetenciaCompetidor;
 use App\Models\CompetenciaJuez;
 use App\Models\User;
+use App\Models\Escuela;
 use App\Models\Poomsae;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -20,10 +22,10 @@ class CompetenciaController extends Controller
      */
     public function index()
     {
-        $competencias = Competencia::withCount(['competenciaJuez' => function($query) {
+        $competencias = Competencia::withCount(['competenciaJuez' => function ($query) {
             $query->where('estado', true);
         }])->get();
-    
+
         return view('gestionCompetencias.index', compact('competencias'));
     }
 
@@ -51,23 +53,29 @@ class CompetenciaController extends Controller
         $competencia->fecha = $request->input('fecha');
         // estadoJueces tiene por defecto false en la db
         $competencia->cantidadJueces = $request->input('cantidadJueces');
-       
+
         $extension = $request->file('flyer')->getClientOriginalExtension();
 
         $nombreSinEspacios = str_replace(' ', '', $request->input('nombre'));
-        $nombreFlyer = $nombreSinEspacios.'Flyer.' . $extension;
+        $nombreFlyer = $nombreSinEspacios . 'Flyer.' . $extension;
         $pathFlyer = $request->file('flyer')->storeAs(
-            '/img', $nombreFlyer, 'public'
+            '/img',
+            $nombreFlyer,
+            'public'
         );
         $competencia->flyer = $pathFlyer;
 
 
         $competencia->bases = $request->file('bases')->storeAs(
-            '/pdf', $nombreSinEspacios.'Bases.pdf', 'public'
+            '/pdf',
+            $nombreSinEspacios . 'Bases.pdf',
+            'public'
         );
 
         $competencia->invitacion = $request->file('invitacion')->storeAs(
-            '/pdf', $nombreSinEspacios.'Invitacion.pdf', 'public'
+            '/pdf',
+            $nombreSinEspacios . 'Invitacion.pdf',
+            'public'
         );
 
         $competencia->save();
@@ -96,11 +104,10 @@ class CompetenciaController extends Controller
     public function edit($id)
     {
         $competencia = Competencia::find($id);
-        $juecesAceptados = CompetenciaJuez::
-                where('estado', true)
-                ->where('idCompetencia', $id)
-                ->get();
-        return view('gestionCompetencias.edit', compact('competencia','juecesAceptados'));
+        $juecesAceptados = CompetenciaJuez::where('estado', true)
+            ->where('idCompetencia', $id)
+            ->get();
+        return view('gestionCompetencias.edit', compact('competencia', 'juecesAceptados'));
     }
 
     /**
@@ -116,20 +123,19 @@ class CompetenciaController extends Controller
         $competencia->nombre = $request->input('nombre');
         $competencia->fecha = $request->input('fecha');
 
-        $juecesAceptados = CompetenciaJuez::
-                where('estado', true)
-                ->where('idCompetencia', $competencia->idCompetencia)
-                ->get();
+        $juecesAceptados = CompetenciaJuez::where('estado', true)
+            ->where('idCompetencia', $competencia->idCompetencia)
+            ->get();
 
         // No permite modificar la cantidad si ya la competencia
         // está abierta a competidores o si ya existe al menos un juez cargado
-        if($competencia->estadoJueces == false && count($juecesAceptados) == 0){
+        if ($competencia->estadoJueces == false && count($juecesAceptados) == 0) {
             $competencia->cantidadJueces = $request->input('cantidadJueces');
         }
 
         $nombreSinEspacios = str_replace(' ', '', $request->input('nombre'));
         if ($request->hasFile('flyer')) {
-          
+
             $extension = $request->file('flyer')->getClientOriginalExtension();
             $nombreFlyer = $nombreSinEspacios . 'Flyer.' . $extension;
             $pathFlyer = $request->file('flyer')->storeAs(
@@ -141,18 +147,20 @@ class CompetenciaController extends Controller
         }
 
         if ($request->file('bases') != null) {
-        $competencia->bases = $request->file('bases')->storeAs(
-            '/pdf',
-            $nombreSinEspacios . 'Bases.pdf',
-            'public'
-        );}
+            $competencia->bases = $request->file('bases')->storeAs(
+                '/pdf',
+                $nombreSinEspacios . 'Bases.pdf',
+                'public'
+            );
+        }
 
         if ($request->file('invitacion') != null) {
-        $competencia->invitacion = $request->file('invitacion')->storeAs(
-            '/pdf',
-            $nombreSinEspacios . 'Invitacion.pdf',
-            'public'
-        );}
+            $competencia->invitacion = $request->file('invitacion')->storeAs(
+                '/pdf',
+                $nombreSinEspacios . 'Invitacion.pdf',
+                'public'
+            );
+        }
 
         $competencia->save();
 
@@ -171,10 +179,10 @@ class CompetenciaController extends Controller
         $competencia->delete();
 
         return redirect()->route('index_competencia')->with('success', 'Competencia eliminada exitosamente.');
-    
     }
 
-    public function verPresentacion($id){
+    public function verPresentacion($id)
+    {
         //busco la competencia
         $competencia = Competencia::find($id);
 
@@ -182,7 +190,38 @@ class CompetenciaController extends Controller
         return view('presentacion/verCompetencia', compact('competencia'));
     }
 
-    public function verCompetencias(){
+    public function verResultados($id)
+    {
+        //busco la competencia
+        $competencia = Competencia::find($id);
+
+        //Traemos los competidores ordenados por puntaje
+        $competidoresCompetencia = CompetenciaCompetidor::where('idCompetencia', $id)
+            ->orderBy('puntaje', 'desc')
+            ->get();
+
+        $competidores = [];
+        $contador = 1;
+
+        foreach ($competidoresCompetencia as $cC) {
+            //Obtenemos el competidor
+            $competidor = Competidor::find($cC->idCompetidor);
+            //Obtenemos el user de ese competidor para obtener la escuela
+            $userCompetidor = User::find($competidor->idCompetidor);
+            $escuelaCompetidor = Escuela::find($userCompetidor->idEscuela);
+            //Agregamos datos extra que no son del competidor
+            $competidor['escuela'] = $escuelaCompetidor->nombre;
+            $competidor['puntaje'] = $cC->puntaje;
+            $competidor['puesto'] = $contador;
+            array_push($competidores, $competidor);
+            $contador++;
+        }
+
+        return view('presentacion/verResultadosCompetencia', compact('competidores', 'competencia'));
+    }
+
+    public function verCompetencias()
+    {
         $competencias = Competencia::all();
         return view('presentacion.competencias', compact('competencias'));
     }
