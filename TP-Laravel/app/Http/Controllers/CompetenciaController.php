@@ -207,9 +207,10 @@ class CompetenciaController extends Controller
             //Obtenemos el competidor
             $competidor = Competidor::find($cC->idCompetidor);
             //Obtenemos el user de ese competidor para obtener la escuela
-            $userCompetidor = User::find($competidor->idCompetidor);
+            $userCompetidor = User::find($competidor->idUser);
+
             $escuelaCompetidor = Escuela::find($userCompetidor->idEscuela);
-            //Agregamos datos extra que no son del competidor
+           
             $competidor['escuela'] = $escuelaCompetidor->nombre;
             $competidor['puntaje'] = $cC->puntaje;
             $competidor['puesto'] = $contador;

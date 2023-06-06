@@ -19,7 +19,7 @@ class CompetidoresTableSeeder extends Seeder
     {
 
         //Traigo todos los usuarios con ID: 3
-        $usuarios = User::where('idRol', '3')->get();
+        $usuarios = User::where('idRol','3')->get();
 
         //por cada elemento de paises, va a crear el objeto Pais
         foreach ($usuarios as $user) {
