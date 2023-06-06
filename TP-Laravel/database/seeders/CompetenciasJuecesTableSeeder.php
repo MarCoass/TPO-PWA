@@ -20,8 +20,14 @@ class CompetenciasJuecesTableSeeder extends Seeder
                 'idCompetencia' => '1',
                 'estado' => '1',
                 'idJuez' => '2',
+            ],
+            [
+                'idCompetencia' => '1',
+                'estado' => '1',
+                'idJuez' => '4',
             ]
         ];
+       
 
         //por cada elemento de roles, va a crear el objeto rol
         foreach ($competenciasJueces as $competenciaJuez) {
