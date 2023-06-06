@@ -35,6 +35,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CategoriasTableSeeder::class);
         $this->call(CategoriasGraduacionesTableSeeder::class);
         $this->call(CompetenciasJuecesTableSeeder::class);
+        $this->call(CompetenciaCompetidorTableSeeder::class);
         //competenciacompetidor
     }
 }
