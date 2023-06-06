@@ -22,7 +22,6 @@
         justify-content: space-evenly;
         border-radius: 5px;
         padding: 20px 15px;
-        box-shadow: 5px 5px 30px rgba(0,0,0,0.2);
         margin-bottom: 10px;
       }
       .wrapper .option{
@@ -53,7 +52,7 @@
         left: 4px;
         width: 12px;
         height: 12px;
-        background: #f86170;
+        background: #2bd600;
         border-radius: 50%;
         opacity: 0;
         transform: scale(1.5);
@@ -64,8 +63,8 @@
       }
       #idRol1:checked:checked ~ .option-1,
       #idRol2:checked:checked ~ .option-2{
-        border-color: #f86170;
-        background: #f86170;
+        border-color: lightgrey;
+        background: lightgrey;
       }
       #idRol1:checked:checked ~ .option-1 .dot,
       #idRol2:checked:checked ~ .option-2 .dot{
@@ -82,5 +81,5 @@
       }
       #idRol1:checked:checked ~ .option-1 span,
       #idRol2:checked:checked ~ .option-2 span{
-        color: #fff;
+        color: #000000;
       }
