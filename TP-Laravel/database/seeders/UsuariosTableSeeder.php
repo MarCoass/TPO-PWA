@@ -56,7 +56,57 @@ class usuariosTableSeeder extends Seeder
                 'usuario' => 'GusOliveros',
                 'correo' => 'gusOliveros@gmail.com',
                 'password' => 'GusOliveros',
-                'idRol' => 3,
+                'idRol' => 2,
+                'estado' => false,
+                'idEscuela' => 15
+            ],
+            [
+                'nombre' => 'Braian',
+                'apellido' => 'Centurion',
+                'usuario' => 'braiancenturion',
+                'correo' => 'braian@gmail.com',
+                'password' => 'contraseña',
+                'idRol' => 2,
+                'estado' => false,
+                'idEscuela' => 15
+            ],
+            [
+                'nombre' => 'Aluhe',
+                'apellido' => 'Paillamilla',
+                'usuario' => 'patotpatito',
+                'correo' => 'pato@gmail.com',
+                'password' => 'contraseña',
+                'idRol' => 2,
+                'estado' => false,
+                'idEscuela' => 15
+            ],
+            [
+                'nombre' => 'Matias',
+                'apellido' => 'Farfan',
+                'usuario' => 'matiasfarfan',
+                'correo' => 'matias@gmail.com',
+                'password' => 'contraseña',
+                'idRol' => 2,
+                'estado' => false,
+                'idEscuela' => 15
+            ],
+            [
+                'nombre' => 'Gonzalo',
+                'apellido' => 'Olmos',
+                'usuario' => 'gonzaloolmos',
+                'correo' => 'gonza@gmail.com',
+                'password' => 'contraseña',
+                'idRol' => 2,
+                'estado' => false,
+                'idEscuela' => 15
+            ],
+            [
+                'nombre' => 'Martina',
+                'apellido' => 'Coassin',
+                'usuario' => 'martinacoassin',
+                'correo' => 'martina@gmail.com',
+                'password' => 'contraseña',
+                'idRol' => 2,
                 'estado' => false,
                 'idEscuela' => 15
             ]

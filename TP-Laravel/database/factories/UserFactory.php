@@ -20,4 +20,5 @@ class UserFactory extends Factory
             'idEscuela' =>  random_int(1, 10)
         ];
     }
+    
 }

@@ -8,15 +8,15 @@
     },
     {
         "nombre": "Infantiles B",
-        "edadMax": "9",
-        "edadMin": "11",
+        "edadMax": "11",
+        "edadMin": "9",
         "genero": "0",
         "esElite": "0"
     },
     {
         "nombre": "Cadete",
-        "edadMax": "12",
-        "edadMin": "14",
+        "edadMax": "14",
+        "edadMin": "12",
         "genero": "0",
         "esElite": "0"
     },
@@ -68,7 +68,7 @@
 
     {
         "nombre": "Master 2",
-        "edadMax": "-1",
+        "edadMax": "99",
         "edadMin": "70",
         "genero": "0",
         "esElite": "0"
