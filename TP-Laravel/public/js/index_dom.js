@@ -6,7 +6,6 @@ import {tabla_solicitud} from './tablaSolicitudes.js';
 import './eventosMenu.js';
 import {tabla_CompetenciaCompetidores} from './tablaCompetenciaCompetidores.js';
 import {tabla_competencia} from './tablaCompetencias.js';
-import './notificaciones.js';
 
 
 //Cronometro
@@ -99,10 +98,10 @@ $('#categoria_puntuador').on('click', function() {
     competencia_puntuador: $('#competencia_puntuador').val(),
     categoria_puntuador: $('#categoria_puntuador').val()
     },
-    
+
     dataType: 'json',
     success: function(data) {
-     
+
         $('#competidor_puntuador').empty();
         $('#competidor_puntuador').append('<option value="" disabled selected data-error="Por favor seleccione un competidor">Selecciona un competidor.</option>');
         $.each(data, function(key, value) {

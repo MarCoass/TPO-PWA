@@ -36,7 +36,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.dataTables.min.css">
 
-    
+
 
 </head>
 
@@ -66,6 +66,10 @@
 
     <!-- index dom -->
     <script type="module" src="{{ asset('js/index_dom.js') }}"></script>
+    
+    @auth
+    <script src="{{ asset('js/notificaciones.js') }}"></script>
+    @endauth
 
 </body>
 
