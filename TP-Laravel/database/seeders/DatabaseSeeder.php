@@ -13,7 +13,7 @@ use Database\Seeders\UsuariosTableSeeder;
 use Database\Seeders\PoomsaeTableSeeder;
 use Database\Seeders\CompetenciasTableSeeder;
 use Illuminate\Database\Seeder;
-
+use Database\Seeders\CompetenciaCompetidorTableSeeder;
 class DatabaseSeeder extends Seeder
 {
     /**
