@@ -10,7 +10,7 @@
 
 @section('contenido')
 
-<div class="row" data-masonry='{"percentPosition": true }'>
+<div class="row mx-auto" data-masonry='{"percentPosition": true }'>
     
     @foreach ($competencias as $competencia)
         <div class="card m-4" style="width: 18rem;">

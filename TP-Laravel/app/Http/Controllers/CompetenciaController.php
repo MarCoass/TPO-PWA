@@ -185,8 +185,6 @@ class CompetenciaController extends Controller
     {
         //busco la competencia
         $competencia = Competencia::find($id);
-
-
         return view('presentacion/verCompetencia', compact('competencia'));
     }
 
