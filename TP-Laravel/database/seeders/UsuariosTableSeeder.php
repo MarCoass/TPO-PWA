@@ -6,8 +6,11 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Rol;
+use Database\factories\UserFactory;
 
 class usuariosTableSeeder extends Seeder
+
+
 {
     /**
      * Run the database seeds.
@@ -58,7 +61,7 @@ class usuariosTableSeeder extends Seeder
                 'idEscuela' => 15
             ]
         ];
-
+        
         //por cada elemento de roles, va a crear el objeto rol
         foreach ($usuarios as $usuario) {
             
@@ -73,5 +76,6 @@ class usuariosTableSeeder extends Seeder
                 'idEscuela' => $usuario['idEscuela']
             ]);
         }
+        User::factory()->count(20)->create();
     }
 }
