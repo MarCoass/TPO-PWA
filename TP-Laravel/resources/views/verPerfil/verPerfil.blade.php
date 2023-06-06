@@ -21,9 +21,9 @@ Perfil
         <p class="text-muted mb-1">{{auth()->user()->escuela->nombre}}</p>
         @endif
         <p class="text-muted mb-4"> {{auth()->user()->rol->nombreRol}} </p>
-        <div class="d-flex justify-content-center mb-2">
+        <!--<div class="d-flex justify-content-center mb-2">
           <a href="/solicitar_cambios/{{auth()->user()->id}}" class="btn btn-outline-primary ms-1"><i class="bi bi-person-gear me-2"></i>Solicitar cambios</a>
-        </div>
+        </div>-->
       </div>
     </div>
     <div class="card mb-4 mb-lg-0">
