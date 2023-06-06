@@ -1,24 +1,67 @@
 [
     {
+        "nombre": "Infantiles A",
+        "edadMax": "8",
+        "edadMin": "6",
+        "genero": "0",
+        "esElite": "0"
+    },
+    {
+        "nombre": "Infantiles B",
+        "edadMax": "9",
+        "edadMin": "11",
+        "genero": "0",
+        "esElite": "0"
+    },
+    {
+        "nombre": "Cadete",
+        "edadMax": "12",
+        "edadMin": "14",
+        "genero": "0",
+        "esElite": "0"
+    },
+    {
         "nombre": "Juveniles",
         "edadMax": "17",
         "edadMin": "15",
         "genero": "0",
         "esElite": "0"
     },
-
     {
-        "nombre": "Senior 1",
-        "edadMax": "18",
+        "nombre": "Adultos 1",
+        "edadMax": "30",
+        "edadMin": "18",
+        "genero": "0",
+        "esElite": "0"
+    },
+    {
+        "nombre": "Adultos 2",
+        "edadMax": "39",
         "edadMin": "30",
         "genero": "0",
         "esElite": "0"
     },
 
     {
-        "nombre": "Senior1-Master1",
-        "edadMax": "31",
+        "nombre": "Senior 1",
+        "edadMax": "49",
+        "edadMin": "40",
+        "genero": "0",
+        "esElite": "0"
+    },
+
+    {
+        "nombre": "Senior 2",
+        "edadMax": "59",
         "edadMin": "50",
+        "genero": "0",
+        "esElite": "0"
+    },
+
+    {
+        "nombre": "Master1",
+        "edadMax": "69",
+        "edadMin": "60",
         "genero": "0",
         "esElite": "0"
     },
@@ -26,7 +69,7 @@
     {
         "nombre": "Master 2",
         "edadMax": "-1",
-        "edadMin": "51",
+        "edadMin": "70",
         "genero": "0",
         "esElite": "0"
     }

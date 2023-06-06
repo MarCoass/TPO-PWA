@@ -27,7 +27,14 @@ class CategoriasTableSeeder extends Seeder
                 'nombre' => $row['nombre'],
                 'edadMax' => $row['edadMax'],
                 'edadMin' => $row['edadMin'],
-                'genero' => $row['genero'],
+                'genero' => 1,
+                'esElite' => $row['esElite'],
+            ]);
+            Categoria::create([
+                'nombre' => $row['nombre'],
+                'edadMax' => $row['edadMax'],
+                'edadMin' => $row['edadMin'],
+                'genero' => 2,
                 'esElite' => $row['esElite'],
             ]);
         }
