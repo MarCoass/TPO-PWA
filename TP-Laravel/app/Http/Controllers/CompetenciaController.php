@@ -6,6 +6,7 @@ use App\Models\Competencia;
 use App\Models\Competidor;
 use App\Models\CompetenciaCompetidor;
 use App\Models\CompetenciaJuez;
+use App\Models\Categoria;
 use App\Models\User;
 use App\Models\Escuela;
 use App\Models\Poomsae;
@@ -188,17 +189,39 @@ class CompetenciaController extends Controller
         return view('presentacion/verCompetencia', compact('competencia'));
     }
 
-    public function verResultados($id)
+    public function verResultados($idCompetencia)
     {
-        //busco la competencia
-        $competencia = Competencia::find($id);
+        $categoriasFiltradas = [];
+        $categorias = Categoria::all();
+        $competenciasCompetidores = CompetenciaCompetidor::where('idCompetencia', $idCompetencia)->get();
 
+        // Buscamos las categorias en esa competencia
+        foreach ($categorias as $categoria) {
+            foreach ($competenciasCompetidores as $cC) {
+                if ($cC->idCategoria === $categoria->idCategoria) {
+                    // Utilizar el idCategoria como clave del array categoriasFiltradas
+                    $categoriasFiltradas[$categoria->idCategoria] = $categoria;
+                }
+            }
+        }
+
+        // Obtener las categorías filtradas como un array sin claves
+        $categoriasFiltradas = array_values($categoriasFiltradas);
+
+        //busco la competencia
+        $competencia = Competencia::find($idCompetencia);
+
+        return view('presentacion/verResultadosCompetencia', compact('categoriasFiltradas', 'competencia'));
+    }
+
+    public function traerCompetidores(Request $request){
+        $competidoresFiltrados = [];
         //Traemos los competidores ordenados por puntaje
-        $competidoresCompetencia = CompetenciaCompetidor::where('idCompetencia', $id)
+        $competidoresCompetencia = CompetenciaCompetidor::where('idCompetencia', $request['idCompetencia'])
+            ->where('idCategoria', $request['idCategoria'])
             ->orderBy('puntaje', 'desc')
             ->get();
 
-        $competidores = [];
         $contador = 1;
 
         foreach ($competidoresCompetencia as $cC) {
@@ -212,11 +235,11 @@ class CompetenciaController extends Controller
             $competidor['escuela'] = $escuelaCompetidor->nombre;
             $competidor['puntaje'] = $cC->puntaje;
             $competidor['puesto'] = $contador;
-            array_push($competidores, $competidor);
+            array_push($competidoresFiltrados, $competidor);
             $contador++;
         }
 
-        return view('presentacion/verResultadosCompetencia', compact('competidores', 'competencia'));
+        return compact('competidoresFiltrados');
     }
 
     public function verCompetencias()

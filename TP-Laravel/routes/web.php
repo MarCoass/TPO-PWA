@@ -36,6 +36,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
     // Trae todos los estados
     Route::get('/estados', [EstadoController::class, 'index']);
+    // Trae todos los categorias
+    Route::get('/categorias', [CategoriaController::class, 'obtenerCategorias']);
     // Trae todos los Competidores de la bd
     Route::get('/competidores/data', [CompetidorController::class, 'obtenerRegistros']);
 
@@ -77,7 +79,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
         //Rutas de presentacion
         Route::get('/verPresentacion/{id}', [CompetenciaController::class, 'verPresentacion'])->name('verPresentacion');
-        Route::get('/ver_resultados_competencia/{id}', [CompetenciaController::class, 'verResultados'])->name('verResultados');
+        Route::get('/verResultados/{id}',[CompetenciaController::class, 'verResultados'])->name('verResultados');
+        Route::post('/traerCompetidores',[CompetenciaController::class, 'traerCompetidores'])->name('traerCompetidores');
 
         /* reloj */
         Route::get('/resultados', function(){return view('resultados.resultados');});
