@@ -57,6 +57,12 @@
                     </div>
                 </div>
             </div>
+             <div class="badge rounded-pill bg-danger mb-2" id="badgeMensajeDanger" id="badgeMensaje">
+                               Esperando puntuaciones<span id="cantJueces">..</span>.
+                              </div>
+             <div class="badge rounded-pill bg-success mb-2 d-none" id="badgeMensajeSuccess">
+                               Puntuaciones listas.
+                              </div>
             @if ($puntaje->pasada == 1)
                 <form action="{{ route('iniciar_puntaje') }}" method="post">
                     @csrf
@@ -65,13 +71,20 @@
                     <input type="hidden" name="competidor_puntuador" id="competidor_puntuador"
                         value={{ $competidor->idCompetidor }}>
                     <input type="hidden" name="juez_puntuador" id="juez_puntuador" value={{ $juez_puntuador }}>
-                    <button type="submit" class="btn btn-primary btn-lg">Siguiente pasada <i
-                            class="bi bi-arrow-right"></i></button></a>
+                    <input type="hidden" name="pasada_puntuador" id="pasada_puntuador" value={{$puntaje->pasada}}>
+                    <button type="submit" class="btn btn-primary btn-lg boton" disabled>Siguiente pasada <i
+                            class="bi bi-arrow-right"></i></button>
+                           
                 </form>
             @else
-                
-                
-                <a href="{{route('puntajeFinal.show', ['competenciaCompetidor' => $competencia_competidor])}}"><button class="btn btn-primary btn-lg">Ver resultado final <i class="bi bi-arrow-right"></i></button></a>
+                <input type="hidden" name="competencia_puntuador" id="competencia_puntuador"
+                    value={{ $competencia_puntuador }}>
+                <input type="hidden" name="competidor_puntuador" id="competidor_puntuador"
+                    value={{ $competidor->idCompetidor }}>
+                    <input type="hidden" name="pasada_puntuador" id="pasada_puntuador" value={{$puntaje->pasada}}>
+                <a href="{{ route('puntajeFinal.show', ['competenciaCompetidor' => $competencia_competidor]) }}"><button
+                        class="btn btn-primary btn-lg boton" disabled>Ver resultado final <i class="bi bi-arrow-right"></i></button>
+                    </a>
             @endif
 
         </div>
@@ -79,3 +92,4 @@
 
     </div>
 @endsection
+<script src="{{ asset('js/validarPuntuaciones.js') }}"></script>

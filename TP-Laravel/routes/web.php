@@ -176,6 +176,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/opciones_poomsae', [PuntajeController::class, 'obtenerOpcionesPoomsae'])->middleware(['rol:2']);
         Route::post('/iniciar_puntaje', [PuntajeController::class, 'iniciar_puntaje'])->middleware(['rol:2'])->name('iniciar_puntaje');
         Route::post('/actualizar_puntaje', [PuntajeController::class, 'actualizar_puntaje'])->middleware(['rol:2'])->name('actualizar_puntaje');
+        Route::post('/validarJueces',[CompetenciaCompetidorController::class, 'validarJueces']);
 
         Route::post('/cargarPuntaje', [PuntajeController::class, 'store'])->middleware(['rol:2'])->name('puntaje.store');
         //Route::get('/verPuntaje', [PuntajeController::class, 'show'])->middleware(['rol:2'])->name('puntaje.show');
