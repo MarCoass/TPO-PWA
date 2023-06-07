@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('idCategoria');
             $table->float('puntaje');
             $table->integer('contadorPasadas');
-            $table->boolean('estado');
+            $table->integer('estado');
             $table->timestamps();
 
             $table->foreign('idCompetidor')->references('idCompetidor')->on('competidores');
