@@ -20,7 +20,7 @@ class CompetenciaJuezController extends Controller
         $competencia_juez = new CompetenciaJuez();
         $competencia_juez->idJuez = $request->input('juez');
         $competencia_juez->idCompetencia = $request->input('competencia');
-        $competencia_juez->estado =  0; 
+        $competencia_juez->estado =  0;
 
         $competencia = Competencia::find($request->input('competencia'));
         $competencia_juez->competencia()->associate($competencia);
@@ -28,9 +28,27 @@ class CompetenciaJuezController extends Controller
         $juez = User::find($request->input('juez'));
         $competencia_juez->juez()->associate($juez);
 
+        /* busco posibles competencias en las que el juez se registro */
+        $yaParticipoEnCompetencias = CompetenciaJuez::where('idJuez',$request->input('juez'))->first();
+
         $competencia_juez->save();
 
-        return redirect('/')->with('success', "Se ha registrado correctamente el Juez");
+        /* verifico si el juez ya estuvo en otra competencia */
+        if($yaParticipoEnCompetencias){
+            $redirigir = [
+                'url' => '/',
+                'tipo' => 'modalConsulta',
+                'mensaje' => 'show'
+            ];
+        }else{
+            $redirigir = [
+                'url' => '/',
+                'tipo' => 'success',
+                'mensaje' => 'Se ha registrado correctamente el Juez'
+            ];
+        }
+
+        return redirect($redirigir['url'])->with($redirigir['tipo'],$redirigir['mensaje']);
     }
 
     public function habilitar($id){
@@ -78,7 +96,7 @@ class CompetenciaJuezController extends Controller
 
     public function listarJuecesPorIdCompetencia($id)
     {
-        
+
         $competencia_juez = CompetenciaJuez::where('idCompetencia', $id)->get();
         $nombreCompetencia = Competencia::find($id);
         $juecesAceptados = CompetenciaJuez::
