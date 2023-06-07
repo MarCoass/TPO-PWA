@@ -3,7 +3,7 @@
         "nombre": "Competencia Regional",
         "fecha":"2023-05-26",
         "cantidadJueces": 3,
-        "estadoJueces": false
+        "estadoJueces": true
     },
     {
         "nombre": "Competencia Juvenil",
