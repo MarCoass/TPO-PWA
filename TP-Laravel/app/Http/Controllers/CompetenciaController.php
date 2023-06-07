@@ -12,7 +12,7 @@ use App\Models\Escuela;
 use App\Models\Poomsae;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-
+use Psy\Readline\Hoa\Console;
 
 class CompetenciaController extends Controller
 {
@@ -233,11 +233,29 @@ class CompetenciaController extends Controller
             $escuelaCompetidor = Escuela::find($userCompetidor->idEscuela);
            
             $competidor['escuela'] = $escuelaCompetidor->nombre;
-            $competidor['puntaje'] = $cC->puntaje;
+
+            $puntos = $cC->puntaje;
+
+             if ($contador > 0 && $contador  <= 3) {
+                if ($contador  == 1) {
+                    $competidor['puntaje'] =  $puntos +3;
+                }
+                if ($contador  == 2) {
+                    $competidor['puntaje'] = $puntos +2;
+                }
+                if ($contador  == 3) {
+                    $competidor['puntaje'] = $puntos +1;
+                }  
+            }else {
+                $competidor['puntaje'] = $puntos ;
+            } 
+ 
+            //$competidor['puntaje'] = $cC->puntaje;
             $competidor['puesto'] = $contador;
             array_push($competidoresFiltrados, $competidor);
             $contador++;
         }
+
 
         return compact('competidoresFiltrados');
     }
