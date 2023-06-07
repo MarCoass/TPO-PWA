@@ -15,8 +15,11 @@
             <a href="{{ route('edit_competencia', ['id' => $competencia->idCompetencia]) }}" class="btn btn-outline-info"><i
                     class="bi bi-pencil-square me-2"></i>Editar competencia</a>
         @endif
-        <a href="{{ route('verResultados', ['id' => $competencia->idCompetencia]) }}" class="btn btn-outline-success"><i
+        @if ($competencia->estadoJueces == 1)
+          <a href="{{ route('verResultados', ['id' => $competencia->idCompetencia]) }}" class="btn btn-outline-success"><i
                     class="bi bi-pencil-square me-2"></i>Ver resultados competencia</a>
+        @endif
+      
         <div class="row my-5 d-block d-md-none">
             <div class="col-12">
                 <a href="https://www.youtube.com/watch?v=ermNRSmkGF8" target="_blank" class="btn btn-danger">Haga clic acá para
