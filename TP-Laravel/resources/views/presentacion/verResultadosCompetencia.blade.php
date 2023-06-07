@@ -13,12 +13,13 @@ Tabla de Resultados de {{ $competencia->nombre }}
 <span id="idCompetenciaOculto" hidden>{{ $competencia->idCompetencia }}</span>
 
 <div class="row col-6 offset-3 mt-5">
-    <span>Seleccione una Categoría:</span>
-    <select class="form-select form-select-lg mb-3" id="selectCategorias">
+    <label for="selectCategorias" class="form-label"><span class="fs-4">Seleccione una categoría:</span></label>
+    <select class="form-select form-select-lg" id="selectCategorias">
         @foreach($categoriasFiltradas as $categoria)
         <option value="{{ $categoria->idCategoria }}">{{ $categoria->nombre }} - {{ $categoria->genero == 1 ? "Masculino" : "Femenino" }}</option>
         @endforeach
-      </select>
+    </select>
+    <span class="text-secondary text-center mt-1">Sólo se mostrarán las categorías en las que exista al menos un competidor.</span>
 </div>
 
 <table class="table table-primary table-hover table-striped-columns text-center mt-5" id="tablaVerCompetidores">
@@ -34,6 +35,6 @@ Tabla de Resultados de {{ $competencia->nombre }}
         {{-- Aquí se listarán dinámicamente los competidores --}}
     </tbody>
 </table>
-    
+
 <script src="{{ asset('js/verResultadosCompetencia.js') }}"></script>
 @endsection

@@ -43,7 +43,7 @@ function armarTablaCompetidores(competidores) {
                     tipo = "text-light";
                 }
                 if (competidor.puesto == 3) {
-                    tipo = "text-secondary";
+                    tipo = "text-brown";
                 }
                 icono = "<i class='bi bi-award-fill fs-5 " + tipo + " me-1'></i>";
             }
