@@ -128,16 +128,12 @@ class CompetenciaCompetidorController extends Controller
         $idCompetencia = $request['idCompetencia'];
         $idCompetidor = $request['idCompetidor'];
         $numPasada = $request['numPasada'];
+
         //busco todos los puntajes de esa competencia y ese competidor
-        /*  $puntajes = Puntaje::where('idCompetencia', $idCompetencia)->where('idCompetidor', $idCompetidor)->get();*/
         $cantJueces = Competencia::find($idCompetencia)->cantidadJueces;
         $competenciaCompetidor = CompetenciaCompetidor::where('idCompetencia', $idCompetencia)->where('idCompetidor', $idCompetidor)->first();
         $puntajes = Puntaje::where('idCompetenciaCompetidor', $competenciaCompetidor->idCompetenciaCompetidor)->where('pasada', $numPasada)->get();
 
-        $cantPuntajes = 0;
-        foreach($puntajes as $puntaje){
-            $cantPuntajes++;
-        }
 
         $puntuacionCompleta = count($puntajes) == $cantJueces;
         $cantJuecesFaltantes = $cantJueces - count($puntajes);
@@ -148,6 +144,36 @@ class CompetenciaCompetidorController extends Controller
             'pasada' => $numPasada
         ];
         // Retornar la respuesta como JSON
+        return response()->json($response);
+    }
+
+    public function calcularPuntajePasada(Request $request){
+        $idCompetencia = $request['idCompetencia'];
+        $idCompetidor = $request['idCompetidor'];
+        $numPasada = $request['numPasada'];
+
+        //busco los puntajes correspondientes
+        $competenciaCompetidor = CompetenciaCompetidor::where('idCompetencia', $idCompetencia)->where('idCompetidor', $idCompetidor)->first();
+        $puntajes = Puntaje::where('idCompetenciaCompetidor', $competenciaCompetidor->idCompetenciaCompetidor)->where('pasada', $numPasada)->get();
+
+        //por cada pasada sumo los puntajes de exactitud y presentacion
+        $presentacion = 0;
+        $exactitud = 0;
+        foreach($puntajes as $puntaje){{
+            $presentacion = $presentacion + $puntaje->puntajePresentacion;
+            $exactitud = $exactitud + $puntaje->puntajeExactitud;
+        }}
+
+        $cantJueces = Competencia::find($idCompetencia)->cantidadJueces;
+        $presentacion = $presentacion/$cantJueces;
+        $exactitud = $exactitud/$cantJueces;
+
+        $response = [
+            'totalPresentacion' => round($presentacion,1),
+            'totalExactitud' => round($exactitud,1),
+            'totalPasada' => round($exactitud+$presentacion,1),
+        ];
+
         return response()->json($response);
     }
 }

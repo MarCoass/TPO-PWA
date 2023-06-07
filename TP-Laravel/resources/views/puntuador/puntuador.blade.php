@@ -23,17 +23,19 @@
         <div class="horizontal row mt-5">
 
             <div class="pulsadorIzq bg-danger col-4 d-flex justify-content-end align-items-center">
+                
                 <span class="display-2">- 0.3</span>
             </div>
-            <div class="infoCompetidor col-4">
-                <p>Competidor:{{$competidor[0]->nombre}} {{$competidor[0]->apellido}}</p>
+            <div class="infoCompetidor col-4 ">
+                <h3 id="etapaPuntuacion">Exactitud</h3>
+                <p>Competidor: {{$competidor[0]->nombre}} {{$competidor[0]->apellido}}</p>
                 <p></p>
-                <p>Poomsae:<ul>
+                <p>Poomsae: <ul>
                     @foreach($arrayPoomsaes as $poomsae)
                         <li>{{ $poomsae->nombre }}</li>
                     @endforeach
                 </ul></p>
-                <p>Puntaje:<span class="puntaje">4</span>
+                <p>Puntaje: <span class="puntaje">4</span>
                 </p>
                 <button type="button" class="btn btn-success" id="siguientePuntuacion">
                     Siguiente
