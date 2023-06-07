@@ -26,7 +26,7 @@ function obtenerCompetidores(idCompetencia, idCategoria) {
 }
 
 function armarTablaCompetidores(competidores) {
-    //console.log(competidores);
+    console.log(competidores);
     $("#tbodyCompetidores").empty();
 
     estructura = "";
@@ -34,12 +34,21 @@ function armarTablaCompetidores(competidores) {
     if (competidores.length > 0) {
         competidores.forEach((competidor) => {
             var icono = "";
+            var tipo = "";
             if (competidor.puesto > 0 && competidor.puesto <= 3) {
-                icono =
-                    "<i class='bi bi-award-fill fs-5 text-warning me-1'></i>";
+                if (competidor.puesto == 1) {
+                    tipo = "text-warning";
+                }
+                if (competidor.puesto == 2) {
+                    tipo = "text-light";
+                }
+                if (competidor.puesto == 3) {
+                    tipo = "text-secondary";
+                }
+                icono = "<i class='bi bi-award-fill fs-5 " + tipo + " me-1'></i>";
             }
-            estructura += "<tr><th scope='row'>" + icono,competidor.puesto + "</th>";
-            estructura += "<td>" + competidor.nombre + "</td>";
+            estructura += "<tr><th scope='row'>" + icono + " " + competidor.puesto + "</th>";
+            estructura += "<td>" + competidor.nombre + " " + competidor.apellido + "</td>";
             estructura += "<td>" + competidor.escuela + "</td>";
             estructura += "<td>" + competidor.puntaje + "</td>";
             estructura += "</tr>";

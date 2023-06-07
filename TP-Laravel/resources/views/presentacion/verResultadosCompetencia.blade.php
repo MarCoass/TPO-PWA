@@ -21,7 +21,7 @@ Tabla de Resultados de {{ $competencia->nombre }}
       </select>
 </div>
 
-<table class="table table-hover text-center mt-5">
+<table class="table table-primary table-hover table-striped-columns text-center mt-5" id="tablaVerCompetidores">
     <thead>
         <tr>
             <th scope="col">Puesto</th>

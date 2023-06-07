@@ -4,7 +4,7 @@
  */
 export const cambio_de_tema = (tema) => {
     let $tabla = document.querySelector('#competidores_tabla');
-    let $tablas = document.querySelectorAll('.table');
+    let $tablas = document.querySelectorAll('.table:not(#tablaVerCompetidores)');
     let $acordeones = document.querySelectorAll('.accordion-item');
 
     if(tema === "dark"){
