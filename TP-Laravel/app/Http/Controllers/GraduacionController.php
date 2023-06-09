@@ -15,7 +15,7 @@ class GraduacionController extends Controller
     public function index()
     {
         $graduaciones = Graduacion::all();
-        return $graduaciones;
+        return view('gestionGraduaciones.index', compact('graduaciones'));
     }
 
     /**
@@ -25,7 +25,7 @@ class GraduacionController extends Controller
      */
     public function create()
     {
-        //
+        return view('gestionGraduaciones.create');
     }
 
     /**
@@ -36,7 +36,19 @@ class GraduacionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $graduacion = new Graduacion();
+        $graduacion->nombre = $request->input('nombre');
+        $graduacion->tipo = $request->input('tipo');
+        
+        if($request->input('tipo') == 'DAN'){
+            $graduacion->color = 'Negro';
+        }else{
+            $graduacion->color = $request->input('color');
+        }
+
+        $graduacion->save();
+
+        return redirect('/graduaciones')->with('success', "Se ha registrado correctamente la graduación.");
     }
 
     /**
@@ -58,7 +70,9 @@ class GraduacionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $graduacion = Graduacion::find($id);
+
+        return view('gestionGraduaciones.edit', compact('graduacion'));
     }
 
     /**
@@ -70,7 +84,16 @@ class GraduacionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $graduacion = Graduacion::find($id);
+        $graduacion->nombre = $request->input('nombre');
+
+        if($graduacion->tipo != 'DAN'){
+            $graduacion->color = $request->input('color');
+        }
+
+        $graduacion->save();
+
+        return redirect('/graduaciones')->with('success', "Se ha actualizado correctamente la graduación.");
     }
 
     /**

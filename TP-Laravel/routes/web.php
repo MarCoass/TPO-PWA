@@ -149,6 +149,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
                 /* lista jueces de una competencia */
             Route::get('/JuezCompetencia/{id}', [CompetenciaJuezController::class, 'listarJuecesPorIdCompetencia'])->name('tabla_jueces');
             Route::get('/habilitar_juez/{id}', [CompetenciaJuezController::class, 'habilitar'])->name('habilitar_juez');
+
+            // ruta gestión de graduaciones
+            Route::resource('graduaciones', 'GraduacionController');
         }); //fin rutas administradores
 
         //guardar inscripcion de competidor
