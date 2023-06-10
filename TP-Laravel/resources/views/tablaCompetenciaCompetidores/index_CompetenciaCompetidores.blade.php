@@ -39,6 +39,7 @@ Gestion de Competidores de la competencia
                 @endif
                 @if ($competidor->estado != 0)
                     <a href="{{ route('asignar_poomsae_competidor', ['id_competencia_competidor' => $competidor->idCompetenciaCompetidor ]) }}" class="btn btn-outline-success"><i class="bi bi-check2-square me-2"></i>Asignar Poomsae</a>
+                    <a href="{{ route('ver_poomsae_competidor', ['idCompetenciaCompetidor' => $competidor->idCompetenciaCompetidor ]) }}" class="btn btn-outline-success"><i class="bi bi-check2-square me-2"></i>Ver Poomsaes Asignados</a>
                 @endif
 
             </td>
