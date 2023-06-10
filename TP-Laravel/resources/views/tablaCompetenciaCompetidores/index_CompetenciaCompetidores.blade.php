@@ -12,8 +12,9 @@ Gestion de Competidores de la competencia
 @section('contenido')
 <!-- despliega mensajes -->
 @include('layouts.partials.messages')
-<h3>Estas viendo la <b>{{ $nombreCompetencia->nombre }}</b></h3>
-<a href="{{ route('asignar_poomsae_competidores', ['id_competencia' => $competencia->idCompetencia]) }}" class="btn btn-outline-success"><i class="bi bi-check2-square me-2"></i>Sortear Poomsae</a>
+<h3>Estas viendo la <b>{{ $competencia->nombre }}</b></h3>
+<a href="{{ route('asignar_poomsae_por_sorteo', ['id_competencia' => $competencia->idCompetencia]) }}" class="btn btn-outline-success">Sortear Poomsae</a>
+<br/>
                
 <table id="tabla_CompetenciaCompetidores" class="table hover table-light table-bordered nowrap border dataTable dtr-inline collapsed" width="100%">
     <thead class="flip-content">

@@ -116,6 +116,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::get('/asignar_poomsae_competencia/{id_competencia_competidor}', [CompetenciaCompetidorPoomsaeController::class, 'create'])->name('asignar_poomsae_competidor');
             Route::post('/store_asignar_poomsae', [CompetenciaCompetidorPoomsaeController::class, 'store'])->name('store_asignar_poomsae');
             
+            Route::get('/asignar_poomsae_por_sorteo/{id_competencia}', [CompetenciaCompetidorPoomsaeController::class, 'asignar_poomsae_por_sorteo'])->name('asignar_poomsae_por_sorteo');
             /* Rutas de Gestion de Categorias se pueden mejorar */
             Route::get('gestionCategorias/index', [CategoriaController::class, 'index'])->name('index_categoria');
             Route::get('gestionCategorias/create', [CategoriaController::class, 'create'])->name('create_categoria');

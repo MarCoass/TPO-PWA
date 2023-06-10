@@ -13,7 +13,7 @@ class CategoriaPoomsae extends Model
 
     protected $primaryKey = 'idCategoriaPoomsae';
 
-    protected $fillable = ['idCategoria ','idPoomsae '];
+    protected $fillable = ['idCategoria ','idPoomsae'];
 
     public function categoria()
     {
