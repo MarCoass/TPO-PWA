@@ -59,7 +59,7 @@ class GraduacionController extends Controller
      */
     public function show($id)
     {
-        //
+        return redirect('/graduaciones')->with('restricted', "Acción no permitida.");
     }
 
     /**
@@ -105,5 +105,6 @@ class GraduacionController extends Controller
     public function destroy($id)
     {
         //
+        return redirect('/graduaciones')->with('restricted', "Acción no permitida.");
     }
 }
