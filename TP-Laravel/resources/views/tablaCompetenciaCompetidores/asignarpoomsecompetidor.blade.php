@@ -26,7 +26,7 @@ Asignar Poomse a Competidor
 
         <div class="col-lg-6 col-12 form-group mb-3">
             <label for="poomsae_uno" class="form-label">Poomsae</label>
-            <select name="poomsae_uno[]" id="poomsae_uno" class="form-select form-control" multiple required>
+            <select name="poomsae_uno" id="poomsae_uno" class="form-select form-control" required>
                 @foreach ($poomsae as $row)
                     <option value="{{ $row->idPoomsae }}">{{ $row->nombre }}</option>
                 @endforeach
@@ -38,7 +38,7 @@ Asignar Poomse a Competidor
 
         <div class="col-lg-6 col-12 form-group mb-3">
             <label for="poomsae_dos" class="form-label">Poomsae</label>
-            <select name="poomsae_dos[]" id="poomsae_dos" class="form-control" multiple required>
+            <select name="poomsae_dos" id="poomsae_dos" class="form-control" required>
                 @foreach ($poomsae as $row)
                 <option value="{{ $row->idPoomsae }}">{{ $row->nombre }}</option>
                 @endforeach

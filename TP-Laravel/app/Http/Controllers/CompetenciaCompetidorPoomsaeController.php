@@ -57,31 +57,30 @@ class CompetenciaCompetidorPoomsaeController extends Controller
         $poomsae_uno = $request->input('poomsae_uno');
         $poomsae_dos = $request->input('poomsae_dos');
 
-        foreach($poomsae_uno as $row){
-            $competencia_competidor_poomsae = new CompetenciaCompetidorPoomsae();
+        //Primer poomsae
+        $competencia_competidor_poomsae = new CompetenciaCompetidorPoomsae();
 
-            $competencia_competidor_poomsae->pasadas = 1;
-            $competencia_competidor = CompetenciaCompetidor::find($id_competencia_competidor);
-            $competencia_competidor_poomsae->competencia_competidor()->associate($competencia_competidor);
+        $competencia_competidor_poomsae->pasadas = 1;
+        $competencia_competidor = CompetenciaCompetidor::find($id_competencia_competidor);
+        $competencia_competidor_poomsae->competencia_competidor()->associate($competencia_competidor);
 
-            $poomsae = Poomsae::find($row);
-            $competencia_competidor_poomsae->poomsae()->associate($poomsae);
+        $poomsae = Poomsae::find($poomsae_uno);
+        $competencia_competidor_poomsae->poomsae()->associate($poomsae);
     
-            $competencia_competidor_poomsae->save();
-        }
+        $competencia_competidor_poomsae->save();
 
-        foreach($poomsae_dos as $row){
-            $competencia_competidor_poomsae = new CompetenciaCompetidorPoomsae();
+        //Segundo poomsae
+        $competencia_competidor_poomsae = new CompetenciaCompetidorPoomsae();
 
-            $competencia_competidor_poomsae->pasadas = 2;
-            $competencia_competidor = CompetenciaCompetidor::find($id_competencia_competidor);
-            $competencia_competidor_poomsae->competencia_competidor()->associate($competencia_competidor);
+        $competencia_competidor_poomsae->pasadas = 2;
+        $competencia_competidor = CompetenciaCompetidor::find($id_competencia_competidor);
+        $competencia_competidor_poomsae->competencia_competidor()->associate($competencia_competidor);
 
-            $poomsae = Poomsae::find($row);
-            $competencia_competidor_poomsae->poomsae()->associate($poomsae);
+        $poomsae = Poomsae::find($poomsae_dos);
+        $competencia_competidor_poomsae->poomsae()->associate($poomsae);
     
-            $competencia_competidor_poomsae->save();
-        }
+        $competencia_competidor_poomsae->save();
+     
 
         $CompetenciaController = new CompetenciaController();
 
