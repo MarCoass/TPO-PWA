@@ -29,17 +29,21 @@ Gestion de Competidores de la competencia
     <tbody>
         @foreach ($competidoresCompetencia as $competidor)
         <tr>
-            <td>{{ $competidor->competidor->gal }}</td>
-            <td>{{ $competidor->competidor->nombre }}</td>
-            <td>{{ $competidor->competidor->apellido }}</td>
-            <td>{{ ($competidor->estado == 0) ? 'Sin Habilitar' : 'Habilitado' }}</td>
+            <td>{{ $competidor['gal'] }}</td>
+            <td>{{ $competidor['nombre'] }}</td>
+            <td>{{ $competidor['apellido'] }}</td>
+            <td>{{ ($competidor['estado'] == 0) ? 'Sin Habilitar' : 'Habilitado' }}</td>
             <td>
-                @if ($competidor->estado == 0)
-                    <a href="{{ route('habilitar_competidor', ['id' => $competidor->idCompetenciaCompetidor ]) }}" class="btn btn-outline-success"><i class="bi bi-check2-square me-2"></i>Habilitar</a>
+                @if ($competidor['estado'] == 0)
+                    <a href="{{ route('habilitar_competidor', ['id' => $competidor['idCompetenciaCompetidor'] ]) }}" class="btn btn-outline-success"><i class="bi bi-check2-square me-2"></i>Habilitar</a>
                 @endif
-                @if ($competidor->estado != 0)
-                    <a href="{{ route('asignar_poomsae_competidor', ['id_competencia_competidor' => $competidor->idCompetenciaCompetidor ]) }}" class="btn btn-outline-success"><i class="bi bi-check2-square me-2"></i>Asignar Poomsae</a>
-                    <a href="{{ route('ver_poomsae_competidor', ['idCompetenciaCompetidor' => $competidor->idCompetenciaCompetidor ]) }}" class="btn btn-outline-success"><i class="bi bi-check2-square me-2"></i>Ver Poomsaes Asignados</a>
+
+                @if ($competidor['estado'] != 0 && $competidor['tiene_poomsae_asignado'] == 1)
+                    <a href="{{ route('ver_poomsae_competidor', ['idCompetenciaCompetidor' => $competidor['idCompetenciaCompetidor'] ]) }}" class="btn btn-outline-success"><i class="bi bi-check2-square me-2"></i>Ver Poomsaes Asignados</a>
+                @endif
+
+                @if ($competidor['estado'] != 0 && $competidor['tiene_poomsae_asignado'] == 0)
+                <a href="{{ route('asignar_poomsae_competidor', ['id_competencia_competidor' => $competidor['idCompetenciaCompetidor'] ]) }}" class="btn btn-outline-success"><i class="bi bi-check2-square me-2"></i>Asignar Poomsae</a>
                 @endif
 
             </td>

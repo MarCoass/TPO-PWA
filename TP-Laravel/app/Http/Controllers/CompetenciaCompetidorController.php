@@ -6,6 +6,7 @@ use App\Models\Categoria;
 use App\Models\Competidor;
 use App\Models\Competencia;
 use App\Models\CompetenciaCompetidor;
+use App\Models\CompetenciaCompetidorPoomsae;
 use Illuminate\Http\Request;
 use App\Models\Puntaje;
 
@@ -91,7 +92,31 @@ class CompetenciaCompetidorController extends Controller
 
     public function listarCompetidoresPorId($id)
     {
-        $competidoresCompetencia = CompetenciaCompetidor::where('idCompetencia', $id)->get();
+        $competidoresCompetencia = array();
+
+        $data = CompetenciaCompetidor::where('idCompetencia', $id)->get();
+        
+        foreach($data as $competidor){
+            $dato = array(
+                'idCompetenciaCompetidor' =>$competidor->idCompetenciaCompetidor,
+                'gal' => $competidor->competidor->gal,
+                'nombre' => $competidor->competidor->nombre,
+                'apellido' => $competidor->competidor->apellido,
+                'estado' => $competidor->estado,
+                'tiene_poomsae_asignado' => 0
+            );
+
+           if($competidor->estado != 0 ){
+                $existe_tupla = CompetenciaCompetidorPoomsae::where('idCompetenciaCompetidor','=', $competidor->idCompetenciaCompetidor)->first();
+
+                if($existe_tupla != null){
+                    $dato['tiene_poomsae_asignado'] = 1;
+                }
+            } 
+
+           $competidoresCompetencia[] = $dato;
+        }
+
         $competencia = Competencia::find($id);
 
         return view('tablaCompetenciaCompetidores.index_CompetenciaCompetidores', ['competidoresCompetencia' => $competidoresCompetencia, 'competencia' => $competencia]);
