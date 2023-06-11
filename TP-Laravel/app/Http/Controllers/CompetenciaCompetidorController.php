@@ -86,7 +86,6 @@ class CompetenciaCompetidorController extends Controller
         $CompetidorCompetencia->estado = true;
         $CompetidorCompetencia->save();
 
-        /* todavia tengo que arreglar la redireccion */
         return redirect()->route('tabla_competidores', ['id' => $CompetidorCompetencia->idCompetencia])->with('success', 'Competidor habilitado exitosamente.');
     }
 
@@ -95,7 +94,7 @@ class CompetenciaCompetidorController extends Controller
         $competidoresCompetencia = array();
 
         $data = CompetenciaCompetidor::where('idCompetencia', $id)->get();
-        
+
         foreach($data as $competidor){
             $dato = array(
                 'idCompetenciaCompetidor' =>$competidor->idCompetenciaCompetidor,
@@ -103,6 +102,7 @@ class CompetenciaCompetidorController extends Controller
                 'nombre' => $competidor->competidor->nombre,
                 'apellido' => $competidor->competidor->apellido,
                 'estado' => $competidor->estado,
+                'idUser' => $competidor->idCompetidor,
                 'tiene_poomsae_asignado' => 0
             );
 
@@ -112,7 +112,7 @@ class CompetenciaCompetidorController extends Controller
                 if($existe_tupla != null){
                     $dato['tiene_poomsae_asignado'] = 1;
                 }
-            } 
+            }
 
            $competidoresCompetencia[] = $dato;
         }
