@@ -15,7 +15,7 @@ Gestion de Competidores de la competencia
 <h3>Estas viendo la <b>{{ $competencia->nombre }}</b></h3>
 <a href="{{ route('asignar_poomsae_por_sorteo', ['id_competencia' => $competencia->idCompetencia]) }}" class="btn btn-outline-success">Sortear Poomsae</a>
 <br/>
-               
+
 <table id="tabla_CompetenciaCompetidores" class="table hover table-light table-bordered nowrap border dataTable dtr-inline collapsed" width="100%">
     <thead class="flip-content">
         <tr>
@@ -35,7 +35,18 @@ Gestion de Competidores de la competencia
             <td>{{ ($competidor['estado'] == 0) ? 'Sin Habilitar' : 'Habilitado' }}</td>
             <td>
                 @if ($competidor['estado'] == 0)
+                    @php
+                        $tieneSolicitud = App\models\Solicitud::where('idUser', $competidor['idUser'])->where('estadoSolicitud', 4)->first();
+                    @endphp
+                    @if ($tieneSolicitud)
+                    <a href="{{ route('competidor_solicitudes', ['id' => $competidor['idUser'] ]) }}" class="btn btn-outline-warning"><i class="bi bi-exclamation-triangle-fill me-2"></i>Atender Solicitudes</a>
+                    <a href="#" class="btn btn-outline-success disabled"><i class="bi bi-check2-square me-2"></i>Habilitar</a>
+
+                    @else
                     <a href="{{ route('habilitar_competidor', ['id' => $competidor['idCompetenciaCompetidor'] ]) }}" class="btn btn-outline-success"><i class="bi bi-check2-square me-2"></i>Habilitar</a>
+
+                    @endif
+
                 @endif
 
                 @if ($competidor['estado'] != 0 && $competidor['tiene_poomsae_asignado'] == 1)
