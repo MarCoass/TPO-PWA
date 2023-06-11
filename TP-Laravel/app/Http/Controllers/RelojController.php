@@ -7,9 +7,13 @@ use Illuminate\Http\Request;
 
 class RelojController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('reloj.cronometro');
+        $start = $request->session()->get('cronometro_start');
+        $duration = now()->diffInSeconds($start);
+        $overtime = $request->session()->get('overtime');
+        return response()->json(['success' => true, 'duration' => $duration,'overtime' => $overtime]);
+   
     }
 
     public function start(Request $request)

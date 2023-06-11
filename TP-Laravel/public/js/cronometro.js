@@ -1,13 +1,40 @@
 // listo pero falta pulir y modularizar
 // Referencias y variable global
 const $contador = document.getElementById('contador');
-const $btnInicia = document.getElementById('inicio-contador')
-const $btnFin = document.getElementById('fin-contador')
-const $tiempoTotal = document.getElementById('tiempo-total')
+const $btnInicia = document.getElementById('inicio-contador');
+const $btnFin = document.getElementById('fin-contador');
+const $tiempoTotal = document.getElementById('tiempo-total');
+const reloj = document.getElementById('reloj');
 let estaActivo = false;
-
+//reloj
 export var boton_contador_inicio;
 export var boton_contador_fin;
+
+if(reloj){
+  setInterval(function() {
+  $.ajax({
+    url: '/reloj',
+    type: 'GET',
+    dataType: 'json',
+    data: {
+        _token: '{{ csrf_token() }}'
+    },
+    success: function(response) {
+      reloj.innerHTML = "";
+        if (response.success) {
+            // La función start() se ha iniciado correctamente
+            reloj.innerHTML = " Tiempo: "+response.duration;
+        } else {
+            // Ha ocurrido un error al iniciar la función start()
+        }
+    },
+    error: function(xhr, status, error) {
+        // Ha ocurrido un error de Ajax
+    }
+});
+
+}, 1000);
+}
 // Cuando se hace click al botón de inicio
 if($btnInicia){
    boton_contador_inicio = $btnInicia.addEventListener('click', () => {

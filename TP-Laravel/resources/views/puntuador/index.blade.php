@@ -5,10 +5,11 @@ Iniciar Puntuador
 @endsection
 
 @section('encabezado')
-Iniciar Puntuador
+Iniciar Puntuador 
 @endsection
 @include('layouts.partials.messages')
 @section('contenido')
+<span id="reloj"></span>
 <form class="m-5 row" method="post" action="{{ url('/iniciar_puntaje') }}">
     @csrf
 <div class="col-lg-6 col-md-12 col-sm-12  pt-3">

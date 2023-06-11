@@ -194,7 +194,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         //rutas del reloj
         Route::get('/iniciar_reloj', [RelojController::class, 'start'])->middleware(['rol:1']);
         Route::get('/finalizar_reloj', [RelojController::class, 'stop'])->middleware(['rol:1']);
-       
+        Route::get('/reloj', [RelojController::class, 'index']);
     });
 
 });
