@@ -129,8 +129,14 @@ NeuPoom
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <p>Usted ya ha participado en otras competencias, desea actualizar su institucion actual?</p>
-                                <p>Tu institucion actual es: <b>{{ auth()->user()->escuela->nombre }}</b></p>
+                                <p>Usted ya ha participado en otras competencias, desea actualizar algunos datos? </p>
+                                <p>Tu institucion registrada es: <b>{{ auth()->user()->escuela->nombre }}</b></p>
+                                @if (auth()->user()->idRol == 3)
+                                @php
+                                    $miGraduacionActual = App\Models\Competidor::where('idUser', auth()->user()->id)->first();
+                                @endphp
+                                <p>Tu Graduacion registrada es: <b>{{ $miGraduacionActual->graduacion->nombre }} - {{ $miGraduacionActual->graduacion->color }}</b></p>
+                                @endif
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No gracias</button>
