@@ -58,9 +58,9 @@ if($btnInicia){
           $tiempoTotal.classList.add('text-danger');
         }
       }
-    }, 1000)
+      $('#overtime').val(overtime);
 
-    reloj.innerHTML = " Tiempo: "+response.duration;
+    }, 1000)
   });
 }
 
