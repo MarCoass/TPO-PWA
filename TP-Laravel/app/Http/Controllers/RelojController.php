@@ -20,6 +20,7 @@ class RelojController extends Controller
 
     public function stop(Request $request)
     {
+        //falta agregar el overtime
         $start = $request->session()->get('cronometro_start');
         $duration = now()->diffInSeconds($start);
         $request->session()->forget('cronometro_start');
