@@ -104,6 +104,17 @@ if($btnInicia){
         }
       }
       $('#overtime').val(overtime);
+
+      $.ajax({
+        url: '/actualizar_reloj',
+        type: 'GET',
+        dataType: 'json',
+        data: {
+            _token: '{{ csrf_token() }}',
+            tiempo: tiempo
+        }
+    });
+
     }, 1000)
 
     $('#overtime').val(overtime);
