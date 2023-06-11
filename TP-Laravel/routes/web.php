@@ -22,6 +22,7 @@ use App\Http\Controllers\CompetenciaCompetidorPoomsaeController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\CategoriaGraduacionController;
 use App\Http\Controllers\CategoriaPoomsaeController;
+use App\Http\Controllers\RelojController;
 use App\Models\CompetenciaCompetidor;
 
 Route::group(['namespace' => 'App\Http\Controllers'], function()
@@ -188,6 +189,11 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         //Route::get('/verPuntaje', [PuntajeController::class, 'show'])->middleware(['rol:2'])->name('puntaje.show');
         Route::get('/verPuntaje/{puntaje}', [PuntajeController::class, 'show'])->middleware(['rol:2'])->name('puntuador.show');
         Route::get('/verPuntajeFinal/{competenciaCompetidor}', [CompetenciaCompetidorController::class, 'puntajeFinal'])->name('puntajeFinal.show');
+   
+        //rutas del reloj
+        Route::get('/iniciar_reloj', [RelojController::class, 'start'])->middleware(['rol:1']);
+        Route::get('/finalizar_reloj', [RelojController::class, 'stop'])->middleware(['rol:1']);
+       
     });
 
 });

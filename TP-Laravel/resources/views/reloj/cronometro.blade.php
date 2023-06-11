@@ -20,6 +20,9 @@
 
     <button class="btn btn-outline-warning btn-lg disabled" id="fin-contador"><i class="bi bi-stop me-1"></i>Termina</button>
 </div>
+
+<input type="hidden" id='overtime' name="overtime">
+
 <div class="col-md-12 text-center">
         <p class="display-6" id="tiempo-total"></p>
 </div>

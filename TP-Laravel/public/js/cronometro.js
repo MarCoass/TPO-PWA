@@ -15,6 +15,25 @@ if($btnInicia){
     let tiempo = 90;
     let transcurrido = 0;
     let overtime = 0;
+
+    $.ajax({
+      url: '/iniciar_reloj',
+      type: 'GET',
+      dataType: 'json',
+      data: {
+          _token: '{{ csrf_token() }}'
+      },
+      success: function(response) {
+          if (response.success) {
+              // La función start() se ha iniciado correctamente
+          } else {
+              // Ha ocurrido un error al iniciar la función start()
+          }
+      },
+      error: function(xhr, status, error) {
+          // Ha ocurrido un error de Ajax
+      }
+  });
   
     // Reinicio de los estilos del contador
     $contador.classList.remove('text-danger');
@@ -57,7 +76,10 @@ if($btnInicia){
           $tiempoTotal.classList.add('text-danger');
         }
       }
+      $('#overtime').val(overtime);
     }, 1000)
+
+    $('#overtime').val(overtime);
   });
 }
 
@@ -67,7 +89,27 @@ if($btnFin){
  boton_contador_fin = $btnFin.addEventListener('click', () => {
   // Se coloca en false la variable que mantiene el intervalo
   estaActivo = false;
-
+  
+  $.ajax({
+    url: '/finalizar_reloj',
+    type: 'GET',
+    dataType: 'json',
+    data: {
+        _token: '{{ csrf_token() }}',
+        overtime: $('#overtime').val()
+    },
+    success: function(response) {
+        if (response.success) {
+            // La función start() se ha iniciado correctamente
+            $tiempoTotal.innerHTML += ' Duracion: '+response.duration+' Overtime: '+response.overtime;
+        } else {
+            // Ha ocurrido un error al iniciar la función start()
+        }
+    },
+    error: function(xhr, status, error) {
+        // Ha ocurrido un error de Ajax
+    }
+});
   // Se deshabilita el botón de fin y se activa el de inicio
   $btnFin.classList.add('disabled');
   $btnInicia.classList.remove('disabled');

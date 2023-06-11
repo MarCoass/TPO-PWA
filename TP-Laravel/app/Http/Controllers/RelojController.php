@@ -9,7 +9,7 @@ class RelojController extends Controller
 {
     public function index()
     {
-        return view('cronometro.index');
+        return view('reloj.cronometro');
     }
 
     public function start(Request $request)
@@ -22,9 +22,10 @@ class RelojController extends Controller
     {
         //falta agregar el overtime
         $start = $request->session()->get('cronometro_start');
+        $overtime = $request->input('overtime');
         $duration = now()->diffInSeconds($start);
         $request->session()->forget('cronometro_start');
-        return response()->json(['success' => true, 'duration' => $duration]);
+        return response()->json(['success' => true, 'duration' => $duration,'overtime' => $overtime]);
     }
 
     /**
