@@ -9,29 +9,30 @@ class RelojController extends Controller
 {
     public function index(Request $request)
     {
-        $duration = config('app.reloj');
-        $overtime = config('app.overtime');
+        $start = $request->session()->get('cronometro_start');
+        $duration = now()->diffInSeconds($start);
+        $overtime = $request->session()->get('overtime');
         return response()->json(['success' => true, 'duration' => $duration,'overtime' => $overtime]);
    
     }
-
-    public function actualizar_reloj(Request $request){
-        config(['app.reloj' => $request->input('tiempo')]);
-        return response()->json(['success' => true]);
-    }
-
+    //public function actualizar_reloj(Request $request){
+    //    config(['app.reloj' => $request->input('tiempo')]);
+//        return response()->json(['success' => true]);
+   // }
     public function start(Request $request)
     {
-        config(['app.reloj' => '0']);
-        config(['app.overtime' => '0']);
+        $request->session()->put('cronometro_start', now());
+        $request->session()->put('overtime', 0);
         return response()->json(['success' => true]);
     }
 
     public function stop(Request $request)
     {
         $overtime = $request->input('overtime');
-        config(['app.overtime' => $overtime]);
-        $duration = config('app.reloj');
+        $request->session()->put('overtime', $overtime);
+        $start = $request->session()->get('cronometro_start');
+        $duration = now()->diffInSeconds($start);
+        $request->session()->forget('cronometro_start');
         return response()->json(['success' => true, 'duration' => $duration,'overtime' => $overtime]);
     }
 

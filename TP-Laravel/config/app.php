@@ -29,8 +29,6 @@ return [
     */
 
     'env' => env('APP_ENV', 'production'),
-    'reloj' => '0',
-    'overtime' => '0',
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode

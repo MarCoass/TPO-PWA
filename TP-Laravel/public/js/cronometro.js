@@ -4,37 +4,11 @@ const $contador = document.getElementById('contador');
 const $btnInicia = document.getElementById('inicio-contador');
 const $btnFin = document.getElementById('fin-contador');
 const $tiempoTotal = document.getElementById('tiempo-total');
-const reloj = document.getElementById('reloj');
 let estaActivo = false;
 //reloj
 export var boton_contador_inicio;
 export var boton_contador_fin;
 
-if(reloj){
-  setInterval(function() {
-  $.ajax({
-    url: '/reloj',
-    type: 'GET',
-    dataType: 'json',
-    data: {
-        _token: '{{ csrf_token() }}'
-    },
-    success: function(response) {
-      reloj.innerHTML = "";
-        if (response.success) {
-            // La función start() se ha iniciado correctamente
-            reloj.innerHTML = " Tiempo: "+response.duration;
-        } else {
-            // Ha ocurrido un error al iniciar la función start()
-        }
-    },
-    error: function(xhr, status, error) {
-        // Ha ocurrido un error de Ajax
-    }
-});
-
-}, 1000);
-}
 // Cuando se hace click al botón de inicio
 if($btnInicia){
    boton_contador_inicio = $btnInicia.addEventListener('click', () => {
@@ -42,25 +16,6 @@ if($btnInicia){
     let tiempo = 90;
     let transcurrido = 0;
     let overtime = 0;
-
-    $.ajax({
-      url: '/iniciar_reloj',
-      type: 'GET',
-      dataType: 'json',
-      data: {
-          _token: '{{ csrf_token() }}'
-      },
-      success: function(response) {
-          if (response.success) {
-              // La función start() se ha iniciado correctamente
-          } else {
-              // Ha ocurrido un error al iniciar la función start()
-          }
-      },
-      error: function(xhr, status, error) {
-          // Ha ocurrido un error de Ajax
-      }
-  });
   
     // Reinicio de los estilos del contador
     $contador.classList.remove('text-danger');
@@ -103,21 +58,9 @@ if($btnInicia){
           $tiempoTotal.classList.add('text-danger');
         }
       }
-      $('#overtime').val(overtime);
-
-      $.ajax({
-        url: '/actualizar_reloj',
-        type: 'GET',
-        dataType: 'json',
-        data: {
-            _token: '{{ csrf_token() }}',
-            tiempo: tiempo
-        }
-    });
-
     }, 1000)
 
-    $('#overtime').val(overtime);
+    reloj.innerHTML = " Tiempo: "+response.duration;
   });
 }
 
@@ -128,26 +71,6 @@ if($btnFin){
   // Se coloca en false la variable que mantiene el intervalo
   estaActivo = false;
   
-  $.ajax({
-    url: '/finalizar_reloj',
-    type: 'GET',
-    dataType: 'json',
-    data: {
-        _token: '{{ csrf_token() }}',
-        overtime: $('#overtime').val()
-    },
-    success: function(response) {
-        if (response.success) {
-            // La función start() se ha iniciado correctamente
-            $tiempoTotal.innerHTML += ' Duracion: '+response.duration+' Overtime: '+response.overtime;
-        } else {
-            // Ha ocurrido un error al iniciar la función start()
-        }
-    },
-    error: function(xhr, status, error) {
-        // Ha ocurrido un error de Ajax
-    }
-});
   // Se deshabilita el botón de fin y se activa el de inicio
   $btnFin.classList.add('disabled');
   $btnInicia.classList.remove('disabled');
