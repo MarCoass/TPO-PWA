@@ -17,7 +17,7 @@ Gestion de Solicitudes
     <thead class="flip-content">
         <tr>
             <th>ID</th>
-            <th >fecha</th>
+            <th>fecha</th>
             <th>Usuario</th>
             <th>Apellido y Nombre</th>
             <th>estado</th>
@@ -26,6 +26,8 @@ Gestion de Solicitudes
         </tr>
     </thead>
     <tbody>
+        {{$solicitud = null}}
+
         @foreach ($solicitudes as $solicitud)
         @if($solicitud->estadoSolicitud != 0)
         <tr>
@@ -53,11 +55,13 @@ Gestion de Solicitudes
                 @endif
 
             </td>
-            </tr>
-            @endif
-            @endforeach
-        </tbody>
-    </table>
+        </tr>
+        @endif
+        @endforeach
+    </tbody>
+</table>
+
+  @if ($solicitud)
 
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -107,7 +111,7 @@ Gestion de Solicitudes
       exampleModal.addEventListener('show.bs.modal', function(event) {
         const button = event.relatedTarget; // El botón que activó el modal
         const idSolicitud = button.getAttribute('data-id'); // Extrae el data-id del botón
-        alert( idSolicitud )
+        
         // Construye la URL de la ruta 'aceptar_solicitud' utilizando el valor de 'idUser'
         const url = '{{ route("aceptar_solicitud", ["id" => ":idSolicitud"]) }}'.replace(':idSolicitud', idSolicitud);
         const url2 = '{{ route("rechazar_solicitud", ["id" => ":idSolicitud"]) }}'.replace(':idSolicitud', idSolicitud);
@@ -119,6 +123,7 @@ Gestion de Solicitudes
     });
     </script>
 
+    @endif
 
 
 

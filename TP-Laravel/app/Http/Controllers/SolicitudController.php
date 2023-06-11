@@ -31,6 +31,20 @@ class SolicitudController extends Controller
         return view('gestionSolicitudes.index_solicitudes', compact('solicitudes','escuelas','graduaciones','competidores'));
     }
 
+    public function solicitudesPorIdUser($id)
+    {
+        $solicitudes = Solicitud::where('idUser',$id)->get();
+        $escuelas = Escuela::all();
+        $graduaciones = Graduacion::all();
+        $competidores = Competidor::all();
+        /* foreach ($solicitudes as $solicitud){
+            $competidor = Competidor::where('idUser',$solicitud->idUser)->get();
+            $competidores->push($competidor);
+        } */
+
+        return view('gestionSolicitudes.index_solicitudes', compact('solicitudes','escuelas','graduaciones','competidores'))->with('success','Listando solicitudes del usuario');
+    }
+
     public function crearSolicitud($id)
     {
         $escuelas = Escuela::all();
@@ -143,7 +157,7 @@ class SolicitudController extends Controller
             $query->select('idGraduacion', 'nombre');
           }])
           ->get();
-        
+
         return response()->json($solicitudes);
     }
 
