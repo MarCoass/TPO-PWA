@@ -41,6 +41,10 @@
 
     @include('layouts.partials.footer')
 
+    
+    @auth
+    <script src="{{ asset('js/notificaciones.js') }}"></script>
+    @endauth
         <!-- librerias -->
         <script src="{{ asset('bootstrap-5.2.3/js/bootstrap.bundle.min.js') }}"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
