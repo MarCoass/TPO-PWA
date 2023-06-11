@@ -15,14 +15,15 @@ class RelojController extends Controller
     public function start(Request $request)
     {
         $request->session()->put('cronometro_start', now());
+        $request->session()->put('overtime', 0);
         return response()->json(['success' => true]);
     }
 
     public function stop(Request $request)
     {
-        //falta agregar el overtime
-        $start = $request->session()->get('cronometro_start');
         $overtime = $request->input('overtime');
+        $request->session()->put('overtime', $overtime);
+        $start = $request->session()->get('cronometro_start');
         $duration = now()->diffInSeconds($start);
         $request->session()->forget('cronometro_start');
         return response()->json(['success' => true, 'duration' => $duration,'overtime' => $overtime]);
