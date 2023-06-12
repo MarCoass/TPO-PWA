@@ -3,27 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Competencia;
 
 class RelojController extends Controller
 {
     public function index(Request $request)
     {
-        $start = $request->session()->get('cronometro_start');
-        $duration = now()->diffInSeconds($start);
-        $overtime = $request->session()->get('overtime');
-        return response()->json(['success' => true, 'duration' => $duration,'overtime' => $overtime]);
-   
+        $competencias = Competencia::withCount(['competenciaJuez' => function ($query) {
+            $query->where('estado', true);
+        }])->get();
+
+        return view('reloj.index', compact('competencias'));
     }
-    //public function actualizar_reloj(Request $request){
-    //    config(['app.reloj' => $request->input('tiempo')]);
-//        return response()->json(['success' => true]);
-   // }
+
     public function start(Request $request)
     {
-        $request->session()->put('cronometro_start', now());
-        $request->session()->put('overtime', 0);
-        return response()->json(['success' => true]);
+       $id_competencia = $request->input('competencia');
+       return view('reloj.cronometro', compact('id_competencia'));
     }
 
     public function stop(Request $request)
@@ -49,6 +45,12 @@ class RelojController extends Controller
         return response()->json(['success' => true]);
     }
     }
+
+            $start = $request->session()->get('cronometro_start');
+        $duration = now()->diffInSeconds($start);
+        $overtime = $request->session()->get('overtime');
+        return response()->json(['success' => true, 'duration' => $duration,'overtime' => $overtime]);
+   
     */
 
 }

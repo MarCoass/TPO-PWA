@@ -1,38 +1,31 @@
-// listo pero falta pulir y modularizar
-// Referencias y variable global
-const $contador = document.getElementById('contador');
-const $btnInicia = document.getElementById('inicio-contador');
-const $btnFin = document.getElementById('fin-contador');
-const $tiempoTotal = document.getElementById('tiempo-total');
-let estaActivo = false;
-//reloj
-export var boton_contador_inicio;
-export var boton_contador_fin;
-
 // Cuando se hace click al botón de inicio
-if($btnInicia){
-   boton_contador_inicio = $btnInicia.addEventListener('click', () => {
-    // Contadores
-    let tiempo = 90;
-    let transcurrido = 0;
-    let overtime = 0;
+function iniciar_cronometro(id_competencia){
+  const $contador = document.getElementById('contador_'+id_competencia);
+  const $btnInicia = document.getElementById('inicio-contador_'+id_competencia);
+  const $btnFin = document.getElementById('fin-contador_'+id_competencia);
+  const $tiempoTotal = document.getElementById('tiempo-total_'+id_competencia);
+  let estaActivo = false;
+  // Contadores
+  let tiempo = 90;
+  let transcurrido = 0;
+  let overtime = 0;
+
+  // Reinicio de los estilos del contador
+  $contador.classList.remove('text-danger');
+  $contador.innerHTML = tiempo+ " seg.";
+  $tiempoTotal.innerHTML = "";
+  $tiempoTotal.classList.remove('text-danger');
+
+  // Botón de inicio desactivado, botón de fin activado
+  $btnFin.classList.remove('disabled');
+  $btnInicia.classList.add('disabled');
   
-    // Reinicio de los estilos del contador
-    $contador.classList.remove('text-danger');
-    $contador.innerHTML = tiempo+ " seg.";
-    $tiempoTotal.innerHTML = "";
-    $tiempoTotal.classList.remove('text-danger');
+  // Indicación de que ahora está activo
+  estaActivo = true;
   
-    // Botón de inicio desactivado, botón de fin activado
-    $btnFin.classList.remove('disabled');
-    $btnInicia.classList.add('disabled');
-  
-    // Indicación de que ahora está activo
-    estaActivo = true;
-  
-    // Intervalo que ejecuta el timer
-    const intervalo = setInterval(() => {
-      // Si está activo
+  // Intervalo que ejecuta el timer
+  const intervalo = setInterval(() => {
+    // Si está activo
       if(estaActivo){
         // Sumo al contador total
         transcurrido++;
@@ -60,20 +53,17 @@ if($btnInicia){
       }
       $('#overtime').val(overtime);
 
-    }, 1000)
-  });
+    }, 1000);
 }
 
-
-if($btnFin){
-// Cuando se clickea el botón de fin
- boton_contador_fin = $btnFin.addEventListener('click', () => {
-  // Se coloca en false la variable que mantiene el intervalo
-  estaActivo = false;
+function finalizar_cronometro(id_competencia){
+    // Se coloca en false la variable que mantiene el intervalo
+    const $btnInicia = document.getElementById('inicio-contador_'+id_competencia);
+    const $btnFin = document.getElementById('fin-contador_'+id_competencia);
+    estaActivo = false;
   
-  // Se deshabilita el botón de fin y se activa el de inicio
-  $btnFin.classList.add('disabled');
-  $btnInicia.classList.remove('disabled');
-});
+    // Se deshabilita el botón de fin y se activa el de inicio
+    $btnFin.classList.add('disabled');
+    $btnInicia.classList.remove('disabled');
 }
 

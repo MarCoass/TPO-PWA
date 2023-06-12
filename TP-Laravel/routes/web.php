@@ -168,9 +168,6 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/solicitar_cambios/{id}', [SolicitudController::class, 'crearSolicitud'])->middleware(['rol:2,3'])->name('solicitar_cambios');
         Route::post('/generar_solicitud', [SolicitudController::class, 'generarSolicitud'])->middleware(['rol:2,3'])->name('generar_solicitud');
 
-        /* rutas para jueces y administradores */
-        Route::get('/cronometro', function () {return view('reloj.cronometro');})->middleware(['rol:1,2']);
-
         /* rutas para Competidores */
         Route::get('/cargarCompetidor',  [CompetidorController::class, 'cargarCompetidor'])->middleware(['rol:3'])->name('cargarCompetidor');
         Route::post('/cargarCompetidor/add', [CompetidorController::class, 'store'])->middleware(['rol:3'])->name('cargarCompetidor.perform');
@@ -192,10 +189,14 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/verPuntajeFinal/{competenciaCompetidor}', [CompetenciaCompetidorController::class, 'puntajeFinal'])->name('puntajeFinal.show');
    
         //rutas del reloj
-        Route::get('/iniciar_reloj', [RelojController::class, 'start'])->middleware(['rol:1']);
-        Route::get('/finalizar_reloj', [RelojController::class, 'stop'])->middleware(['rol:1']);
-        Route::get('/actualizar_reloj', [RelojController::class, 'actualizar_reloj'])->middleware(['rol:1']);
-        Route::get('/reloj', [RelojController::class, 'index']);
+        Route::get('/iniciar_cronometro', [RelojController::class, 'start'])->middleware(['rol:1']);
+        Route::get('/index_reloj', [RelojController::class, 'index'])->middleware(['rol:1']);
+
+        
+        //Route::get('/cronometro', function () {return view('reloj.cronometro');})->middleware(['rol:1,2']);
+        //Route::get('/finalizar_reloj', [RelojController::class, 'stop'])->middleware(['rol:1']);
+        //Route::get('/actualizar_reloj', [RelojController::class, 'actualizar_reloj'])->middleware(['rol:1']);
+        
     });
 
 });

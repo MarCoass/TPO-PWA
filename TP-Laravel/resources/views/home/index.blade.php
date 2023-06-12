@@ -24,7 +24,7 @@ NeuPoom
 
                 @if ( auth()->user()->idRol == 1)
                 <div class="seccion_item">
-                    <a href="/cronometro" class="seccion-item_link">
+                    <a href="/index_reloj" class="seccion-item_link">
                         <div class="seccion-item_bg"></div>
                         <div class="seccion-item_title">
                             Cronómetro

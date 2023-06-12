@@ -1,4 +1,4 @@
-import { boton_contador_inicio, boton_contador_fin } from './cronometro.js';
+import { iniciar_cronometro, finalizar_cronometro } from './cronometro.js';
 import { cambio_de_tema } from './tema.js';
 import { competidores_tabla } from './tablaCompetidores.js';
 import {tabla_usuarios} from './tablaUsuarios.js';
@@ -10,8 +10,6 @@ import { tabla_graduacion } from './tablaGraduaciones.js';
 
 
 //Cronometro
-boton_contador_inicio;
-boton_contador_fin;
 
 //Gestion de usuarios tabla
 tabla_usuarios;
