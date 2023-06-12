@@ -1,11 +1,11 @@
-import { cambio_de_tema } from './tema.js';
-import { competidores_tabla } from './tablaCompetidores.js';
-import {tabla_usuarios} from './tablaUsuarios.js';
-import {tabla_solicitud} from './tablaSolicitudes.js';
-import './eventosMenu.js';
-import {tabla_CompetenciaCompetidores} from './tablaCompetenciaCompetidores.js';
-import {tabla_competencia} from './tablaCompetencias.js';
-import { tabla_graduacion } from './tablaGraduaciones.js';
+import { cambio_de_tema } from "./tema.js";
+import { competidores_tabla } from "./tablaCompetidores.js";
+import { tabla_usuarios } from "./tablaUsuarios.js";
+import { tabla_solicitud } from "./tablaSolicitudes.js";
+import "./eventosMenu.js";
+import { tabla_CompetenciaCompetidores } from "./tablaCompetenciaCompetidores.js";
+import { tabla_competencia } from "./tablaCompetencias.js";
+import { tabla_graduacion } from "./tablaGraduaciones.js";
 
 //Gestion de usuarios tabla
 tabla_usuarios;
@@ -20,7 +20,7 @@ competidores_tabla;
 tabla_CompetenciaCompetidores;
 
 //TABLA DE COMPETENCIAS NO VOLVER A BORRAR
-tabla_competencia
+tabla_competencia;
 
 // tabla graduaciones
 tabla_graduacion;
@@ -35,76 +35,77 @@ Si o si poner http://127.0.0.1:800/ruta sino no anda, os advierte su querido Bra
 });*/
 
 //Temas
-if (localStorage.getItem('background') == null) {
-  cambio_de_tema("dark");
+if (localStorage.getItem("background") == null) {
+    cambio_de_tema("dark");
 } else {
-  cambio_de_tema(localStorage.getItem('background'));
+    cambio_de_tema(localStorage.getItem("background"));
 }
 
 document.getElementById("cambiarVista_negro").addEventListener("click", () => {
-  cambio_de_tema("dark")
+    cambio_de_tema("dark");
 });
 document.getElementById("cambiarVista_blanco").addEventListener("click", () => {
-  cambio_de_tema("light")
+    cambio_de_tema("light");
 });
 
-/* $('#competencia_puntuador').on('click', function() {
-  $.ajax({
-    type:"GET",
-    url: '/opciones_competidor',
-    data: {
-    competencia_puntuador: $('#competencia_puntuador').val()},
-    dataType: 'json',
-    success: function(data) {
-        $('#competidor_puntuador').empty();
-        $('#competidor_puntuador').append('<option value="" disabled selected data-error="Por favor seleccione una graduacion válida">Selecciona un competidor.</option>');
-        $.each(data, function(key, value) {// 'idCompetidor', 'apellido','nombre'
 
-          $('#competidor_puntuador').append('<option value="'+value.idCompetidor+'">'+value.apellido+' '+value.nombre+'</option>');
-        });
-    }
-});
-}); */
+//Carga los competidores segun la categoria
+$("#categoria").on("click", function () {
+    $.ajax({
+        type: "GET",
+        url: "/opciones_competidor",
+        data: {
+            competencia: $("#competencia").val(),
+            categoria: $("#categoria").val(),
+        },
 
-//esta ya no sirve creo
-$('#competidor_puntuador').on('click', function() {
-  $.ajax({
-    type:"GET",
-    url: '/opciones_poomsae',
-    data: {
-    competidor_puntuador: $('#competidor_puntuador').val(),
-    id_competencia: $('#competencia_puntuador').val()
-    },
-    dataType: 'json',
-    success: function(data) {
-        $('#poomsae_puntuador').empty();
-        $('#poomsae_puntuador').append('<option value="" disabled selected data-error="Por favor seleccione un Poomsae">Selecciona un Poomsae.</option>');
-        $.each(data, function(key, value) {
-          $('#poomsae_puntuador').append('<option value="'+value.idPoomsae+'">'+value.nombre+'</option>');
-        });
-    }
-});
+        dataType: "json",
+        success: function (data) {
+          //console.log(data);
+            $("#competidor").empty();
+            $("#competidor").append(
+                '<option value="" disabled selected data-error="Por favor seleccione un competidor">Selecciona un competidor.</option>'
+            );
+            $.each(data, function (key, value) {
+                $("#competidor").append(
+                    '<option value="' +
+                        value.idCompetidor +
+                        '">' +
+                        value.nombre +
+                        " " +
+                        value.apellido +
+                        "</option>"
+                );
+            });
+        },
+    });
 });
 
-//probando weas
-$('#categoria_puntuador').on('click', function() {
-   console.log($('#categoria_puntuador').val());
-  $.ajax({
-    type:"GET",
-    url: '/opciones_competidor',
-    data: {
-    competencia_puntuador: $('#competencia_puntuador').val(),
-    categoria_puntuador: $('#categoria_puntuador').val()
-    },
+$("#competencia").on("click", function () {
+    console.log($("#competencia").val());
+    $.ajax({
+        type: "GET",
+        url: "/opciones_categoria",
+        data: {
+            competencia_puntuador: $("#competencia").val(),
+        },
 
-    dataType: 'json',
-    success: function(data) {
-
-        $('#competidor_puntuador').empty();
-        $('#competidor_puntuador').append('<option value="" disabled selected data-error="Por favor seleccione un competidor">Selecciona un competidor.</option>');
-        $.each(data, function(key, value) {
-          $('#competidor_puntuador').append('<option value="'+value.idCompetidor+'">'+value.nombre+" " +value.apellido+'</option>');
-        });
-    }
-});
+        dataType: "json",
+        success: function (data) {
+            //console.log(data);
+            $("#categoria").empty();
+            $("#categoria").append(
+                '<option value="" disabled selected data-error="Por favor seleccione una categoria">Selecciona una categoria.</option>'
+            );
+            $.each(data, function (key, value) {
+                $("#categoria").append(
+                    '<option value="' +
+                        value.idCategoria +
+                        '">' +
+                        value.nombre +
+                        "</option>"
+                );
+            });
+        },
+    });
 });

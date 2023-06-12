@@ -15,6 +15,8 @@
         <h3 class="display-5" id="contador_{{$id_competencia}}">90 seg.</h3>
 </div>
 <input type="hidden" name="id_competencia" id="id_competencia" value="{{$id_competencia}}">
+<input type="hidden" name="id_categoria" id="id_categoria" value="{{$id_categoria}}">
+<input type="hidden" name="cantJueces" id="cantJueces" value="{{$cantJueces}}">
 
 <div class="col-md-12 text-center">
    <input type="button" onclick="iniciarCronometro({{$id_competencia}})"  class="btn btn-outline-primary btn-lg me-2" id="inicio-contador_{{$id_competencia}}" value="Inicia" >

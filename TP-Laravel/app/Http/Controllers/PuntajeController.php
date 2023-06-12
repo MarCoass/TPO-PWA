@@ -76,6 +76,7 @@ class PuntajeController extends Controller
     }
 
 
+    //Esto ya no sirve creo
     public function obtenerOpcionesPoomsae(Request $request)
     {
         $id_competidor = $request->input('competidor_puntuador');
@@ -108,8 +109,6 @@ class PuntajeController extends Controller
 
     public function iniciar_puntaje(Request $request)
     {
-
-
         $id_competencia = $request->input('competencia_puntuador');
         $id_competidor = $request->input('competidor_puntuador');
         $id_pomsae = $request->input('poomsae_puntuador');
@@ -159,8 +158,8 @@ class PuntajeController extends Controller
    
     public function obtenerOpcionesCompetidorCategoria(Request $request)
     {
-        $categoria = $request->input('categoria_puntuador');
-        $competencia = $request->input('competencia_puntuador');
+        $categoria = $request->input('categoria');
+        $competencia = $request->input('competencia');
         $opciones =  Competidor::leftJoin('competenciacompetidor', 'competidores.idCompetidor', '=', 'competenciacompetidor.idCompetidor')
             ->where('competenciacompetidor.idCompetencia', '=', $competencia)->where('competenciacompetidor.contadorPasadas', '<', '2')->where('competenciacompetidor.idCategoria', '=', $categoria)->get();
 
