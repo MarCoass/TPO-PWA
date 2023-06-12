@@ -1,28 +1,28 @@
 <?php
 
-use App\Http\Controllers\CompetenciaController;
+use App\Http\Controllers\{
+    CompetenciaController,
+    EstadoController,
+    CompetidorController,
+    EscuelaController,
+    GraduacionController,
+    UsuarioController,
+    LogoutController,
+    HomeController,
+    RegistroController,
+    LoginController,
+    CompetenciaCompetidorController,
+    CompetenciaJuezController,
+    PuntajeController,
+    SolicitudController,
+    CompetenciaCompetidorPoomsaeController,
+    CategoriaController,
+    CategoriaGraduacionController,
+    CategoriaPoomsaeController,
+    PaisController,
+    RelojController
+};
 use Illuminate\Support\Facades\Route;
-//use App\Http\Middleware\RolMiddleware;
-//use Illuminate\Contracts\Auth\Authenticatable;
-use App\Http\Controllers\PaisController;
-use App\Http\Controllers\EstadoController;
-use App\Http\Controllers\CompetidorController;
-use App\Http\Controllers\EscuelaController;
-use App\Http\Controllers\GraduacionController;
-use App\Http\Controllers\UsuarioController;
-use App\Http\Controllers\LogoutController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\RegistroController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\CompetenciaCompetidorController;
-use App\Http\Controllers\CompetenciaJuezController;
-use App\Http\Controllers\PuntajeController;
-use App\Http\Controllers\SolicitudController;
-use App\Http\Controllers\CompetenciaCompetidorPoomsaeController;
-use App\Http\Controllers\CategoriaController;
-use App\Http\Controllers\CategoriaGraduacionController;
-use App\Http\Controllers\CategoriaPoomsaeController;
-use App\Http\Controllers\RelojController;
 use App\Models\CompetenciaCompetidor;
 
 Route::group(['namespace' => 'App\Http\Controllers'], function()
@@ -149,6 +149,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
                 /* lista competidores de una competencia */
             Route::get('/competidoresCompetencia/{id}', [CompetenciaCompetidorController::class, 'listarCompetidoresPorId'])->name('tabla_competidores');
             Route::get('/habilitar_competidor/{id}', [CompetenciaCompetidorController::class, 'habilitar'])->name('habilitar_competidor');
+            Route::get('/rechazar_competidor/{id}', [CompetenciaCompetidorController::class, 'rechazar'])->name('rechazar_competidor');
 
                 /* lista jueces de una competencia */
             Route::get('/JuezCompetencia/{id}', [CompetenciaJuezController::class, 'listarJuecesPorIdCompetencia'])->name('tabla_jueces');
@@ -187,16 +188,16 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         //Route::get('/verPuntaje', [PuntajeController::class, 'show'])->middleware(['rol:2'])->name('puntaje.show');
         Route::get('/verPuntaje/{puntaje}', [PuntajeController::class, 'show'])->middleware(['rol:2'])->name('puntuador.show');
         Route::get('/verPuntajeFinal/{competenciaCompetidor}', [CompetenciaCompetidorController::class, 'puntajeFinal'])->name('puntajeFinal.show');
-   
+
         //rutas del reloj
         Route::get('/iniciar_cronometro', [RelojController::class, 'start'])->middleware(['rol:1']);
         Route::get('/index_reloj', [RelojController::class, 'index'])->middleware(['rol:1']);
 
-        
+
         //Route::get('/cronometro', function () {return view('reloj.cronometro');})->middleware(['rol:1,2']);
         //Route::get('/finalizar_reloj', [RelojController::class, 'stop'])->middleware(['rol:1']);
         //Route::get('/actualizar_reloj', [RelojController::class, 'actualizar_reloj'])->middleware(['rol:1']);
-        
+
     });
 
 });

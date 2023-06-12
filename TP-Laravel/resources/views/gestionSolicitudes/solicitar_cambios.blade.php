@@ -83,23 +83,6 @@ Solicitar cambios
         </div>
     </div>
 </div>
-{{--
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    --}}
-
 
 @else
 <h2>Ud. no puede solicitar cambios para otro usuario</h2>
