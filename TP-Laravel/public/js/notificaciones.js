@@ -31,12 +31,26 @@ function obtenerDatos() {
                 if (data[i].estadoSolicitud === 3) {
                     cantNotif++;
                     let mensaje = generarMensaje("se actualizo ", "tu ", data[i]); // usa una función para generar el mensaje
-                    lista += `<li class="m-2 bg-success rounded text-bg-light p-2"><h3>${mensaje}</h3><button class="btn btn-outline-dark notiBoton" data-id=${data[i].idSolicitud}>Marcar como leído</button></li>`; // usa una plantilla literal para crear el elemento <li>
+                    lista += `<div class="d-flex p-2 btn btn-outline-success">
+                                <i class="bi bi-hand-thumbs-up mt-4 h2 align-middle"></i>
+                                <li class="rounded p-2">
+                                <h6>${mensaje}</h6>
+                                <button class="btn btn-outline-dark notiBoton" data-id=${data[i].idSolicitud}>
+                                <i class="bi bi-eye-slash me-2"></i>Marcar como leído</button>
+                                </li>
+                                </div>`; // usa una plantilla literal para crear el elemento <li>
                 }
                 if (data[i].estadoSolicitud === 2) {
                     cantNotif++;
                     let mensaje = generarMensaje("Se rechazo tu solicitud de ", "cambiar de ", data[i]); // usa una función para generar el mensaje
-                    lista += `<li class="m-2 bg-danger rounded text-bg-light p-2"><h3>${mensaje}</h3><button class="btn btn-outline-dark notiBoton" data-id=${data[i].idSolicitud}>Marcar como leído</button></li>`; // usa una plantilla literal para crear el elemento <li>
+                    lista += `<div class="d-flex p-2 btn btn-outline-danger">
+                                <i class="bi bi-hand-thumbs-down mt-4 h2 align-middle"></i>
+                                <li class="rounded p-2">
+                                <h6>${mensaje}</h6>
+                                <button class="btn btn-outline-dark notiBoton" data-id=${data[i].idSolicitud}>
+                                <i class="bi bi-eye-slash me-2"></i>Marcar como leído</button>
+                                </li>
+                                </div>`; // usa una plantilla literal para crear el elemento <li>
                 }
 
             }
@@ -44,7 +58,7 @@ function obtenerDatos() {
             document.getElementById("notiCantidad").innerHTML = cantNotif; // muestra el número de notificaciones
             // actualiza el elemento <ul> con la lista creada
             if (cantNotif == 0) {
-                lista += `<li class="m-2 bg-success rounded text-bg-light p-2"><h3>No tienes notificaciones</h3></li>`; // usa una plantilla literal para crear el elemento <li>
+                lista += `<li class="rounded p-2"><h6>No hay Notificaciones que mostrar</h6></li>`; // usa una plantilla literal para crear el elemento <li>
                 document.getElementById("notiCantidad").innerHTML = ""; // muestra el número de notificaciones
             }
             document.querySelector(".dropdown-menu").innerHTML = lista;
