@@ -14,11 +14,12 @@
 <div class="col-md-12 text-center">
         <h3 class="display-5" id="contador_{{$id_competencia}}">90 seg.</h3>
 </div>
+<input type="hidden" name="id_competencia" id="id_competencia" value="{{$id_competencia}}">
 
 <div class="col-md-12 text-center">
-    <button onChange="iniciar_cronometro({{$id_competencia}})" class="btn btn-outline-primary btn-lg me-2" id="inicio-contador_{{$id_competencia}}"><i class="bi bi-play me-1"></i>Inicia</button>
+   <input type="button" onclick="iniciarCronometro({{$id_competencia}})"  class="btn btn-outline-primary btn-lg me-2" id="inicio-contador_{{$id_competencia}}" value="Inicia" >
 
-    <button onChange="finalizar_cronometro({{$id_competencia}})" class="btn btn-outline-warning btn-lg disabled" id="fin-contador_{{$id_competencia}}"><i class="bi bi-stop me-1"></i>Termina</button>
+    <input type="button" onclick="detenerCronometro({{$id_competencia}})" class="btn btn-outline-warning btn-lg disabled" id="fin-contador_{{$id_competencia}}" value="Termina">
 </div>
 
 <input type="hidden" id='overtime_{{$id_competencia}}' name="overtime_{{$id_competencia}}">
