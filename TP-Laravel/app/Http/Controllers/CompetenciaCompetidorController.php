@@ -79,14 +79,26 @@ class CompetenciaCompetidorController extends Controller
         return redirect('/')->with('success', "Se ha registrado correctamente");
     }
 
+    /* Habilita al competidor a participar de la competencia */
     public function habilitar($id)
     {
 
         $CompetidorCompetencia = CompetenciaCompetidor::find($id);
-        $CompetidorCompetencia->estado = true;
+        $CompetidorCompetencia->estado = 1;
         $CompetidorCompetencia->save();
 
         return redirect()->route('tabla_competidores', ['id' => $CompetidorCompetencia->idCompetencia])->with('success', 'Competidor habilitado exitosamente.');
+    }
+
+    /* rechaza al competidor a la competencia */
+    public function rechazar($id)
+    {
+
+        $CompetidorCompetencia = CompetenciaCompetidor::find($id);
+        $CompetidorCompetencia->estado = 2;
+        $CompetidorCompetencia->save();
+
+        return redirect()->route('tabla_competidores', ['id' => $CompetidorCompetencia->idCompetencia])->with('success', 'Competidor rechazado exitosamente.');
     }
 
     public function listarCompetidoresPorId($id)

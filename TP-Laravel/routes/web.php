@@ -149,6 +149,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
                 /* lista competidores de una competencia */
             Route::get('/competidoresCompetencia/{id}', [CompetenciaCompetidorController::class, 'listarCompetidoresPorId'])->name('tabla_competidores');
             Route::get('/habilitar_competidor/{id}', [CompetenciaCompetidorController::class, 'habilitar'])->name('habilitar_competidor');
+            Route::get('/rechazar_competidor/{id}', [CompetenciaCompetidorController::class, 'rechazar'])->name('rechazar_competidor');
 
                 /* lista jueces de una competencia */
             Route::get('/JuezCompetencia/{id}', [CompetenciaJuezController::class, 'listarJuecesPorIdCompetencia'])->name('tabla_jueces');
@@ -187,16 +188,16 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         //Route::get('/verPuntaje', [PuntajeController::class, 'show'])->middleware(['rol:2'])->name('puntaje.show');
         Route::get('/verPuntaje/{puntaje}', [PuntajeController::class, 'show'])->middleware(['rol:2'])->name('puntuador.show');
         Route::get('/verPuntajeFinal/{competenciaCompetidor}', [CompetenciaCompetidorController::class, 'puntajeFinal'])->name('puntajeFinal.show');
-   
+
         //rutas del reloj
         Route::get('/iniciar_cronometro', [RelojController::class, 'start'])->middleware(['rol:1']);
         Route::get('/index_reloj', [RelojController::class, 'index'])->middleware(['rol:1']);
 
-        
+
         //Route::get('/cronometro', function () {return view('reloj.cronometro');})->middleware(['rol:1,2']);
         //Route::get('/finalizar_reloj', [RelojController::class, 'stop'])->middleware(['rol:1']);
         //Route::get('/actualizar_reloj', [RelojController::class, 'actualizar_reloj'])->middleware(['rol:1']);
-        
+
     });
 
 });
