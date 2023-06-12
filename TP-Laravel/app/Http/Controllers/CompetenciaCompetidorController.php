@@ -127,23 +127,24 @@ class CompetenciaCompetidorController extends Controller
         $CompetidorCompetencia = CompetenciaCompetidor::find($id);
 
         //busca las 2 pasadas
-        $primeraPasada = Puntaje::where('idCompetenciaCompetidor', '=', $CompetidorCompetencia->idCompetenciaCompetidor)->where('pasada', '=', '1')->first();
-        $segundaPasada = Puntaje::where('idCompetenciaCompetidor', '=', $CompetidorCompetencia->idCompetenciaCompetidor)->where('pasada', '=', '2')->first();
+        $primeraPasada = Puntaje::where('idCompetenciaCompetidor', '=', $CompetidorCompetencia->idCompetenciaCompetidor)->where('pasada', '=', '1')->get();
+        $segundaPasada = Puntaje::where('idCompetenciaCompetidor', '=', $CompetidorCompetencia->idCompetenciaCompetidor)->where('pasada', '=', '2')->get();
 
-        //calcula el puntaje de exactitud
-        $exactitud = ($primeraPasada->puntajeExactitud + $segundaPasada->puntajeExactitud) / 2;
+        //busco el idCompetencia
+        $idCompetencia = Competencia::find($CompetidorCompetencia->idCompetencia);
+        $cantJueces = $idCompetencia->cantidadJueces;
 
-        //calcula el puntaje de presentacion
-        $presentacion = ($primeraPasada->puntajePresentacion + $segundaPasada->puntajePresentacion) / 2;
+        $resultadoPrimeraPasada = $this->calcularPuntaje($primeraPasada, $cantJueces);
+        $resultadoSegundaPasada = $this->calcularPuntaje($segundaPasada, $cantJueces);
 
-        $total = $exactitud + $presentacion;
+        $total = ($resultadoPrimeraPasada['totalPasada'] + $resultadoSegundaPasada['totalPasada']) / 2;
 
         //le asigno el total al competidorCompetencia
         $CompetidorCompetencia->puntaje = $total;
         $CompetidorCompetencia->save();
 
         $competidor = Competidor::find($CompetidorCompetencia->idCompetidor);
-        return view('puntuador/puntajeFinal', ['competenciaCompetidor' => $CompetidorCompetencia, 'primeraPasada' => $primeraPasada, 'segundaPasada' => $segundaPasada, 'competidor' => $competidor]);
+        return view('puntuador/puntajeFinal', ['competenciaCompetidor' => $CompetidorCompetencia, 'resultadoPrimeraPasada' => $resultadoPrimeraPasada, 'resultadoSegundaPasada' => $resultadoSegundaPasada, 'competidor' => $competidor]);
     }
 
 
@@ -207,5 +208,25 @@ class CompetenciaCompetidorController extends Controller
         ];
 
         return response()->json($response);
+    }
+
+
+    public function calcularPuntaje($arrayPuntajes, $cantJueces)
+    {
+        //por cada pasada sumo los puntajes de exactitud y presentacion
+        $presentacion = 0;
+        $exactitud = 0;
+        foreach ($arrayPuntajes as $puntaje) {
+            $presentacion = $presentacion + $puntaje->puntajePresentacion;
+            $exactitud = $exactitud + $puntaje->puntajeExactitud;
+        }
+        $presentacion = $presentacion / $cantJueces;
+        $exactitud = $exactitud / $cantJueces;
+        $resultados = [
+            'totalPresentacion' => round($presentacion, 1),
+            'totalExactitud' => round($exactitud, 1),
+            'totalPasada' => round($exactitud + $presentacion, 1),
+        ];
+        return $resultados;
     }
 }
