@@ -144,7 +144,7 @@ class CompetenciaCompetidorController extends Controller
         $CompetidorCompetencia->save();
 
         $competidor = Competidor::find($CompetidorCompetencia->idCompetidor);
-        return view('puntuador/puntajeFinal', ['competenciaCompetidor' => $CompetidorCompetencia, 'resultadoPrimeraPasada' => $resultadoPrimeraPasada, 'resultadoSegundaPasada' => $resultadoSegundaPasada, 'competidor' => $competidor]);
+        return view('puntuador/puntajeFinal', ['competenciaCompetidor' => $CompetidorCompetencia, 'resultadoPrimeraPasada' => $resultadoPrimeraPasada, 'resultadoSegundaPasada' => $resultadoSegundaPasada, 'competidor' => $competidor, 'id_competencia' => $idCompetencia]);
     }
 
 
