@@ -40,7 +40,7 @@ function actualizarCronometro() {
  function detenerCronometro() {
   clearInterval(intervalo);
   tiempo = 90;
-
+  $('#overtime_'+id_competencia).val(overtime);
   $btnFin.classList.add('disabled');
   $btnInicia.classList.remove('disabled');
 
