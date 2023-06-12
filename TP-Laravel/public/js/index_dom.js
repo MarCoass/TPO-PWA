@@ -1,4 +1,3 @@
-/* import { iniciar_cronometro, finalizar_cronometro } from './cronometro.js'; */
 import { cambio_de_tema } from './tema.js';
 import { competidores_tabla } from './tablaCompetidores.js';
 import {tabla_usuarios} from './tablaUsuarios.js';
@@ -7,9 +6,6 @@ import './eventosMenu.js';
 import {tabla_CompetenciaCompetidores} from './tablaCompetenciaCompetidores.js';
 import {tabla_competencia} from './tablaCompetencias.js';
 import { tabla_graduacion } from './tablaGraduaciones.js';
-
-
-//Cronometro
 
 //Gestion de usuarios tabla
 tabla_usuarios;
