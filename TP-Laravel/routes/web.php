@@ -1,28 +1,28 @@
 <?php
 
-use App\Http\Controllers\CompetenciaController;
+use App\Http\Controllers\{
+    CompetenciaController,
+    EstadoController,
+    CompetidorController,
+    EscuelaController,
+    GraduacionController,
+    UsuarioController,
+    LogoutController,
+    HomeController,
+    RegistroController,
+    LoginController,
+    CompetenciaCompetidorController,
+    CompetenciaJuezController,
+    PuntajeController,
+    SolicitudController,
+    CompetenciaCompetidorPoomsaeController,
+    CategoriaController,
+    CategoriaGraduacionController,
+    CategoriaPoomsaeController,
+    PaisController,
+    RelojController
+};
 use Illuminate\Support\Facades\Route;
-//use App\Http\Middleware\RolMiddleware;
-//use Illuminate\Contracts\Auth\Authenticatable;
-use App\Http\Controllers\PaisController;
-use App\Http\Controllers\EstadoController;
-use App\Http\Controllers\CompetidorController;
-use App\Http\Controllers\EscuelaController;
-use App\Http\Controllers\GraduacionController;
-use App\Http\Controllers\UsuarioController;
-use App\Http\Controllers\LogoutController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\RegistroController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\CompetenciaCompetidorController;
-use App\Http\Controllers\CompetenciaJuezController;
-use App\Http\Controllers\PuntajeController;
-use App\Http\Controllers\SolicitudController;
-use App\Http\Controllers\CompetenciaCompetidorPoomsaeController;
-use App\Http\Controllers\CategoriaController;
-use App\Http\Controllers\CategoriaGraduacionController;
-use App\Http\Controllers\CategoriaPoomsaeController;
-use App\Http\Controllers\RelojController;
 use App\Models\CompetenciaCompetidor;
 
 Route::group(['namespace' => 'App\Http\Controllers'], function()
