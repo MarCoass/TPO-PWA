@@ -95,9 +95,9 @@ class CompetenciaCompetidorController extends Controller
 
         $data = CompetenciaCompetidor::where('idCompetencia', $id)->get();
 
-        foreach($data as $competidor){
+        foreach ($data as $competidor) {
             $dato = array(
-                'idCompetenciaCompetidor' =>$competidor->idCompetenciaCompetidor,
+                'idCompetenciaCompetidor' => $competidor->idCompetenciaCompetidor,
                 'gal' => $competidor->competidor->gal,
                 'nombre' => $competidor->competidor->nombre,
                 'apellido' => $competidor->competidor->apellido,
@@ -106,15 +106,15 @@ class CompetenciaCompetidorController extends Controller
                 'tiene_poomsae_asignado' => 0
             );
 
-           if($competidor->estado != 0 ){
-                $existe_tupla = CompetenciaCompetidorPoomsae::where('idCompetenciaCompetidor','=', $competidor->idCompetenciaCompetidor)->first();
+            if ($competidor->estado != 0) {
+                $existe_tupla = CompetenciaCompetidorPoomsae::where('idCompetenciaCompetidor', '=', $competidor->idCompetenciaCompetidor)->first();
 
-                if($existe_tupla != null){
+                if ($existe_tupla != null) {
                     $dato['tiene_poomsae_asignado'] = 1;
                 }
             }
 
-           $competidoresCompetencia[] = $dato;
+            $competidoresCompetencia[] = $dato;
         }
 
         $competencia = Competencia::find($id);
@@ -154,6 +154,7 @@ class CompetenciaCompetidorController extends Controller
         $idCompetidor = $request['idCompetidor'];
         $numPasada = $request['numPasada'];
 
+
         //busco todos los puntajes de esa competencia y ese competidor
         $cantJueces = Competencia::find($idCompetencia)->cantidadJueces;
         $competenciaCompetidor = CompetenciaCompetidor::where('idCompetencia', $idCompetencia)->where('idCompetidor', $idCompetidor)->first();
@@ -172,7 +173,8 @@ class CompetenciaCompetidorController extends Controller
         return response()->json($response);
     }
 
-    public function calcularPuntajePasada(Request $request){
+    public function calcularPuntajePasada(Request $request)
+    {
         $idCompetencia = $request['idCompetencia'];
         $idCompetidor = $request['idCompetidor'];
         $numPasada = $request['numPasada'];
@@ -184,19 +186,24 @@ class CompetenciaCompetidorController extends Controller
         //por cada pasada sumo los puntajes de exactitud y presentacion
         $presentacion = 0;
         $exactitud = 0;
-        foreach($puntajes as $puntaje){{
-            $presentacion = $presentacion + $puntaje->puntajePresentacion;
-            $exactitud = $exactitud + $puntaje->puntajeExactitud;
-        }}
+        foreach ($puntajes as $puntaje) { {
+                $presentacion = $presentacion + $puntaje->puntajePresentacion;
+                $exactitud = $exactitud + $puntaje->puntajeExactitud;
+            }
+        }
 
         $cantJueces = Competencia::find($idCompetencia)->cantidadJueces;
-        $presentacion = $presentacion/$cantJueces;
-        $exactitud = $exactitud/$cantJueces;
+        $presentacion = $presentacion / $cantJueces;
+        $exactitud = $exactitud / $cantJueces;
+
+        //Le aumento el contador de pasadas
+        $competenciaCompetidor->contadorPasadas = $competenciaCompetidor->contadorPasadas + 1;
+        $competenciaCompetidor->save();
 
         $response = [
-            'totalPresentacion' => round($presentacion,1),
-            'totalExactitud' => round($exactitud,1),
-            'totalPasada' => round($exactitud+$presentacion,1),
+            'totalPresentacion' => round($presentacion, 1),
+            'totalExactitud' => round($exactitud, 1),
+            'totalPasada' => round($exactitud + $presentacion, 1),
         ];
 
         return response()->json($response);
