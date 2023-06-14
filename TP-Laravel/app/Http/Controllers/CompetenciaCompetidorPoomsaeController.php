@@ -28,7 +28,7 @@ class CompetenciaCompetidorPoomsaeController extends Controller
 
         $poomsae = Poomsae::select('poomsae.idPoomsae','poomsae.nombre','competenciacompetidorpoomsae.pasadas')->
         join('competenciacompetidorpoomsae','poomsae.idPoomsae','competenciacompetidorpoomsae.idPoomsae')->
-        where('competenciacompetidorpoomsae.idPoomsae','=',$idCompetenciaCompetidor)->get();
+        where('idCompetenciaCompetidor','=',$idCompetenciaCompetidor)->get();
         
         $competidor = CompetenciaCompetidor::select('competidores.*')->
         join('competidores','competenciacompetidor.idCompetidor','competidores.idCompetidor')->
@@ -41,7 +41,8 @@ class CompetenciaCompetidorPoomsaeController extends Controller
 
     public function registrar_poomsae_en_competidor($id_poomsae,$id_competencia_competidor,$numero_pasada){
 
-        $duplicado = CompetenciaCompetidorPoomsae::where('idCompetenciaCompetidor','=', $id_competencia_competidor)->first();
+        $duplicado = CompetenciaCompetidorPoomsae::where('idCompetenciaCompetidor','=',
+         $id_competencia_competidor)->where('pasadas','=', $numero_pasada)->first();
 
         if( $duplicado != null){
             return false;
