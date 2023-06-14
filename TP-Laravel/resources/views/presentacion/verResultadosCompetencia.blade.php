@@ -22,19 +22,21 @@ Tabla de Resultados de {{ $competencia->nombre }}
     <span class="text-secondary text-center mt-1">Sólo se mostrarán las categorías en las que exista al menos un competidor.</span>
 </div>
 
-<table class="table table-primary table-hover table-striped-columns text-center mt-5" id="tablaVerCompetidores">
-    <thead>
-        <tr>
-            <th scope="col">Puesto</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Escuela</th>
-            <th scope="col">Puntaje</th>
-        </tr>
-    </thead>
-    <tbody id="tbodyCompetidores">
-        {{-- Aquí se listarán dinámicamente los competidores --}}
-    </tbody>
-</table>
+<div class="table-responsive">
+    <table class="table hover" width="100%" id="tablaVerCompetidores">
+        <thead class="flip-content">
+            <tr>
+                <th scope="col">Puesto</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Escuela</th>
+                <th scope="col">Puntaje</th>
+            </tr>
+        </thead>
+        <tbody id="tbodyCompetidores">
+            {{-- Aquí se listarán dinámicamente los competidores --}}
+        </tbody>
+    </table>
+</div>
 
 <script src="{{ asset('js/verResultadosCompetencia.js') }}"></script>
 @endsection

@@ -20,42 +20,70 @@ function obtenerCompetidores(idCompetencia, idCategoria) {
         data: { idCompetencia: idCompetencia, idCategoria: idCategoria },
         success: function (response) {
             //console.log(response);
-            armarTablaCompetidores(response.competidoresFiltrados);
+            const columns = [
+                {
+                    targets: 0,
+                    title: "Puesto",
+                    data: "puesto",
+                    render: (data, type, r, m) => {
+                        var retorno = ""
+                        var tipo = "";
+                        if (data == 1) {
+                            tipo = "text-warning";
+                            retorno = "<i class='bi bi-award-fill fs-5 " + tipo +" me-1'></i>"
+                        }
+                        if (data == 2) {
+                            tipo = "text-secondary";
+                            retorno = "<i class='bi bi-award-fill fs-5 " + tipo +" me-1'></i>"
+                        }
+                        if (data == 3) {
+                            tipo = "text-brown";
+                            retorno = "<i class='bi bi-award-fill fs-5 " + tipo +" me-1'></i>"
+                        }
+
+                        return (retorno + data);
+                    },
+                },
+                {
+                    targets: 1,
+                    title: "Nombre",
+                    data: "nombre",
+                },
+                {
+                    targets: 2,
+                    title: "Escuela",
+                    data: "escuela",
+                },
+                {
+                    targets: 3,
+                    title: "Puntaje",
+                    data: "puntaje",
+                },
+            ];
+            pintarDatatable(response.competidoresFiltrados, columns);
         },
     });
 }
 
-function armarTablaCompetidores(competidores) {
-    console.log(competidores);
-    $("#tbodyCompetidores").empty();
+function pintarDatatable(dataResult, columns) {
+    $("#tablaVerCompetidores").DataTable().destroy(); // Destruir el DataTable existente
 
-    estructura = "";
-
-    if (competidores.length > 0) {
-        competidores.forEach((competidor) => {
-            var icono = "";
-            var tipo = "";
-            if (competidor.puesto > 0 && competidor.puesto <= 3) {
-                if (competidor.puesto == 1) {
-                    tipo = "text-warning";
-                }
-                if (competidor.puesto == 2) {
-                    tipo = "text-light";
-                }
-                if (competidor.puesto == 3) {
-                    tipo = "text-brown";
-                }
-                icono = "<i class='bi bi-award-fill fs-5 " + tipo + " me-1'></i>";
-            }
-            estructura += "<tr><th scope='row'>" + icono + " " + competidor.puesto + "</th>";
-            estructura += "<td>" + competidor.nombre + " " + competidor.apellido + "</td>";
-            estructura += "<td>" + competidor.escuela + "</td>";
-            estructura += "<td>" + competidor.puntaje + "</td>";
-            estructura += "</tr>";
-        });
-    } else {
-        estructura = "<h4 class='text-danger'>Esta competencia o categoría aún no tiene registrado competidores.</h4>"
-    }
-
-    $("#tbodyCompetidores").html(estructura);
+    $("#tablaVerCompetidores").DataTable({
+        data: dataResult,
+        columns: columns, // Cambia columnDefs a columns
+        order: [[0, "asc"]], // Corrige el orden ascendente de la columna 0 (puesto)
+        language: {
+            // Configuración de idioma
+            search: "Buscar:",
+            lengthMenu: "Ver _MENU_ entradas",
+            paginate: {
+                first: "Primero",
+                last: "Ultimo",
+                next: "Siguiente",
+                previous: "Anterior",
+            },
+            infoEmpty: "Viendo 0 a 0 de 0 entradas",
+            info: "Viendo _START_ a _END_ de _TOTAL_ entradas",
+        },
+    });
 }

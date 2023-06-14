@@ -214,7 +214,8 @@ class CompetenciaController extends Controller
         return view('presentacion/verResultadosCompetencia', compact('categoriasFiltradas', 'competencia'));
     }
 
-    public function traerCompetidores(Request $request){
+    public function traerCompetidores(Request $request)
+    {
         $competidoresFiltrados = [];
         //Traemos los competidores ordenados por puntaje
         $competidoresCompetencia = CompetenciaCompetidor::where('idCompetencia', $request['idCompetencia'])
@@ -231,15 +232,17 @@ class CompetenciaController extends Controller
             $userCompetidor = User::find($competidor->idUser);
 
             $escuelaCompetidor = Escuela::find($userCompetidor->idEscuela);
-           
+
             $competidor['escuela'] = $escuelaCompetidor->nombre;
 
             $puntos = $cC->puntaje;
 
-            $competidor['puntaje'] = $puntos ;
- 
-            //$competidor['puntaje'] = $cC->puntaje;
+            $competidor['puntaje'] = $puntos;
+
             $competidor['puesto'] = $contador;
+
+            $competidor['nombre'] = $competidor->nombre . " " . $competidor->apellido;
+
             array_push($competidoresFiltrados, $competidor);
             $contador++;
         }
