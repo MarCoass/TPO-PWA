@@ -13,6 +13,8 @@
         @include('puntuador.partials.vistaNoDisponible')
         
     </div>
+<input type="hidden" name="id_competencia" id="id_competencia" value="{{$competencia[0]->idCompetencia}}">
+<input type="hidden" name="id_categoria" id="id_categoria" value="{{$competencia_competidor[0]->idCategoria}}">
 
     <div class="mobile">
         <div class="vertical">
@@ -37,7 +39,7 @@
                 </ul></p>
                 <p>Puntaje: <span class="puntaje">4</span>
                 </p>
-                <button type="button" class="btn btn-success" id="siguientePuntuacion_{{$id_competencia}}">
+                <button type="button" class="btn btn-success" id="siguientePuntuacion_{{$competencia[0]->idComppetencia}}">
                     Siguiente
                 </button>
                 <button type="button" class="btn btn-success d-none" data-bs-toggle="modal" data-bs-target="#modal" id="terminarPuntuacion">
