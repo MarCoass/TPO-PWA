@@ -194,10 +194,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/index_reloj', [RelojController::class, 'index'])->middleware(['rol:1']);
         Route::get('/opciones_categoria',[RelojController::class, 'obtenerOpcionesCategoriaCompetencia']);
         
-        //Route::get('/cronometro', function () {return view('reloj.cronometro');})->middleware(['rol:1,2']);
-        //Route::get('/finalizar_reloj', [RelojController::class, 'stop'])->middleware(['rol:1']);
-        //Route::get('/actualizar_reloj', [RelojController::class, 'actualizar_reloj'])->middleware(['rol:1']);
-
+        Route::get('/start', [RelojController::class, 'start'])->middleware(['rol:1']);
+        Route::get('/stop', [RelojController::class, 'stop'])->middleware(['rol:1']);
     });
 
 });

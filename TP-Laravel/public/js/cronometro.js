@@ -4,18 +4,11 @@ var overtime = 0;
 var tiempo = 90;
 var transcurrido = 0;
 var id_competencia = $('#id_competencia').val();
-var id_categoria = $('#id_categoria').val();
-var cantJueces = $('#cantJueces').val();
 const $btnFin = document.getElementById('fin-contador_'+id_competencia);
 const $btnInicia = document.getElementById('inicio-contador_'+id_competencia);
 const $contador = document.getElementById('contador_'+id_competencia);
 const $tiempoTotal = document.getElementById('tiempo-total_'+id_competencia);
 const $btnJuez = document.getElementById('siguientePuntuacion_'+id_competencia);
-
-//en la vista del puntuador tiene que existir lo ziguiente
-//despues de haber seleccionado la competencia puedo saber lo siguiente
-$('#categoria_competencia_'+id_competencia).val(id_categoria);
-$('#cantidad_jueces_competencia_'+id_competencia).val(cantJueces);
 
 function actualizarCronometro() {
   $btnFin.classList.remove('disabled');
@@ -37,29 +30,65 @@ function actualizarCronometro() {
 }
 
  function iniciarCronometro() {
-  $tiempoTotal.innerHTML = "";
-  $tiempoTotal.classList.remove('text-danger');
-  transcurrido = 0;
-  overtime = 0;
-  intervalo = setInterval(actualizarCronometro, 1000);
+  $.ajax({
+    url: '/start',
+    type: 'GET',
+    dataType: 'json',
+    data: {
+        _token: '{{ csrf_token() }}',
+        id_competencia: $('#id_competencia').val(),
+        id_categoria:  $('#id_categoria').val(),
+        cantJueces:  $('#cantJueces').val(),
+    },
+    success: function(response) {
+        if (response.success) {
+
+            $tiempoTotal.innerHTML = "";
+            $tiempoTotal.classList.remove('text-danger');
+            transcurrido = 0;
+            overtime = 0;
+            intervalo = setInterval(actualizarCronometro, 1000);
+        }
+    },
+  });
+
+
 }
 
  function detenerCronometro() {
+
+  $('#overtime_'+id_competencia).val(overtime);
+
   clearInterval(intervalo);
   tiempo = 90;
-  $('#overtime_'+id_competencia).val(overtime);
-  $btnFin.classList.add('disabled');
-  $btnInicia.classList.remove('disabled');
-  $btnJuez.classList.add('disabled');
-  $contador.classList.remove('text-danger');
-  $contador.innerHTML = tiempo+ " seg.";
-  $tiempoTotal.innerHTML = "";
-  $tiempoTotal.classList.remove('text-danger');
 
-  $tiempoTotal.innerHTML = "Tiempo total: " + transcurrido + " seg.";
-  // Si hay overtime, lo muestro en rojo
-  if(overtime > 0){
-    $tiempoTotal.classList.add('text-danger');
-  }
+  $.ajax({
+    url: '/stop',
+    type: 'GET',
+    dataType: 'json',
+    data: {
+        _token: '{{ csrf_token() }}',
+        overtime: $('#overtime_'+id_competencia).val(),
+        id_competencia: $('#id_competencia').val(),
+        id_categoria:  $('#id_categoria').val()
+    },
+    success: function(response) {
+        if (response.success) {
+            // La función start() se ha iniciado correctamente
+            $btnFin.classList.add('disabled');
+            $btnInicia.classList.remove('disabled');
+            $contador.classList.remove('text-danger');
+            $contador.innerHTML = tiempo+ " seg.";
+            $tiempoTotal.innerHTML = "";
+            $tiempoTotal.classList.remove('text-danger');
+          
+            $tiempoTotal.innerHTML = "Tiempo total: " + transcurrido + " seg.";
+            // Si hay overtime, lo muestro en rojo
+            if(overtime > 0){
+              $tiempoTotal.classList.add('text-danger');
+            }
+       }
+    },
+});
 
 }

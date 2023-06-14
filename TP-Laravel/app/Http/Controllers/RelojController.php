@@ -26,10 +26,17 @@ class RelojController extends Controller
 
     public function start(Request $request)
     {
-        $id_competencia = $request->input('competencia');
-        $id_categoria = $request->input('categoria');
+        $id_competencia = $request->input('id_competencia');
+        $id_categoria = $request->input('id_categoria');
 
-        $reloj = new Reloj();
+        $duplicado = Reloj::where('idCompetencia',  $id_competencia)->where('idCategoria',  $id_categoria)->first();
+        
+        if($duplicado != null){
+            $reloj = Reloj::find($duplicado->idReloj);
+        }else{
+            $reloj = new Reloj();
+        }
+
         $reloj->cantJueces = $request->input('cantJueces');
         $reloj->estado = 1;
         $reloj->overtime = 0;
@@ -52,8 +59,8 @@ class RelojController extends Controller
         $id_competencia = $request->input('id_competencia');
         $id_categoria = $request->input('id_categoria');
 
-        $data = Reloj::where('idCompetencia',  $id_competencia)->where('idCategoria',  $id_categoria)->get();
-        $reloj = Reloj::find($data[0]->idReloj);
+        $data = Reloj::where('idCompetencia',  $id_competencia)->where('idCategoria',  $id_categoria)->first();
+        $reloj = Reloj::find($data->idReloj);
         $reloj->estado = 0;
         $reloj->overtime = $overtime;
      
