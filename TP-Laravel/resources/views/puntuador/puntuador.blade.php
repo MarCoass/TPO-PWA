@@ -92,4 +92,6 @@
 
 
     </div>
+
+    <script src="{{ asset('js/reloj_activo.js') }}"></script>
 @endsection

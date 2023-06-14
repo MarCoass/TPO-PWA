@@ -73,9 +73,9 @@ class RelojController extends Controller
         $id_competencia = $request->input('id_competencia');
         $id_categoria = $request->input('id_categoria');
 
-        $data = Reloj::where('idCompetencia',  $id_competencia)->where('idCategoria',  $id_categoria)->get();
-       
-        return response()->json(['success' => true, 'estado' => $data[0]->estado]);
+        $data = Reloj::where('idCompetencia',  $id_competencia)->where('idCategoria',  $id_categoria)->first();
+        
+        return response()->json(['success' => true, 'estado' => $data->estado]);
     }
 
     public function obtenerOpcionesCategoriaCompetencia(Request $request)
