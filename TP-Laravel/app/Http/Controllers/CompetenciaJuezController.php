@@ -71,18 +71,15 @@ class CompetenciaJuezController extends Controller
         $cantJueces = $competencia_juez->competencia->cantidadJueces;
         $cantJuecesAceptados = count($juecesAceptados);
 
-        if($cantJuecesAceptados + 1 > $cantJueces){
-            // Mayor muestra msj de error
-            $mensaje = ["tipo" => 'restringed', 'mensaje' => 'No puede habilitar más jueces. La competencia ya está completa.'];
-        }elseif($cantJuecesAceptados + 1 == $cantJueces){
+        if($cantJuecesAceptados + 1 == $cantJueces){
             // Igual carga y cambia estadoJueces
             $competencia_juez->competencia->estadoJueces = true;
             $competencia_juez->competencia->save();
             $competencia_juez->estado = 1;
             $competencia_juez->save();
-            $mensaje = ["tipo" => 'success', 'mensaje' => 'Juez habilitado exitosamente. La competencia ya está completa.'];
-        }elseif($cantJuecesAceptados + 1 < $cantJueces){
-            // Menor solo carga
+            $mensaje = ["tipo" => 'success', 'mensaje' => 'Juez habilitado exitosamente. Las inscripciones ya están abiertas a competidores.'];
+        }else{
+            // Menor o mayor solo carga
             $competencia_juez->estado = 1;
             $competencia_juez->save();
             $mensaje =["tipo" => 'success', 'mensaje' => 'Juez habilitado exitosamente.'];

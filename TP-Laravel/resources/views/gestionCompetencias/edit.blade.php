@@ -34,7 +34,7 @@
 
         @if($competencia->estadoJueces == false && count($juecesAceptados) == 0)
             <div class="col-lg-6 col-12 form-group mb-3">
-                <label for="cantidadJueces" class="form-label">Cantidad de Jueces</label>
+                <label for="cantidadJueces" class="form-label">Cantidad de jueces mínima</label>
                 <select name="cantidadJueces" id="cantidadJueces" class="form-control" required>
                     @for($i = 3; $i <= 7; $i = $i+2)
                         @if($i == $competencia->cantidadJueces)

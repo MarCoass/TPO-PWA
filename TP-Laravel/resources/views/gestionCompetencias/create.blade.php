@@ -36,7 +36,7 @@
         
 
         <div class="col-lg-6 col-12 form-group mb-3">
-            <label for="cantidadJueces" class="form-label">Cantidad de Jueces</label>
+            <label for="cantidadJueces" class="form-label">Cantidad de jueces mínima</label>
             <select name="cantidadJueces" id="cantidadJueces" class="form-control" required>
                 <option value="3">3</option>
                 <option value="5">5</option>
