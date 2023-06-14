@@ -48,15 +48,14 @@ document.getElementById("cambiarVista_blanco").addEventListener("click", () => {
     cambio_de_tema("light");
 });
 
-
 //Carga los competidores segun la categoria
-$("#categoria_puntuador").on("click", function () {
+$("#categoria").on("click", function () {
     $.ajax({
         type: "GET",
         url: "/opciones_competidor",
         data: {
-            competencia: $("#competencia_puntuador").val(),
-            categoria: $("#categoria_puntuador").val(),
+            competencia: $("#competencia").val(),
+            categoria: $("#categoria").val(),
         },
 
         dataType: "json",
