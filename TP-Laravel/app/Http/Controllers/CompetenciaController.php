@@ -236,19 +236,7 @@ class CompetenciaController extends Controller
 
             $puntos = $cC->puntaje;
 
-             if ($contador > 0 && $contador  <= 3) {
-                if ($contador  == 1) {
-                    $competidor['puntaje'] =  $puntos +3;
-                }
-                if ($contador  == 2) {
-                    $competidor['puntaje'] = $puntos +2;
-                }
-                if ($contador  == 3) {
-                    $competidor['puntaje'] = $puntos +1;
-                }  
-            }else {
-                $competidor['puntaje'] = $puntos ;
-            } 
+            $competidor['puntaje'] = $puntos ;
  
             //$competidor['puntaje'] = $cC->puntaje;
             $competidor['puesto'] = $contador;
