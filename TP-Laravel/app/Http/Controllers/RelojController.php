@@ -21,6 +21,11 @@ class RelojController extends Controller
         $id_competencia = $request->input('competencia');
         $id_categoria = $request->input('categoria');
         $cantJueces = $request->input('cantJueces');
+        //por si se tiene que iniciar aca hay que cambiar los nombre de los input en la vista
+        //que se envia por post para que coincidan con las que se usan en el start o
+        //a la inversa.
+        //$this->start($request);
+
         return view('reloj.cronometro', compact('id_competencia', 'id_categoria', 'cantJueces'));
     }
 
