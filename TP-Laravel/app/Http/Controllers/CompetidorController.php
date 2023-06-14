@@ -19,6 +19,37 @@ class CompetidorController extends Controller
         $graduaciones = Graduacion::all();
         // Obtiene todas las competencias que ya tienen todos los jueces requeridos
         $competencias = Competencia::where('estadoJueces', true)->get();
+
+        //Obtiene el id del usuario actual
+        $idUser = auth()->user()->id;
+        //Obtengo el primer competidor que encuentre asociado segun el idUser
+        $competidor = Competidor::where('idUser', $idUser)->first();
+
+        //Comprueba si hay competidor asociado o no
+        if ($competidor !== null) {
+            //el user esta asociado a ningun competidor
+            
+            $idGraduacion = $competidor->idGraduacion;
+
+            $pepe = false;
+            $bolsa = [];
+            foreach ($graduaciones as $grad) {
+
+                if ($pepe == true) {
+                    array_push($bolsa, $grad);
+                }
+
+                if ($grad->idGraduacion == $idGraduacion) {
+                    
+                    array_push($bolsa, $grad);
+                    $pepe = true;
+                }
+
+            }
+            $graduaciones = $bolsa;
+    
+        }
+
         return view('cargarCompetidor.cargarCompetidor', compact('graduaciones','competencias'));
 
     }

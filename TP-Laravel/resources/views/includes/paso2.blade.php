@@ -9,12 +9,22 @@
 
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
     <label class="form-label" for="graduacion">Graduacion:</label>
+
     <select class="form-control validar" id="idGraduacion" name="idGraduacion" required>
-        <option value="" disabled selected data-error="Por favor seleccione una graduacion válida">Selecciona una graduación.</option>
-        @foreach ($graduaciones as $row)
-        <option value="{{$row->idGraduacion}}">{{$row->nombre}} - {{$row->color}}</option>
-        @endforeach
-    </select>
+ 
+     
+            <option value="" disabled selected data-error="Por favor seleccione una graduacion válida">Selecciona una graduación.</option>
+            @for ($i = 0; $i < count($graduaciones); $i++)
+                @if ($i==0 )
+                <option value="{{ $graduaciones[$i]->idGraduacion }}" selected>{{ $graduaciones[$i]->nombre }} - {{ $graduaciones[$i]->color }}</option>
+                @else
+                <option value="{{ $graduaciones[$i]->idGraduacion }}"> {{ $graduaciones[$i]->nombre }} - {{ $graduaciones[$i]->color }}</option>
+                @endif
+            @endfor
+  
+</select>
+
+   
     <div class="valid-feedback">
         ¡Correcto!
     </div>
