@@ -50,13 +50,13 @@ document.getElementById("cambiarVista_blanco").addEventListener("click", () => {
 
 
 //Carga los competidores segun la categoria
-$("#categoria").on("click", function () {
+$("#categoria_puntuador").on("click", function () {
     $.ajax({
         type: "GET",
         url: "/opciones_competidor",
         data: {
-            competencia: $("#competencia").val(),
-            categoria: $("#categoria").val(),
+            competencia: $("#competencia_puntuador").val(),
+            categoria: $("#categoria_puntuador").val(),
         },
 
         dataType: "json",
