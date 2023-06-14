@@ -12,8 +12,8 @@ Iniciar Puntuador
 <form class="m-5 row" method="post" action="{{ url('/iniciar_puntaje') }}">
     @csrf
 <div class="col-lg-6 col-md-12 col-sm-12  pt-3">
-        <label class="form-label" for="competencia_puntuador">Competencia:</label>
-        <select class="form-control validar" id="competencia_puntuador" name="competencia_puntuador" required>
+        <label class="form-label" for="competencia">Competencia:</label>
+        <select class="form-control validar" id="competencia" name="competencia" required>
             <option value="" disabled selected data-error="Por favor seleccione una competencia válida">Selecciona una Competencia.</option>
             @foreach ($competencias as $row)
             <option value="{{$row->idCompetencia}}">{{$row->nombre}}</option>
@@ -26,8 +26,8 @@ Iniciar Puntuador
 </div>
     
 <div class="col-lg-6 col-md-12 col-sm-12  pt-3">
-        <label class="form-label" for="categoria_puntuador">Categoria:</label>
-        <select class="form-control validar" id="categoria_puntuador" name="categoria_puntuador" required>
+        <label class="form-label" for="categoria">Categoria:</label>
+        <select class="form-control validar" id="categoria" name="categoria" required>
             <option value="" disabled selected data-error="Por favor seleccione una categoria válida">Selecciona una categoria.</option>
             @foreach ($categorias as $row)
             <option value="{{$row->idCategoria}}">{{$row->nombre}}</option>
@@ -39,8 +39,8 @@ Iniciar Puntuador
         <div class="invalid-feedback">Seleccione una opcion valida.</div>
 </div>
 <div class="col-lg-6 col-md-12 col-sm-12  pt-3">
-    <label class="form-label" for="competidor_puntuador">Competidor:</label>
-    <select class="form-control validar" id="competidor_puntuador" name="competidor_puntuador" required>
+    <label class="form-label" for="competidor">Competidor:</label>
+    <select class="form-control validar" id="competidor" name="competidor" required>
         <option value="" disabled selected data-error="Por favor seleccione una graduacion válida">Selecciona un competidor.</option>
     </select>
     <div class="valid-feedback">

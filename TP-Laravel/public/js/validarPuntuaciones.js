@@ -1,6 +1,6 @@
 var interval = setInterval(function () {
-    var idCompetencia = $("#competencia_puntuador").val(); // Valor del idCompetencia
-    var idCompetidor = $("#competidor_puntuador").val(); // Valor del idCompetidor
+    var idCompetencia = $("#competencia").val(); // Valor del idCompetencia
+    var idCompetidor = $("#competidor").val(); // Valor del idCompetidor
     var numPasada = $("#pasada_puntuador").val(); // Numero de pasada
     
     // Realizar la petición AJAX

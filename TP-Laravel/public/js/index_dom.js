@@ -86,7 +86,7 @@ $("#competencia").on("click", function () {
         type: "GET",
         url: "/opciones_categoria",
         data: {
-            competencia_puntuador: $("#competencia").val(),
+            competencia: $("#competencia").val(),
         },
 
         dataType: "json",

@@ -78,15 +78,31 @@ class RelojController extends Controller
         return response()->json(['success' => true, 'estado' => $data->estado]);
     }
 
-    public function obtenerOpcionesCategoriaCompetencia(Request $request)
+    public function obtenerCategoria(Request $request)
     {
-        $competencia = $request->input('competencia_puntuador');
-        $opciones = Competencia::join('competenciaCompetidor', 'competencias.idCompetencia', '=', 'competenciaCompetidor.idCompetencia')
+        $id_competencia = $request->input('competencia');
+
+        $user = auth()->user();
+
+        if($user->idRol == 1){
+
+            $categoria = Competencia::join('competenciaCompetidor', 'competencias.idCompetencia', '=', 'competenciaCompetidor.idCompetencia')
             ->join('categorias', 'competenciaCompetidor.idCategoria', '=', 'categorias.idCategoria')
             ->select('categorias.idCategoria', 'categorias.nombre')
-            ->where('competencias.idCompetencia', $competencia)
+            ->where('competencias.idCompetencia', $id_competencia)
             ->distinct()
             ->get();
-        return response()->json($opciones);
+
+        }else{
+            $data = Reloj::where('idCompetencia',  $id_competencia)->first();
+       
+            if( $data != null){
+                $categoria = Categoria::where('idCategoria', $data->idCategoria)->distinct()->get();
+            }else{
+                $categoria = null;
+            }
+        }
+
+        return response()->json($categoria);
     }
 }

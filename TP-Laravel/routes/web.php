@@ -178,7 +178,6 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/puntuador/puntuador', function(){return view('puntuador.puntuador');})->middleware(['rol:2'])->name('puntuador');
         Route::get('/puntuador/index',  [PuntajeController::class, 'puntuadorindex'])->middleware(['rol:2'])->name('puntuador_index');
         Route::get('/opciones_competidor', [PuntajeController::class, 'obtenerOpcionesCompetidorCategoria'])->middleware(['rol:1,2']);
-        Route::get('/opciones_poomsae', [PuntajeController::class, 'obtenerOpcionesPoomsae'])->middleware(['rol:2']);
         Route::post('/iniciar_puntaje', [PuntajeController::class, 'iniciar_puntaje'])->middleware(['rol:2'])->name('iniciar_puntaje');
         Route::post('/actualizar_puntaje', [PuntajeController::class, 'actualizar_puntaje'])->middleware(['rol:2'])->name('actualizar_puntaje');
         Route::post('/validarJueces',[CompetenciaCompetidorController::class, 'validarJueces']);
@@ -192,7 +191,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         //rutas del reloj
         Route::get('/iniciar_cronometro', [RelojController::class, 'cronometro'])->middleware(['rol:1']);
         Route::get('/index_reloj', [RelojController::class, 'index'])->middleware(['rol:1']);
-        Route::get('/opciones_categoria',[RelojController::class, 'obtenerOpcionesCategoriaCompetencia']);
+        Route::get('/opciones_categoria',[RelojController::class, 'obtenerCategoria']);
         
         Route::get('/start', [RelojController::class, 'start'])->middleware(['rol:1']);
         Route::get('/stop', [RelojController::class, 'stop'])->middleware(['rol:1']);

@@ -98,9 +98,9 @@
             @if ($puntaje->pasada == 1)
                 <form action="{{ route('iniciar_puntaje') }}" method="post">
                     @csrf
-                    <input type="hidden" name="competencia_puntuador" id="competencia_puntuador"
-                        value={{ $competencia_puntuador }}>
-                    <input type="hidden" name="competidor_puntuador" id="competidor_puntuador"
+                    <input type="hidden" name="competencia" id="competencia"
+                        value={{ $competencia }}>
+                    <input type="hidden" name="competidor" id="competidor"
                         value={{ $competidor->idCompetidor }}>
                     <input type="hidden" name="juez_puntuador" id="juez_puntuador" value={{ $juez_puntuador }}>
                     <input type="hidden" name="pasada_puntuador" id="pasada_puntuador" value={{ $puntaje->pasada }}>
@@ -109,9 +109,9 @@
 
                 </form>
             @else
-                <input type="hidden" name="competencia_puntuador" id="competencia_puntuador"
-                    value={{ $competencia_puntuador }}>
-                <input type="hidden" name="competidor_puntuador" id="competidor_puntuador"
+                <input type="hidden" name="competencia" id="competencia"
+                    value={{ $competencia }}>
+                <input type="hidden" name="competidor" id="competidor"
                     value={{ $competidor->idCompetidor }}>
                 <input type="hidden" name="pasada_puntuador" id="pasada_puntuador" value={{ $puntaje->pasada }}>
                 <a href="{{ route('puntajeFinal.show', ['competenciaCompetidor' => $competencia_competidor]) }}"><button

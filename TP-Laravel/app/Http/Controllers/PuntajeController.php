@@ -26,7 +26,7 @@ class PuntajeController extends Controller
         $competidor = Competidor::find($competencia_competidor->idCompetidor);
         $competenciaJuez = CompetenciaJuez::where('idCompetencia', '=', $competencia_competidor->idCompetenciaCompetidor)->where('idJuez', '=', auth()->user()->id)->get();
 
-        return view('puntuador/verPuntaje', ['puntaje' => $puntaje, 'competidor' => $competidor, 'competencia_puntuador' => $competencia_competidor->idCompetencia, 'juez_puntuador' => $competenciaJuez, 'competencia_competidor' => $competencia_competidor->idCompetenciaCompetidor]);
+        return view('puntuador/verPuntaje', ['puntaje' => $puntaje, 'competidor' => $competidor, 'competencia' => $competencia_competidor->idCompetencia, 'juez_puntuador' => $competenciaJuez, 'competencia_competidor' => $competencia_competidor->idCompetenciaCompetidor]);
     }
 
     public function store(Request $request)
@@ -66,20 +66,10 @@ class PuntajeController extends Controller
         // Lógica para actualizar un registro existente basado en los datos del Request
     }
 
-    public function obtenerOpcionesCompetidor(Request $request)
-    {
-        $competencia = $request->input('competencia_puntuador');
-        $opciones =  Competidor::leftJoin('competenciacompetidor', 'competidores.idCompetidor', '=', 'competenciacompetidor.idCompetidor')
-            ->where('competenciacompetidor.idCompetencia', '=', $competencia)->where('competenciacompetidor.contadorPasadas', '<', '2')->get();
-
-        return response()->json($opciones);
-    }
-
-
     //Esto ya no sirve creo
     public function obtenerOpcionesPoomsae(Request $request)
     {
-        $id_competidor = $request->input('competidor_puntuador');
+        $id_competidor = $request->input('competidor');
         $id_competencia = $request->input('id_competencia');
 
         //busco el idCompetenciaJuez que corresponde a la competencia
@@ -109,9 +99,8 @@ class PuntajeController extends Controller
 
     public function iniciar_puntaje(Request $request)
     {
-        $id_competencia = $request->input('competencia_puntuador');
-        $id_competidor = $request->input('competidor_puntuador');
-        $id_pomsae = $request->input('poomsae_puntuador');
+        $id_competencia = $request->input('competencia');
+        $id_competidor = $request->input('competidor');
 
 
         $competidor = Competidor::where('idCompetidor', '=', $id_competidor)->get();
@@ -154,14 +143,15 @@ class PuntajeController extends Controller
 
         return $this->puntuadorindex();
     }
-
    
     public function obtenerOpcionesCompetidorCategoria(Request $request)
     {
         $categoria = $request->input('categoria');
         $competencia = $request->input('competencia');
         $opciones =  Competidor::leftJoin('competenciacompetidor', 'competidores.idCompetidor', '=', 'competenciacompetidor.idCompetidor')
-            ->where('competenciacompetidor.idCompetencia', '=', $competencia)->where('competenciacompetidor.contadorPasadas', '<', '2')->where('competenciacompetidor.idCategoria', '=', $categoria)->get();
+            ->where('competenciacompetidor.idCompetencia', '=', $competencia)
+            ->where('competenciacompetidor.contadorPasadas', '<', '2')
+            ->where('competenciacompetidor.idCategoria', '=', $categoria)->get();
 
         return response()->json($opciones);
     }
