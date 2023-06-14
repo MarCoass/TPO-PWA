@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria;
+use App\Models\Reloj;
 use Illuminate\Http\Request;
 use App\Models\Competencia;
 use App\Models\Competidor;
@@ -11,17 +12,11 @@ class RelojController extends Controller
 {
     public function index(Request $request)
     {
-        /* $competencias = Competencia::withCount(['competenciaJuez' => function ($query) {
-            $query->where('estado', '1');
-        }])->get(); */
-
-        //Lo cambie para que solo muestre las competencias activas
         $competencias = Competencia::where('estadoJueces', '1')->get();
-
         return view('reloj.index', compact('competencias'));
     }
 
-    public function start(Request $request)
+    public function cronometro(Request $request)
     {
         $id_competencia = $request->input('competencia');
         $id_categoria = $request->input('categoria');
@@ -29,36 +24,52 @@ class RelojController extends Controller
         return view('reloj.cronometro', compact('id_competencia', 'id_categoria', 'cantJueces'));
     }
 
+    public function start(Request $request)
+    {
+        $id_competencia = $request->input('competencia');
+        $id_categoria = $request->input('categoria');
+
+        $reloj = new Reloj();
+        $reloj->cantJueces = $request->input('cantJueces');
+        $reloj->estado = 1;
+        $reloj->overtime = 0;
+
+        $competencia = Competencia::find($id_competencia);
+        $reloj->competencia()->associate($competencia);
+
+        $categoria = Categoria::find($id_categoria);
+        $reloj->categoria()->associate($categoria);
+
+
+        $reloj->save();
+
+        return response()->json(['success' => true]);
+    }
+
     public function stop(Request $request)
     {
         $overtime = $request->input('overtime');
-        $request->session()->put('overtime', $overtime);
-        $start = $request->session()->get('cronometro_start');
-        $duration = now()->diffInSeconds($start);
-        $request->session()->forget('cronometro_start');
-        return response()->json(['success' => true, 'duration' => $duration, 'overtime' => $overtime]);
+        $id_competencia = $request->input('id_competencia');
+        $id_categoria = $request->input('id_categoria');
+
+        $data = Reloj::where('idCompetencia',  $id_competencia)->where('idCategoria',  $id_categoria)->get();
+        $reloj = Reloj::find($data[0]->idReloj);
+        $reloj->estado = 0;
+        $reloj->overtime = $overtime;
+     
+        $reloj->save();
+
+        return response()->json(['success' => true]);
     }
 
-    /**
-     * ALGO ASI HAY QUE HACER CUANDO BOTEN LOS JUECES SI ESQUE SE LES TERMINO EL TIEMPO
-     * ES UN EJEMPLO
-     * class VotacionController extends Controller{
-     *public function store(Request $request)
-     *{
-     *    if ($request->session()->has('cronometro_start')) {
-     *        return response()->json(['error' => 'El cronómetro está activo']);
-     *    }
-     *   // Lógica para guardar las votaciones
-     *   return response()->json(['success' => true]);
-     *}
-     *}
-     *       $start = $request->session()->get('cronometro_start');
-     *    $duration = now()->diffInSeconds($start);
-     *  $overtime = $request->session()->get('overtime');
-     *   return response()->json(['success' => true, 'duration' => $duration,'overtime' => $overtime]);
-   
-     */
+    public function obtener_estado_reloj(Request $request){
+        $id_competencia = $request->input('id_competencia');
+        $id_categoria = $request->input('id_categoria');
 
+        $data = Reloj::where('idCompetencia',  $id_competencia)->where('idCategoria',  $id_categoria)->get();
+       
+        return response()->json(['success' => true, 'estado' => $data[0]->estado]);
+    }
 
     public function obtenerOpcionesCategoriaCompetencia(Request $request)
     {

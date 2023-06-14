@@ -190,7 +190,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/verPuntajeFinal/{competenciaCompetidor}', [CompetenciaCompetidorController::class, 'puntajeFinal'])->name('puntajeFinal.show');
 
         //rutas del reloj
-        Route::get('/iniciar_cronometro', [RelojController::class, 'start'])->middleware(['rol:1']);
+        Route::get('/iniciar_cronometro', [RelojController::class, 'cronometro'])->middleware(['rol:1']);
         Route::get('/index_reloj', [RelojController::class, 'index'])->middleware(['rol:1']);
         Route::get('/opciones_categoria',[RelojController::class, 'obtenerOpcionesCategoriaCompetencia']);
         
