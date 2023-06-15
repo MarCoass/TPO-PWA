@@ -10,6 +10,7 @@ use App\Models\Competencia;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\CompetenciaCompetidorController;
+use App\Models\CompetenciaCompetidor;
 use Illuminate\Http\Request;
 
 class CompetidorController extends Controller
@@ -70,6 +71,68 @@ class CompetidorController extends Controller
 
         return response()->json($competidores);
     }
+
+    public function obtenerRanking(Request $request)
+    {
+        $competidoresMasculinos = $this->buscarCompetidoresPorGeneroYcategoria($request['idCategoria'], 0);
+        $competidoresFemeninos = $this->buscarCompetidoresPorGeneroYcategoria($request['idCategoria'], 1);
+
+      /*   $competidoresTotal[0] = $competidoresMasculinos;
+        $competidoresTotal[1] = $competidoresFemeninos; */
+
+        return compact('competidoresMasculinos', 'competidoresFemeninos');
+    }
+
+
+    public function buscarCompetidoresPorGeneroYcategoria($idCategoria, $genero){
+        
+    /*    $competidores = CompetenciaCompetidor::where('genero', $genero)
+        ->where('idCategoria', $idCategoria)
+        ->get(); 
+    */
+
+     /*    $competidores = CompetenciaCompetidor::join('competidores', 'competenciacompetidor.idCompetenciaCompetidor', '=', 'competidores.idCompetidor')
+        ->select('competenciacompetidor.*', 'competidores.nombre')
+        ->where('competenciacompetidor.idCategoria', $idCategoria)
+        ->where('competidores.genero', $genero)
+        ->orderBy('competidores.ranking', 'desc')
+        ->get(); */
+        
+        $competidores = CompetenciaCompetidor::join('competidores', function ($join) {
+            $join->on('competenciacompetidor.idCompetidor', '=', 'competidores.idCompetidor')
+                ->where('competidores.ranking', '>', 0);
+        })
+        ->join('competencias', 'competenciacompetidor.idCompetencia', '=', 'competencias.idCompetencia')
+        ->select('competenciacompetidor.*', 'competidores.nombre')
+        ->where('competenciacompetidor.idCategoria', $idCategoria)
+        ->where('competidores.genero', $genero)
+        ->whereYear('competencias.fecha', 2023)
+        ->orderBy('competidores.ranking', 'desc')
+        ->get();
+
+
+        $puesto = 1;
+        foreach ($competidores as $comp) {
+            
+            $comp['puesto'] = $puesto;
+           
+            $competidor = Competidor::find($comp->idCompetidor);
+            $comp['nombre'] = $competidor->nombre ." ".$competidor->apellido;
+
+            $pais = Pais::find($competidor->idPais);
+            $estado = Estado::find($competidor->idEstado);
+            $comp['lugar'] = $pais->nombrePais." - ".$estado->nombreEstado;
+
+            $comp['ranking'] = $competidor->ranking;
+
+            $comp['genero'] = $competidor->genero;
+
+            $puesto++;
+        }
+
+        return $competidores;
+    }
+
 
     public function create()
     {

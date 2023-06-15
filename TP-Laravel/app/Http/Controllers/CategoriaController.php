@@ -113,4 +113,13 @@ class CategoriaController extends Controller
         return redirect()->route('index_categoria')->with('success', 'Categoria eliminada exitosamente.');
     
     }
+
+    public function vistaVerRanking()
+    {
+        $categorias = Categoria::all();
+            
+        return view('resultados.resultadosRanking', compact('categorias'));
+    }
+
+
 }

@@ -56,9 +56,6 @@
         <!-- index dom -->
         <script type="module" src="{{ asset('js/index_dom.js') }}"></script>
         
-        <!--ESTE SERIA MEJOR DEJARLO SOLO EN LA VISTA DE LA TABLA O ACA ESTA BIEN?-->
-        <script type="module" src="{{ asset('js/tablaCompetidores.js') }}"></script>
-
-      
+  
   </body>
 </html>
