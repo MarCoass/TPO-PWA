@@ -6,9 +6,9 @@
               <h5 class="mb-0">Vista no disponible</h5>
               <p class="mb-0">Esta vista solamente esta disponible desde un celular en modo horizontal.</p>
             </div>
-            <div class="modal-footer flex-nowrap p-0">
-              <button type="button" class="btn btn-lg btn-link text-light fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end"><strong>Ir a inicio.</strong></button>
-              <button type="button" class="btn btn-lg btn-link text-light fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" data-bs-dismiss="modal">Volver atras.</button>
+            <div class="modal-footer justify-content-center p-0">
+              <a href="/" type="button" class="col btn-outline-dark btn btn-link text-light fs-6 text-decoration-none py-3 m-0 rounded-0"><strong>Ir a inicio.</strong></a>
+              
             </div>
           </div>
         </div>
