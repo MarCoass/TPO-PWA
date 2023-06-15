@@ -1,5 +1,9 @@
 const PUNTAJE = $(".puntaje");
 
+var id_competencia = document.getElementById('id_competencia').value;
+var btn = document.getElementById('siguientePuntuacion_'+id_competencia);
+
+
 $(".pulsadorIzq").on("click", function () {
     let puntaje = parseFloat(PUNTAJE.text()) - 0.3;
     if (puntaje > 0) {
@@ -26,13 +30,13 @@ $("#terminarPuntuacion").on("click", function () {
     $("#modal").show();
 });
 
-$("#siguientePuntuacion").one("click", function () {
+$(btn).one("click", function () {
     //al hacer click en siguiente cambia de exactitud a presentacion
     $("#etapaPuntuacion").text("Presentacion");
 
     //cambia los botones
     $("#terminarPuntuacion").toggleClass("d-none");
-    $("#siguientePuntuacion").toggleClass("d-none");
+    $(btn).toggleClass("d-none");
 
     //Asigna el puntaje obtenido a la exactitud
     $(".puntajeExactitudModal").text($(".puntaje").text());
