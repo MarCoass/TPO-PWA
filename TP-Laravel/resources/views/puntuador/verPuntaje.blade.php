@@ -70,11 +70,6 @@
                     <div class="card bg-c-pink order-card">
                         <div class="card-block">
                             <h6 class="m-b-20">Total pasada</h6>
-                            <h2 class="text-right fs-5">
-                                <span>{{ $puntaje->puntajeExactitud + $puntaje->puntajePresentacion }} 
-                                    <span
-                                        class="fs-6">(parcial)</span></span></span>
-                            </h2>
                             <h2 class="text-right d-none resultadoTotal" >
                                 <span id="puntajeTotal">--</span><span
                                         class="fs-6"> (total)</span></span></h2>

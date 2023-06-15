@@ -9,6 +9,7 @@ use App\Models\CompetenciaCompetidor;
 use App\Models\CompetenciaCompetidorPoomsae;
 use Illuminate\Http\Request;
 use App\Models\Puntaje;
+use App\Models\Reloj;
 
 class CompetenciaCompetidorController extends Controller
 {
@@ -138,6 +139,7 @@ class CompetenciaCompetidorController extends Controller
     {
         $CompetidorCompetencia = CompetenciaCompetidor::find($id);
 
+
         //busca las 2 pasadas
         $primeraPasada = Puntaje::where('idCompetenciaCompetidor', '=', $CompetidorCompetencia->idCompetenciaCompetidor)->where('pasada', '=', '1')->get();
         $segundaPasada = Puntaje::where('idCompetenciaCompetidor', '=', $CompetidorCompetencia->idCompetenciaCompetidor)->where('pasada', '=', '2')->get();
@@ -149,7 +151,7 @@ class CompetenciaCompetidorController extends Controller
         $resultadoPrimeraPasada = $this->calcularPuntaje($primeraPasada, $cantJueces);
         $resultadoSegundaPasada = $this->calcularPuntaje($segundaPasada, $cantJueces);
 
-        $total = ($resultadoPrimeraPasada['totalPasada'] + $resultadoSegundaPasada['totalPasada']) / 2;
+        $total = round(($resultadoPrimeraPasada['totalPasada'] + $resultadoSegundaPasada['totalPasada']) / 2, 1);
 
         //le asigno el total al competidorCompetencia
         $CompetidorCompetencia->puntaje = $total;
@@ -192,6 +194,8 @@ class CompetenciaCompetidorController extends Controller
         $idCompetidor = $request['idCompetidor'];
         $numPasada = $request['numPasada'];
 
+        $competencia = Competencia::find($idCompetencia);
+
         //busco los puntajes correspondientes
         $competenciaCompetidor = CompetenciaCompetidor::where('idCompetencia', $idCompetencia)->where('idCompetidor', $idCompetidor)->first();
         $puntajes = Puntaje::where('idCompetenciaCompetidor', $competenciaCompetidor->idCompetenciaCompetidor)->where('pasada', $numPasada)->get();
@@ -205,7 +209,7 @@ class CompetenciaCompetidorController extends Controller
             }
         }
 
-        $cantJueces = Competencia::find($idCompetencia)->cantidadJueces;
+        $cantJueces = $competencia->cantidadJueces;
         $presentacion = $presentacion / $cantJueces;
         $exactitud = $exactitud / $cantJueces;
 
@@ -213,10 +217,14 @@ class CompetenciaCompetidorController extends Controller
         $competenciaCompetidor->contadorPasadas = $competenciaCompetidor->contadorPasadas + 1;
         $competenciaCompetidor->save();
 
+        //resto si hay overtime  
+        $overtime = $puntajes[0]->overtime=='00:00:00';
+        $penalizacion = $overtime? 0: 0.3;
+      
         $response = [
             'totalPresentacion' => round($presentacion, 1),
             'totalExactitud' => round($exactitud, 1),
-            'totalPasada' => round($exactitud + $presentacion, 1),
+            'totalPasada' => round($exactitud + $presentacion-$penalizacion, 1),
         ];
 
         return response()->json($response);
@@ -234,10 +242,16 @@ class CompetenciaCompetidorController extends Controller
         }
         $presentacion = $presentacion / $cantJueces;
         $exactitud = $exactitud / $cantJueces;
+
+         //resto si hay overtime  
+         $overtime = $arrayPuntajes[0]->overtime=='00:00:00';
+         $penalizacion = $overtime? 0: 0.3;
+
         $resultados = [
             'totalPresentacion' => round($presentacion, 1),
             'totalExactitud' => round($exactitud, 1),
-            'totalPasada' => round($exactitud + $presentacion, 1),
+            'totalPasada' => round($exactitud + $presentacion-$penalizacion, 1),
+            'overtime' =>$arrayPuntajes[0]->overtime
         ];
         return $resultados;
     }

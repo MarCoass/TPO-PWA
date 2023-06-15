@@ -11,6 +11,7 @@ use App\Models\Competencia;
 use App\Models\CompetenciaCompetidorPoomsae;
 use App\Models\Poomsae;
 use Illuminate\Http\Request;
+use App\Models\Reloj;
 
 class PuntajeController extends Controller
 {
@@ -37,7 +38,7 @@ class PuntajeController extends Controller
         $puntaje->puntajePresentacion = $request->input('puntajePresentacion');
         $puntaje->puntajeExactitud = $request->input('puntajeExactitud');
         $puntaje->pasada = $request->input('pasada');
-        $puntaje->overtime = $request->input('overtime');
+        
 
         //busco el obj competenciaCompetidor
         $idCompetenciaCompetidor = CompetenciaCompetidor::find($request->input('idCompetenciaCompetidor'));
@@ -47,7 +48,13 @@ class PuntajeController extends Controller
         $competenciaJuez = CompetenciaJuez::find($request->input('idCompetenciaJuez'));
         $puntaje->competenciaJuez()->associate($competenciaJuez);
 
-
+        /**
+         * Mi logica para la siguiente es esta: buscar el reloj de la competencia y categoria que corresponde al 
+         * competidor que esta siendo juzgado y se suma el overtime registrado, como se usa el mismo reloj para toda la categoria es solo first
+         */
+        $reloj = Reloj::where('idCompetencia', $idCompetenciaCompetidor->idCompetencia)->where('idCategoria', $idCompetenciaCompetidor->idCategoria)->first();
+        $puntaje->overtime = $reloj->overtime;
+        
         //guardo el nuevo puntaje
         $puntaje->save();
 
@@ -66,25 +73,6 @@ class PuntajeController extends Controller
         // Lógica para actualizar un registro existente basado en los datos del Request
     }
 
-    //Esto ya no sirve creo
-    public function obtenerOpcionesPoomsae(Request $request)
-    {
-        $id_competidor = $request->input('competidor');
-        $id_competencia = $request->input('id_competencia');
-
-        //busco el idCompetenciaJuez que corresponde a la competencia
-        $competenciaJuez = CompetenciaJuez::where('idCompetencia', '=', $id_competencia)->where('idJuez', '=', auth()->user()->id)->get();
-
-        $existePrimeraPasada = Puntaje::leftJoin('competenciacompetidor', 'puntajes.idCompetenciaCompetidor', '=', 'competenciacompetidor.idCompetenciaCompetidor')->where('competenciacompetidor.idCompetencia', '=', $id_competencia)
-            ->where('competenciacompetidor.idCompetidor', '=', $id_competidor)
-            ->where('idCompetenciaJuez', "=", $competenciaJuez[0]->idCompetenciaJuez)->get();
-
-        $pasada = (($existePrimeraPasada->count() === 0) ? 1 : 2);
-
-        $opciones =  Poomsae::leftJoin('competenciacompetidorpoomsae', 'poomsae.idPoomsae', '=', 'competenciacompetidorpoomsae.idPoomsae')->leftJoin('competenciacompetidor', 'competenciacompetidorpoomsae.idCompetenciaCompetidor', 'competenciacompetidor.idCompetenciaCompetidor')->where('competenciacompetidor.idCompetencia', '=', $id_competencia)->where('competenciacompetidor.idCompetidor', '=', $id_competidor)->where('competenciacompetidorpoomsae.pasadas', '=', $pasada)->get();
-
-        return response()->json($opciones);
-    }
 
     public function  puntuadorindex()
     {

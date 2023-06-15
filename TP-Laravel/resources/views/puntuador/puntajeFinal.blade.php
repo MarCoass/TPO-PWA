@@ -33,6 +33,7 @@
                     <th scope="col">Pasada n°</th>
                     <th scope="col">Exactitud</th>
                     <th scope="col">Presentacion</th>
+                    <th scope="col">Overtime</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -40,11 +41,13 @@
                     <th scope="row">1</th>
                     <td>{{$resultadoPrimeraPasada['totalExactitud']}}</td>
                     <td>{{$resultadoPrimeraPasada['totalPresentacion']}}</td>
+                    <td>{{$resultadoPrimeraPasada['overtime']}}</td>
                   </tr>
                   <tr>
                     <th scope="row">2</th>
                     <td>{{$resultadoSegundaPasada['totalExactitud']}}</td>
                     <td>{{$resultadoSegundaPasada['totalPresentacion']}}</td>
+                    <td>{{$resultadoSegundaPasada['overtime']}}</td>
                   </tr>
                   
                 </tbody>
