@@ -58,6 +58,11 @@
         "idPermiso": "12",
         "nombrePermiso":"Inscribirse",
         "rutaPermiso":"cargarCompetidor"
+    },
+    {
+        "idPermiso": "13",
+        "nombrePermiso":"Gestión de Poomsaes",
+        "rutaPermiso":"index_poomsae"
     }
 
 ]

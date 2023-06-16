@@ -30,6 +30,11 @@ class AppServiceProvider extends ServiceProvider
             $user = Auth::user();
             $data = [];
             if($user){
+                // $data = RolPermiso::where('idRol', $user->rol->id)
+                // ->join('permisos', 'permisos.idPermiso', '=', 'rolpermiso.idPermiso')
+                // ->orderBy('permisos.nombrePermiso') // ver el orden
+                // ->get();
+
                 $data = RolPermiso::where('idRol', $user->rol->id)->get();
             }
             $view->with('menus', $data);
