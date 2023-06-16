@@ -9,7 +9,8 @@ use App\Models\CompetenciaCompetidor;
 use App\Models\CompetenciaCompetidorPoomsae;
 use Illuminate\Http\Request;
 use App\Models\Puntaje;
-use App\Models\Reloj;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
 
 class CompetenciaCompetidorController extends Controller
 {
@@ -198,33 +199,42 @@ class CompetenciaCompetidorController extends Controller
 
         //busco los puntajes correspondientes
         $competenciaCompetidor = CompetenciaCompetidor::where('idCompetencia', $idCompetencia)->where('idCompetidor', $idCompetidor)->first();
-        $puntajes = Puntaje::where('idCompetenciaCompetidor', $competenciaCompetidor->idCompetenciaCompetidor)->where('pasada', $numPasada)->get();
+        $puntajes = Puntaje::select('*', DB::raw('(puntajePresentacion + puntajeExactitud) AS puntajeTotal'))
+            ->where('idCompetenciaCompetidor', $competenciaCompetidor->idCompetenciaCompetidor)
+            ->where('pasada', $numPasada)->orderBy('puntajeTotal')
+            ->get();
 
         //por cada pasada sumo los puntajes de exactitud y presentacion
         $presentacion = 0;
         $exactitud = 0;
+
         foreach ($puntajes as $puntaje) { {
                 $presentacion = $presentacion + $puntaje->puntajePresentacion;
                 $exactitud = $exactitud + $puntaje->puntajeExactitud;
             }
         }
-
         $cantJueces = $competencia->cantidadJueces;
-        $presentacion = $presentacion / $cantJueces;
-        $exactitud = $exactitud / $cantJueces;
+        //si los jueces no son 3, resta lo del mayor y menor puntaje
+        if ($cantJueces != 3) {
+            $presentacion = $presentacion - $puntajes[0]->puntajePresentacion  - $puntajes[$cantJueces-1]->puntajePresentacion;
+            $exactitud = $exactitud - $puntajes[0]->puntajeExactitud  - $puntajes[$cantJueces-1]->puntajeExactitud;
+        }
+
+        $presentacion = $cantJueces==3?$presentacion / $cantJueces: $presentacion / ($cantJueces-2);
+        $exactitud = $cantJueces==3?$exactitud / $cantJueces: $exactitud / ($cantJueces-2);
 
         //Le aumento el contador de pasadas
         $competenciaCompetidor->contadorPasadas = $competenciaCompetidor->contadorPasadas + 1;
         $competenciaCompetidor->save();
 
         //resto si hay overtime  
-        $overtime = $puntajes[0]->overtime=='00:00:00';
-        $penalizacion = $overtime? 0: 0.3;
-      
+        $overtime = $puntajes[0]->overtime == '00:00:00';
+        $penalizacion = $overtime ? 0 : 0.3;
+
         $response = [
             'totalPresentacion' => round($presentacion, 1),
             'totalExactitud' => round($exactitud, 1),
-            'totalPasada' => round($exactitud + $presentacion-$penalizacion, 1),
+            'totalPasada' => round($exactitud + $presentacion - $penalizacion, 1),
         ];
 
         return response()->json($response);
@@ -243,15 +253,15 @@ class CompetenciaCompetidorController extends Controller
         $presentacion = $presentacion / $cantJueces;
         $exactitud = $exactitud / $cantJueces;
 
-         //resto si hay overtime  
-         $overtime = $arrayPuntajes[0]->overtime=='00:00:00';
-         $penalizacion = $overtime? 0: 0.3;
+        //resto si hay overtime  
+        $overtime = $arrayPuntajes[0]->overtime == '00:00:00';
+        $penalizacion = $overtime ? 0 : 0.3;
 
         $resultados = [
             'totalPresentacion' => round($presentacion, 1),
             'totalExactitud' => round($exactitud, 1),
-            'totalPasada' => round($exactitud + $presentacion-$penalizacion, 1),
-            'overtime' =>$arrayPuntajes[0]->overtime
+            'totalPasada' => round($exactitud + $presentacion - $penalizacion, 1),
+            'overtime' => $arrayPuntajes[0]->overtime
         ];
         return $resultados;
     }
