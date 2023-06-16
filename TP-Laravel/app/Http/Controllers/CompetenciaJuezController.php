@@ -44,7 +44,7 @@ class CompetenciaJuezController extends Controller
             $redirigir = [
                 'url' => '/',
                 'tipo' => 'success',
-                'mensaje' => 'Se ha registrado correctamente el Juez'
+                'mensaje' => 'Se registró correctamente, queda en espera de verificación.'
             ];
         }
 

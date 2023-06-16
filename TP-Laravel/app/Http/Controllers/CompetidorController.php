@@ -85,19 +85,6 @@ class CompetidorController extends Controller
 
 
     public function buscarCompetidoresPorGeneroYcategoria($idCategoria, $genero){
-        
-    /*    $competidores = CompetenciaCompetidor::where('genero', $genero)
-        ->where('idCategoria', $idCategoria)
-        ->get(); 
-    */
-
-     /*    $competidores = CompetenciaCompetidor::join('competidores', 'competenciacompetidor.idCompetenciaCompetidor', '=', 'competidores.idCompetidor')
-        ->select('competenciacompetidor.*', 'competidores.nombre')
-        ->where('competenciacompetidor.idCategoria', $idCategoria)
-        ->where('competidores.genero', $genero)
-        ->orderBy('competidores.ranking', 'desc')
-        ->get(); */
-        
         $competidores = CompetenciaCompetidor::join('competidores', function ($join) {
             $join->on('competenciacompetidor.idCompetidor', '=', 'competidores.idCompetidor')
                 ->where('competidores.ranking', '>', 0);

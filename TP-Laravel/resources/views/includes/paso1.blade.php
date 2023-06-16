@@ -68,8 +68,8 @@
     <label class="form-label" for="genero">Género:</label>
     <select class="form-control validar" id="genero" name="genero" required>
         <option value="" disabled selected data-error="Por favor seleccione un genero">Selecciona una opción</option>
-        <option value="masculino">Masculino</option>
-        <option value="femenino">Femenino</option>
+        <option value="0">Masculino</option>
+        <option value="1">Femenino</option>
     </select>
     <div class="valid-feedback">
         ¡Correcto!
