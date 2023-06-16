@@ -23,7 +23,7 @@ return new class extends Migration
             $table->float('ranking');
             $table->unsignedBigInteger('idGraduacion');
             $table->string('email');
-            $table->string('genero');
+            $table->boolean('genero');
             $table->unsignedBigInteger('idEstado');
             $table->unsignedBigInteger('idPais');
             $table->unsignedBigInteger('idUser');
