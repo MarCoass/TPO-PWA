@@ -82,7 +82,7 @@
                     <a href="{{ route('index_categoria') }}" class="nav-item btn {{ request()->is('administrador') ? 'active' : '' }}">
 
                         @include('layouts.partials.svg')
-                        Gestion de Categorias
+                        Gestion de Categorías
     
                     </a>
 
