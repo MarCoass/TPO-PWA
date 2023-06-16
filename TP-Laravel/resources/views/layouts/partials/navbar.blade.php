@@ -39,14 +39,83 @@
         <div id="navbarNav" class="collapse navbar-collapse ms-3">
             <ul class="navbar-nav" role="tablist">
 
-                @if(auth()->user()->idRol == 1 )
-                <a href="/index_reloj" class="nav-item btn {{ request()->is('cronometro') ? 'active' : '' }}" id="seccion1-tab">
+                {{-- PERMISOS PÚBLICOS --}}
+
+                <a href="/presentacion" class="nav-item btn {{ request()->is('presentacion') ? 'active' : '' }}" id="seccion2-tab">
 
                     @include('layouts.partials.svg')
-                    Cronómetro
+                    Ver Competencias
 
                 </a>
+
+                <a href="/resultados" class="nav-item btn {{ request()->is('resultados') ? 'active' : '' }}" id="seccion5-tab">
+
+                    @include('layouts.partials.svg')
+                    Resultados
+
+                </a>
+
+                {{-- PERMISOS ADMINISTRADOR --}}
+
+                @if(auth()->user()->idRol == 1 )
+                    <a href="/index_reloj" class="nav-item btn {{ request()->is('cronometro') ? 'active' : '' }}" id="seccion1-tab">
+
+                        @include('layouts.partials.svg')
+                        Cronómetro
+
+                    </a>
+
+                    <a href="/competidores" class="nav-item btn {{ request()->is('competidores') ? 'active' : '' }}" id="seccion3-tab">
+
+                        @include('layouts.partials.svg')
+                        Ver Competidores
+
+                    </a>
+
+                    <a href="{{ route('index_usuarios') }}" class="nav-item btn {{ request()->is('administrador') ? 'active' : '' }}">
+
+                        @include('layouts.partials.svg')
+                        Gestion de Usuarios
+    
+                    </a>
+
+                    <a href="{{ route('index_categoria') }}" class="nav-item btn {{ request()->is('administrador') ? 'active' : '' }}">
+
+                        @include('layouts.partials.svg')
+                        Gestion de Categorias
+    
+                    </a>
+
+                    <a href="{{ route('index_competencia') }}" class="nav-item btn {{ request()->is('administrador') ? 'active' : '' }}">
+
+                        @include('layouts.partials.svg')
+                        Gestion de Competencias
+    
+                    </a>
+
+                    <a href="{{ route('index_poomsae') }}" class="nav-item btn {{ request()->is('administrador') ? 'active' : '' }}">
+
+                        @include('layouts.partials.svg')
+                        Gestion de Poomsaes
+    
+                    </a>
+
+                    <a href="{{ route('graduaciones.index') }}" class="nav-item btn {{ request()->is('administrador') ? 'active' : '' }}">
+
+                        @include('layouts.partials.svg')
+                        Gestion de Graduaciones
+    
+                    </a>
+
+                    <a href="{{ route('index_solicitudes') }}" class="nav-item btn {{ request()->is('administrador') ? 'active' : '' }}">
+
+                        @include('layouts.partials.svg')
+                        Gestion de Solicitudes
+    
+                    </a>
                 @endif
+
+                {{-- PERMISOS JUEZ --}}
 
                 @if( auth()->user()->idRol == 2 )
                 <a href="/puntuador/index" class="nav-item btn {{ request()->is('puntuador') ? 'active' : '' }}" id="seccion1-tab">
@@ -57,91 +126,18 @@
                 </a>
                 @endif
 
-                <a href="/presentacion" class="nav-item btn {{ request()->is('presentacion') ? 'active' : '' }}" id="seccion2-tab">
+                {{-- PERMISOS COMPETIDOR --}}
 
-                    @include('layouts.partials.svg')
-                    Ver Competencias
-
-                </a>
-
-                @if( auth()->user()->idRol == 1  )
-                <a href="/competidores" class="nav-item btn {{ request()->is('competidores') ? 'active' : '' }}" id="seccion3-tab">
-
-                    @include('layouts.partials.svg')
-                    Ver Competidores
-
-                </a>
-                @endif
                 @if( auth()->user()->idRol == 3  )
                 <a href="/cargarCompetidor" class="nav-item btn {{ request()->is('cargarCompetidor') ? 'active' : '' }}" id="seccion4-tab" >
 
                     @include('layouts.partials.svg')
-                    Agregar Competidor
+                    Inscribirse a una Competencia
 
                 </a>
                 @endif
 
-                @if( auth()->user()->idRol == 1 )
-                <a href="{{ route('index_usuarios') }}" class="nav-item btn {{ request()->is('administrador') ? 'active' : '' }}">
-
-                    @include('layouts.partials.svg')
-                    Gestion de Usuarios
-
-                </a>
-                @endif
-
-                @if( auth()->user()->idRol == 1 )
-                <a href="{{ route('index_categoria') }}" class="nav-item btn {{ request()->is('administrador') ? 'active' : '' }}">
-
-                    @include('layouts.partials.svg')
-                    Gestion de Categorias
-
-                </a>
-                @endif
-
-                @if( auth()->user()->idRol == 1 )
-                <a href="{{ route('index_competencia') }}" class="nav-item btn {{ request()->is('administrador') ? 'active' : '' }}">
-
-                    @include('layouts.partials.svg')
-                    Gestion de Competencias
-
-                </a>
-                @endif
-
-                @if( auth()->user()->idRol == 1 )
-                <a href="{{ route('index_poomsae') }}" class="nav-item btn {{ request()->is('administrador') ? 'active' : '' }}">
-
-                    @include('layouts.partials.svg')
-                    Gestion de Poomsaes
-
-                </a>
-                @endif
-
-
-                @if( auth()->user()->idRol == 1 )
-                <a href="{{ route('graduaciones.index') }}" class="nav-item btn {{ request()->is('administrador') ? 'active' : '' }}">
-
-                    @include('layouts.partials.svg')
-                    Gestion de Graduaciones
-
-                </a>
-                @endif
-
-                @if( auth()->user()->idRol == 1 )
-                <a href="{{ route('index_solicitudes') }}" class="nav-item btn {{ request()->is('administrador') ? 'active' : '' }}">
-
-                    @include('layouts.partials.svg')
-                    Gestion de Solicitudes
-
-                </a>
-                @endif
-
-                <a href="/resultados" class="nav-item btn {{ request()->is('resultados') ? 'active' : '' }}" id="seccion5-tab">
-
-                    @include('layouts.partials.svg')
-                    Resultados
-
-                </a>
+                
             </ul>
         </div>
 
