@@ -21,40 +21,19 @@ NeuPoom
         <div class="format-container">
 
             <div class="seccion_box">
-
-                @if ( auth()->user()->idRol == 1)
-                <div class="seccion_item">
-                    <a href="/index_reloj" class="seccion-item_link">
-                        <div class="seccion-item_bg"></div>
-                        <div class="seccion-item_title">
-                            Cronómetro
-                        </div>
-                    </a>
-                </div>
-                @endif
-                @if (auth()->user()->idRol == 2)
-                <div class="seccion_item">
-                    <a href="/puntuador/index" class="seccion-item_link">
-                        <div class="seccion-item_bg"></div>
-                        <div class="seccion-item_title">
-                            Puntuador
-                        </div>
-                    </a>
-                </div>
-                @endif
-
-
-                <div class="seccion_item">
-                    <a href="/presentacion" class="seccion-item_link">
-                        <div class="seccion-item_bg"></div>
-                        <div class="seccion-item_title">
-                            Ver Competencias
-                        </div>
-                    </a>
-                </div>
+                @foreach($menus as $menu)
+                    <div class="seccion_item">
+                        <a href="{{ Route::has($menu->permiso->rutaPermiso) ? route($menu->permiso->rutaPermiso) : "#" }}" class="seccion-item_link {{ Route::has($menu->permiso->rutaPermiso) ? '' : "bg-danger" }}">
+                            <div class="seccion-item_bg"></div>
+                            <div class="seccion-item_title">
+                                {{ $menu->permiso->nombrePermiso }}
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
 
                 @if (auth()->user()->idRol == 2 && auth()->user()->estado === 1)
-                <div class="seccion_item">
+                    <div class="seccion_item">
                     <a href="#" data-bs-toggle="modal" data-bs-target="#inscripcionJuez" class="seccion-item_link">
                         <div class="seccion-item_bg"></div>
                         <div class="seccion-item_title">
@@ -105,95 +84,47 @@ NeuPoom
                         </form>
                         </div>
                     </div>
-                </div>
+                    </div>
 
 
-                @if(Session::get('modalConsulta', false))
-                <?php $data = Session::get('modalConsulta'); ?>
-                <script>
-                    document.addEventListener("DOMContentLoaded", function() {
-                        var modalConsulta = new bootstrap.Modal(document.getElementById('modalConsulta'), {
-                            keyboard: false,
-                            backdrop: 'static'
+                    @if(Session::get('modalConsulta', false))
+                    <?php $data = Session::get('modalConsulta'); ?>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            var modalConsulta = new bootstrap.Modal(document.getElementById('modalConsulta'), {
+                                keyboard: false,
+                                backdrop: 'static'
+                            });
+                            modalConsulta.show();
                         });
-                        modalConsulta.show();
-                    });
-                </script>
+                    </script>
 
-                <!-- Modal -->
-                <div class="modal fade" id="modalConsulta" tabindex="-1" aria-labelledby="modalConsultaLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="modalConsultaLabel">Desea actualizar datos?</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <p>Usted ya ha participado en otras competencias, desea actualizar algunos datos? </p>
-                                <p>Tu institucion registrada es: <b>{{ auth()->user()->escuela->nombre }}</b></p>
-                                @if (auth()->user()->idRol == 3)
-                                @php
-                                    $miGraduacionActual = App\Models\Competidor::where('idUser', auth()->user()->id)->first();
-                                @endphp
-                                <p>Tu Graduacion registrada es: <b>{{ $miGraduacionActual->graduacion->nombre }} - {{ $miGraduacionActual->graduacion->color }}</b></p>
-                                @endif
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No gracias</button>
-                                <a href="/solicitar_cambios/{{auth()->user()->id}}" class="btn btn-outline-primary ms-1"><i class="bi bi-person-gear me-2"></i>Solicitar cambios</a>
+                    <!-- Modal -->
+                    <div class="modal fade" id="modalConsulta" tabindex="-1" aria-labelledby="modalConsultaLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="modalConsultaLabel">Desea actualizar datos?</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Usted ya ha participado en otras competencias, desea actualizar algunos datos? </p>
+                                    <p>Tu institucion registrada es: <b>{{ auth()->user()->escuela->nombre }}</b></p>
+                                    @if (auth()->user()->idRol == 3)
+                                    @php
+                                        $miGraduacionActual = App\Models\Competidor::where('idUser', auth()->user()->id)->first();
+                                    @endphp
+                                    <p>Tu Graduacion registrada es: <b>{{ $miGraduacionActual->graduacion->nombre }} - {{ $miGraduacionActual->graduacion->color }}</b></p>
+                                    @endif
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No gracias</button>
+                                    <a href="/solicitar_cambios/{{auth()->user()->id}}" class="btn btn-outline-primary ms-1"><i class="bi bi-person-gear me-2"></i>Solicitar cambios</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-
-                @endif
-
-
-
-                @endif
-                @if (auth()->user()->idRol == 1)
-                <div class="seccion_item">
-                    <a href="/competidores" class="seccion-item_link">
-                        <div class="seccion-item_bg"></div>
-                        <div class="seccion-item_title">
-                            Ver competidores
-                        </div>
-                    </a>
-                </div>
-                @endif
-
-                @if (auth()->user()->idRol == 3)
-                <div class="seccion_item">
-                    <a href="/cargarCompetidor" class="seccion-item_link">
-                        <div class="seccion-item_bg"></div>
-                        <div class="seccion-item_title">
-                            Inscribirse a una Competencia
-                        </div>
-                    </a>
-                </div>
-                @endif
-
-
-                <div class="seccion_item">
-                    <a href="/resultados" class="seccion-item_link">
-                        <div class="seccion-item_bg"></div>
-                        <div class="seccion-item_title">
-                            Resultados
-                        </div>
-                    </a>
-                </div>
-
-
-                @if (auth()->user()->idRol == 1)
-                <div class="seccion_item">
-                    <a href="{{ route('index_usuarios') }}" class="seccion-item_link">
-                        <div class="seccion-item_bg"></div>
-                        <div class="seccion-item_title">
-                            Gestion de usuarios
-                        </div>
-                    </a>
-                </div>
+                    @endif
                 @endif
             </div>
         </div><!-- /.col-lg-4 -->

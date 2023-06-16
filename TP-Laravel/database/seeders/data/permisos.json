@@ -1,0 +1,63 @@
+[
+    {
+        "idPermiso": "1",
+        "nombrePermiso":"Cronometro",
+        "rutaPermiso":"index_reloj"
+    },
+    {
+        "idPermiso": "2",
+        "nombrePermiso":"Ver Competencias",
+        "rutaPermiso":"presentacion"
+    },
+    {
+        "idPermiso": "3",
+        "nombrePermiso":"Ver Competidores",
+        "rutaPermiso":"tablaCompetidores"
+    },
+    {
+        "idPermiso": "4",
+        "nombrePermiso":"Gestión de Usuarios",
+        "rutaPermiso":"index_usuarios"
+    },
+    {
+        "idPermiso": "5",
+        "nombrePermiso":"Gestión de Permisos",
+        "rutaPermiso":"permisos.index"
+    },
+    {
+        "idPermiso": "6",
+        "nombrePermiso":"Gestión de Categorias",
+        "rutaPermiso":"index_categoria"
+    },
+    {
+        "idPermiso": "7",
+        "nombrePermiso":"Gestión de Competencias",
+        "rutaPermiso":"index_competencia"
+    },
+    {
+        "idPermiso": "8",
+        "nombrePermiso":"Gestión de Graduaciones",
+        "rutaPermiso":"graduaciones.index"
+    },
+    {
+        "idPermiso": "9",
+        "nombrePermiso":"Gestión de Soliticitudes",
+        "rutaPermiso":"index_solicitudes"
+    },
+    {
+        "idPermiso": "10",
+        "nombrePermiso":"Resultados",
+        "rutaPermiso":"resultadosRanking"
+    },
+    {
+        "idPermiso": "11",
+        "nombrePermiso":"Puntuador",
+        "rutaPermiso":"puntuador_index"
+    },
+    {
+        "idPermiso": "12",
+        "nombrePermiso":"Inscribirse",
+        "rutaPermiso":"cargarCompetidor"
+    }
+
+]

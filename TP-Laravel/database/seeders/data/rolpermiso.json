@@ -1,0 +1,82 @@
+[
+    { 
+        "id": "1", 
+        "idPermiso":"1", 
+        "idRol":"1" 
+    }, 
+    { 
+        "id": "2", 
+        "idPermiso":"2", 
+        "idRol":"1" 
+    }, 
+    { 
+        "id": "3", 
+        "idPermiso":"3", 
+        "idRol":"1" 
+    }, 
+    { 
+        "id": "4", 
+        "idPermiso":"4", 
+        "idRol":"1" 
+    }, 
+    { 
+        "id": "5", 
+        "idPermiso":"5", 
+        "idRol":"1" 
+    }, 
+    { 
+        "id": "6", 
+        "idPermiso":"6", 
+        "idRol":"1" 
+    }, 
+    { 
+        "id": "7", 
+        "idPermiso":"7", 
+        "idRol":"1" 
+    }, 
+    { 
+        "id": "8", 
+        "idPermiso":"8", 
+        "idRol":"1" 
+    }, 
+    { 
+        "id": "9", 
+        "idPermiso":"9", 
+        "idRol":"1" 
+    }, 
+    { 
+        "id": "10", 
+        "idPermiso":"10", 
+        "idRol":"1" 
+    },
+    { 
+        "id": "11", 
+        "idPermiso":"10", 
+        "idRol":"2" 
+    }, 
+    { 
+        "id": "12", 
+        "idPermiso":"2", 
+        "idRol":"2" 
+    },
+    {
+        "id": "13", 
+        "idPermiso":"11", 
+        "idRol":"2" 
+    },
+    { 
+        "id": "14", 
+        "idPermiso":"2", 
+        "idRol":"3" 
+    }, 
+    { 
+        "id": "15", 
+        "idPermiso":"10", 
+        "idRol":"3" 
+    },
+    {
+        "id": "16", 
+        "idPermiso":"12", 
+        "idRol":"3" 
+    }
+]
