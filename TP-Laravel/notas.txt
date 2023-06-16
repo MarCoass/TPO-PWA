@@ -251,3 +251,14 @@ de la competencia, se tiene que ejecutar el comando:
  php artisan storage:link
 
 Básicamente, permite acceder a los archivos almacenados en el storage desde la web.
+
+----------------------------------------------------------------------------------------------------------------------------------
+View Composer
+
+Un View Composer es una característica de Laravel que te permite compartir datos con múltiples vistas en tu aplicación. Es una forma de evitar tener que pasar los mismos datos a varias vistas en diferentes controladores.
+
+Un View Composer es una clase que se registra en el proveedor de servicios de Laravel (por lo general, en  `app/Providers/AppServiceProvider.php` ). Esta clase se encarga de proporcionar los datos que se deben compartir con una o varias vistas específicas. El View Composer se ejecuta cada vez que se carga una vista específica y se le pasa a la vista los datos necesarios.
+
+Por ejemplo, si tienes un menú de navegación que se muestra en varias vistas de tu aplicación, puedes crear un View Composer que proporcione los datos necesarios para construir el menú de navegación. De esta forma, no tendrás que pasar los mismos datos a varias vistas en diferentes controladores.
+
+Para crear un View Composer, debes definir una función anónima que recibe como parámetro una instancia de la clase  `Illuminate\View\View` . Dentro de esta función, puedes agregar los datos necesarios a la vista usando el método  `with()` . Luego, debes registrar el View Composer en el proveedor de servicios de Laravel usando el método  `view()->composer()` .

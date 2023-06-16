@@ -21,27 +21,16 @@ NeuPoom
         <div class="format-container">
 
             <div class="seccion_box">
-
-
-                {{-- HOME CUALQUIER USUARIO --}}
-
-                <div class="seccion_item">
-                    <a href="/resultados" class="seccion-item_link">
-                        <div class="seccion-item_bg"></div>
-                        <div class="seccion-item_title">
-                            Resultados.
-                        </div>
-                    </a>
-                </div>
-
-                <div class="seccion_item">
-                    <a href="/presentacion" class="seccion-item_link">
-                        <div class="seccion-item_bg"></div>
-                        <div class="seccion-item_title">
-                            Ver Competencias.
-                        </div>
-                    </a>
-                </div>
+                @foreach($menus as $menu)
+                    <div class="seccion_item">
+                        <a href="{{ Route::has($menu->permiso->rutaPermiso) ? route($menu->permiso->rutaPermiso) : "#" }}" class="seccion-item_link {{ Route::has($menu->permiso->rutaPermiso) ? '' : "bg-danger" }}">
+                            <div class="seccion-item_bg"></div>
+                            <div class="seccion-item_title">
+                                {{ $menu->permiso->nombrePermiso }}
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
 
                 <hr class="col-12 mb-4">
 
@@ -155,7 +144,7 @@ NeuPoom
 
                 {{-- MODAL INSCRIPCIÓN A COMPETENCIA JUEZ --}}
                 @if (auth()->user()->idRol == 2 && auth()->user()->estado === 1)
-                <div class="seccion_item">
+                    <div class="seccion_item">
                     <a href="#" data-bs-toggle="modal" data-bs-target="#inscripcionJuez" class="seccion-item_link">
                         <div class="seccion-item_bg"></div>
                         <div class="seccion-item_title">
@@ -205,10 +194,14 @@ NeuPoom
                         </form>
                         </div>
                     </div>
-                </div>
+                    </div>
 
 
+<<<<<<< HEAD
+                    @if(Session::get('modalConsulta', false))
+=======
                 @if(Session::get('modalConsulta', false))
+>>>>>>> 26f80e8ceef4fb2147ee52c7e788f4b011a1926c
                     <?php $data = Session::get('modalConsulta'); ?>
                     <script>
                         document.addEventListener("DOMContentLoaded", function() {
@@ -247,7 +240,10 @@ NeuPoom
                     </div>
                     @endif
                 @endif
+<<<<<<< HEAD
+=======
 
+>>>>>>> 26f80e8ceef4fb2147ee52c7e788f4b011a1926c
             </div>
         </div><!-- /.col-lg-4 -->
 

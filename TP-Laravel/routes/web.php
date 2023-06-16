@@ -20,6 +20,7 @@ use App\Http\Controllers\{
     CategoriaGraduacionController,
     CategoriaPoomsaeController,
     PaisController,
+    PermisoController,
     PoomsaeController,
     RelojController
 };
@@ -71,7 +72,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
     Route::group(['middleware' => ['auth']], function() {
 
         /* rutas para todes */
-        Route::get('/presentacion', [CompetenciaController::class, 'verCompetencias']);
+        Route::get('/presentacion', [CompetenciaController::class, 'verCompetencias'])->name('presentacion');
         Route::get('/verPerfil', function (){return view('verPerfil.verPerfil');})->name('verPerfil');
         Route::post('/actualizarDatosPersonales', [UsuarioController::class, 'actualizarDatosPersonales'])->name('actualizarDatosPersonales');
         Route::post('/actualizarPassword', [UsuarioController::class, 'actualizarPassword'])->name('actualizarPassword');
@@ -168,6 +169,15 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
             // ruta gestión de graduaciones
             Route::resource('graduaciones', 'GraduacionController');
+
+            // ruta gestión de permisos
+            Route::resource('permisos', 'PermisoController');
+            Route::get('/permisos/{permiso}/destroy', [PermisoController::class, 'destroy'])->name('permisos.delete');
+            
+             //ruta para setear ranking
+             Route::get('/setear_ranking', [CompetenciaCompetidorController::class, 'setearRanking']);
+
+
         }); //fin rutas administradores
 
         //guardar inscripcion de competidor
@@ -201,7 +211,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
         //rutas del reloj
         Route::get('/iniciar_cronometro', [RelojController::class, 'cronometro'])->middleware(['rol:1']);
-        Route::get('/index_reloj', [RelojController::class, 'index'])->middleware(['rol:1']);
+        Route::get('/index_reloj', [RelojController::class, 'index'])->middleware(['rol:1'])->name('index_reloj');
         Route::get('/opciones_categoria',[RelojController::class, 'obtenerCategoria']);
         
         Route::get('/start', [RelojController::class, 'start'])->middleware(['rol:1']);

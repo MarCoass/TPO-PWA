@@ -3,18 +3,21 @@
         "nombre": "Competencia Regional",
         "fecha":"2023-05-26",
         "cantidadJueces": 3,
-        "estadoJueces": true
+        "estadoJueces": true,
+        "estadoCompetencia": 0
     },
     {
         "nombre": "Competencia Juvenil",
         "fecha":"2023-05-20",
         "cantidadJueces": 5,
-        "estadoJueces": false
+        "estadoJueces": false,
+        "estadoCompetencia": 0
     },
     {
         "nombre": "Competencia Estelar",
         "fecha":"2023-05-05",
         "cantidadJueces": 7,
-        "estadoJueces": false
+        "estadoJueces": false,
+        "estadoCompetencia": 0
     }
 ]
