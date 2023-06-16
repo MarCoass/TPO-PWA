@@ -101,6 +101,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::post('/store_poomsae', [PoomsaeController::class, 'store'])->name('store_poomsae');
             Route::get('/edit_poomsae/{id}', [PoomsaeController::class, 'edit'])->name('edit_poomsae');
             Route::put('/update_poomsae/{id}', [PoomsaeController::class, 'update'])->name('update_poomsae');
+            Route::get('/delete_poomsae/{id}', [PoomsaeController::class, 'destroy'])->name('delete_poomsae');
 
                 /* Rutas de Gestion de Solicitudes */
             Route::get('/index_solicitudes', [SolicitudController::class, 'index'])->name('index_solicitudes');

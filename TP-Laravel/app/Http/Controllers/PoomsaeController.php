@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Poomsae;
+use App\Models\CategoriaPoomsae;
 use Illuminate\Http\Request;
 
 
@@ -16,6 +17,12 @@ class PoomsaeController extends Controller
     public function index()
     {
         $poomsaes = Poomsae::all();
+
+        foreach($poomsaes as $poomsae){
+            $hasRelation = CategoriaPoomsae::where('idPoomsae', $poomsae->idPoomsae)->exists();
+            $poomsae->relacion = $hasRelation;
+        }
+
         return view('gestionPoomsae.index', compact('poomsaes'));
     }
 
@@ -97,7 +104,7 @@ class PoomsaeController extends Controller
         $poomsae = Poomsae::find($id);
         $poomsae->delete();
 
-        return redirect()->route('index')->with('success', 'Poomsae eliminada exitosamente.');
+        return redirect()->route('index_poomsae')->with('success', 'Poomsae eliminado exitosamente.');
     
     }
 }

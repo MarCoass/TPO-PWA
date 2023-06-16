@@ -31,10 +31,9 @@ Gestion de Poomsaes
             <td>{{ $row->nombre }}</td>
             <td>
                 <a href="{{ route('edit_poomsae', ['id' => $row->idPoomsae ]) }}" class="btn btn-outline-info"><i class="bi bi-pencil-square me-2"></i>Editar</a>
-                {{-- 
-                <a href="{{ route('ver_inscriptos_competencia', ['id' => $row->idCompetencia ]) }}" class="btn btn-outline-info">Ver Competidores inscriptos</a>
-                <a href="{{ route('tabla_jueces', ['id' => $row->idCompetencia ]) }}" class="btn btn-outline-info">Ver Jueces inscriptos</a>
-                <a href="{{ route('verPresentacion', ['id' => $row->idCompetencia ]) }}" class="btn btn-outline-info">Ir a presentacion.</a> --}}
+                @if (!$row->relacion)
+                <a href="{{ route('delete_poomsae', ['id' => $row->idPoomsae ]) }}" class="btn btn-outline-danger"><i class="bi bi-pencil-square me-2"></i>Eliminar</a>
+                @endif
             </td>
         </tr>
         @endforeach
