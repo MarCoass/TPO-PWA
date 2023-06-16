@@ -20,6 +20,7 @@ use App\Http\Controllers\{
     CategoriaGraduacionController,
     CategoriaPoomsaeController,
     PaisController,
+    PoomsaeController,
     RelojController
 };
 use Illuminate\Support\Facades\Route;
@@ -93,6 +94,13 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
         /* ####   R u t a s   p a r a   a d m i n i s t r a d o r e s   #### */
         Route::group(['middleware' => ['rol:1']], function(){
+
+                /* Rutas de Gestion de Poomsaes */
+            Route::get('/index_poomsae', [PoomsaeController::class, 'index'])->name('index_poomsae');
+            Route::get('/create_poomsae', function(){return view('gestionPoomsae.create');})->name('create_poomsae');
+            Route::post('/store_poomsae', [PoomsaeController::class, 'store'])->name('store_poomsae');
+            Route::get('/edit_poomsae/{id}', [PoomsaeController::class, 'edit'])->name('edit_poomsae');
+            Route::put('/update_poomsae/{id}', [PoomsaeController::class, 'update'])->name('update_poomsae');
 
                 /* Rutas de Gestion de Solicitudes */
             Route::get('/index_solicitudes', [SolicitudController::class, 'index'])->name('index_solicitudes');
