@@ -14,7 +14,7 @@ class Competencia extends Model
 
     protected $primaryKey = 'idCompetencia';
 
-    protected $fillable = ['nombre','fecha', 'flyer', 'bases', 'invitacion', 'cantidadJueces','estadoJueces'];
+    protected $fillable = ['nombre','fecha', 'flyer', 'bases', 'invitacion', 'cantidadJueces','estadoJueces', 'estadoCompetencia'];
 
     public function competenciaJuez(){
         return $this->hasMany(CompetenciaJuez::class,  'idCompetencia', 'idCompetencia');

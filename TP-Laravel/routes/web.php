@@ -168,6 +168,12 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
             // ruta gestión de graduaciones
             Route::resource('graduaciones', 'GraduacionController');
+
+            
+             //ruta para setear ranking
+             Route::get('/setear_ranking', [CompetenciaCompetidorController::class, 'setearRanking']);
+
+
         }); //fin rutas administradores
 
         //guardar inscripcion de competidor

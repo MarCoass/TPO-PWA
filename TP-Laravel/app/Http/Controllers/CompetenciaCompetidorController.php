@@ -263,4 +263,42 @@ class CompetenciaCompetidorController extends Controller
         ];
         return $resultados;
     }
+
+    public function setearRanking(Request $request)
+    {
+     $idCompetencia = $request['idCompetencia'];
+    
+        $competencia = Competencia::find($idCompetencia);
+
+        $respuesta= false;
+
+        if ($competencia->estadoCompetencia == 0) {
+            # code...
+            $competenciaCompetidor = CompetenciaCompetidor::where('idCompetencia', $idCompetencia)
+            ->orderBy('puntaje', 'desc')
+            ->get();
+    
+            $competidorUno  = Competidor::find($competenciaCompetidor[0]->idCompetidor);
+            $competidorDos  = Competidor::find($competenciaCompetidor[1]->idCompetidor);
+            $competidorTres  = Competidor::find($competenciaCompetidor[2]->idCompetidor);
+    
+            $competidorUno->ranking += 3;
+            $competidorDos->ranking += 2;
+            $competidorTres->ranking += 1;
+    
+            $competidorUno->save();
+            $competidorDos->save();
+            $competidorTres->save(); 
+
+            $competencia->estadoCompetencia = 1;
+            $competencia->save();
+
+            $respuesta= true;
+        }
+
+        return compact('respuesta');
+     }
+
+
+
 }

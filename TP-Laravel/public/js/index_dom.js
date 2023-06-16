@@ -80,7 +80,7 @@ $("#categoria").on("click", function () {
     });
 });
 
-$("#competencia").on("click", function () {
+$("#competencia").change(function () {
     //console.log($("#competencia").val());
     $.ajax({
         type: "GET",
@@ -92,7 +92,7 @@ $("#competencia").on("click", function () {
         dataType: "json",
         success: function (data) {
             
-                
+
             if (data.length !== 0) {
                 $("#categoria").empty();
                 $("#categoria").append(
@@ -108,10 +108,32 @@ $("#competencia").on("click", function () {
                     );
                 });
             } else {
-                alert('No quedan categorias.')
                 //aca ya termino la competencia
+               //alert('No quedan categorias.')
+                
+                $.ajax({
+                    type: "GET",
+                    url: "http://127.0.0.1:8000/setear_ranking",
+                    data: {
+                        idCompetencia: $("#competencia").val(),//id de la competencia
+                    },
+                    success: function (data) {
 
+                        if (data.respuesta) {
+                            console.log('ranking SETEADO');
+
+                        }else{
+                            console.log('Ya no se puede setear');
+                        }
+
+                    }
+
+                });
+
+                    
             }
         },
     });
 });
+
+
