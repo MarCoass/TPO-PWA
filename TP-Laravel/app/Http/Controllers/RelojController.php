@@ -26,7 +26,12 @@ class RelojController extends Controller
         //a la inversa.
         //$this->start($request);
 
-        return view('reloj.cronometro', compact('id_competencia', 'id_categoria', 'cantJueces'));
+        //tocando weas, esto si se rompe se borra
+        $opciones =  Competidor::leftJoin('competenciacompetidor', 'competidores.idCompetidor', '=', 'competenciacompetidor.idCompetidor')
+            ->where('competenciacompetidor.idCompetencia', '=', $id_competencia)
+            ->where('competenciacompetidor.idCategoria', '=', $id_categoria)->get();
+
+        return view('reloj.cronometro', compact('id_competencia', 'id_categoria', 'cantJueces', 'opciones'));
     }
 
     public function start(Request $request)
@@ -35,10 +40,10 @@ class RelojController extends Controller
         $id_categoria = $request->input('id_categoria');
 
         $duplicado = Reloj::where('idCompetencia',  $id_competencia)->where('idCategoria',  $id_categoria)->first();
-        
-        if($duplicado != null){
+
+        if ($duplicado != null) {
             $reloj = Reloj::find($duplicado->idReloj);
-        }else{
+        } else {
             $reloj = new Reloj();
         }
 
@@ -68,18 +73,19 @@ class RelojController extends Controller
         $reloj = Reloj::find($data->idReloj);
         $reloj->estado = 0;
         $reloj->overtime = $overtime;
-     
+
         $reloj->save();
 
         return response()->json(['success' => true]);
     }
 
-    public function obtener_estado_reloj(Request $request){
+    public function obtener_estado_reloj(Request $request)
+    {
         $id_competencia = $request->input('id_competencia');
         $id_categoria = $request->input('id_categoria');
 
         $data = Reloj::where('idCompetencia',  $id_competencia)->where('idCategoria',  $id_categoria)->first();
-        
+
         return response()->json(['success' => true, 'estado' => $data->estado]);
     }
 
@@ -89,25 +95,29 @@ class RelojController extends Controller
 
         $user = auth()->user();
 
-        if($user->idRol == 1){
+        if ($user->idRol == 1) {
 
             $categoria = Competencia::join('competenciaCompetidor', 'competencias.idCompetencia', '=', 'competenciaCompetidor.idCompetencia')
-            ->join('categorias', 'competenciaCompetidor.idCategoria', '=', 'categorias.idCategoria')
-            ->select('categorias.idCategoria', 'categorias.nombre')
-            ->where('competencias.idCompetencia', $id_competencia)
-            ->distinct()
-            ->get();
-
-        }else{
+                ->join('categorias', 'competenciaCompetidor.idCategoria', '=', 'categorias.idCategoria')
+                ->select('categorias.idCategoria', 'categorias.nombre')
+                ->where('competencias.idCompetencia', $id_competencia)->where('competenciaCompetidor.puntaje', 0)
+                ->distinct()
+                ->get();
+        } else {
             $data = Reloj::where('idCompetencia',  $id_competencia)->first();
-       
-            if( $data != null){
+
+            if ($data != null) {
                 $categoria = Categoria::where('idCategoria', $data->idCategoria)->distinct()->get();
-            }else{
+            } else {
                 $categoria = null;
             }
         }
+        if(count($categoria)!=0){
+             return response()->json($categoria);
+        } else {
+            return response()->json([]);
+        }
 
-        return response()->json($categoria);
+       
     }
 }
