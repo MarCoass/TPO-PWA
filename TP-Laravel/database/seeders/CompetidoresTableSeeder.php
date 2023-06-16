@@ -41,7 +41,7 @@ class CompetidoresTableSeeder extends Seeder
                 'ranking' => 0,
                 'idGraduacion' => random_int(1, 10),
                 'email' => $user['correo'],
-                'genero' => 1,
+                'genero' => random_int(0, 1),
                 'estado' => 1
             ]);
         }

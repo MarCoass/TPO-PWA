@@ -15,10 +15,17 @@
 <div class="col-lg-6 col-md-12 col-sm-12  pt-3">
         <label class="form-label" for="competencia">Competencia:</label>
         <select class="form-control validar" id="competencia" name="competencia" required>
+            @if(count($competencias) > 0)
             <option value="" disabled selected data-error="Por favor seleccione una competencia válida">Selecciona una Competencia.</option>
+            
             @foreach ($competencias as $row)
-            <option value="{{$row->idCompetencia}}">{{$row->nombre}}</option>
+            <option value="{{$row->idCompetencia}}">{{$row->nombre}}</option>       
             @endforeach
+
+            @else
+            <option value="" disabled selected data-error="Por favor seleccione una competencia válida">No hay competencias Abiertas.</option>
+            @endif
+
         </select>
         <div class="valid-feedback">
             ¡Correcto!

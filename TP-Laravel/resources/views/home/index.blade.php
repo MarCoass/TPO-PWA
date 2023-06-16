@@ -32,15 +32,125 @@ NeuPoom
                     </div>
                 @endforeach
 
+                <hr class="col-12 mb-4">
+
+                {{-- HOME ADMINISTRADOR --}}
+
+                @if ( auth()->user()->idRol == 1)
+                    <h2 class="col-12 mb-4 text-decoration-underline">Permisos Administradores.</h2>
+
+                    <div class="seccion_item">
+                        <a href="/index_reloj" class="seccion-item_link">
+                            <div class="seccion-item_bg"></div>
+                            <div class="seccion-item_title">
+                                Cronómetro.
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="seccion_item">
+                        <a href="/competidores" class="seccion-item_link">
+                            <div class="seccion-item_bg"></div>
+                            <div class="seccion-item_title">
+                                Ver Competidores.
+                            </div>
+                        </a>
+                    </div>
+
+                    <hr>
+
+                    <h3 class="col-12 mb-4">Gestiones</h3>
+
+                    <div class="seccion_item">
+                        <a href="{{ route('index_usuarios') }}" class="seccion-item_link">
+                            <div class="seccion-item_bg"></div>
+                            <div class="seccion-item_title">
+                                Gestión de Usuarios.
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="seccion_item">
+                        <a href="{{ route('index_categoria') }}" class="seccion-item_link">
+                            <div class="seccion-item_bg"></div>
+                            <div class="seccion-item_title">
+                                Gestión de Categorías.
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="seccion_item">
+                        <a href="{{ route('index_competencia') }}" class="seccion-item_link">
+                            <div class="seccion-item_bg"></div>
+                            <div class="seccion-item_title">
+                                Gestión de Competencias.
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="seccion_item">
+                        <a href="{{ route('index_poomsae') }}" class="seccion-item_link">
+                            <div class="seccion-item_bg"></div>
+                            <div class="seccion-item_title">
+                                Gestión de Poomsaes.
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="seccion_item">
+                        <a href="{{ route('graduaciones.index') }}" class="seccion-item_link">
+                            <div class="seccion-item_bg"></div>
+                            <div class="seccion-item_title">
+                                Gestión de Graduaciones.
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="seccion_item">
+                        <a href="{{ route('index_solicitudes') }}" class="seccion-item_link">
+                            <div class="seccion-item_bg"></div>
+                            <div class="seccion-item_title">
+                                Gestión de Solicitudes.
+                            </div>
+                        </a>
+                    </div>
+                @endif
+
+                @if (auth()->user()->idRol == 2)
+                    <h2 class="col-12 mb-4 text-decoration-underline">Permisos Jueces.</h2>
+
+                    <div class="seccion_item">
+                        <a href="/puntuador/index" class="seccion-item_link">
+                            <div class="seccion-item_bg"></div>
+                            <div class="seccion-item_title">
+                                Puntuador.
+                            </div>
+                        </a>
+                    </div>
+                @endif
+
+                @if (auth()->user()->idRol == 3)
+                    <h2 class="col-12 mb-4 text-decoration-underline">Permisos para Competidores.</h2>
+
+                    <div class="seccion_item">
+                        <a href="/cargarCompetidor" class="seccion-item_link">
+                            <div class="seccion-item_bg"></div>
+                            <div class="seccion-item_title">
+                                Inscribirse a una Competencia.
+                            </div>
+                        </a>
+                    </div>
+                @endif
+
+                {{-- MODAL INSCRIPCIÓN A COMPETENCIA JUEZ --}}
                 @if (auth()->user()->idRol == 2 && auth()->user()->estado === 1)
                     <div class="seccion_item">
                     <a href="#" data-bs-toggle="modal" data-bs-target="#inscripcionJuez" class="seccion-item_link">
                         <div class="seccion-item_bg"></div>
                         <div class="seccion-item_title">
-                           Inscripcion <!-- JUEZ -->
+                           Inscripción. <!-- JUEZ -->
                         </div>
                     </a>
-                    <!-- Modal INSCRIPCION JUEZ -->
                     <div class="modal fade" id="inscripcionJuez" tabindex="-1" aria-labelledby="inscripcionJuezLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <form method="POST" action="{{ route('store_competencia_juez') }}">
@@ -87,7 +197,11 @@ NeuPoom
                     </div>
 
 
+<<<<<<< HEAD
                     @if(Session::get('modalConsulta', false))
+=======
+                @if(Session::get('modalConsulta', false))
+>>>>>>> 26f80e8ceef4fb2147ee52c7e788f4b011a1926c
                     <?php $data = Session::get('modalConsulta'); ?>
                     <script>
                         document.addEventListener("DOMContentLoaded", function() {
@@ -126,11 +240,17 @@ NeuPoom
                     </div>
                     @endif
                 @endif
+<<<<<<< HEAD
+=======
+
+>>>>>>> 26f80e8ceef4fb2147ee52c7e788f4b011a1926c
             </div>
         </div><!-- /.col-lg-4 -->
 
     </div>
     @endauth
+
+    {{-- HOME SIN SESIÓN --}}
 
     @guest
     <h1>Usted no esta registrado</h1>
@@ -143,7 +263,7 @@ NeuPoom
                     <a href="{{ route('login.perform') }}" class="seccion-item_link">
                         <div class="seccion-item_bg"></div>
                         <div class="seccion-item_title">
-                            Iniciar sesion
+                            Iniciar sesión.
                         </div>
                     </a>
                 </div>
@@ -153,15 +273,13 @@ NeuPoom
                     <a href="{{ route('registro.perform') }}" class="seccion-item_link">
                         <div class="seccion-item_bg"></div>
                         <div class="seccion-item_title">
-                            Registrarse
+                            Registrarse.
                         </div>
                     </a>
                 </div>
             </div>
         </div>
         @endguest
-
-
 
     </div>
     @endsection

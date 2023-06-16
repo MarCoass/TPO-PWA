@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Poomsae;
+use App\Models\CategoriaPoomsae;
 use Illuminate\Http\Request;
 
 
@@ -15,8 +16,14 @@ class PoomsaeController extends Controller
      */
     public function index()
     {
-        $poomsae = Poomsae::all();
-        return view('Poomsae.index', compact('poomsae'));
+        $poomsaes = Poomsae::all();
+
+        foreach($poomsaes as $poomsae){
+            $hasRelation = CategoriaPoomsae::where('idPoomsae', $poomsae->idPoomsae)->exists();
+            $poomsae->relacion = $hasRelation;
+        }
+
+        return view('gestionPoomsae.index', compact('poomsaes'));
     }
 
     /**
@@ -43,7 +50,7 @@ class PoomsaeController extends Controller
 
         $poomsae->save();
 
-        return redirect()->route('index')->with('success', 'Poomsae creado exitosamente.');
+        return redirect()->route('index_poomsae')->with('success', 'Poomsae creado exitosamente.');
     }
 
     /**
@@ -67,7 +74,7 @@ class PoomsaeController extends Controller
     public function edit($id)
     {
         $poomsae = Poomsae::find($id);
-        return view('Poomsae.edit', compact('poomsae'));
+        return view('gestionPoomsae.edit', compact('poomsae'));
     }
 
     /**
@@ -83,7 +90,7 @@ class PoomsaeController extends Controller
         $poomsae->nombre = $request->input('nombre');
         $poomsae->save();
 
-        return redirect()->route('index')->with('success', 'Poomsae actualizado exitosamente.');
+        return redirect()->route('index_poomsae')->with('success', 'Poomsae actualizado exitosamente.');
     }
 
     /**
@@ -97,7 +104,7 @@ class PoomsaeController extends Controller
         $poomsae = Poomsae::find($id);
         $poomsae->delete();
 
-        return redirect()->route('index')->with('success', 'Poomsae eliminada exitosamente.');
+        return redirect()->route('index_poomsae')->with('success', 'Poomsae eliminado exitosamente.');
     
     }
 }

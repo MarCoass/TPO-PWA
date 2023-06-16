@@ -73,7 +73,6 @@ class PuntajeController extends Controller
         // Lógica para actualizar un registro existente basado en los datos del Request
     }
 
-
     public function  puntuadorindex()
     {
         //filtrar competencias por incripcion de juez

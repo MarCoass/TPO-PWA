@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('invitacion')->nullable();
             $table->integer('cantidadJueces');
             $table->boolean('estadoJueces')->default(false);
+            $table->integer('estadoCompetencia')->default(0);
             $table->timestamps();
         });
     }
