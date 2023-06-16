@@ -60,7 +60,7 @@ $("#categoria").on("click", function () {
 
         dataType: "json",
         success: function (data) {
-          //console.log(data);
+            //console.log(data);
             $("#competidor").empty();
             $("#competidor").append(
                 '<option value="" disabled selected data-error="Por favor seleccione un competidor">Selecciona un competidor.</option>'
@@ -81,30 +81,37 @@ $("#categoria").on("click", function () {
 });
 
 $("#competencia").on("click", function () {
-    console.log($("#competencia").val());
+    //console.log($("#competencia").val());
     $.ajax({
         type: "GET",
         url: "/opciones_categoria",
         data: {
-            competencia: $("#competencia").val(),
+            competencia: $("#competencia").val(),//id de la competencia
         },
 
         dataType: "json",
         success: function (data) {
-            //console.log(data);
-            $("#categoria").empty();
-            $("#categoria").append(
-                '<option value="" disabled selected data-error="Por favor seleccione una categoria">Selecciona una categoria.</option>'
-            );
-            $.each(data, function (key, value) {
+            
+                
+            if (data.length !== 0) {
+                $("#categoria").empty();
                 $("#categoria").append(
-                    '<option value="' +
-                        value.idCategoria +
-                        '">' +
-                        value.nombre +
-                        "</option>"
+                    '<option value="" disabled selected data-error="Por favor seleccione una categoria">Selecciona una categoria.</option>'
                 );
-            });
+                $.each(data, function (key, value) {
+                    $("#categoria").append(
+                        '<option value="' +
+                            value.idCategoria +
+                            '">' +
+                            value.nombre +
+                            "</option>"
+                    );
+                });
+            } else {
+                alert('No quedan categorias.')
+                //aca ya termino la competencia
+
+            }
         },
     });
 });

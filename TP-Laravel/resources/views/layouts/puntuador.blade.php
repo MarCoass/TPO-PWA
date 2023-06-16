@@ -24,8 +24,6 @@
     <!-- Jquery UI -->
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/start/jquery-ui.css" rel="stylesheet" />
 
-    <!-- una font digital para cronometro -->
-    <link href="https://fonts.cdnfonts.com/css/digital-7-mono" rel="stylesheet">
 
     <!-- estilos propios -->
     <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
