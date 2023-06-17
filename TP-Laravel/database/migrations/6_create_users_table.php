@@ -31,6 +31,7 @@ return new class extends Migration
             $table->boolean('estado')->default(false);
             $table->unsignedBigInteger('idEscuela')->nullable();
             /* $table->unsignedBigInteger('idRol'); */
+            $table->varchar('imagenPerfil')->nullable();
             $table->rememberToken();
             $table->timestamps();
 

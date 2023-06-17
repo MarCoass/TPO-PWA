@@ -123,7 +123,8 @@ class usuariosTableSeeder extends Seeder
                 'password' => $usuario['password'],
                 'idRol' => $usuario['idRol'],
                 'estado' => $usuario['estado'],
-                'idEscuela' => $usuario['idEscuela']
+                'idEscuela' => $usuario['idEscuela'],
+                'imagenPerfil' => $usuario['imagenPerfil']
             ]);
         }
         User::factory()->count(20)->create();
