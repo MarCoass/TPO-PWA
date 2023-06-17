@@ -167,6 +167,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
                 /* lista jueces de una competencia */
             Route::get('/JuezCompetencia/{id}', [CompetenciaJuezController::class, 'listarJuecesPorIdCompetencia'])->name('tabla_jueces');
             Route::get('/habilitar_juez/{id}', [CompetenciaJuezController::class, 'habilitar'])->name('habilitar_juez');
+            Route::get('/rechazar_juez/{id}', [CompetenciaJuezController::class, 'rechazar'])->name('rechazar_juez');
 
             // ruta gestión de graduaciones
             Route::resource('graduaciones', 'GraduacionController');
@@ -174,7 +175,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             // ruta gestión de permisos
             Route::resource('permisos', 'PermisoController');
             Route::get('/permisos/{permiso}/destroy', [PermisoController::class, 'destroy'])->name('permisos.delete');
-            
+
              //ruta para setear ranking
              Route::get('/setear_ranking', [CompetenciaCompetidorController::class, 'setearRanking']);
 
@@ -214,7 +215,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/iniciar_cronometro', [RelojController::class, 'cronometro'])->middleware(['rol:1']);
         Route::get('/index_reloj', [RelojController::class, 'index'])->middleware(['rol:1'])->name('index_reloj');
         Route::get('/opciones_categoria',[RelojController::class, 'obtenerCategoria']);
-        
+
         Route::get('/start', [RelojController::class, 'start'])->middleware(['rol:1']);
         Route::get('/stop', [RelojController::class, 'stop'])->middleware(['rol:1']);
         Route::get('/actualizar_reloj', [RelojController::class, 'obtener_estado_reloj']);

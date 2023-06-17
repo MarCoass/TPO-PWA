@@ -103,4 +103,26 @@ class CompetenciaJuezController extends Controller
 
         return view('tablaCompetenciaJueces.index', ['CompetenciaJuez' => $competencia_juez, 'nombreCompetencia' => $nombreCompetencia, 'juecesAceptados' => $juecesAceptados]);
     }
+
+    public function rechazar($id){
+        // Habilitar solo si hay menos que la cantidad definida en competencia
+        // Caso contrario msj de error
+        // Habría que deshabilitar el botón
+        // Hacer que estadoJueces cambie al aceptar al ultimo juez requerido
+
+        // El competenciaJuez actual
+        $competencia_juez = CompetenciaJuez::find($id);
+
+        $mensaje = [];
+
+            // Menor o mayor solo carga
+            $competencia_juez->estado = 2;
+            $competencia_juez->save();
+            $mensaje =["tipo" => 'success', 'mensaje' => 'Juez rechazado exitosamente.'];
+
+
+
+
+        return redirect()->route('tabla_jueces', ['id' => $competencia_juez->idCompetencia])->with($mensaje['tipo'], $mensaje['mensaje']);
+    }
 }
