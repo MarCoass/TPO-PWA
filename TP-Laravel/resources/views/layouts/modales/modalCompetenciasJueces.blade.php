@@ -29,16 +29,11 @@
                     <div class="form-group">
                         <label for="competencia">Competencia</label>
                         <select class="form-control" id="competencia" name="competencia" required>
-                            @if(!isset($competencias) || count($competencias) == 0)
+                            @if(!isset($competenciasDisponibles) || count($competenciasDisponibles) == 0)
                                 <option value="" disabled selected>No hay competencias habilitadas. Vuelva más tarde.</option>
                             @else
-                                @foreach ($competencias as $row)
-                                @php
-                                    $existe = App\Models\CompetenciaJuez::where('idCompetencia', $row->idCompetencia)->where('idJuez',auth()->user()->id)->first();
-                                @endphp
-                                    @if (!$existe)
-                                    <option value="{{$row->idCompetencia}}">{{$row->nombre}}</option>
-                                    @endif
+                                @foreach ($competenciasDisponibles as $row)
+                                <option value="{{$row->idCompetencia}}">{{$row->nombre}}</option>
                                 @endforeach
                             @endif
                         </select>
