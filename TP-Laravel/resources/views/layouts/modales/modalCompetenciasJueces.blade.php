@@ -18,13 +18,8 @@
                 @csrf
                     <div class="form-group">
                     <label for="juez">Juez</label>
-                    <select class="form-control" id="juez" name="juez" required>
-                        @foreach ($jueces as $row)
-                        @if($row->id == auth()->user()->id){
-                        <option value="{{ $row->id }}">{{ $row->nombre }} {{ $row->apellido }}</option>
-                        @endif
-                        @endforeach
-                    </select>
+                    <input type="text" id="juez" name="juez" value="{{ auth()->user()->id }}">
+                    <input class="form-control" type="text" value="{{ auth()->user()->nombre }} {{ auth()->user()->apellido }}" readonly disabled>
                     </div>
                     <div class="form-group">
                         <label for="competencia">Competencia</label>

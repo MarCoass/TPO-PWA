@@ -33,12 +33,12 @@ class HomeController extends Controller
             })->get();
         }
         if($usuario['idRol'] == 3){
-            $idCompetidor = Competidor::find('idUser', $a);
-            $competenciasDisponibles = Competencia::whereNotExists(function ($query) use ($a) {
+            $ObjCompetidor = Competidor::where('idUser', $a)->first();
+            $competenciasDisponibles = Competencia::whereNotExists(function ($query) use ($ObjCompetidor) {
                 $query->select(DB::raw(1))
                       ->from('competenciaCompetidor')
                       ->whereRaw('competenciaCompetidor.idCompetencia = competencias.idCompetencia')
-                      ->where('competenciaCompetidor.idCompetidor', $idCompetidor->idCompetidor);
+                      ->where('competenciaCompetidor.idCompetidor', $ObjCompetidor->idCompetidor);
             })->get();
         }
 
