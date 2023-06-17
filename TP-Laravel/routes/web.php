@@ -76,6 +76,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/verPerfil', function (){return view('verPerfil.verPerfil');})->name('verPerfil');
         Route::post('/actualizarDatosPersonales', [UsuarioController::class, 'actualizarDatosPersonales'])->name('actualizarDatosPersonales');
         Route::post('/actualizarPassword', [UsuarioController::class, 'actualizarPassword'])->name('actualizarPassword');
+        Route::post('/actualizarImagenPerfil', [UsuarioController::class, 'actualizarFoto'])->name('actualizarImagenPerfil');
         Route::get('/misSolicitudes/{id}', [SolicitudController::class, 'misSolicitudes'])->name('misSolicitudes');
         Route::post('/solicitudLeida/{id}', [SolicitudController::class, 'solicitudLeida'])->name('solicitudLeida');
         Route::get('/resultadosRanking', [CategoriaController::class, 'vistaVerRanking'])->name('resultadosRanking');

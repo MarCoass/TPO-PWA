@@ -28,7 +28,7 @@ class UsuarioController extends Controller
 
     public function store(Request $request)
     {
-        try{
+        try {
             $request->validate($this->rules());
 
             $usuario = new User();
@@ -38,26 +38,24 @@ class UsuarioController extends Controller
             $usuario->correo = $request->input('correo');
             $usuario->password = $request->input('clave');
             $usuario->estado = true;
-    
+
             // Rol
             $rol = Rol::find($request->input('rol'));
             $usuario->rol()->associate($rol);
-    
+
             // Escuela
             $escuela = Escuela::find($request->input('idEscuela'));
             $usuario->escuela()->associate($escuela);
-    
-            $usuario->save();
-    
-            return redirect()->route('index_usuarios')->with('success', 'Usuario creado exitosamente.');
-        }catch (\Illuminate\Validation\ValidationException $e){
-            return redirect()
-                    ->route('create_usuario')
-                    ->withErrors($e->errors())
-                    ->withInput();
-        }
 
-       
+            $usuario->save();
+
+            return redirect()->route('index_usuarios')->with('success', 'Usuario creado exitosamente.');
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return redirect()
+                ->route('create_usuario')
+                ->withErrors($e->errors())
+                ->withInput();
+        }
     }
 
     public function show($id)
@@ -76,7 +74,7 @@ class UsuarioController extends Controller
 
     public function update(Request $request, $id)
     {
-        try{
+        try {
             $request->validate($this->rulesEditar($id));
 
             $usuario = User::find($id);
@@ -84,31 +82,31 @@ class UsuarioController extends Controller
             $usuario->apellido = $request->input('apellido');
             $usuario->usuario = $request->input('usuario');
             $usuario->correo = $request->input('correo');
-    
+
             // Rol
             $rol = Rol::find($request->input('rol'));
             $usuario->rol()->associate($rol);
-    
+
             // Si es admin, no tiene escuela
-            if($request->input('rol') == 1){
+            if ($request->input('rol') == 1) {
                 $usuario->idEscuela = null;
-            }else{
+            } else {
                 // Escuela
                 $escuela = Escuela::find($request->input('idEscuela'));
                 $usuario->escuela()->associate($escuela);
             }
-    
+
             $usuario->save();
-    
+
             return redirect()->route('index_usuarios')->with('success', 'Usuario actualizado exitosamente.');
-        }catch (\Illuminate\Validation\ValidationException $e){
+        } catch (\Illuminate\Validation\ValidationException $e) {
             return redirect('edit_usuario/' . $id)
-                    ->withErrors($e->errors());
+                ->withErrors($e->errors());
         }
-        
     }
 
-    public function habilitar($id){
+    public function habilitar($id)
+    {
         $usuario = User::find($id);
         $usuario->estado = true;
         $usuario->save();
@@ -130,24 +128,24 @@ class UsuarioController extends Controller
         $usuario = User::find($request->input('id'));
         $id = $usuario->id;
 
-    
-        if (password_verify($request->input('password'), $usuario->password) ) {
-            try{
+
+        if (password_verify($request->input('password'), $usuario->password)) {
+            try {
                 $request->validate($this->rulesActualizarDatos($id));
-    
+
                 $usuario = User::find($id);
                 $usuario->nombre = $request->input('nombre');
                 $usuario->apellido = $request->input('apellido');
                 $usuario->usuario = $request->input('usuario');
                 $usuario->correo = $request->input('correo');
-        
+
                 $usuario->save();
-        
+
                 $arregloMensaje = [
                     'tipo' => 'success',
                     'mensaje' => 'Se han actualizado sus datos correctamente.'
                 ];
-            }catch (\Illuminate\Validation\ValidationException $e){
+            } catch (\Illuminate\Validation\ValidationException $e) {
                 $errors = $e->validator->errors();
                 $errorMessages = implode(' ', $errors->all());
                 $arregloMensaje = [
@@ -155,8 +153,7 @@ class UsuarioController extends Controller
                     'mensaje' => $errorMessages
                 ];
             }
-               
-        }else {
+        } else {
             $arregloMensaje = [
                 'tipo' => 'restringed',
                 'mensaje' => 'Contraseña Incorrecta.'
@@ -170,24 +167,23 @@ class UsuarioController extends Controller
     {
         $usuario = User::find($request->input('id'));
 
-        if($request->input('passwordnueva') == $request->input('passwordnueva2')){
-            if(password_verify($request->input('passwordactual'), $usuario->password) ) {
-            
+        if ($request->input('passwordnueva') == $request->input('passwordnueva2')) {
+            if (password_verify($request->input('passwordactual'), $usuario->password)) {
+
                 $usuario->password = $request->input('passwordnueva');
                 $usuario->save();
-    
+
                 $arregloMensaje = [
                     'tipo' => 'success',
                     'mensaje' => 'Tus datos se actualizaron exitosamente.'
                 ];
-    
-            }else {
+            } else {
                 $arregloMensaje = [
                     'tipo' => 'restringed',
                     'mensaje' => 'Contraseña Incorrecta.'
                 ];
             }
-        }else{
+        } else {
             $arregloMensaje = [
                 'tipo' => 'restringed',
                 'mensaje' => 'Las contraseñas deben coincidir.'
@@ -197,7 +193,8 @@ class UsuarioController extends Controller
         return redirect()->route('verPerfil')->with($arregloMensaje['tipo'], $arregloMensaje['mensaje']);
     }
 
-    public function rules(){
+    public function rules()
+    {
         return [
             'nombre' => 'required|max:50|string',
             'apellido' => 'required|max:50|string',
@@ -209,25 +206,44 @@ class UsuarioController extends Controller
         ];
     }
 
-    
-    public function rulesEditar($id){
+
+    public function rulesEditar($id)
+    {
         return [
             'nombre' => 'required|max:50|string',
             'apellido' => 'required|max:50|string',
-            'usuario' => 'required|unique:users,usuario,'. $id .'|max:50',
-            'correo' => 'required|email:rfc,dns|unique:users,correo, '. $id,
+            'usuario' => 'required|unique:users,usuario,' . $id . '|max:50',
+            'correo' => 'required|email:rfc,dns|unique:users,correo, ' . $id,
             'rol' => 'required'
         ];
     }
 
-    public function rulesActualizarDatos($id){
+    public function rulesActualizarDatos($id)
+    {
         return [
             'nombre' => 'required|max:50|string',
             'apellido' => 'required|max:50|string',
-            'usuario' => 'required|unique:users,usuario,'. $id .'|max:50',
-            'correo' => 'required|email:rfc,dns|unique:users,correo, '. $id
+            'usuario' => 'required|unique:users,usuario,' . $id . '|max:50',
+            'correo' => 'required|email:rfc,dns|unique:users,correo, ' . $id
         ];
     }
 
+    public function actualizarFoto(Request $request)
+    {
+        $idUsuario = $request->input('idUsuario');
+        $usuario = User::find($idUsuario);
+     
+        $extension = $request->file('imagenPerfil')->getClientOriginalExtension();
 
+        $nombrePerfil = $idUsuario . 'Perfil.' . $extension;
+        $pathFoto = $request->file('imagenPerfil')->storeAs(
+            '/imagenPerfil',
+            $nombrePerfil,
+            'public'
+        );
+        $usuario->imagenPerfil = $pathFoto;
+        $usuario->save();
+
+        return redirect()->route('verPerfil');
+    }
 }
