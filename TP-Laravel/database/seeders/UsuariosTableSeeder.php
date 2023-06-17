@@ -28,7 +28,8 @@ class usuariosTableSeeder extends Seeder
                 'password' => 'competidor',
                 'idRol' => 3,
                 'estado' => true,
-                'idEscuela' => 4
+                'idEscuela' => 4,
+                'imagenPerfil' => null
             ],
             [
                 'nombre' => 'Juez',
@@ -38,7 +39,8 @@ class usuariosTableSeeder extends Seeder
                 'password' => 'juez',
                 'idRol' => 2,
                 'estado' => true,
-                'idEscuela' => 7
+                'idEscuela' => 7,
+                'imagenPerfil' => null
             ],
             [
                 'nombre' => 'Administrador',
@@ -48,7 +50,8 @@ class usuariosTableSeeder extends Seeder
                 'password' => 'administrador',
                 'idRol' => 1,
                 'estado' => true,
-                'idEscuela' => null
+                'idEscuela' => null,
+                'imagenPerfil' => null
             ],
             [
                 'nombre' => 'Gustavo',
@@ -58,7 +61,8 @@ class usuariosTableSeeder extends Seeder
                 'password' => 'GusOliveros',
                 'idRol' => 2,
                 'estado' => false,
-                'idEscuela' => 15
+                'idEscuela' => 15,
+                'imagenPerfil' => null
             ],
             [
                 'nombre' => 'Braian',
@@ -68,7 +72,8 @@ class usuariosTableSeeder extends Seeder
                 'password' => 'contraseña',
                 'idRol' => 2,
                 'estado' => false,
-                'idEscuela' => 15
+                'idEscuela' => 15,
+                'imagenPerfil' => null
             ],
             [
                 'nombre' => 'Aluhe',
@@ -78,7 +83,8 @@ class usuariosTableSeeder extends Seeder
                 'password' => 'contraseña',
                 'idRol' => 2,
                 'estado' => false,
-                'idEscuela' => 15
+                'idEscuela' => 15,
+                'imagenPerfil' => null
             ],
             [
                 'nombre' => 'Matias',
@@ -88,7 +94,8 @@ class usuariosTableSeeder extends Seeder
                 'password' => 'contraseña',
                 'idRol' => 2,
                 'estado' => false,
-                'idEscuela' => 15
+                'idEscuela' => 15,
+                'imagenPerfil' => null
             ],
             [
                 'nombre' => 'Gonzalo',
@@ -98,7 +105,8 @@ class usuariosTableSeeder extends Seeder
                 'password' => 'contraseña',
                 'idRol' => 2,
                 'estado' => false,
-                'idEscuela' => 15
+                'idEscuela' => 15,
+                'imagenPerfil' => null
             ],
             [
                 'nombre' => 'Martina',
@@ -108,7 +116,8 @@ class usuariosTableSeeder extends Seeder
                 'password' => 'contraseña',
                 'idRol' => 2,
                 'estado' => false,
-                'idEscuela' => 15
+                'idEscuela' => 15,
+                'imagenPerfil' => null
             ]
         ];
         
