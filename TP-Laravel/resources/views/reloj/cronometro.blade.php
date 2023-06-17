@@ -31,6 +31,57 @@
             <p class="display-6" id="tiempo-total_{{ $id_competencia }}"></p>
         </div>
     </div>
+   
 
+    <div class="p-3 row" style="margin-bottom: 100px">
+        <div class="col text-center">
+            <h3 class="display-5">Estado de puntuacion</h3>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Juez</th>
+                        <th scope="col">1er Puntaje</th>
+                        <th scope="col">2do Puntaje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="">
+                        <td>Nombre Apelido</td>
+                        <td class="table-success">
+                            <table class="table">
+                                <thead class="m-auto">
+                                    <tr>
+                                        <th scope="col">Exactitud</th>
+                                        <th scope="col">Presentacion</th>
+                                    </tr>
+
+                                </thead>
+                                <tbody>
+                                    <td>...</td>
+                                    <td>...</td>
+                                </tbody>
+                            </table>
+                        </td>
+                        <td class="table-danger">
+                            <table class="table  table-bordered">
+                                <thead class="m-auto">
+                                    <tr>
+                                        <th scope="col">Exactitud</th>
+                                        <th scope="col">Presentacion</th>
+                                    </tr>
+
+                                </thead>
+                                <tbody>
+                                    <td>...</td>
+                                    <td>...</td>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
     <script src="{{ asset('js/cronometro.js') }}"></script>
 @endsection
