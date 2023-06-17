@@ -20,26 +20,30 @@ class HomeController extends Controller
         $jueces = User::where('estado','=','1')->where('idRol','=','2')->get();
 
         //Competencias en las que no se esta registrado
-        $usuario = auth()->user();
-        $a = $usuario->id;
-        $yaParticipo = false;
         $competenciasDisponibles = null;
-        if($usuario['idRol'] == 2){
-            $competenciasDisponibles = Competencia::whereNotExists(function ($query) use ($a) {
-                $query->select(DB::raw(1))
-                      ->from('competenciaJueces')
-                      ->whereRaw('competenciaJueces.idCompetencia = competencias.idCompetencia')
-                      ->where('competenciaJueces.idJuez', $a);
-            })->get();
-        }
-        if($usuario['idRol'] == 3){
-            $ObjCompetidor = Competidor::where('idUser', $a)->first();
-            $competenciasDisponibles = Competencia::whereNotExists(function ($query) use ($ObjCompetidor) {
-                $query->select(DB::raw(1))
-                      ->from('competenciaCompetidor')
-                      ->whereRaw('competenciaCompetidor.idCompetencia = competencias.idCompetencia')
-                      ->where('competenciaCompetidor.idCompetidor', $ObjCompetidor->idCompetidor);
-            })->get();
+        $yaParticipo = false;
+
+        if(auth()->user()){
+
+            $usuario = auth()->user();
+            $a = $usuario->id;
+            if($usuario['idRol'] == 2){
+                $competenciasDisponibles = Competencia::whereNotExists(function ($query) use ($a) {
+                    $query->select(DB::raw(1))
+                          ->from('competenciaJueces')
+                          ->whereRaw('competenciaJueces.idCompetencia = competencias.idCompetencia')
+                          ->where('competenciaJueces.idJuez', $a);
+                })->get();
+            }
+            if($usuario['idRol'] == 3){
+                $ObjCompetidor = Competidor::where('idUser', $a)->first();
+                $competenciasDisponibles = Competencia::whereNotExists(function ($query) use ($ObjCompetidor) {
+                    $query->select(DB::raw(1))
+                          ->from('competenciaCompetidor')
+                          ->whereRaw('competenciaCompetidor.idCompetencia = competencias.idCompetencia')
+                          ->where('competenciaCompetidor.idCompetidor', $ObjCompetidor->idCompetidor);
+                })->get();
+            }
         }
 
         return view('home.index', compact('competencias','jueces','competenciasDisponibles','yaParticipo'));

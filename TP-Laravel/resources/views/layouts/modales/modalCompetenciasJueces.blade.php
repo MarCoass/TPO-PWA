@@ -18,7 +18,7 @@
                 @csrf
                     <div class="form-group">
                     <label for="juez">Juez</label>
-                    <input type="text" id="juez" name="juez" value="{{ auth()->user()->id }}">
+                    <input type="text" id="juez" name="juez" value="{{ auth()->user()->id }}" hidden>
                     <input class="form-control" type="text" value="{{ auth()->user()->nombre }} {{ auth()->user()->apellido }}" readonly disabled>
                     </div>
                     <div class="form-group">
