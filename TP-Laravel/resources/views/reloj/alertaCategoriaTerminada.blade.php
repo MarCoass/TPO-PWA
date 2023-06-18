@@ -9,7 +9,7 @@
           <p>Todos los competidores de esta categoria fueron juzgados.</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Elegir otra categoria</button>
+          <a href="{{route("index_reloj")}}"><button type="button" class="btn btn-primary" data-bs-dismiss="modal">Elegir otra categoria</button></a>
         </div>
       </div>
     </div>
