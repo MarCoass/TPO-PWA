@@ -159,7 +159,7 @@ class RelojController extends Controller
         //Busco el nombre del competidor
         $competenciaCompetidor = CompetenciaCompetidor::find($puntajes[0]->idCompetenciaCompetidor);
         $competidor = Competidor::find($competenciaCompetidor->idCompetidor);
-
+        $nombreCompetidor = $competidor->nombre . " " . $competidor->apellido;
 
         //Busco los nombres de los jueces
         $nombresJueces = [];
@@ -172,7 +172,7 @@ class RelojController extends Controller
         $response = [
             'primeraPasada' => $puntajesPrimeraPasada,
             'segundaPasada' => $puntajesSegundaPasada,
-            'competidor' => $competidor,
+            'competidor' => $nombreCompetidor,
             'jueces' => $nombresJueces
         ]; 
         return response()->json($response);

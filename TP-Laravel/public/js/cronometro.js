@@ -109,40 +109,37 @@ function actualizarInformacion() {
             let competidor = response["competidor"];
             let jueces = response["jueces"];
 
-            //console.log(puntajesPrimeraPasada);
+            $("#nombreCompetidor").text(competidor);
+
+            //console.log(puntajesSegundaPasada);
             for (let i = 0; i < cantJueces; i++) {
                 let nombreJuez = $("#nombreJuez" + i);
                 nombreJuez.text(jueces[i]);
                 if (puntajesPrimeraPasada[i]) {
-                    let exactitudPrimeraPasada = $(
-                        "#exactitudPrimeraPasadaJuez" + i
-                    );
-                    let presentacionPrimeraPasada = $(
-                        "#presentacionPrimeraPasadaJuez" + i
-                    );
-                    // Accede al contenido de exactitudPrimeraPasada
-                    exactitudPrimeraPasada.text(
+                    $("#exactitudPrimeraPasadaJuez" + i).text(
                         puntajesPrimeraPasada[i]["puntajeExactitud"]
                     );
-                    presentacionPrimeraPasada.text(
+
+                    $("#presentacionPrimeraPasadaJuez" + i).text(
                         puntajesPrimeraPasada[i]["puntajePresentacion"]
                     );
+                } else {
+                    $("#exactitudPrimeraPasadaJuez" + i).text("...");
+
+                    $("#presentacionPrimeraPasadaJuez" + i).text("...");
                 }
 
                 if (puntajesSegundaPasada[i]) {
-                    let exactitudSegundaPasada = $(
-                        "#exactitudSegundaPasadaJuez" + i
-                    );
-                    let presentacionSegundaPasada = $(
-                        "#presentacionSegundaPasadaJuez" + i
-                    );
-                    // Accede al contenido de exactitudSegundaPasada
-                    exactitudSegundaPasada.text(
+                    $("#exactitudSegundaPasadaJuez" + i).text(
                         puntajesSegundaPasada[i]["puntajeExactitud"]
                     );
-                    presentacionSegundaPasada.text(
+                    $("#presentacionSegundaPasadaJuez" + i).text(
                         puntajesSegundaPasada[i]["puntajePresentacion"]
                     );
+                } else {
+                    $("#exactitudSegundaPasadaJuez" + i).text("...");
+
+                    $("#presentacionSegundaPasadaJuez" + i).text("...");
                 }
             }
         },

@@ -1,6 +1,7 @@
 <div class="p-3 row" style="margin-bottom: 100px">
     <div class="col text-center">
         <h3 class="display-5">Estado de puntuacion</h3>
+        <p>Competidor:<span id="nombreCompetidor">...</span></p>
         <table class="table table-bordered" id="tabla-jueces">
             <thead>
                 <tr>
