@@ -13,7 +13,7 @@
             <tbody id="tbody-jueces">
                 @for ($i = 0; $i < $cantJueces; $i++)
                     <tr class="rowJuez{{$i}}">
-                        <td id="nombreJuez{{$i}}">Nombre Apelido</td>
+                        <td id="nombreJuez{{$i}}">Esperando juez...</td>
                         <td class="" id="primeraPasadaJuez{{$i}}">
                             <table class="table">
                                 <thead class="m-auto">

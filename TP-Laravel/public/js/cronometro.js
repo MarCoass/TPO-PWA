@@ -111,7 +111,7 @@ function actualizarInformacion() {
 
             $("#nombreCompetidor").text(competidor);
 
-            //console.log(puntajesSegundaPasada);
+            
             for (let i = 0; i < cantJueces; i++) {
                 let nombreJuez = $("#nombreJuez" + i);
                 nombreJuez.text(jueces[i]);
@@ -141,6 +141,10 @@ function actualizarInformacion() {
 
                     $("#presentacionSegundaPasadaJuez" + i).text("...");
                 }
+            }
+            if(response['categoriaTerminada']){
+
+                $('#modalCategoriaTerminada').modal('show');
             }
         },
     });

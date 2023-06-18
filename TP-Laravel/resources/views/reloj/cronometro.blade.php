@@ -34,5 +34,6 @@
 
 
     @include('reloj/tablaInformacion')
+    @include('reloj/alertaCategoriaTerminada')
     <script src="{{ asset('js/cronometro.js') }}"></script>
 @endsection

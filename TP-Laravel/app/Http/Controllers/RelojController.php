@@ -140,10 +140,7 @@ class RelojController extends Controller
 
 
         //Busco los ultimos puntaje creado para la categoria actual, para saber cual es el competidor
-    
-
         $puntajes = Puntaje::where('idCompetenciaCompetidor', $idCompetenciaCompetidor->idCompetenciaCompetidor)->orderBy('idCompetenciaJuez', 'desc')->get();
-
 
         //los agrupo en arrays segun la pasada
         $puntajesPrimeraPasada = [];
@@ -173,8 +170,19 @@ class RelojController extends Controller
             'primeraPasada' => $puntajesPrimeraPasada,
             'segundaPasada' => $puntajesSegundaPasada,
             'competidor' => $nombreCompetidor,
-            'jueces' => $nombresJueces
-        ]; 
+            'jueces' => $nombresJueces,
+            'categoriaTerminada' => $this->categoriaTerminada($idCategoria)
+        ];
         return response()->json($response);
+    }
+
+    //Esta funcion se fija si quedan competidores de la categoria sin calificar
+    public function categoriaTerminada($idCategoria)
+    {
+        $categoriaTerminada = !(CompetenciaCompetidor::where('idCategoria', $idCategoria)
+            ->where('puntaje', '=', 0)
+            ->exists());
+
+        return $categoriaTerminada;
     }
 }
