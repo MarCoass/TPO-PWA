@@ -220,6 +220,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/start', [RelojController::class, 'start'])->middleware(['rol:1']);
         Route::get('/stop', [RelojController::class, 'stop'])->middleware(['rol:1']);
         Route::get('/actualizar_reloj', [RelojController::class, 'obtener_estado_reloj']);
+        Route::get('/actualizar_informacion', [RelojController::class, 'buscarPuntuacionActual']);
     });
 
 });

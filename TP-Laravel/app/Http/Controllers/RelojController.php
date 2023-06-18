@@ -7,6 +7,10 @@ use App\Models\Reloj;
 use Illuminate\Http\Request;
 use App\Models\Competencia;
 use App\Models\Competidor;
+use App\Models\Puntaje;
+use App\Models\CompetenciaCompetidor;
+use App\Models\CompetenciaJuez;
+use App\Models\User;
 
 class RelojController extends Controller
 {
@@ -104,7 +108,8 @@ class RelojController extends Controller
                 ->distinct()
                 ->get();
         } else {
-            $data = Reloj::where('idCompetencia',  $id_competencia)->first();
+            //cambiado para que muestre solamente el ultimo elegido
+            $data = Reloj::where('idCompetencia',  $id_competencia)->orderBy('created_at', 'desc')->first();
 
             if ($data != null) {
                 $categoria = Categoria::where('idCategoria', $data->idCategoria)->distinct()->get();
@@ -112,12 +117,64 @@ class RelojController extends Controller
                 $categoria = null;
             }
         }
-        if(count($categoria)!=0){
-             return response()->json($categoria);
+        if (count($categoria) != 0) {
+            return response()->json($categoria);
         } else {
             return response()->json([]);
         }
+    }
 
-       
+    public function buscarPuntuacionActual(Request $request)
+    {
+        $idCategoria = $request->input('id_categoria');
+        $idCompetencia = $request->input('id_competencia');
+        //Aca se supone que los puntajes ya fueron creados (o no, hace falta agregar una validacion de que algo retorna)
+
+        //trae el idCompetenciaCompetidor del ultimo puntaje creado para la categoria y competencia
+        $idCompetenciaCompetidor = Puntaje::join('competenciaCompetidor', 'puntajes.idCompetenciaCompetidor', '=', 'competenciaCompetidor.idCompetenciaCompetidor')
+            ->where('competenciaCompetidor.idCompetencia', $idCompetencia)
+            ->where('competenciaCompetidor.idCategoria', $idCategoria)
+            ->latest('puntajes.created_at')
+            ->select('competenciaCompetidor.idCompetenciaCompetidor')
+            ->first();
+
+
+        //Busco los ultimos puntaje creado para la categoria actual, para saber cual es el competidor
+    
+
+        $puntajes = Puntaje::where('idCompetenciaCompetidor', $idCompetenciaCompetidor->idCompetenciaCompetidor)->orderBy('idCompetenciaJuez', 'desc')->get();
+
+
+        //los agrupo en arrays segun la pasada
+        $puntajesPrimeraPasada = [];
+        $puntajesSegundaPasada = [];
+        foreach ($puntajes as $puntaje) {
+            if ($puntaje->pasada == 1) {
+                $puntajesPrimeraPasada[] = $puntaje;
+            } elseif ($puntaje->pasada == 2) {
+                $puntajesSegundaPasada[] = $puntaje;
+            }
+        }
+
+        //Busco el nombre del competidor
+        $competenciaCompetidor = CompetenciaCompetidor::find($puntajes[0]->idCompetenciaCompetidor);
+        $competidor = Competidor::find($competenciaCompetidor->idCompetidor);
+
+
+        //Busco los nombres de los jueces
+        $nombresJueces = [];
+        foreach ($puntajesPrimeraPasada as $puntaje) {
+            $competenciaJuez = CompetenciaJuez::where('idCompetenciaJuez', $puntaje->idCompetenciaJuez)->first();
+            $juez = User::find($competenciaJuez->idJuez);
+            $nombresJueces[] = $juez->nombre . " " . $juez->apellido;
+        }
+
+        $response = [
+            'primeraPasada' => $puntajesPrimeraPasada,
+            'segundaPasada' => $puntajesSegundaPasada,
+            'competidor' => $competidor,
+            'jueces' => $nombresJueces
+        ]; 
+        return response()->json($response);
     }
 }
