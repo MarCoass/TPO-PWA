@@ -30,22 +30,29 @@ class PuntajeController extends Controller
         return view('puntuador/verPuntaje', ['puntaje' => $puntaje, 'competidor' => $competidor, 'competencia' => $competencia_competidor->idCompetencia, 'juez_puntuador' => $competenciaJuez, 'competencia_competidor' => $competencia_competidor->idCompetenciaCompetidor]);
     }
 
-    public function store(Request $request)
+    public function store($idCompetenciaCompetidor, $idCompetenciaJuez)
     {
         $puntaje = new Puntaje();
-        $puntaje->idCompetenciaCompetidor = $request->input('idCompetenciaCompetidor');
-        $puntaje->idCompetenciaJuez = $request->input('idCompetenciaJuez');
-        $puntaje->puntajePresentacion = $request->input('puntajePresentacion');
-        $puntaje->puntajeExactitud = $request->input('puntajeExactitud');
-        $puntaje->pasada = $request->input('pasada');
-        
+        $puntaje->idCompetenciaCompetidor = $idCompetenciaCompetidor;
+        $puntaje->idCompetenciaJuez = $idCompetenciaJuez;
+
+        //Modificando para que primero se cree el puntaje y despues de actualice
+        //para lo de mostrar los puntajes en admin
+        $puntaje->puntajePresentacion = 0;
+        $puntaje->puntajeExactitud = 0;
+
+        //Busco si ya existe un puntaje con los ids
+        $puntajePrimeraPasada = Puntaje::where('idCompetenciaCompetidor', $idCompetenciaCompetidor)->where('idCompetenciaJuez', $idCompetenciaJuez)->first();
+
+        $puntaje->pasada = $puntajePrimeraPasada == null ? 1 : 2;
+
 
         //busco el obj competenciaCompetidor
-        $idCompetenciaCompetidor = CompetenciaCompetidor::find($request->input('idCompetenciaCompetidor'));
+        $idCompetenciaCompetidor = CompetenciaCompetidor::find($idCompetenciaCompetidor);
         $puntaje->competenciaCompetidor()->associate($idCompetenciaCompetidor);
 
         //busco el obj competenciajuez
-        $competenciaJuez = CompetenciaJuez::find($request->input('idCompetenciaJuez'));
+        $competenciaJuez = CompetenciaJuez::find($idCompetenciaJuez);
         $puntaje->competenciaJuez()->associate($competenciaJuez);
 
         /**
@@ -54,23 +61,50 @@ class PuntajeController extends Controller
          */
         $reloj = Reloj::where('idCompetencia', $idCompetenciaCompetidor->idCompetencia)->where('idCategoria', $idCompetenciaCompetidor->idCategoria)->first();
         $puntaje->overtime = $reloj->overtime;
-        
+
+        //guardo el nuevo puntaje
+        $puntaje->save();
+
+        //busco el id para la ruta show
+        //$puntajeId = $puntaje->idPuntaje;
+
+        $idCompetenciaCompetidor->save();
+
+        //return redirect()->route('puntuador.show', ['puntaje' => $puntajeId]);
+    }
+
+    public function update(Request $request)
+    {
+        // Lógica para actualizar un registro existente basado en los datos del Request
+        $idCompetenciaCompetidor = $request->input('idCompetenciaCompetidor');
+        $idCompetenciaJuez = $request->input('idCompetenciaJuez');
+        $numPasada = $request->input('pasada');
+
+        $puntaje = Puntaje::where('idCompetenciaCompetidor', $idCompetenciaCompetidor)->where('idCompetenciaJuez', $idCompetenciaJuez)->where('pasada', $numPasada)->first();
+        $puntaje->puntajePresentacion = $request->input('puntajePresentacion');
+        $puntaje->puntajeExactitud = $request->input('puntajeExactitud');
+        $puntaje->pasada = $request->input('pasada');
+
+
+        //busco el obj competenciaCompetidor
+        $idCompetenciaCompetidor = CompetenciaCompetidor::find($request->input('idCompetenciaCompetidor'));
+
+        /**
+         * Mi logica para la siguiente es esta: buscar el reloj de la competencia y categoria que corresponde al 
+         * competidor que esta siendo juzgado y se suma el overtime registrado, como se usa el mismo reloj para toda la categoria es solo first
+         */
+        $reloj = Reloj::where('idCompetencia', $idCompetenciaCompetidor->idCompetencia)->where('idCategoria', $idCompetenciaCompetidor->idCategoria)->first();
+        $puntaje->overtime = $reloj->overtime;
+
         //guardo el nuevo puntaje
         $puntaje->save();
 
         //busco el id para la ruta show
         $puntajeId = $puntaje->idPuntaje;
 
-
-        
         $idCompetenciaCompetidor->save();
 
         return redirect()->route('puntuador.show', ['puntaje' => $puntajeId]);
-    }
-
-    public function update(Request $request, $id)
-    {
-        // Lógica para actualizar un registro existente basado en los datos del Request
     }
 
     public function  puntuadorindex()
@@ -89,15 +123,10 @@ class PuntajeController extends Controller
         $id_competencia = $request->input('competencia');
         $id_competidor = $request->input('competidor');
 
-
         $competidor = Competidor::where('idCompetidor', '=', $id_competidor)->get();
         $competencia = Competencia::where('idCompetencia', '=', $id_competencia)->get();
 
         $competencia_competidor = CompetenciaCompetidor::where('idCompetidor', '=', $id_competidor)->where('idCompetencia', '=', $id_competencia)->get();
-
-        /* Viejo
-        $poomsae = Poomsae::where('idPoomsae', '=', $id_pomsae)->get(); */
-
         $competenciaJuez = CompetenciaJuez::where('idCompetencia', '=', $id_competencia)->where('idJuez', '=', auth()->user()->id)->get();
 
 
@@ -107,14 +136,14 @@ class PuntajeController extends Controller
         //Busco el poomsae que corresponde a la pasada actual
         $competenciaCompetidorPoomsae = CompetenciaCompetidorPoomsae::where('idCompetenciaCompetidor', '=', $competencia_competidor[0]->idCompetenciaCompetidor)->where('pasadas', '=', $pasada)->get();
 
-        //dd(CompetenciaCompetidorPoomsae::where('idCompetenciaCompetidor','=', $competencia_competidor[0]->idCompetenciaCompetidor)->where('pasadas','=', $pasada));
-        //$poomsae = Poomsae::find($competenciaCompetidorPoomsae[0]->idPoomsae);
         $arrayPoomsaes = [];
         //cambios para que al poomsae lo trate como array
         foreach ($competenciaCompetidorPoomsae as $item) {
             $arrayPoomsaes[] = Poomsae::find($item->idPoomsae);
         }
 
+        //modificando para que se cree primero el puntaje y despues solo se actualice
+        $this->store($competencia_competidor[0]->idCompetenciaCompetidor, $competenciaJuez[0]->idCompetenciaJuez);
         return view('puntuador.puntuador', ['competencia' => $competencia, 'arrayPoomsaes' => $arrayPoomsaes, 'competidor' => $competidor, 'competencia_competidor' => $competencia_competidor, 'competencia_juez' => $competenciaJuez, 'pasada' => $pasada]);
     }
 
@@ -130,7 +159,7 @@ class PuntajeController extends Controller
 
         return $this->puntuadorindex();
     }
-   
+
     public function obtenerOpcionesCompetidorCategoria(Request $request)
     {
         $categoria = $request->input('categoria');

@@ -54,7 +54,7 @@
             <!-- Modal -->
             <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
                 <div class="modal-dialog text-dark">
-                    <form method="POST" action="{{ route('puntaje.store') }}">
+                    <form method="POST" action="{{ route('puntaje.update') }}">
                       
                         <div class="modal-content">
                         <div class="modal-header">
