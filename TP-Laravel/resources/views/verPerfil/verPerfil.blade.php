@@ -6,7 +6,6 @@
 
 @section('contenido')
     @include('layouts.partials.messages')
-
     @auth
         @include('verPerfil.subirFoto')
         <div class="row">
@@ -33,14 +32,55 @@
                             <p class="text-muted mb-1">{{ auth()->user()->escuela->nombre }}</p>
                         @endif
                         <p class="text-muted mb-4"> {{ auth()->user()->rol->nombreRol }} </p>
-                        <!--<div class="d-flex justify-content-center mb-2">
-                                  <a href="/solicitar_cambios/{{ auth()->user()->id }}" class="btn btn-outline-primary ms-1"><i class="bi bi-person-gear me-2"></i>Solicitar cambios</a>
-                                </div>-->
                     </div>
                 </div>
                 <div class="card mb-4 mb-lg-0">
-                    <div class="card-body p-0">
-                        <h5>Posible listado de competencias en las que participó?</h5>
+                    <div class="card-body">
+                        <p class="text-secondary text-decoration-underline">Historial de Competencias en las que participó.</p>
+                        @if (count($arreglo) > 0)
+                        <table class="table table-striped table-hover">
+                            @if (auth()->user()->idRol == 2)
+
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Nombre Competencia</th>
+                                        <th scope="col">Fecha</th>
+                                        <th scope="col">Cantidad de Jueces</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach ($arreglo as $item)
+                                <tr>
+                                    <th scope="row">{{$item['nombre']}}</th>
+                                    <td>{{$item['fecha']}}</td>
+                                    <td>{{$item['cantidadJueces']}}</td>
+                                </tr>
+                                @endforeach
+                                </tbody>
+                            @else
+                                @if (auth()->user()->idRol == 3)
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Nombre Competencia</th>
+                                            <th scope="col">Fecha</th>
+                                            <th scope="col">Puntaje</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach ($arreglo as $item)
+                                    <tr>
+                                        <th scope="row">{{$item['nombre']}}</th>
+                                        <td>{{$item['fecha']}}</td>
+                                        <td>{{$item['puntaje']}}</td>
+                                    </tr>
+                                    @endforeach
+                                    </tbody>
+                                @endif
+                            @endif
+                        </table>
+                        @else
+                            <span class="text-danger">No se ha inscrito a ninguna competencia o sigue en curso.</span>
+                        @endif
                     </div>
                 </div>
             </div>

@@ -19,28 +19,29 @@ use Illuminate\Http\Request;
 class CompetidorController extends Controller
 {
 
-    public function cargarCompetidor(){
+    public function cargarCompetidor()
+    {
         // Obtiene todas las competencias que ya tienen todos los jueces requeridos
         $competencias = Competencia::where('estadoJueces', true)->where('estadoCompetencia', 0)->get();
 
         $graduaciones = Graduacion::all();
 
-        return view('cargarCompetidor.cargarCompetidor', compact('graduaciones','competencias'));
+        return view('cargarCompetidor.cargarCompetidor', compact('graduaciones', 'competencias'));
     }
 
     public function index()
     {
         $competidores = Competidor::all();
 
-        return view('tablaCompetidores.tablaCompetidores',['competidores' => $competidores]);
+        return view('tablaCompetidores.tablaCompetidores', ['competidores' => $competidores]);
     }
 
-   public function obtenerRegistros()
+    public function obtenerRegistros()
     {
 
         $competidores = Competidor::select('competidores.*', 'paises.nombrePais as nombre_pais')
-        ->join('paises', 'competidores.idPais', '=', 'paises.idPais')
-        ->get();
+            ->join('paises', 'competidores.idPais', '=', 'paises.idPais')
+            ->get();
 
         return response()->json($competidores);
     }
@@ -50,38 +51,39 @@ class CompetidorController extends Controller
         $competidoresMasculinos = $this->buscarCompetidoresPorGeneroYcategoria($request['idCategoria'], 0);
         $competidoresFemeninos = $this->buscarCompetidoresPorGeneroYcategoria($request['idCategoria'], 1);
 
-      /*   $competidoresTotal[0] = $competidoresMasculinos;
+        /*   $competidoresTotal[0] = $competidoresMasculinos;
         $competidoresTotal[1] = $competidoresFemeninos; */
 
         return compact('competidoresMasculinos', 'competidoresFemeninos');
     }
 
 
-    public function buscarCompetidoresPorGeneroYcategoria($idCategoria, $genero){
+    public function buscarCompetidoresPorGeneroYcategoria($idCategoria, $genero)
+    {
         $competidores = CompetenciaCompetidor::join('competidores', function ($join) {
             $join->on('competenciacompetidor.idCompetidor', '=', 'competidores.idCompetidor')
                 ->where('competidores.ranking', '>', 0);
         })
-        ->join('competencias', 'competenciacompetidor.idCompetencia', '=', 'competencias.idCompetencia')
-        ->select('competenciacompetidor.*', 'competidores.nombre')
-        ->where('competenciacompetidor.idCategoria', $idCategoria)
-        ->where('competidores.genero', $genero)
-        ->whereYear('competencias.fecha', 2023)
-        ->orderBy('competidores.ranking', 'desc')
-        ->get();
+            ->join('competencias', 'competenciacompetidor.idCompetencia', '=', 'competencias.idCompetencia')
+            ->select('competenciacompetidor.*', 'competidores.nombre')
+            ->where('competenciacompetidor.idCategoria', $idCategoria)
+            ->where('competidores.genero', $genero)
+            ->whereYear('competencias.fecha', 2023)
+            ->orderBy('competidores.ranking', 'desc')
+            ->get();
 
 
         $puesto = 1;
         foreach ($competidores as $comp) {
-            
+
             $comp['puesto'] = $puesto;
-           
+
             $competidor = Competidor::find($comp->idCompetidor);
-            $comp['nombre'] = $competidor->nombre ." ".$competidor->apellido;
+            $comp['nombre'] = $competidor->nombre . " " . $competidor->apellido;
 
             $pais = Pais::find($competidor->idPais);
             $estado = Estado::find($competidor->idEstado);
-            $comp['lugar'] = $pais->nombrePais." - ".$estado->nombreEstado;
+            $comp['lugar'] = $pais->nombrePais . " - " . $estado->nombreEstado;
 
             $comp['ranking'] = $competidor->ranking;
 
@@ -99,7 +101,8 @@ class CompetidorController extends Controller
         return view('competidores.create');
     }
 
-    public function vistaReinscribirCompetidor(){
+    public function vistaReinscribirCompetidor()
+    {
         $usuario = auth()->user();
         $idUsuario = $usuario->id;
         $idEscuela = $usuario->idEscuela;
@@ -111,16 +114,16 @@ class CompetidorController extends Controller
         // Obtiene todas las competencias que ya tienen todos los jueces requeridos
         $competencias = Competencia::whereNotExists(function ($query) use ($competidor) {
             $query->select(DB::raw(1))
-                  ->from('competenciaCompetidor')
-                  ->whereRaw('competenciaCompetidor.idCompetencia = competencias.idCompetencia')
-                  ->where('competenciaCompetidor.idCompetidor', $competidor->idCompetidor);
+                ->from('competenciaCompetidor')
+                ->whereRaw('competenciaCompetidor.idCompetencia = competencias.idCompetencia')
+                ->where('competenciaCompetidor.idCompetidor', $competidor->idCompetidor);
         })->get();
         $graduacion1 = Graduacion::where('idGraduacion', '=', $competidor->idGraduacion)->first();
         $graduaciones = Graduacion::where('idGraduacion', '>', $competidor->idGraduacion)
-        ->orderBy('idGraduacion', 'desc')
-        ->get();
+            ->orderBy('idGraduacion', 'desc')
+            ->get();
 
-        if ($graduacion1->color != "Cinturón negro"){
+        if ($graduacion1->color != "Cinturón negro") {
             $galDesactivado = "disabled";
         } else {
             $galDesactivado = "";
@@ -130,16 +133,20 @@ class CompetidorController extends Controller
 
         //Obtenemos las escuelas
         $escuela1 = Escuela::where('idEscuela', '=', $idEscuela)->first();
-        $escuelas = Escuela::where('idEscuela', '>', $idEscuela)
-        ->orderBy('idEscuela', 'desc')
-        ->get();
+        
+        // Obtenemos todas las escuelas excepto la escuela1
+        $escuelas = Escuela::whereNotIn('idEscuela', [$escuela1->idEscuela])
+            ->orderBy('idEscuela', 'desc')
+            ->get();
 
+        // Agregamos la escuela1 al principio de la colección
         $escuelas->prepend($escuela1);
 
-        return view('cargarCompetidor.reinscribirseCompetencia', compact('graduaciones','competencias', 'competidor', 'escuelas', 'galDesactivado'));
+        return view('cargarCompetidor.reinscribirseCompetencia', compact('graduaciones', 'competencias', 'competidor', 'escuelas', 'galDesactivado'));
     }
 
-    public function reinscribirCompetidor(Request $request){
+    public function reinscribirCompetidor(Request $request)
+    {
         $competidor = Competidor::find($request['idCompetidor']);
         $competidor->nombre = $request->input('nombre');
         $competidor->apellido = $request->input('apellido');
@@ -164,9 +171,9 @@ class CompetidorController extends Controller
         $CompetenciaCompetidorController = new CompetenciaCompetidorController();
 
         $categoria = Graduacion::select('categoriagraduacion.idCategoria')
-        ->join('categoriagraduacion', 'graduaciones.idGraduacion', '=', 'categoriagraduacion.idGraduacion')->where('graduaciones.idGraduacion','=',$request->input('graduacionActual'))->get();
+            ->join('categoriagraduacion', 'graduaciones.idGraduacion', '=', 'categoriagraduacion.idGraduacion')->where('graduaciones.idGraduacion', '=', $request->input('graduacionActual'))->get();
 
-        $CompetenciaCompetidorController->guardar_preinscripcion($competidor->idCompetidor,$request->input('competencia'),$categoria[0]->idCategoria);
+        $CompetenciaCompetidorController->guardar_preinscripcion($competidor->idCompetidor, $request->input('competencia'), $categoria[0]->idCategoria);
 
         //Solicitar cambios de escuela o graduacion si uno de los check fue seleccionado
         if ($request->boolean('checkGraduacion') || $request->boolean('checkEscuela')) {
@@ -179,10 +186,10 @@ class CompetidorController extends Controller
 
             //Verificamos ambos check para saber si hacemos el cambio o no y de qué
 
-            if($request->boolean('checkEscuela')){
+            if ($request->boolean('checkEscuela')) {
                 $arregloSolicitud['newEscuela'] = $request->input('idEscuela');
             }
-            if($request->boolean('checkGraduacion')){
+            if ($request->boolean('checkGraduacion')) {
                 $arregloSolicitud['newGraduacion'] = $request->input('idGraduacion');
             }
 
@@ -228,9 +235,9 @@ class CompetidorController extends Controller
         $CompetenciaCompetidorController = new CompetenciaCompetidorController();
 
         $categoria = Graduacion::select('categoriagraduacion.idCategoria')
-        ->join('categoriagraduacion', 'graduaciones.idGraduacion', '=', 'categoriagraduacion.idGraduacion')->where('graduaciones.idGraduacion','=',$request['idGraduacion'])->get();
+            ->join('categoriagraduacion', 'graduaciones.idGraduacion', '=', 'categoriagraduacion.idGraduacion')->where('graduaciones.idGraduacion', '=', $request['idGraduacion'])->get();
 
-        $CompetenciaCompetidorController->guardar_preinscripcion($competidor->idCompetidor,$request->input('competencia'),$categoria[0]->idCategoria);
+        $CompetenciaCompetidorController->guardar_preinscripcion($competidor->idCompetidor, $request->input('competencia'), $categoria[0]->idCategoria);
 
         return redirect('/')->with('success', "Se ha inscripto correctamente a la competencia. Quedó en espera de verificación.");
     }
@@ -280,23 +287,21 @@ class CompetidorController extends Controller
      * Dado un campo especial (gal, du, email), valida si este ya existe en la db
      * @return JSON claves "success" (1 si no existe | 0 si existe) y "error" (mensaje de error)
      */
-    public function validar(Request $request){
+    public function validar(Request $request)
+    {
         $result = [];
 
         $duplicado = Competidor::where($request->input('campo'), "=", $request->input('valor'))->first();
 
-        if(!is_null($duplicado)){
+        if (!is_null($duplicado)) {
             $result["success"] = 0;
             $result["error"] = "Este " . strtoupper($request->input('campo')) . " ya se encuentra registrado.";
         }
 
-        if(count($result) == 0){
+        if (count($result) == 0) {
             $result['success'] = 1;
         }
 
         return response()->json($result);
     }
 }
-
-
-
