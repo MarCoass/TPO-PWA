@@ -15,6 +15,7 @@ class HomeController extends Controller
 {
     public function index()
     {
+        $competencias = null;
         $objCompetidor = null;
         //Competencias en las que no se esta registrado
         $competenciasDisponibles = null;
