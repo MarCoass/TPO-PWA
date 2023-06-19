@@ -85,5 +85,10 @@ class User extends Authenticatable
         return $this->belongsTo(Escuela::class, 'idEscuela');
     }
 
+    public function routeNotificationForMail()
+    {
+    return $this->correo;
+    }
+
 
 }

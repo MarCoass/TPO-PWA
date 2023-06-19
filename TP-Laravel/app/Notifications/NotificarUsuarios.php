@@ -12,17 +12,18 @@ class NotificarUsuarios extends Notification
     use Queueable;
 
     /**
-     * Create a new notification instance.
+     * Crear una nueva instancia de la notificación
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($mensaje, $saludo)
     {
-        //
+        $this->mensaje = $mensaje;
+        $this->saludo = $saludo;
     }
 
     /**
-     * Get the notification's delivery channels.
+     * Obtener los canales de entrega de la notificación
      *
      * @param  mixed  $notifiable
      * @return array
@@ -33,7 +34,7 @@ class NotificarUsuarios extends Notification
     }
 
     /**
-     * Get the mail representation of the notification.
+     * Obtener la representación del correo de la notificación
      *
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
@@ -41,13 +42,13 @@ class NotificarUsuarios extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Introduccion a las notificaciones.')
-                    ->action('Ir a la notificacion', url('/'))
-                    ->line('Gracias por usar nuestra App!');
+                    ->line('Introduccion a las notificaciones.'.$this->mensaje)
+                    ->action('Ir a la notificacion', url('/verPerfil'))
+                    ->line('Gracias por usar nuestra App!'.$this->saludo ." " .$notifiable->nombre);
     }
 
     /**
-     * Get the array representation of the notification.
+     * Obtener la representación del array de la notificación
      *
      * @param  mixed  $notifiable
      * @return array

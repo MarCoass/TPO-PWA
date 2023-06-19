@@ -10,7 +10,7 @@ use App\Models\CompetenciaJuez;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-/*  */
+/* Necesarios para enviar mails */
 use App\Notifications\NotificarUsuarios;
 use Illuminate\Support\Facades\Notification;
 
@@ -52,9 +52,14 @@ class HomeController extends Controller
             }
         }
 
-        Notification::route('mail', [
+        /* Notification::route('mail', [
             'barrett@example.com' => 'Barrett Blair',
-        ])->notify(new NotificarUsuarios());
+        ])->notify(new NotificarUsuarios()); */
+        
+        /* Busca el objeto usuario */
+        $user = User::find(1);
+        /* del objeto usuario invoca a notify, y este lo  */
+        $user->notify(new NotificarUsuarios('Hola', 'Buenos días'));
 
 
 
