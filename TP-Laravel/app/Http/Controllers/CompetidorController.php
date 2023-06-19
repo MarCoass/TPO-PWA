@@ -7,52 +7,25 @@ use App\Models\Pais;
 use App\Models\Competidor;
 use App\Models\Graduacion;
 use App\Models\Competencia;
+use App\Models\Escuela;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\CompetenciaCompetidorController;
 use App\Models\CompetenciaCompetidor;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\SolicitudController;
 use Illuminate\Http\Request;
 
 class CompetidorController extends Controller
 {
 
     public function cargarCompetidor(){
-        $graduaciones = Graduacion::all();
         // Obtiene todas las competencias que ya tienen todos los jueces requeridos
-        $competencias = Competencia::where('estadoJueces', true)->get();
+        $competencias = Competencia::where('estadoJueces', true)->where('estadoCompetencia', 0)->get();
 
-        //Obtiene el id del usuario actual
-        $idUser = auth()->user()->id;
-        //Obtengo el primer competidor que encuentre asociado segun el idUser
-        $competidor = Competidor::where('idUser', $idUser)->first();
-
-        //Comprueba si hay competidor asociado o no
-        if ($competidor !== null) {
-            //el user esta asociado a ningun competidor
-            
-            $idGraduacion = $competidor->idGraduacion;
-
-            $pepe = false;
-            $bolsa = [];
-            foreach ($graduaciones as $grad) {
-
-                if ($pepe == true) {
-                    array_push($bolsa, $grad);
-                }
-
-                if ($grad->idGraduacion == $idGraduacion) {
-                    
-                    array_push($bolsa, $grad);
-                    $pepe = true;
-                }
-
-            }
-            $graduaciones = $bolsa;
-    
-        }
+        $graduaciones = Graduacion::all();
 
         return view('cargarCompetidor.cargarCompetidor', compact('graduaciones','competencias'));
-
     }
 
     public function index()
@@ -126,6 +99,99 @@ class CompetidorController extends Controller
         return view('competidores.create');
     }
 
+    public function vistaReinscribirCompetidor(){
+        $usuario = auth()->user();
+        $idUsuario = $usuario->id;
+        $idEscuela = $usuario->idEscuela;
+
+        $competidor = Competidor::where('idUser', '=', $idUsuario)->first();
+        $pais = Pais::find($competidor->idPais);
+        $estado = Estado::find($competidor->idEstado);
+
+        // Obtiene todas las competencias que ya tienen todos los jueces requeridos
+        $competencias = Competencia::whereNotExists(function ($query) use ($competidor) {
+            $query->select(DB::raw(1))
+                  ->from('competenciaCompetidor')
+                  ->whereRaw('competenciaCompetidor.idCompetencia = competencias.idCompetencia')
+                  ->where('competenciaCompetidor.idCompetidor', $competidor->idCompetidor);
+        })->get();
+        $graduacion1 = Graduacion::where('idGraduacion', '=', $competidor->idGraduacion)->first();
+        $graduaciones = Graduacion::where('idGraduacion', '>', $competidor->idGraduacion)
+        ->orderBy('idGraduacion', 'desc')
+        ->get();
+
+        if ($graduacion1->color != "Cinturón negro"){
+            $galDesactivado = "disabled";
+        } else {
+            $galDesactivado = "";
+        }
+
+        $graduaciones->prepend($graduacion1);
+
+        //Obtenemos las escuelas
+        $escuela1 = Escuela::where('idEscuela', '=', $idEscuela)->first();
+        $escuelas = Escuela::where('idEscuela', '>', $idEscuela)
+        ->orderBy('idEscuela', 'desc')
+        ->get();
+
+        $escuelas->prepend($escuela1);
+
+        return view('cargarCompetidor.reinscribirseCompetencia', compact('graduaciones','competencias', 'competidor', 'escuelas', 'galDesactivado'));
+    }
+
+    public function reinscribirCompetidor(Request $request){
+        $competidor = Competidor::find($request['idCompetidor']);
+        $competidor->nombre = $request->input('nombre');
+        $competidor->apellido = $request->input('apellido');
+        $competidor->du = $request->input('du');
+        $competidor->gal = $request->input('gal');
+        $competidor->fechaNacimiento = $request->input('fechaNacimiento');
+        $competidor->email = $request->input('correo');
+        $competidor->genero = $request->input('genero');
+
+        // Creamos el objeto Pais
+        $pais = Pais::find($request['idPais']);
+        $competidor->pais()->associate($pais);
+
+        // Creamos el objeto Estado
+        $estado = Estado::find($request['idEstado']);
+        $competidor->estado()->associate($estado);
+
+        //Actualizamos los datos del competidor
+        $competidor->save();
+
+        //Generamos la inscripcion a la competencia
+        $CompetenciaCompetidorController = new CompetenciaCompetidorController();
+
+        $categoria = Graduacion::select('categoriagraduacion.idCategoria')
+        ->join('categoriagraduacion', 'graduaciones.idGraduacion', '=', 'categoriagraduacion.idGraduacion')->where('graduaciones.idGraduacion','=',$request->input('graduacionActual'))->get();
+
+        $CompetenciaCompetidorController->guardar_preinscripcion($competidor->idCompetidor,$request->input('competencia'),$categoria[0]->idCategoria);
+
+        //Solicitar cambios de escuela o graduacion si uno de los check fue seleccionado
+        if ($request->boolean('checkGraduacion') || $request->boolean('checkEscuela')) {
+            //Preparamos el request
+            $arregloSolicitud = [
+                'idUser' => $competidor->idUser,
+                'newEscuela' => 0,
+                'newGraduacion' => 0
+            ];
+
+            //Verificamos ambos check para saber si hacemos el cambio o no y de qué
+
+            if($request->boolean('checkEscuela')){
+                $arregloSolicitud['newEscuela'] = $request->input('idEscuela');
+            }
+            if($request->boolean('checkGraduacion')){
+                $arregloSolicitud['newGraduacion'] = $request->input('idGraduacion');
+            }
+
+            $objSolicitud = new SolicitudController;
+            $objSolicitud->generarSolicitud(new Request($arregloSolicitud));
+        }
+        return redirect('/')->with('success', "Se ha inscripto correctamente a la competencia. Quedó en espera de verificación.");
+    }
+
     public function store(Request $request)
     {
         $competidor = new Competidor();
@@ -165,16 +231,7 @@ class CompetidorController extends Controller
         ->join('categoriagraduacion', 'graduaciones.idGraduacion', '=', 'categoriagraduacion.idGraduacion')->where('graduaciones.idGraduacion','=',$request['idGraduacion'])->get();
 
         $CompetenciaCompetidorController->guardar_preinscripcion($competidor->idCompetidor,$request->input('competencia'),$categoria[0]->idCategoria);
-  
 
-        // Respuesta JSON
-        $data = [
-            'message' => 'El competidor se ha registrado correctamente',
-            'data' => $request->all()
-        ];
-
-        // Devolver una respuesta JSON
-        // return response()->json($data, 200);
         return redirect('/')->with('success', "Se ha inscripto correctamente a la competencia. Quedó en espera de verificación.");
     }
 
