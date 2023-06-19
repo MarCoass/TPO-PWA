@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 /* Necesarios para enviar mails */
-use App\Notifications\NotificarIdeal;
+use App\Notifications\NotificacionGeneral;
 use Illuminate\Support\Facades\Notification;
 
 class SolicitudController extends Controller
@@ -93,7 +93,7 @@ class SolicitudController extends Controller
         /* Busca el objeto usuario */
         $user = User::find($solicitud->idUser);
         /* del objeto usuario invoca a notify, y este lo  */
-        $user->notify(new NotificarIdeal('success','Solicitud de cambios Aceptada!','Tu solicitud para actualizar tu escuela y/o graduacion ha sido aceptada', $datosSolicitud));
+        $user->notify(new NotificacionGeneral('success','Solicitud de cambios Aceptada!','Tu solicitud para actualizar tu escuela y/o graduacion ha sido aceptada', $datosSolicitud));
 
         return redirect()->route('index_solicitudes')->with('success', 'Solicitud aceptada');
     }
