@@ -6,11 +6,6 @@ use App\Models\Competencia;
 use App\Models\Competidor;
 use Illuminate\Support\Facades\DB;
 
-/* Necesarios para enviar mails 
-use App\Notifications\NotificarIdeal;
-use Illuminate\Support\Facades\Notification;
-*/
-
 class HomeController extends Controller
 {
     public function index()
@@ -43,21 +38,6 @@ class HomeController extends Controller
                 }
             }
         }
-
-        /* Notification::route('mail', [
-            'barrett@example.com' => 'Barrett Blair',
-        ])->notify(new NotificarUsuarios()); */
-
-        /* Busca el objeto usuario
-        $user = User::find(1);
-        del objeto usuario invoca a notify, y este lo
-        $user->notify(new NotificarIdeal('success','probando success','este es el mensaje', 'y esta la descripcion'));
-
-        /* Busca el objeto usuario
-        $user = User::find(3);
-        del objeto usuario invoca a notify, y este lo
-        $user->notify(new NotificarIdeal('restricted','probando restricted','este es el mensaje', 'y esta la descripcion')); */
-
 
         return view('home.index', compact('competencias', 'competenciasDisponibles', 'objCompetidor'));
     }

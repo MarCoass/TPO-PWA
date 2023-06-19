@@ -6,6 +6,11 @@ use App\Models\Competencia;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+/* Necesarios para enviar mails */
+use App\Notifications\NotificacionGeneral;
+use Illuminate\Support\Facades\Notification;
+
+
 class CompetenciaJuezController extends Controller
 {
     public function store(Request $request){
@@ -85,7 +90,8 @@ class CompetenciaJuezController extends Controller
             $mensaje =["tipo" => 'success', 'mensaje' => 'Juez habilitado exitosamente.'];
         }
 
-
+        $user = User::find($competencia_juez->juez->id);
+        $user->notify(new NotificacionGeneral('success','Han aceptado tu inscripcion!.','Ahora estas habilitado para Juzgar en: '.$competencia_juez->competencia->nombre, 'Enhorabuena!'));
 
 
         return redirect()->route('tabla_jueces', ['id' => $competencia_juez->idCompetencia])->with($mensaje['tipo'], $mensaje['mensaje']);
@@ -120,7 +126,8 @@ class CompetenciaJuezController extends Controller
             $competencia_juez->save();
             $mensaje =["tipo" => 'success', 'mensaje' => 'Juez rechazado exitosamente.'];
 
-
+        $user = User::find($competencia_juez->juez->id);
+        $user->notify(new NotificacionGeneral('restricted','Han rechazado tu inscripcion.','Por motivos administrativos no puedes Juzgar en '.$competencia_juez->competencia->nombre , 'Disculpe las Molestias.'));
 
 
         return redirect()->route('tabla_jueces', ['id' => $competencia_juez->idCompetencia])->with($mensaje['tipo'], $mensaje['mensaje']);

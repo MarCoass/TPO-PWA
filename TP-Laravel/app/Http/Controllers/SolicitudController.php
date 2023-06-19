@@ -103,6 +103,23 @@ class SolicitudController extends Controller
         $solicitud = Solicitud::find($id);
         $solicitud->estadoSolicitud = 2;
         $solicitud->save();
+
+        /*  */
+        $datosSolicitud[0] = "   Se te rechazo el pedido para actualizar tus datos: ";
+
+        if($solicitud->newEscuela == 0){
+            $datosSolicitud[1] = "- Cambiar escuela a '".$solicitud->escuela->nombre."'";
+        }
+
+        if($solicitud->newGraduacion == 0){
+            $datosSolicitud[2] = "- Cambiar graduacion a ".$solicitud->graduacion->nombre." - ".$solicitud->graduacion->color."'";
+        }
+
+        /* Busca el objeto usuario */
+        $user = User::find($solicitud->idUser);
+        /* del objeto usuario invoca a notify, y este lo  */
+        $user->notify(new NotificacionGeneral('restricted','Solicitud de cambios Rechazada.','Tu solicitud para actualizar tu escuela y/o graduacion fue rechazada', $datosSolicitud));
+
         return redirect()->route('index_solicitudes')->with('success', 'Solicitud rechazada');
     }
 
@@ -117,6 +134,7 @@ class SolicitudController extends Controller
         $solicitud = Solicitud::find($id);
         $solicitud->estadoSolicitud = 1;
         $solicitud->save();
+        
         return response()->noContent(); // retorna una respuesta vacía con código 204
     }
 

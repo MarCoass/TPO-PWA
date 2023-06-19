@@ -12,6 +12,11 @@ use App\Models\Puntaje;
 use Illuminate\Support\Facades\DB;
 use App\Models\Reloj;
 
+/* Necesarios para enviar mails */
+use App\Notifications\NotificacionGeneral;
+use Illuminate\Support\Facades\Notification;
+
+
 class CompetenciaCompetidorController extends Controller
 {
 
@@ -89,6 +94,10 @@ class CompetenciaCompetidorController extends Controller
         $CompetidorCompetencia->estado = 1;
         $CompetidorCompetencia->save();
 
+        $user = $CompetidorCompetencia->competidor->user;
+
+        $user->notify(new NotificacionGeneral('success','Ha sido habilitado para competir!','Estas habilitado para competir en '.$CompetidorCompetencia->competencia->nombre, 'Exitos!'));
+
         return redirect()->route('tabla_competidores', ['id' => $CompetidorCompetencia->idCompetencia])->with('success', 'Competidor habilitado exitosamente.');
     }
 
@@ -99,6 +108,11 @@ class CompetenciaCompetidorController extends Controller
         $CompetidorCompetencia = CompetenciaCompetidor::find($id);
         $CompetidorCompetencia->estado = 2;
         $CompetidorCompetencia->save();
+
+        $user = $CompetidorCompetencia->competidor->user;
+
+        $user->notify(new NotificacionGeneral('restricted','Han rechazado tu inscripcion.','Por motivos administrativos no puedes competir en '.$CompetidorCompetencia->competencia->nombre, 'Disculpe las molestias!'));
+
 
         return redirect()->route('tabla_competidores', ['id' => $CompetidorCompetencia->idCompetencia])->with('success', 'Competidor rechazado exitosamente.');
     }
@@ -172,7 +186,7 @@ class CompetenciaCompetidorController extends Controller
         $idCompetidor = $request['idCompetidor'];
         $numPasada = $request['numPasada'];
 
-        
+
 
         //busco todos los puntajes de esa competencia y ese competidor
         $cantJueces = Competencia::find($idCompetencia)->cantidadJueces;
@@ -232,7 +246,7 @@ class CompetenciaCompetidorController extends Controller
         //buco la cantidad de jueces del ob reloj
         $reloj = Reloj::where('idCategoria', $idCategoria)->where('idCompetencia', $idCompetencia)->get();
         $cantJueces = $reloj[0]->cantJueces;
-       
+
 
         //por cada pasada sumo los puntajes de exactitud y presentacion
         $presentacion = 0;
@@ -250,7 +264,7 @@ class CompetenciaCompetidorController extends Controller
         $presentacion = $cantJueces == 3 ? $presentacion / $cantJueces : $presentacion / ($cantJueces - 2);
         $exactitud = $cantJueces == 3 ? $exactitud / $cantJueces : $exactitud / ($cantJueces - 2);
 
-        //resto si hay overtime  
+        //resto si hay overtime
         $overtime = $arrayPuntajes[0]->overtime == '00:00:00';
         $penalizacion = $overtime ? 0 : 0.3;
 
@@ -259,7 +273,7 @@ class CompetenciaCompetidorController extends Controller
             'totalExactitud' => round($exactitud, 1),
             'totalPasada' => round($exactitud + $presentacion - $penalizacion, 1),
             'overtime' => $arrayPuntajes[0]->overtime,
-            
+
         ];
         return $resultados;
     }
@@ -267,7 +281,7 @@ class CompetenciaCompetidorController extends Controller
     public function setearRanking(Request $request)
     {
      $idCompetencia = $request['idCompetencia'];
-    
+
         $competencia = Competencia::find($idCompetencia);
 
         $respuesta= false;
@@ -277,18 +291,18 @@ class CompetenciaCompetidorController extends Controller
             $competenciaCompetidor = CompetenciaCompetidor::where('idCompetencia', $idCompetencia)
             ->orderBy('puntaje', 'desc')
             ->get();
-    
+
             $competidorUno  = Competidor::find($competenciaCompetidor[0]->idCompetidor);
             $competidorDos  = Competidor::find($competenciaCompetidor[1]->idCompetidor);
             $competidorTres  = Competidor::find($competenciaCompetidor[2]->idCompetidor);
-    
+
             $competidorUno->ranking += 3;
             $competidorDos->ranking += 2;
             $competidorTres->ranking += 1;
-    
+
             $competidorUno->save();
             $competidorDos->save();
-            $competidorTres->save(); 
+            $competidorTres->save();
 
             $competencia->estadoCompetencia = 1;
             $competencia->save();
