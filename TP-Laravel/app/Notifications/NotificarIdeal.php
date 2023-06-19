@@ -44,12 +44,29 @@ class NotificarIdeal extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
-                    ->theme($this->estado)
-                    ->subject($this->titulo)
-                    ->greeting($this->titulo)
-                    ->line($this->mensaje)
-                    ->line($this->descripcion);
+
+    // Creas una instancia de MailMessage
+    $mail = new MailMessage;
+
+    // Le asignas las propiedades que quieras
+    $mail->theme($this->estado);
+    $mail->subject($this->titulo);
+    $mail->greeting($this->titulo);
+    $mail->line($this->mensaje);
+
+    // Usas un bucle para agregar las líneas del array al final del email
+    if (is_array($this->descripcion)) {
+        // La variable es un array, puedes usar un bucle para recorrerla
+        foreach ($this->descripcion as $dato) {
+            $mail->line($dato);
+        }
+    } else {
+        // La variable no es un array, puedes usarla directamente
+        $mail->line($this->descripcion);
+    }
+
+    // Devuelves la instancia de MailMessage
+    return $mail;
     }
 
     /**

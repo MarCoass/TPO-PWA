@@ -10,6 +10,10 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+/* Necesarios para enviar mails */
+use App\Notifications\NotificarIdeal;
+use Illuminate\Support\Facades\Notification;
+
 class SolicitudController extends Controller
 {
     /**
@@ -62,21 +66,35 @@ class SolicitudController extends Controller
     public function aceptarSolicitud($id){
         $solicitud = Solicitud::find($id);
 
+        $datosSolicitud[0] = "   Se te ha aceptado cambiarte: ";
+
         if( Escuela::find($solicitud->newEscuela)){
             $usuario = User::find($solicitud->idUser);
+            $escuelaAnterior = $usuario->escuela->nombre;
             $escuela = Escuela::find($solicitud->newEscuela);
             $usuario->escuela()->associate($escuela);
             $usuario->update();
+
+            $datosSolicitud[1] = "- De '".$escuelaAnterior."' A '".$escuela->nombre."'";
         }
         if( Graduacion::find($solicitud->newGraduacion)){
             $competidor = Competidor::where('idUser',$solicitud->idUser)->first();
+            $graduacionAnterior = $competidor->graduacion;
             $graduacion = Graduacion::find($solicitud->newGraduacion);
             $competidor->graduacion()->associate($graduacion);
             $competidor->update();
+
+            $datosSolicitud[2] = "- De '".$graduacionAnterior->nombre." - ".$graduacionAnterior->color."' A '".$graduacion->nombre." - ".$graduacion->color."'";
         }
 
         $solicitud->estadoSolicitud = 3;
         $solicitud->update();
+
+        /* Busca el objeto usuario */
+        $user = User::find($solicitud->idUser);
+        /* del objeto usuario invoca a notify, y este lo  */
+        $user->notify(new NotificarIdeal('success','Solicitud de cambios Aceptada!','Tu solicitud para actualizar tu escuela y/o graduacion ha sido aceptada', $datosSolicitud));
+
         return redirect()->route('index_solicitudes')->with('success', 'Solicitud aceptada');
     }
 
