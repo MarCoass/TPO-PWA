@@ -103,7 +103,7 @@ class RelojController extends Controller
 
             $categoria = Competencia::join('competenciaCompetidor', 'competencias.idCompetencia', '=', 'competenciaCompetidor.idCompetencia')
                 ->join('categorias', 'competenciaCompetidor.idCategoria', '=', 'categorias.idCategoria')
-                ->select('categorias.idCategoria', 'categorias.nombre')
+                ->select('categorias.idCategoria', 'categorias.nombre', 'categorias.genero')
                 ->where('competencias.idCompetencia', $id_competencia)->where('competenciaCompetidor.puntaje', 0)
                 ->distinct()
                 ->get();

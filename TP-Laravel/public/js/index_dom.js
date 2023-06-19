@@ -91,7 +91,6 @@ $("#competencia").change(function () {
 
         dataType: "json",
         success: function (data) {
-            
 
             if (data.length !== 0) {
                 $("#categoria").empty();
@@ -99,11 +98,13 @@ $("#competencia").change(function () {
                     '<option value="" disabled selected data-error="Por favor seleccione una categoria">Selecciona una categoria.</option>'
                 );
                 $.each(data, function (key, value) {
+                    var genero = value.genero=='1'?'Masculino':'Femenino'
+                    console.log(value.genero)
                     $("#categoria").append(
                         '<option value="' +
                             value.idCategoria +
                             '">' +
-                            value.nombre +
+                            value.nombre + " " + genero +
                             "</option>"
                     );
                 });
