@@ -19,26 +19,28 @@ class HomeController extends Controller
         $objCompetidor = null;
         //Competencias en las que no se esta registrado
         $competenciasDisponibles = null;
-        if(auth()->user()){
+        if (auth()->user()) {
             $competencias = Competencia::all();
             $usuario = auth()->user();
             $idUsuario = $usuario->id;
-            if($usuario['idRol'] == 2){
+            if ($usuario['idRol'] == 2) {
                 $competenciasDisponibles = Competencia::whereNotExists(function ($query) use ($idUsuario) {
                     $query->select(DB::raw(1))
-                          ->from('competenciaJueces')
-                          ->whereRaw('competenciaJueces.idCompetencia = competencias.idCompetencia')
-                          ->where('competenciaJueces.idJuez', $idUsuario);
+                        ->from('competenciaJueces')
+                        ->whereRaw('competenciaJueces.idCompetencia = competencias.idCompetencia')
+                        ->where('competenciaJueces.idJuez', $idUsuario);
                 })->get();
             }
-            if($usuario['idRol'] == 3){
+            if ($usuario['idRol'] == 3) {
                 $objCompetidor = Competidor::where('idUser', $idUsuario)->first();
-                $competenciasDisponibles = Competencia::whereNotExists(function ($query) use ($objCompetidor) {
-                    $query->select(DB::raw(1))
-                          ->from('competenciaCompetidor')
-                          ->whereRaw('competenciaCompetidor.idCompetencia = competencias.idCompetencia')
-                          ->where('competenciaCompetidor.idCompetidor', $objCompetidor->idCompetidor);
-                })->get();
+                if ($objCompetidor != null) {
+                    $competenciasDisponibles = Competencia::whereNotExists(function ($query) use ($objCompetidor) {
+                        $query->select(DB::raw(1))
+                            ->from('competenciaCompetidor')
+                            ->whereRaw('competenciaCompetidor.idCompetencia = competencias.idCompetencia')
+                            ->where('competenciaCompetidor.idCompetidor', $objCompetidor->idCompetidor);
+                    })->get();
+                }
             }
         }
 
@@ -57,6 +59,6 @@ class HomeController extends Controller
         $user->notify(new NotificarIdeal('restricted','probando restricted','este es el mensaje', 'y esta la descripcion')); */
 
 
-        return view('home.index', compact('competencias','competenciasDisponibles','objCompetidor'));
+        return view('home.index', compact('competencias', 'competenciasDisponibles', 'objCompetidor'));
     }
 }
