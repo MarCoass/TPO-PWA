@@ -5,12 +5,10 @@ Inscripción a Competencia.
 @endsection
 
 @section('encabezado')
-Formulario de Registro de Competidor.
+Formulario de Inscripción a Competencia.
 @endsection
-
-<span>Carga tus datos de competidor, estos se autocompletarán en futuras inscripciones.</span>
-
 @section('contenido')
+<span>Precargamos tus datos traidos de competencias previas.</span>
 <div class="card my-5 shadow">
     <div class="card-body">
         <div class="row" style="overflow: hidden;">
@@ -28,7 +26,7 @@ Formulario de Registro de Competidor.
                 {{-- Mensaje de error para campos erroneos y error en petición ajax (en el segundo caso, revisar consola) --}}
                 <div class="alert alert-danger d-none" id="error-js">Algún campo tiene datos incorrectos. Haga click en volver si no ve el error.</div>
                 <div class="alert alert-danger d-none" id="error">Ocurrió un error. Por favor, intente otra vez más tarde.</div>
-                <form method="post" id="cargaParticipante" action="{{ route('cargarCompetidor.perform') }}" class="needs-validation" novalidate> <!-- INICIO FORM -->
+                <form method="post" id="cargaParticipante" action="{{ route('reinscribirCompetidor.perform') }}" class="needs-validation" novalidate> <!-- INICIO FORM -->
                     {{-- CSRF token para poder enviar el formulario --}}
                     <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}" />
 
@@ -43,12 +41,12 @@ Formulario de Registro de Competidor.
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="paso1"> <!-- INICIO CONTENIDO PASO 1 -->
                             <div class="row">
-                                @include('includes.paso1')
+                                @include('includes.paso1re')
                             </div>
                         </div> <!-- FIN CONTENIDO PASO 1 -->
                         <div class="tab-pane fade" id="paso2"> <!-- INICIO CONTENIDO PASO 2 -->
                             <div class="row">
-                                @include('includes.paso2')
+                                @include('includes.paso2re')
                             </div>
                         </div> <!-- FIN CONTENIDO PASO 2 -->
                     </div>

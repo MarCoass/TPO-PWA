@@ -22,14 +22,36 @@ NeuPoom
 
             <div class="seccion_box">
                 @foreach($menus as $menu)
-                    <div class="seccion_item">
-                        <a href="{{ Route::has($menu->permiso->rutaPermiso) ? route($menu->permiso->rutaPermiso) : "#" }}" class="seccion-item_link {{ Route::has($menu->permiso->rutaPermiso) ? '' : "bg-danger" }}">
-                            <div class="seccion-item_bg"></div>
-                            <div class="seccion-item_title">
-                                {{ $menu->permiso->nombrePermiso }}
+                    @if ($menu->idPermiso == 12)
+                        @if ($objCompetidor == null)
+                            <div class="seccion_item">
+                                <a href="{{ Route::has($menu->permiso->rutaPermiso) ? route($menu->permiso->rutaPermiso) : "#" }}" class="seccion-item_link {{ Route::has($menu->permiso->rutaPermiso) ? '' : "bg-danger" }}">
+                                    <div class="seccion-item_bg"></div>
+                                    <div class="seccion-item_title">
+                                        {{ $menu->permiso->nombrePermiso }}
+                                    </div>
+                                </a>
                             </div>
-                        </a>
-                    </div>
+                        @else
+                            <div class="seccion_item">
+                                <a href="{{ route('reinscribirCompetidor') }}" class="seccion-item_link">
+                                    <div class="seccion-item_bg"></div>
+                                    <div class="seccion-item_title">
+                                        Inscribirse a una Competencia.
+                                    </div>
+                                </a>
+                            </div>
+                        @endif
+                    @else
+                        <div class="seccion_item">
+                            <a href="{{ Route::has($menu->permiso->rutaPermiso) ? route($menu->permiso->rutaPermiso) : "#" }}" class="seccion-item_link {{ Route::has($menu->permiso->rutaPermiso) ? '' : "bg-danger" }}">
+                                <div class="seccion-item_bg"></div>
+                                <div class="seccion-item_title">
+                                    {{ $menu->permiso->nombrePermiso }}
+                                </div>
+                            </a>
+                        </div>
+                    @endif
                 @endforeach
 
                 {{-- MODAL INSCRIPCIÓN A COMPETENCIA JUEZ --}}

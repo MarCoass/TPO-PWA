@@ -196,6 +196,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/cargarCompetidor',  [CompetidorController::class, 'cargarCompetidor'])->middleware(['rol:3'])->name('cargarCompetidor');
         Route::post('/cargarCompetidor/add', [CompetidorController::class, 'store'])->middleware(['rol:3'])->name('cargarCompetidor.perform');
         Route::post('/cargarCompetidor/validar', [CompetidorController::class, 'validar'])->middleware(['rol:3'])->name('cargarCompetidor.validar');
+        Route::get('/reinscribirCompetidor', [CompetidorController::class, 'vistaReinscribirCompetidor'])->middleware(['rol:3'])->name('reinscribirCompetidor');
+        Route::post('/reinscribirCompetidor/add', [CompetidorController::class, 'reinscribirCompetidor'])->middleware(['rol:3'])->name('reinscribirCompetidor.perform');
 
         /* Rutas de Puntuador se pueden mejorar */
         Route::get('/puntuador/puntuador', function(){return view('puntuador.puntuador');})->middleware(['rol:2'])->name('puntuador');
