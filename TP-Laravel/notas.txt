@@ -27,14 +27,14 @@ Active del navbar
 
 Los 'a' del navbar tienen dentro de la clase lo siguiente:
 {{ request()->is('imagenesRandom') ? 'active' : '' }}
-La función request()->is() es un método de Laravel que se utiliza para comparar 
-la URL actual de la solicitud con un patrón específico, entonces si la URL actual es imagenesRandom, se le asignara 
+La función request()->is() es un método de Laravel que se utiliza para comparar
+la URL actual de la solicitud con un patrón específico, entonces si la URL actual es imagenesRandom, se le asignara
 al 'a' la clase active, sino no.
 
 
 Imagen del header
 
-Al utilizar una imagen en una plantilla Blade, se puede usar la función asset() para generar la URL completa 
+Al utilizar una imagen en una plantilla Blade, se puede usar la función asset() para generar la URL completa
 de la imagen de forma dinámica
 
 ------------------------------------------------------------------------
@@ -99,9 +99,9 @@ Entre otros métodos para relaciones como belongsToMany, morphTo, morphMany, etc
 MIGRACIONES
 
 Crear migracion: php artisan make:migration create_nombreTabla_table
-Correr migraciones: php artisan migrate 
+Correr migraciones: php artisan migrate
 
-Las migraciones se ejecutan de manera alfabetica, es importante saberlo para cuando una tabla tiene clave foranea que esta se cree 
+Las migraciones se ejecutan de manera alfabetica, es importante saberlo para cuando una tabla tiene clave foranea que esta se cree
 despues de la tabla donde esta la clave.
 ------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -113,13 +113,13 @@ Esto creará un archivo en la carpeta "app/Http/Controllers"
 con el nombre que especificaste, seguido de "Controller.php" (por ejemplo, "NombreDelControladorController.php").
 Abre el archivo recién creado y encontrarás una clase llamada "NombreDelControladorController" que extiende la clase base "Controller".
 
-Una vez que hayas definido tus métodos de controlador, puedes utilizarlos en tus rutas para 
+Una vez que hayas definido tus métodos de controlador, puedes utilizarlos en tus rutas para
 manejar las solicitudes HTTP entrantes y realizar las acciones necesarias en tu modelo.
 
 Laravel proporciona varios métodos predefinidos en el controlador que puedes utilizar para realizar acciones comunes.
 Algunos de los métodos más utilizados son:
 
-* index(): Este método se utiliza para mostrar una lista de registros. 
+* index(): Este método se utiliza para mostrar una lista de registros.
     Por lo general, se utiliza para la página principal o de índice de una entidad.
     Puedes recuperar los registros necesarios del modelo y pasarlos a una vista para su visualización.
 
@@ -130,7 +130,7 @@ Algunos de los métodos más utilizados son:
     Recibe la instancia de la clase Request que contiene los datos enviados desde el formulario de creación.
     Puedes crear una nueva instancia del modelo, asignar los valores del formulario y guardar el registro en la base de datos.
 
-* show($id): Este método muestra los detalles de un registro específico. 
+* show($id): Este método muestra los detalles de un registro específico.
     Generalmente se utiliza para mostrar una vista con información detallada sobre un registro en particular,
     identificado por su $id.
 
@@ -158,7 +158,7 @@ Se debe agregar los modelos que se usen -> use App\Models\Pais;
 Si se utiliza un JSON es necesario agregar lo siguiente -> use Illuminate\Support\Facades\File;
 
 Crear seeder: php artisan make:seeder NombreTableSeeder
-Ejecutar seeder: php artisan db:seed --class=NombreTableSeeder 
+Ejecutar seeder: php artisan db:seed --class=NombreTableSeeder
 
 ---- COMO CARGAR LOS DATOS -----
 1) php artisan db:seed --class=PaisesTableSeeder
@@ -180,25 +180,25 @@ https://codeanddeploy.com/blog/laravel/laravel-8-authentication-login-and-regist
 
 vitacora xd
 
-empece haciendo el login y el registro con variables al español, incluido el modelo usuarios, cuestion que al terminar me generaba 
+empece haciendo el login y el registro con variables al español, incluido el modelo usuarios, cuestion que al terminar me generaba
 problemas auth, por lo cual de todo este embrollo llegue a la conclusion de que el campo password es !necesario!, se puede cambiar
 aplicando una funcion, pero para no tener que tocar de mas lo deje asi, asi tambien el controlador usuarios quedara para
-que el administrador pueda gestionar, tuve que crear otro modelo a parte de Usuarios (ver si quedo acorde a su controlador y 
+que el administrador pueda gestionar, tuve que crear otro modelo a parte de Usuarios (ver si quedo acorde a su controlador y
 ver de hacer uso de Users (falta la manipulacion de roles)), el otro modelo es user, ahi estan los campos en español excepto por
 password
 
 cree otra migracion que crea la tabla Users, es identico a la tabla usuarios, pero el idUsuario ahora es solo id()
 
 arme las vistas del link de arriba y las comente para saber cuales son plantillas y cuales son las paginas principales
-habria que ver de copiar las formas y mandarlas a nuestro proyecto ( 
-        views/auth (registro y login), 
+habria que ver de copiar las formas y mandarlas a nuestro proyecto (
+        views/auth (registro y login),
         views/layouts(estan las plantillas de registro/login y home2, ""habria que copiarse los botones de login del navbar"")
-        views/home2(esta el home de registro, cambiar a nuestro home una vez pasado los botones de login del navbar que trae)   
+        views/home2(esta el home de registro, cambiar a nuestro home una vez pasado los botones de login del navbar que trae)
     )
 
 copie en public/asset otro bootstrap, habria que volarlos una vez se haga lo de arriba, pasar los styles sueltos a archivos .class
 
-cree la carpeta /lang/es que es donde se deberia pasar a español las validaciones, que tambien nos va a servir para cargar Competidores 
+cree la carpeta /lang/es que es donde se deberia pasar a español las validaciones, que tambien nos va a servir para cargar Competidores
 
 los controladores estan comentados, en homeController se puede cambiar esa ruta home2.index que seria el home
 
@@ -209,7 +209,7 @@ se podria ver de hacer una sentencia que verifique si el usuario posee roles que
 
 Que son esas carpetas en resources/views?
 
-la carpeta "auth" contiene las secciones login y registro, estos hacen uso de la 
+la carpeta "auth" contiene las secciones login y registro, estos hacen uso de la
 plantilla auth-master que estan en la carpeta layouts
 
 la carpeta "auth/partials" contiene un estilo de banner que figura debajo de los submits
@@ -220,7 +220,7 @@ la carpeta "layouts" contiene las plantillas que van a usar las secciones que va
 las librerias, se podrian hacer plantillas para diferentes usos, como por ej, en caso de que se use otra librerias
 podriamos copiar app-master y sacar las librerias que no necesitamos y poner las que si
 
-la carpeta "layouts/partials" contiene el footer y navbar, ademas de un include que devuelve los estados 
+la carpeta "layouts/partials" contiene el footer y navbar, ademas de un include que devuelve los estados
 y/o validaciones de registro, se podria usar para las otras secciones
 
 
@@ -230,10 +230,10 @@ TRAER REGISTROS DE LA BD
 1)se crea una ruta: Route::get('/competidores', [CompetidorController::class, 'index']);
 esta ruta solo carga la vista de la tabla, ahi mismo se carga el js con el jquery de datatable.
 2)En el js se inicializa un datatable con una peticion ajax donde busca los datosen la url: "/competidores/data"(ruta que se encuentra en web.php),
-esa ruta invoca el metodo obtenerRegistros que se encuentra en CompetidorController, 
-3)El Metodo obtenerRegistros obtiene registros utilizando la funcion select de Eloquent ORM para seleccionar las columnas necesarias de la tabla "competidores". 
+esa ruta invoca el metodo obtenerRegistros que se encuentra en CompetidorController,
+3)El Metodo obtenerRegistros obtiene registros utilizando la funcion select de Eloquent ORM para seleccionar las columnas necesarias de la tabla "competidores".
 Luego se utiliza la función "join" para unir la tabla "paises" basándose en la columna "idPais".
-Finalmente, se utiliza la función "get" de Eloquent ORM para recuperar todos los registros afectados por la consulta 
+Finalmente, se utiliza la función "get" de Eloquent ORM para recuperar todos los registros afectados por la consulta
 y se devuelve un objeto JSON que contiene los registros de "competidores" junto con el nombre del país correspondiente utilizando la sintaxis "nombre_pais" como un alias para la columna "nombrePais"
 
 4)Una vez obtenido el objeto JSON con los registros en la arreglo COLUMNS de datatable se especifican los campos que se van a necesitar para llenar los campos de la tabla
@@ -262,3 +262,22 @@ Un View Composer es una clase que se registra en el proveedor de servicios de La
 Por ejemplo, si tienes un menú de navegación que se muestra en varias vistas de tu aplicación, puedes crear un View Composer que proporcione los datos necesarios para construir el menú de navegación. De esta forma, no tendrás que pasar los mismos datos a varias vistas en diferentes controladores.
 
 Para crear un View Composer, debes definir una función anónima que recibe como parámetro una instancia de la clase  `Illuminate\View\View` . Dentro de esta función, puedes agregar los datos necesarios a la vista usando el método  `with()` . Luego, debes registrar el View Composer en el proveedor de servicios de Laravel usando el método  `view()->composer()` .
+
+
+
+----------------------------------------------------------------
+configuracion de .env de mailtrap.io
+
+MAIL_MAILER=smtp
+MAIL_HOST=sandbox.smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=39d3c3a40b1141
+MAIL_PASSWORD=6de617210fc387
+MAIL_ENCRYPTION=tls
+
+cuenta para ingresar a mailtrap
+
+email: grupobgrupobpwa@gmail.com
+pass: grupoBgrupoB123
+
+---------------------------------------------------------------

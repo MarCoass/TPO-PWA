@@ -10,6 +10,12 @@ use App\Models\CompetenciaJuez;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+/*  */
+use App\Notifications\NotificarUsuarios;
+use Illuminate\Support\Facades\Notification;
+
+
+
 class HomeController extends Controller
 {
     public function index()
@@ -45,6 +51,13 @@ class HomeController extends Controller
                 })->get();
             }
         }
+
+        Notification::route('mail', [
+            'barrett@example.com' => 'Barrett Blair',
+        ])->notify(new NotificarUsuarios());
+
+
+
 
         return view('home.index', compact('competencias','jueces','competenciasDisponibles','yaParticipo'));
     }
