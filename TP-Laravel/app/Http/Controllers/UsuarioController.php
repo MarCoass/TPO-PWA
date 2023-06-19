@@ -10,6 +10,11 @@ use App\Models\User;
 use App\Models\Rol;
 use App\Models\Escuela;
 use Illuminate\Http\Request;
+/* Necesarios para enviar mails */
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\UsuarioHabilitado;
+
+
 
 class UsuarioController extends Controller
 {
@@ -111,7 +116,10 @@ class UsuarioController extends Controller
         $usuario->estado = true;
         $usuario->save();
 
-        return redirect()->route('index_usuarios')->with('success', 'Usuario habilitado exitosamente.');
+        /**Notificar al usuario por Email */
+       $usuario->notify( new UsuarioHabilitado());
+
+        return redirect()->route('index_usuarios')->with('success', 'Usuario habilitado y notificado exitosamente.');
     }
 
     public function destroy($id)

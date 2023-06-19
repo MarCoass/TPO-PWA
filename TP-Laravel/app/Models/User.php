@@ -85,10 +85,11 @@ class User extends Authenticatable
         return $this->belongsTo(Escuela::class, 'idEscuela');
     }
 
+    /**Esta función se utiliza para definir la dirección de correo electrónico a la que se enviarán las notificaciones.
+     *  Devuelve la dirección de correo electrónico asociada con el objeto actual.*/
     public function routeNotificationForMail()
     {
     return $this->correo;
     }
-
 
 }

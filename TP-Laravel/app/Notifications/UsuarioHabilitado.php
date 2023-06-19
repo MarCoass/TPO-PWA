@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class NotificarUsuarios extends Notification
+class UsuarioHabilitado extends Notification
 {
     use Queueable;
 
@@ -41,9 +41,9 @@ class NotificarUsuarios extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Introduccion a las notificaciones.')
-                    ->action('Ir a la notificacion', url('/'))
-                    ->line('Gracias por usar nuestra App!');
+                    ->line('Estimado/a '.$notifiable->nombre.' su cuenta en NeuPoom ha sido Habilitada')
+                    ->action('Ingresar', url('/'))
+                    ->line('Nos vemos pronto .');
     }
 
     /**
