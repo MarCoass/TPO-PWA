@@ -91,7 +91,8 @@ $("#competencia").change(function () {
 
         dataType: "json",
         success: function (data) {
-
+           
+           // console.log(data)
             if (data.length !== 0) {
                 $("#categoria").empty();
                 $("#categoria").append(
@@ -99,7 +100,7 @@ $("#competencia").change(function () {
                 );
                 $.each(data, function (key, value) {
                     var genero = value.genero=='1'?'Masculino':'Femenino'
-                    console.log(value.genero)
+                
                     $("#categoria").append(
                         '<option value="' +
                             value.idCategoria +

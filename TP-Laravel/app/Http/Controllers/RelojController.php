@@ -112,7 +112,10 @@ class RelojController extends Controller
             $data = Reloj::where('idCompetencia',  $id_competencia)->orderBy('created_at', 'desc')->first();
 
             if ($data != null) {
-                $categoria = Categoria::where('idCategoria', $data->idCategoria)->distinct()->get();
+                $categoria = Categoria::select('idCategoria', 'nombre', 'genero')
+                ->where('idCategoria', $data->idCategoria)
+                ->distinct()
+                ->get();
             } else {
                 $categoria = null;
             }
