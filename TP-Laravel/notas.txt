@@ -280,4 +280,7 @@ cuenta para ingresar a mailtrap
 email: grupobgrupobpwa@gmail.com
 pass: grupoBgrupoB123
 
+y para que cargue el logo en el correo hay que nombrar a app_name como la forma de abajo:
+APP_NAME=NeuPoom
+
 ---------------------------------------------------------------
