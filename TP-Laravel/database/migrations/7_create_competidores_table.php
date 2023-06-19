@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('competidores', function (Blueprint $table) {
             $table->id('idCompetidor');
-            $table->string('gal')->unique();
+            $table->string('gal')->unique()->nullable();
             $table->string('apellido');
             $table->string('nombre');
             $table->integer('du')->unique();
