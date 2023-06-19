@@ -4,8 +4,7 @@ use App\Http\Controllers\{
     CompetenciaController,
     EstadoController,
     CompetidorController,
-    EscuelaController,
-    GraduacionController,
+    PerfilController,
     UsuarioController,
     LogoutController,
     HomeController,
@@ -25,7 +24,6 @@ use App\Http\Controllers\{
     RelojController
 };
 use Illuminate\Support\Facades\Route;
-use App\Models\CompetenciaCompetidor;
 
 Route::group(['namespace' => 'App\Http\Controllers'], function()
 {
@@ -73,7 +71,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
         /* rutas para todes */
         Route::get('/presentacion', [CompetenciaController::class, 'verCompetencias'])->name('presentacion');
-        Route::get('/verPerfil', function (){return view('verPerfil.verPerfil');})->name('verPerfil');
+        Route::get('/verPerfil', [PerfilController::class, 'index'])->name('verPerfil');
         Route::post('/actualizarDatosPersonales', [UsuarioController::class, 'actualizarDatosPersonales'])->name('actualizarDatosPersonales');
         Route::post('/actualizarPassword', [UsuarioController::class, 'actualizarPassword'])->name('actualizarPassword');
         Route::post('/actualizarImagenPerfil', [UsuarioController::class, 'actualizarFoto'])->name('actualizarImagenPerfil');
