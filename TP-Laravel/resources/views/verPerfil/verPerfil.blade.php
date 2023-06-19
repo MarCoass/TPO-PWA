@@ -41,28 +41,6 @@
                 <div class="card mb-4 mb-lg-0">
                     <div class="card-body p-0">
                         <h5>Posible listado de competencias en las que participó?</h5>
-                        <!--<ul class="list-group list-group-flush rounded-3">
-                                  <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                    <i class="fas fa-globe fa-lg text-warning"></i>
-                                    <p class="mb-0">https://mdbootstrap.com</p>
-                                  </li>
-                                  <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                    <i class="fab fa-github fa-lg" style="color: #333333;"></i>
-                                    <p class="mb-0">mdbootstrap</p>
-                                  </li>
-                                  <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                    <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
-                                    <p class="mb-0">@mdbootstrap</p>
-                                  </li>
-                                  <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                    <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
-                                    <p class="mb-0">mdbootstrap</p>
-                                  </li>
-                                  <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                    <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
-                                    <p class="mb-0">mdbootstrap</p>
-                                  </li>
-                                </ul>-->
                     </div>
                 </div>
             </div>
@@ -121,18 +99,6 @@
                                     <div class="input-group mb-3">
                                         <input type="text" name="apellido" class="form-control"
                                             value="{{ auth()->user()->apellido }}" aria-label="Apellido"
-                                            aria-describedby="basic-addon1" required>
-                                    </div>
-                                    <p class="mt-4 mb-1" style="font-size: .77rem;">Nombre de Usuario</p>
-                                    <div class="input-group mb-3">
-                                        <input type="text" name="usuario" class="form-control"
-                                            value="{{ auth()->user()->usuario }}" aria-label="usuario"
-                                            aria-describedby="basic-addon1" required>
-                                    </div>
-                                    <p class="mt-4 mb-1" style="font-size: .77rem;">Email</p>
-                                    <div class="input-group mb-3">
-                                        <input type="email" name="correo" class="form-control"
-                                            value="{{ auth()->user()->correo }}" aria-label="Email"
                                             aria-describedby="basic-addon1" required>
                                     </div>
                                     <p class="mt-4 mb-1" style="font-size: .77rem;">Contraseña</p>

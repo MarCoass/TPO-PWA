@@ -144,8 +144,6 @@ class UsuarioController extends Controller
                 $usuario = User::find($id);
                 $usuario->nombre = $request->input('nombre');
                 $usuario->apellido = $request->input('apellido');
-                $usuario->usuario = $request->input('usuario');
-                $usuario->correo = $request->input('correo');
 
                 $usuario->save();
 
@@ -231,8 +229,6 @@ class UsuarioController extends Controller
         return [
             'nombre' => 'required|max:50|string',
             'apellido' => 'required|max:50|string',
-            'usuario' => 'required|unique:users,usuario,' . $id . '|max:50',
-            'correo' => 'required|email:rfc,dns|unique:users,correo, ' . $id
         ];
     }
 
