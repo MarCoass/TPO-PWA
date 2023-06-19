@@ -10,6 +10,10 @@ use Illuminate\Notifications\Notification;
 class NotificacionGeneral extends Notification
 {
     use Queueable;
+   private $estado;
+   private $titulo;
+   private $mensaje;
+   private $descripcion;
 
     /**
      * Crear una nueva instancia de la notificación
