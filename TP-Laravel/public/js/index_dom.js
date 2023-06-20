@@ -91,7 +91,7 @@ $("#competencia").change(function () {
 
         dataType: "json",
         success: function (data) {
-           
+
            // console.log(data)
             if (data.length !== 0) {
                 $("#categoria").empty();
@@ -100,7 +100,7 @@ $("#competencia").change(function () {
                 );
                 $.each(data, function (key, value) {
                     var genero = value.genero=='1'?'Masculino':'Femenino'
-                
+
                     $("#categoria").append(
                         '<option value="' +
                             value.idCategoria +
@@ -112,7 +112,7 @@ $("#competencia").change(function () {
             } else {
                 //aca ya termino la competencia
                //alert('No quedan categorias.')
-                
+
                 $.ajax({
                     type: "GET",
                     url: "http://127.0.0.1:8000/setear_ranking",
@@ -132,7 +132,7 @@ $("#competencia").change(function () {
 
                 });
 
-                    
+
             }
         },
     });
