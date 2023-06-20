@@ -8,7 +8,8 @@ use App\Models\CompetenciaCompetidorPoomsae;
 use App\Models\CategoriaPoomsae;
 use App\Models\Competidor;
 use Illuminate\Http\Request;
-
+use App\Notifications\NotificacionGeneral;
+use Illuminate\Support\Facades\Mail;
 
 class CompetenciaCompetidorPoomsaeController extends Controller
 {
@@ -57,7 +58,7 @@ class CompetenciaCompetidorPoomsaeController extends Controller
         $poomsae = Poomsae::find($id_poomsae);
         $competencia_competidor_poomsae->poomsae()->associate($poomsae);
     
-        $competencia_competidor_poomsae->save();
+        $competencia_competidor_poomsae->save();  
 
         return true;
     }
@@ -66,17 +67,30 @@ class CompetenciaCompetidorPoomsaeController extends Controller
 
         $competidoresCompetencia = CompetenciaCompetidor::where('idCompetencia', $id_competencia)->get();
         $pasadas = [1,2];
+
         foreach($competidoresCompetencia as $row){
+            $poomsae_pasada_1 = ''; 
+            $poomsae_pasada_2 = ''; 
             foreach($pasadas as $numero_pasada){
                 $id_poomsae = CategoriaPoomsae::where('idCategoria','=', $row->idCategoria)->inRandomOrder()->first()->idPoomsae;
                 $this->registrar_poomsae_en_competidor($id_poomsae,$row->idCompetenciaCompetidor,$numero_pasada);
+
+                $poomsae = Poomsae::find($id_poomsae); 
+                $user = $row->competidor->user;
+
+                if($numero_pasada == 1){ 
+                    $poomsae_pasada_1 = $poomsae->nombre; 
+                }else if($numero_pasada == 2){ 
+                    $poomsae_pasada_2 = $poomsae->nombre; 
+                } 
+              
+                $user->notify(new NotificacionGeneral('success','Poomsae Asignado!','Poomsae Pasada 1: '.$poomsae_pasada_1.' Poomsae Pasada 2: '.$poomsae_pasada_2.'  ',' A prepararse!'));  
             }
         }
-        
+    
         $CompetenciaCompetidorController = new CompetenciaCompetidorController();
-
+    
         return $CompetenciaCompetidorController->listarCompetidoresPorId($id_competencia);
-
     }
 
     /**
@@ -92,7 +106,7 @@ class CompetenciaCompetidorPoomsaeController extends Controller
         $competidor = Competidor::where('idCompetidor','=',$competencia_competidor[0]->idCompetidor)->get();
         $poomsae = Poomsae::select('poomsae.idPoomsae','poomsae.nombre')->join('categoriapoomsae','poomsae.idPoomsae','categoriapoomsae.idPoomsae')->where('categoriapoomsae.idCategoria','=',$competencia_competidor[0]->idCategoria)->get();
         return view('tablaCompetenciaCompetidores.asignarpoomsecompetidor', compact('competidor','poomsae','competencia_competidor'));
-   }
+    }
  
     /**
      * Store a newly created resource in storage.
