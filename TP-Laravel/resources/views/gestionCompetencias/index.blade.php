@@ -32,7 +32,10 @@ Gestion de Competencias
         <tr>
             <td>{{ $row->idCompetencia }}</td>
             <td>{{ $row->nombre }}</td>
-            <td>{{ $row->fecha }}</td>
+            <td>
+            @php $fecha = date('d/m/Y', strtotime($row->fecha)) @endphp
+            {{ $fecha }}
+            </td>
             <td>{{ ($row->estadoJueces) ? 'Abiertas a Competidores' : 'Abiertas a Jueces'}}</td>
             <td>{{$row->competencia_juez_count}} de {{ $row->cantidadJueces }}</td>
             <td>
