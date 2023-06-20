@@ -5,6 +5,7 @@ var transcurrido = 0;
 var id_competencia = $("#id_competencia").val();
 var id_categoria = $("#id_categoria").val();
 var cantJueces = $("#cantJueces").val();
+var idReloj = $("#idReloj").val();
 const $btnFin = document.getElementById("fin-contador_" + id_competencia);
 const $btnInicia = document.getElementById("inicio-contador_" + id_competencia);
 const $contador = document.getElementById("contador_" + id_competencia);
@@ -38,9 +39,7 @@ function iniciarCronometro() {
         dataType: "json",
         data: {
             _token: "{{ csrf_token() }}",
-            id_competencia: $("#id_competencia").val(),
-            id_categoria: $("#id_categoria").val(),
-            cantJueces: $("#cantJueces").val(),
+            idReloj
         },
         success: function (response) {
             if (response.success) {

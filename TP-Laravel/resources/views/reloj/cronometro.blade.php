@@ -16,6 +16,7 @@
         <input type="hidden" name="id_competencia" id="id_competencia" value="{{ $id_competencia }}">
         <input type="hidden" name="id_categoria" id="id_categoria" value="{{ $id_categoria }}">
         <input type="hidden" name="cantJueces" id="cantJueces" value="{{ $cantJueces }}">
+        <input type="hidden" name="idReloj" id="idReloj" value="{{ $idReloj }}">
 
         <div class="col-md-12 text-center">
             <input type="button" onclick="iniciarCronometro({{ $id_competencia }})"

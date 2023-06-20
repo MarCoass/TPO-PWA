@@ -28,21 +28,21 @@ class RelojController extends Controller
         //por si se tiene que iniciar aca hay que cambiar los nombre de los input en la vista
         //que se envia por post para que coincidan con las que se usan en el start o
         //a la inversa.
-        //$this->start($request);
+        $idReloj = $this->store($request);
 
-        //tocando weas, esto si se rompe se borra
+
         $opciones =  Competidor::leftJoin('competenciacompetidor', 'competidores.idCompetidor', '=', 'competenciacompetidor.idCompetidor')
             ->where('competenciacompetidor.idCompetencia', '=', $id_competencia)
             ->where('competenciacompetidor.idCategoria', '=', $id_categoria)->get();
 
-        return view('reloj.cronometro', compact('id_competencia', 'id_categoria', 'cantJueces', 'opciones'));
+        return view('reloj.cronometro', compact('id_competencia', 'id_categoria', 'cantJueces', 'opciones', 'idReloj'));
     }
 
-    public function start(Request $request)
+    public function store(Request $request)
     {
-        $id_competencia = $request->input('id_competencia');
-        $id_categoria = $request->input('id_categoria');
-
+        $id_competencia = $request->input('competencia');
+        $id_categoria = $request->input('categoria');
+        
         $duplicado = Reloj::where('idCompetencia',  $id_competencia)->where('idCategoria',  $id_categoria)->first();
 
         if ($duplicado != null) {
@@ -54,7 +54,6 @@ class RelojController extends Controller
         $reloj->cantJueces = $request->input('cantJueces');
         $reloj->estado = 1;
         $reloj->overtime = 0;
-
         $competencia = Competencia::find($id_competencia);
         $reloj->competencia()->associate($competencia);
 
@@ -62,6 +61,17 @@ class RelojController extends Controller
         $reloj->categoria()->associate($categoria);
 
 
+        $reloj->save();
+
+
+        return $reloj->idReloj;
+    }
+
+    public function start(Request $request)
+    {
+        $idReloj = $request['idReloj'];
+        $reloj = Reloj::find($idReloj);
+        $reloj->estado = 1;
         $reloj->save();
 
         return response()->json(['success' => true]);
@@ -113,9 +123,9 @@ class RelojController extends Controller
 
             if ($data != null) {
                 $categoria = Categoria::select('idCategoria', 'nombre', 'genero')
-                ->where('idCategoria', $data->idCategoria)
-                ->distinct()
-                ->get();
+                    ->where('idCategoria', $data->idCategoria)
+                    ->distinct()
+                    ->get();
             } else {
                 $categoria = null;
             }

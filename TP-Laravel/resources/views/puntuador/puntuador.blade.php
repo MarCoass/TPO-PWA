@@ -39,7 +39,7 @@
                 </ul></p>
                 <p>Puntaje: <span class="puntaje">4</span>
                 </p>
-                <button type="button" class="btn btn-success" id="siguientePuntuacion_{{$competencia[0]->idCompetencia}}">
+                <button type="button" class="btn btn-success disabled"  id="siguientePuntuacion_{{$competencia[0]->idCompetencia}}">
                     Siguiente
                 </button>
                 <button type="button" class="btn btn-success d-none" data-bs-toggle="modal" data-bs-target="#modal" id="terminarPuntuacion">
