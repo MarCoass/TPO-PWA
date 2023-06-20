@@ -38,7 +38,7 @@ class CompetenciaCompetidorController extends Controller
         $competenciacompetidor->idCompetidor = $id_competidor;
         $competenciacompetidor->idCompetencia = $id_competencia;
         $competenciacompetidor->idCategoria = $id_categoria;
-        $competenciacompetidor->puntaje =  10;
+        $competenciacompetidor->puntaje =  0;
         $competenciacompetidor->contadorPasadas =  0;
         $competenciacompetidor->estado =  0;
 
