@@ -62,4 +62,5 @@ class CompetenciaCompetidorTableSeeder extends Seeder
             ]);
         }
     }*/
-}
+
+
