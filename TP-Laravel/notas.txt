@@ -11,6 +11,8 @@ COMO ARMAR LA BASE DE DATOS Y CARGARLE DATOS
      php artisan db:seed --class=PaisesTableSeeder
      php artisan db:seed --class=EstadosTableSeeder
      php artisan db:seed --class=RolesTableSeeder
+    php artisan db:seed --class=PermisosTableSeeder
+    php artisan db:seed --class=RolPermisoTableSeeder
      php artisan db:seed --class=UsuariosTableSeeder
      php artisan db:seed --class=CompetidoresTableSeeder
      php artisan db:seed --class=CompetenciasTableSeeder
