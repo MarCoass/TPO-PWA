@@ -24,7 +24,7 @@
                 @endif
                 <div class="card-body">
                     <h5 class="card-title">{{ $competencia->nombre }}</h5>
-                    <p class="card-text">Fecha: {{ $competencia->fecha }}.</p>
+                    <p class="card-text">Fecha:  @php $fecha = date('d/m/Y', strtotime($competencia->fecha)) @endphp {{ $fecha }}.</p>
                     <p class="card-text">Estado: Abierto a @if ($competencia->estadoJueces == 1)
                             competidores.
                         @else
