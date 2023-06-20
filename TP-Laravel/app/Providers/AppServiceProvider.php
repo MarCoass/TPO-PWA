@@ -8,6 +8,8 @@ use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
+    static $composed;
+
     /**
      * Register any application services.
      *
@@ -26,17 +28,17 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         // Menú dinamico
-        view()->composer(['*'], function($view) {
-            $user = Auth::user();
-            $data = [];
-            if($user){
-                // $data = RolPermiso::where('idRol', $user->rol->id)
-                // ->join('permisos', 'permisos.idPermiso', '=', 'rolpermiso.idPermiso')
-                // ->orderBy('permisos.nombrePermiso') // ver el orden
-                // ->get();
+        view()->composer(['*'], function ($view) {
+            static $data = null;
 
-                $data = RolPermiso::where('idRol', $user->rol->id)->get();
+            if (is_null($data)) {
+                $user = Auth::user();
+                $data = [];
+                if ($user) {
+                    $data = RolPermiso::where('idRol', $user->rol->id)->get();
+                }
             }
+        
             $view->with('menus', $data);
         });
     }
