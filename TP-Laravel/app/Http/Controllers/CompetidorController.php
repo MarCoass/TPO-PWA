@@ -18,11 +18,12 @@ use Illuminate\Http\Request;
 
 class CompetidorController extends Controller
 {
-
     public function cargarCompetidor()
     {
         // Obtiene todas las competencias que ya tienen todos los jueces requeridos
-        $competencias = Competencia::where('estadoJueces', true)->where('estadoCompetencia', 0)->get();
+        $competencias = Competencia::where('estadoJueces', true)
+            ->where('estadoCompetencia', 0)
+            ->get();
 
         $graduaciones = Graduacion::all();
 
@@ -38,7 +39,6 @@ class CompetidorController extends Controller
 
     public function obtenerRegistros()
     {
-
         $competidores = Competidor::select('competidores.*', 'paises.nombrePais as nombre_pais')
             ->join('paises', 'competidores.idPais', '=', 'paises.idPais')
             ->get();
@@ -52,17 +52,15 @@ class CompetidorController extends Controller
         $competidoresFemeninos = $this->buscarCompetidoresPorGeneroYcategoria($request['idCategoria'], 1);
 
         /*   $competidoresTotal[0] = $competidoresMasculinos;
-        $competidoresTotal[1] = $competidoresFemeninos; */
+         $competidoresTotal[1] = $competidoresFemeninos; */
 
         return compact('competidoresMasculinos', 'competidoresFemeninos');
     }
 
-
     public function buscarCompetidoresPorGeneroYcategoria($idCategoria, $genero)
     {
         $competidores = CompetenciaCompetidor::join('competidores', function ($join) {
-            $join->on('competenciacompetidor.idCompetidor', '=', 'competidores.idCompetidor')
-                ->where('competidores.ranking', '>', 0);
+            $join->on('competenciacompetidor.idCompetidor', '=', 'competidores.idCompetidor')->where('competidores.ranking', '>', 0);
         })
             ->join('competencias', 'competenciacompetidor.idCompetencia', '=', 'competencias.idCompetencia')
             ->select('competenciacompetidor.*', 'competidores.nombre')
@@ -72,18 +70,16 @@ class CompetidorController extends Controller
             ->orderBy('competidores.ranking', 'desc')
             ->get();
 
-
         $puesto = 1;
         foreach ($competidores as $comp) {
-
             $comp['puesto'] = $puesto;
 
             $competidor = Competidor::find($comp->idCompetidor);
-            $comp['nombre'] = $competidor->nombre . " " . $competidor->apellido;
+            $comp['nombre'] = $competidor->nombre . ' ' . $competidor->apellido;
 
             $pais = Pais::find($competidor->idPais);
             $estado = Estado::find($competidor->idEstado);
-            $comp['lugar'] = $pais->nombrePais . " - " . $estado->nombreEstado;
+            $comp['lugar'] = $pais->nombrePais . ' - ' . $estado->nombreEstado;
 
             $comp['ranking'] = $competidor->ranking;
 
@@ -94,7 +90,6 @@ class CompetidorController extends Controller
 
         return $competidores;
     }
-
 
     public function create()
     {
@@ -113,27 +108,32 @@ class CompetidorController extends Controller
 
         // Obtiene todas las competencias que ya tienen todos los jueces requeridos
         $competencias = Competencia::whereNotExists(function ($query) use ($competidor) {
-            $query->select(DB::raw(1))
+            $query
+                ->select(DB::raw(1))
                 ->from('competenciaCompetidor')
                 ->whereRaw('competenciaCompetidor.idCompetencia = competencias.idCompetencia')
                 ->where('competenciaCompetidor.idCompetidor', $competidor->idCompetidor);
-        })->get();
+        })
+            ->where('estadoJueces', true)
+            ->where('estadoCompetencia', 0)
+            ->get();
+
         $graduacion1 = Graduacion::where('idGraduacion', '=', $competidor->idGraduacion)->first();
         $graduaciones = Graduacion::where('idGraduacion', '>', $competidor->idGraduacion)
             ->orderBy('idGraduacion', 'desc')
             ->get();
 
-        if ($graduacion1->color != "Cinturón negro") {
-            $galDesactivado = "disabled";
+        if ($graduacion1->color != 'Cinturón negro') {
+            $galDesactivado = 'disabled';
         } else {
-            $galDesactivado = "";
+            $galDesactivado = '';
         }
 
         $graduaciones->prepend($graduacion1);
 
         //Obtenemos las escuelas
         $escuela1 = Escuela::where('idEscuela', '=', $idEscuela)->first();
-        
+
         // Obtenemos todas las escuelas excepto la escuela1
         $escuelas = Escuela::whereNotIn('idEscuela', [$escuela1->idEscuela])
             ->orderBy('idEscuela', 'desc')
@@ -171,7 +171,9 @@ class CompetidorController extends Controller
         $CompetenciaCompetidorController = new CompetenciaCompetidorController();
 
         $categoria = Graduacion::select('categoriagraduacion.idCategoria')
-            ->join('categoriagraduacion', 'graduaciones.idGraduacion', '=', 'categoriagraduacion.idGraduacion')->where('graduaciones.idGraduacion', '=', $request->input('graduacionActual'))->get();
+            ->join('categoriagraduacion', 'graduaciones.idGraduacion', '=', 'categoriagraduacion.idGraduacion')
+            ->where('graduaciones.idGraduacion', '=', $request->input('graduacionActual'))
+            ->get();
 
         $CompetenciaCompetidorController->guardar_preinscripcion($competidor->idCompetidor, $request->input('competencia'), $categoria[0]->idCategoria);
 
@@ -181,7 +183,7 @@ class CompetidorController extends Controller
             $arregloSolicitud = [
                 'idUser' => $competidor->idUser,
                 'newEscuela' => 0,
-                'newGraduacion' => 0
+                'newGraduacion' => 0,
             ];
 
             //Verificamos ambos check para saber si hacemos el cambio o no y de qué
@@ -193,23 +195,29 @@ class CompetidorController extends Controller
                 $arregloSolicitud['newGraduacion'] = $request->input('idGraduacion');
             }
 
-            $objSolicitud = new SolicitudController;
+            $objSolicitud = new SolicitudController();
             $objSolicitud->generarSolicitud(new Request($arregloSolicitud));
         }
-        return redirect('/')->with('success', "Se ha inscripto correctamente a la competencia. Quedó en espera de verificación.");
+        return redirect('/')->with('success', 'Se ha inscripto correctamente a la competencia. Quedó en espera de verificación.');
     }
 
     public function store(Request $request)
     {
         $competidor = new Competidor();
         $competidor->du = $request->input('du');
-        $competidor->gal = $request->input('gal');
         $competidor->nombre = $request->input('nombre');
         $competidor->apellido = $request->input('apellido');
         $competidor->fechaNacimiento = $request->input('fechaNacimiento');
         $competidor->email = $request->input('correo');
         $competidor->ranking = 0; // 0 por defecto
         $competidor->genero = $request->input('genero');
+
+        // Verificador para que no se pasen de listo con el form
+        if ($request['idGraduacion'] <= 10) {
+            $competidor->gal = null;
+        } else {
+            $competidor->gal = $request->input('gal');
+        }
 
         // Estado base
         $competidor->estado = false;
@@ -235,11 +243,13 @@ class CompetidorController extends Controller
         $CompetenciaCompetidorController = new CompetenciaCompetidorController();
 
         $categoria = Graduacion::select('categoriagraduacion.idCategoria')
-            ->join('categoriagraduacion', 'graduaciones.idGraduacion', '=', 'categoriagraduacion.idGraduacion')->where('graduaciones.idGraduacion', '=', $request['idGraduacion'])->get();
+            ->join('categoriagraduacion', 'graduaciones.idGraduacion', '=', 'categoriagraduacion.idGraduacion')
+            ->where('graduaciones.idGraduacion', '=', $request['idGraduacion'])
+            ->get();
 
         $CompetenciaCompetidorController->guardar_preinscripcion($competidor->idCompetidor, $request->input('competencia'), $categoria[0]->idCategoria);
 
-        return redirect('/')->with('success', "Se ha inscripto correctamente a la competencia. Quedó en espera de verificación.");
+        return redirect('/')->with('success', 'Se ha inscripto correctamente a la competencia. Quedó en espera de verificación.');
     }
 
     public function show($id)
@@ -280,7 +290,9 @@ class CompetidorController extends Controller
         $competidor = Competidor::find($id);
         $competidor->delete();
 
-        return redirect()->route('usuarios.index')->with('success', 'Usuario eliminado exitosamente.');
+        return redirect()
+            ->route('usuarios.index')
+            ->with('success', 'Usuario eliminado exitosamente.');
     }
 
     /**
@@ -291,11 +303,11 @@ class CompetidorController extends Controller
     {
         $result = [];
 
-        $duplicado = Competidor::where($request->input('campo'), "=", $request->input('valor'))->first();
+        $duplicado = Competidor::where($request->input('campo'), '=', $request->input('valor'))->first();
 
         if (!is_null($duplicado)) {
-            $result["success"] = 0;
-            $result["error"] = "Este " . strtoupper($request->input('campo')) . " ya se encuentra registrado.";
+            $result['success'] = 0;
+            $result['error'] = 'Este ' . strtoupper($request->input('campo')) . ' ya se encuentra registrado.';
         }
 
         if (count($result) == 0) {
