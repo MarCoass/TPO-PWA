@@ -12,9 +12,8 @@ use App\Models\Escuela;
 use Illuminate\Http\Request;
 /* Necesarios para enviar mails */
 use Illuminate\Support\Facades\Notification;
+use App\Notifications\NotificacionGeneral;
 use App\Notifications\UsuarioHabilitado;
-
-
 
 class UsuarioController extends Controller
 {
@@ -54,7 +53,9 @@ class UsuarioController extends Controller
 
             $usuario->save();
 
-            return redirect()->route('index_usuarios')->with('success', 'Usuario creado exitosamente.');
+            return redirect()
+                ->route('index_usuarios')
+                ->with('success', 'Usuario creado exitosamente.');
         } catch (\Illuminate\Validation\ValidationException $e) {
             return redirect()
                 ->route('create_usuario')
@@ -103,10 +104,11 @@ class UsuarioController extends Controller
 
             $usuario->save();
 
-            return redirect()->route('index_usuarios')->with('success', 'Usuario actualizado exitosamente.');
+            return redirect()
+                ->route('index_usuarios')
+                ->with('success', 'Usuario actualizado exitosamente.');
         } catch (\Illuminate\Validation\ValidationException $e) {
-            return redirect('edit_usuario/' . $id)
-                ->withErrors($e->errors());
+            return redirect('edit_usuario/' . $id)->withErrors($e->errors());
         }
     }
 
@@ -117,9 +119,11 @@ class UsuarioController extends Controller
         $usuario->save();
 
         /**Notificar al usuario por Email */
-       $usuario->notify( new UsuarioHabilitado());
+        $usuario->notify(new UsuarioHabilitado());
 
-        return redirect()->route('index_usuarios')->with('success', 'Usuario habilitado y notificado exitosamente.');
+        return redirect()
+            ->route('index_usuarios')
+            ->with('success', 'Usuario habilitado y notificado exitosamente.');
     }
 
     public function destroy($id)
@@ -127,15 +131,15 @@ class UsuarioController extends Controller
         $usuario = User::find($id);
         $usuario->delete();
 
-        return redirect()->route('index_usuarios')->with('success', 'Usuario eliminado exitosamente.');
+        return redirect()
+            ->route('index_usuarios')
+            ->with('success', 'Usuario eliminado exitosamente.');
     }
-
 
     public function actualizarDatosPersonales(Request $request)
     {
         $usuario = User::find($request->input('id'));
         $id = $usuario->id;
-
 
         if (password_verify($request->input('password'), $usuario->password)) {
             try {
@@ -149,24 +153,26 @@ class UsuarioController extends Controller
 
                 $arregloMensaje = [
                     'tipo' => 'success',
-                    'mensaje' => 'Se han actualizado sus datos correctamente.'
+                    'mensaje' => 'Se han actualizado sus datos correctamente.',
                 ];
             } catch (\Illuminate\Validation\ValidationException $e) {
                 $errors = $e->validator->errors();
                 $errorMessages = implode(' ', $errors->all());
                 $arregloMensaje = [
                     'tipo' => 'restringed',
-                    'mensaje' => $errorMessages
+                    'mensaje' => $errorMessages,
                 ];
             }
         } else {
             $arregloMensaje = [
                 'tipo' => 'restringed',
-                'mensaje' => 'Contraseña Incorrecta.'
+                'mensaje' => 'Contraseña Incorrecta.',
             ];
         }
 
-        return redirect()->route('verPerfil')->with($arregloMensaje['tipo'], $arregloMensaje['mensaje']);
+        return redirect()
+            ->route('verPerfil')
+            ->with($arregloMensaje['tipo'], $arregloMensaje['mensaje']);
     }
 
     public function actualizarPassword(Request $request)
@@ -175,28 +181,34 @@ class UsuarioController extends Controller
 
         if ($request->input('passwordnueva') == $request->input('passwordnueva2')) {
             if (password_verify($request->input('passwordactual'), $usuario->password)) {
-
                 $usuario->password = $request->input('passwordnueva');
                 $usuario->save();
 
                 $arregloMensaje = [
                     'tipo' => 'success',
-                    'mensaje' => 'Tus datos se actualizaron exitosamente.'
+                    'mensaje' => 'Tus datos se actualizaron exitosamente.',
                 ];
+
+                $datosSolicitud[0] = "   Si no has pedido el cambio de contraseña contactate inmediatamente con soporte para reportar el robo de cuenta. ";
+
+                /* del objeto usuario invoca a notify, y este lo  */
+                $usuario->notify(new NotificacionGeneral('success', 'Cambio de contraseña exitoso!', 'Se ha actualizado tu contraseña, ten esto en cuenta cuando quieras volver a logearte.', $datosSolicitud));
             } else {
                 $arregloMensaje = [
                     'tipo' => 'restringed',
-                    'mensaje' => 'Contraseña Incorrecta.'
+                    'mensaje' => 'Contraseña Incorrecta.',
                 ];
             }
         } else {
             $arregloMensaje = [
                 'tipo' => 'restringed',
-                'mensaje' => 'Las contraseñas deben coincidir.'
+                'mensaje' => 'Las contraseñas deben coincidir.',
             ];
         }
 
-        return redirect()->route('verPerfil')->with($arregloMensaje['tipo'], $arregloMensaje['mensaje']);
+        return redirect()
+            ->route('verPerfil')
+            ->with($arregloMensaje['tipo'], $arregloMensaje['mensaje']);
     }
 
     public function rules()
@@ -208,10 +220,9 @@ class UsuarioController extends Controller
             'correo' => 'required|email:rfc,dns|unique:users,correo',
             'password' => 'required|min:8',
             'confirmacion_clave' => 'required|same:password',
-            'rol' => 'required'
+            'rol' => 'required',
         ];
     }
-
 
     public function rulesEditar($id)
     {
@@ -220,7 +231,7 @@ class UsuarioController extends Controller
             'apellido' => 'required|max:50|string',
             'usuario' => 'required|unique:users,usuario,' . $id . '|max:50',
             'correo' => 'required|email:rfc,dns|unique:users,correo, ' . $id,
-            'rol' => 'required'
+            'rol' => 'required',
         ];
     }
 
@@ -236,15 +247,11 @@ class UsuarioController extends Controller
     {
         $idUsuario = $request->input('idUsuario');
         $usuario = User::find($idUsuario);
-     
+
         $extension = $request->file('imagenPerfil')->getClientOriginalExtension();
 
         $nombrePerfil = $idUsuario . 'Perfil.' . $extension;
-        $pathFoto = $request->file('imagenPerfil')->storeAs(
-            '/imagenPerfil',
-            $nombrePerfil,
-            'public'
-        );
+        $pathFoto = $request->file('imagenPerfil')->storeAs('/imagenPerfil', $nombrePerfil, 'public');
         $usuario->imagenPerfil = $pathFoto;
         $usuario->save();
 
