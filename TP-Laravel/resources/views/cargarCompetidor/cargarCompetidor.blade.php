@@ -8,9 +8,8 @@ Inscripción a Competencia.
 Formulario de Registro de Competidor.
 @endsection
 
-<span>Carga tus datos de competidor, estos se autocompletarán en futuras inscripciones.</span>
-
 @section('contenido')
+<span>Carga tus datos de competidor, estos se autocompletarán en futuras inscripciones.</span>
 <div class="card my-5 shadow">
     <div class="card-body">
         <div class="row" style="overflow: hidden;">

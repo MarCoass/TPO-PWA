@@ -18,11 +18,11 @@
 
 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 pt-3">
     <label class="form-label" for="du">DU: <span class="spinner-border spinner-border-sm d-none"></span></label>
-    <input class="form-control validarEspecial" type="text" name="du" id="du" pattern="[0-9]{7}" autocomplete="off" maxlength="7" placeholder="Ej: 23456789" required>
+    <input class="form-control validarEspecial" type="text" name="du" id="du" pattern="[0-9]{8}" autocomplete="off" maxlength="8" placeholder="Ej: 23456789" required>
     <div class="valid-feedback">
         ¡Correcto!
     </div>
-    <div class="invalid-feedback">Deben ser 7 números</div>
+    <div class="invalid-feedback">Deben ser 8 números.</div>
 </div>
 
 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 pt-3">

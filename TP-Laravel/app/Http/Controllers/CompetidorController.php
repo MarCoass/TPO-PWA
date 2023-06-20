@@ -203,13 +203,19 @@ class CompetidorController extends Controller
     {
         $competidor = new Competidor();
         $competidor->du = $request->input('du');
-        $competidor->gal = $request->input('gal');
         $competidor->nombre = $request->input('nombre');
         $competidor->apellido = $request->input('apellido');
         $competidor->fechaNacimiento = $request->input('fechaNacimiento');
         $competidor->email = $request->input('correo');
         $competidor->ranking = 0; // 0 por defecto
         $competidor->genero = $request->input('genero');
+
+        // Verificador para que no se pasen de listo con el form
+        if ($request['idGraduacion'] <= 10){
+            $competidor->gal = null;
+        } else {
+            $competidor->gal = $request->input('gal');
+        }
 
         // Estado base
         $competidor->estado = false;
