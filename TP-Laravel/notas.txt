@@ -6,18 +6,20 @@ COMO ARMAR LA BASE DE DATOS Y CARGARLE DATOS
 2) En el archivo .env cambiar la variable DB_DATABASE  al nombre de la base de datos.
 3) En la consola ejecutar el comando php artisan migrate
 4) Cargar los datos de prueba usando los seeders con los siguientes comandos
-    aa)php artisan db:seed --class=GraduacionesTableSeeder
-     a) php artisan db:seed --class=EscuelasTableSeeder
-     b) php artisan db:seed --class=PaisesTableSeeder
-     c) php artisan db:seed --class=EstadosTableSeeder
-     d) php artisan db:seed --class=RolesTableSeeder
-     e) php artisan db:seed --class=UsuariosTableSeeder
-     f) php artisan db:seed --class=CompetidoresTableSeeder
-     g) php artisan db:seed --class=CompetenciasTableSeeder
-     h) php artisan db:seed --class=PoomsaeTableSeeder
-     i) php artisan db:seed --class=CategoriasTableSeeder
-     j) php artisan db:seed --class=CategoriasGraduacionesTableSeeder
-     k) php artisan db:seed --class=CategoriasPoomsaeTableSeeder
+     php artisan db:seed --class=GraduacionesTableSeeder
+     php artisan db:seed --class=EscuelasTableSeeder
+     php artisan db:seed --class=PaisesTableSeeder
+     php artisan db:seed --class=EstadosTableSeeder
+     php artisan db:seed --class=RolesTableSeeder
+     php artisan db:seed --class=UsuariosTableSeeder
+     php artisan db:seed --class=CompetidoresTableSeeder
+     php artisan db:seed --class=CompetenciasTableSeeder
+     php artisan db:seed --class=PoomsaeTableSeeder
+     php artisan db:seed --class=CategoriasTableSeeder
+     php artisan db:seed --class=CategoriasGraduacionesTableSeeder
+     php artisan db:seed --class=CategoriasPoomsaeTableSeeder
+     php artisan db:seed --class=CompetenciasJuecesTableSeeder
+     php artisan db:seed --class=CompetenciaCompetidorTableSeeder
 
 ** COMO RESETEAR LA BASE DE DATOS **
 1) Ejecutar el comando php artisan migrate:refresh

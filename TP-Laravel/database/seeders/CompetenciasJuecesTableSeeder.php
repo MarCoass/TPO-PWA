@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\CompetenciaJuez;
+use Illuminate\Support\Facades\File;
 
 class CompetenciasJuecesTableSeeder extends Seeder
 {
@@ -15,28 +16,18 @@ class CompetenciasJuecesTableSeeder extends Seeder
      */
     public function run()
     {
-        $competenciasJueces = [
-            [
-                'idCompetencia' => '1',
-                'estado' => '1',
-                'idJuez' => '2',
-            ],
-            [
-                'idCompetencia' => '1',
-                'estado' => '1',
-                'idJuez' => '4',
-            ]
-        ];
-       
-
-        //por cada elemento de roles, va a crear el objeto rol
-        foreach ($competenciasJueces as $competenciaJuez) {
-            
+         //Obtengo los datos de un json
+         $jsonPath = base_path('database/seeders/data/competenciasjueces.json');
+         $json = File::get($jsonPath);
+ 
+         $data = json_decode($json, true);
+ 
+         foreach ($data as $row) {
             CompetenciaJuez::create([
-                'idCompetencia' => $competenciaJuez['idCompetencia'],
-                'estado' =>$competenciaJuez['estado'],
-                'idJuez' => $competenciaJuez['idJuez']
-            ]);
-        }
+                 'idCompetencia' => $row['idCompetencia'],
+                 'estado' => $row['estado'],
+                 'idJuez' => $row['idJuez']
+             ]);
+         }
     }
 }

@@ -7,10 +7,35 @@ use Illuminate\Database\Seeder;
 use App\Models\Competidor;
 use App\Models\CompetenciaCompetidor;
 use App\Models\Categoria;
-use Illuminate\Support\Carbon;
-
+use App\Models\Competencia;
+use Illuminate\Support\Facades\File;
 class CompetenciaCompetidorTableSeeder extends Seeder
 {
+
+    public function run()
+    {
+        //Obtengo los datos de un json
+        $jsonPath = base_path('database/seeders/data/competenciascompetidor.json');
+        $json = File::get($jsonPath);
+
+        $data = json_decode($json, true);
+
+        foreach ($data as $row) {
+            CompetenciaCompetidor::create([
+                'idCompetencia' => $row['idCompetencia'],
+                'idCompetidor' => $row['idCompetidor'],
+                'idCategoria' => $row['idCategoria'],
+                'puntaje' => $row['puntaje'],
+                'contadorPasadas' => $row['contadorPasadas'],
+                'estado' => $row['estado']
+            ]);
+        }
+    }
+    
+}
+
+
+/*
     public function run()
     {
         //Traigo todos los competidores con ID: 3
@@ -36,5 +61,5 @@ class CompetenciaCompetidorTableSeeder extends Seeder
                 'estado' => 1
             ]);
         }
-    }
+    }*/
 }

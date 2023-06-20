@@ -1,0 +1,97 @@
+[
+    {
+        "idCompetencia": 1,
+        "idCompetidor":1,
+        "idCategoria": 1,
+        "puntaje":10,
+        "contadorPasadas":0,
+        "estado":1
+    },
+    {
+        "idCompetencia": 1,
+        "idCompetidor":2,
+        "idCategoria": 1,
+        "puntaje":10,
+        "contadorPasadas":0,
+        "estado":1
+    },
+
+
+    {
+        "idCompetencia": 1,
+        "idCompetidor":3,
+        "idCategoria": 1,
+        "puntaje":10,
+        "contadorPasadas":0,
+        "estado":1
+    },
+    {
+        "idCompetencia": 1,
+        "idCompetidor":4,
+        "idCategoria": 1,
+        "puntaje":10,
+        "contadorPasadas":0,
+        "estado":1
+    },
+    {
+        "idCompetencia": 1,
+        "idCompetidor":5,
+        "idCategoria": 1,
+        "puntaje":10,
+        "contadorPasadas":0,
+        "estado":1
+    },
+    {
+        "idCompetencia": 1,
+        "idCompetidor":6,
+        "idCategoria": 1,
+        "puntaje":10,
+        "contadorPasadas":0,
+        "estado":1
+    },
+
+    {
+        "idCompetencia": 2,
+        "idCompetidor":7,
+        "idCategoria": 1,
+        "puntaje":10,
+        "contadorPasadas":0,
+        "estado":0
+    },
+
+    {
+        "idCompetencia": 2,
+        "idCompetidor":8,
+        "idCategoria": 1,
+        "puntaje":10,
+        "contadorPasadas":0,
+        "estado":1
+    },
+
+    {
+        "idCompetencia": 2,
+        "idCompetidor":9,
+        "idCategoria": 1,
+        "puntaje":10,
+        "contadorPasadas":0,
+        "estado":1
+    },
+
+    {
+        "idCompetencia": 2,
+        "idCompetidor":10,
+        "idCategoria": 1,
+        "puntaje":10,
+        "contadorPasadas":0,
+        "estado":1
+    },
+
+    {
+        "idCompetencia": 2,
+        "idCompetidor":11,
+        "idCategoria": 1,
+        "puntaje":10,
+        "contadorPasadas":0,
+        "estado":1
+    }
+]

@@ -1,0 +1,42 @@
+[
+    {
+        "idCompetencia": 1,
+        "estado":1,
+        "idJuez": 3
+    },
+    {
+        "idCompetencia": 1,
+        "estado":1,
+        "idJuez": 5
+    },
+    {
+        "idCompetencia": 1,
+        "estado":1,
+        "idJuez": 6
+    },
+    {
+        "idCompetencia": 2,
+        "estado":0,
+        "idJuez": 8
+    },
+    {
+        "idCompetencia": 2,
+        "estado":1,
+        "idJuez": 5
+    },
+    {
+        "idCompetencia": 2,
+        "estado":1,
+        "idJuez": 10
+    },
+    {
+        "idCompetencia": 2,
+        "estado":1,
+        "idJuez": 3
+    },
+    {
+        "idCompetencia": 2,
+        "estado":1,
+        "idJuez": 6
+    }
+]
