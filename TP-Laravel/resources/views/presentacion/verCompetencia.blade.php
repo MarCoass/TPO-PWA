@@ -10,7 +10,7 @@
 
 @section('contenido')
     <div class="text-center">
-        <p class="text-secondary">Fecha: {{ $competencia->fecha }}</p>
+        <p class="text-secondary">Fecha: @php $fecha = date('d/m/Y', strtotime($competencia->fecha)) @endphp {{ $fecha }}.</p>
         @if (auth()->user()->idRol == 1)
             <a href="{{ route('edit_competencia', ['id' => $competencia->idCompetencia]) }}" class="btn btn-outline-info"><i
                     class="bi bi-pencil-square me-2"></i>Editar competencia</a>
