@@ -63,6 +63,11 @@
         "idPermiso": "13",
         "nombrePermiso":"Gestión de Poomsaes.",
         "rutaPermiso":"index_poomsae"
+    },
+    {
+        "idPermiso": "14",
+        "nombrePermiso":"Gestión de Roles.",
+        "rutaPermiso":"roles.index"
     }
 
 ]
