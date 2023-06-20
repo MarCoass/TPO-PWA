@@ -16,7 +16,7 @@ class RelojController extends Controller
 {
     public function index(Request $request)
     {
-        $competencias = Competencia::where('estadoJueces', '1')->where('estadoCompetencia', 0)->get();
+        $competencias = Competencia::where('estadoJueces', true)->where('estadoCompetencia', 0)->get();
         return view('reloj.index', compact('competencias'));
     }
 
