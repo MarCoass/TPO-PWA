@@ -4,7 +4,7 @@
         "fecha":"2023-05-26",
         "cantidadJueces": 3,
         "estadoJueces": true,
-        "estadoCompetencia": 1
+        "estadoCompetencia": 0
     },
     {
         "nombre": "Competencia Juvenil",
