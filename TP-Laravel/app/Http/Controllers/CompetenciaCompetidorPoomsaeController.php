@@ -63,7 +63,7 @@ class CompetenciaCompetidorPoomsaeController extends Controller
         return true;
     }
 
-    public function asignar_poomsae_por_sorteo($id_competencia){
+      public function asignar_poomsae_por_sorteo($id_competencia){
 
         $competidoresCompetencia = CompetenciaCompetidor::where('idCompetencia', $id_competencia)->get();
         $pasadas = [1,2];
@@ -91,7 +91,10 @@ class CompetenciaCompetidorPoomsaeController extends Controller
         $CompetenciaCompetidorController = new CompetenciaCompetidorController();
     
         return $CompetenciaCompetidorController->listarCompetidoresPorId($id_competencia);
-    }
+    }  
+
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -138,6 +141,13 @@ class CompetenciaCompetidorPoomsaeController extends Controller
         $this->registrar_poomsae_en_competidor($poomsae_dos,$id_competencia_competidor,2);
 
         $CompetenciaController = new CompetenciaController();
+
+        $competenciaCompetidor = CompetenciaCompetidor::find($id_competencia_competidor);
+        $user = $competenciaCompetidor->competidor->user;
+
+        $poomsaeUno = Poomsae::find($poomsae_uno);
+        $poomsaeDos = Poomsae::find($poomsae_dos);
+        $user->notify(new NotificacionGeneral('success','Poomsae Asignado!','Poomsae Pasada 1: '.$poomsaeUno->nombre.' Poomsae Pasada 2: '.$poomsaeDos->nombre.'  ',' A prepararse!'));
 
         return $CompetenciaController->index();
     }
