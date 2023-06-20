@@ -102,7 +102,7 @@ function actualizarInformacion() {
             id_categoria: id_categoria,
         },
         success: function (response) {
-            //console.log(response)
+            if (response.success) {
             let puntajesPrimeraPasada = response["primeraPasada"];
             let puntajesSegundaPasada = response["segundaPasada"];
             let competidor = response["competidor"];
@@ -145,6 +145,7 @@ function actualizarInformacion() {
 
                 $('#modalCategoriaTerminada').modal('show');
             }
+        }
         },
     });
 }
