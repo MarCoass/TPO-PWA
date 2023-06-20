@@ -182,6 +182,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
              //ruta para setear ranking
              Route::get('/setear_ranking', [CompetenciaCompetidorController::class, 'setearRanking']);
 
+             // Ruta para gestión de roles
+             Route::resource('roles', 'RolController');
+
 
         }); //fin rutas administradores
 

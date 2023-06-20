@@ -130,7 +130,7 @@ class RelojController extends Controller
                 $categoria = null;
             }
         }
-        if (count($categoria) != 0) {
+        if (!is_null($categoria) && count($categoria) != 0) {
             return response()->json($categoria);
         } else {
             return response()->json([]);
