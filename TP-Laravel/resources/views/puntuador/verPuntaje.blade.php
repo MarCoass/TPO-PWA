@@ -119,5 +119,10 @@
 
 
     </div>
+<!-- Por andar de mamada cambiando nombre quedo mal esto, necesitamoslos dos name asis -->
+    <input type="hidden" name="competencia" id="competencia"
+    value={{ $competencia }}>
+    <input type="hidden" name="id_competencia" id="id_competencia"
+    value={{ $competencia }}>
 @endsection
 <script src="{{ asset('js/validarPuntuaciones.js') }}"></script>
