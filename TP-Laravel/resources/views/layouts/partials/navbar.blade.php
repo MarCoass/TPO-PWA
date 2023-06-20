@@ -21,17 +21,37 @@
           </div>
 
 
-    <input type="hidden" id='idUsuarioActual' value="{{auth()->user()->id}}">
-    <div class="btn-group">
+
+
+    @include('layouts.partials.notificaciones')
+
+
+
+    {{-- <input type="hidden" id='idUsuarioActual' value="{{auth()->user()->id}}"> --}}
+    {{-- <div class="btn-group">
         <button type="button" class="btn btn-outline-dark" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="bi bi-bell me-2"></i><span id="notiCantidad" class="badge bg-primary rounded-pill"></span>
-        </button>
-        <ul id="notiCasera" class="dropdown-menu dropdown-menu-end p-1" aria-labelledby="dropdownMenuButton" style="width: 450px">
+        </button> --}}
+
+
+
+
+
+        {{-- <ul id="notiCasera" class="dropdown-menu dropdown-menu-end p-1" aria-labelledby="dropdownMenuButton" style="width: 450px">
             <li><a class="dropdown-item" href="#">
                 No hay notificaciones <span class="badge bg-primary rounded-pill">0</span>
             </a></li>
-        </ul>
-    </div>
+        </ul> --}}
+    {{-- </div> --}}
+
+
+
+
+
+
+
+
+
 
     <button id="menuNavBar" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

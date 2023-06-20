@@ -1,6 +1,16 @@
 /* estilos para el layout */
 
 /* estilos para navbar responsive y otros */
+#notiCasera {
+    width: 700px;
+}
+
+.notiBoton {
+    height: 2rem;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    vertical-align: middle;
+}
 
 /* estilos cuando se achica la pantalla */
 @media (max-width: 480px) {
