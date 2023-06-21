@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Competencia;
 use App\Models\Competidor;
+use App\Models\Solicitud;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -12,6 +13,7 @@ class HomeController extends Controller
     {
         $competencias = null;
         $objCompetidor = null;
+        $cantSolicitudes = null;
         //Competencias en las que no se esta registrado
         $competenciasDisponibles = null;
         if (auth()->user()) {
@@ -37,8 +39,18 @@ class HomeController extends Controller
                     })->get();
                 }
             }
+            if ($usuario['idRol'] == 1) {
+                $cantSolicitudes = $this->haySolicitudesPendientes();
+            }
+
         }
 
-        return view('home.index', compact('competencias', 'competenciasDisponibles', 'objCompetidor'));
+        return view('home.index', compact('competencias', 'competenciasDisponibles', 'objCompetidor', 'cantSolicitudes'));
+    }
+
+    /* Busca la cantidad de solicitudes pendientes */
+    private function haySolicitudesPendientes(){
+        $cantSolicitudes = count(Solicitud::where('estadoSolicitud', '=', '4')->get());
+        return $cantSolicitudes;
     }
 }

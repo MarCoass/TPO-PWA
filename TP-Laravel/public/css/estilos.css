@@ -228,3 +228,15 @@ transform: translateX(0);
   color: #cd7f32;
 }
 
+.spinner-grow{
+    width: 6.3rem;
+    height: 4rem;
+    animation-duration: 4s;
+}
+
+.spinner-grow div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

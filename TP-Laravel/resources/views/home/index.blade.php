@@ -46,8 +46,20 @@ NeuPoom
                         <div class="seccion_item">
                             <a href="{{ Route::has($menu->permiso->rutaPermiso) ? route($menu->permiso->rutaPermiso) : "#" }}" class="seccion-item_link {{ Route::has($menu->permiso->rutaPermiso) ? '' : "bg-danger" }}">
                                 <div class="seccion-item_bg"></div>
-                                <div class="seccion-item_title">
-                                    {{ $menu->permiso->nombrePermiso }}
+                                <div class="seccion-item_title d-flex justify-content-between">
+                                    <div>
+                                        {{ $menu->permiso->nombrePermiso }}
+                                    </div>
+                                    @if ($menu->idPermiso == 9 && $cantSolicitudes > 0)
+                                    <div>
+                                        <div class="badge rounded-pill text-bg-warning spinner-grow d-flex justify-content-center">
+                                            <div class="align-item-center ">
+                                                <i class="bi bi-bell-fill me-2"></i>
+                                                {{ $cantSolicitudes }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endif
                                 </div>
                             </a>
                         </div>
@@ -72,7 +84,7 @@ NeuPoom
 
     @guest
     @include('home.invitados.vistaInvitados')
-    
+
     @endguest
 
     @endsection
