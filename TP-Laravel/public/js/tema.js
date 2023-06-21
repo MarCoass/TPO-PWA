@@ -23,8 +23,10 @@ export const cambio_de_tema = (tema) => {
 
       if($modals){
         $modals.forEach((el) => {
-            el.classList.remove('bg-light', 'text-dark');
-            el.classList.add('bg-dark', 'text-light');
+            if (el.classList.contains('modalTemaDual')) {
+                el.classList.remove('bg-light', 'text-dark');
+                el.classList.add('bg-dark', 'text-light');
+            }
         })
       }
 
@@ -76,8 +78,10 @@ export const cambio_de_tema = (tema) => {
       }
       if($modals){
         $modals.forEach((el) => {
-            el.classList.remove('bg-dark', 'text-light');
-            el.classList.add('bg-light', 'text-dark');
+            if (el.classList.contains('modalTemaDual')) {
+                el.classList.remove('bg-dark', 'text-light');
+                el.classList.add('bg-light', 'text-dark');
+            }
         })
       }
       if($acordeones){

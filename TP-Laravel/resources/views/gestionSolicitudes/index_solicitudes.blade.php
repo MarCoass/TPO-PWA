@@ -64,9 +64,9 @@ Gestion de Solicitudes
   @if ($solicitud)
 
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade modalTemaDual" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content">
+      <div class="modal-content modalTemaDual">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">El usuario {{ $solicitud->user->usuario}} solicita</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -111,7 +111,7 @@ Gestion de Solicitudes
       exampleModal.addEventListener('show.bs.modal', function(event) {
         const button = event.relatedTarget; // El botón que activó el modal
         const idSolicitud = button.getAttribute('data-id'); // Extrae el data-id del botón
-        
+
         // Construye la URL de la ruta 'aceptar_solicitud' utilizando el valor de 'idUser'
         const url = '{{ route("aceptar_solicitud", ["id" => ":idSolicitud"]) }}'.replace(':idSolicitud', idSolicitud);
         const url2 = '{{ route("rechazar_solicitud", ["id" => ":idSolicitud"]) }}'.replace(':idSolicitud', idSolicitud);

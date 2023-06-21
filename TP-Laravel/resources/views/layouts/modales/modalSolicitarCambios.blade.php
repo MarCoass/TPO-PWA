@@ -10,9 +10,9 @@
                     </script>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="modalConsulta" tabindex="-1" aria-labelledby="modalConsultaLabel" aria-hidden="true">
+                    <div class="modal fade modalTemaDual" id="modalConsulta" tabindex="-1" aria-labelledby="modalConsultaLabel" aria-hidden="true">
                         <div class="modal-dialog">
-                            <div class="modal-content">
+                            <div class="modal-content modalTemaDual">
                                 <div class="modal-header">
                                     <h1 class="modal-title fs-5" id="modalConsultaLabel">Desea actualizar datos?</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

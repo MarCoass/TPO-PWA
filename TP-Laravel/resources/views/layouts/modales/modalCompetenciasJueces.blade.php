@@ -5,11 +5,11 @@
            Inscripción. <!-- JUEZ -->
         </div>
     </a>
-    <div class="modal fade" id="inscripcionJuez" tabindex="-1" aria-labelledby="inscripcionJuezLabel" aria-hidden="true">
+    <div class="modal fade modalTemaDual" id="inscripcionJuez" tabindex="-1" aria-labelledby="inscripcionJuezLabel" aria-hidden="true">
         <div class="modal-dialog">
             <form method="POST" action="{{ route('store_competencia_juez') }}">
 
-        <div class="modal-content">
+        <div class="modal-content modalTemaDual">
             <div class="modal-header">
             <h1 class="modal-title fs-5" id="inscripcionJuezLabel">Inscripcion Juez</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
