@@ -67,7 +67,7 @@ class usuariosTableSeeder extends Seeder
             [
                 'nombre' => 'Braian',
                 'apellido' => 'Centurion',
-                'usuario' => 'braiancenturion',
+                'usuario' => 'mondongo',
                 'correo' => 'braian@gmail.com',
                 'password' => 'contraseña',
                 'idRol' => 2,
