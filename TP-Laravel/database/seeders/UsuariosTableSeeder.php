@@ -60,7 +60,7 @@ class usuariosTableSeeder extends Seeder
                 'correo' => 'gusOliveros@gmail.com',
                 'password' => 'GusOliveros',
                 'idRol' => 2,
-                'estado' => false,
+                'estado' => true,
                 'idEscuela' => 15,
                 'imagenPerfil' => null
             ],
@@ -71,7 +71,7 @@ class usuariosTableSeeder extends Seeder
                 'correo' => 'braian@gmail.com',
                 'password' => 'contraseña',
                 'idRol' => 2,
-                'estado' => false,
+                'estado' => true,
                 'idEscuela' => 15,
                 'imagenPerfil' => null
             ],
@@ -82,7 +82,7 @@ class usuariosTableSeeder extends Seeder
                 'correo' => 'pato@gmail.com',
                 'password' => 'contraseña',
                 'idRol' => 2,
-                'estado' => false,
+                'estado' => true,
                 'idEscuela' => 15,
                 'imagenPerfil' => null
             ],
@@ -93,7 +93,7 @@ class usuariosTableSeeder extends Seeder
                 'correo' => 'matias@gmail.com',
                 'password' => 'contraseña',
                 'idRol' => 2,
-                'estado' => false,
+                'estado' => true,
                 'idEscuela' => 15,
                 'imagenPerfil' => null
             ],
@@ -104,7 +104,7 @@ class usuariosTableSeeder extends Seeder
                 'correo' => 'gonza@gmail.com',
                 'password' => 'contraseña',
                 'idRol' => 2,
-                'estado' => false,
+                'estado' => true,
                 'idEscuela' => 15,
                 'imagenPerfil' => null
             ],
@@ -115,7 +115,7 @@ class usuariosTableSeeder extends Seeder
                 'correo' => 'martina@gmail.com',
                 'password' => 'contraseña',
                 'idRol' => 2,
-                'estado' => false,
+                'estado' => true,
                 'idEscuela' => 15,
                 'imagenPerfil' => null
             ]
