@@ -12,7 +12,7 @@
 
 <!-- despliega mensaje cuando se crea la cuenta -->
 @include('layouts.partials.messages')
-    
+
 <div class="my-3">
         <table id="competidores_tabla"
             class="table hover table-light table-bordered nowrap border dataTable dtr-inline collapsed" width="100%">
@@ -48,7 +48,7 @@
                     <td>{{ $competidor->ranking }}</td>
                     <td>{{ $competidor->graduacion->nombre }}, {{ $competidor->graduacion->color }}</td>
                     <td>{{ $competidor->email }}</td>
-                    <td>{{ $competidor->genero }}</td>
+                    <td>{{ (($competidor->genero)? "Masculino." : "Femenino." ) }}</td>
                 </tr>
                 @endforeach
             </tbody>

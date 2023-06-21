@@ -1,9 +1,9 @@
-<div class="container-fluid row">
+<div class="container-fluid">
 
 
 
     <div class="col">
-        <h1>Usted no esta registrado</h1>
+        <h1 class="display-3">Bienvenido a nuestra plataforma web NeuPoom</h1>
     </div>
 
     <div class="col justify-content-around">
