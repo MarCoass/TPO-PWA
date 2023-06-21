@@ -240,3 +240,25 @@ transform: translateX(0);
     align-items: center;
 }
 
+/* Estilo de datatables */
+table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before, table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before {
+    background-color: #1977e9;
+}
+
+table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td.dtr-control:before, table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th.dtr-control:before {
+    content: "-";
+    background-color: #583cd5;
+}
+
+.paginate_button {
+    background-color: var(--bs-red) !important;
+}
+
+.paginate_button.current {
+    background-color: var(--bs-dark) !important;
+    color: white;
+}
+
+.dataTables_wrapper .dataTables_length select {
+    background-color: var(--bs-red);
+}

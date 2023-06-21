@@ -27,15 +27,15 @@
     <!-- una font digital para cronometro -->
     <link href="https://fonts.cdnfonts.com/css/digital-7-mono" rel="stylesheet">
 
-    <!-- estilos propios -->
-    <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/cards.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/puntuador.css') }}">
 
     <!-- Datatable -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.dataTables.min.css">
 
+    <!-- estilos propios -->
+    <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/cards.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/puntuador.css') }}">
 
 
 </head>
@@ -46,14 +46,14 @@
 
      <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
- 
+
      <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
      <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
- 
- 
+
+
      <!-- index dom -->
      <script type="module" src="{{ asset('js/index_dom.js') }}"></script>
-     
+
     <div id="wrapper">
         <!-- NAVBAR -->
         @include('layouts.partials.navbar')
@@ -66,7 +66,7 @@
         @auth
         <script src="{{ asset('js/notificaciones.js') }}"></script>
         @endauth
-        
+
         <!-- FOOTER -->
         @include('layouts.partials.footer')
     </div>
