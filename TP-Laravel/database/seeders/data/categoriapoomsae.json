@@ -8,59 +8,467 @@
         "idPoomsae": "2"
     },
     {
-        "idCategoria": "1",
+        "idCategoria": "2",
+        "idPoomsae": "1"
+    },
+    {
+        "idCategoria": "2",
+        "idPoomsae": "2"
+    },
+    {
+        "idCategoria": "3",
+        "idPoomsae": "1"
+    },
+    {
+        "idCategoria": "3",
+        "idPoomsae": "2"
+    },
+    {
+        "idCategoria": "3",
         "idPoomsae": "3"
     },
     {
-        "idCategoria": "1",
+        "idCategoria": "4",
+        "idPoomsae": "1"
+    },
+    {
+        "idCategoria": "4",
+        "idPoomsae": "2"
+    },
+    {
+        "idCategoria": "4",
+        "idPoomsae": "3"
+    },
+    {
+        "idCategoria": "5",
+        "idPoomsae": "1"
+    },
+    {
+        "idCategoria": "5",
+        "idPoomsae": "2"
+    },
+    {
+        "idCategoria": "5",
+        "idPoomsae": "3"
+    },
+    {
+        "idCategoria": "5",
         "idPoomsae": "4"
     },
     {
-        "idCategoria": "2",
+        "idCategoria": "6",
+        "idPoomsae": "1"
+    },
+    {
+        "idCategoria": "6",
+        "idPoomsae": "2"
+    },
+    {
+        "idCategoria": "6",
+        "idPoomsae": "3"
+    },
+    {
+        "idCategoria": "6",
+        "idPoomsae": "4"
+    },
+    {
+        "idCategoria": "7",
+        "idPoomsae": "1"
+    },
+    {
+        "idCategoria": "7",
+        "idPoomsae": "2"
+    },
+    {
+        "idCategoria": "7",
+        "idPoomsae": "3"
+    },
+    {
+        "idCategoria": "7",
+        "idPoomsae": "4"
+    },
+    {
+        "idCategoria": "7",
         "idPoomsae": "5"
     },
     {
-        "idCategoria": "2",
+        "idCategoria": "8",
+        "idPoomsae": "1"
+    },
+    {
+        "idCategoria": "8",
+        "idPoomsae": "2"
+    },
+    {
+        "idCategoria": "8",
+        "idPoomsae": "3"
+    },
+    {
+        "idCategoria": "8",
+        "idPoomsae": "4"
+    },
+    {
+        "idCategoria": "8",
+        "idPoomsae": "5"
+    },
+    {
+        "idCategoria": "9",
+        "idPoomsae": "1"
+    },
+    {
+        "idCategoria": "9",
+        "idPoomsae": "2"
+    },
+    {
+        "idCategoria": "9",
+        "idPoomsae": "3"
+    },
+    {
+        "idCategoria": "9",
+        "idPoomsae": "4"
+    },
+    {
+        "idCategoria": "9",
+        "idPoomsae": "5"
+    },
+    {
+        "idCategoria": "9",
         "idPoomsae": "6"
     },
     {
-        "idCategoria": "2",
+        "idCategoria": "10",
+        "idPoomsae": "1"
+    },
+    {
+        "idCategoria": "10",
+        "idPoomsae": "2"
+    },
+    {
+        "idCategoria": "10",
+        "idPoomsae": "3"
+    },
+    {
+        "idCategoria": "10",
+        "idPoomsae": "4"
+    },
+    {
+        "idCategoria": "10",
+        "idPoomsae": "5"
+    },
+    {
+        "idCategoria": "10",
+        "idPoomsae": "6"
+    },
+    {
+        "idCategoria": "11",
+        "idPoomsae": "1"
+    },
+    {
+        "idCategoria": "11",
+        "idPoomsae": "2"
+    },
+    {
+        "idCategoria": "11",
+        "idPoomsae": "3"
+    },
+    {
+        "idCategoria": "11",
+        "idPoomsae": "4"
+    },
+    {
+        "idCategoria": "11",
+        "idPoomsae": "5"
+    },
+    {
+        "idCategoria": "11",
+        "idPoomsae": "6"
+    },
+    {
+        "idCategoria": "11",
         "idPoomsae": "7"
     },
     {
-        "idCategoria": "2",
+        "idCategoria": "12",
+        "idPoomsae": "1"
+    },
+    {
+        "idCategoria": "12",
+        "idPoomsae": "2"
+    },
+    {
+        "idCategoria": "12",
+        "idPoomsae": "3"
+    },
+    {
+        "idCategoria": "12",
+        "idPoomsae": "4"
+    },
+    {
+        "idCategoria": "12",
+        "idPoomsae": "5"
+    },
+    {
+        "idCategoria": "12",
+        "idPoomsae": "6"
+    },
+    {
+        "idCategoria": "12",
+        "idPoomsae": "7"
+    },
+    {
+        "idCategoria": "13",
+        "idPoomsae": "1"
+    },
+    {
+        "idCategoria": "13",
+        "idPoomsae": "2"
+    },
+    {
+        "idCategoria": "13",
+        "idPoomsae": "3"
+    },
+    {
+        "idCategoria": "13",
+        "idPoomsae": "4"
+    },
+    {
+        "idCategoria": "13",
+        "idPoomsae": "5"
+    },
+    {
+        "idCategoria": "13",
+        "idPoomsae": "6"
+    },
+    {
+        "idCategoria": "13",
+        "idPoomsae": "7"
+    },
+    {
+        "idCategoria": "13",
         "idPoomsae": "8"
     },
     {
-        "idCategoria": "3",
-        "idPoomsae": "9"
+        "idCategoria": "14",
+        "idPoomsae": "1"
     },
     {
-        "idCategoria": "3",
-        "idPoomsae": "10"
+        "idCategoria": "14",
+        "idPoomsae": "2"
     },
     {
-        "idCategoria": "3",
-        "idPoomsae": "11"
+        "idCategoria": "14",
+        "idPoomsae": "3"
     },
     {
-        "idCategoria": "3",
-        "idPoomsae": "12"
+        "idCategoria": "14",
+        "idPoomsae": "4"
     },
     {
-        "idCategoria": "4",
-        "idPoomsae": "13"
+        "idCategoria": "14",
+        "idPoomsae": "5"
     },
     {
-        "idCategoria": "4",
-        "idPoomsae": "14"
+        "idCategoria": "14",
+        "idPoomsae": "6"
     },
     {
-        "idCategoria": "4",
-        "idPoomsae": "15"
+        "idCategoria": "14",
+        "idPoomsae": "7"
     },
     {
-        "idCategoria": "4",
-        "idPoomsae": "16"
+        "idCategoria": "14",
+        "idPoomsae": "8"
+    },
+    {
+        "idCategoria": "15",
+        "idPoomsae": "1"
+    },
+    {
+        "idCategoria": "15",
+        "idPoomsae": "2"
+    },
+    {
+        "idCategoria": "15",
+        "idPoomsae": "3"
+    },
+    {
+        "idCategoria": "15",
+        "idPoomsae": "4"
+    },
+    {
+        "idCategoria": "15",
+        "idPoomsae": "5"
+    },
+    {
+        "idCategoria": "15",
+        "idPoomsae": "6"
+    },
+    {
+        "idCategoria": "15",
+        "idPoomsae": "7"
+    },
+    {
+        "idCategoria": "15",
+        "idPoomsae": "8"
+    },
+    {
+        "idCategoria": "16",
+        "idPoomsae": "1"
+    },
+    {
+        "idCategoria": "16",
+        "idPoomsae": "2"
+    },
+    {
+        "idCategoria": "16",
+        "idPoomsae": "3"
+    },
+    {
+        "idCategoria": "16",
+        "idPoomsae": "4"
+    },
+    {
+        "idCategoria": "16",
+        "idPoomsae": "5"
+    },
+    {
+        "idCategoria": "16",
+        "idPoomsae": "6"
+    },
+    {
+        "idCategoria": "16",
+        "idPoomsae": "7"
+    },
+    {
+        "idCategoria": "16",
+        "idPoomsae": "8"
+    },
+    {
+        "idCategoria": "17",
+        "idPoomsae": "1"
+    },
+    {
+        "idCategoria": "17",
+        "idPoomsae": "2"
+    },
+    {
+        "idCategoria": "17",
+        "idPoomsae": "3"
+    },
+    {
+        "idCategoria": "17",
+        "idPoomsae": "4"
+    },
+    {
+        "idCategoria": "17",
+        "idPoomsae": "5"
+    },
+    {
+        "idCategoria": "17",
+        "idPoomsae": "6"
+    },
+    {
+        "idCategoria": "17",
+        "idPoomsae": "7"
+    },
+    {
+        "idCategoria": "17",
+        "idPoomsae": "8"
+    },
+    {
+        "idCategoria": "18",
+        "idPoomsae": "1"
+    },
+    {
+        "idCategoria": "18",
+        "idPoomsae": "2"
+    },
+    {
+        "idCategoria": "18",
+        "idPoomsae": "3"
+    },
+    {
+        "idCategoria": "18",
+        "idPoomsae": "4"
+    },
+    {
+        "idCategoria": "18",
+        "idPoomsae": "5"
+    },
+    {
+        "idCategoria": "18",
+        "idPoomsae": "6"
+    },
+    {
+        "idCategoria": "18",
+        "idPoomsae": "7"
+    },
+    {
+        "idCategoria": "18",
+        "idPoomsae": "8"
+    },
+    {
+        "idCategoria": "19",
+        "idPoomsae": "1"
+    },
+    {
+        "idCategoria": "19",
+        "idPoomsae": "2"
+    },
+    {
+        "idCategoria": "19",
+        "idPoomsae": "3"
+    },
+    {
+        "idCategoria": "19",
+        "idPoomsae": "4"
+    },
+    {
+        "idCategoria": "19",
+        "idPoomsae": "5"
+    },
+    {
+        "idCategoria": "19",
+        "idPoomsae": "6"
+    },
+    {
+        "idCategoria": "19",
+        "idPoomsae": "7"
+    },
+    {
+        "idCategoria": "19",
+        "idPoomsae": "8"
+    },
+    {
+        "idCategoria": "20",
+        "idPoomsae": "1"
+    },
+    {
+        "idCategoria": "20",
+        "idPoomsae": "2"
+    },
+    {
+        "idCategoria": "20",
+        "idPoomsae": "3"
+    },
+    {
+        "idCategoria": "20",
+        "idPoomsae": "4"
+    },
+    {
+        "idCategoria": "20",
+        "idPoomsae": "5"
+    },
+    {
+        "idCategoria": "20",
+        "idPoomsae": "6"
+    },
+    {
+        "idCategoria": "20",
+        "idPoomsae": "7"
+    },
+    {
+        "idCategoria": "20",
+        "idPoomsae": "8"
     }
 ]

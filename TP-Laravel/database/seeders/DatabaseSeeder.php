@@ -3,6 +3,7 @@
 use App\Models\Permiso;
 use App\Models\RolPermiso;
 use Database\Seeders\CategoriasGraduacionesTableSeeder;
+use Database\Seeders\CategoriasPoomsaeTableSeeder;
 use Database\Seeders\CategoriasTableSeeder;
 use Database\Seeders\CompetenciasJuecesTableSeeder;
 use Database\Seeders\CompetidoresTableSeeder;
@@ -43,6 +44,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CompetenciaCompetidorTableSeeder::class);
         $this->call(PermisosTableSeeder::class);
         $this->call(RolPermisoTableSeeder::class);
+        $this->call(CategoriasPoomsaeTableSeeder::class);
         //competenciacompetidor
     }
 }
