@@ -113,7 +113,7 @@ $("#competencia").change(function () {
                 //aca ya termino la competencia
                //alert('No quedan categorias.')
 
-                $.ajax({
+           /*      $.ajax({
                     type: "GET",
                     url: "http://127.0.0.1:8000/setear_ranking",
                     data: {
@@ -130,7 +130,7 @@ $("#competencia").change(function () {
 
                     }
 
-                });
+                }); */
 
 
             }

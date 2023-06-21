@@ -1,6 +1,8 @@
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
     <label class="form-label" for="gal">GAL: <span class="spinner-border spinner-border-sm d-none"></span></label>
-    <input class="form-control validarEspecial" {{ $galDesactivado }} value="{{ $competidor->gal }}" type="text" id="gal" name="gal" autocomplete="off" pattern="^[A-Z]{3}\d{7}$" maxlength="10" placeholder="Ej: ABC1234567" required>
+    <input class="form-control validarEspecial" {{ $galDesactivado }} value="{{ $competidor->gal }}" type="text"
+        id="gal" name="gal" autocomplete="off" pattern="^[A-Z]{3}\d{7}$" maxlength="10"
+        placeholder="Ej: ABC1234567" required>
     <div class="valid-feedback">
         ¡Correcto!
     </div>
@@ -11,9 +13,10 @@
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
     <label class="form-label" for="competencia">Competencia:</label>
     <select class="form-control validar" id="competencia" name="competencia" required>
-        <option value="" disabled selected data-error="Por favor seleccione una Competencia válida">Selecciona una Competencia.</option>
+        <option value="" disabled selected data-error="Por favor seleccione una Competencia válida">Selecciona una
+            Competencia.</option>
         @foreach ($competencias as $row)
-            <option value="{{$row->idCompetencia}}">{{$row->nombre}}</option>
+            <option value="{{ $row->idCompetencia }}">{{ $row->nombre }}</option>
         @endforeach
     </select>
     <div class="valid-feedback">
@@ -29,18 +32,21 @@
             <label class="form-check-label" for="checkGraduacion">
                 Seleccionar si desea actualizar su graduación.
             </label>
-          </div>
+        </div>
     </div>
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
         <label class="form-label" for="graduacion">Graduacion:</label>
 
         <select class="form-control validar" disabled id="idGraduacion" name="idGraduacion" required>
-            <option value="" disabled selected data-error="Por favor seleccione una graduacion válida">Selecciona una graduación.</option>
+            <option value="" disabled selected data-error="Por favor seleccione una graduacion válida">Selecciona
+                una graduación.</option>
             @for ($i = 0; $i < count($graduaciones); $i++)
                 @if ($i == 0)
-                    <option value="{{ $graduaciones[$i]->idGraduacion }}" selected> {{ $graduaciones[$i]->nombre }} - {{ $graduaciones[$i]->color }}</option>
+                    <option value="{{ $graduaciones[$i]->idGraduacion }}" selected> {{ $graduaciones[$i]->nombre }} -
+                        {{ $graduaciones[$i]->color }}</option>
                 @else
-                    <option value="{{ $graduaciones[$i]->idGraduacion }}"> {{ $graduaciones[$i]->nombre }} - {{ $graduaciones[$i]->color }}</option>
+                    <option value="{{ $graduaciones[$i]->idGraduacion }}"> {{ $graduaciones[$i]->nombre }} -
+                        {{ $graduaciones[$i]->color }}</option>
                 @endif
             @endfor
         </select>
@@ -51,7 +57,8 @@
     </div>
 </div>
 
-<input type="number" name="graduacionActual" id="graduacionActual" hidden value="{{ $graduaciones[0]->idGraduacion }}">
+<input type="number" name="graduacionActual" id="graduacionActual" hidden
+    value="{{ $graduaciones[0]->idGraduacion }}">
 
 <div class="col-12 row">
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
@@ -60,13 +67,14 @@
             <label class="form-check-label" for="checkEscuela">
                 Seleccionar si desea actualizar su escuela.
             </label>
-          </div>
+        </div>
     </div>
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
         <label class="form-label" for="graduacion">Escuela:</label>
 
         <select class="form-control validar" disabled id="idEscuela" name="idEscuela" required>
-            <option value="" disabled selected data-error="Por favor seleccione una graduacion válida">Selecciona una graduación.</option>
+            <option value="" disabled selected data-error="Por favor seleccione una graduacion válida">Selecciona
+                una graduación.</option>
             @for ($i = 0; $i < count($escuelas); $i++)
                 @if ($i == 0)
                     <option value="{{ $escuelas[$i]->idEscuela }}" selected> {{ $escuelas[$i]->nombre }}</option>
@@ -87,39 +95,54 @@
         <i class="bi bi-arrow-left me-2"></i>Volver
     </button>
     <button type="submit" id="botonGuardarCompetidor" class="btn btn-outline-success w-25">
-        <span class="spinner-border spinner-border-sm d-none"></span> <i class="bi bi-cloud-arrow-up-fill me-2"></i>Guardar
+        <span class="spinner-border spinner-border-sm d-none"></span> <i
+            class="bi bi-cloud-arrow-up-fill me-2"></i>Guardar
     </button>
 </div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      // Obtener referencias a los elementos
-      var checkGraduacion = document.getElementById("checkGraduacion");
-      var idGraduacion = document.getElementById("idGraduacion");
-      var checkEscuela = document.getElementById("checkEscuela");
-      var idEscuela = document.getElementById("idEscuela");
-    
-      // Evento de cambio en el checkbox de graduación
-      checkGraduacion.addEventListener("change", function() {
-        if (this.checked) {
-          idGraduacion.disabled = false;
-        } else {
-          idGraduacion.disabled = true;
-        }
-      });
-    
-      // Evento de cambio en el checkbox de escuela
-      checkEscuela.addEventListener("change", function() {
-        if (this.checked) {
-          idEscuela.disabled = false;
-        } else {
-          idEscuela.disabled = true;
-        }
-      });
-    });
-    </script>
+    // Obtener referencias a los elementos del DOM
+    var graduacionSelect = document.getElementById('idGraduacion');
+    var galInput = document.getElementById('gal');
 
+    // Agregar un event listener al cambio de selección de graduación
+    graduacionSelect.addEventListener('change', function() {
+        // Obtener el texto de la opción seleccionada
+        var selectedOptionText = this.options[this.selectedIndex].text;
+
+        // Verificar si el texto contiene "Cinturón negro"
+        if (selectedOptionText.includes('Cinturón negro')) {
+            // Habilitar el primer campo de entrada
+            galInput.disabled = false;
+        } else {
+            // Deshabilitar el primer campo de entrada
+            galInput.disabled = true;
+        }
+    });
     
-    
-    
-    
+    document.addEventListener("DOMContentLoaded", function() {
+        // Obtener referencias a los elementos
+        var checkGraduacion = document.getElementById("checkGraduacion");
+        var idGraduacion = document.getElementById("idGraduacion");
+        var checkEscuela = document.getElementById("checkEscuela");
+        var idEscuela = document.getElementById("idEscuela");
+
+        // Evento de cambio en el checkbox de graduación
+        checkGraduacion.addEventListener("change", function() {
+            if (this.checked) {
+                idGraduacion.disabled = false;
+            } else {
+                idGraduacion.disabled = true;
+            }
+        });
+
+        // Evento de cambio en el checkbox de escuela
+        checkEscuela.addEventListener("change", function() {
+            if (this.checked) {
+                idEscuela.disabled = false;
+            } else {
+                idEscuela.disabled = true;
+            }
+        });
+    });
+</script>

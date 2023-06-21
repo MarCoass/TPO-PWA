@@ -151,10 +151,16 @@ class CompetidorController extends Controller
         $competidor->nombre = $request->input('nombre');
         $competidor->apellido = $request->input('apellido');
         $competidor->du = $request->input('du');
-        $competidor->gal = $request->input('gal');
         $competidor->fechaNacimiento = $request->input('fechaNacimiento');
         $competidor->email = $request->input('correo');
         $competidor->genero = $request->input('genero');
+
+        // Verificador para que no se pasen de listo con el form
+        if ($request->input('graduacionActual') <= 10) {
+            $competidor->gal = null;
+        } else {
+            $competidor->gal = $request->input('gal');
+        }
 
         // Creamos el objeto Pais
         $pais = Pais::find($request['idPais']);

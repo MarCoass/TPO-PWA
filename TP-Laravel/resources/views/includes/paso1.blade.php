@@ -1,6 +1,6 @@
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
     <label class="form-label" for="apellido">Apellido:</label>
-    <input class="form-control validar" type="text" id="apellido" name="apellido" maxlength="50" pattern=".+" placeholder="Ej: Lopez" value="{{ auth()->user()->apellido }}" readonly autocomplete="off" required>
+    <input class="form-control validar" type="text" id="apellido" name="apellido" maxlength="50" pattern=".+" placeholder="Ej: Lopez" value="{{ auth()->user()->apellido }}" autocomplete="off" required>
     <div class="valid-feedback">
         ¡Correcto!
     </div>
@@ -9,7 +9,7 @@
 
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pt-3">
     <label class="form-label" for="nombre">Nombre:</label>
-    <input class="form-control validar" type="text" id="nombre" name="nombre" maxlength="50" pattern=".+" placeholder="Ej: Lautaro" value="{{ auth()->user()->nombre }}" readonly autocomplete="off" required>
+    <input class="form-control validar" type="text" id="nombre" name="nombre" maxlength="50" pattern=".+" placeholder="Ej: Lautaro" value="{{ auth()->user()->nombre }}" autocomplete="off" required>
     <div class="valid-feedback">
         ¡Correcto!
     </div>
