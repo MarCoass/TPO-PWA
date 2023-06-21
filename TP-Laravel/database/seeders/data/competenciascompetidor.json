@@ -63,7 +63,7 @@
         "idCompetidor":7,
         "idCategoria": 1,
         "puntaje":9.4,
-        "contadorPasadas":0,
+        "contadorPasadas":2,
         "estado":1
     },
 
@@ -72,7 +72,7 @@
         "idCompetidor":8,
         "idCategoria": 1,
         "puntaje":3,
-        "contadorPasadas":0,
+        "contadorPasadas":2,
         "estado":1
     },
 
@@ -81,7 +81,7 @@
         "idCompetidor":9,
         "idCategoria": 1,
         "puntaje":6,
-        "contadorPasadas":0,
+        "contadorPasadas":2,
         "estado":1
     },
 
@@ -90,7 +90,7 @@
         "idCompetidor":10,
         "idCategoria": 1,
         "puntaje":3.8,
-        "contadorPasadas":0,
+        "contadorPasadas":2,
         "estado":1
     },
 
@@ -99,7 +99,7 @@
         "idCompetidor":11,
         "idCategoria": 1,
         "puntaje":4.1,
-        "contadorPasadas":0,
+        "contadorPasadas":2,
         "estado":1
     },
     {
@@ -107,7 +107,7 @@
         "idCompetidor":17,
         "idCategoria": 2,
         "puntaje":9.4,
-        "contadorPasadas":0,
+        "contadorPasadas":2,
         "estado":1
     },
 
@@ -116,7 +116,7 @@
         "idCompetidor":18,
         "idCategoria": 2,
         "puntaje":3,
-        "contadorPasadas":0,
+        "contadorPasadas":2,
         "estado":1
     },
 
@@ -125,7 +125,7 @@
         "idCompetidor":19,
         "idCategoria": 2,
         "puntaje":6,
-        "contadorPasadas":0,
+        "contadorPasadas":2,
         "estado":1
     },
 
@@ -134,7 +134,7 @@
         "idCompetidor":20,
         "idCategoria": 2,
         "puntaje":3.8,
-        "contadorPasadas":0,
+        "contadorPasadas":2,
         "estado":1
     },
 
@@ -143,7 +143,7 @@
         "idCompetidor":21,
         "idCategoria": 2,
         "puntaje":4.1,
-        "contadorPasadas":0,
+        "contadorPasadas":2,
         "estado":1
     }
 ]
