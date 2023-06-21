@@ -30,16 +30,28 @@ class AppServiceProvider extends ServiceProvider
         // Menú dinamico
         view()->composer(['*'], function ($view) {
             static $data = null;
+            static $dataGestion = null;
 
-            if (is_null($data)) {
+            if (is_null($data) && is_null($dataGestion)) {
                 $user = Auth::user();
                 $data = [];
+                $dataGestion = [];
                 if ($user) {
-                    $data = RolPermiso::where('idRol', $user->rol->id)->get();
+                    $data = RolPermiso::where('idRol', $user->rol->id)
+                        ->whereHas('permiso', function($query) {
+                            $query->where('nombrePermiso', 'NOT LIKE', 'Gestión%');
+                        })->get();
+                    $dataGestion = RolPermiso::where('idRol', $user->rol->id)
+                        ->whereHas('permiso', function($query) {
+                            $query->where('nombrePermiso', 'LIKE', 'Gestión%');
+                        })->get();
                 }
             }
         
-            $view->with('menus', $data);
+            $view->with([
+                'menus' => $data,
+                'menusGestiones' => $dataGestion
+            ]);
         });
     }
 }

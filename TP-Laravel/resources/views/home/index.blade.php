@@ -2,99 +2,119 @@
 @extends('layouts.app-master')
 
 @section('titulo')
-NeuPoom
+    NeuPoom
 @endsection
 
 @section('contenido')
-<div>
+    <div>
 
-    <!-- despliega mensajes -->
-    @include('layouts.partials.messages')
+        <!-- despliega mensajes -->
+        @include('layouts.partials.messages')
 
-    <!-- aca se vuelven a ver los grupos -->
+        <!-- aca se vuelven a ver los grupos -->
 
-    @auth
-    <span class="fs-1">Bienvenido <b class="text-danger">{{auth()->user()->usuario}}</b>.</span>
+        @auth
+            <span class="fs-1">Bienvenido <b class="text-danger">{{ auth()->user()->usuario }}</b>.</span>
 
-    <div class="row justify-content-around">
+            <div class="row justify-content-around">
 
-        <div class="format-container">
+                <div class="format-container">
 
-            <div class="seccion_box">
-                @foreach($menus as $menu)
-                    @if ($menu->idPermiso == 12)
-                        @if ($objCompetidor == null)
-                            <div class="seccion_item">
-                                <a href="{{ Route::has($menu->permiso->rutaPermiso) ? route($menu->permiso->rutaPermiso) : "#" }}" class="seccion-item_link {{ Route::has($menu->permiso->rutaPermiso) ? '' : "bg-danger" }}">
-                                    <div class="seccion-item_bg"></div>
-                                    <div class="seccion-item_title">
-                                        {{ $menu->permiso->nombrePermiso }}
+                    <div class="seccion_box">
+                        {{-- Todo lo que no son gestiones primero --}}
+                        @foreach ($menus as $menu)
+                            @if ($menu->idPermiso == 11)
+                                @if ($objCompetidor == null)
+                                    <div class="seccion_item">
+                                        <a href="{{ Route::has($menu->permiso->rutaPermiso) ? route($menu->permiso->rutaPermiso) : '#' }}"
+                                            class="seccion-item_link {{ Route::has($menu->permiso->rutaPermiso) ? '' : 'bg-danger' }}">
+                                            <div class="seccion-item_bg"></div>
+                                            <div class="seccion-item_title">
+                                                {{ $menu->permiso->nombrePermiso }}
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
-                            </div>
-                        @else
-                            <div class="seccion_item">
-                                <a href="{{ route('reinscribirCompetidor') }}" class="seccion-item_link">
-                                    <div class="seccion-item_bg"></div>
-                                    <div class="seccion-item_title">
-                                        Inscribirse a una Competencia.
+                                @else
+                                    <div class="seccion_item">
+                                        <a href="{{ route('reinscribirCompetidor') }}" class="seccion-item_link">
+                                            <div class="seccion-item_bg"></div>
+                                            <div class="seccion-item_title">
+                                                Inscribirse a una Competencia.
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
-                            </div>
-                        @endif
-                    @else
-                        <div class="seccion_item">
-                            <a href="{{ Route::has($menu->permiso->rutaPermiso) ? route($menu->permiso->rutaPermiso) : "#" }}" class="seccion-item_link {{ Route::has($menu->permiso->rutaPermiso) ? '' : "bg-danger" }}">
-                                <div class="seccion-item_bg"></div>
-                                <div class="seccion-item_title d-flex justify-content-between">
-                                    <div>
-                                        {{ $menu->permiso->nombrePermiso }}
-                                    </div>
-                                    @if ($menu->idPermiso == 9 && $cantSolicitudes > 0)
-                                    <div>
-                                        <div class="badge rounded-pill text-bg-warning spinner-grow d-flex justify-content-center">
-                                            <div class="align-item-center ">
-                                                <i class="bi bi-bell-fill me-2"></i>
-                                                {{ $cantSolicitudes }}
+                                @endif
+                            @else
+                                <div class="seccion_item">
+                                    <a href="{{ Route::has($menu->permiso->rutaPermiso) ? route($menu->permiso->rutaPermiso) : '#' }}"
+                                        class="seccion-item_link {{ Route::has($menu->permiso->rutaPermiso) ? '' : 'bg-danger' }}">
+                                        <div class="seccion-item_bg"></div>
+                                        <div class="seccion-item_title d-flex justify-content-between">
+                                            <div>
+                                                {{ $menu->permiso->nombrePermiso }}
                                             </div>
                                         </div>
-                                    </div>
-                                    @endif
-                                    @if ($menu->idPermiso == 4 && $cantUsuarios > 0)
-                                    <div>
-                                        <div class="badge rounded-pill text-bg-warning spinner-grow d-flex justify-content-center">
-                                            <div class="align-item-center ">
-                                                <i class="bi bi-bell-fill me-2"></i>
-                                                {{ $cantUsuarios }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @endif
+                                    </a>
                                 </div>
-                            </a>
-                        </div>
-                    @endif
-                @endforeach
+                            @endif
+                        @endforeach
 
-                {{-- MODAL INSCRIPCIÓN A COMPETENCIA JUEZ --}}
-                @if (auth()->user()->idRol == 2 && auth()->user()->estado === 1)
-                    @include('layouts.modales.modalCompetenciasJueces')
+                        {{-- Gestiones (sólo para admins) --}}
+                        @foreach ($menusGestiones as $menu)
+                            <div class="seccion_item">
+                                <a href="{{ Route::has($menu->permiso->rutaPermiso) ? route($menu->permiso->rutaPermiso) : '#' }}"
+                                    class="seccion-item_link {{ Route::has($menu->permiso->rutaPermiso) ? '' : 'bg-danger' }}">
+                                    <div class="seccion-item_bg"></div>
+                                    <div class="seccion-item_title d-flex justify-content-between">
+                                        <div>
+                                            {{ $menu->permiso->nombrePermiso }}
+                                        </div>
+                                        @if ($menu->idPermiso == 5 && $cantSolicitudes > 0)
+                                            <div>
+                                                <div
+                                                    class="badge rounded-pill text-bg-warning spinner-grow d-flex justify-content-center">
+                                                    <div class="align-item-center ">
+                                                        <i class="bi bi-bell-fill me-2"></i>
+                                                        {{ $cantSolicitudes }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                        @if ($menu->idPermiso == 4 && $cantUsuarios > 0)
+                                            <div>
+                                                <div
+                                                    class="badge rounded-pill text-bg-warning spinner-grow d-flex justify-content-center">
+                                                    <div class="align-item-center ">
+                                                        <i class="bi bi-bell-fill me-2"></i>
+                                                        {{ $cantUsuarios }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    </div>
 
-                @endif
-                @if(Session::get('modalConsulta', false))
-                    @include('layouts.modales.modalSolicitarCambios')
-                @endif
-                </div>
-        </div><!-- /.col-lg-4 -->
+                                </a>
 
-    </div>
-    @endauth
+                            </div>
+                        @endforeach
 
-    {{-- HOME SIN SESIÓN --}}
+                        {{-- MODAL INSCRIPCIÓN A COMPETENCIA JUEZ --}}
+                        @if (auth()->user()->idRol == 2 && auth()->user()->estado === 1)
+                            @include('layouts.modales.modalCompetenciasJueces')
+                        @endif
+                        @if (Session::get('modalConsulta', false))
+                            @include('layouts.modales.modalSolicitarCambios')
+                        @endif
+                    </div>
+                </div><!-- /.col-lg-4 -->
 
-    @guest
-    @include('home.invitados.vistaInvitados')
+            </div>
+        @endauth
 
-    @endguest
+        {{-- HOME SIN SESIÓN --}}
 
+        @guest
+            @include('home.invitados.vistaInvitados')
+
+        @endguest
     @endsection

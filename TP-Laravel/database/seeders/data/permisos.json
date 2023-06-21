@@ -21,8 +21,8 @@
     },
     {
         "idPermiso": "5",
-        "nombrePermiso":"Gestión de Permisos.",
-        "rutaPermiso":"permisos.index"
+        "nombrePermiso":"Gestión de Solicitudes.",
+        "rutaPermiso":"index_solicitudes"
     },
     {
         "idPermiso": "6",
@@ -41,33 +41,33 @@
     },
     {
         "idPermiso": "9",
-        "nombrePermiso":"Gestión de Solicitudes.",
-        "rutaPermiso":"index_solicitudes"
-    },
-    {
-        "idPermiso": "10",
         "nombrePermiso":"Resultados.",
         "rutaPermiso":"resultadosRanking"
     },
     {
-        "idPermiso": "11",
+        "idPermiso": "10",
         "nombrePermiso":"Puntuador.",
         "rutaPermiso":"puntuador_index"
     },
     {
-        "idPermiso": "12",
+        "idPermiso": "11",
         "nombrePermiso":"Inscribirse como Competidor.",
         "rutaPermiso":"cargarCompetidor"
     },
     {
-        "idPermiso": "13",
+        "idPermiso": "12",
         "nombrePermiso":"Gestión de Poomsaes.",
         "rutaPermiso":"index_poomsae"
     },
     {
-        "idPermiso": "14",
+        "idPermiso": "13",
         "nombrePermiso":"Gestión de Roles.",
         "rutaPermiso":"roles.index"
+    },
+    {
+        "idPermiso": "14",
+        "nombrePermiso":"Gestión de Permisos.",
+        "rutaPermiso":"permisos.index"
     }
 
 ]
