@@ -60,6 +60,16 @@ NeuPoom
                                         </div>
                                     </div>
                                     @endif
+                                    @if ($menu->idPermiso == 4 && $cantUsuarios > 0)
+                                    <div>
+                                        <div class="badge rounded-pill text-bg-warning spinner-grow d-flex justify-content-center">
+                                            <div class="align-item-center ">
+                                                <i class="bi bi-bell-fill me-2"></i>
+                                                {{ $cantUsuarios }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endif
                                 </div>
                             </a>
                         </div>
