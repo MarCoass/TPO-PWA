@@ -12,7 +12,7 @@
                     <div class="form-group mb-3">
                         <label for="formFile" class="form-label">Seleccione una imagen</label>
                         <input class="form-control" accept=".jpg,.png,.jpeg" type="file" name="imagenPerfil"
-                            id="imagenPerfil">
+                            id="imagenPerfil" required>
                             <input type="hidden" name="idUsuario" value="{{ auth()->user()->id }}">
                     </div>
             </div>
