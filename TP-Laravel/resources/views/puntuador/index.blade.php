@@ -40,9 +40,6 @@
                 <select class="form-control validar" id="categoria" name="categoria" required>
                     <option value="" disabled selected data-error="Por favor seleccione una categoria válida">
                         Selecciona una categoria.</option>
-                    @foreach ($categorias as $row)
-                        <option value="{{ $row->idCategoria }}">{{ $row->nombre }}</option>
-                    @endforeach
                 </select>
                 <div class="valid-feedback">
                     ¡Correcto!
