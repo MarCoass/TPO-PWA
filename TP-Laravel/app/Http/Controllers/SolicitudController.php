@@ -107,11 +107,11 @@ class SolicitudController extends Controller
         /*  */
         $datosSolicitud[0] = "   Se te rechazo el pedido para actualizar tus datos: ";
 
-        if($solicitud->newEscuela == 0){
+        if($solicitud->newEscuela != 0){
             $datosSolicitud[1] = "- Cambiar escuela a '".$solicitud->escuela->nombre."'";
         }
 
-        if($solicitud->newGraduacion == 0){
+        if($solicitud->newGraduacion != 0){
             $datosSolicitud[2] = "- Cambiar graduacion a ".$solicitud->graduacion->nombre." - ".$solicitud->graduacion->color."'";
         }
 
@@ -134,7 +134,7 @@ class SolicitudController extends Controller
         $solicitud = Solicitud::find($id);
         $solicitud->estadoSolicitud = 1;
         $solicitud->save();
-        
+
         return response()->noContent(); // retorna una respuesta vacía con código 204
     }
 
