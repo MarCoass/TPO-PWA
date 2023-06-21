@@ -14,5 +14,5 @@ function checkNotiCantidad() {
 }
 
 // llama a la función checkNotiCantidad cada 3 segundos usando setInterval
-setInterval(checkNotiCantidad, 3000);
+setTimeout(checkNotiCantidad, 2000);
 
