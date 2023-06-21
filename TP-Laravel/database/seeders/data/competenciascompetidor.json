@@ -1,11 +1,19 @@
 [
     {
         "idCompetencia": 1,
+        "idCompetidor":21,
+        "idCategoria": 1,
+        "puntaje":0,
+        "contadorPasadas":0,
+        "estado":0
+    },
+    {
+        "idCompetencia": 1,
         "idCompetidor":1,
         "idCategoria": 1,
         "puntaje":0,
         "contadorPasadas":0,
-        "estado":1
+        "estado":0
     },
     {
         "idCompetencia": 1,
@@ -54,17 +62,17 @@
         "idCompetencia": 2,
         "idCompetidor":7,
         "idCategoria": 1,
-        "puntaje":0,
-        "contadorPasadas":0,
-        "estado":0
+        "puntaje":9.4,
+        "contadorPasadas":2,
+        "estado":1
     },
 
     {
         "idCompetencia": 2,
         "idCompetidor":8,
         "idCategoria": 1,
-        "puntaje":0,
-        "contadorPasadas":0,
+        "puntaje":3,
+        "contadorPasadas":2,
         "estado":1
     },
 
@@ -72,8 +80,8 @@
         "idCompetencia": 2,
         "idCompetidor":9,
         "idCategoria": 1,
-        "puntaje":0,
-        "contadorPasadas":0,
+        "puntaje":6,
+        "contadorPasadas":2,
         "estado":1
     },
 
@@ -81,8 +89,8 @@
         "idCompetencia": 2,
         "idCompetidor":10,
         "idCategoria": 1,
-        "puntaje":0,
-        "contadorPasadas":0,
+        "puntaje":3.8,
+        "contadorPasadas":2,
         "estado":1
     },
 
@@ -90,8 +98,52 @@
         "idCompetencia": 2,
         "idCompetidor":11,
         "idCategoria": 1,
-        "puntaje":0,
-        "contadorPasadas":0,
+        "puntaje":4.1,
+        "contadorPasadas":2,
+        "estado":1
+    },
+    {
+        "idCompetencia": 2,
+        "idCompetidor":17,
+        "idCategoria": 2,
+        "puntaje":9.4,
+        "contadorPasadas":2,
+        "estado":1
+    },
+
+    {
+        "idCompetencia": 2,
+        "idCompetidor":18,
+        "idCategoria": 2,
+        "puntaje":3,
+        "contadorPasadas":2,
+        "estado":1
+    },
+
+    {
+        "idCompetencia": 2,
+        "idCompetidor":19,
+        "idCategoria": 2,
+        "puntaje":6,
+        "contadorPasadas":2,
+        "estado":1
+    },
+
+    {
+        "idCompetencia": 2,
+        "idCompetidor":20,
+        "idCategoria": 2,
+        "puntaje":3.8,
+        "contadorPasadas":2,
+        "estado":1
+    },
+
+    {
+        "idCompetencia": 2,
+        "idCompetidor":21,
+        "idCategoria": 2,
+        "puntaje":4.1,
+        "contadorPasadas":2,
         "estado":1
     }
 ]
