@@ -1,6 +1,6 @@
-<div class="modal fade" id="solicitudesPerfil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade modalTemaDual" id="solicitudesPerfil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content  modalTemaDual">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Inscripciones Pendientes de revisión de
                     {{ auth()->user()->usuario }}</h1>

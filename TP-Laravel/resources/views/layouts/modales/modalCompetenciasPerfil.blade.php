@@ -1,6 +1,6 @@
-<div class="modal fade" id="competenciasPerfil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade modalTemaDual" id="competenciasPerfil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
-        <div class="modal-content">
+        <div class="modal-content modalTemaDual">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Historial de Competencias de
                     {{ auth()->user()->usuario }}</h1>
