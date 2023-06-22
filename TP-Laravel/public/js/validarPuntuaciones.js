@@ -5,7 +5,7 @@ var interval = setInterval(function () {
 
     // Realizar la petición AJAX
     $.ajax({
-        url: "http://127.0.0.1:8000/validarJueces",
+        url: "/validarJueces",
         method: "POST",
         data: {
             idCompetencia: idCompetencia,
@@ -43,7 +43,7 @@ var interval = setInterval(function () {
 
 function cargarPuntajeTotal(idCompetencia, idCompetidor, numPasada) {
     $.ajax({
-        url: "http://127.0.0.1:8000/calcularPuntajePasada",
+        url: "/calcularPuntajePasada",
         method: "POST",
         data: {
             idCompetencia: idCompetencia,
