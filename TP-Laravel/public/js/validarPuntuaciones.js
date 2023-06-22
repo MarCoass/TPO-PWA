@@ -2,7 +2,7 @@ var interval = setInterval(function () {
     var idCompetencia = $("#competencia").val(); // Valor del idCompetencia
     var idCompetidor = $("#competidor").val(); // Valor del idCompetidor
     var numPasada = $("#pasada_puntuador").val(); // Numero de pasada
-    
+
     // Realizar la petición AJAX
     $.ajax({
         url: "http://127.0.0.1:8000/validarJueces",
@@ -38,11 +38,6 @@ var interval = setInterval(function () {
                 /* console.log("Validación de jueces fallida"); */
             }
         },
-        error: function (xhr, status, error) {
-            // Ocurrió un error en la petición
-
-            console.error(error);
-        },
     });
 }, 3000); // 10 segundos (3000 milisegundos)
 
@@ -68,11 +63,6 @@ function cargarPuntajeTotal(idCompetencia, idCompetidor, numPasada) {
             $('#puntajeTotal').text(response.totalPasada);
             $('#puntajePresentacionTotal').text(response.totalPresentacion);
             $('#puntajeExactitudTotal').text(response.totalExactitud);
-        },
-        error: function (xhr, status, error) {
-            // Ocurrió un error en la petición
-
-            console.error(error);
         },
     });
 }
