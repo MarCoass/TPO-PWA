@@ -24,8 +24,8 @@
                                         d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
                                 </svg>
                             @endif
-                            <p class="mb-4 mt-2"><a href="#" class="pe-auto text-primary font-italic me-1" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">Editar foto de perfil</a>
+                            <p class="mb-4 mt-2"><a href="#" class="pe-auto text-primary font-italic me-1"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal">Editar foto de perfil</a>
                             </p>
                         </div>
 
@@ -43,13 +43,15 @@
                         {{-- Incluimos Modal para ver las competencias del usuario --}}
                         @include('layouts.modales.modalCompetenciasPerfil')
 
-                        <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#competenciasPerfil">
+                        <button type="button" class="btn btn-outline-info" data-bs-toggle="modal"
+                            data-bs-target="#competenciasPerfil">
                             <i class="bi bi-book me-2"></i>Ver Competencias
                         </button>
 
                         {{-- Incluimos Modal para ver las solcitudes sin atender del usuario --}}
                         @include('layouts.modales.modalInscripcionesPerfil')
-                        <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#solicitudesPerfil">
+                        <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal"
+                            data-bs-target="#solicitudesPerfil">
                             <i class="bi bi-list-task me-2"></i>Ver Solicitudes
                         </button>
                     </div>
@@ -84,8 +86,8 @@
                                 <p class="text-muted mb-0">{{ auth()->user()->usuario }}</p>
                             </div>
                         </div>
-                        <hr>
                         @if (auth()->user()->idRol == 3)
+                        <hr>
                             <div class="row">
                                 <div class="col-sm-3">
                                     <p class="mb-0"><i class="bi bi-mortarboard-fill me-2"></i>Graduación: </p>
