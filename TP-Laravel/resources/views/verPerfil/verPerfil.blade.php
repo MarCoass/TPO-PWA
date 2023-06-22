@@ -17,70 +17,41 @@
                                 <img src="{{ asset('storage/' . auth()->user()->imagenPerfil) }}" alt="avatar"
                                     class="rounded-circle img-fluid" style="width: 150px;">
                             @else
-                                <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                                  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                                  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" fill="currentColor"
+                                    class="bi bi-person-circle" viewBox="0 0 16 16">
+                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                    <path fill-rule="evenodd"
+                                        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
                                 </svg>
                             @endif
-                            <p class="mb-4"><span class=" pe-auto text-primary font-italic me-1" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">Editar</span>
+                            <p class="mb-4 mt-2"><a href="#" class="pe-auto text-primary font-italic me-1" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">Editar foto de perfil</a>
                             </p>
                         </div>
 
                         <h5 class="my-3">{{ auth()->user()->usuario }}</h5>
                         @if (auth()->user()->idRol == 2 || auth()->user()->idRol == 3)
-                            <p class="text-muted mb-1">{{ auth()->user()->escuela->nombre }}</p>
+                            <p class="text-muted mb-1"><span class="me-2"><i class="bi bi-building"></i>
+                                    Escuela:</span>{{ auth()->user()->escuela->nombre }}</p>
                         @endif
-                        <p class="text-muted mb-4"> {{ auth()->user()->rol->nombreRol }} </p>
+                        <p class="text-muted mb-4"><span class="me-2"><i class="bi bi-person-badge"></i>
+                                Permisos:</span>{{ auth()->user()->rol->nombreRol }} </p>
                     </div>
                 </div>
                 <div class="card mb-4 mb-lg-0">
-                    <div class="card-body">
-                        <p class="text-secondary text-decoration-underline">Historial de Competencias en las que participó.</p>
-                        @if (count($arreglo) > 0)
-                        <table class="table table-striped table-hover">
-                            @if (auth()->user()->idRol == 2)
+                    <div class="card-body mx-auto">
+                        {{-- Incluimos Modal para ver las competencias del usuario --}}
+                        @include('layouts.modales.modalCompetenciasPerfil')
 
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Nombre Competencia</th>
-                                        <th scope="col">Fecha</th>
-                                        <th scope="col">Cantidad de Jueces</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                @foreach ($arreglo as $item)
-                                <tr>
-                                    <th scope="row">{{$item['nombre']}}</th>
-                                    <td>{{$item['fecha']}}</td>
-                                    <td>{{$item['cantidadJueces']}}</td>
-                                </tr>
-                                @endforeach
-                                </tbody>
-                            @else
-                                @if (auth()->user()->idRol == 3)
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Nombre Competencia</th>
-                                            <th scope="col">Fecha</th>
-                                            <th scope="col">Puntaje</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach ($arreglo as $item)
-                                    <tr>
-                                        <th scope="row">{{$item['nombre']}}</th>
-                                        <td>{{$item['fecha']}}</td>
-                                        <td>{{$item['puntaje']}}</td>
-                                    </tr>
-                                    @endforeach
-                                    </tbody>
-                                @endif
-                            @endif
-                        </table>
-                        @else
-                            <span class="text-danger">No se ha inscrito a ninguna competencia o sigue en curso.</span>
-                        @endif
+                        <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#competenciasPerfil">
+                            <i class="bi bi-book me-2"></i>Ver Competencias
+                        </button>
+
+                        {{-- Incluimos Modal para ver las solcitudes sin atender del usuario --}}
+                        @include('layouts.modales.modalInscripcionesPerfil')
+                        <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#solicitudesPerfil">
+                            <i class="bi bi-list-task me-2"></i>Ver Solicitudes
+                        </button>
                     </div>
                 </div>
             </div>
@@ -89,7 +60,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-3">
-                                <p class="mb-0">Nombre Completo</p>
+                                <p class="mb-0"><i class="bi bi-person-lines-fill me-2"></i>Nombre Completo:</p>
                             </div>
                             <div class="col-sm-9">
                                 <p class="text-muted mb-0">{{ auth()->user()->nombre }} {{ auth()->user()->apellido }}</p>
@@ -98,7 +69,7 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <p class="mb-0">Email</p>
+                                <p class="mb-0"><i class="bi bi-envelope-at me-2"></i>Email:</p>
                             </div>
                             <div class="col-sm-9">
                                 <p class="text-muted mb-0">{{ auth()->user()->correo }}</p>
@@ -107,12 +78,23 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <p class="mb-0">Nombre de Usuario</p>
+                                <p class="mb-0"><i class="bi bi-person-check-fill me-2"></i>Nombre de Usuario:</p>
                             </div>
                             <div class="col-sm-9">
                                 <p class="text-muted mb-0">{{ auth()->user()->usuario }}</p>
                             </div>
                         </div>
+                        <hr>
+                        @if (auth()->user()->idRol == 3)
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0"><i class="bi bi-mortarboard-fill me-2"></i>Graduación: </p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">{{ $graduacion->nombre }} - {{ $graduacion->color }}</p>
+                                </div>
+                            </div>
+                        @endif
 
                     </div>
                 </div>

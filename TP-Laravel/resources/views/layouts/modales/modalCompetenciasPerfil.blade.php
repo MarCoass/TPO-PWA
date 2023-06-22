@@ -1,0 +1,65 @@
+<div class="modal fade" id="competenciasPerfil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Historial de Competencias de
+                    {{ auth()->user()->usuario }}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @if (count($arreglo) > 0)
+                    <table class="table table-striped table-hover text-center">
+                        @if (auth()->user()->idRol == 2)
+
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nombre Competencia</th>
+                                    <th scope="col">Fecha</th>
+                                    <th scope="col">Cantidad de Jueces</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($arreglo as $item)
+                                    <tr>
+                                        <th scope="row">{{ $item['nombre'] }}</th>
+                                        <td>{{ $item['fecha'] }}</td>
+                                        <td>{{ $item['cantidadJueces'] }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        @else
+                            @if (auth()->user()->idRol == 3)
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Nombre Competencia</th>
+                                        <th scope="col">Fecha</th>
+                                        <th scope="col">1er Poomsae</th>
+                                        <th scope="col">2do Poomsae</th>
+                                        <th scope="col">Puntaje</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($arreglo as $item)
+                                        <tr>
+                                            <th scope="row">{{ $item['nombre'] }}</th>
+                                            <td>{{ $item['fecha'] }}</td>
+                                            <td>{{ $item['poomsae1'] }}</td>
+                                            <td>{{ $item['poomsae2'] }}</td>
+                                            <td>{{ $item['puntaje'] }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            @endif
+                        @endif
+                    </table>
+                @else
+                    <span class="text-danger">No se ha inscrito a ninguna competencia o sigue en curso.</span>
+                @endif
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><i
+                        class="bi bi-x-lg me-2"></i>Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
