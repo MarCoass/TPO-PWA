@@ -36,7 +36,7 @@ Si o si poner http://127.0.0.1:800/ruta sino no anda, os advierte su querido Bra
 
 //Temas
 if (localStorage.getItem("background") == null) {
-    cambio_de_tema("dark");
+    cambio_de_tema("light");
 } else {
     cambio_de_tema(localStorage.getItem("background"));
 }
