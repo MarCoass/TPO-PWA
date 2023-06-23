@@ -28,6 +28,8 @@
     <!-- estilos propios -->
     <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
     <link rel="stylesheet" href="{{ asset('css/cards.css') }}">
+    <script src="{{ asset('bootstrap-5.2.3/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 <body class="transicion">
     <!-- este deberia ser el navbar -->
@@ -45,8 +47,7 @@
     <script src="{{ asset('js/notificaciones.js') }}"></script>
     @endauth
         <!-- librerias -->
-        <script src="{{ asset('bootstrap-5.2.3/js/bootstrap.bundle.min.js') }}"></script>
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+       
 
         <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
         <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>

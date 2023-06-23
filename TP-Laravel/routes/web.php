@@ -80,7 +80,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::post('/solicitudLeida/{id}', [SolicitudController::class, 'solicitudLeida'])->name('solicitudLeida');
         Route::get('/resultadosRanking', [CategoriaController::class, 'vistaVerRanking'])->name('resultadosRanking');
         Route::post('/obtenerRanking', [CompetidorController::class, 'obtenerRanking'])->name('obtenerRanking'); //traer competidores por genero para ranking
-        Route::post('/competenciasCalendario', [CompetenciaController::class, 'competenciasCalendario'])->name('competenciasCalendario'); //traer competidores por genero para ranking
+        Route::get('/competenciasCalendario', [CompetenciaController::class, 'competenciasCalendario'])->name('competenciasCalendario'); //traer competidores por genero para ranking
 
 
         /* rutas para notificaciones */
