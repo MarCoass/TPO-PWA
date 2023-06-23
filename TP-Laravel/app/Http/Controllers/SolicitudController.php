@@ -41,10 +41,6 @@ class SolicitudController extends Controller
         $escuelas = Escuela::all();
         $graduaciones = Graduacion::all();
         $competidores = Competidor::all();
-        /* foreach ($solicitudes as $solicitud){
-            $competidor = Competidor::where('idUser',$solicitud->idUser)->get();
-            $competidores->push($competidor);
-        } */
 
         return view('gestionSolicitudes.index_solicitudes', compact('solicitudes','escuelas','graduaciones','competidores'))->with('success','Listando solicitudes del usuario');
     }
@@ -130,15 +126,6 @@ class SolicitudController extends Controller
         return redirect()->route('index_solicitudes')->with('success', 'Solicitud archivada');
     }
 
-    public function solicitudLeida($id){
-        $solicitud = Solicitud::find($id);
-        $solicitud->estadoSolicitud = 1;
-        $solicitud->save();
-
-        return response()->noContent(); // retorna una respuesta vacía con código 204
-    }
-
-
     /**
      * Show the form for creating a new resource.
      *
@@ -183,18 +170,5 @@ class SolicitudController extends Controller
         return redirect()->route('home.index')->with($arregloMensaje['tipo'], $arregloMensaje['mensaje']);
     }
 
-    public function misSolicitudes($id){
-        // asume que tienes las relaciones definidas en el modelo Solicitud
-        $solicitudes = Solicitud::where('idUser',$id)
-          ->with(['escuela' => function ($query) {
-            $query->select('idEscuela', 'nombre');
-          }])
-          ->with(['graduacion' => function ($query) {
-            $query->select('idGraduacion', 'nombre');
-          }])
-          ->get();
-
-        return response()->json($solicitudes);
-    }
 
 }
