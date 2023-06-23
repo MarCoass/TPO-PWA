@@ -17,10 +17,8 @@
             <span class="fs-1">Bienvenido <b class="text-danger">{{ auth()->user()->usuario }}</b>.</span>
 
             <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-12 col-sm-12 justify-content-center" style="margin: 50px auto;">
-                    @include('includes.calendar')
-                </div>
-                <div class="col-lg-8 col-md-12 ">
+              
+                <div class="col-lg-8 col-md-12">
 
                     <div class="seccion_box">
                         {{-- Todo lo que no son gestiones primero --}}
@@ -109,7 +107,9 @@
                         @endif
                     </div>
                 </div>
-                <!-- /.col-lg-4 -->
+                <div class="col-lg-4 col-md-12 col-sm-12 d-flex  justify-content-center" style="margin: 50px auto;">
+                    @include('includes.calendar')
+                </div>
                
             </div>
         @endauth
