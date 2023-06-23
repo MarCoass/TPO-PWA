@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 
 class NotificacionController extends Controller
 {
-    public function index()
+    /* public function index()
     {
         $notificaciones = Notificacion::all();
 
@@ -14,7 +14,7 @@ class NotificacionController extends Controller
             $notificacion->data = json_decode($notificacion->data, true);
         }
         return view('zeta.index', compact('notificaciones'));
-    }
+    } */
 
     public function marcarLeido($id)
     {
