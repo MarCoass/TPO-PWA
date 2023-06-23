@@ -256,4 +256,11 @@ class CompetenciaController extends Controller
         $competencias = Competencia::all();
         return view('presentacion.competencias', compact('competencias'));
     }
+
+    public function competenciasCalendario()
+    {
+        $competencias = Competencia::select('idCompetencia', 'nombre', 'fecha', 'estadoJueces', 'estadoCompetencia')->get();
+
+        return compact('competencias');
+    }
 }
