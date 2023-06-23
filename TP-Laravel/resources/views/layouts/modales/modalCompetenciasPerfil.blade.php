@@ -1,5 +1,5 @@
 <div class="modal fade modalTemaDual" id="competenciasPerfil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content modalTemaDual">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Historial de Competencias de
@@ -16,6 +16,7 @@
                                     <th scope="col">Nombre Competencia</th>
                                     <th scope="col">Fecha</th>
                                     <th scope="col">Cantidad de Jueces</th>
+                                    <th scope="col">Cantidad de Competidores Puntuados</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -24,6 +25,7 @@
                                         <th scope="row">{{ $item['nombre'] }}</th>
                                         <td>{{ $item['fecha'] }}</td>
                                         <td>{{ $item['cantidadJueces'] }}</td>
+                                        <td>{{ $item['cantidadPuntuados'] }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

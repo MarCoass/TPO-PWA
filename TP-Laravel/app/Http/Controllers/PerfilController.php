@@ -7,6 +7,7 @@ use App\Models\Competencia;
 use App\Models\Competidor;
 use App\Models\Graduacion;
 use App\Models\CompetenciaJuez;
+use App\Models\Puntaje;
 use App\Models\Poomsae;
 use App\Models\CompetenciaCompetidor;
 
@@ -27,8 +28,9 @@ class PerfilController extends Controller
             // INICIALIZAMOS MODELOS QUE USAREMOS MÁS ADELANTE ÒWÓ
             $objCompetencia = new Competencia();
             $objCompetenciaJuez = new CompetenciaJuez();
+            $objPuntaje = new Puntaje();
 
-            $arreglo = $this->traerCompetenciasJuez($idUser, $objCompetencia, $objCompetenciaJuez);
+            $arreglo = $this->traerCompetenciasJuez($idUser, $objCompetencia, $objCompetenciaJuez, $objPuntaje);
 
             $arregloInscripciones = $this->traerInscripcionesPendientesJuez($idUser, $objCompetencia, $objCompetenciaJuez);
         } elseif ($usuario->idRol == 3) {
@@ -126,7 +128,7 @@ class PerfilController extends Controller
         return $arregloInscripcionesPendientes;
     }
 
-    public function traerCompetenciasJuez($idJuez, $objCompetencia, $objCompetenciaJuez)
+    public function traerCompetenciasJuez($idJuez, $objCompetencia, $objCompetenciaJuez, $objPuntaje)
     {
         $arregloHistorialJuez = [];
         // BUSCAMOS LAS COMPETENCIAS EN LAS QUE PARTICIPÓ EL JUEZ DEL USUARIO LOGEADO
@@ -136,12 +138,14 @@ class PerfilController extends Controller
         foreach ($competenciasJueces as $competenciaJuez) {
             // OBTENEMOS LA COMPETENCIA ACTUAL
             $competencia = $objCompetencia::find($competenciaJuez->idCompetencia);
+            $cantCompetidoresPuntuados = $objPuntaje::where('idCompetenciaJuez', $competenciaJuez->idCompetenciaJuez)->count();
 
             //GUARDAMOS LAS COSITAS
             $item = [
                 'nombre' => $competencia->nombre,
                 'fecha' => $competencia->fecha,
                 'cantidadJueces' => $competencia->cantidadJueces,
+                'cantidadPuntuados' => $cantCompetidoresPuntuados
             ];
 
             // METEMOS LAS COSITAS AL ARREGLO NYA
