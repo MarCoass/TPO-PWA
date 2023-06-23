@@ -134,6 +134,8 @@ function CalendarControl() {
                     );
                 } else {
                     var clase = "";
+                    var tooltip = "";
+                    var ruta = "#"
                     //aca va la salsa
                     fechasCompetencias.forEach((competencia) => {
                         var fecha = competencia.fecha;
@@ -144,25 +146,29 @@ function CalendarControl() {
 
                         if (
                             calendar.getMonth() == mes &&
-                            anio == calendar.getFullYear() && count==dia
+                            anio == calendar.getFullYear() && count-1==dia
                         ) {
-                            clase = 'calendar-today'
+                            clase = 'calendar-competencia'
+                            tooltip ="data-bs-toggle='tooltip' data-bs-title='" + competencia.nombre + "'"
+                           ruta = '/verPresentacion/'+ competencia.idCompetencia
                         }
                     });
                     document.querySelector(
                         ".calendar .calendar-body"
-                    ).innerHTML += `<div class="number-item ${clase}" data-num=${count}><a class="dateNumber" href="#">${count++}</a></div>`;
+                    ).innerHTML += `<div class="number-item ${clase}" data-num=${count}><a  class="dateNumber" href="`+ ruta +`" ${tooltip}>${count++}</a></div>`;
                 }
             }
             //remaining dates after month dates
             for (let j = 0; j < prevDateCount + 1; j++) {
                 document.querySelector(
                     ".calendar .calendar-body"
-                ).innerHTML += `<div class="number-item" data-num=${count}><a class="dateNumber" href="#">${count++}</a></div>`;
+                ).innerHTML += `<div class="number-item" data-num=${count}><a class="dateNumber" href="{{}}">${count++}</a></div>`;
             }
             calendarControl.highlightToday();
             calendarControl.plotPrevMonthDates(prevMonthDatesArray);
             calendarControl.plotNextMonthDates();
+            const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
         },
         attachEvents: function () {
             let prevBtn = document.querySelector(".calendar .calendar-prev a");
@@ -204,7 +210,7 @@ function CalendarControl() {
                 document
                     .querySelectorAll(".number-item")
                     [calendar.getDate() - 1].classList.add("calendar-today");
-                console.log(calendar.getDate());
+                
             }
         },
 
@@ -262,8 +268,8 @@ function CalendarControl() {
                 method: "GET",
                 success: function (response) {
                     fechasCompetencias = response.competencias;
-
                     calendarControl.plotDates(fechasCompetencias);
+                    
                 },
             });
             calendarControl.plotSelectors();
@@ -275,3 +281,4 @@ function CalendarControl() {
 }
 
 const calendarControl = new CalendarControl();
+

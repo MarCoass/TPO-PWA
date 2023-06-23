@@ -6,7 +6,8 @@
     --weekdays-border-bottom-color: #404040;
     --calendar-date-hover-color: #505050;
     --calendar-current-date-color: #1b1f21;
-    --calendar-today-color: linear-gradient(to bottom, #03a9f4, #2196f3);
+    --calendar-today-color: var(--bs-success);
+    --calendar-competencia-color: var(--bs-danger);
     --calendar-today-innerborder-color: transparent;
     --calendar-nextprev-bg-color: transparent;
     --next-prev-arrow-color : #FFF;
@@ -69,9 +70,7 @@
     border-radius: 4px;
 }
 
-.calendar .calendar-inner .calendar-body div.empty-dates:hover {
-    border: 1px solid transparent;
-}
+
 
 .calendar .calendar-inner .calendar-controls {
     display: grid;
@@ -108,13 +107,15 @@
 }
 
 .calendar .calendar-inner .calendar-body .calendar-today {
-    background: var(--calendar-today-color);
+    border-color: var(--calendar-today-color);
+    border-radius: 4px;
+    border-width: 2px;
+}
+.calendar .calendar-inner .calendar-body .calendar-competencia {
+    background: var(--calendar-competencia-color);
     border-radius: 4px;
 }
 
-.calendar .calendar-inner .calendar-body .calendar-today:hover {
-    border: 1px solid transparent;
-}
 
 .calendar .calendar-inner .calendar-body .calendar-today a {
     outline: 2px solid var(--calendar-today-innerborder-color);
