@@ -16,9 +16,11 @@
         @auth
             <span class="fs-1">Bienvenido <b class="text-danger">{{ auth()->user()->usuario }}</b>.</span>
 
-            <div class="row justify-content-around">
-
-                <div class="format-container">
+            <div class="row ">
+                <div class="col">
+                    @include('includes.calendar')
+                </div>
+                <div class="col-lg-8 col-md-12 ">
 
                     <div class="seccion_box">
                         {{-- Todo lo que no son gestiones primero --}}
@@ -106,8 +108,9 @@
                             @include('layouts.modales.modalSolicitarCambios')
                         @endif
                     </div>
-                </div><!-- /.col-lg-4 -->
-
+                </div>
+                <!-- /.col-lg-4 -->
+               
             </div>
         @endauth
 
