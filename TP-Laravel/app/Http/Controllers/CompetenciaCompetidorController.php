@@ -7,6 +7,7 @@ use App\Models\Competidor;
 use App\Models\Competencia;
 use App\Models\CompetenciaCompetidor;
 use App\Models\CompetenciaCompetidorPoomsae;
+use App\Models\Solicitud;
 use Illuminate\Http\Request;
 use App\Models\Puntaje;
 use Illuminate\Support\Facades\DB;
@@ -130,7 +131,8 @@ class CompetenciaCompetidorController extends Controller
                 'nombre' => $competidor->competidor->nombre,
                 'apellido' => $competidor->competidor->apellido,
                 'estado' => $competidor->estado,
-                'idUser' => $competidor->idCompetidor,
+                'idUser' => $competidor->competidor->user->id,
+                'tieneSolicitud' => $this->tieneSolicitud($competidor->competidor->user->id),
                 'tiene_poomsae_asignado' => 0
             );
 
@@ -148,6 +150,10 @@ class CompetenciaCompetidorController extends Controller
         $competencia = Competencia::find($id);
 
         return view('tablaCompetenciaCompetidores.index_CompetenciaCompetidores', ['competidoresCompetencia' => $competidoresCompetencia, 'competencia' => $competencia]);
+    }
+
+    private function tieneSolicitud($idUser){
+        return Solicitud::where('idUser', '=', $idUser)->where('estadoSolicitud','=', 4)->exists();
     }
 
     public function puntajeFinal($id)
@@ -335,7 +341,7 @@ class CompetenciaCompetidorController extends Controller
             $competencia->estadoCompetencia = 1;
             $competencia->save();
         }
-    } 
+    }
 
 
 

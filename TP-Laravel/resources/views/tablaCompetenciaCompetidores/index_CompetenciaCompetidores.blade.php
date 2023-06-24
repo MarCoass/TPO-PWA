@@ -55,11 +55,8 @@ Gestion de Competidores de la competencia
             <td>{{ $estadoCompetidor }}</td>
             <td>
                 @if ($competidor['estado'] == 0)
-                    @php
-                        $tieneSolicitud = App\models\Solicitud::where('idUser', $competidor['idUser'])->where('estadoSolicitud', 4)->first();
-                    @endphp
-                    @if ($tieneSolicitud)
-                    <a href="{{ route('competidor_solicitudes', ['id' => $competidor['idUser'] ]) }}" class="btn btn-outline-warning"><i class="bi bi-exclamation-triangle-fill me-2"></i>Atender Solicitudes</a>
+                    @if ($competidor['tieneSolicitud'])
+                    <a href="{{ route('competidor_solicitudes', ['id' => $competidor['idUser'] ]) }}" class="btn btn-warning"><i class="bi bi-exclamation-triangle-fill me-2"></i>Atender Solicitudes</a>
                     <a href="#" class="btn btn-outline-success disabled"><i class="bi bi-check2-square me-2"></i>Habilitar</a>
 
                     @else
