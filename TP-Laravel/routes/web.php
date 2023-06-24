@@ -76,8 +76,6 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::post('/actualizarDatosPersonales', [UsuarioController::class, 'actualizarDatosPersonales'])->name('actualizarDatosPersonales');
         Route::post('/actualizarPassword', [UsuarioController::class, 'actualizarPassword'])->name('actualizarPassword');
         Route::post('/actualizarImagenPerfil', [UsuarioController::class, 'actualizarFoto'])->name('actualizarImagenPerfil');
-        Route::get('/misSolicitudes/{id}', [SolicitudController::class, 'misSolicitudes'])->name('misSolicitudes');
-        Route::post('/solicitudLeida/{id}', [SolicitudController::class, 'solicitudLeida'])->name('solicitudLeida');
         Route::get('/resultadosRanking', [CategoriaController::class, 'vistaVerRanking'])->name('resultadosRanking');
         Route::post('/obtenerRanking', [CompetidorController::class, 'obtenerRanking'])->name('obtenerRanking'); //traer competidores por genero para ranking
         Route::get('/competenciasCalendario', [CompetenciaController::class, 'competenciasCalendario'])->name('competenciasCalendario'); //traer competidores por genero para ranking
