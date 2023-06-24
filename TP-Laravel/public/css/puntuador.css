@@ -33,6 +33,7 @@
 
 .pulsadorDer, .pulsadorIzq{
     height: 200px;
+    user-select: none;
 }
 
 
