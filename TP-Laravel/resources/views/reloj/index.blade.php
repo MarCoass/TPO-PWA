@@ -58,7 +58,7 @@
 </div>
 
 <div class="col-lg-6 col-12 button-group mb-3 d-flex justify-content-end align-items-center">
-    <button class="btn btn-outline-primary mx-2" type="submit">Iniciar Cronometro</button>
+    <button class="btn btn-outline-primary mx-2" type="submit"><i class="bi bi-hourglass-split me-1"></i>Iniciar Cronómetro</button>
 </div>
 </form>
 @endsection
