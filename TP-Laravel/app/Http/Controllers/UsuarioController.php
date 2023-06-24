@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\NotificacionGeneral;
 use App\Notifications\UsuarioHabilitado;
+use Intervention\Image\Facades\Image;
 
 class UsuarioController extends Controller
 {
@@ -251,9 +252,16 @@ class UsuarioController extends Controller
         $extension = $request->file('imagenPerfil')->getClientOriginalExtension();
 
         $nombrePerfil = $idUsuario . 'Perfil.' . $extension;
-        $pathFoto = $request->file('imagenPerfil')->storeAs('/imagenPerfil', $nombrePerfil, 'public');
-        $usuario->imagenPerfil = $pathFoto;
+        
+        $image = Image::make($request->file('imagenPerfil'));
+        $image->fit(300, 300);
+        $image->save(public_path('storage/imagenPerfil/' . $nombrePerfil));
+
+        $usuario->imagenPerfil = 'imagenPerfil/' .$nombrePerfil;
+
         $usuario->save();
+
+        
 
         return redirect()->route('verPerfil');
     }
