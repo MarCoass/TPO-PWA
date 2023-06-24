@@ -211,11 +211,14 @@ class CompetenciaCompetidorController extends Controller
         $numPasada = $request['numPasada'];
 
 
-
         //busco todos los puntajes de esa competencia y ese competidor
+        //ahora busca los que tengan puntaje exactitud y presentacion diferente de 0
         $cantJueces = Competencia::find($idCompetencia)->cantidadJueces;
         $competenciaCompetidor = CompetenciaCompetidor::where('idCompetencia', $idCompetencia)->where('idCompetidor', $idCompetidor)->first();
-        $puntajes = Puntaje::where('idCompetenciaCompetidor', $competenciaCompetidor->idCompetenciaCompetidor)->where('pasada', $numPasada)->get();
+        $puntajes = Puntaje::where('idCompetenciaCompetidor', $competenciaCompetidor->idCompetenciaCompetidor)
+            ->where('pasada', $numPasada)
+            ->where('puntajeExactitud', '<>', 0)
+            ->where('puntajePresentacion', '<>', 0)->get();
 
         $reloj = Reloj::where('idCategoria', $competenciaCompetidor->idCategoria)->where('idCompetencia', $idCompetencia)->get();
         $cantJueces = $reloj[0]->cantJueces;
@@ -325,7 +328,7 @@ class CompetenciaCompetidorController extends Controller
                         $competidor = Competidor::find($compeCompe->idCompetidor);
                         $competidor->ranking += $ranking;
                         $competidor->save();
-                        $ranking --;
+                        $ranking--;
                     }
                 }
             }

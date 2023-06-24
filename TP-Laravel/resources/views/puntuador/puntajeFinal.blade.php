@@ -54,7 +54,7 @@
               </table>
             
               <div class="button-group">
-                <a href=""><button class="btn btn-success">Ver resultados.</button></a>
+                <a href="/verResultados/{{$competenciaCompetidor->idCompetencia}}" ><button class="btn btn-success">Ver resultados.</button></a>
                 <a href="{{route('puntuador_index')}}"><button class="btn btn-success">Puntuador.</button></a>
               </div>
         </div>
