@@ -31,7 +31,26 @@ Gestion de Competencias
         @foreach ($competencias as $row)
         <tr>
             <td>{{ $row->idCompetencia }}</td>
-            <td>{{ $row->nombre }}</td>
+            <td class="d-flex ">
+                <div class="">
+                    {{ $row->nombre }}
+                </div>
+                @if (App::make('App\Http\Controllers\CompetenciaController')->JuecesEsperandoSerConfirmados($row->idCompetencia))
+                <div class="badge rounded-pill text-bg-warning spinner-grow mx-1" style="width: 25px; height: 25px;">
+                    <div class="align-item-center ">
+                        <i class="bi bi-asterisk"></i>
+                    </div>
+                </div>
+                @endif
+                @if (App::make('App\Http\Controllers\CompetenciaController')->CompetidoresEsperandoSerConfirmados($row->idCompetencia))
+                <div class="badge rounded-pill text-bg-warning spinner-grow mx-1" style="width: 25px; height: 25px;">
+                    <div class="align-item-center ">
+                        <i class="bi bi-person-fill-exclamation"></i>
+                    </div>
+                </div>
+                @endif
+
+            </td>
             <td>
             @php $fecha = date('d/m/Y', strtotime($row->fecha)) @endphp
             {{ $fecha }}

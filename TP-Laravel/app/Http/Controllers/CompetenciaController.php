@@ -30,6 +30,21 @@ class CompetenciaController extends Controller
         return view('gestionCompetencias.index', compact('competencias'));
     }
 
+
+    public function JuecesEsperandoSerConfirmados($idCompetencia){
+        return CompetenciaJuez::where('estado', '=', '0')
+        ->where('idCompetencia', '=', $idCompetencia)
+        ->exists();
+    }
+
+    public function CompetidoresEsperandoSerConfirmados($idCompetencia){
+        return CompetenciaCompetidor::where('estado', '=', '0')
+        ->where('idCompetencia', '=', $idCompetencia)
+        ->exists();
+    }
+
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -262,7 +277,7 @@ class CompetenciaController extends Controller
         $competencias = Competencia::select('idCompetencia', 'nombre', 'fecha', 'estadoJueces', 'estadoCompetencia')->get();
         //si sos competidor solo trae las con estadoJuez = 1
 
-        
+
 
         return compact('competencias');
     }
