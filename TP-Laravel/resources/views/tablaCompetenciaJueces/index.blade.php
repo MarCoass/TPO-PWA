@@ -13,6 +13,7 @@ Gestion de Jueces de la competencia
 <!-- despliega mensajes -->
 @include('layouts.partials.messages')
 <h3>Estas viendo la <b>{{ $nombreCompetencia->nombre }}</b> <span class="badge bg-secondary">{{ count($juecesAceptados) .' de ' . $nombreCompetencia->cantidadJueces }}</span></h3>
+<a href="{{ route('index_competencia') }}" class="btn btn-outline-secondary">Volver</a>
 <table id="tabla_CompetenciaCompetidores" class="table hover table-light table-bordered nowrap border dataTable dtr-inline collapsed" width="100%">
     <thead class="flip-content">
         <tr>

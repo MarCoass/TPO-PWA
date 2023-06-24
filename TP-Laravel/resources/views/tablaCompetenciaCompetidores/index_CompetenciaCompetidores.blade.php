@@ -13,6 +13,7 @@ Gestion de Competidores de la competencia
 <!-- despliega mensajes -->
 @include('layouts.partials.messages')
 <h3>Estas viendo la <b>{{ $competencia->nombre }}</b></h3>
+<a href="{{ route('index_competencia') }}" class="btn btn-outline-secondary">Volver</a>
 <a href="{{ route('asignar_poomsae_por_sorteo', ['id_competencia' => $competencia->idCompetencia]) }}" class="btn btn-outline-success">Sortear Poomsae</a>
 <br/>
 
