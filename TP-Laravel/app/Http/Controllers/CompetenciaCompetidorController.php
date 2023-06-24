@@ -152,8 +152,9 @@ class CompetenciaCompetidorController extends Controller
         return view('tablaCompetenciaCompetidores.index_CompetenciaCompetidores', ['competidoresCompetencia' => $competidoresCompetencia, 'competencia' => $competencia]);
     }
 
-    private function tieneSolicitud($idUser){
-        return Solicitud::where('idUser', '=', $idUser)->where('estadoSolicitud','=', 4)->exists();
+    private function tieneSolicitud($idUser)
+    {
+        return Solicitud::where('idUser', '=', $idUser)->where('estadoSolicitud', '=', 4)->exists();
     }
 
     public function puntajeFinal($id)
@@ -193,7 +194,7 @@ class CompetenciaCompetidorController extends Controller
         $flag = true;
         foreach ($competencias as $competidor) {
             //revisamos si todos tienen el puntaje seteado
-            if ($competidor->puntaje == 0 && $competidor->contadorPasadas < 2) {
+            if ($competidor->puntaje == 0 || $competidor->contadorPasadas < 2) {
                 $flag = false;
             }
         }
@@ -201,9 +202,6 @@ class CompetenciaCompetidorController extends Controller
             $this->setearRanking($idCompetencia);
         }
     }
-
-
-
 
     /*Esto para lo del puntuador y jueces */
     public function validarJueces(Request  $request)
@@ -321,19 +319,13 @@ class CompetenciaCompetidorController extends Controller
                     ->take(3)
                     ->get();
 
-                $competidorUno  = Competidor::find($competenciaCompetidor[0]->idCompetidor);
-                $competidorUno->ranking += 3;
-                $competidorUno->save();
-
-                if ($competenciaCompetidor[1] != null) {
-                    $competidorDos  = Competidor::find($competenciaCompetidor[1]->idCompetidor);
-                    $competidorDos->ranking += 2;
-                    $competidorDos->save();
-
-                    if ($competenciaCompetidor[2] != null) {
-                        $competidorTres  = Competidor::find($competenciaCompetidor[2]->idCompetidor);
-                        $competidorTres->ranking += 1;
-                        $competidorTres->save();
+                if ($competenciaCompetidor != null) {
+                    $ranking = 3;
+                    foreach ($competenciaCompetidor as $compeCompe) {
+                        $competidor = Competidor::find($compeCompe->idCompetidor);
+                        $competidor->ranking += $ranking;
+                        $competidor->save();
+                        $ranking --;
                     }
                 }
             }
@@ -342,8 +334,6 @@ class CompetenciaCompetidorController extends Controller
             $competencia->save();
         }
     }
-
-
 
     public function obtenerCategoriasFiltradas($idCompetencia)
     {
