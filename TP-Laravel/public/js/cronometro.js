@@ -90,7 +90,7 @@ function detenerCronometro() {
     });
 }
 
-const intervalInformacion = setInterval(actualizarInformacion, 1000);
+const intervalInformacion = setInterval(actualizarInformacion, 15000);
 function actualizarInformacion() {
     $.ajax({
         url: "/actualizar_informacion",

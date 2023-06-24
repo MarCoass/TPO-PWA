@@ -2,13 +2,13 @@
 /* Este css falta mejorarlo pq el responsive es medio meh */
 
 
-@media (min-device-width: 916px) {
+@media (min-width: 916px) {
     .mobile{
         display: none;
     }
 } 
 
-@media (max-device-width: 915px) {
+@media (max-width: 915px) {
     /* Estilos para dispositivos móviles */
 
     .desktop{

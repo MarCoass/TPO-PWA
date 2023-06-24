@@ -39,7 +39,7 @@ var interval = setInterval(function () {
             }
         },
     });
-}, 3000); // 10 segundos (3000 milisegundos)
+}, 5000); 
 
 function cargarPuntajeTotal(idCompetencia, idCompetidor, numPasada) {
     $.ajax({

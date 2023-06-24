@@ -2,7 +2,7 @@ var id_competencia = document.getElementById('id_competencia').value;
 var id_categoria = document.getElementById('id_categoria').value;
 var btn = document.getElementById('siguientePuntuacion_'+id_competencia);
 
-setInterval(actualizarBotones, 1000);
+setInterval(actualizarBotones, 5000);
 
 
 function actualizarBotones(){
