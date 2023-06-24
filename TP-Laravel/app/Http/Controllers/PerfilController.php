@@ -34,27 +34,30 @@ class PerfilController extends Controller
 
             $arregloInscripciones = $this->traerInscripcionesPendientesJuez($idUser, $objCompetencia, $objCompetenciaJuez);
         } elseif ($usuario->idRol == 3) {
-            // TRAEMOS COSITAS PARA COMPETIDOR
-
-            // INICIALIZAMOS MODELOS QUE USAREMOS MÁS ADELANTE NYA
             $objCompetidor = new Competidor();
-            $objGraduacion = new Graduacion();
-            $objCompetenciaCompetidor = new CompetenciaCompetidor();
-            $objCompetencia = new Competencia();
-
             // OBTENEMOS EL COMPETIDOR DEL USUARIO LOGEADO
             $competidor = $objCompetidor::where('idUser', '=', $idUser)->first();
 
-            // OBTENEMOS SU CINTURÓN ACTUAL (LATIGAME PORFA)
-            $graduacion = $objGraduacion::find($competidor->idGraduacion);
+            if ($competidor != null) {
+                // TRAEMOS COSITAS PARA COMPETIDOR
 
-            $arreglo = $this->traerCompetenciasCompetidor($competidor->idCompetidor, $objCompetenciaCompetidor, $objCompetencia);
+                // INICIALIZAMOS MODELOS QUE USAREMOS MÁS ADELANTE NYA
+                $objCompetidor = new Competidor();
+                $objGraduacion = new Graduacion();
+                $objCompetenciaCompetidor = new CompetenciaCompetidor();
+                $objCompetencia = new Competencia();
 
-            $arregloInscripciones = $this->traerInscripcionesPendientesCompetidor($competidor->idCompetidor, $objCompetenciaCompetidor, $objCompetencia);
+                // OBTENEMOS SU CINTURÓN ACTUAL (LATIGAME PORFA)
+                $graduacion = $objGraduacion::find($competidor->idGraduacion);
+
+                $arreglo = $this->traerCompetenciasCompetidor($competidor->idCompetidor, $objCompetenciaCompetidor, $objCompetencia);
+
+                $arregloInscripciones = $this->traerInscripcionesPendientesCompetidor($competidor->idCompetidor, $objCompetenciaCompetidor, $objCompetencia);
+            }
         }
 
         // RETORNAMOS LAS COSITAS A LA VISTA UWU
-        return view('verPerfil.verPerfil', compact('arreglo', 'graduacion', 'arregloInscripciones'));
+        return view('verPerfil.verPerfil', compact('arreglo', 'graduacion', 'arregloInscripciones', 'competidor'));
     }
 
     public function traerCompetenciasCompetidor($idCompetidor, $objCompetenciaCompetidor, $objCompetencia)

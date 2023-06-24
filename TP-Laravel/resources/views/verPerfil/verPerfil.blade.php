@@ -86,7 +86,7 @@
                                 <p class="text-muted mb-0">{{ auth()->user()->usuario }}</p>
                             </div>
                         </div>
-                        @if (auth()->user()->idRol == 3)
+                        @if (auth()->user()->idRol == 3 && $competidor != null)
                         <hr>
                             <div class="row">
                                 <div class="col-sm-3">
