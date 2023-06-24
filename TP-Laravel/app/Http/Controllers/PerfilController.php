@@ -21,6 +21,7 @@ class PerfilController extends Controller
         $arreglo = [];
         $arregloInscripciones = [];
         $graduacion = null;
+        $competidor = null;
 
         if ($usuario->idRol == 2) {
             // TRAEMOS COSITAS PARA JUEZ

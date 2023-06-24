@@ -38,6 +38,7 @@
                                 Permisos:</span>{{ auth()->user()->rol->nombreRol }} </p>
                     </div>
                 </div>
+                @if (auth()->user()->idRol != 1)
                 <div class="card mb-4 mb-lg-0">
                     <div class="card-body mx-auto">
                         {{-- Incluimos Modal para ver las competencias del usuario --}}
@@ -56,6 +57,7 @@
                         </button>
                     </div>
                 </div>
+                @endif
             </div>
             <div class="col-lg-8">
                 <div class="card mb-4">
