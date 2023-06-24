@@ -44,14 +44,14 @@
                         {{-- Incluimos Modal para ver las competencias del usuario --}}
                         @include('layouts.modales.modalCompetenciasPerfil')
 
-                        <button type="button" class="btn btn-outline-info" data-bs-toggle="modal"
+                        <button type="button" class="btn btn-info" data-bs-toggle="modal"
                             data-bs-target="#competenciasPerfil">
                             <i class="bi bi-book me-2"></i>Ver Competencias
                         </button>
 
                         {{-- Incluimos Modal para ver las solcitudes sin atender del usuario --}}
                         @include('layouts.modales.modalInscripcionesPerfil')
-                        <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal"
+                        <button type="button" class="btn btn-warning" data-bs-toggle="modal"
                             data-bs-target="#solicitudesPerfil">
                             <i class="bi bi-list-task me-2"></i>Ver Solicitudes
                         </button>
