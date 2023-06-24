@@ -30,6 +30,9 @@ class CompetenciasTableSeeder extends Seeder
                 'fecha' => $competencia['fecha'],
                 'cantidadJueces' => $competencia['cantidadJueces'],
                 'estadoJueces' => $competencia['estadoJueces'],
+                'flyer' => $competencia['flyer'],
+                'bases' => $competencia['bases'],
+                'invitacion' => $competencia['invitacion'],
                 'estadoCompetencia' => $competencia['estadoCompetencia']
             ]);
         }
