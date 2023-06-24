@@ -260,6 +260,9 @@ class CompetenciaController extends Controller
     public function competenciasCalendario()
     {
         $competencias = Competencia::select('idCompetencia', 'nombre', 'fecha', 'estadoJueces', 'estadoCompetencia')->get();
+        //si sos competidor solo trae las con estadoJuez = 1
+
+        
 
         return compact('competencias');
     }

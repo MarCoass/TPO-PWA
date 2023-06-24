@@ -122,8 +122,10 @@ function CalendarControl() {
                 calendar.getMonth() + 1,
                 calendar.getFullYear()
             );
+           
             // dates of current month
             for (let i = 1; i < calendarDays; i++) {
+                console.log(count);
                 if (i < calendarControl.firstDayNumber()) {
                     prevDateCount += 1;
                     document.querySelector(
@@ -132,10 +134,12 @@ function CalendarControl() {
                     prevMonthDatesArray.push(
                         calendarControl.prevMonthLastDate--
                     );
+                    
                 } else {
+                    //console.log('i:' + i + 'count:' + count)
                     var clase = "";
                     var tooltip = "";
-                    var ruta = "#"
+                    var ruta = "#";
                     //aca va la salsa
                     fechasCompetencias.forEach((competencia) => {
                         var fecha = competencia.fecha;
@@ -143,32 +147,52 @@ function CalendarControl() {
                         var dia = fechaJS.getDate();
                         var mes = fechaJS.getMonth();
                         var anio = fechaJS.getFullYear();
-
+                      /*   console.log([
+                            calendar.getMonth(),
+                            mes,
+                            anio,
+                            calendar.getFullYear(),
+                            count - 1,
+                            dia,
+                        ]); */
                         if (
                             calendar.getMonth() == mes &&
-                            anio == calendar.getFullYear() && count-1==dia
+                            anio == calendar.getFullYear() &&
+                            count - 1 == dia
                         ) {
-                            clase = 'calendar-competencia'
-                            tooltip ="data-bs-toggle='tooltip' data-bs-title='" + competencia.nombre + "'"
-                           ruta = '/verPresentacion/'+ competencia.idCompetencia
+                            clase = "calendar-competencia";
+                            tooltip =
+                                "data-bs-toggle='tooltip' data-bs-title='" +
+                                competencia.nombre +
+                                "'";
+                            ruta =
+                                "/verPresentacion/" + competencia.idCompetencia;
                         }
                     });
+
                     document.querySelector(
                         ".calendar .calendar-body"
-                    ).innerHTML += `<div class="number-item ${clase}" data-num=${count}><a  class="dateNumber" href="`+ ruta +`" ${tooltip}>${count++}</a></div>`;
+                    ).innerHTML +=
+                        `<div class="number-item ${clase}" data-num=${count}><a  class="dateNumber" href="` +
+                        ruta +
+                        `" ${tooltip}>${count++}</a></div>`;
                 }
             }
             //remaining dates after month dates
             for (let j = 0; j < prevDateCount + 1; j++) {
                 document.querySelector(
                     ".calendar .calendar-body"
-                ).innerHTML += `<div class="number-item" data-num=${count}><a class="dateNumber" href="{{}}">${count++}</a></div>`;
+                ).innerHTML += `<div class="number-item" data-num=${count}><a class="dateNumber" href="">${count++}</a></div>`;
             }
             calendarControl.highlightToday();
             calendarControl.plotPrevMonthDates(prevMonthDatesArray);
             calendarControl.plotNextMonthDates();
-            const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+            const tooltipTriggerList = document.querySelectorAll(
+                '[data-bs-toggle="tooltip"]'
+            );
+            const tooltipList = [...tooltipTriggerList].map(
+                (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
+            );
         },
         attachEvents: function () {
             let prevBtn = document.querySelector(".calendar .calendar-prev a");
@@ -210,7 +234,6 @@ const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstra
                 document
                     .querySelectorAll(".number-item")
                     [calendar.getDate() - 1].classList.add("calendar-today");
-                
             }
         },
 
@@ -267,9 +290,9 @@ const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstra
                 url: "/competenciasCalendario",
                 method: "GET",
                 success: function (response) {
+                    //console.log(response)
                     fechasCompetencias = response.competencias;
                     calendarControl.plotDates(fechasCompetencias);
-                    
                 },
             });
             calendarControl.plotSelectors();
@@ -281,4 +304,3 @@ const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstra
 }
 
 const calendarControl = new CalendarControl();
-
