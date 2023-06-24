@@ -23,7 +23,7 @@ Tabla de Resultados de {{ $competencia->nombre }}
 </div>
 
 <div class="table-responsive">
-    <table class="table hover" width="100%" id="tablaVerCompetidores">
+    <table  class="table hover table-light table-bordered nowrap border dataTable dtr-inline collapsed" width="100%" id="tablaVerCompetidores">
         <thead class="flip-content">
             <tr>
                 <th scope="col">Puesto</th>
