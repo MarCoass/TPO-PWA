@@ -167,6 +167,7 @@ class PuntajeController extends Controller
         $opciones =  Competidor::leftJoin('competenciacompetidor', 'competidores.idCompetidor', '=', 'competenciacompetidor.idCompetidor')
             ->where('competenciacompetidor.idCompetencia', '=', $competencia)
             ->where('competenciacompetidor.contadorPasadas', '<', '2')
+            ->where('competenciacompetidor.estado','=', '1')
             ->where('competenciacompetidor.idCategoria', '=', $categoria)->get();
 
         return response()->json($opciones);
