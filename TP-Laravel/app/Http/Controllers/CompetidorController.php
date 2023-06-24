@@ -51,9 +51,6 @@ class CompetidorController extends Controller
         $competidoresMasculinos = $this->buscarCompetidoresPorGeneroYcategoria($request['idCategoria'], 0);
         $competidoresFemeninos = $this->buscarCompetidoresPorGeneroYcategoria($request['idCategoria'], 1);
 
-        /*   $competidoresTotal[0] = $competidoresMasculinos;
-         $competidoresTotal[1] = $competidoresFemeninos; */
-
         return compact('competidoresMasculinos', 'competidoresFemeninos');
     }
 

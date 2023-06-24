@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Categoria;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 
 class CategoriaController extends Controller
@@ -114,10 +115,18 @@ class CategoriaController extends Controller
     
     }
 
-    public function vistaVerRanking()
+    public function vistaVerRanking()   
     {
-        $categorias = Categoria::all();
+       $categorias = DB::table('categorias')
+        ->join('competenciacompetidor', 'categorias.idCategoria', '=', 'competenciacompetidor.idCategoria')
+        ->join('competidores', 'competenciacompetidor.idCompetidor', '=', 'competidores.idCompetidor')
+        ->where('competidores.ranking', '>', 0)
+        ->select('categorias.*')
+        ->distinct()
+        ->get(); 
             
+     /*    $categorias = Categoria::all(); */
+
         return view('resultados.resultadosRanking', compact('categorias'));
     }
 
