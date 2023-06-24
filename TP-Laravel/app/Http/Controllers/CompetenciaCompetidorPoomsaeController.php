@@ -65,7 +65,8 @@ class CompetenciaCompetidorPoomsaeController extends Controller
 
       public function asignar_poomsae_por_sorteo($id_competencia){
 
-        $competidoresCompetencia = CompetenciaCompetidor::where('idCompetencia', $id_competencia)->get();
+        //asignar poomsae solo a competidores habilitados
+        $competidoresCompetencia = CompetenciaCompetidor::where('estado',1)->where('idCompetencia', $id_competencia)->get();
         $pasadas = [1,2];
 
         foreach($competidoresCompetencia as $row){
