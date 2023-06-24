@@ -14,10 +14,22 @@
         <!-- aca se vuelven a ver los grupos -->
 
         @auth
-            <span class="fs-1">Bienvenido <b class="text-danger">{{ auth()->user()->usuario }}</b>.</span>
+            <div class="row">
+
+                <span class="fs-1 col">Bienvenido <b class="text-danger">{{ auth()->user()->usuario }}</b>.
+                @if (auth()->user()->idRol == 1)
+                    <img src="/images/svg/a.svg" alt="" class="rounded-circle img-fluid" style="width: 40px;">
+                @elseif (auth()->user()->idRol == 2)
+                    <img src="/images/svg/b.svg" alt="" class="rounded-circle img-fluid" style="width: 55px;">
+                @elseif (auth()->user()->idRol == 3)
+                    <img src="/images/svg/c.svg" alt="" class="rounded-circle img-fluid" style="width: 40px;">
+                @endif
+                </span>
+            </div>
+
 
             <div class="row justify-content-center">
-              
+
                 <div class="col-lg-8 col-md-12">
 
                     <div class="seccion_box">
@@ -110,7 +122,7 @@
                 <div class="col-lg-4 col-md-12 col-sm-12 d-flex  justify-content-center" style="margin: 50px auto;">
                     @include('includes.calendar')
                 </div>
-               
+
             </div>
         @endauth
 
