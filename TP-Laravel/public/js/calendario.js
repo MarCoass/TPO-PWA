@@ -125,7 +125,6 @@ function CalendarControl() {
            
             // dates of current month
             for (let i = 1; i < calendarDays; i++) {
-                console.log(count);
                 if (i < calendarControl.firstDayNumber()) {
                     prevDateCount += 1;
                     document.querySelector(
