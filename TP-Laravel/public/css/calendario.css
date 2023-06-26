@@ -4,7 +4,7 @@
     --calendar-bg-color: #262829;
     --calendar-font-color: #FFF;
     --weekdays-border-bottom-color: #404040;
-    --calendar-date-hover-color: #505050;
+    --calendar-date-hover-color: var(--bs-white);
     --calendar-current-date-color: #1b1f21;
     --calendar-today-color: var(--bs-white);
     --calendar-competencia-color: var(--bs-danger);
@@ -65,11 +65,11 @@
     justify-content: center;
 }
 
-.calendar .calendar-inner .calendar-body div:hover {
-    border: 1px solid var(--calendar-date-hover-color);
+.calendar .calendar-inner .calendar-body .number-item:hover {
+    background-color: var(--bs-primary);
     border-radius: 4px;
+    transition: 0.7s;
 }
-
 
 
 .calendar .calendar-inner .calendar-controls {
