@@ -19,11 +19,14 @@
         <input type="hidden" name="idReloj" id="idReloj" value="{{ $idReloj }}">
 
         <div class="col-md-12 text-center">
-            <input type="button" onclick="iniciarCronometro({{ $id_competencia }})"
-                class="btn btn-outline-primary btn-lg me-2" id="inicio-contador_{{ $id_competencia }}" value="Inicia">
-
-            <input type="button" onclick="detenerCronometro({{ $id_competencia }})"
-                class="btn btn-outline-warning btn-lg disabled" id="fin-contador_{{ $id_competencia }}" value="Termina">
+            <button type="button" onclick="iniciarCronometro({{ $id_competencia }})"
+                class="btn btn-outline-primary btn-lg me-2" id="inicio-contador_{{ $id_competencia }}">
+                <i class="bi bi-play me-1"></i>Iniciar
+            </button>
+            <button type="button" onclick="detenerCronometro({{ $id_competencia }})"
+                class="btn btn-outline-danger btn-lg disabled" id="fin-contador_{{ $id_competencia }}">
+                <i class="bi bi-stop me-1"></i>Terminar
+            </button>
         </div>
 
         <input type="hidden" id='overtime_{{ $id_competencia }}' name="overtime_{{ $id_competencia }}">

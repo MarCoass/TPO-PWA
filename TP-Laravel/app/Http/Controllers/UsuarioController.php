@@ -166,7 +166,10 @@ class UsuarioController extends Controller
                 $usuario->apellido = $request->input('apellido');
 
                 $usuario->save();
+                $datosSolicitud[0] = " Se ha actualizado su nombre a ".$usuario->nombre." ".$usuario->apellido." si usted no ah efectuado estos cambios contactese con soporte para reportar el hecho. ";
 
+                /* del objeto usuario invoca a notify, y este lo  */
+                $usuario->notify(new NotificacionGeneral('success', 'Cambio de Datos exitoso!', 'Se han actualizado sus datos', $datosSolicitud));
                 $arregloMensaje = [
                     'tipo' => 'success',
                     'mensaje' => 'Se han actualizado sus datos correctamente.',

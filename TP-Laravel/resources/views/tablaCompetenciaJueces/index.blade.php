@@ -12,7 +12,7 @@ Gestion de Jueces de la competencia
 @section('contenido')
 <!-- despliega mensajes -->
 @include('layouts.partials.messages')
-<h3>Estas viendo la <b>{{ $nombreCompetencia->nombre }}</b> <span class="badge bg-secondary">{{ count($juecesAceptados) .' de ' . $nombreCompetencia->cantidadJueces }}</span></h3>
+<h3>Estas viendo la <b>{{ $nombreCompetencia->nombre }}</b> <span class="badge bg-secondary">Jueces Aceptados {{ count($juecesAceptados) .' de ' . $nombreCompetencia->cantidadJueces }}</span></h3>
 <a href="{{ route('index_competencia') }}" class="btn btn-outline-secondary">Volver</a>
 <table id="tabla_CompetenciaCompetidores" class="table hover table-light table-bordered nowrap border dataTable dtr-inline collapsed" width="100%">
     <thead class="flip-content">
@@ -53,7 +53,7 @@ Gestion de Jueces de la competencia
                         $tieneSolicitud = App\models\Solicitud::where('idUser', $row->juez->id)->where('estadoSolicitud', 4)->first();
                     @endphp
                     @if ($tieneSolicitud)
-                    <a href="{{ route('competidor_solicitudes', ['id' => $row->juez->id ]) }}" class="btn btn-outline-warning"><i class="bi bi-exclamation-triangle-fill me-2"></i>Atender Solicitudes</a>
+                    <a href="{{ route('competidor_solicitudes', ['id' => $row->juez->id ]) }}" class="btn btn-warning"><i class="bi bi-exclamation-triangle-fill me-2"></i>Atender Solicitudes</a>
                     <a href="#" class="btn btn-outline-success disabled"><i class="bi bi-check2-square me-2"></i>Habilitar</a>
 
                     @else

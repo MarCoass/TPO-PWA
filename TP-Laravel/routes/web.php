@@ -114,6 +114,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::get('/ocultar_solicitud/{id}', [SolicitudController::class, 'ocultarSolicitud'])->name('ocultar_solicitud');
             Route::get('/aceptar_solicitud/{id}', [SolicitudController::class, 'aceptarSolicitud'])->name('aceptar_solicitud');
             Route::get('/rechazar_solicitud/{id}', [SolicitudController::class, 'rechazarSolicitud'])->name('rechazar_solicitud');
+            Route::get('/solicitudes_archivadas', [SolicitudController::class, 'archivados'])->name('solicitudes_archivadas');
+            Route::get('/borrarArchivados', [SolicitudController::class, 'borrarArchivados'])->name('borrarArchivados');
 
                 /* Rutas de Gestion de Usuarios se pueden mejorar */
             Route::get('/index_usuarios', [UsuarioController::class, 'index'])->name('index_usuarios');

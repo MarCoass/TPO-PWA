@@ -23,16 +23,29 @@ class SolicitudController extends Controller
      */
     public function index()
     {
-        $solicitudes = Solicitud::all();
+        $solicitudes = Solicitud::whereIn('estadoSolicitud', [4,5,6])->get();
         $escuelas = Escuela::all();
         $graduaciones = Graduacion::all();
         $competidores = Competidor::all();
-        /* foreach ($solicitudes as $solicitud){
-            $competidor = Competidor::where('idUser',$solicitud->idUser)->get();
-            $competidores->push($competidor);
-        } */
 
         return view('gestionSolicitudes.index_solicitudes', compact('solicitudes','escuelas','graduaciones','competidores'));
+    }
+
+    public function archivados()
+    {
+        $solicitudes = Solicitud::whereIn('estadoSolicitud', [3,2])->get();
+        $escuelas = Escuela::all();
+        $graduaciones = Graduacion::all();
+        $competidores = Competidor::all();
+
+        return view('gestionSolicitudes.index_solicitudes', compact('solicitudes','escuelas','graduaciones','competidores'));
+    }
+
+    public function borrarArchivados()
+    {
+        $solicitudes = Solicitud::whereIn('estadoSolicitud', [3,2])->delete();
+
+        return back()->with('success', 'Las solicitudes archivadas se eliminaron correctamente.');
     }
 
     public function solicitudesPorIdUser($id)
@@ -49,7 +62,6 @@ class SolicitudController extends Controller
     {
         $escuelas = Escuela::all();
         $graduaciones = Graduacion::all();
-        $idSolicitante = $id;
 
         $competidor = Competidor::where('idUser', $id)->first();
         if (!$competidor) {
@@ -83,7 +95,7 @@ class SolicitudController extends Controller
             $datosSolicitud[2] = "- De '".$graduacionAnterior->nombre." - ".$graduacionAnterior->color."' A '".$graduacion->nombre." - ".$graduacion->color."'";
         }
 
-        $solicitud->estadoSolicitud = 3;
+        $solicitud->estadoSolicitud = 5;
         $solicitud->update();
 
         /* Busca el objeto usuario */
@@ -97,7 +109,7 @@ class SolicitudController extends Controller
 
     public function rechazarSolicitud($id){
         $solicitud = Solicitud::find($id);
-        $solicitud->estadoSolicitud = 2;
+        $solicitud->estadoSolicitud = 6;
         $solicitud->save();
 
         /*  */
@@ -121,7 +133,12 @@ class SolicitudController extends Controller
 
     public function ocultarSolicitud($id){
         $solicitud = Solicitud::find($id);
-        $solicitud->estadoSolicitud = 0;
+        if($solicitud->estadoSolicitud == 5){
+            $solicitud->estadoSolicitud = 3;
+        }
+        if ($solicitud->estadoSolicitud == 6) {
+            $solicitud->estadoSolicitud = 2;
+        }
         $solicitud->save();
         return redirect()->route('index_solicitudes')->with('success', 'Solicitud archivada');
     }

@@ -12,7 +12,21 @@ Gestion de Solicitudes
 @section('contenido')
 <!-- despliega mensajes -->
 @include('layouts.partials.messages')
-<h3>Solicitudes</h3>
+
+@if ( Route::currentRouteName() == "index_solicitudes")
+<h3>Solicitudes.</h3>
+<div class="m-2">
+    <a class="btn btn-primary mb-2" href="{{ route('solicitudes_archivadas') }}"><i class="bi bi-eye-slash-fill me-2"></i> Ver Solicitudes Archivadas</a>
+</div>
+@else
+<h3>Solicitudes Archivadas.</h3>
+<div class="m-2">
+    <a class="btn btn-primary" href="{{ route('index_solicitudes') }}"><i class="bi bi-bell-fill me-2"></i> Ver Solicitudes</a>
+    <a class="btn btn-outline-danger" href="{{ route('borrarArchivados') }}"><i class="bi bi-trash me-2"></i> Eliminar todas</a>
+</div>
+@endif
+<br>
+
 <table id="tabla_solicitud" class="table hover table-light table-bordered nowrap border dataTable dtr-inline collapsed" width="100%">
     <thead class="flip-content">
         <tr>
@@ -37,19 +51,21 @@ Gestion de Solicitudes
             <td>{{ $solicitud->user->apellido }} {{ $solicitud->user->nombre }}</td>
             <td>{{ $solicitud->user->rol->nombreRol }}</td>
             <td>
-            @if ($solicitud->estadoSolicitud == 1)
-            <i class="bi bi-bell-fill text-info me-2"></i>Solicitud Vista
-            @elseif ($solicitud->estadoSolicitud == 2)
-            <i class="bi bi-bell-fill text-danger me-2"></i>Solicitud rechazada
-            @elseif ($solicitud->estadoSolicitud == 3)
-            <i class="bi bi-bell-fill text-success me-2"></i>Solicitud atendida
+            @if ($solicitud->estadoSolicitud == 5)
+            <i class="bi bi-hand-thumbs-up-fill text-success me-2"></i>Solicitud aceptada.
+            @elseif ($solicitud->estadoSolicitud == 6)
+            <i class="bi bi-hand-thumbs-down-fill text-danger me-2"></i>Solicitud rechazada.
             @elseif ($solicitud->estadoSolicitud == 4)
-            <i class="bi bi-bell-fill text-warning me-2"></i>Nueva Solicitud
+            <i class="bi bi-bell-fill text-warning me-2"></i>Nueva Solicitud.
+            @elseif ($solicitud->estadoSolicitud == 2)
+            <i class="bi bi-hand-thumbs-down text-info me-2"></i>Solicitud rechazada.
+            @elseif ($solicitud->estadoSolicitud == 3)
+            <i class="bi bi-hand-thumbs-up text-info me-2"></i>Solicitud aceptada.
             @endif
             </td>
             <td>
-                @if ($solicitud->estadoSolicitud != 4)
-                <a href="{{ route('ocultar_solicitud', ['id' => $solicitud->idSolicitud ]) }}" class="btn btn-outline-danger"><i class="bi bi-trash me-2"></i>ocultar</a>
+                @if ($solicitud->estadoSolicitud == 6 || $solicitud->estadoSolicitud == 5)
+                <a href="{{ route('ocultar_solicitud', ['id' => $solicitud->idSolicitud ]) }}" class="btn btn-outline-danger"><i class="bi bi-eye-slash-fill me-2"></i>ocultar</a>
                 @elseif ($solicitud->estadoSolicitud == 4)
                 <button id="verSolicitudBtn" type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="{{ $solicitud->idSolicitud }}"><i class="bi bi-pencil-square me-2"></i>Ver solicitud</button>
                 @endif
