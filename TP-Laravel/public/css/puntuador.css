@@ -20,6 +20,7 @@
         /* Estilos para dispositivos móviles en posición vertical */
         .horizontal {
             display: none;
+
         }
     }
 
@@ -27,6 +28,7 @@
         /* Estilos para dispositivos móviles en posición horizontal */
     .vertical {
         display: none;
+        overflow-y: hidden;
     }
     }
 }
