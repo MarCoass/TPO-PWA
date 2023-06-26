@@ -273,7 +273,7 @@ class CompetenciaController extends Controller
 
     public function verCompetencias()
     {
-        $competencias = Competencia::all();
+        $competencias = Competencia::where('estadoJueces', 1)->get();
         return view('presentacion.competencias', compact('competencias'));
     }
 

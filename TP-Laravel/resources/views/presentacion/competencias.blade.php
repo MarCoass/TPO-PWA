@@ -5,7 +5,7 @@
 @endsection
 
 @section('encabezado')
-    Competencias
+    <i class="bi bi-trophy me-3"></i>Competencias<i class="bi bi-trophy ms-3"></i>
 @endsection
 
 @section('contenido')
@@ -24,14 +24,7 @@
                 @endif
                 <div class="card-body">
                     <h5 class="card-title">{{ $competencia->nombre }}</h5>
-                    <p class="card-text">Fecha:  @php $fecha = date('d/m/Y', strtotime($competencia->fecha)) @endphp {{ $fecha }}.</p>
-                    <p class="card-text">Estado: Abierto a @if ($competencia->estadoJueces == 1)
-                            competidores.
-                        @else
-                            jueces.
-                        @endif
-                    </p>
-
+                    <p class="card-text">Fecha: @php $fecha = date('d/m/Y', strtotime($competencia->fecha)) @endphp {{ $fecha }}.</p>
                     <a href="{{ route('verPresentacion', ['id' => $competencia->idCompetencia]) }}"
                         class="btn btn-outline-info">Ir a presentacion.</a>
                 </div>
