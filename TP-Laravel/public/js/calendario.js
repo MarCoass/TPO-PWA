@@ -122,9 +122,10 @@ function CalendarControl() {
                 calendar.getMonth() + 1,
                 calendar.getFullYear()
             );
-           
+
             // dates of current month
             for (let i = 1; i < calendarDays; i++) {
+                console.log("i:" + i + "count:" + count);
                 if (i < calendarControl.firstDayNumber()) {
                     prevDateCount += 1;
                     document.querySelector(
@@ -133,9 +134,7 @@ function CalendarControl() {
                     prevMonthDatesArray.push(
                         calendarControl.prevMonthLastDate--
                     );
-                    
                 } else {
-                    //console.log('i:' + i + 'count:' + count)
                     var clase = "";
                     var tooltip = "";
                     var ruta = "#";
@@ -146,14 +145,6 @@ function CalendarControl() {
                         var dia = fechaJS.getDate();
                         var mes = fechaJS.getMonth();
                         var anio = fechaJS.getFullYear();
-                      /*   console.log([
-                            calendar.getMonth(),
-                            mes,
-                            anio,
-                            calendar.getFullYear(),
-                            count - 1,
-                            dia,
-                        ]); */
                         if (
                             calendar.getMonth() == mes &&
                             anio == calendar.getFullYear() &&
@@ -179,9 +170,34 @@ function CalendarControl() {
             }
             //remaining dates after month dates
             for (let j = 0; j < prevDateCount + 1; j++) {
-                document.querySelector(
-                    ".calendar .calendar-body"
-                ).innerHTML += `<div class="number-item" data-num=${count}><a class="dateNumber" href="">${count++}</a></div>`;
+                var clase = "";
+                var tooltip = "";
+                var ruta = "#";
+                //aca va la salsa
+                fechasCompetencias.forEach((competencia) => {
+                    var fecha = competencia.fecha;
+                    var fechaJS = new Date(fecha);
+                    var dia = fechaJS.getDate();
+                    var mes = fechaJS.getMonth();
+                    var anio = fechaJS.getFullYear();
+                    if (
+                        calendar.getMonth() == mes &&
+                        anio == calendar.getFullYear() &&
+                        count - 1 == dia
+                    ) {
+                        clase = "calendar-competencia";
+                        tooltip =
+                            "data-bs-toggle='tooltip' data-bs-title='" +
+                            competencia.nombre +
+                            "'";
+                        ruta = "/verPresentacion/" + competencia.idCompetencia;
+                    }
+                });
+                console.log(count);
+                document.querySelector(".calendar .calendar-body").innerHTML +=
+                    `<div class="number-item ${clase}" data-num=${count}><a class="dateNumber" href="` +
+                    ruta +
+                    `" ${tooltip}>${count++}</a></div>`;
             }
             calendarControl.highlightToday();
             calendarControl.plotPrevMonthDates(prevMonthDatesArray);
