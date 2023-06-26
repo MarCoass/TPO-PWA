@@ -37,7 +37,15 @@ Gestion de Usuarios
             <td>{{ $user->usuario}}</td>
             <td>{{ $user->correo }}</td>
             <td>{{ (isset($user->escuela) ? $user->escuela->nombre : 'N/A') }}</td>
-            <td>{{ ($user->estado == 0) ? 'Sin Verificar' : 'Verificado' }}</td>
+            <td>
+                @if($user->estado == 0)
+                Sin Verificar
+                @elseif($user->estado == 1)
+                Verificado
+                @else
+                Rechazado
+                @endif
+            </td>
             <td>
                 {{ ($user->idRol == 1) ? 'Administrador' : '' }}
                 {{ ($user->idRol == 2) ? 'Juez' : '' }}
@@ -46,9 +54,12 @@ Gestion de Usuarios
             <td>
                 @if ($user->estado == 0)
                 <a href="{{ route('habilitar_usuario', ['id' => $user->id ]) }}" class="btn btn-outline-success"><i class="bi bi-check2-square me-2"></i>Verificar</a>
+                <a href="{{ route('rechazar_usuario', ['id' => $user->id ]) }}" class="btn btn-outline-danger"><i class="bi bi-x-circle me-2"></i>Rechazar</a>
                 @endif
                 <a href="{{ route('edit_usuario', ['id' => $user->id ]) }}" class="btn btn-outline-info"><i class="bi bi-pencil-square me-2"></i>Editar</a>
+                @if ($user->estado == 2)
                 <a href="{{ route('delete_usuario', ['id' => $user->id ]) }}" class="btn btn-outline-danger"><i class="bi bi-trash me-2"></i>Eliminar</a>
+                @endif
             </td>
         </tr>
         @endforeach

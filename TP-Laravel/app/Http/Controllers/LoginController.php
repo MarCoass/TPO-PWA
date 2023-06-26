@@ -49,7 +49,13 @@ class LoginController extends Controller
                 'tipo' => 'restringed',
                 'mensaje' => 'Tu cuenta aún no está verificada.'
             ];
-        } else { // Si esta habilitado lo logeamos y lo mandamos al home
+        } elseif($user->estado == 2) { // Si esta habilitado lo logeamos y lo mandamos al home
+            $redireccion = "/login";
+            $arregloMensaje = [
+                'tipo' => 'restringed',
+                'mensaje' => 'Tu cuenta fue rechazada.'
+            ];
+        } else{
             Auth::login($user);
             $redireccion = "/";
             $arregloMensaje = [

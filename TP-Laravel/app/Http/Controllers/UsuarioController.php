@@ -127,6 +127,21 @@ class UsuarioController extends Controller
             ->with('success', 'Usuario habilitado y notificado exitosamente.');
     }
 
+    
+    public function rechazar($id)
+    {
+        $usuario = User::find($id);
+        $usuario->estado = 2;
+        $usuario->save();
+
+        /**Notificar al usuario por Email */
+        $usuario->notify(new NotificacionGeneral('restricted', 'Cuenta rechazada', 'Por motivos administrativos, su cuenta ha sido rechazada.', 'Contacte al administrador si cree que es un error'));
+
+        return redirect()
+            ->route('index_usuarios')
+            ->with('success', 'Usuario rechazado y notificado exitosamente.');
+    }
+
     public function destroy($id)
     {
         $usuario = User::find($id);

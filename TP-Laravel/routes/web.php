@@ -123,6 +123,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::post('/store_usuario', [UsuarioController::class, 'store'])->name('store_usuario');
             Route::put('/update_usuario/{id}', [UsuarioController::class, 'update'])->name('update_usuario');
             Route::get('/habilitar_usuario/{id}', [UsuarioController::class, 'habilitar'])->name('habilitar_usuario');
+            Route::get('/rechazar_usuario/{id}', [UsuarioController::class, 'rechazar'])->name('rechazar_usuario');
 
                 /* Rutas de Gestion de Competencias se pueden mejorar */
             Route::get('gestionCompetencias/index', [CompetenciaController::class, 'index'])->name('index_competencia');
