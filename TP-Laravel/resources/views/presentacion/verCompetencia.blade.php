@@ -16,8 +16,7 @@
                     class="bi bi-pencil-square me-2"></i>Editar competencia</a>
         @endif
         @if ($competencia->estadoJueces == 1)
-          <a href="{{ route('verResultados', ['id' => $competencia->idCompetencia]) }}" class="btn btn-outline-success"><i
-                    class="bi bi-pencil-square me-2"></i>Ver resultados competencia</a>
+          <a href="{{ route('verResultados', ['id' => $competencia->idCompetencia]) }}" class="btn btn-outline-success btn-lg"><i class="bi bi-trophy me-2"></i>Ver resultados competencia</a>
         @endif
       
         <div class="row my-5 d-block d-md-none">
