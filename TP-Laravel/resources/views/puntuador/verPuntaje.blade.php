@@ -5,7 +5,6 @@
 @endsection
 
 @section('encabezado')
-    Puntuacion pasada n°{{ $puntaje->pasada }}
 @endsection
 
 @section('contenido')
@@ -24,9 +23,17 @@
         </div>
 
 
-        <div class="horizontal row mt-5 justify-content-center align-items-center">
+        <div class="horizontal row justify-content-center align-items-center">
+            <div class="row">
+                <p class="col-6">
+                    Puntuacion pasada n° <span class="fw-bold">  {{ $puntaje->pasada }}</p></span>
+                <p class="col-6 "> Competidor:
+                    <span class="fw-bold">
+                        {{ $competidor->nombre }} {{ $competidor->apellido }}</p>
+                    </span>
+                    
+            </div>
 
-            <p>Competidor: {{ $competidor->nombre }} {{ $competidor->apellido }}</p>
 
             <div class="row">
                 <div class="col-4">
@@ -36,7 +43,7 @@
                             <h2 class="text-right fs-5"><span>{{ $puntaje->puntajeExactitud }} <span
                                         class="fs-6">(parcial)</span></span></h2>
                             <h2 class="text-right d-none resultadoTotal"><span id="puntajeExactitudTotal">-- </span><span
-                                        class="fs-6"> (total)</span></span></h2>
+                                    class="fs-6"> (total)</span></span></h2>
                             <div class="esperando align-item-center">
                                 <div class="spinner-border spinner-border-sm" role="status">
                                     <span class="visually-hidden">Esperando total...</span>
@@ -53,9 +60,10 @@
                             <h6 class="m-b-20 ">Presentacion</h6>
                             <h2 class="text-right fs-5"><span>{{ $puntaje->puntajePresentacion }} <span
                                         class="fs-6">(parcial)</span></span></h2>
-                            <h2 class="text-right d-none resultadoTotal" >
-                                <span id="puntajePresentacionTotal">--</span> 
-                                <span class="fs-6"> (total)</span></span></h2>
+                            <h2 class="text-right d-none resultadoTotal">
+                                <span id="puntajePresentacionTotal">--</span>
+                                <span class="fs-6"> (total)</span></span>
+                            </h2>
                             <div class="esperando align-item-center">
                                 <div class="spinner-border spinner-border-sm" role="status">
                                     <span class="visually-hidden">Esperando total...</span>
@@ -70,9 +78,9 @@
                     <div class="card bg-c-pink order-card">
                         <div class="card-block">
                             <h6 class="m-b-20">Total pasada</h6>
-                            <h2 class="text-right d-none resultadoTotal" >
-                                <span id="puntajeTotal">--</span><span
-                                        class="fs-6"> (total)</span></span></h2>
+                            <h2 class="text-right d-none resultadoTotal">
+                                <span id="puntajeTotal">--</span><span class="fs-6"> (total)</span></span>
+                            </h2>
                             <div class="esperando align-item-center">
                                 <div class="spinner-border spinner-border-sm" role="status">
                                     <span class="visually-hidden">Esperando total...</span>
@@ -93,10 +101,8 @@
             @if ($puntaje->pasada == 1)
                 <form action="{{ route('iniciar_puntaje') }}" method="post">
                     @csrf
-                    <input type="hidden" name="competencia" id="competencia"
-                        value={{ $competencia }}>
-                    <input type="hidden" name="competidor" id="competidor"
-                        value={{ $competidor->idCompetidor }}>
+                    <input type="hidden" name="competencia" id="competencia" value={{ $competencia }}>
+                    <input type="hidden" name="competidor" id="competidor" value={{ $competidor->idCompetidor }}>
                     <input type="hidden" name="juez_puntuador" id="juez_puntuador" value={{ $juez_puntuador }}>
                     <input type="hidden" name="pasada_puntuador" id="pasada_puntuador" value={{ $puntaje->pasada }}>
                     <button type="submit" class="btn btn-primary btn-lg boton" disabled>Siguiente pasada <i
@@ -104,10 +110,8 @@
 
                 </form>
             @else
-                <input type="hidden" name="competencia" id="competencia"
-                    value={{ $competencia }}>
-                <input type="hidden" name="competidor" id="competidor"
-                    value={{ $competidor->idCompetidor }}>
+                <input type="hidden" name="competencia" id="competencia" value={{ $competencia }}>
+                <input type="hidden" name="competidor" id="competidor" value={{ $competidor->idCompetidor }}>
                 <input type="hidden" name="pasada_puntuador" id="pasada_puntuador" value={{ $puntaje->pasada }}>
                 <a href="{{ route('puntajeFinal.show', ['competenciaCompetidor' => $competencia_competidor]) }}"><button
                         class="btn btn-primary btn-lg boton" disabled>Ver resultado final <i
@@ -119,10 +123,8 @@
 
 
     </div>
-<!-- Por andar de mamada cambiando nombre quedo mal esto, necesitamoslos dos name asis -->
-    <input type="hidden" name="competencia" id="competencia"
-    value={{ $competencia }}>
-    <input type="hidden" name="id_competencia" id="id_competencia"
-    value={{ $competencia }}>
+    <!-- Por andar de mamada cambiando nombre quedo mal esto, necesitamoslos dos name asis -->
+    <input type="hidden" name="competencia" id="competencia" value={{ $competencia }}>
+    <input type="hidden" name="id_competencia" id="id_competencia" value={{ $competencia }}>
 @endsection
 <script src="{{ asset('js/validarPuntuaciones.js') }}"></script>
