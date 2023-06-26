@@ -63,15 +63,15 @@ class CompetenciaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $competencia = new Competencia();
-        $competencia->nombre = $request->input('nombre');
-        $competencia->fecha = $request->input('fecha');
-        // estadoJueces tiene por defecto false en la db
-        $competencia->cantidadJueces = $request->input('cantidadJueces');
+{
+    $competencia = new Competencia();
+    $competencia->nombre = $request->input('nombre');
+    $competencia->fecha = $request->input('fecha');
+    $competencia->cantidadJueces = $request->input('cantidadJueces');
+    // estadoJueces tiene por defecto false en la db
 
+    if ($request->hasFile('flyer')) {
         $extension = $request->file('flyer')->getClientOriginalExtension();
-
         $nombreSinEspacios = str_replace(' ', '', $request->input('nombre'));
         $nombreFlyer = $nombreSinEspacios . 'Flyer.' . $extension;
         $pathFlyer = $request->file('flyer')->storeAs(
@@ -80,24 +80,29 @@ class CompetenciaController extends Controller
             'public'
         );
         $competencia->flyer = $pathFlyer;
+    }
 
-
+    if ($request->hasFile('bases')) {
         $competencia->bases = $request->file('bases')->storeAs(
             '/pdf',
             $nombreSinEspacios . 'Bases.pdf',
             'public'
         );
+    }
 
+    if ($request->hasFile('invitacion')) {
         $competencia->invitacion = $request->file('invitacion')->storeAs(
             '/pdf',
             $nombreSinEspacios . 'Invitacion.pdf',
             'public'
         );
-
-        $competencia->save();
-
-        return redirect()->route('index_competencia')->with('success', 'Competencia creada exitosamente.');
     }
+
+    $competencia->save();
+
+    return redirect()->route('index_competencia')->with('success', 'Competencia creada exitosamente.');
+}
+
 
     /**
      * Display the specified resource.
