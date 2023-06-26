@@ -125,6 +125,7 @@ class CompetenciaCompetidorController extends Controller
                 'nombre' => $competidor->competidor->nombre,
                 'apellido' => $competidor->competidor->apellido,
                 'estado' => $competidor->estado,
+                'fecha' => $competidor->created_at->format('Y-m-d'),
                 'idUser' => $competidor->competidor->user->id,
                 'tieneSolicitud' => $this->tieneSolicitud($competidor->competidor->user->id),
                 'tiene_poomsae_asignado' => 0
