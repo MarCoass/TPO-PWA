@@ -27,9 +27,9 @@
             </div>
             <div class="infoCompetidor col-4 justify-content-center">
 
-                <h5> <span id="etapaPuntuacion" class="badge text-bg-success me-1">
+                <h5> <span id="etapaPuntuacion" class="badge text-bg-success">
                         Exactitud
-                    </span><span class="badge text-bg-success">
+                    </span><br><span class="badge text-bg-success">
                         Pasada n°{{ $pasada }}
                     </span></h5>
 
@@ -66,24 +66,16 @@
 
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="modalLabel">Confirmar puntuacion</h1>
+                                <h4 class="modal-title fs-5" id="modalLabel">Confirmar puntuacion {{ $competidor[0]->nombre }} {{ $competidor[0]->apellido }}</h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
                             @csrf
-                            <!--ESTO DEBERIA SER UN FORM PROBABLEMENTE-->
+                           
                             <div class="modal-body">
-                                <p>Competidor: {{ $competidor[0]->nombre }} {{ $competidor[0]->apellido }}</span> </p>
-                                <p>Poomsae:
-                                <ul>
-                                    @foreach ($arrayPoomsaes as $poomsae)
-                                        <li>{{ $poomsae->nombre }}</li>
-                                    @endforeach
-                                </ul>
+                                <p>Puntaje exactitud: <span class="badge bg-success puntajeExactitudModal"></span>
+                                    <br>Puntaje presentacion: <span class="badge bg-success puntajePresentacionModal"></span>
                                 </p>
-                                <p>Puntaje exactitud: <span class="puntajeExactitudModal"></span></p>
-                                <p>Puntaje presentacion: <span class="puntajePresentacionModal"></span></p>
-
                                 <input type="hidden" id="puntajeExactitudInput" name="puntajeExactitud">
                                 <input type="hidden" id="puntajePresentacionInput" name="puntajePresentacion">
                                 <input type="hidden" id="pasada" name="pasada" value='{{ $pasada }}'>
@@ -92,10 +84,9 @@
                                     value='{{ $competencia_competidor[0]->idCompetenciaCompetidor }}'>
                                 <input type="hidden" id="idCompetenciaJuez" name="idCompetenciaJuez"
                                     value='{{ $competencia_juez[0]->idCompetenciaJuez }}'>
-
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <div class="m-2 d-flex justify-content-end">
+                                <button type="button" class="btn btn-secondary mx-1" data-bs-dismiss="modal">Cancelar</button>
                                 <button type="submit" class="btn btn-primary">Enviar puntuacion</button>
                             </div>
                         </div>
