@@ -16,7 +16,7 @@ Gestion de Categorias
 <a href="{{ route('create_categoria') }}" class="btn btn-outline-primary mb-3"><i class="bi bi-universal-access me-2"></i>Nueva Categoria</a>
 
 <div class="table-responsive">
-<table id="tabla_categorias" class="table hover table-light table-bordered nowrap border dataTable dtr-inline collapsed" width="100%">
+<table id="tabla_competencia" class="table hover table-light table-bordered nowrap border dataTable dtr-inline collapsed" width="100%">
     <thead class="flip-content">
         <tr>
             <th>#</th>
