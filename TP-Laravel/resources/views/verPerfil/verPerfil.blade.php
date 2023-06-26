@@ -53,7 +53,7 @@
                         @include('layouts.modales.modalInscripcionesPerfil')
                         <button type="button" class="btn btn-warning" data-bs-toggle="modal"
                             data-bs-target="#solicitudesPerfil">
-                            <i class="bi bi-list-task me-2"></i>Ver Solicitudes
+                            <i class="bi bi-list-task me-2"></i>Ver Inscripciones
                         </button>
                     </div>
                 </div>
