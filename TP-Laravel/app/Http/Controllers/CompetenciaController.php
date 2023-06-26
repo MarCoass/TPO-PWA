@@ -23,27 +23,28 @@ class CompetenciaController extends Controller
      */
     public function index()
     {
-        $competencias = Competencia::withCount(['competenciaJuez' => function ($query) {
-            $query->where('estado', true);
-        }])->get();
+        $competencias = Competencia::withCount([
+            'competenciaJuez' => function ($query) {
+                $query->where('estado', true);
+            },
+        ])->get();
 
         return view('gestionCompetencias.index', compact('competencias'));
     }
 
-
-    public function JuecesEsperandoSerConfirmados($idCompetencia){
+    public function JuecesEsperandoSerConfirmados($idCompetencia)
+    {
         return CompetenciaJuez::where('estado', '=', '0')
-        ->where('idCompetencia', '=', $idCompetencia)
-        ->exists();
+            ->where('idCompetencia', '=', $idCompetencia)
+            ->exists();
     }
 
-    public function CompetidoresEsperandoSerConfirmados($idCompetencia){
+    public function CompetidoresEsperandoSerConfirmados($idCompetencia)
+    {
         return CompetenciaCompetidor::where('estado', '=', '0')
-        ->where('idCompetencia', '=', $idCompetencia)
-        ->exists();
+            ->where('idCompetencia', '=', $idCompetencia)
+            ->exists();
     }
-
-
 
     /**
      * Show the form for creating a new resource.
@@ -63,46 +64,35 @@ class CompetenciaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-{
-    $competencia = new Competencia();
-    $competencia->nombre = $request->input('nombre');
-    $competencia->fecha = $request->input('fecha');
-    $competencia->cantidadJueces = $request->input('cantidadJueces');
-    // estadoJueces tiene por defecto false en la db
+    {
+        $competencia = new Competencia();
+        $competencia->nombre = $request->input('nombre');
+        $competencia->fecha = $request->input('fecha');
+        $competencia->cantidadJueces = $request->input('cantidadJueces');
+        // estadoJueces tiene por defecto false en la db
 
-    if ($request->hasFile('flyer')) {
-        $extension = $request->file('flyer')->getClientOriginalExtension();
-        $nombreSinEspacios = str_replace(' ', '', $request->input('nombre'));
-        $nombreFlyer = $nombreSinEspacios . 'Flyer.' . $extension;
-        $pathFlyer = $request->file('flyer')->storeAs(
-            '/img',
-            $nombreFlyer,
-            'public'
-        );
-        $competencia->flyer = $pathFlyer;
+        if ($request->hasFile('flyer')) {
+            $extension = $request->file('flyer')->getClientOriginalExtension();
+            $nombreSinEspacios = str_replace(' ', '', $request->input('nombre'));
+            $nombreFlyer = $nombreSinEspacios . 'Flyer.' . $extension;
+            $pathFlyer = $request->file('flyer')->storeAs('/img', $nombreFlyer, 'public');
+            $competencia->flyer = $pathFlyer;
+        }
+
+        if ($request->hasFile('bases')) {
+            $competencia->bases = $request->file('bases')->storeAs('/pdf', $nombreSinEspacios . 'Bases.pdf', 'public');
+        }
+
+        if ($request->hasFile('invitacion')) {
+            $competencia->invitacion = $request->file('invitacion')->storeAs('/pdf', $nombreSinEspacios . 'Invitacion.pdf', 'public');
+        }
+
+        $competencia->save();
+
+        return redirect()
+            ->route('index_competencia')
+            ->with('success', 'Competencia creada exitosamente.');
     }
-
-    if ($request->hasFile('bases')) {
-        $competencia->bases = $request->file('bases')->storeAs(
-            '/pdf',
-            $nombreSinEspacios . 'Bases.pdf',
-            'public'
-        );
-    }
-
-    if ($request->hasFile('invitacion')) {
-        $competencia->invitacion = $request->file('invitacion')->storeAs(
-            '/pdf',
-            $nombreSinEspacios . 'Invitacion.pdf',
-            'public'
-        );
-    }
-
-    $competencia->save();
-
-    return redirect()->route('index_competencia')->with('success', 'Competencia creada exitosamente.');
-}
-
 
     /**
      * Display the specified resource.
@@ -156,36 +146,25 @@ class CompetenciaController extends Controller
 
         $nombreSinEspacios = str_replace(' ', '', $request->input('nombre'));
         if ($request->hasFile('flyer')) {
-
             $extension = $request->file('flyer')->getClientOriginalExtension();
             $nombreFlyer = $nombreSinEspacios . 'Flyer.' . $extension;
-            $pathFlyer = $request->file('flyer')->storeAs(
-                '/img',
-                $nombreFlyer,
-                'public'
-            );
+            $pathFlyer = $request->file('flyer')->storeAs('/img', $nombreFlyer, 'public');
             $competencia->flyer = $pathFlyer;
         }
 
         if ($request->file('bases') != null) {
-            $competencia->bases = $request->file('bases')->storeAs(
-                '/pdf',
-                $nombreSinEspacios . 'Bases.pdf',
-                'public'
-            );
+            $competencia->bases = $request->file('bases')->storeAs('/pdf', $nombreSinEspacios . 'Bases.pdf', 'public');
         }
 
         if ($request->file('invitacion') != null) {
-            $competencia->invitacion = $request->file('invitacion')->storeAs(
-                '/pdf',
-                $nombreSinEspacios . 'Invitacion.pdf',
-                'public'
-            );
+            $competencia->invitacion = $request->file('invitacion')->storeAs('/pdf', $nombreSinEspacios . 'Invitacion.pdf', 'public');
         }
 
         $competencia->save();
 
-        return redirect()->route('index_competencia')->with('success', 'Competencia actualizado exitosamente.');
+        return redirect()
+            ->route('index_competencia')
+            ->with('success', 'Competencia actualizado exitosamente.');
     }
 
     /**
@@ -199,7 +178,9 @@ class CompetenciaController extends Controller
         $competencia = Competencia::find($id);
         $competencia->delete();
 
-        return redirect()->route('index_competencia')->with('success', 'Competencia eliminada exitosamente.');
+        return redirect()
+            ->route('index_competencia')
+            ->with('success', 'Competencia eliminada exitosamente.');
     }
 
     public function verPresentacion($id)
@@ -261,12 +242,11 @@ class CompetenciaController extends Controller
 
             $competidor['puesto'] = $contador;
 
-            $competidor['nombre'] = $competidor->nombre . " " . $competidor->apellido;
+            $competidor['nombre'] = $competidor->nombre . ' ' . $competidor->apellido;
 
             array_push($competidoresFiltrados, $competidor);
             $contador++;
         }
-
 
         return compact('competidoresFiltrados');
     }
@@ -279,11 +259,13 @@ class CompetenciaController extends Controller
 
     public function competenciasCalendario()
     {
-        $competencias = Competencia::select('idCompetencia', 'nombre', 'fecha', 'estadoJueces', 'estadoCompetencia')->get();
-        //si sos competidor solo trae las con estadoJuez = 1
-
-
-
+        if (auth()->user()->idRol == 1 || auth()->user()->idRol == 2) {
+            $competencias = Competencia::select('idCompetencia', 'nombre', 'fecha', 'estadoJueces', 'estadoCompetencia')->get();
+        } else {
+            $competencias = Competencia::select('idCompetencia', 'nombre', 'fecha', 'estadoJueces', 'estadoCompetencia')
+                ->where('estadoJueces', 1)
+                ->get();
+        }
         return compact('competencias');
     }
 }
