@@ -132,4 +132,14 @@ class CompetenciaJuezController extends Controller
 
         return redirect()->route('tabla_jueces', ['id' => $competencia_juez->idCompetencia])->with($mensaje['tipo'], $mensaje['mensaje']);
     }
+
+    public function destroy($id){
+        $competenciaJuez = CompetenciaJuez::find($id);
+        $idCompetencia = $competenciaJuez->idCompetencia;
+        $competenciaJuez->delete();
+
+        return redirect()
+            ->route('tabla_jueces', ['id' => $idCompetencia])
+            ->with('success', 'Juez eliminado exitosamente de la competencia. Ahora puede volver a inscribirse');
+    }
 }

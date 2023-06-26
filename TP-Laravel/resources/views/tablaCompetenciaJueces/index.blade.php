@@ -60,6 +60,9 @@ Gestion de Jueces de la competencia
                     <a href="{{ route('habilitar_juez', ['id' => $row->idCompetenciaJuez ]) }}" class="btn btn-outline-success"><i class="bi bi-check2-square me-2"></i>Habilitar</a>
                     <a href="{{ route('rechazar_juez', ['id' => $row->idCompetenciaJuez ]) }}" class="btn btn-outline-danger"><i class="bi bi-x-circle me-2"></i>Rechazar</a>
                     @endif
+                @elseif($row['estado'] == 2)
+                <a href="{{ route('delete_juez_competencia', ['id' => $row->idCompetenciaJuez]) }}" class="btn btn-outline-danger"><i class="bi bi-trash me-2"></i>Eliminar</a>
+                
                 @endif
 
             </td>

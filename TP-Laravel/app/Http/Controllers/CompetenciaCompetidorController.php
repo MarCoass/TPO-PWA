@@ -349,4 +349,14 @@ class CompetenciaCompetidorController extends Controller
 
         return $categorias;
     }
+
+    public function destroy($id){
+        $competenciaCompetidor = CompetenciaCompetidor::find($id);
+        $idCompetencia = $competenciaCompetidor->idCompetencia;
+        $competenciaCompetidor->delete();
+
+        return redirect()
+            ->route('tabla_competidores', ['id' => $idCompetencia])
+            ->with('success', 'Competidor eliminado exitosamente de la competencia. Ahora puede volver a inscribirse');
+    }
 }

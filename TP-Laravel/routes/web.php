@@ -133,6 +133,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::get('gestionCompetencias/edit/{id}', [CompetenciaController::class, 'edit'])->name('edit_competencia');
             Route::post('gestionCompetencias/store', [CompetenciaController::class, 'store'])->name('store_competencia');
             Route::put('/update_competidor/{id}', [CompetenciaController::class, 'update'])->name('update_competencia');
+            Route::get('/delete_inscripcion_competidor/{id}',  [CompetenciaCompetidorController::class, 'destroy'])->name('delete_inscripcion_competidor');
             Route::get('/ver_inscriptos_competencia/{id}', [CompetenciaCompetidorController::class, 'listarCompetidoresPorId'])->name('ver_inscriptos_competencia');
             Route::get('/asignar_poomsae_competencia/{id_competencia_competidor}', [CompetenciaCompetidorPoomsaeController::class, 'create'])->name('asignar_poomsae_competidor');
             Route::post('/store_asignar_poomsae', [CompetenciaCompetidorPoomsaeController::class, 'store'])->name('store_asignar_poomsae');
@@ -174,6 +175,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::get('/JuezCompetencia/{id}', [CompetenciaJuezController::class, 'listarJuecesPorIdCompetencia'])->name('tabla_jueces');
             Route::get('/habilitar_juez/{id}', [CompetenciaJuezController::class, 'habilitar'])->name('habilitar_juez');
             Route::get('/rechazar_juez/{id}', [CompetenciaJuezController::class, 'rechazar'])->name('rechazar_juez');
+            Route::get('/delete_juez_competencia/{id}', [CompetenciaJuezController::class, 'destroy'])->name('delete_juez_competencia');
 
             // ruta gestión de graduaciones
             Route::resource('graduaciones', 'GraduacionController');

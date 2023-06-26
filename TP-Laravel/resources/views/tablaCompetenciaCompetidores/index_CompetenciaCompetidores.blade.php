@@ -64,7 +64,8 @@ Gestion de Competidores de la competencia
                     <a href="{{ route('rechazar_competidor', ['id' => $competidor['idCompetenciaCompetidor'] ]) }}" class="btn btn-outline-danger"><i class="bi bi-x-circle me-2"></i>Rechazar</a>
 
                     @endif
-
+                @elseif($competidor['estado'] == 2)
+                <a href="{{ route('delete_inscripcion_competidor', ['id' => $competidor['idCompetenciaCompetidor']]) }}" class="btn btn-outline-danger"><i class="bi bi-trash me-2"></i>Eliminar</a>
                 @endif
 
                 @if ($competidor['estado'] == 1 && $competidor['tiene_poomsae_asignado'] == 1)
