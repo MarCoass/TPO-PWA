@@ -5,6 +5,7 @@ if(tabla_usuarios){
         processing: true,
         responsive: true,
         ordering: true,
+        order: [[6, 'asc']],
         language: {
             decimal: ",",
             thousands: ".",

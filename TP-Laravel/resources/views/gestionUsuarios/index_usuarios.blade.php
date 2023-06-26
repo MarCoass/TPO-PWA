@@ -39,7 +39,7 @@ Gestion de Usuarios
             <td>{{ (isset($user->escuela) ? $user->escuela->nombre : 'N/A') }}</td>
             <td>
                 @if($user->estado == 0)
-                Sin Verificar
+                No Verificado
                 @elseif($user->estado == 1)
                 Verificado
                 @else
