@@ -21,8 +21,8 @@ Gestion de Competidores de la competencia
     <thead class="flip-content">
         <tr>
             <th>GAL</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
+            <th>Nombre Completo</th>
+            <th>Fecha</th>
             <th>Participa</th>
             <th>Acciones</th>
         </tr>
@@ -31,8 +31,8 @@ Gestion de Competidores de la competencia
         @foreach ($competidoresCompetencia as $competidor)
         @if ($competidor['estado'] == 0)
         @php
-            $claseTr = "table-primary";
-            $estadoCompetidor = "Sin habilitar.";
+            $claseTr = "table-warning";
+            $estadoCompetidor = "Sin verificar.";
         @endphp
         @elseif($competidor['estado'] == 1)
         @php
@@ -47,11 +47,9 @@ Gestion de Competidores de la competencia
         @endif
 
         <tr class="{{$claseTr}}">
-            <td>{{ $competidor['gal'] }}</td>
-            <td>{{ $competidor['nombre'] }}</td>
-            <td>{{ $competidor['apellido'] }}</td>
-
-
+            <td>{{ $competidor['gal'] !== null ? $competidor['gal'] : 'Ninguno' }}</td>
+            <td>{{ $competidor['nombre'] }} {{ $competidor['apellido'] }}</td>
+            <td>{{ $competidor['fecha'] }}</td>
             <td>{{ $estadoCompetidor }}</td>
             <td>
                 @if ($competidor['estado'] == 0)

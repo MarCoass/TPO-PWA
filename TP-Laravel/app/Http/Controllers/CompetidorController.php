@@ -109,11 +109,12 @@ class CompetidorController extends Controller
                 ->select(DB::raw(1))
                 ->from('competenciaCompetidor')
                 ->whereRaw('competenciaCompetidor.idCompetencia = competencias.idCompetencia')
-                ->where('competenciaCompetidor.idCompetidor', $competidor->idCompetidor);
+                ->where('competenciaCompetidor.idCompetidor', $competidor->idCompetidor)
+                ->whereIn('competenciaCompetidor.estado', [0, 1]);
         })
             ->where('estadoJueces', true)
             ->where('estadoCompetencia', 0)
-            ->get();
+            ->get();        
 
         $graduacion1 = Graduacion::where('idGraduacion', '=', $competidor->idGraduacion)->first();
         $graduaciones = Graduacion::where('idGraduacion', '>', $competidor->idGraduacion)
