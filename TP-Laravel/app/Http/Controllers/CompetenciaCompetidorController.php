@@ -29,12 +29,6 @@ class CompetenciaCompetidorController extends Controller
 
     public function guardar_preinscripcion($id_competidor, $id_competencia, $id_categoria)
     {
-        $duplicado = CompetenciaCompetidor::where('idCompetencia', '=', $id_competencia)->where('idCompetidor', '=', $id_competidor)->first();
-
-        if ($duplicado != null) {
-            return false;
-        }
-
         $competenciacompetidor = new CompetenciaCompetidor();
         $competenciacompetidor->idCompetidor = $id_competidor;
         $competenciacompetidor->idCompetencia = $id_competencia;
