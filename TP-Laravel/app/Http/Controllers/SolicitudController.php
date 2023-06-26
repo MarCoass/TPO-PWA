@@ -64,6 +64,7 @@ class SolicitudController extends Controller
         $graduaciones = Graduacion::all();
 
         $competidor = Competidor::where('idUser', $id)->first();
+        $idSolicitante = $id;
         if (!$competidor) {
             $competidor = null;
         }
