@@ -5,7 +5,6 @@
 @endsection
 
 @section('encabezado')
-    Puntuacion Final: <span class="display-3 bg-danger p-1 rounded">{{$competenciaCompetidor->puntaje}}</span>
 @endsection
 
 @section('contenido')
@@ -24,39 +23,44 @@
         </div>
 
 
-        <div class="horizontal row mt-5 justify-content-center align-items-center">
-
-            <p>Competidor: {{ $competidor->nombre }} {{ $competidor->apellido }}</p>
+        <div class="horizontal row justify-content-center align-items-center">
+            <div class="row">
+                <p class="col-6">Puntuacion Final: <span class="text-bg-success p-1 rounded">{{ $competenciaCompetidor->puntaje }}</span></p>
+                <p class="col-6">Competidor: <span class="fw-bold">{{ $competidor->nombre }} {{ $competidor->apellido }}
+            </div>
+          
+                </span></p>
             <table class="table">
                 <thead>
-                  <tr>
-                    <th scope="col">Pasada n°</th>
-                    <th scope="col">Exactitud</th>
-                    <th scope="col">Presentacion</th>
-                    <th scope="col">Overtime</th>
-                  </tr>
+                    <tr>
+                        <th scope="col">Pasada n°</th>
+                        <th scope="col">Exactitud</th>
+                        <th scope="col">Presentacion</th>
+                        <th scope="col">Overtime</th>
+                    </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>{{$resultadoPrimeraPasada['totalExactitud']}}</td>
-                    <td>{{$resultadoPrimeraPasada['totalPresentacion']}}</td>
-                    <td>{{$resultadoPrimeraPasada['overtime']}}</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>{{$resultadoSegundaPasada['totalExactitud']}}</td>
-                    <td>{{$resultadoSegundaPasada['totalPresentacion']}}</td>
-                    <td>{{$resultadoSegundaPasada['overtime']}}</td>
-                  </tr>
-                  
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>{{ $resultadoPrimeraPasada['totalExactitud'] }}</td>
+                        <td>{{ $resultadoPrimeraPasada['totalPresentacion'] }}</td>
+                        <td>{{ $resultadoPrimeraPasada['overtime'] }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>{{ $resultadoSegundaPasada['totalExactitud'] }}</td>
+                        <td>{{ $resultadoSegundaPasada['totalPresentacion'] }}</td>
+                        <td>{{ $resultadoSegundaPasada['overtime'] }}</td>
+                    </tr>
+
                 </tbody>
-              </table>
-            
-              <div class="button-group">
-                <a href="/verResultados/{{$competenciaCompetidor->idCompetencia}}" ><button class="btn btn-success">Ver resultados.</button></a>
-                <a href="{{route('puntuador_index')}}"><button class="btn btn-success">Puntuador.</button></a>
-              </div>
+            </table>
+
+            <div class="button-group">
+                <a href="/verResultados/{{ $competenciaCompetidor->idCompetencia }}"><button class="btn btn-success">Ver
+                        resultados.</button></a>
+                <a href="{{ route('puntuador_index') }}"><button class="btn btn-success">Puntuador.</button></a>
+            </div>
         </div>
 
 

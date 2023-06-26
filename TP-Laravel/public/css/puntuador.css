@@ -1,7 +1,6 @@
 
 /* Este css falta mejorarlo pq el responsive es medio meh */
 
-
 @media (min-width: 916px) {
     .mobile{
         display: none;

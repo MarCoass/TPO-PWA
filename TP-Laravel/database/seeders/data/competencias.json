@@ -3,8 +3,8 @@
         "nombre": "Competencia Regional",
         "fecha":"2023-06-26",
         "flyer": "img/CompetenciaRegionalFlyer.png",
-        "bases": "pdf/CompetenciaRegionalBases.png",
-        "invitacion": "pdf/CompetenciaRegionalInvitacion.png",
+        "bases": "pdf/CompetenciaRegionalBases.pdf",
+        "invitacion": "pdf/CompetenciaRegionalInvitacion.pdf",
         "cantidadJueces": 3,
         "estadoJueces": true,
         "estadoCompetencia": 0
@@ -13,8 +13,8 @@
         "nombre": "Competencia Juvenil",
         "fecha":"2023-06-20",
         "flyer": "img/CompetenciaJuvenilFlyer.png",
-        "bases": "pdf/CompetenciaJuvenilBases.png",
-        "invitacion": "pdf/CompetenciaJuvenilInvitacion.png",
+        "bases": "pdf/CompetenciaJuvenilBases.pdf",
+        "invitacion": "pdf/CompetenciaJuvenilInvitacion.pdf",
         "cantidadJueces": 5,
         "estadoJueces": false,
         "estadoCompetencia": 0
@@ -23,8 +23,8 @@
         "nombre": "Competencia Estelar",
         "fecha":"2023-07-05",
         "flyer": "img/CompetenciaEstelarFlyer.png",
-        "bases": "pdf/CompetenciaEstelarBases.png",
-        "invitacion": "pdf/CompetenciaEstelarInvitacion.png",
+        "bases": "pdf/CompetenciaEstelarBases.pdf",
+        "invitacion": "pdf/CompetenciaEstelarInvitacion.pdf",
         "cantidadJueces": 7,
         "estadoJueces": false,
         "estadoCompetencia": 0
