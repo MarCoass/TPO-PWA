@@ -126,5 +126,8 @@
     <!-- Por andar de mamada cambiando nombre quedo mal esto, necesitamoslos dos name asis -->
     <input type="hidden" name="competencia" id="competencia" value={{ $competencia }}>
     <input type="hidden" name="id_competencia" id="id_competencia" value={{ $competencia }}>
+    <input type="hidden" name="pasada_puntuador" id="pasada_puntuador" value={{ $puntaje->pasada }}>
+    <input type="hidden" name="competidor" id="competidor" value={{ $competidor->idCompetidor }}>
+                
 @endsection
 <script src="{{ asset('js/validarPuntuaciones.js') }}"></script>

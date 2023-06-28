@@ -217,7 +217,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::post('/iniciar_puntaje', [PuntajeController::class, 'iniciar_puntaje'])->middleware(['rol:2'])->name('iniciar_puntaje');
         Route::post('/actualizar_puntaje', [PuntajeController::class, 'actualizar_puntaje'])->middleware(['rol:2'])->name('actualizar_puntaje');
         Route::post('/validarJueces',[CompetenciaCompetidorController::class, 'validarJueces']);
-        Route::post('/calcularPuntajePasada',[CompetenciaCompetidorController::class, 'calcularPuntajePasada']);
+        Route::get('/calcularPuntajePasada',[CompetenciaCompetidorController::class, 'calcularPuntajePasada']);
 
         Route::post('/cargarPuntaje', [PuntajeController::class, 'store'])->middleware(['rol:2'])->name('puntaje.store');
         Route::post('/actualizarPuntaje', [PuntajeController::class, 'update'])->middleware(['rol:2'])->name('puntaje.update');

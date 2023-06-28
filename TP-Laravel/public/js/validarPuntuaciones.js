@@ -1,5 +1,5 @@
 var interval = setInterval(function () {
-    var idCompetencia = $("#competencia").val(); // Valor del idCompetencia
+    var idCompetencia = $("#id_competencia").val(); // Valor del idCompetencia
     var idCompetidor = $("#competidor").val(); // Valor del idCompetidor
     var numPasada = $("#pasada_puntuador").val(); // Numero de pasada
 
@@ -44,7 +44,7 @@ var interval = setInterval(function () {
 function cargarPuntajeTotal(idCompetencia, idCompetidor, numPasada) {
     $.ajax({
         url: "/calcularPuntajePasada",
-        method: "POST",
+        method: "GET",
         data: {
             idCompetencia: idCompetencia,
             idCompetidor: idCompetidor,

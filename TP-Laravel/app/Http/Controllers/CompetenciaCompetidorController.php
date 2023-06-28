@@ -185,15 +185,12 @@ class CompetenciaCompetidorController extends Controller
     public function revisarSiSePuedeSetearRanking($idCompetencia)
     {
         //buscamos todas las competencia competidor con idcompetnecia
-        $competencias = CompetenciaCompetidor::where('idCompetencia', '=', $idCompetencia);
-        $flag = true;
-        foreach ($competencias as $competidor) {
-            //revisamos si todos tienen el puntaje seteado
-            if ($competidor->puntaje == 0 || $competidor->contadorPasadas < 2) {
-                $flag = false;
-            }
-        }
-        if ($flag) {
+        $competencias = CompetenciaCompetidor::where('idCompetencia', $idCompetencia)
+        ->where('puntaje', 0)
+        ->where('contadorPasadas', '<', 2)
+        ->get();
+
+        if ($competencias == null) {
             $this->setearRanking($idCompetencia);
         }
     }
@@ -235,8 +232,6 @@ class CompetenciaCompetidorController extends Controller
         $idCompetencia = $request['idCompetencia'];
         $idCompetidor = $request['idCompetidor'];
         $numPasada = $request['numPasada'];
-
-        $competencia = Competencia::find($idCompetencia);
 
         //busco los puntajes correspondientes
         $competenciaCompetidor = CompetenciaCompetidor::where('idCompetencia', $idCompetencia)->where('idCompetidor', $idCompetidor)->first();
