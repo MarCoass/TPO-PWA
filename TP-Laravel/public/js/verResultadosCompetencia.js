@@ -16,7 +16,7 @@ function obtenerCompetidores(idCompetencia, idCategoria) {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"), // Necesario para que funcione la petición
         },
         type: "POST",
-        url: "http://127.0.0.1:8000/traerCompetidores",
+        url: "/traerCompetidores",
         data: { idCompetencia: idCompetencia, idCategoria: idCategoria },
         success: function (response) {
             //console.log(response);

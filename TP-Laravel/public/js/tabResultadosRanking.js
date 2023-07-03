@@ -1,5 +1,4 @@
 $(window).on("load", function () {
-    consultarRankingPorCategoria(1, '#ranking_tabla_masc');
   //  $('#ranking_tabla_fem').removeClass('tabla-visible');
     $('#ranking_tabla_fem').hide();
     $('#titulo-fem').hide();
@@ -13,7 +12,7 @@ $("#selectCategorias").change(function () {
     console.log("categoria".idCategoria);
     console.log("genero".genero);
     var idTabla;
-    if (genero == 1) {
+    if (genero == 0) {
         idTabla = '#ranking_tabla_masc';
         $('#titulo-fem').hide();
         $('#titulo-masc').show();
@@ -48,7 +47,7 @@ function consultarRankingPorCategoria(idCategoria, idTabla) {
             headers: {
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
             },
-            url: "http://127.0.0.1:8000/obtenerRanking",
+            url: "/obtenerRanking",
             type: "POST",
             data: { idCategoria: idCategoria },
             success: function (data) {
@@ -68,7 +67,7 @@ function consultarRankingPorCategoria(idCategoria, idTabla) {
             headers: {
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
             },
-            url: "http://127.0.0.1:8000/obtenerRanking",
+            url: "/obtenerRanking",
             type: "POST",
             data: { idCategoria: idCategoria },
             success: function (data) {
