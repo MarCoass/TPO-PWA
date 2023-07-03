@@ -25,7 +25,7 @@
                                         <th scope="row">{{ $item['nombre'] }}</th>
                                         <td>{{ $item['fecha'] }}</td>
                                         <td>{{ $item['cantidadJueces'] }}</td>
-                                        <td>{{ $item['cantidadPuntuados'] }}</td>
+                                        <td>{{ $item['cantidadPuntuados'] / 2 }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
