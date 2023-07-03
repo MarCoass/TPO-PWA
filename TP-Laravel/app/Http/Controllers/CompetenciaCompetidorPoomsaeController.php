@@ -30,13 +30,13 @@ class CompetenciaCompetidorPoomsaeController extends Controller
         $poomsae = Poomsae::select('poomsae.idPoomsae','poomsae.nombre','competenciacompetidorpoomsae.pasadas')->
         join('competenciacompetidorpoomsae','poomsae.idPoomsae','competenciacompetidorpoomsae.idPoomsae')->
         where('idCompetenciaCompetidor','=',$idCompetenciaCompetidor)->get();
-        
+
         $competidor = CompetenciaCompetidor::select('competidores.*')->
         join('competidores','competenciacompetidor.idCompetidor','competidores.idCompetidor')->
         where('competenciacompetidor.idCompetenciaCompetidor','=',$idCompetenciaCompetidor)->get();
-       
+
         return view('tablaCompetenciaCompetidores.verpoomsaecompetidor', compact('poomsae','competidor'));
-   
+
 
     }
 
@@ -57,8 +57,8 @@ class CompetenciaCompetidorPoomsaeController extends Controller
 
         $poomsae = Poomsae::find($id_poomsae);
         $competencia_competidor_poomsae->poomsae()->associate($poomsae);
-    
-        $competencia_competidor_poomsae->save();  
+
+        $competencia_competidor_poomsae->save();
 
         return true;
     }
@@ -70,29 +70,31 @@ class CompetenciaCompetidorPoomsaeController extends Controller
         $pasadas = [1,2];
 
         foreach($competidoresCompetencia as $row){
-            $poomsae_pasada_1 = ''; 
-            $poomsae_pasada_2 = ''; 
+            $poomsae_pasada_1 = '';
+            $poomsae_pasada_2 = '';
             foreach($pasadas as $numero_pasada){
                 $id_poomsae = CategoriaPoomsae::where('idCategoria','=', $row->idCategoria)->inRandomOrder()->first()->idPoomsae;
                 $this->registrar_poomsae_en_competidor($id_poomsae,$row->idCompetenciaCompetidor,$numero_pasada);
 
-                $poomsae = Poomsae::find($id_poomsae); 
+                $poomsae = Poomsae::find($id_poomsae);
                 $user = $row->competidor->user;
 
-                if($numero_pasada == 1){ 
-                    $poomsae_pasada_1 = $poomsae->nombre; 
-                }else if($numero_pasada == 2){ 
-                    $poomsae_pasada_2 = $poomsae->nombre; 
-                } 
-              
-                $user->notify(new NotificacionGeneral('success','Poomsae Asignado!','Poomsae Pasada 1: '.$poomsae_pasada_1.' Poomsae Pasada 2: '.$poomsae_pasada_2.'  ',' A prepararse!'));  
+                if($numero_pasada == 1){
+                    $poomsae_pasada_1 = $poomsae->nombre;
+                }else if($numero_pasada == 2){
+                    $poomsae_pasada_2 = $poomsae->nombre;
+                }
+
+                if($poomsae_pasada_1 && $poomsae_pasada_2){
+                $user->notify(new NotificacionGeneral('success','Poomsae Asignado!','Poomsae Pasada 1: '.$poomsae_pasada_1.' Poomsae Pasada 2: '.$poomsae_pasada_2.'  ',' A prepararse!'));
+                }
             }
         }
-    
+
         $CompetenciaCompetidorController = new CompetenciaCompetidorController();
-    
+
         return $CompetenciaCompetidorController->listarCompetidoresPorId($id_competencia);
-    }  
+    }
 
 
 
@@ -111,7 +113,7 @@ class CompetenciaCompetidorPoomsaeController extends Controller
         $poomsae = Poomsae::select('poomsae.idPoomsae','poomsae.nombre')->join('categoriapoomsae','poomsae.idPoomsae','categoriapoomsae.idPoomsae')->where('categoriapoomsae.idCategoria','=',$competencia_competidor[0]->idCategoria)->get();
         return view('tablaCompetenciaCompetidores.asignarpoomsecompetidor', compact('competidor','poomsae','competencia_competidor'));
     }
- 
+
     /**
      * Store a newly created resource in storage.
      *
@@ -126,7 +128,7 @@ class CompetenciaCompetidorPoomsaeController extends Controller
 
         if( $duplicado != null){
             $competencia_competidor = CompetenciaCompetidor::where('idCompetenciaCompetidor', '=',$id_competencia_competidor)->get();
-        
+
             $CompetenciaCompetidorController = new CompetenciaCompetidorController();
 
             return $CompetenciaCompetidorController->listarCompetidoresPorId($competencia_competidor[0]->idCompetencia);
