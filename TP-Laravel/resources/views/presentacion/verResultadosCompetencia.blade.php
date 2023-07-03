@@ -16,7 +16,7 @@ Tabla de Resultados de {{ $competencia->nombre }}
     <label for="selectCategorias" class="form-label"><span class="fs-4">Seleccione una categoría:</span></label>
     <select class="form-select form-select-lg" id="selectCategorias">
         @foreach($categoriasFiltradas as $categoria)
-        <option value="{{ $categoria->idCategoria }}">{{ $categoria->nombre }} - {{ $categoria->genero == 1 ? "Masculino" : "Femenino" }}</option>
+        <option value="{{ $categoria->idCategoria }}">{{ $categoria->nombre }} - {{ $categoria->genero == 1 ? "Femenino" : "Masculino" }}</option>
         @endforeach
     </select>
     <span class="text-secondary text-center mt-1">Sólo se mostrarán las categorías en las que exista al menos un competidor.</span>
