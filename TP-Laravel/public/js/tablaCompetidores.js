@@ -1,5 +1,5 @@
-
-export var competidores_tabla = document.getElementById('competidores_tabla');
+/* Esta tabla solo aplica responsividad con datatables */
+var competidores_tabla = document.getElementById('competidores_tabla');
 if (competidores_tabla) {
 
     competidores_tabla = $("#competidores_tabla").DataTable({
@@ -23,7 +23,7 @@ if (competidores_tabla) {
                 previous: "Anterior",
             },
         },
-
+        displayLength: 10,
         lengthMenu: [
             [5, 10, 15, -1],
             [5, 10, 15, "Todos"],

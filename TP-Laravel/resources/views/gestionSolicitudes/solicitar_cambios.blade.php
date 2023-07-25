@@ -8,6 +8,10 @@ Solicitar cambios
 Solicitar cambios
 @endsection
 
+@section('librerias')
+
+@endsection
+
 @section('contenido')
 <!-- despliega mensajes -->
 @include('layouts.partials.messages')

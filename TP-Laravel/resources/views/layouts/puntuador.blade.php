@@ -13,7 +13,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <!-- ICON -->
-    <link rel="icon" type="image\x-icon" href="{{ asset('images/logo.ico') }}">
+    <link rel="icon" type="image\x-icon" href="{{ asset('images/logo.png') }}">
 
     <!-- Bootstrap v5.2.3 -->
     <link rel="stylesheet" href="{{ asset('bootstrap-5.2.3/css/bootstrap.min.css') }}">
@@ -29,6 +29,18 @@
     <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
     <link rel="stylesheet" href="{{ asset('css/puntuador.css') }}">
 
+    @yield('librerias')
+
+    <!-- librerias -->
+    <script src="{{ asset('bootstrap-5.2.3/js/bootstrap.bundle.min.js') }}"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+    <!-- index dom -->
+    <script type="module" src="{{ asset('js/index_dom.js') }}"></script>
+    <script type="module" src="{{ asset('js/puntuador.js') }}"></script>
+
 
 </head>
 
@@ -42,17 +54,7 @@
 
         <!-- FOOTER -->
     </div>
-
-    <!-- librerias -->
-    <script src="{{ asset('bootstrap-5.2.3/js/bootstrap.bundle.min.js') }}"></script>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-
-    <!-- index dom -->
-    <script type="module" src="{{ asset('js/index_dom.js') }}"></script>
-    <script type="module" src="{{ asset('js/puntuador.js') }}"></script>
-
+    @yield('scripts')
 </body>
 
 </html>

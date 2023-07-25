@@ -8,6 +8,10 @@
     Crear Relacion con Poomsae
 @endsection
 
+@section('librerias')
+
+@endsection
+
 @section('contenido')
     <form class="m-5 row" method="post" action="{{ route('store_categoria_poomsae')}} " enctype="multipart/form-data">
 

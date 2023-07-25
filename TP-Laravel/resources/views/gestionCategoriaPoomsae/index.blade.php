@@ -9,6 +9,10 @@ Gestion de Poomsae
 Gestion de Poomsae
 @endsection
 
+@section('librerias')
+
+@endsection
+
 @section('contenido')
 <!-- despliega mensajes -->
 @include('layouts.partials.messages')

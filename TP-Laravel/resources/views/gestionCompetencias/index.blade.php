@@ -9,6 +9,10 @@ Gestion de Competencias
 Gestion de Competencias
 @endsection
 
+@section('librerias')
+
+@endsection
+
 @section('contenido')
 <!-- despliega mensajes -->
 @include('layouts.partials.messages')

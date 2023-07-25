@@ -9,6 +9,10 @@ Gestion de Solicitudes
 Gestion de Solicitudes
 @endsection
 
+@section('librerias')
+
+@endsection
+
 @section('contenido')
 <!-- despliega mensajes -->
 @include('layouts.partials.messages')

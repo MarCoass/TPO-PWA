@@ -9,6 +9,10 @@ Gestion de Graduaciones
 Gestion de Graduaciones
 @endsection
 
+@section('librerias')
+
+@endsection
+
 @section('contenido')
 <!-- despliega mensajes -->
 @include('layouts.partials.messages')

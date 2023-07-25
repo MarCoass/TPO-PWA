@@ -8,6 +8,10 @@
     Tabla de competidores
 @endsection
 
+@section('librerias')
+    Tabla de competidores
+@endsection
+
 @section('contenido')
 
 <!-- despliega mensaje cuando se crea la cuenta -->
@@ -56,4 +60,8 @@
 </div>
 
 
+@endsection
+
+@section('scripts')
+    <script src="js/tablaCompetidores.js"> competidores_tabla </script>
 @endsection

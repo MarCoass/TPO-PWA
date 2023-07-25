@@ -9,6 +9,10 @@
     Editar Competencia
 @endsection
 
+@section('librerias')
+
+@endsection
+
 @section('contenido')
     <h3>Editar Competencia #{{ $competencia->idCompetencia }}</h3>
     <form class="row m-5" method="POST"  enctype="multipart/form-data" action="{{ route('update_competencia', ['id' => $competencia->idCompetencia ]) }}">

@@ -1,7 +1,7 @@
 [
     {
         "nombre": "Competencia Regional",
-        "fecha":"2023-06-26",
+        "fecha":"2023-08-09",
         "flyer": "img/CompetenciaRegionalFlyer.png",
         "bases": "pdf/CompetenciaRegionalBases.pdf",
         "invitacion": "pdf/CompetenciaRegionalInvitacion.pdf",
@@ -11,7 +11,7 @@
     },
     {
         "nombre": "Competencia Juvenil",
-        "fecha":"2023-06-20",
+        "fecha":"2023-08-10",
         "flyer": "img/CompetenciaJuvenilFlyer.png",
         "bases": "pdf/CompetenciaJuvenilBases.pdf",
         "invitacion": "pdf/CompetenciaJuvenilInvitacion.pdf",
@@ -21,7 +21,7 @@
     },
     {
         "nombre": "Competencia Estelar",
-        "fecha":"2023-07-05",
+        "fecha":"2023-09-11",
         "flyer": "img/CompetenciaEstelarFlyer.png",
         "bases": "pdf/CompetenciaEstelarBases.pdf",
         "invitacion": "pdf/CompetenciaEstelarInvitacion.pdf",

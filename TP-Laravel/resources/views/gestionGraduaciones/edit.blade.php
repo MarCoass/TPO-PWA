@@ -8,6 +8,10 @@
     Editar Graduación
 @endsection
 
+@section('librerias')
+
+@endsection
+
 @section('contenido')
     <form class="m-5 row" method="POST" action="{{ route('graduaciones.update', ['graduacione' => $graduacion->idGraduacion])}} ">
         @csrf

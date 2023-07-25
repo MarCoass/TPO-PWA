@@ -8,6 +8,10 @@
     Editar Rol
 @endsection
 
+@section('librerias')
+
+@endsection
+
 @section('contenido')
     <form class="m-5 row" method="POST" action="{{ route('roles.update', ['role' => $rol->id])}} ">
         @csrf

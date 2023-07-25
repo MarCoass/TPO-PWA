@@ -3,6 +3,6 @@
     <div class="calendar"></div>
 </div>
 
-<link rel="stylesheet" href="{{ asset('css/calendario.css') }}">
+{{-- <link rel="stylesheet" href="{{ asset('css/calendario.css') }}"> --}}
 
-<script src="{{ asset('js/calendario.js') }}"></script>
+{{-- <script src="{{ asset('js/calendario.js') }}"></script> --}}

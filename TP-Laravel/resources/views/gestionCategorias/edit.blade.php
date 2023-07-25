@@ -9,6 +9,10 @@
     Editar Categoria
 @endsection
 
+@section('librerias')
+
+@endsection
+
 @section('contenido')
     <h3>Editar Categoria #{{ $categoria->idCategoria }}</h3>
     <form class="row m-5" method="POST"  enctype="multipart/form-data" action="{{ route('update_categoria', ['id' => $categoria->idCategoria ]) }}">

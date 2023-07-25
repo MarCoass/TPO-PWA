@@ -257,6 +257,8 @@ de la competencia, se tiene que ejecutar el comando:
 
 Básicamente, permite acceder a los archivos almacenados en el storage desde la web.
 
+en caso de no funcionar hay que ir a ese link y eliminar el antiguo acceso, despues volver a ejecutar el comando.
+
 ----------------------------------------------------------------------------------------------------------------------------------
 View Composer
 

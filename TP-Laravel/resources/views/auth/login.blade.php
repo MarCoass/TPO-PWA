@@ -23,7 +23,7 @@ Login
     </div>
 
     <div class="form-group form-floating mb-3">
-        <input type="password" class="form-control" name="password" value="{{ old('password') }}" placeholder="Contraseña" required="required">
+        <input type="password" class="form-control" name="password" value="" placeholder="Contraseña" required="required">
         <label for="floatingPassword">Contraseña</label>
         @if ($errors->has('password'))
         <span class="text-danger text-left">{{ $errors->first('password') }}</span>

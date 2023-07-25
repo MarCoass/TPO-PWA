@@ -47,7 +47,7 @@ Registro
         </div>
 
         <div class="form-group form-floating col-6 mb-3">
-            <input type="password" class="form-control" name="password" value="{{ old('password') }}" placeholder="Password" required="required">
+            <input type="password" class="form-control" name="password" value="" placeholder="Password" required="required">
             <label for="floatingPassword" class="mx-2">Contraseña</label>
             @if ($errors->has('password'))
             <span class="text-danger text-left">{{ $errors->first('password') }}</span>
@@ -55,7 +55,7 @@ Registro
         </div>
 
         <div class="form-group form-floating col-6 mb-3">
-            <input type="password" class="form-control" name="confirmacion_clave" value="{{ old('confirmacion_clave') }}" placeholder="Confirm Password" required="required">
+            <input type="password" class="form-control" name="confirmacion_clave" value="" placeholder="Confirm Password" required="required">
             <label for="floatingConfirmPassword" class="mx-2">Confirmar contraseña</label>
             @if ($errors->has('confirmacion_clave'))
             <span class="text-danger text-left">{{ $errors->first('confirmacion_clave') }}</span>
@@ -79,20 +79,6 @@ Registro
             @endif
         </div>
 
-       {{--  <div class="form-group form-floating col-6 mb-3">
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="idRol" id="idRol1" value="3" checked>
-                <label class="form-check-label" for="idRol1">
-                    Competidor
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="idRol" id="idRol2" value="2">
-                <label class="form-check-label" for="idRol2">
-                    Juez
-                </label>
-            </div>
-        </div> --}}
 <p>Registrarse como:</p>
         <div class="wrapper">
             

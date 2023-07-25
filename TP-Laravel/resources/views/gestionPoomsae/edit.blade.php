@@ -8,6 +8,10 @@
     Editar Poomsae #{{ $poomsae->idPoomsae }}
 @endsection
 
+@section('librerias')
+
+@endsection
+
 @section('contenido')
     <form class="m-5 row" method="POST" action="{{ route('update_poomsae', ['id' => $poomsae->idPoomsae])}} ">
         @csrf

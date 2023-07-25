@@ -11,7 +11,7 @@
 
     <!-- Bootstrap core CSS -->
     <!-- ICON -->
-    <link rel="icon" type="image\x-icon" href="{{ asset('images/logo.ico') }}">
+    <link rel="icon" type="image\x-icon" href="{{ asset('images/logo.png') }}">
         <!-- Bootstrap Icons v1.10.4 -->
     <link rel="stylesheet" href="{{ asset('bootstrap-5.2.3/bootstrap-icons-1.10.4/bootstrap-icons.css') }}">
     

@@ -8,6 +8,10 @@
     Crear Permiso
 @endsection
 
+@section('librerias')
+
+@endsection
+
 @section('contenido')
     <form class="m-5 row" method="post" action="{{ route('permisos.store')}} ">
         @csrf

@@ -9,6 +9,10 @@ Gestion de Permisos
 Gestion de Permisos
 @endsection
 
+@section('librerias')
+
+@endsection
+
 @section('contenido')
 <!-- despliega mensajes -->
 @include('layouts.partials.messages')

@@ -60,7 +60,7 @@
                 </div>
             </div>
             <div class="text-center mb-3">
-                Programación Web Avanzada - 2023 <img src="{{ asset('images/logo.ico') }}" class="mx-2" alt="FAI" title="FAI" width="40" height="40"> Universidad Nacional del Comahue
+                Programación Web Avanzada - 2023 <img src="{{ asset('images/logo.png') }}" class="mx-2" alt="FAI" title="FAI" width="40" height="40"> Universidad Nacional del Comahue
             </div>
         </footer>
     </section>
