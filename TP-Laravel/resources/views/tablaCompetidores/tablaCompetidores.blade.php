@@ -9,7 +9,20 @@
 @endsection
 
 @section('librerias')
-    Tabla de competidores
+        <!-- Jquery UI -->
+        <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/start/jquery-ui.css" rel="stylesheet" />
+
+        <!-- Datatable -->
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+        <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.dataTables.min.css" />
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script> 
+        <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
+        <script src="js/datatables.js"></script>
+@endsection
+
+@section('scripts')
+    <script> datatables("competidores_tabla", 6, "asc") </script>
 @endsection
 
 @section('contenido')
@@ -25,13 +38,13 @@
                     <th data-priority="1"> GAL </th>
                     <th data-priority="1"> Apellido </th>
                     <th data-priority="1"> Nombre </th>
-                    <th data-priority="1"> DU </th>
-                    <th data-priority="3"> Fecha de Nacimiento </th>
-                    <th data-priority="3"> Pais</th>
-                    <th data-priority="3"> Ranking </th>
+                    <th data-priority="2"> DU </th>
+                    <th data-priority="3"> Fecha Nacimiento </th>
+                    <th data-priority="4"> Pais</th>
+                    <th data-priority="2"> Ranking </th>
                     <th data-priority="3"> Graduacion</th>
-                    <th data-priority="3"> Email </th>
-                    <th data-priority="3"> Genero </th>
+                    <th data-priority="5"> Email </th>
+                    <th data-priority="2"> Genero </th>
                 </tr>
             </thead>
             <tbody>
@@ -62,6 +75,4 @@
 
 @endsection
 
-@section('scripts')
-    <script src="js/tablaCompetidores.js"> competidores_tabla </script>
-@endsection
+

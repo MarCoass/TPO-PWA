@@ -30,7 +30,7 @@
             </div>
 
             <div class="boton-container">
-                <a href="{{ route('logout.perform') }}" class="btn btn-outline-dark"><i class="bi bi-door-open me-1"></i>Cerrar Sesion</a>
+                <a href="{{ route('logout.perform') }}" class="btn btn-outline-dark"><i class="bi bi-box-arrow-left me-1"></i>Logout</a>
             </div>
 
           </div>

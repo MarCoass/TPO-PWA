@@ -50,7 +50,7 @@
             <label for="genero" class="form-label">Genero</label>
             <select name="genero" id="genero" class="form-control" required>
                 <option value="0" {{($categoria->genero == 0 ? 'selected' : '')}}>Masculino</option>
-                <option value="1" {{($categoria->genero == 1 ? 'selected' : '')}}>Feminino</option>
+                <option value="1" {{($categoria->genero == 1 ? 'selected' : '')}}>Femenino</option>
             </select>
         </div>
 

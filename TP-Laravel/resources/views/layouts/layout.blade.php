@@ -11,33 +11,36 @@
 
     <!-- Bootstrap v5.2.3 -->
     <link rel="stylesheet" href="{{ asset('bootstrap-5.2.3/css/bootstrap.min.css') }}">
+    <script src="{{ asset('bootstrap-5.2.3/js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Bootstrap Icons v1.10.4 -->
     <link rel="stylesheet" href="{{ asset('bootstrap-5.2.3/bootstrap-icons-1.10.4/bootstrap-icons.css') }}">
 
-    <!-- Jquery UI -->
+    {{-- Jquery --}}
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    {{--     <!-- Jquery UI -->
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/start/jquery-ui.css" rel="stylesheet" />
 
     <!-- Datatable -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.dataTables.min.css">
+ --}}
+ 
+    @yield('librerias')
 
     <!-- estilos propios -->
     <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
     <link rel="stylesheet" href="{{ asset('css/cards.css') }}">
     <link rel="stylesheet" href="{{ asset('css/puntuador.css') }}">
 
-    <!-- librerias -->
-    <script src="{{ asset('bootstrap-5.2.3/js/bootstrap.bundle.min.js') }}"></script>
     
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script> 
+    {{-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script> 
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script> --}}
     
     <!-- index dom -->
     <script type="module" src="{{ asset('js/index_dom.js') }}"></script>
-    @yield('librerias')
 </head>
 
 <body class="transicion" >

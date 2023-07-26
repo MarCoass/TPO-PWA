@@ -1,4 +1,4 @@
-export var tabla_CompetenciaCompetidores = document.getElementById('tabla_CompetenciaCompetidores');
+var tabla_CompetenciaCompetidores = document.getElementById('tabla_CompetenciaCompetidores');
 if(tabla_CompetenciaCompetidores){
 
     tabla_CompetenciaCompetidores = $("#tabla_CompetenciaCompetidores").DataTable({
@@ -22,6 +22,7 @@ if(tabla_CompetenciaCompetidores){
                 previous: "Anterior",
             },
         },
+        displayLength: 10,
         lengthMenu: [
             [5, 10, 15, -1],
             [5, 10, 15, "Todos"],

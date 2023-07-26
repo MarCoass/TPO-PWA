@@ -10,7 +10,20 @@ Gestion de Solicitudes
 @endsection
 
 @section('librerias')
+        <!-- Jquery UI -->
+        <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/start/jquery-ui.css" rel="stylesheet" />
 
+        <!-- Datatable -->
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+        <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.dataTables.min.css" />
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script> 
+        <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
+        <script src="js/datatables.js"></script>
+@endsection
+
+@section('scripts')
+    <script> datatables("tabla_solicitud", 4, "asc") </script>
 @endsection
 
 @section('contenido')
@@ -34,13 +47,13 @@ Gestion de Solicitudes
 <table id="tabla_solicitud" class="table hover table-light table-bordered nowrap border dataTable dtr-inline collapsed" width="100%">
     <thead class="flip-content">
         <tr>
-            <th>ID</th>
-            <th>fecha</th>
-            <th>Usuario</th>
-            <th>Apellido y Nombre</th>
-            <th>estado</th>
-            <th>Rol</th>
-            <th>Acciones</th>
+            <th data-priority="4" >ID</th>
+            <th data-priority="3" >fecha</th>
+            <th data-priority="2" >Usuario</th>
+            <th data-priority="1" >Apellido y Nombre</th>
+            <th data-priority="1" >estado</th>
+            <th data-priority="2" >Rol</th>
+            <th data-priority="1" >Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -53,20 +66,20 @@ Gestion de Solicitudes
             <td>{{ $solicitud->created_at }}</td>
             <td>{{ $solicitud->user->usuario }}</td>
             <td>{{ $solicitud->user->apellido }} {{ $solicitud->user->nombre }}</td>
-            <td>{{ $solicitud->user->rol->nombreRol }}</td>
             <td>
-            @if ($solicitud->estadoSolicitud == 5)
-            <i class="bi bi-hand-thumbs-up-fill text-success me-2"></i>Solicitud aceptada.
-            @elseif ($solicitud->estadoSolicitud == 6)
-            <i class="bi bi-hand-thumbs-down-fill text-danger me-2"></i>Solicitud rechazada.
-            @elseif ($solicitud->estadoSolicitud == 4)
-            <i class="bi bi-bell-fill text-warning me-2"></i>Nueva Solicitud.
-            @elseif ($solicitud->estadoSolicitud == 2)
-            <i class="bi bi-hand-thumbs-down text-info me-2"></i>Solicitud rechazada.
-            @elseif ($solicitud->estadoSolicitud == 3)
-            <i class="bi bi-hand-thumbs-up text-info me-2"></i>Solicitud aceptada.
-            @endif
+              @if ($solicitud->estadoSolicitud == 5)
+              <i class="bi bi-hand-thumbs-up-fill text-success me-2"></i>Solicitud aceptada.
+              @elseif ($solicitud->estadoSolicitud == 6)
+              <i class="bi bi-hand-thumbs-down-fill text-danger me-2"></i>Solicitud rechazada.
+              @elseif ($solicitud->estadoSolicitud == 4)
+              <i class="bi bi-bell-fill text-warning me-2"></i>Nueva Solicitud.
+              @elseif ($solicitud->estadoSolicitud == 2)
+              <i class="bi bi-hand-thumbs-down text-info me-2"></i>Solicitud rechazada.
+              @elseif ($solicitud->estadoSolicitud == 3)
+              <i class="bi bi-hand-thumbs-up text-info me-2"></i>Solicitud aceptada.
+              @endif
             </td>
+            <td>{{ $solicitud->user->rol->nombreRol }}</td>
             <td>
                 @if ($solicitud->estadoSolicitud == 6 || $solicitud->estadoSolicitud == 5)
                 <a href="{{ route('ocultar_solicitud', ['id' => $solicitud->idSolicitud ]) }}" class="btn btn-outline-danger"><i class="bi bi-eye-slash-fill me-2"></i>ocultar</a>

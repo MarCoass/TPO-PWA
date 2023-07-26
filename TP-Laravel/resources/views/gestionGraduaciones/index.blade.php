@@ -10,7 +10,20 @@ Gestion de Graduaciones
 @endsection
 
 @section('librerias')
+        <!-- Jquery UI -->
+        <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/start/jquery-ui.css" rel="stylesheet" />
 
+        <!-- Datatable -->
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+        <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.dataTables.min.css" />
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script> 
+        <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
+        <script src="js/datatables.js"></script>
+@endsection
+
+@section('scripts')
+    <script> datatables("tabla_graduacion", 0, "asc") </script>
 @endsection
 
 @section('contenido')
@@ -23,11 +36,11 @@ Gestion de Graduaciones
 <table id="tabla_graduacion" class="table hover table-light table-bordered nowrap border dataTable dtr-inline collapsed" width="100%">
     <thead class="flip-content">
         <tr>
-            <th>Id</th>
-            <th>Nombre</th>
-            <th>Color</th>
-            <th>Tipo</th>
-            <th>Acciones</th>
+            <th data-priority="4" >Id</th>
+            <th data-priority="1" >Nombre</th>
+            <th data-priority="2" >Color</th>
+            <th data-priority="2" >Tipo</th>
+            <th data-priority="1" >Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -39,10 +52,6 @@ Gestion de Graduaciones
             <td>{{ $row->tipo }}</td>
             <td>
                 <a href="{{ route('graduaciones.edit', ['graduacione' => $row->idGraduacion ]) }}" class="btn btn-outline-info"><i class="bi bi-pencil-square me-2"></i>Editar</a>
-                {{-- 
-                <a href="{{ route('ver_inscriptos_competencia', ['id' => $row->idCompetencia ]) }}" class="btn btn-outline-info">Ver Competidores inscriptos</a>
-                <a href="{{ route('tabla_jueces', ['id' => $row->idCompetencia ]) }}" class="btn btn-outline-info">Ver Jueces inscriptos</a>
-                <a href="{{ route('verPresentacion', ['id' => $row->idCompetencia ]) }}" class="btn btn-outline-info">Ir a presentacion.</a> --}}
             </td>
         </tr>
         @endforeach

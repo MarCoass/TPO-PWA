@@ -9,6 +9,23 @@ Gestion de Usuarios
 Gestion de Usuarios
 @endsection
 
+@section('librerias')
+        <!-- Jquery UI -->
+        <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/start/jquery-ui.css" rel="stylesheet" />
+
+        <!-- Datatable -->
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+        <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.dataTables.min.css" />
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script> 
+        <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
+        <script src="js/datatables.js"></script>
+@endsection
+
+@section('scripts')
+    <script>datatables("tabla_usuarios", 6, "asc")</script>
+@endsection
+
 @section('contenido')
 <!-- despliega mensajes -->
 @include('layouts.partials.messages')
@@ -17,15 +34,15 @@ Gestion de Usuarios
 <table id="tabla_usuarios" class="table hover table-light table-bordered nowrap border dataTable dtr-inline collapsed" width="100%">
     <thead class="flip-content">
         <tr>
-            <th>Id</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Usuario</th>
-            <th>Correo</th>
-            <th>Escuela</th>
-            <th>Estado</th>
-            <th>Rol</th>
-            <th>Acciones</th>
+            <th data-priority="3" >Id</th>
+            <th data-priority="2" >Nombre</th>
+            <th data-priority="2" >Apellido</th>
+            <th data-priority="1" >Usuario</th>
+            <th data-priority="3" >Correo</th>
+            <th data-priority="4" >Escuela</th>
+            <th data-priority="1" >Estado</th>
+            <th data-priority="2" >Rol</th>
+            <th data-priority="1" >Acciones</th>
         </tr>
     </thead>
     <tbody>

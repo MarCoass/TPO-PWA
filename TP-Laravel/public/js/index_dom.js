@@ -1,20 +1,13 @@
 import { cambio_de_tema } from "./tema.js";
 import "./eventosMenu.js";
-/* import { competidores_tabla } from "./tablaCompetidores.js"; */
-/* import { tabla_usuarios } from "./tablaUsuarios.js"; */
 /* import { tabla_solicitud } from "./tablaSolicitudes.js"; */
 /* import { tabla_CompetenciaCompetidores } from "./tablaCompetenciaCompetidores.js"; */
 /* import { tabla_competencia } from "./tablaCompetencias.js"; */
 /* import { tabla_graduacion } from "./tablaGraduaciones.js"; */
 
-//Gestion de usuarios tabla
-/* tabla_usuarios; */
 
 //Gestion de solicitudes tabla
 /* tabla_solicitud; */
-
-//tabla de competidores
-/* competidores_tabla; */
 
 //tabla competidores de la competencia
 /* tabla_CompetenciaCompetidores; */
