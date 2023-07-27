@@ -41,9 +41,17 @@
     
     <!-- index dom -->
     <script type="module" src="{{ asset('js/index_dom.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            $(".loader").fadeOut("slow");
+        });
+    </script>    
+
 </head>
 
 <body class="transicion" >
+    <div class="loader"></div>
 
     <div id="wrapper">
         <!-- NAVBAR -->

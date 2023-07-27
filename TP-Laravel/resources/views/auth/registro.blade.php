@@ -9,7 +9,7 @@ Registro
 
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
 
-    <img class="mb-4" src="{{ url('images/World_Taekwondo.png') }}" alt="logo TKD" width="300px" />
+    <img class="mb-4" src="{{ url('images/World_Taekwondo.webp') }}" alt="logo TKD" width="300px" />
 
     <h1 class="h3 mb-3 fw-normal">Registro</h1>
 

@@ -30,7 +30,7 @@ Gestion de Graduaciones
 <!-- despliega mensajes -->
 @include('layouts.partials.messages')
 <h3>Graduaciones</h3>
-<a href="{{ route('graduaciones.create') }}" class="btn btn-outline-primary mb-3"><i class="bi bi-universal-access me-2"></i>Nueva Graduación</a>
+<a href="{{ route('graduaciones.create') }}" class="btn btn-primary disabled"><i class="bi bi-universal-access me-2"></i>Nueva Graduación</a><p class="mb-3">¡Ya estan todas las graduaciones!</p>
 
 <div class="table-responsive">
 <table id="tabla_graduacion" class="table hover table-light table-bordered nowrap border dataTable dtr-inline collapsed" width="100%">

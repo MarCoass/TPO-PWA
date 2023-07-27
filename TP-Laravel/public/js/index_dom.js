@@ -1,23 +1,5 @@
 import { cambio_de_tema } from "./tema.js";
 import "./eventosMenu.js";
-/* import { tabla_solicitud } from "./tablaSolicitudes.js"; */
-/* import { tabla_CompetenciaCompetidores } from "./tablaCompetenciaCompetidores.js"; */
-/* import { tabla_competencia } from "./tablaCompetencias.js"; */
-/* import { tabla_graduacion } from "./tablaGraduaciones.js"; */
-
-
-//Gestion de solicitudes tabla
-/* tabla_solicitud; */
-
-//tabla competidores de la competencia
-/* tabla_CompetenciaCompetidores; */
-
-//TABLA DE COMPETENCIAS NO VOLVER A BORRAR
-/* tabla_competencia; */
-
-// tabla graduaciones
-/* tabla_graduacion; */
-
 
 //Temas
 if (localStorage.getItem("background") == null) {
@@ -32,6 +14,8 @@ document.getElementById("cambiarVista_negro").addEventListener("click", () => {
 document.getElementById("cambiarVista_blanco").addEventListener("click", () => {
     cambio_de_tema("light");
 });
+
+
 
 //Carga los competidores segun la categoria
 $("#categoria").on("click", function () {
