@@ -34,11 +34,11 @@ Gestion de Jueces de la competencia
 <table id="tabla_CompetenciaCompetidores" class="table hover table-light table-bordered nowrap border dataTable dtr-inline collapsed" width="100%">
     <thead class="flip-content">
         <tr>
-            <th>id</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Estado</th>
-            <th>Acciones</th>
+            <th data-priority="4" >id</th>
+            <th data-priority="2" >Nombre</th>
+            <th data-priority="1" >Apellido</th>
+            <th data-priority="1" >Estado</th>
+            <th data-priority="1" >Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -64,12 +64,9 @@ Gestion de Jueces de la competencia
             <td>{{ $row->juez->nombre }}</td>
             <td>{{ $row->juez->apellido }}</td>
             <td>{{ $estadoJuez }}</td>
-            <td>
+            <td class="list-group my-auto">
                 @if ($row['estado'] == 0)
-                    @php
-                        $tieneSolicitud = App\models\Solicitud::where('idUser', $row->juez->id)->where('estadoSolicitud', 4)->first();
-                    @endphp
-                    @if ($tieneSolicitud)
+                    @if ($row->tieneSolicitud)
                     <a href="{{ route('competidor_solicitudes', ['id' => $row->juez->id ]) }}" class="btn btn-warning"><i class="bi bi-exclamation-triangle-fill me-2"></i>Atender Solicitudes</a>
                     <a href="#" class="btn btn-outline-success disabled"><i class="bi bi-check2-square me-2"></i>Habilitar</a>
 

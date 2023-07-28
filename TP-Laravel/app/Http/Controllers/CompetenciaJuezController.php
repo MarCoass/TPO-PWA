@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\CompetenciaJuez;
 use App\Models\Competencia;
 use App\Models\User;
+use App\Models\Solicitud;
 use App\http\Controllers\SolicitudController;
 use Illuminate\Http\Request;
 
@@ -113,6 +114,21 @@ class CompetenciaJuezController extends Controller
                 where('estado', true)
                 ->where('idCompetencia', $id)
                 ->get();
+
+        //usamos el método map para agregar el campo solicitud a cada elemento de la colección
+        $competencia_juez->map (function ($item) {
+        //buscamos si el juez tiene alguna solicitud pendiente
+        $tieneSolicitud = Solicitud::where('idUser', $item->juez->id)->where('estadoSolicitud', 4)->first();
+        //si hay una solicitud, asignamos el valor true al campo solicitud
+        if ($tieneSolicitud) {
+            $item->tieneSolicitud = true;
+        } else {
+        //si no hay una solicitud, asignamos el valor false al campo solicitud
+            $item->tieneSolicitud = false;
+        }
+    });
+        
+        
 
         return view('tablaCompetenciaJueces.index', ['CompetenciaJuez' => $competencia_juez, 'nombreCompetencia' => $nombreCompetencia, 'juecesAceptados' => $juecesAceptados]);
     }
