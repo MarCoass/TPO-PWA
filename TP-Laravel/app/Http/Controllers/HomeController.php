@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Competencia;
+use App\Models\Escuela;
 use App\Models\Competidor;
 use App\Models\Solicitud;
 use App\Models\User;
+use App\Models\CompetenciaJuez;
+
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -16,6 +19,8 @@ class HomeController extends Controller
         $objCompetidor = null;
         $cantSolicitudes = null;
         $cantUsuarios = null;
+        $tieneCompetenciasRegistradas = null;
+        $escuelas = Escuela::all();
         //Competencias en las que no se esta registrado
         $competenciasDisponibles = null;
         if (auth()->user()) {
@@ -29,6 +34,7 @@ class HomeController extends Controller
                         ->whereRaw('competenciaJueces.idCompetencia = competencias.idCompetencia')
                         ->where('competenciaJueces.idJuez', $idUsuario);
                 })->get();
+                $tieneCompetenciasRegistradas = CompetenciaJuez::where('idJuez', $idUsuario)->first();
             }
             if ($usuario['idRol'] == 3) {
                 $objCompetidor = Competidor::where('idUser', $idUsuario)->first();
@@ -48,7 +54,7 @@ class HomeController extends Controller
 
         }
 
-        return view('home.index', compact('competencias', 'competenciasDisponibles', 'objCompetidor', 'cantSolicitudes', 'cantUsuarios'));
+        return view('home.index', compact('competencias', 'competenciasDisponibles', 'objCompetidor', 'cantSolicitudes', 'cantUsuarios', 'escuelas', 'tieneCompetenciasRegistradas'));
     }
 
     /* Busca la cantidad de solicitudes pendientes */

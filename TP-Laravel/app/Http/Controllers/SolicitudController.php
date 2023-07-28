@@ -187,6 +187,35 @@ class SolicitudController extends Controller
 
         return redirect()->route('home.index')->with($arregloMensaje['tipo'], $arregloMensaje['mensaje']);
     }
+        
+    /**
+     * genero solicitud para jueces
+     *
+     * @param int $idjuez 
+     * @param int $escuela 
+     * @return boolean
+     */
+    
+    public static function generarSolicitudSoloEscuela($idjuez,$escuela)
+    {
+        $flag = false;
+        /* si el id escuela es diferente de 0 se genera la solicitud */
+        if($escuela != 0){
+            
+            /* genero la solicitud */
+            $solicitud = new Solicitud();
+            $solicitud->estadoSolicitud = 4;
+            $solicitud->newEscuela = $escuela;
+            $solicitud->newGraduacion = 0;
+            
+            /* asocio el usuario */
+            $solicitud->user()->associate($idjuez);
+            $solicitud->save();
+
+            $flag = true;
+        }
+        return $flag;
+    }
 
 
 }

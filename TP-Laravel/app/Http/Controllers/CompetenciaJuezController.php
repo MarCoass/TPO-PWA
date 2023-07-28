@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\CompetenciaJuez;
 use App\Models\Competencia;
 use App\Models\User;
+use App\http\Controllers\SolicitudController;
 use Illuminate\Http\Request;
 
 /* Necesarios para enviar mails */
@@ -33,17 +34,23 @@ class CompetenciaJuezController extends Controller
         $juez = User::find($request->input('juez'));
         $competencia_juez->juez()->associate($juez);
 
-        /* busco posibles competencias en las que el juez se registro */
-        $yaParticipoEnCompetencias = CompetenciaJuez::where('idJuez',$request->input('juez'))->first();
+        /* creo la solicitud */
+        $escuela = $request->input('newEscuela');
 
+        if($escuela == 0){
+            $seCreoLaSolicitud = false;
+        }else{
+            $seCreoLaSolicitud = SolicitudController::generarSolicitudSoloEscuela($juez,$escuela);
+        }
+        
         $competencia_juez->save();
 
         /* verifico si el juez ya estuvo en otra competencia */
-        if($yaParticipoEnCompetencias){
+        if($seCreoLaSolicitud){
             $redirigir = [
                 'url' => '/',
-                'tipo' => 'modalConsulta',
-                'mensaje' => 'show'
+                'tipo' => 'success',
+                'mensaje' => 'Se registró y se pidio cambio de escuela! queda en espera de verificación.'
             ];
         }else{
             $redirigir = [

@@ -124,9 +124,6 @@
                         @if (auth()->user()->idRol == 2 && auth()->user()->estado === 1)
                             @include('layouts.modales.modalCompetenciasJueces')
                         @endif
-                        @if (Session::get('modalConsulta', false))
-                            @include('layouts.modales.modalSolicitarCambios')
-                        @endif
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-12 col-sm-12 d-flex justify-content-center align-items-start my-auto">
