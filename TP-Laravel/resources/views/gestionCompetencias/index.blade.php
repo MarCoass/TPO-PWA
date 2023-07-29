@@ -39,8 +39,8 @@ Gestion de Competencias
             <th data-priority="4" >Id</th>
             <th data-priority="1" >Nombre</th>
             <th data-priority="3" >Fecha</th>
-            <th data-priority="3" >Inscripciones</th>
-            <th data-priority="2" >Cupo Jueces</th>
+            <th data-priority="2" >Inscripciones</th>
+            <th data-priority="3" >Cupo Jueces</th>
             <th data-priority="1" >Acciones</th>
         </tr>
     </thead
@@ -72,6 +72,17 @@ Gestion de Competencias
             @php $fecha = date('d/m/Y', strtotime($row->fecha)) @endphp
             {{ $fecha }}
             </td>
+            @if ($row->estadoCompetencia == 1)
+            <td class="badge bg-secondary text-wrap mx-2">Finalizada</td>
+            <td>{{$row->competencia_juez_count}} de {{ $row->cantidadJueces }}</td>
+            <td class="list-group my-2">
+                <a href="{{ route('verPresentacion', ['id' => $row->idCompetencia ]) }}" class="btn btn-outline-secondary text-wrap">Ir a presentacion.</a>
+                <a href="{{ route('verResultados', ['id' => $row->idCompetencia]) }}" class="btn btn-outline-secondary text-wrap"><i class="bi bi-trophy me-2"></i>Ver resultados competencia</a>
+                <a href="{{ route('ver_inscriptos_competencia', ['id' => $row->idCompetencia ]) }}" class="btn btn-outline-secondary text-wrap">Ver Competidores inscriptos</a>
+                <a href="{{ route('tabla_jueces', ['id' => $row->idCompetencia ]) }}" class="btn btn-outline-secondary text-wrap">Ver Jueces inscriptos</a>
+            </td>
+            @else
+                
             <td class="badge bg-info text-wrap mx-2">{{ ($row->estadoJueces) ? 'Abiertas a Competidores' : 'Abiertas a Jueces'}}</td>
             <td>{{$row->competencia_juez_count}} de {{ $row->cantidadJueces }}</td>
             <td class="list-group my-2">
@@ -80,6 +91,7 @@ Gestion de Competencias
                 <a href="{{ route('tabla_jueces', ['id' => $row->idCompetencia ]) }}" class="btn btn-outline-success text-wrap">Ver Jueces inscriptos</a>
                 <a href="{{ route('verPresentacion', ['id' => $row->idCompetencia ]) }}" class="btn btn-outline-success text-wrap">Ir a presentacion.</a>
             </td>
+            @endif
         </tr>
         @endforeach
     </tbody>
