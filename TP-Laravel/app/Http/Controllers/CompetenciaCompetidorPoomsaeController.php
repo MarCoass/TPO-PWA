@@ -35,8 +35,10 @@ class CompetenciaCompetidorPoomsaeController extends Controller
         join('competidores','competenciacompetidor.idCompetidor','competidores.idCompetidor')->
         where('competenciacompetidor.idCompetenciaCompetidor','=',$idCompetenciaCompetidor)->get();
 
-        return view('tablaCompetenciaCompetidores.verpoomsaecompetidor', compact('poomsae','competidor'));
+       /*  return view('tablaCompetenciaCompetidores.verpoomsaecompetidor', compact('poomsae','competidor')); */
 
+        // Devolver la vista parcial renderizada como una cadena
+        return view('tablaCompetenciaCompetidores.modalVerPoomsae', compact('poomsae','competidor'))->render();
 
     }
 
@@ -63,7 +65,7 @@ class CompetenciaCompetidorPoomsaeController extends Controller
         return true;
     }
 
-      public function asignar_poomsae_por_sorteo($id_competencia){
+    public function asignar_poomsae_por_sorteo($id_competencia){
 
         //asignar poomsae solo a competidores habilitados
         $competidoresCompetencia = CompetenciaCompetidor::where('estado',1)->where('idCompetencia', $id_competencia)->get();
@@ -75,21 +77,22 @@ class CompetenciaCompetidorPoomsaeController extends Controller
             foreach($pasadas as $numero_pasada){
                 $id_poomsae = CategoriaPoomsae::where('idCategoria','=', $row->idCategoria)->inRandomOrder()->first()->idPoomsae;
                 $this->registrar_poomsae_en_competidor($id_poomsae,$row->idCompetenciaCompetidor,$numero_pasada);
-
+        
                 $poomsae = Poomsae::find($id_poomsae);
                 $user = $row->competidor->user;
-
+        
                 if($numero_pasada == 1){
                     $poomsae_pasada_1 = $poomsae->nombre;
                 }else if($numero_pasada == 2){
                     $poomsae_pasada_2 = $poomsae->nombre;
                 }
-
+        
                 if($poomsae_pasada_1 && $poomsae_pasada_2){
                 $user->notify(new NotificacionGeneral('success','Poomsae Asignado!','Poomsae Pasada 1: '.$poomsae_pasada_1.' Poomsae Pasada 2: '.$poomsae_pasada_2.'  ',' A prepararse!'));
                 }
             }
         }
+        
 
         $CompetenciaCompetidorController = new CompetenciaCompetidorController();
 
