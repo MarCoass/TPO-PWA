@@ -71,6 +71,7 @@ function pintarDatatable(dataResult, columns) {
     $("#tablaVerCompetidores").DataTable({
         data: dataResult,
         columns: columns, // Cambia columnDefs a columns
+        responsive: true,
         order: [[0, "asc"]], // Corrige el orden ascendente de la columna 0 (puesto)
         language: {
             // Configuración de idioma
