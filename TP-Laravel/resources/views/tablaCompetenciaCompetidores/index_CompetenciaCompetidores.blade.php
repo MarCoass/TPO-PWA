@@ -73,11 +73,12 @@
         class="table hover table-light table-bordered nowrap border dataTable dtr-inline collapsed" width="100%">
         <thead class="flip-content">
             <tr>
-                <th>GAL</th>
-                <th>Nombre Completo</th>
-                <th>Fecha</th>
-                <th>Participa</th>
-                <th>Acciones</th>
+                <th data-priority="4" >GAL</th>
+                <th data-priority="1" >Nombre Completo</th>
+                <th data-priority="4" >Fecha</th>
+                <th data-priority="2" >Participa</th>
+                
+                <th data-priority="1" >Acciones</th>
             </tr>
         </thead>
         <tbody>

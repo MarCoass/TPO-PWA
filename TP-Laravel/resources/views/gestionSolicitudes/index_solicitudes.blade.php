@@ -81,7 +81,7 @@
                 <th data-priority="4">ID</th>
                 <th data-priority="3">fecha</th>
                 <th data-priority="2">Usuario</th>
-                <th data-priority="1">Apellido y Nombre</th>
+                <th data-priority="1" >Apellido y Nombre</th>
                 <th data-priority="1">estado</th>
                 <th data-priority="2">Rol</th>
                 <th data-priority="1">Acciones</th>

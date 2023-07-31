@@ -25,6 +25,8 @@ class CompetenciaCompetidorPoomsaeController extends Controller
         return $poomsae;
     }
 
+
+    /* Funcion que devuelve el poomsae de un competidor y lo renderiza en un modal */
     public function listar_poomsae_asignados_por_competencia_competidor($idCompetenciaCompetidor){
 
         $poomsae = Poomsae::select('poomsae.idPoomsae','poomsae.nombre','competenciacompetidorpoomsae.pasadas')->
@@ -35,9 +37,6 @@ class CompetenciaCompetidorPoomsaeController extends Controller
         join('competidores','competenciacompetidor.idCompetidor','competidores.idCompetidor')->
         where('competenciacompetidor.idCompetenciaCompetidor','=',$idCompetenciaCompetidor)->get();
 
-       /*  return view('tablaCompetenciaCompetidores.verpoomsaecompetidor', compact('poomsae','competidor')); */
-
-        // Devolver la vista parcial renderizada como una cadena
         return view('tablaCompetenciaCompetidores.modalVerPoomsae', compact('poomsae','competidor'))->render();
 
     }
@@ -158,48 +157,4 @@ class CompetenciaCompetidorPoomsaeController extends Controller
         return $CompetenciaController->index();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

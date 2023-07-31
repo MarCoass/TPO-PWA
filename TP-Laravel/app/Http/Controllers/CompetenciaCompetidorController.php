@@ -21,11 +21,13 @@ use Illuminate\Support\Facades\Notification;
 class CompetenciaCompetidorController extends Controller
 {
 
+    
     public function create()
     {
         //ni idea momento de locura
         return view('inscripcion.create');
     }
+
 
     public function guardar_preinscripcion($id_competidor, $id_competencia, $id_categoria)
     {
@@ -50,6 +52,8 @@ class CompetenciaCompetidorController extends Controller
 
         return true;
     }
+
+
     public function store(Request $request)
     {
 
@@ -80,6 +84,7 @@ class CompetenciaCompetidorController extends Controller
 
         return redirect('/')->with('success', "Se ha registrado correctamente");
     }
+
 
     /* Habilita al competidor a participar de la competencia */
     public function habilitar($id)
@@ -147,6 +152,7 @@ class CompetenciaCompetidorController extends Controller
         return view('tablaCompetenciaCompetidores.index_CompetenciaCompetidores', ['competidoresCompetencia' => $competidoresCompetencia, 'competencia' => $competencia]);
     }
 
+    /* verifica si el usuario competidor tiene solicitudes */
     private function tieneSolicitud($idUser)
     {
         return Solicitud::where('idUser', '=', $idUser)->where('estadoSolicitud', '=', 4)->exists();
