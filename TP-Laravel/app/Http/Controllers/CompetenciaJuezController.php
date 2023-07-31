@@ -117,16 +117,16 @@ class CompetenciaJuezController extends Controller
 
         //usamos el método map para agregar el campo solicitud a cada elemento de la colección
         $competencia_juez->map (function ($item) {
-        //buscamos si el juez tiene alguna solicitud pendiente
-        $tieneSolicitud = Solicitud::where('idUser', $item->juez->id)->where('estadoSolicitud', 4)->first();
-        //si hay una solicitud, asignamos el valor true al campo solicitud
-        if ($tieneSolicitud) {
-            $item->tieneSolicitud = true;
-        } else {
-        //si no hay una solicitud, asignamos el valor false al campo solicitud
+            //buscamos si el juez tiene alguna solicitud pendiente
+            $tieneSolicitud = Solicitud::where('idUser', $item->juez->id)->where('estadoSolicitud', 4)->first();
+            //si hay una solicitud, asignamos el valor true al campo solicitud
+            if ($tieneSolicitud) {
+                $item->tieneSolicitud = true;
+            } else {
+            //si no hay una solicitud, asignamos el valor false al campo solicitud
             $item->tieneSolicitud = false;
-        }
-    });
+            }
+        });
         
         
 

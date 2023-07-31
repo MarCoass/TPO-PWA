@@ -57,6 +57,8 @@
 
     {{ Route::currentRouteName() }}
 
+    <button type="button" class="btn btn-outline-secondary" onclick="history.back()">Volver</button>
+
     @if (Route::currentRouteName() == 'solicitudes_archivadas')
         <h3>Solicitudes Archivadas.</h3>
         <div class="m-2">

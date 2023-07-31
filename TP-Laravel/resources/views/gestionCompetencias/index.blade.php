@@ -87,7 +87,9 @@ Gestion de Competencias
             <td>{{$row->competencia_juez_count}} de {{ $row->cantidadJueces }}</td>
             <td class="list-group my-2">
                 <a href="{{ route('edit_competencia', ['id' => $row->idCompetencia ]) }}" class="btn btn-outline-success text-wrap"><i class="bi bi-pencil-square me-2"></i>Editar</a>
+                @if($row->estadoJueces == 1)
                 <a href="{{ route('ver_inscriptos_competencia', ['id' => $row->idCompetencia ]) }}" class="btn btn-outline-success text-wrap">Ver Competidores inscriptos</a>
+                @endif
                 <a href="{{ route('tabla_jueces', ['id' => $row->idCompetencia ]) }}" class="btn btn-outline-success text-wrap">Ver Jueces inscriptos</a>
                 <a href="{{ route('verPresentacion', ['id' => $row->idCompetencia ]) }}" class="btn btn-outline-success text-wrap">Ir a presentacion.</a>
             </td>
