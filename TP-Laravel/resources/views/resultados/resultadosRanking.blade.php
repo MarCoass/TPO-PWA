@@ -8,6 +8,22 @@
     Ranking General
 @endsection
 
+@section('librerias')
+        <!-- Jquery UI -->
+        <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/start/jquery-ui.css" rel="stylesheet" />
+
+        <!-- Datatable -->
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+        <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.dataTables.min.css" />
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script> 
+        <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
+@endsection
+
+@section('scripts')
+    <script type="module" src="{{ asset('js/tabResultadosRanking.js') }}"></script>
+@endsection
+
 @section('contenido')
 
 <!-- despliega mensaje cuando se crea la cuenta -->
@@ -26,7 +42,6 @@
     </div>
 
         <h2 class="mt-5 mb-2 " id="titulo-masc" ></h2>
-        <h2 class="mt-5 mb-2 "id="titulo-fem" ></h2>
         <table id="ranking_tabla_masc" class="table hover table-light table-bordered nowrap border dataTable dtr-inline collapsed tabla-ranking " width="100%" >
             <thead class="flip-content">
                 <tr>
@@ -43,6 +58,7 @@
         
         
         
+        <h2 class="mt-5 mb-2 "id="titulo-fem" ></h2>
         <table id="ranking_tabla_fem" class="table hover table-light table-bordered nowrap border dataTable dtr-inline collapsed tabla-ranking " width="100%">
             <thead class="flip-content">
                 <tr>
@@ -58,7 +74,4 @@
         </table>
 
 </div>
-
-<script type="module" src="{{ asset('js/tabResultadosRanking.js') }}"></script>
-
 @endsection

@@ -9,10 +9,10 @@ $(window).on("load", function () {
 $("#selectCategorias").change(function () {
     var idCategoria = $(this).val();
     var genero = $(this).find('option:selected').data('genero');
-    console.log("categoria".idCategoria);
-    console.log("genero".genero);
+    /* console.log("categoria".idCategoria); */
+    /* console.log("genero".genero); */
     var idTabla;
-    if (genero == 0) {
+    if (genero == 2) {
         idTabla = '#ranking_tabla_masc';
         $('#titulo-fem').hide();
         $('#titulo-masc').show();

@@ -29,18 +29,6 @@
     <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
     <link rel="stylesheet" href="{{ asset('css/puntuador.css') }}">
 
-    @yield('librerias')
-
-    <!-- librerias -->
-    <script src="{{ asset('bootstrap-5.2.3/js/bootstrap.bundle.min.js') }}"></script>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-
-    <!-- index dom -->
-    <script type="module" src="{{ asset('js/index_dom.js') }}"></script>
-    <script type="module" src="{{ asset('js/puntuador.js') }}"></script>
-
 
 </head>
 
@@ -54,7 +42,17 @@
 
         <!-- FOOTER -->
     </div>
-    @yield('scripts')
+
+    <!-- librerias -->
+    <script src="{{ asset('bootstrap-5.2.3/js/bootstrap.bundle.min.js') }}"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+    <!-- index dom -->
+    <script type="module" src="{{ asset('js/index_dom.js') }}"></script>
+    <script type="module" src="{{ asset('js/puntuador.js') }}"></script>
+
 </body>
 
 </html>
