@@ -121,6 +121,12 @@ class CompetenciaCompetidorController extends Controller
     {
         $competidoresCompetencia = array();
 
+        //Establezco la variable en Null
+        $estadoSorteo = null;
+
+        //Variable auxiliar para contar los competidores con estado 1
+        $contador = 0;
+
         $data = CompetenciaCompetidor::where('idCompetencia', $id)->get();
 
         foreach ($data as $competidor) {
@@ -144,12 +150,23 @@ class CompetenciaCompetidorController extends Controller
                 }
             }
 
+            
+            //Si el competidor tiene estado 1, incrementamos el contador
+            if ($competidor->estado == 1) {
+                $contador++;
+            }
+
             $competidoresCompetencia[] = $dato;
+        }
+
+        //Si el contador es igual al número total de competidores, cambiamos el estadoSorteo a "full"
+        if ($contador == count($data)) {
+            $estadoSorteo = "full";
         }
 
         $competencia = Competencia::find($id);
 
-        return view('tablaCompetenciaCompetidores.index_CompetenciaCompetidores', ['competidoresCompetencia' => $competidoresCompetencia, 'competencia' => $competencia]);
+        return view('tablaCompetenciaCompetidores.index_CompetenciaCompetidores', ['competidoresCompetencia' => $competidoresCompetencia, 'competencia' => $competencia, 'estadoSorteo' => $estadoSorteo]);
     }
 
     /* verifica si el usuario competidor tiene solicitudes */
@@ -352,4 +369,25 @@ class CompetenciaCompetidorController extends Controller
             ->route('tabla_competidores', ['id' => $idCompetencia])
             ->with('success', 'Competidor eliminado exitosamente de la competencia. Ahora puede volver a inscribirse');
     }
+
+    public static function eliminacionCompetidoresSinGestionar($idCompetencia){
+
+        //Seteo el campo estadoInscripcion de la competencia como 1 "cerrado".
+        $competencia = Competencia::find($idCompetencia);
+        $competencia->estadoInscripcion = 1;
+        $competencia->save();
+
+        //Busco a los competidores de la competencia que no se llegaron a gestionar.
+        $competidoresCompetencia = CompetenciaCompetidor::where('estado',0)->where('idCompetencia', $idCompetencia)->get();
+
+        //Si la consulta no esta vacia continua la iteracion de borrado.
+        if($competidoresCompetencia->isNotEmpty()){
+            foreach ($competidoresCompetencia as $row){
+                $row->delete();
+            }
+        }
+
+        return true;
+    }
+
 }

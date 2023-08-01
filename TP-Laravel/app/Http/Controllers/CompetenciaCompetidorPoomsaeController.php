@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Poomsae;
 use App\Models\CompetenciaCompetidor;
+use App\Models\Competencia;
 use App\Models\CompetenciaCompetidorPoomsae;
 use App\Models\CategoriaPoomsae;
 use App\Models\Competidor;
@@ -91,8 +92,10 @@ class CompetenciaCompetidorPoomsaeController extends Controller
                 }
             }
         }
+        //una vez sorteado el poomsae se cierran las inscripciones y se eliminan competidores no gestionados
+        CompetenciaCompetidorController::eliminacionCompetidoresSinGestionar($id_competencia);
         
-
+        //Llama al controlador para despues retornar la ruta con el id de la competencia
         $CompetenciaCompetidorController = new CompetenciaCompetidorController();
 
         return $CompetenciaCompetidorController->listarCompetidoresPorId($id_competencia);

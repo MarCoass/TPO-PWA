@@ -69,9 +69,13 @@
         @endif
     </h3>
     <a href="{{ route('index_competencia') }}" class="btn btn-outline-secondary">Volver</a>
-    @if ($competencia->estadoCompetencia != 1)
-        <a href="{{ route('asignar_poomsae_por_sorteo', ['id_competencia' => $competencia->idCompetencia]) }}"
-            class="btn btn-outline-success">Sortear Poomsae</a>
+    @if ($competencia->estadoInscripcion != 1)
+
+        <button type="button" class="btn btn-outline-success btn-modal" data-bs-toggle="modal"
+        data-bs-target="#sorteoPoom">Sortear Poomsae</button>
+
+        {{-- <a href="{{ route('asignar_poomsae_por_sorteo', ['id_competencia' => $competencia->idCompetencia]) }}"
+            class="btn btn-outline-success">Sortear Poomsae</a> --}}
     @endif
     <br />
 
@@ -160,4 +164,38 @@
             </div>
         </div>
     </div>
+
+    <div class="modal" id="sorteoPoom">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Sortear Poomsae</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    @if ($estadoSorteo == "full")
+                    @php
+                        $fecha_actual = new DateTime();
+                        $fecha_competencia = new DateTime($competencia->fecha);
+                        $fecha_competencia->modify('-1 day');
+                        $diferencia = $fecha_actual->diff($fecha_competencia);
+                    @endphp
+                    <p>Faltan {{$diferencia->d}} días, {{$diferencia->h}} horas y {{$diferencia->i}} minutos para que se genere el sorteo automaticamente </p>
+                    <p class="lead text-danger">¿Esta seguro de querer sortear ahora?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <a href="{{ route('asignar_poomsae_por_sorteo', ['id_competencia' => $competencia->idCompetencia]) }}"
+                        class="btn btn-outline-success">Sortear Poomsae</a>
+                    @else
+                    <h3>Aún faltan competidores por gestionar</h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection

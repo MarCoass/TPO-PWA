@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('cantidadJueces');
             $table->boolean('estadoJueces')->default(false);
             $table->integer('estadoCompetencia')->default(0);
+            $table->integer('estadoInscripcion')->default(0);
             $table->timestamps();
         });
     }

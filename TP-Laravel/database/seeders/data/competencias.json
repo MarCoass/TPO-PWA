@@ -7,7 +7,8 @@
         "invitacion": "pdf/CompetenciaRegionalInvitacion.pdf",
         "cantidadJueces": 3,
         "estadoJueces": true,
-        "estadoCompetencia": 0
+        "estadoCompetencia": 0,
+        "estadoInscripcion": 0
     },
     {
         "nombre": "Competencia Juvenil",
@@ -17,7 +18,8 @@
         "invitacion": "pdf/CompetenciaJuvenilInvitacion.pdf",
         "cantidadJueces": 5,
         "estadoJueces": false,
-        "estadoCompetencia": 0
+        "estadoCompetencia": 0,
+        "estadoInscripcion": 0
     },
     {
         "nombre": "Competencia Estelar",
@@ -27,6 +29,7 @@
         "invitacion": "pdf/CompetenciaEstelarInvitacion.pdf",
         "cantidadJueces": 7,
         "estadoJueces": false,
-        "estadoCompetencia": 0
+        "estadoCompetencia": 0,
+        "estadoInscripcion": 0
     }
 ]
