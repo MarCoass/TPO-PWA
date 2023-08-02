@@ -35,8 +35,8 @@
 
     <!-- index dom -->
     <script type="module" src="{{ asset('js/index_dom.js') }}"></script>
-    <script src="{{ asset('js/cargaCompetidor.js') }}"></script>
-    <script src="{{ asset('js/autocompletado.js') }}" type="module"></script>
+    <script defer src="{{ asset('js/cargaCompetidor.js') }}"></script>
+    <script defer src="{{ asset('js/autocompletado.js') }}" type="module"></script>
 
 
 

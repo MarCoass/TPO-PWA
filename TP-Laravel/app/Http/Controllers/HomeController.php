@@ -15,6 +15,7 @@ class HomeController extends Controller
 {
     public function index()
     {
+        //Declaracion de variables
         $competencias = null;
         $objCompetidor = null;
         $cantSolicitudes = null;
@@ -27,15 +28,17 @@ class HomeController extends Controller
             $competencias = Competencia::all();
             $usuario = auth()->user();
             $idUsuario = $usuario->id;
+            // Si el usuario es un juez, se obtienen las competencias disponibles para él, es decir, las que no existen en la tabla competenciaJueces con su idJuez y que tienen un estadoInscripcion distinto de 1
             if ($usuario['idRol'] == 2) {
                 $competenciasDisponibles = Competencia::whereNotExists(function ($query) use ($idUsuario) {
                     $query->select(DB::raw(1))
                         ->from('competenciaJueces')
                         ->whereRaw('competenciaJueces.idCompetencia = competencias.idCompetencia')
                         ->where('competenciaJueces.idJuez', $idUsuario);
-                })->get();
+                })->where('estadoInscripcion', '<>', 1)->get();
                 $tieneCompetenciasRegistradas = CompetenciaJuez::where('idJuez', $idUsuario)->first();
             }
+            // Si el usuario es un competidor, se obtiene su objeto competidor a partir de su idUser
             if ($usuario['idRol'] == 3) {
                 $objCompetidor = Competidor::where('idUser', $idUsuario)->first();
                 if ($objCompetidor != null) {
@@ -47,6 +50,7 @@ class HomeController extends Controller
                     })->get();
                 }
             }
+            //Si el usuario es un administrador, se obtienen la cantidad de solicitudes y usuarios pendientes
             if ($usuario['idRol'] == 1) {
                 $cantSolicitudes = $this->haySolicitudesPendientes();
                 $cantUsuarios = $this->hayUsuariosPendientes();

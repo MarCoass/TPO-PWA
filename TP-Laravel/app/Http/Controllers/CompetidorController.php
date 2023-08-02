@@ -23,6 +23,7 @@ class CompetidorController extends Controller
         // Obtiene todas las competencias que ya tienen todos los jueces requeridos
         $competencias = Competencia::where('estadoJueces', true)
             ->where('estadoCompetencia', 0)
+            ->where('estadoInscripcion', 0)
             ->get();
 
         $graduaciones = Graduacion::all();
@@ -307,15 +308,20 @@ class CompetidorController extends Controller
     {
         $result = [];
 
-        $duplicado = Competidor::where($request->input('campo'), '=', $request->input('valor'))->first();
-
-        if (!is_null($duplicado)) {
-            $result['success'] = 0;
-            $result['error'] = 'Este ' . strtoupper($request->input('campo')) . ' ya se encuentra registrado.';
-        }
-
-        if (count($result) == 0) {
+        // si el gal llega a estar vacio no se va a validar
+        if($request->input('campo') == 'gal' && $request->input('valor') == ''){
             $result['success'] = 1;
+        }else{
+            $duplicado = Competidor::where($request->input('campo'), '=', $request->input('valor'))->first();
+
+            if (!is_null($duplicado)) {
+                $result['success'] = 0;
+                $result['error'] = 'Este ' . strtoupper($request->input('campo')) . ' ya se encuentra registrado.';
+            }
+
+            if (count($result) == 0) {
+                $result['success'] = 1;
+            }
         }
 
         return response()->json($result);
