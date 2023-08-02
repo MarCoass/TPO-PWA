@@ -1,10 +1,10 @@
-const PUNTAJE = $(".puntaje");
+/* const PUNTAJE = $(".puntaje"); */
 
 var id_competencia = document.getElementById('id_competencia').value;
 var btn = document.getElementById('siguientePuntuacion_'+id_competencia);
 
 
-$(".pulsadorIzq").on("click", function () {
+/* $(".pulsadorIzq").on("click", function () {
     let puntaje = parseFloat(PUNTAJE.text()) - 0.3;
     if (puntaje > 0) {
         PUNTAJE.text(puntaje.toFixed(1));
@@ -20,7 +20,7 @@ $(".pulsadorDer").on("click", function () {
     }
 
     //console.log('descontando 1.0')
-});
+}); */
 
 $("#terminarPuntuacion").on("click", function () {
     //Asigna el puntaje obtenido a la precision

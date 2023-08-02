@@ -33,7 +33,7 @@
                         Pasada n°{{ $pasada }}
                     </span></h5>
 
-                <h2>Puntaje: <span class="puntaje">4</span>
+                <h2>Puntaje: <span id="puntajeId" class="puntaje">4</span>
                 </h2>
                 <p>Competidor: <span class="fw-bold">{{ $competidor[0]->nombre }}
                         {{ $competidor[0]->apellido }}</span> <br>Poomsae:
@@ -54,7 +54,7 @@
                     Terminar
                 </button>
             </div>
-            <div class="pulsadorDer bg-primary col-4 d-flex justify-content-center align-items-center">
+            <div class="pulsadorDer bg-primary col-4 d-flex justify-content-center align-items-center disabled">
                 <span class="display-2">- 0.1</span>
             </div>
 
@@ -99,5 +99,5 @@
 
     </div>
 
-    <script src="{{ asset('js/reloj_activo.js') }}"></script>
+    <script defer src="{{ asset('js/reloj_activo.js') }}"></script>
 @endsection
