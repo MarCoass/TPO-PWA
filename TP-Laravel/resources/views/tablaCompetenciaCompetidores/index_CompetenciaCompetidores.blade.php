@@ -173,7 +173,6 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    @if ($estadoSorteo == "full")
                     @php
                         $fecha_actual = new DateTime();
                         $fecha_competencia = new DateTime($competencia->fecha);
@@ -181,6 +180,7 @@
                         $diferencia = $fecha_actual->diff($fecha_competencia);
                     @endphp
                     <p>Faltan {{$diferencia->d}} días, {{$diferencia->h}} horas y {{$diferencia->i}} minutos para que se genere el sorteo automaticamente </p>
+                    @if ($estadoSorteo == "full")
                     <p class="lead text-danger">¿Esta seguro de querer sortear ahora?</p>
                 </div>
                 <div class="modal-footer">

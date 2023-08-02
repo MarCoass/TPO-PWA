@@ -72,7 +72,7 @@ Gestion de Competencias
             @php $fecha = date('d/m/Y', strtotime($row->fecha)) @endphp
             {{ $fecha }}
             </td>
-            @if ($row->estadoCompetencia == 1)
+            @if ($row->estadoInscripcion == 1)
             <td class="badge bg-secondary text-wrap mx-2">Finalizada</td>
             <td>{{$row->competencia_juez_count}} de {{ $row->cantidadJueces }}</td>
             <td class="list-group my-2">
