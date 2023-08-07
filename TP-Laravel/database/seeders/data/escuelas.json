@@ -1,47 +1,92 @@
 [
     {
-        "nombre": "Asociación Civil Bom Do Kwan Taekwondo Tigres Neuquinos"
+        "nombre": "Asociación Civil Bom Do Kwan Taekwondo Tigres Neuquinos",
+        "nombreApellidoInstructor": "Polly Silva",
+        "email": "instructor@gmail.com",
+        "telefono": "2995241221"
     },
     {
-        "nombre": "Asociación Civil Patagónica de Deportes de combate"
+        "nombre": "Asociación Civil Patagónica de Deportes de combate",
+        "nombreApellidoInstructor": "Henrietta Todd",
+        "email": "instructor@gmail.com",
+        "telefono": "2995241221"
     },
     {
-        "nombre": "Asociación Civil Taekwondo Neuquén"
+        "nombre": "Asociación Civil Taekwondo Neuquén",
+        "nombreApellidoInstructor": "Adeline Daniels",
+        "email": "instructor@gmail.com",
+        "telefono": "2995241221"
     },
     {
-        "nombre": "Asociación Club Amigos del Tang Soo Do y el Taekwondo 'A.C.A.T.T'"
+        "nombre": "Asociación Club Amigos del Tang Soo Do y el Taekwondo 'A.C.A.T.T'",
+        "nombreApellidoInstructor": "Sue Floyd",
+        "email": "instructor@gmail.com",
+        "telefono": "2995241221"
     },
     {
-        "nombre": "Asociación de Taekwondo Marcial y Deportiva Sayhueque"
+        "nombre": "Asociación de Taekwondo Marcial y Deportiva Sayhueque",
+        "nombreApellidoInstructor": "Andrew Hawkins",
+        "email": "instructor@gmail.com",
+        "telefono": "2995241221"
     },
     {
-        "nombre": "Asociación Deportiva Centenario"
+        "nombre": "Asociación Deportiva Centenario",
+        "nombreApellidoInstructor": "Sally Benson",
+        "email": "instructor@gmail.com",
+        "telefono": "2995241221"
     },
     {
-        "nombre": "Asociación Taekwondo El Temple"
+        "nombre": "Asociación Taekwondo El Temple",
+        "nombreApellidoInstructor": "Gene Joseph",
+        "email": "instructor@gmail.com",
+        "telefono": "2995241221"
     },
     {
-        "nombre": "Asociación Patagónica de Taekwondo Chong Do He"
+        "nombre": "Asociación Patagónica de Taekwondo Chong Do He",
+        "nombreApellidoInstructor": "Sallie Schmidt",
+        "email": "instructor@gmail.com",
+        "telefono": "2995241221"
     },
     {
-        "nombre": "Asociación Simple de Taekwondo Chungdokwan"
+        "nombre": "Asociación Simple de Taekwondo Chungdokwan",
+        "nombreApellidoInstructor": "Loretta Frank",
+        "email": "instructor@gmail.com",
+        "telefono": "2995241221"
     },
     {
-        "nombre": "Club Social y Deportivo Unión Zapala"
+        "nombre": "Club Social y Deportivo Unión Zapala",
+        "nombreApellidoInstructor": "Brent Perez",
+        "email": "instructor@gmail.com",
+        "telefono": "2995241221"
     },
     {
-        "nombre": "Club Social y Deportivo Vista Alegre Norte"
+        "nombre": "Club Social y Deportivo Vista Alegre Norte",
+        "nombreApellidoInstructor": "Clifford Schwartz",
+        "email": "instructor@gmail.com",
+        "telefono": "2995241221"
     },
     {
-        "nombre": "Escuela de Taekwondo del Sur Asociación Civil"
+        "nombre": "Escuela de Taekwondo del Sur Asociación Civil",
+        "nombreApellidoInstructor": "Evan Summers",
+        "email": "instructor@gmail.com",
+        "telefono": "2995241221"
     },
     {
-        "nombre": "Club Tiro Federal de Zapala"
+        "nombre": "Club Tiro Federal de Zapala",
+        "nombreApellidoInstructor": "Eunice Chandler",
+        "email": "instructor@gmail.com",
+        "telefono": "2995241221"
     },
     {
-        "nombre": "Asociación Taekwondo Comahue"
+        "nombre": "Asociación Taekwondo Comahue",
+        "nombreApellidoInstructor": "Marcus Ruiz",
+        "email": "instructor@gmail.com",
+        "telefono": "2995241221"
     },
     {
-        "nombre": "Club San Francisco San Martín"
+        "nombre": "Club San Francisco San Martín",
+        "nombreApellidoInstructor": "Ollie Townsend",
+        "email": "instructor@gmail.com",
+        "telefono": "2995241221"
     }
 ]

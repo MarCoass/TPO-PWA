@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id('idCompetencia');
             $table->string('nombre');
             $table->date('fecha');
+            $table->date('fechaCierra');
             $table->string('flyer')->nullable();
             $table->string('bases')->nullable();
             $table->string('invitacion')->nullable();

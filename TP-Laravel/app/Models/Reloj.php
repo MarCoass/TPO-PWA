@@ -11,7 +11,7 @@ class Reloj extends Model
 
     protected $primaryKey = 'idReloj'; // Nombre del id de la tabla (Importante)
 
-    protected $fillable = ['idReloj','idCompetencia','idCategoria','cantJueces','overtime','estado']; // Atributos
+    protected $fillable = ['idReloj','idCompetencia','idCategoria','idCompetenciaCompetidor','cantJueces','overtime','estado']; // Atributos
     
     public function competencia()
     {
@@ -21,5 +21,10 @@ class Reloj extends Model
     public function categoria()
     {
         return $this->belongsTo(Categoria::class, 'idCategoria', 'idCategoria');
+    }
+
+    public function competenciaCompetidor()
+    {
+        return $this->belongsTo(CompetenciaCompetidor::class, 'idCompetenciaCompetidor', 'idCompetenciaCompetidor');
     }
 }

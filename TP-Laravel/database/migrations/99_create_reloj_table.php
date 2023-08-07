@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id('idReloj');
             $table->unsignedBigInteger('idCompetencia');
             $table->unsignedBigInteger('idCategoria');
+            $table->unsignedBigInteger('idCompetenciaCompetidor');
             $table->integer('cantJueces');
             $table->integer('overtime');
             $table->integer('estado');
@@ -24,6 +25,7 @@ return new class extends Migration
 
             $table->foreign('idCompetencia')->references('idCompetencia')->on('competencias');
             $table->foreign('idCategoria')->references('idCategoria')->on('categorias');
+            $table->foreign('idCompetenciaCompetidor')->references('idCompetenciaCompetidor')->on('competenciacompetidor');
 
         });
     }

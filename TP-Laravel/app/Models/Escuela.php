@@ -13,5 +13,5 @@ class Escuela extends Model
 
     protected $primaryKey = 'idEscuela';
 
-    protected $fillable = ['nombre'];
+    protected $fillable = ['nombre', 'nombreApellidoInstructor', 'email', 'telefono'];
 }
