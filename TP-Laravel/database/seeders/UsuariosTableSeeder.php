@@ -58,7 +58,7 @@ class usuariosTableSeeder extends Seeder
                 'apellido' => 'Oliveros',
                 'usuario' => 'GusOliveros',
                 'correo' => 'gusOliveros@gmail.com',
-                'password' => 'GusOliveros',
+                'password' => 'contraseña',
                 'idRol' => 2,
                 'estado' => true,
                 'idEscuela' => 15,

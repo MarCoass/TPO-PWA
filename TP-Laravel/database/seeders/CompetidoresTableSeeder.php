@@ -23,7 +23,7 @@ class CompetidoresTableSeeder extends Seeder
         //Traigo todos los usuarios con ID: 3
         $usuarios = User::where('idRol', '3')->get();
 
-        //por cada elemento de paises, va a crear el objeto Pais
+        //por cada elemento de usuarios, va a crear el objeto user
         foreach ($usuarios as $user) {
 
             //Genero la fecha random
@@ -33,7 +33,7 @@ class CompetidoresTableSeeder extends Seeder
                 'gal' => ('TKD' . mt_rand(1000000, 9999999)),
                 'apellido' => $user['apellido'],
                 'nombre' => $user['nombre'],
-                'du' => mt_rand(10000000, 99999999),
+                'du' => mt_rand(10000000, 42000000),
                 'fechaNacimiento' => $fechaAleatoria,
                 'idPais' => 5,
                 'idEstado' => 1826,

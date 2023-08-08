@@ -16,7 +16,7 @@ class RelojController extends Controller
 {
     public function index(Request $request)
     {
-        $competencias = Competencia::where('estadoJueces', true)->where('estadoCompetencia', 0)->where('estadoInscripcion', 1)->get();
+        $competencias = Competencia::where('estadoInscripcion', 1)->get();
         return view('reloj.index', compact('competencias'));
     }
 
@@ -38,12 +38,14 @@ class RelojController extends Controller
         return view('reloj.cronometro', compact('id_competencia', 'id_categoria', 'cantJueces', 'opciones', 'idReloj'));
     }
 
+    // Creacion de reloj de un competidor de la competencia
     public function store(Request $request)
     {
         $id_competencia = $request->input('competencia');
         $id_categoria = $request->input('categoria');
+        $id_competenciaCompetidor = $request->input('competenciacompetidor');
         
-        $duplicado = Reloj::where('idCompetencia',  $id_competencia)->where('idCategoria',  $id_categoria)->first();
+        $duplicado = Reloj::where('idCompetencia',  $id_competencia)->where('idCategoria',  $id_categoria)->where('idCompetenciaCompetidor', $id_competenciaCompetidor)->first();
 
         if ($duplicado != null) {
             $reloj = Reloj::find($duplicado->idReloj);
@@ -52,13 +54,16 @@ class RelojController extends Controller
         }
 
         $reloj->cantJueces = $request->input('cantJueces');
-        $reloj->estado = 1;
+        $reloj->estado = 0;
         $reloj->overtime = 0;
         $competencia = Competencia::find($id_competencia);
         $reloj->competencia()->associate($competencia);
 
         $categoria = Categoria::find($id_categoria);
         $reloj->categoria()->associate($categoria);
+
+        $competenciaCompetidor = CompetenciaCompetidor::find($id_competenciaCompetidor);
+        $reloj->competencia()->associate($competenciaCompetidor);
 
 
         $reloj->save();
@@ -85,7 +90,7 @@ class RelojController extends Controller
 
         $data = Reloj::where('idCompetencia',  $id_competencia)->where('idCategoria',  $id_categoria)->first();
         $reloj = Reloj::find($data->idReloj);
-        $reloj->estado = 0;
+        $reloj->estado = 2;
         $reloj->overtime = $overtime;
 
         $reloj->save();
@@ -111,14 +116,24 @@ class RelojController extends Controller
 
         if ($user->idRol == 1) {
 
-            $categoria = Competencia::join('competenciaCompetidor', 'competencias.idCompetencia', '=', 'competenciaCompetidor.idCompetencia')
+            /* $categoria = Competencia::join('competenciaCompetidor', 'competencias.idCompetencia', '=', 'competenciaCompetidor.idCompetencia')
                 ->join('categorias', 'competenciaCompetidor.idCategoria', '=', 'categorias.idCategoria')
                 ->select('categorias.idCategoria', 'categorias.nombre', 'categorias.genero')
                 ->where('competencias.idCompetencia', $id_competencia)->where('competenciaCompetidor.puntaje', 0)
                 ->distinct()
-                ->get();
+                ->get(); */
+
+
+            $categoria = Competencia::join('competenciaCompetidor', 'competencias.idCompetencia', '=', 'competenciaCompetidor.idCompetencia')
+            ->join('categorias', 'competenciaCompetidor.idCategoria', '=', 'categorias.idCategoria')
+            ->select('categorias.idCategoria', 'categorias.nombre', 'categorias.genero')
+            ->where('competencias.idCompetencia', $id_competencia)
+            ->distinct()
+            ->get();
+
         } else {
-            //cambiado para que muestre solamente el ultimo elegido
+            //cambiado para que muestre solamente el ultimo elegido 
+            //esta parte la ve el juez
             $data = Reloj::where('idCompetencia',  $id_competencia)->orderBy('created_at', 'desc')->first();
 
             if ($data != null) {

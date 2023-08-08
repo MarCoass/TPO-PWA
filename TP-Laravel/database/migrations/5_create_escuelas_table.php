@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('nombreApellidoInstructor');
             $table->string('email');
-            $table->integer('telefono');
+            $table->bigInteger('telefono');
             $table->timestamps();
         });
     }

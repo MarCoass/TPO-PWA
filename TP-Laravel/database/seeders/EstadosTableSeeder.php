@@ -31,7 +31,6 @@ class EstadosTableSeeder extends Seeder
             $nombreEstado = $estado['nombreEstado'];
 
             // busca el país con idPais
-            //$pais = Pais::find($idPais);
             $pais = Pais::find($idPais);
             
             if ($pais) {

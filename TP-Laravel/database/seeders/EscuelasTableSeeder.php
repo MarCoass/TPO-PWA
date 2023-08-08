@@ -26,8 +26,14 @@ class EscuelasTableSeeder extends Seeder
         foreach ($escuelas as $escuela) {
 
             $nombreEscuela = $escuela['nombre'];
+            $nombreApellidoInstructor = $escuela['nombreApellidoInstructor'];
+            $email = $escuela['email'];
+            $telefono = $escuela['telefono'];
             Escuela::create([
                 'nombre' => $nombreEscuela,
+                'nombreApellidoInstructor' => $nombreApellidoInstructor,
+                'email' => $email,
+                'telefono' => $telefono,
             ]);
         }
     

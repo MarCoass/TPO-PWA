@@ -165,17 +165,39 @@ class PuntajeController extends Controller
     {
         $categoria = $request->input('categoria');
         $competencia = $request->input('competencia');
-        $opciones =  Competidor::leftJoin('competenciacompetidor', 'competidores.idCompetidor', '=', 'competenciacompetidor.idCompetidor')
-        ->whereExists(function ($query) use ($competencia, $categoria) {
-            $query->select(DB::raw(1))
-                ->from('competenciacompetidorpoomsae')
-                ->whereColumn('competenciacompetidor.idCompetenciaCompetidor', '=', 'competenciacompetidorpoomsae.idCompetenciaCompetidor');
-        })
-        ->where('competenciacompetidor.idCompetencia', '=', $competencia)
-        ->where('competenciacompetidor.contadorPasadas', '<', 2)
-        ->where('competenciacompetidor.estado', '=', 1)
-        ->where('competenciacompetidor.idCategoria', '=', $categoria)
-        ->get();
+
+        $user = auth()->user();
+
+        if ($user->idRol == 1) {
+
+            $opciones =  Competidor::leftJoin('competenciacompetidor', 'competidores.idCompetidor', '=', 'competenciacompetidor.idCompetidor')
+            ->whereExists(function ($query) use ($competencia, $categoria) {
+                $query->select(DB::raw(1))
+                    ->from('competenciacompetidorpoomsae')
+                    ->whereColumn('competenciacompetidor.idCompetenciaCompetidor', '=', 'competenciacompetidorpoomsae.idCompetenciaCompetidor');
+            })
+            ->where('competenciacompetidor.idCompetencia', '=', $competencia)
+            /* ->where('competenciacompetidor.contadorPasadas', '<', 2) */
+            ->where('competenciacompetidor.estado', '=', 1)
+            ->where('competenciacompetidor.idCategoria', '=', $categoria)
+            ->get();
+
+        }else{
+
+            $opciones =  Competidor::leftJoin('competenciacompetidor', 'competidores.idCompetidor', '=', 'competenciacompetidor.idCompetidor')
+            ->whereExists(function ($query) use ($competencia, $categoria) {
+                $query->select(DB::raw(1))
+                    ->from('competenciacompetidorpoomsae')
+                    ->whereColumn('competenciacompetidor.idCompetenciaCompetidor', '=', 'competenciacompetidorpoomsae.idCompetenciaCompetidor');
+            })
+            ->where('competenciacompetidor.idCompetencia', '=', $competencia)
+            ->where('competenciacompetidor.contadorPasadas', '<', 2)
+            ->where('competenciacompetidor.estado', '=', 1)
+            ->where('competenciacompetidor.idCategoria', '=', $categoria)
+            ->get();
+
+        }
+
     
 
         return response()->json($opciones);

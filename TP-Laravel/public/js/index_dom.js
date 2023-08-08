@@ -49,38 +49,6 @@ $("#categoria").on("click", function () {
     });
 });
 
-$("#competencia").change(function () {
-    //console.log($("#competencia").val());
-    $.ajax({
-        type: "GET",
-        url: "/opciones_categoria",
-        data: {
-            competencia: $("#competencia").val(),//id de la competencia
-        },
 
-        dataType: "json",
-        success: function (data) {
-
-           // console.log(data)
-            if (data.length !== 0) {
-                $("#categoria").empty();
-                $("#categoria").append(
-                    '<option value="" disabled selected data-error="Por favor seleccione una categoria">Selecciona una categoria.</option>'
-                );
-                $.each(data, function (key, value) {
-                    var genero = value.genero=='1'?'Femenino':'Masculino'
-
-                    $("#categoria").append(
-                        '<option value="' +
-                            value.idCategoria +
-                            '">' +
-                            value.nombre + " " + genero +
-                            "</option>"
-                    );
-                });
-            }
-        },
-    });
-});
 
 
