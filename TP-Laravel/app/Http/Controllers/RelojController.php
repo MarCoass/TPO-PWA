@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\Competencia;
 use App\Models\Competidor;
 use App\Models\Puntaje;
+use App\Models\RelojCompJuez;
+use App\Http\Controllers\RelojCompJuezController;
 use App\Models\CompetenciaCompetidor;
 use App\Models\CompetenciaJuez;
 use App\Models\User;
@@ -220,4 +222,53 @@ class RelojController extends Controller
 
         return $categoriaTerminada;
     }
+
+
+    public function obtenerRelojes()
+    {
+        $objRelojes = Reloj::all();
+
+        $dataRelojes = [];
+
+        $user = auth()->user();
+
+        foreach ($objRelojes as $objReloj){
+
+            $objRelComJuez = RelojCompJuez::where('idReloj', $objReloj->idReloj)->get();
+
+            $data['id'] = $objReloj->idReloj;
+            $data['competencia'] = $objReloj->competencia->nombre;
+            $data['categoria'] = $objReloj->categoria->nombre." - ".($objReloj->categoria->genero == 1 ? "Femenino" : "Masculino");
+            $data['nombreApellidoCompetidor'] = $objReloj->competenciaCompetidor->competidor->nombre." ". $objReloj->competenciaCompetidor->competidor->apellido;
+            $data['cantJueces'] = $objReloj->cantJueces;
+            $data['juecesInscriptos'] = $objRelComJuez;
+            $data['estado'] = $objReloj->estado;
+            
+            if($user->idRol == 1){
+                if(RelojCompJuezController::cantJuecesEnReloj($objReloj->idReloj) > $objReloj->cantJueces){
+                    $data['acciones'] = "Iniciar Cronometro";
+                    $data['funcion'] = "iniciarPuntuador";
+                    
+                }else{
+                    $data['acciones'] = "Esperando Jueces";
+                    $data['disabled'] = "disabled";
+                }
+            }else{
+                if(RelojCompJuezController::yaExisteJuezEnReloj($objReloj->idReloj)){
+                    $data['acciones'] = "Salir";
+                    $data['funcion'] = "quitSala";
+
+                }else{
+                    $data['acciones'] = "Anotarse";
+                    $data['funcion'] = "joinSala";
+                }
+            };
+
+            array_push($dataRelojes,$data);
+        }
+        
+        return response()->json($dataRelojes);
+    }
+
+
 }
