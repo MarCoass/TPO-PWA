@@ -108,14 +108,24 @@ class PuntajeController extends Controller
         return redirect()->route('puntuador.show', ['puntaje' => $puntajeId]);
     }
 
+
+    /* aca es donde se selecciona al competidor a puntuar */
     public function  puntuadorindex()
     {
         //filtrar competencias por incripcion de juez
         $user = auth()->user();
+
         $competencias = Competencia::select('competencias.*')
-            ->join('competenciajueces', 'competencias.idCompetencia', '=', 'competenciajueces.idCompetencia')->where('competenciajueces.idJuez', '=', $user->id)->where('competenciajueces.estado', '=', '1')->where('estadoJueces', '=', 1)->where('estadoCompetencia', '=', '0')->get();
+                    ->join('competenciajueces', 'competencias.idCompetencia', '=', 'competenciajueces.idCompetencia')
+                    ->where('competenciajueces.idJuez', '=', $user->id)
+                    ->where('competenciajueces.estado', '=', '1')
+                    ->where('estadoJueces', '=', 1)
+                    ->where('estadoCompetencia', '=', '0')
+                    ->get();
+
         //por el momento muestra todas las categorias, seria buena idea solo mostrar las que tienen participantes
         $categorias = Categoria::all();
+
         return view('puntuador.index', compact('competencias', 'categorias'));
     }
 
@@ -183,6 +193,8 @@ class PuntajeController extends Controller
             ->get();
 
         }else{
+
+            
 
             $opciones =  Competidor::leftJoin('competenciacompetidor', 'competidores.idCompetidor', '=', 'competenciacompetidor.idCompetidor')
             ->whereExists(function ($query) use ($competencia, $categoria) {

@@ -222,7 +222,6 @@ class CompetenciaCompetidorController extends Controller
         $idCompetidor = $request['idCompetidor'];
         $numPasada = $request['numPasada'];
 
-
         //busco todos los puntajes de esa competencia y ese competidor
         //ahora busca los que tengan puntaje exactitud y presentacion diferente de 0
         $cantJueces = Competencia::find($idCompetencia)->cantidadJueces;
@@ -284,7 +283,6 @@ class CompetenciaCompetidorController extends Controller
         $reloj = Reloj::where('idCategoria', $idCategoria)->where('idCompetencia', $idCompetencia)->get();
 
         $cantJueces = $reloj[0]->cantJueces;
-
 
         //por cada pasada sumo los puntajes de exactitud y presentacion
         $presentacion = 0;
