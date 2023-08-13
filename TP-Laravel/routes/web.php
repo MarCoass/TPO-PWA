@@ -22,7 +22,8 @@ use App\Http\Controllers\{
     PermisoController,
     PoomsaeController,
     RelojController,
-    NotificacionController
+    NotificacionController,
+    RelojCompJuezController
 };
 use Illuminate\Support\Facades\Route;
 
@@ -230,6 +231,12 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/iniciar_cronometro', [RelojController::class, 'cronometro'])->middleware(['rol:1']);
         Route::get('/index_reloj', [RelojController::class, 'index'])->middleware(['rol:1'])->name('index_reloj');
         Route::get('/opciones_categoria',[RelojController::class, 'obtenerCategoria']);
+
+        Route::get('/relojes',[RelojController::class, 'obtenerRelojes']);
+
+        Route::post('/unirseSala',[RelojCompJuezController::class, 'unirseASala']);
+        Route::post('/salirSala',[RelojCompJuezController::class, 'salirSala']);
+        Route::post('/quitarJuez',[RelojCompJuezController::class, 'quitarJuez']);
 
         Route::get('/start', [RelojController::class, 'start'])->middleware(['rol:1']);
         Route::get('/stop', [RelojController::class, 'stop'])->middleware(['rol:1']);

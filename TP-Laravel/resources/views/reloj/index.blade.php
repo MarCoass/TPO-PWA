@@ -5,7 +5,7 @@
 @endsection
 
 @section('encabezado')
-    Cronómetro
+    Armar Cronómetro
 @endsection
 
 @section('scripts')
@@ -52,7 +52,7 @@
         function getData() {
             // Hacer una petición GET al método index del controlador
             $.ajax({
-                url: '/paises',
+                url: '/relojes',
                 type: 'GET',
                 dataType: 'json',
                 success: function(data) {
@@ -74,40 +74,54 @@
 
 
 
-            // Recorrer el array de datos recibidos
-            $.each(data, function(index, item) {
-                // Crear una fila con los datos de cada registro
-                var colores = "bg-success-subtle";
+        // Recorrer el array de datos recibidos
+        $.each(data, function(index, item) {
 
-                var row = `
-                <tr> 
-                    <td>
-                        <div class="card ` + colores + `">
-                            <div class="card-header">` + item.nombrePais + `</div> 
-                            <div class="card-body row"> 
-                                <div class="col">
-                                    <p class="card-text lead"> Jueces activos</p> 
-                                    <h5 class=" card-title">` + item.idPais + ` de ` + item.idPais + `</h5> 
-                                </div>
-                                <div class="col">
-                                    <p class="card-text lead"> Estado </p>
-                                    <p class="card-text">` + item.nombrePais + `</p>           
-                                </div>
-                                <div class="col">
-                                    <p class="card-text lead"> Acciones</p>
-                                    <a href=` + '#' + ` class="btn btn-primary">Ir al puntuador</a> 
-                                </div>
-                            </div> 
-                        </div>
-                    </td>
-                </tr>`;
-                // Añadir la fila al cuerpo de la tabla
-                $('#relojes_activos').append(row);
-            });
-        }
+            var disabled = "";
+
+            // Comprobar si el elemento tiene el atributo disabled
+            if (item.disabled) {
+            // Asignar el atributo disabled a la variable
+            disabled = "disabled";
+            }
+            // Crear una fila con los datos de cada registro
+            if(item.estado == 0 || item.estado == 4){
+                var colores = "bg-info text-white";
+            }else{
+                var colores = "bg-success text-white";
+            }
+
+            var row = `
+            <tr> 
+                <td>
+                    <div class="card ` + colores + `">
+                        <div class="card-header"> <span class="lead" > ` + item.nombreApellidoCompetidor + `</span> <span class="fw-bold" >` + item.competencia + ` </span> ` + item.categoria + `</div> 
+                        <div class="card-body row"> 
+                            <div class="col">
+                                <p class="card-text lead"> Jueces activos</p> 
+                                <h5 class=" card-title">` + item.juecesInscriptos.length + ` de ` + item.cantJueces + `</h5> 
+                            </div>
+                            <div class="col">
+                                <p class="card-text lead"> Estado </p>
+                                <p class="card-text">` + item.estado + `</p>           
+                            </div>
+                            <div class="col">
+                                <p class="card-text lead"> Acciones</p>
+                                <button onclick=` + item.funcion+'('+item.id+')' 'iniciarPuntuador('+item.id+')' + ` class="btn btn-primary `+disabled+`">`+item.acciones+`</button> 
+                            </div>
+                        </div> 
+                    </div>
+                </td>
+            </tr>`;
+            
+
+            // Añadir la fila al cuerpo de la tabla
+            $('#relojes_activos').append(row);
+        });
+    }
 
         // Ejecutar la función getData cada 1 segundo
-        setInterval(getData, 10000);
+        setInterval(getData, 5000);
     </script>
 @endsection
 
