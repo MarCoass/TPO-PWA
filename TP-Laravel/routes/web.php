@@ -234,9 +234,15 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
         Route::get('/relojes',[RelojController::class, 'obtenerRelojes']);
 
+
+        
         Route::post('/unirseSala',[RelojCompJuezController::class, 'unirseASala']);
         Route::post('/salirSala',[RelojCompJuezController::class, 'salirSala']);
         Route::post('/quitarJuez',[RelojCompJuezController::class, 'quitarJuez']);
+        Route::get('/competenciasActivas/{id}',[RelojController::class,'obtenerCompetidoresDeUnaCompetencia']);
+        Route::post('/construir_reloj',[RelojController::class,'construirRelojCompetidor']);
+
+
 
         Route::get('/start', [RelojController::class, 'start'])->middleware(['rol:1']);
         Route::get('/stop', [RelojController::class, 'stop'])->middleware(['rol:1']);

@@ -160,7 +160,7 @@
     <div class="modal" id="myModal">
         <div class="modal-dialog">
             <div class="modal-content">
-                <!-- Aquí se cargará el contenido del modal -->
+                <!-- Aca se cargará el contenido del modal -->
             </div>
         </div>
     </div>

@@ -187,7 +187,7 @@ class PuntajeController extends Controller
                     ->whereColumn('competenciacompetidor.idCompetenciaCompetidor', '=', 'competenciacompetidorpoomsae.idCompetenciaCompetidor');
             })
             ->where('competenciacompetidor.idCompetencia', '=', $competencia)
-            /* ->where('competenciacompetidor.contadorPasadas', '<', 2) */
+            ->where('competenciacompetidor.contadorPasadas', '<', 2)
             ->where('competenciacompetidor.estado', '=', 1)
             ->where('competenciacompetidor.idCategoria', '=', $categoria)
             ->get();

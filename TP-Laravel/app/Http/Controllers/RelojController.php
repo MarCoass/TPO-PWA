@@ -24,7 +24,8 @@ class RelojController extends Controller
 
     public function cronometro(Request $request)
     {
-        $id_competencia = $request->input('competencia');
+        $id_competenciaCompetidor = $request->input('competidor');
+        $id_competencia = $request->input('idCompetencia');
         $id_categoria = $request->input('categoria');
         $cantJueces = $request->input('cantJueces');
         //por si se tiene que iniciar aca hay que cambiar los nombre de los input en la vista
@@ -40,9 +41,46 @@ class RelojController extends Controller
         return view('reloj.cronometro', compact('id_competencia', 'id_categoria', 'cantJueces', 'opciones', 'idReloj'));
     }
 
+    public function construirRelojCompetidor(Request $request)
+    {    
+        $id_competenciaCompetidor = $request->input('competidor');
+        $id_competencia = $request->input('idCompetencia');
+        $id_categoria = $request->input('categoria');
+        $cantJueces = $request->input('cantJueces');
+        
+        $duplicado = Reloj::where('idCompetencia',  $id_competencia)
+                    ->where('idCategoria',  $id_categoria)
+                    ->where('idCompetenciaCompetidor', $id_competenciaCompetidor)
+                    ->first();
+
+        if ($duplicado != null) {
+            $mensaje = "<span class='text-danger'><b>El reloj de este competidor ya esta creado</b></span>";
+        } else {
+            $reloj = new Reloj();
+            $reloj->cantJueces = $cantJueces;
+            $reloj->estado = 0;
+            $reloj->overtime = 0;
+            $competencia = Competencia::find($id_competencia);
+            $reloj->competencia()->associate($competencia);
+    
+            $categoria = Categoria::find($id_categoria);
+            $reloj->categoria()->associate($categoria);
+    
+            $competenciaCompetidor = CompetenciaCompetidor::find($id_competenciaCompetidor);
+            $reloj->competenciaCompetidor()->associate($competenciaCompetidor);
+    
+            $reloj->save();
+
+            $mensaje = "<span class='text-success'><b>Reloj creado</b></span>";
+        }
+
+        return response()->json($mensaje);
+    }
+
     // Creacion de reloj de un competidor de la competencia
-    public function store(Request $request)
+    /* public function store(Request $request)
     {
+        
         $id_competencia = $request->input('competencia');
         $id_categoria = $request->input('categoria');
         $id_competenciaCompetidor = $request->input('competenciacompetidor');
@@ -72,7 +110,7 @@ class RelojController extends Controller
 
 
         return $reloj->idReloj;
-    }
+    } */
 
     public function start(Request $request)
     {
@@ -118,35 +156,15 @@ class RelojController extends Controller
 
         if ($user->idRol == 1) {
 
-            /* $categoria = Competencia::join('competenciaCompetidor', 'competencias.idCompetencia', '=', 'competenciaCompetidor.idCompetencia')
-                ->join('categorias', 'competenciaCompetidor.idCategoria', '=', 'categorias.idCategoria')
-                ->select('categorias.idCategoria', 'categorias.nombre', 'categorias.genero')
-                ->where('competencias.idCompetencia', $id_competencia)->where('competenciaCompetidor.puntaje', 0)
-                ->distinct()
-                ->get(); */
-
-
             $categoria = Competencia::join('competenciaCompetidor', 'competencias.idCompetencia', '=', 'competenciaCompetidor.idCompetencia')
             ->join('categorias', 'competenciaCompetidor.idCategoria', '=', 'categorias.idCategoria')
             ->select('categorias.idCategoria', 'categorias.nombre', 'categorias.genero')
             ->where('competencias.idCompetencia', $id_competencia)
+            ->where('competenciaCompetidor.puntaje', 0)
             ->distinct()
             ->get();
 
-        } else {
-            //cambiado para que muestre solamente el ultimo elegido 
-            //esta parte la ve el juez
-            $data = Reloj::where('idCompetencia',  $id_competencia)->orderBy('created_at', 'desc')->first();
-
-            if ($data != null) {
-                $categoria = Categoria::select('idCategoria', 'nombre', 'genero')
-                    ->where('idCategoria', $data->idCategoria)
-                    ->distinct()
-                    ->get();
-            } else {
-                $categoria = null;
-            }
-        }
+        } 
         if (!is_null($categoria) && count($categoria) != 0) {
             return response()->json($categoria);
         } else {
@@ -245,7 +263,7 @@ class RelojController extends Controller
             $data['estado'] = $objReloj->estado;
             
             if($user->idRol == 1){
-                if(RelojCompJuezController::cantJuecesEnReloj($objReloj->idReloj) > $objReloj->cantJueces){
+                if(RelojCompJuezController::cantJuecesEnReloj($objReloj->idReloj) >= $objReloj->cantJueces){
                     $data['acciones'] = "Iniciar Cronometro";
                     $data['funcion'] = "iniciarPuntuador";
                     
@@ -268,6 +286,22 @@ class RelojController extends Controller
         }
         
         return response()->json($dataRelojes);
+    }
+
+    /* Funcion que devuelve el poomsae de un competidor y lo renderiza en un modal */
+    public function obtenerCompetidoresDeUnaCompetencia($idCompetencia){
+
+        $competencia = $idCompetencia;
+
+        $categoria = Competencia::join('competenciaCompetidor', 'competencias.idCompetencia', '=', 'competenciaCompetidor.idCompetencia')
+            ->join('categorias', 'competenciaCompetidor.idCategoria', '=', 'categorias.idCategoria')
+            ->select('categorias.idCategoria', 'categorias.nombre', 'categorias.genero')
+            ->where('competencias.idCompetencia', $idCompetencia)
+            ->distinct()
+            ->get();
+
+        return view('reloj.modalConstruirReloj', compact('competencia','categoria'))->render();
+
     }
 
 
