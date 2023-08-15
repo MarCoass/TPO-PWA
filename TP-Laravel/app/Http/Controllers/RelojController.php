@@ -22,7 +22,59 @@ class RelojController extends Controller
         return view('reloj.index', compact('competencias'));
     }
 
-    public function cronometro(Request $request)
+
+    //accede al control del cronometro y a la vez crea los puntuadores de los jueces en estadoPuntuacion 0 
+    public function controlCronometro($id)
+    {
+        //tengo el obj reloj
+        $reloj = Reloj::find($id);
+        $idCompCompetidor = $reloj->idCompetenciaCompetidor;
+        $objCompetenciaCompetidor = CompetenciaCompetidor::find($idCompCompetidor);
+
+        $jueces = RelojCompJuez::where('idreloj', $reloj->idReloj)
+                ->get();
+
+        //si ya existen los puntajes no se vuelven a crear
+        if(!Puntaje::where('idCompetenciaCompetidor', $idCompCompetidor )->exists()){
+
+            //itero la cantidad de jueces y les creo los puntajes en cero
+            foreach ( $jueces as $juez ){
+    
+                $objCompetenciaJuez = competenciaJuez::find($juez->idCompetenciaJuez);
+    
+                //armo los puntajes para cada juez
+                for ($i=1 ; $i <= 2; $i++){
+                    
+                    $armarPuntajeJuez = new Puntaje();
+                    
+                    $armarPuntajeJuez->competenciaJuez()->associate($objCompetenciaJuez);
+                    $armarPuntajeJuez->competenciaCompetidor()->associate($objCompetenciaCompetidor);
+                    $armarPuntajeJuez->puntajePresentacion = 0;
+                    $armarPuntajeJuez->puntajeExactitud = 0;
+                    $armarPuntajeJuez->overtime = 0;
+                    $armarPuntajeJuez->pasada = $i;
+                    
+                    $armarPuntajeJuez->save();
+                    
+                }
+    
+            }
+            $reloj->estado = 1;
+            $reloj->save();
+        }
+
+        // condicional para que no me cambie el estado inicial del reloj
+        /* if($reloj->estado = 0){
+        } */
+
+
+        $verJueces = Puntaje::all();
+        
+
+        return view('reloj.cronometro', compact('reloj', 'verJueces'));
+    }
+
+    /* public function cronometro(Request $request)
     {
         $id_competenciaCompetidor = $request->input('competidor');
         $id_competencia = $request->input('idCompetencia');
@@ -39,7 +91,7 @@ class RelojController extends Controller
             ->where('competenciacompetidor.idCategoria', '=', $id_categoria)->get();
 
         return view('reloj.cronometro', compact('id_competencia', 'id_categoria', 'cantJueces', 'opciones', 'idReloj'));
-    }
+    } */
 
     public function construirRelojCompetidor(Request $request)
     {    
@@ -114,10 +166,13 @@ class RelojController extends Controller
 
     public function start(Request $request)
     {
+
         $idReloj = $request['idReloj'];
         $reloj = Reloj::find($idReloj);
-        $reloj->estado = 1;
+        $reloj->estado = 3;
         $reloj->save();
+
+        //armar condicional para 2da pasada
 
         return response()->json(['success' => true]);
     }
@@ -130,15 +185,27 @@ class RelojController extends Controller
 
         $data = Reloj::where('idCompetencia',  $id_competencia)->where('idCategoria',  $id_categoria)->first();
         $reloj = Reloj::find($data->idReloj);
-        $reloj->estado = 2;
+        $reloj->estado = 4;
         $reloj->overtime = $overtime;
 
         $reloj->save();
 
+        //armar condicional para 2da pasada
+
+
         return response()->json(['success' => true]);
     }
 
+
     public function obtener_estado_reloj(Request $request)
+    {
+        
+        $data = Reloj::find($request->input('id_reloj'));
+
+        return response()->json(['success' => true, 'estado' => $data->estado]);
+    }
+
+    /* public function obtener_estado_reloj(Request $request)
     {
         $id_competencia = $request->input('id_competencia');
         $id_categoria = $request->input('id_categoria');
@@ -146,7 +213,7 @@ class RelojController extends Controller
         $data = Reloj::where('idCompetencia',  $id_competencia)->where('idCategoria',  $id_categoria)->first();
 
         return response()->json(['success' => true, 'estado' => $data->estado]);
-    }
+    } */
 
     public function obtenerCategoria(Request $request)
     {
@@ -273,8 +340,13 @@ class RelojController extends Controller
                 }
             }else{
                 if(RelojCompJuezController::yaExisteJuezEnReloj($objReloj->idReloj)){
-                    $data['acciones'] = "Salir";
-                    $data['funcion'] = "quitSala";
+                    if($objReloj->estado == 0){
+                        $data['acciones'] = "Salir";
+                        $data['funcion'] = "quitSala";
+                    }else{
+                        $data['acciones'] = "Ir al puntuador";
+                        $data['funcion'] = "irPuntuador";
+                    }
 
                 }else{
                     $data['acciones'] = "Anotarse";

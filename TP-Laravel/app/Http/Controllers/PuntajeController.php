@@ -113,7 +113,7 @@ class PuntajeController extends Controller
     public function  puntuadorindex()
     {
         //filtrar competencias por incripcion de juez
-        $user = auth()->user();
+        /* $user = auth()->user();
 
         $competencias = Competencia::select('competencias.*')
                     ->join('competenciajueces', 'competencias.idCompetencia', '=', 'competenciajueces.idCompetencia')
@@ -126,10 +126,49 @@ class PuntajeController extends Controller
         //por el momento muestra todas las categorias, seria buena idea solo mostrar las que tienen participantes
         $categorias = Categoria::all();
 
-        return view('puntuador.index', compact('competencias', 'categorias'));
+        return view('puntuador.index', compact('competencias', 'categorias')); */
+        return view('puntuador.index');
     }
 
-    public function iniciar_puntaje(Request $request)
+    public function iniciar_puntaje($idReloj)
+    {
+        $reloj = Reloj::find($idReloj);
+
+        $id_competencia = $reloj->idCompetencia;
+
+        $competidor = $reloj->competenciaCompetidor->competidor;
+        $competencia = $reloj->competencia;
+
+        $competencia_competidor = $reloj->competenciaCompetidor;
+        $competenciaJuez = CompetenciaJuez::where('idCompetencia', '=', $id_competencia)
+                ->where('idJuez', '=', auth()->user()->id)
+                ->get();
+
+        $existePrimeraPasada = Puntaje::where('idCompetenciaCompetidor', "=", $competencia_competidor->idCompetenciaCompetidor)
+                ->where('idCompetenciaJuez', "=", $competenciaJuez[0]->idCompetenciaJuez)
+                ->get();
+
+        /* $pasada = (($existePrimeraPasada->count() === 0) ? 1 : 2); */
+        $pasada = 1;
+
+        //Busco el poomsae que corresponde a la pasada actual
+        $competenciaCompetidorPoomsae = CompetenciaCompetidorPoomsae::where('idCompetenciaCompetidor', '=', $competencia_competidor->idCompetenciaCompetidor)
+                ->where('pasadas', '=', $pasada)
+                ->get();
+
+        $arrayPoomsaes = [];
+        //cambios para que al poomsae lo trate como array
+        foreach ($competenciaCompetidorPoomsae as $item) {
+            $arrayPoomsaes[] = Poomsae::find($item->idPoomsae);
+        }
+
+        //modificando para que se cree primero el puntaje y despues solo se actualice
+        /* $this->store($competencia_competidor[0]->idCompetenciaCompetidor, $competenciaJuez[0]->idCompetenciaJuez); */
+
+        return view('puntuador.puntuador', ['reloj' => $reloj, 'competencia' => $competencia, 'arrayPoomsaes' => $arrayPoomsaes, 'competidor' => $competidor, 'competencia_competidor' => $competencia_competidor, 'competencia_juez' => $competenciaJuez, 'pasada' => $pasada]);
+    }
+
+    /* public function iniciar_puntaje(Request $request)
     {
         $id_competencia = $request->input('competencia');
         $id_competidor = $request->input('competidor');
@@ -156,7 +195,7 @@ class PuntajeController extends Controller
         //modificando para que se cree primero el puntaje y despues solo se actualice
         $this->store($competencia_competidor[0]->idCompetenciaCompetidor, $competenciaJuez[0]->idCompetenciaJuez);
         return view('puntuador.puntuador', ['competencia' => $competencia, 'arrayPoomsaes' => $arrayPoomsaes, 'competidor' => $competidor, 'competencia_competidor' => $competencia_competidor, 'competencia_juez' => $competenciaJuez, 'pasada' => $pasada]);
-    }
+    } */
 
     public function actualizar_puntaje(Request $request)
     {
