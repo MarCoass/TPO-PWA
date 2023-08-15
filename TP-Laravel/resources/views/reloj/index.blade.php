@@ -53,7 +53,7 @@
                     var colores = "bg-success text-white";
                 }
 
-                var row = `
+                /* var row = `
             <tr> 
                 <td>
                     <div class="card ` + colores + `">
@@ -69,7 +69,34 @@
                                 <p class="card-text">` + item.estado + `</p>           
                             </div>
                             <div class="col">
-                                <p class="card-text lead"> Acciones</p>
+                                <p class="card-text lead"> Acciones</p>`
+                                // Aquí se usa otro bucle para crear los botones con las opciones del array 
+                                $.each(item.opciones, function(i, opcion){ 
+                                    row += `<button onclick=` + opcion.funcion + `(` + item.id + `)` + 
+                                    ` class="btn btn-primary `+ opcion.disabled + `">` + opcion.accion + ` </button> ;` }); `
+                            </div>
+                        </div> 
+                    </div>
+                </td>
+            </tr>`; */
+
+            var row = `
+            <tr> 
+                <td>
+                    <div class="card ` + colores + `">
+                        <div class="card-header"> <span class="lead" > ` + item.nombreApellidoCompetidor +
+                    `</span> <span class="fw-bold" >` + item.competencia + ` </span> ` + item.categoria + `</div> 
+                        <div class="card-body row"> 
+                            <div class="col">
+                                <p class="card-text lead"> Jueces activos</p> 
+                                <h5 class=" card-title">` + item.juecesInscriptos.length + ` de ` + item.cantJueces + `</h5> 
+                            </div>
+                            <div class="col">
+                                <p class="card-text lead"> Estado </p>
+                                <p class="card-text">` + item.estado + `</p>           
+                            </div>
+                            <div class="col">
+                                <p class="card-text lead"> Acciones</p> 
                                 <button onclick=` + item.funcion + '(' + item.id + ')' + ` class="btn btn-primary ` +
                     disabled + `">` + item.acciones + `</button> 
                             </div>
