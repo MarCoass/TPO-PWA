@@ -12,7 +12,7 @@ class Puntaje extends Model
 
     protected $primaryKey = 'idPuntaje';
 
-    protected $fillable = ['idCompetenciaCompetidor', 'idCompetenciaJuez', 'puntajePresentacion', 'puntajeExactitud', 'pasada', 'overtime'];
+    protected $fillable = ['idCompetenciaCompetidor', 'idCompetenciaJuez', 'puntajePresentacion', 'puntajeExactitud', 'pasada', 'overtime', 'estadoPuntaje'];
 
     public function competenciaCompetidor()
     {

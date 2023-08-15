@@ -21,6 +21,7 @@ return new class extends Migration
             $table->float('puntajeExactitud');
             $table->integer('pasada');
             $table->time('overtime');
+            $table->integer('estadoPuntaje')->default(0);
             $table->timestamps();
 
             $table->foreign('idCompetenciaCompetidor')->references('idCompetenciaCompetidor')->on('competenciacompetidor');
