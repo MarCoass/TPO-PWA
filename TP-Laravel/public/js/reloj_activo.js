@@ -1,5 +1,6 @@
-var id_competencia = document.getElementById('id_competencia').value;
-var id_categoria = document.getElementById('id_categoria').value;
+/* var id_competencia = document.getElementById('id_competencia').value;
+var id_categoria = document.getElementById('id_categoria').value; */
+var id_reloj = document.getElementById('id_reloj').value;
 var btn = document.getElementById('siguientePuntuacion_'+id_competencia);
 const PUNTAJE = $("#puntajeId");
 var yaEstuvoEnCero = false;
@@ -14,13 +15,14 @@ function actualizarBotones(){
         dataType: 'json',
         data: {
             _token: '{{ csrf_token() }}',
-            id_competencia: id_competencia,
-            id_categoria:  id_categoria,
+            id_reloj:  id_reloj,
+            /* id_competencia: id_competencia,
+            id_categoria:  id_categoria, */
         },
         success: function(response) {
             
             //desactivo y activo los botones para no generar acumulacion
-            if (response.estado==1) {
+            if (response.estado==3) {
                 $(".pulsadorIzq").off("click").on("click", function () {
                     let puntaje = parseFloat(PUNTAJE.text()) - 0.3;
                     if (puntaje > 0) {
@@ -43,7 +45,7 @@ function actualizarBotones(){
             }
             console.log("entre" + yaEstuvoEnCero)
             
-            if (response.estado==0 && yaEstuvoEnCero) {
+            if (response.estado==4 && yaEstuvoEnCero) {
                 //console.log(response)
                 btn.classList.remove('disabled');
            }else{

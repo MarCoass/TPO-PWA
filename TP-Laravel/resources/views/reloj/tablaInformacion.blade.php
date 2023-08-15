@@ -3,8 +3,7 @@
         <h3 class="display-5">Estado de Puntuación</h3>
         <div class="alert alert-success mx-auto mt-3 border border-success d-flex align-items-center justify-content-center"
             role="alert" style="width: 50%">
-            <h5 class="mt-1">Competidor: <span id="nombreCompetidor" class="text-decoration-underline">Esperando
-                    competidor...</span></h5>
+            <h5 class="mt-1">Competidor: <span class="text-decoration-underline">{{ $reloj->competenciaCompetidor->competidor->nombre }} {{ $reloj->competenciaCompetidor->competidor->apellido }}</span></h5>
         </div>
         <table class="table table-bordered" id="tabla-jueces">
             <thead>
@@ -15,7 +14,7 @@
                 </tr>
             </thead>
             <tbody id="tbody-jueces">
-                @for ($i = 0; $i < $cantJueces; $i++)
+                @for ($i = 0; $i < $reloj->cantJueces; $i++)
                     <tr class="rowJuez{{ $i }}">
                         <th id="nombreJuez{{ $i }}" class="align-middle">Esperando juez...</th>
                         <td id="primeraPasadaJuez{{ $i }}">

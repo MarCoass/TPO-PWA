@@ -10,6 +10,7 @@
         @include('puntuador.partials.vistaNoDisponible')
 
     </div>
+    <input type="hidden" name="id_reloj" id="id_reloj" value="{{ $reloj->idReloj }}">
     <input type="hidden" name="id_competencia" id="id_competencia" value="{{ $competencia[0]->idCompetencia }}">
     <input type="hidden" name="id_categoria" id="id_categoria" value="{{ $competencia_competidor[0]->idCategoria }}">
 
