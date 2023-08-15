@@ -11,8 +11,8 @@
 
     </div>
     <input type="hidden" name="id_reloj" id="id_reloj" value="{{ $reloj->idReloj }}">
-    <input type="hidden" name="id_competencia" id="id_competencia" value="{{ $competencia[0]->idCompetencia }}">
-    <input type="hidden" name="id_categoria" id="id_categoria" value="{{ $competencia_competidor[0]->idCategoria }}">
+    <input type="hidden" name="id_competencia" id="id_competencia" value="{{ $reloj->idCompetencia }}">
+    <input type="hidden" name="id_categoria" id="id_categoria" value="{{ $reloj->competenciaCompetidor->categoria->idCategoria }}">
 
     <div class="mobile">
         <div class="vertical">
@@ -36,8 +36,8 @@
 
                 <h2>Puntaje: <span id="puntajeId" class="puntaje">4</span>
                 </h2>
-                <p>Competidor: <span class="fw-bold">{{ $competidor[0]->nombre }}
-                        {{ $competidor[0]->apellido }}</span> <br>Poomsae:
+                <p>Competidor: <span class="fw-bold">{{ $competidor->nombre }}
+                        {{ $competidor->apellido }}</span> <br>Poomsae:
                     <span class="fw-bold">
                         @foreach ($arrayPoomsaes as $poomsae)
                             {{ $poomsae->nombre }}
@@ -47,7 +47,7 @@
                 </p>
 
                 <button type="button" class="btn btn-success disabled"
-                    id="siguientePuntuacion_{{ $competencia[0]->idCompetencia }}">
+                    id="siguientePuntuacion_{{ $competencia->idCompetencia }}">
                     Siguiente
                 </button>
                 <button type="button" class="btn btn-success d-none" data-bs-toggle="modal" data-bs-target="#modal"
@@ -67,7 +67,7 @@
 
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title fs-5" id="modalLabel">Confirmar puntuacion {{ $competidor[0]->nombre }} {{ $competidor[0]->apellido }}</h4>
+                                <h4 class="modal-title fs-5" id="modalLabel">Confirmar puntuacion {{ $competidor->nombre }} {{ $competidor->apellido }}</h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
@@ -82,7 +82,7 @@
                                 <input type="hidden" id="pasada" name="pasada" value='{{ $pasada }}'>
                                 <input type="hidden" id="overtime" name="overtime" value='0'>
                                 <input type="hidden" id="idCompetenciaCompetidor" name="idCompetenciaCompetidor"
-                                    value='{{ $competencia_competidor[0]->idCompetenciaCompetidor }}'>
+                                    value='{{ $competencia_competidor->idCompetenciaCompetidor }}'>
                                 <input type="hidden" id="idCompetenciaJuez" name="idCompetenciaJuez"
                                     value='{{ $competencia_juez[0]->idCompetenciaJuez }}'>
                             </div>
