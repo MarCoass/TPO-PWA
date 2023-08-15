@@ -216,7 +216,12 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/puntuador/puntuador', function(){return view('puntuador.puntuador');})->middleware(['rol:2'])->name('puntuador');
         Route::get('/puntuador/index',  [PuntajeController::class, 'puntuadorindex'])->middleware(['rol:2'])->name('puntuador_index');
         Route::get('/opciones_competidor', [PuntajeController::class, 'obtenerOpcionesCompetidorCategoria'])->middleware(['rol:1,2']);
-        Route::post('/iniciar_puntaje', [PuntajeController::class, 'iniciar_puntaje'])->middleware(['rol:2'])->name('iniciar_puntaje');
+        
+        
+        /* Route::post('/iniciar_puntaje', [PuntajeController::class, 'iniciar_puntaje'])->middleware(['rol:2'])->name('iniciar_puntaje'); */
+        Route::get('/iniciar_puntaje/{idReloj}', [PuntajeController::class, 'iniciar_puntaje'])->middleware(['rol:2'])->name('iniciar_puntaje');
+        
+        
         Route::post('/actualizar_puntaje', [PuntajeController::class, 'actualizar_puntaje'])->middleware(['rol:2'])->name('actualizar_puntaje');
         Route::post('/validarJueces',[CompetenciaCompetidorController::class, 'validarJueces']);
         Route::get('/calcularPuntajePasada',[CompetenciaCompetidorController::class, 'calcularPuntajePasada']);
@@ -235,12 +240,14 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/relojes',[RelojController::class, 'obtenerRelojes']);
 
 
-        
+
         Route::post('/unirseSala',[RelojCompJuezController::class, 'unirseASala']);
         Route::post('/salirSala',[RelojCompJuezController::class, 'salirSala']);
         Route::post('/quitarJuez',[RelojCompJuezController::class, 'quitarJuez']);
         Route::get('/competenciasActivas/{id}',[RelojController::class,'obtenerCompetidoresDeUnaCompetencia']);
         Route::post('/construir_reloj',[RelojController::class,'construirRelojCompetidor']);
+
+        route::get('/control_cronometro/{idReloj}',[RelojController::class, 'controlCronometro']);
 
 
 
