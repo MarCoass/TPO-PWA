@@ -128,6 +128,10 @@
             });
         }
 
+        function irPuntuador(idReloj) {
+            location.href = "/iniciar_puntaje/" + idReloj ;
+        }
+
 
         
 </script>
