@@ -11,28 +11,28 @@
 @section('contenido')
     <div class="p-3">
         <div class="col-md-12 text-center">
-            <h3 class="display-5" id="contador_{{ $id_competencia }}">90 seg.</h3>
+            <h3 class="display-5" id="contador_{{ $reloj->competencia->idCompetencia }}">90 seg.</h3>
         </div>
-        <input type="hidden" name="id_competencia" id="id_competencia" value="{{ $id_competencia }}">
-        <input type="hidden" name="id_categoria" id="id_categoria" value="{{ $id_categoria }}">
-        <input type="hidden" name="cantJueces" id="cantJueces" value="{{ $cantJueces }}">
-        <input type="hidden" name="idReloj" id="idReloj" value="{{ $idReloj }}">
+        <input type="hidden" name="id_competencia" id="id_competencia" value="{{ $reloj->competencia->idCompetencia }}">
+        <input type="hidden" name="id_categoria" id="id_categoria" value="{{ $reloj->categoria->idCategoria }}">
+        <input type="hidden" name="cantJueces" id="cantJueces" value="{{ $reloj->cantJueces }}">
+        <input type="hidden" name="idReloj" id="idReloj" value="{{ $reloj->idReloj }}">
 
         <div class="col-md-12 text-center">
-            <button type="button" onclick="iniciarCronometro({{ $id_competencia }})"
-                class="btn btn-outline-primary btn-lg me-2" id="inicio-contador_{{ $id_competencia }}">
+            <button type="button" onclick="iniciarCronometro({{ $reloj->competencia->idCompetencia }})"
+                class="btn btn-outline-primary btn-lg me-2" id="inicio-contador_{{ $reloj->competencia->idCompetencia }}">
                 <i class="bi bi-play me-1"></i>Iniciar
             </button>
-            <button type="button" onclick="detenerCronometro({{ $id_competencia }})"
-                class="btn btn-outline-danger btn-lg disabled" id="fin-contador_{{ $id_competencia }}">
+            <button type="button" onclick="detenerCronometro({{ $reloj->competencia->idCompetencia }})"
+                class="btn btn-outline-danger btn-lg disabled" id="fin-contador_{{ $reloj->competencia->idCompetencia }}">
                 <i class="bi bi-stop me-1"></i>Terminar
             </button>
         </div>
 
-        <input type="hidden" id='overtime_{{ $id_competencia }}' name="overtime_{{ $id_competencia }}">
+        <input type="hidden" id='overtime_{{ $reloj->competencia->idCompetencia }}' name="overtime_{{ $reloj->competencia->idCompetencia }}">
 
         <div class="col-md-12 text-center">
-            <p class="display-6" id="tiempo-total_{{ $id_competencia }}"></p>
+            <p class="display-6" id="tiempo-total_{{ $reloj->competencia->idCompetencia }}"></p>
         </div>
     </div>
 
