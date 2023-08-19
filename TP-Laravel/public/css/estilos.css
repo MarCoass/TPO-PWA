@@ -87,6 +87,11 @@
     transition: background 2s;
   }
 
+.transicion2 {
+    /* Aplica la transición */
+    transition: background .7s;
+  }
+
 #contenedorImagenes .figure{
   cursor: pointer;
 }
