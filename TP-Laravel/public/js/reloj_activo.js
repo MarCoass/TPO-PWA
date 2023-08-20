@@ -29,7 +29,6 @@ function actualizarBotones(){
 
             if (response.estado == 1) { 
                 estados.text("esperando jueces") 
-                
             }
 
             if (response.estado == 2 || response.estado == 6) {

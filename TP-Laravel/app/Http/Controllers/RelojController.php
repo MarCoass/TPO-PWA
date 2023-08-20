@@ -55,44 +55,76 @@ class RelojController extends Controller
                     $armarPuntajeJuez->pasada = $i;
                     
                     $armarPuntajeJuez->save();
-                    
                 }
-    
             }
             $reloj->estado = 1;
             $reloj->save();
         }
 
-        // condicional para que no me cambie el estado inicial del reloj
-        /* if($reloj->estado = 0){
-        } */
-
+        $darEstados = $this->darEstados($reloj->estado);
 
         $verJueces = Puntaje::all();
         
-
-        return view('reloj.cronometro', compact('reloj', 'verJueces'));
+        return view('reloj.cronometro', compact('reloj', 'verJueces', 'darEstados'));
     }
 
-    /* public function cronometro(Request $request)
-    {
-        $id_competenciaCompetidor = $request->input('competidor');
-        $id_competencia = $request->input('idCompetencia');
-        $id_categoria = $request->input('categoria');
-        $cantJueces = $request->input('cantJueces');
-        //por si se tiene que iniciar aca hay que cambiar los nombre de los input en la vista
-        //que se envia por post para que coincidan con las que se usan en el start o
-        //a la inversa.
-        $idReloj = $this->store($request);
+    private function infoEstados($valorestado){
+        $estados = [
+            0 => 'Esperando inscripcion Jueces',
+            1 => 'Jueces completos',
+            2 => 'Por comenzar 1ra pasada',
+            3 => 'En primera pasada',
+            4 => 'Finaliza primera pasada',
+            5 => 'Esperando puntaje 1ra presentacion',
+            6 => 'Por comenzar 2da pasada',
+            7 => 'En segunda pasada',
+            8 => 'Finaliza segunda pasada',
+            9 => 'Esperando puntaje 2da presentacion',
+            10 => 'Puntuacion Finalizada'
+        ];
+
+        foreach ($estados as $indice => $estado) {
+            if ($valorestado == $indice) {
+                $estadoActual = $estado;
+                break;
+            }
+        }
+        
+        return $estadoActual;
+    }
 
 
-        $opciones =  Competidor::leftJoin('competenciacompetidor', 'competidores.idCompetidor', '=', 'competenciacompetidor.idCompetidor')
-            ->where('competenciacompetidor.idCompetencia', '=', $id_competencia)
-            ->where('competenciacompetidor.idCategoria', '=', $id_categoria)->get();
+    private function darEstados($valorestado){
 
-        return view('reloj.cronometro', compact('id_competencia', 'id_categoria', 'cantJueces', 'opciones', 'idReloj'));
-    } */
+        $estados = [
+            0 => 'Reloj creado',
+            1 => 'Esperando jueces',
+            2 => 'Anunciar 1ra pasada',
+            3 => 'En primera pasada',
+            4 => 'Termina primera pasada',
+            5 => 'puntaje presentacion 1ra',
+            6 => 'Anunciar 2da pasada',
+            7 => 'En segunda pasada',
+            8 => 'Termina segunda pasada',
+            9 => 'Puntaje presentacion 2da',
+            10 => 'Puntuacion Finalizada',
+            11 => '...'
+        ];
 
+        foreach ($estados as $indice => $estado) {
+            if ($valorestado == $indice) {
+                $estadoAnterior = $estados[$indice - 1];
+                $estadoActual = $estado;
+                $estadoSiguiente = $estados[$indice + 1];
+                break;
+            }
+        }
+        $darEstados = [$estadoAnterior, $estadoActual, $estadoSiguiente];
+
+        return $darEstados;
+    }
+
+    //Arma el reloj y lo deja en estado 0 para que ingresen jueces
     public function construirRelojCompetidor(Request $request)
     {    
         $id_competenciaCompetidor = $request->input('competidor');
@@ -129,100 +161,77 @@ class RelojController extends Controller
         return response()->json($mensaje);
     }
 
-    // Creacion de reloj de un competidor de la competencia
-    /* public function store(Request $request)
+    // Funcion que cambia etapas
+    public function siguienteEstado(Request $request)
     {
-        
-        $id_competencia = $request->input('competencia');
-        $id_categoria = $request->input('categoria');
-        $id_competenciaCompetidor = $request->input('competenciacompetidor');
-        
-        $duplicado = Reloj::where('idCompetencia',  $id_competencia)->where('idCategoria',  $id_categoria)->where('idCompetenciaCompetidor', $id_competenciaCompetidor)->first();
 
-        if ($duplicado != null) {
-            $reloj = Reloj::find($duplicado->idReloj);
-        } else {
-            $reloj = new Reloj();
+        $idReloj = $request['idReloj'];
+        $mensaje = ['success' => false];
+
+        $reloj = Reloj::find($idReloj);
+        if($reloj->estado < 9){
+            $reloj->estado++;
+            $mensaje = ['success' => true];
+        }else{
+            if($reloj->estado == 9){ $reloj->estado++; };
+            $mensaje = ['finPuntuacion' => true];
         }
-
-        $reloj->cantJueces = $request->input('cantJueces');
-        $reloj->estado = 0;
-        $reloj->overtime = 0;
-        $competencia = Competencia::find($id_competencia);
-        $reloj->competencia()->associate($competencia);
-
-        $categoria = Categoria::find($id_categoria);
-        $reloj->categoria()->associate($categoria);
-
-        $competenciaCompetidor = CompetenciaCompetidor::find($id_competenciaCompetidor);
-        $reloj->competencia()->associate($competenciaCompetidor);
-
-
         $reloj->save();
 
+        return response()->json($mensaje);
+    }
 
-        return $reloj->idReloj;
-    } */
-
+    // Funcion que pertenece a la etapa 2 y 6 que da inicio de las etapas 3 y 7
     public function start(Request $request)
     {
 
         $idReloj = $request['idReloj'];
+        $mensaje = ['success' => false];
+
         $reloj = Reloj::find($idReloj);
-        $reloj->estado = 3;
+        if($reloj->estado == 6 || $reloj->estado == 2){
+            $reloj->estado == 2 ? $reloj->estado = 3 : $reloj->estado = 7;
+            $mensaje = ['success' => true];
+        }
         $reloj->save();
 
-        //armar condicional para 2da pasada
-
-        return response()->json(['success' => true]);
+        return response()->json($mensaje);
     }
 
+    // Funcion que pertenece a la etapa 3 y 7 que da inicio de las etapas 4 y 8
     public function stop(Request $request)
     {
         $overtime = $request->input('overtime');
-        $id_competencia = $request->input('id_competencia');
-        $id_categoria = $request->input('id_categoria');
-
-        $data = Reloj::where('idCompetencia',  $id_competencia)->where('idCategoria',  $id_categoria)->first();
-        $reloj = Reloj::find($data->idReloj);
-        $reloj->estado = 4;
-        $reloj->overtime = $overtime;
+        $idReloj = $request['idReloj'];
+        $mensaje = ['success' => false];
+    
+        $reloj = Reloj::find($idReloj);
+        if($reloj->estado == 7 || $reloj->estado == 3){
+            $reloj->estado == 3 ? $reloj->estado = 4 : $reloj->estado = 8;
+            $reloj->overtime = $overtime;
+            $mensaje = ['success' => true];
+        }
 
         $reloj->save();
 
-        //armar condicional para 2da pasada
-
-
-        return response()->json(['success' => true]);
+        return response()->json($mensaje);
     }
 
 
     public function obtener_estado_reloj(Request $request)
     {
-        
         $data = Reloj::find($request->input('id_reloj'));
 
         return response()->json(['success' => true, 'estado' => $data->estado]);
     }
 
-    /* public function obtener_estado_reloj(Request $request)
-    {
-        $id_competencia = $request->input('id_competencia');
-        $id_categoria = $request->input('id_categoria');
-
-        $data = Reloj::where('idCompetencia',  $id_competencia)->where('idCategoria',  $id_categoria)->first();
-
-        return response()->json(['success' => true, 'estado' => $data->estado]);
-    } */
-
+    // es para el modal de creacion de reloj
     public function obtenerCategoria(Request $request)
     {
         $id_competencia = $request->input('competencia');
-
         $user = auth()->user();
 
         if ($user->idRol == 1) {
-
             $categoria = Competencia::join('competenciaCompetidor', 'competencias.idCompetencia', '=', 'competenciaCompetidor.idCompetencia')
             ->join('categorias', 'competenciaCompetidor.idCategoria', '=', 'categorias.idCategoria')
             ->select('categorias.idCategoria', 'categorias.nombre', 'categorias.genero')
@@ -230,7 +239,6 @@ class RelojController extends Controller
             ->where('competenciaCompetidor.puntaje', 0)
             ->distinct()
             ->get();
-
         } 
         if (!is_null($categoria) && count($categoria) != 0) {
             return response()->json($categoria);
@@ -239,11 +247,14 @@ class RelojController extends Controller
         }
     }
 
-    public function buscarPuntuacionActual(Request $request)
-    {
-        $idCategoria = $request->input('id_categoria');
-        $idCompetencia = $request->input('id_competencia');
-        //Aca se supone que los puntajes ya fueron creados (o no, hace falta agregar una validacion de que algo retorna)
+    // Es para enviar informacion al cronometro del administrado
+    public function buscarPuntuacionActual($idReloj){
+
+        //tengo el obj reloj
+        $reloj = Reloj::find($idReloj);
+
+        $idCategoria = $reloj->idCategoria;
+        $idCompetencia = $reloj->idCompetencia;
 
         //trae el idCompetenciaCompetidor del ultimo puntaje creado para la categoria y competencia
         $idCompetenciaCompetidor = Puntaje::join('competenciaCompetidor', 'puntajes.idCompetenciaCompetidor', '=', 'competenciaCompetidor.idCompetenciaCompetidor')
@@ -253,11 +264,11 @@ class RelojController extends Controller
             ->select('competenciaCompetidor.idCompetenciaCompetidor')
             ->first();
 
-
         //Busco los ultimos puntaje creado para la categoria actual, para saber cual es el competidor
         if($idCompetenciaCompetidor != null){
-            $puntajes = Puntaje::where('idCompetenciaCompetidor', $idCompetenciaCompetidor->idCompetenciaCompetidor)->orderBy('idCompetenciaJuez', 'desc')->get();
-       
+            $puntajes = Puntaje::where('idCompetenciaCompetidor', $idCompetenciaCompetidor->idCompetenciaCompetidor)
+                    ->orderBy('idCompetenciaJuez', 'desc')
+                    ->get();
        
         //los agrupo en arrays segun la pasada
         $puntajesPrimeraPasada = [];
@@ -283,19 +294,68 @@ class RelojController extends Controller
             $nombresJueces[] = $juez->nombre . " " . $juez->apellido;
         }
 
+        $darEstados = $this->darEstados($reloj->estado);
+        $siguiente = $this->siguientePasoHab($reloj->estado,$puntajesPrimeraPasada,$puntajesSegundaPasada);
+
         $response = [
             'primeraPasada' => $puntajesPrimeraPasada,
             'segundaPasada' => $puntajesSegundaPasada,
             'competidor' => $nombreCompetidor,
             'jueces' => $nombresJueces,
             'categoriaTerminada' => $this->categoriaTerminada($idCategoria),
-            'success' => 1
+            'success' => 1,
+            'cantJueces' => $reloj->cantJueces,
+            'estados' => $darEstados,
+            'habBoton' => $siguiente,
+            'estadoReloj' => $reloj->estado
         ];
 
     }else{
         $response = ['success' => 0];
     }
         return response()->json($response);
+    }
+
+    // es para habilitar el boton de siguiente
+    private function siguientePasoHab($estado, $primeraPasada, $segundaPasada){
+        $habBoton = false;
+
+        if ($estado == 1){
+            //esperando que entren jueces
+            $habBoton = true;
+        }
+        if ($estado == 4 || $estado == 8){
+            $habBoton = true;
+        }
+        if ($estado == 5){
+            // se habilita el boton cuando primera pasada esta completa
+            $habBoton = true;
+            $esCierto = 0;
+            foreach ($primeraPasada as $pasada){
+                if(intval($pasada['estadoPuntaje']) == 0){
+                    $esCierto = 1;
+                    break;
+                }
+            }
+            if($esCierto == 1){
+                $habBoton = false;
+            }
+        }
+        if ($estado == 9){
+            // se habilita el boton cuando segunda pasada esta completa
+            $habBoton = true;
+            $esCierto = 0;
+            foreach ($segundaPasada as $pasada){
+                if(intval($pasada['estadoPuntaje']) == 0){
+                    $esCierto = 1;
+                    break;
+                }
+            }
+            if($esCierto == 1){
+                $habBoton = false;
+            }
+        }
+        return $habBoton;
     }
 
     //Esta funcion se fija si quedan competidores de la categoria sin calificar
@@ -308,7 +368,7 @@ class RelojController extends Controller
         return $categoriaTerminada;
     }
 
-
+    // se obtiene info de relojes para admin y jueces
     public function obtenerRelojes()
     {
         $objRelojes = Reloj::all();
@@ -328,16 +388,24 @@ class RelojController extends Controller
             $data['cantJueces'] = $objReloj->cantJueces;
             $data['juecesInscriptos'] = $objRelComJuez;
             $data['estado'] = $objReloj->estado;
+            $data['textEstado'] = $this->infoEstados($objReloj->estado);
             
+            // aca despliego opciones para los admins
             if($user->idRol == 1){
                 if(RelojCompJuezController::cantJuecesEnReloj($objReloj->idReloj) >= $objReloj->cantJueces){
-                    $data['acciones'] = "Iniciar Cronometro";
+                    if($objReloj->estado > 2){
+                        $data['acciones'] = "Ir al Cronometro";
+                    }else{
+                        $data['acciones'] = "Iniciar Cronometro";
+                    }
                     $data['funcion'] = "iniciarPuntuador";
                     
                 }else{
                     $data['acciones'] = "Esperando Jueces";
                     $data['disabled'] = "disabled";
                 }
+
+            // este else depliega opciones para los jueces
             }else{
                 if(RelojCompJuezController::yaExisteJuezEnReloj($objReloj->idReloj)){
                     if($objReloj->estado == 0){
@@ -360,7 +428,7 @@ class RelojController extends Controller
         return response()->json($dataRelojes);
     }
 
-    /* Funcion que devuelve el poomsae de un competidor y lo renderiza en un modal */
+    /* Funcion que devuelve un competidor y lo renderiza en un modal */
     public function obtenerCompetidoresDeUnaCompetencia($idCompetencia){
 
         $competencia = $idCompetencia;

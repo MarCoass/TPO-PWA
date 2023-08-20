@@ -1,5 +1,10 @@
 <div class="p-3 row">
     <div class="col text-center">
+        <div class="row">
+            <button class="col btn btn-success disabled" id="botonAnterior"><span class="ft-bold display-5">{{ $darEstados[0]}}</span></button>
+            <button class="col btn btn-success active" id="botonActual"><span class="ft-bold display-5">{{ $darEstados[1]}}</span></button>
+            <button class="col btn btn-success disabled" id="botonSiguiente"><span class="ft-bold display-5">{{ $darEstados[2]}}</span></button>
+        </div>
         <h3 class="display-5">Estado de Puntuación</h3>
         <div class="alert alert-success mx-auto mt-3 border border-success d-flex align-items-center justify-content-center"
             role="alert" style="width: 50%">

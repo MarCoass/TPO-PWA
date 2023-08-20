@@ -229,7 +229,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::post('/cargarPuntaje', [PuntajeController::class, 'store'])->middleware(['rol:2'])->name('puntaje.store');
 
         Route::patch('/actualizarPuntaje', [PuntajeController::class, 'update'])->middleware(['rol:2']);
-        
+
         //Route::get('/verPuntaje', [PuntajeController::class, 'show'])->middleware(['rol:2'])->name('puntaje.show');
         Route::get('/verPuntaje/{puntaje}', [PuntajeController::class, 'show'])->middleware(['rol:2'])->name('puntuador.show');
         Route::get('/verPuntajeFinal/{competenciaCompetidor}', [CompetenciaCompetidorController::class, 'puntajeFinal'])->name('puntajeFinal.show');
@@ -252,11 +252,11 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         route::get('/control_cronometro/{idReloj}',[RelojController::class, 'controlCronometro']);
 
 
-
+        Route::post('/siguiente_estado', [RelojController::class, 'siguienteEstado'])->middleware(['rol:1']);
         Route::get('/start', [RelojController::class, 'start'])->middleware(['rol:1']);
         Route::get('/stop', [RelojController::class, 'stop'])->middleware(['rol:1']);
         Route::get('/actualizar_reloj', [RelojController::class, 'obtener_estado_reloj']);
-        Route::get('/actualizar_informacion', [RelojController::class, 'buscarPuntuacionActual']);
+        Route::get('/actualizar_informacion/{idReloj}', [RelojController::class, 'buscarPuntuacionActual']);
     });
 
 });
