@@ -68,7 +68,11 @@
                             `;
                                 // itero la cantidad de jueces que estan inscripto
                             $.each(item.juecesInscriptos, function(i,juez){
-                                row += `<p> <button onclick=quitarJuez(`+ juez.idCompetenciaJuez +`,`+item.id+`) class="rounded-circle bg-danger text-white bi bi-x-circle me-2"></button> ` + juez.apellido + " " + juez.nombre + ` </p> `;
+                                row += `<p>`;
+                                    if(item.estado == 0){
+                                        row +=` <button onclick=quitarJuez(`+ juez.idCompetenciaJuez +`,`+item.id+`) class="rounded-circle bg-danger text-white bi bi-x-circle me-2"></button>`;
+                                    }
+                                row += ` ` + juez.apellido + " " + juez.nombre + ` </p> `;
                             });
                             
             row +=                `
