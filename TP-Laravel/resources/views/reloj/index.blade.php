@@ -44,7 +44,7 @@
                 // Comprobar si el elemento tiene el atributo disabled
                 if (item.disabled) {
                     // Asignar el atributo disabled a la variable
-                    disabled = "disabled";
+                    disabled = item.disabled;
                 }
                 // Crear una fila con los datos de cada registro
                 if (item.estado == 0 || item.estado == 4) {
@@ -53,33 +53,6 @@
                     var colores = "bg-success text-white";
                 }
 
-                /* var row = `
-            <tr> 
-                <td>
-                    <div class="card ` + colores + `">
-                        <div class="card-header"> <span class="lead" > ` + item.nombreApellidoCompetidor +
-                    `</span> <span class="fw-bold" >` + item.competencia + ` </span> ` + item.categoria + `</div> 
-                        <div class="card-body row"> 
-                            <div class="col">
-                                <p class="card-text lead"> Jueces activos</p> 
-                                <h5 class=" card-title">` + item.juecesInscriptos.length + ` de ` + item.cantJueces + `</h5> 
-                            </div>
-                            <div class="col">
-                                <p class="card-text lead"> Estado </p>
-                                <p class="card-text">` + item.estado + `</p>           
-                            </div>
-                            <div class="col">
-                                <p class="card-text lead"> Acciones</p>`
-                                // Aquí se usa otro bucle para crear los botones con las opciones del array 
-                                $.each(item.opciones, function(i, opcion){ 
-                                    row += `<button onclick=` + opcion.funcion + `(` + item.id + `)` + 
-                                    ` class="btn btn-primary `+ opcion.disabled + `">` + opcion.accion + ` </button> ;` }); `
-                            </div>
-                        </div> 
-                    </div>
-                </td>
-            </tr>`; */
-
             var row = `
             <tr> 
                 <td>
@@ -87,14 +60,26 @@
                         <div class="card-header"> <span class="lead" > ` + item.nombreApellidoCompetidor +
                     `</span> <span class="fw-bold" >` + item.competencia + ` </span> ` + item.categoria + `</div> 
                         <div class="card-body row"> 
+
+                            <!--  i n f o   d e   j u e c e s -->
                             <div class="col">
                                 <p class="card-text lead"> Jueces activos</p> 
-                                <h5 class=" card-title">` + item.juecesInscriptos.length + ` de ` + item.cantJueces + `</h5> 
+                                <h5 class="card-title">` + item.juecesInscriptos.length + ` de ` + item.cantJueces + `</h5> 
+                            `;
+                                // itero la cantidad de jueces que estan inscripto
+                            $.each(item.juecesInscriptos, function(i,juez){
+                                row += `<p> <button onclick=quitarJuez(`+ juez.idCompetenciaJuez +`,`+item.id+`) class="rounded-circle bg-danger text-white bi bi-x-circle me-2"></button> ` + juez.apellido + " " + juez.nombre + ` </p> `;
+                            });
+                            
+            row +=                `
                             </div>
+                            <!--  i n f o   d e   e s t a d o -->
                             <div class="col">
                                 <p class="card-text lead"> Estado </p>
-                                <p class="card-text">` + item.estado + `</p>           
+                                <h5 class="card-text">` + item.textEstado + `</h5>           
                             </div>
+
+                            <!--  i n f o   d e   a c c i o n e s -->
                             <div class="col">
                                 <p class="card-text lead"> Acciones</p> 
                                 <button onclick=` + item.funcion + '(' + item.id + ')' + ` class="btn btn-primary ` +
@@ -113,8 +98,6 @@
 
         // Ejecutar la función getData cada 1 segundo
         setInterval(getData, 5000);
-
-
 
         //esto es para buscar categorias donde hayan competidores de una competencia
         $(document).ready(function() {
@@ -164,6 +147,24 @@
 
         function iniciarPuntuador(n) {
             location.href = "/control_cronometro/" + n ;
+        }
+
+        function quitarJuez(n,idReloj){
+            $.ajax({
+                url: "/quitarJuez",
+                type: "POST",
+                dataType: "json",
+                data: {
+                    _token: $('meta[name="csrf-token"]').attr('content'),
+                    idCompetenciaJuez: n,
+                    idReloj
+                },
+                success: function (response) {
+                    if(response.success){
+                        getData();
+                    }
+                },
+            });
         }
 
 

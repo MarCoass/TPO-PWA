@@ -129,5 +129,29 @@ class RelojCompJuezController extends Controller
         
         return response()->json($mensaje);
     }
+    
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function quitarJuez(request $request)
+    {
+        $mensaje = [];
+        $RelojCompJuez = RelojCompJuez::where('idReloj',$request->input('idReloj'))
+        ->where('idCompetenciaJuez',$request->input('idCompetenciaJuez'))
+        ->first();
+
+        if($RelojCompJuez){
+            $RelojCompJuez->delete();
+
+            $mensaje = ['success' => true];
+        }else{
+            $mensaje = ['success' => $RelojCompJuez];
+        }
+        
+        return response()->json($mensaje);
+    }
 }
     

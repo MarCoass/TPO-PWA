@@ -379,7 +379,12 @@ class RelojController extends Controller
 
         foreach ($objRelojes as $objReloj){
 
-            $objRelComJuez = RelojCompJuez::where('idReloj', $objReloj->idReloj)->get();
+            //hago union de las tablas competenciajuez, users y relojcompjuez
+            $objRelComJuez = RelojCompJuez::join("competenciajueces", "competenciajueces.idCompetenciaJuez", "=", "RelojCompJuez.idCompetenciaJuez")
+            ->join("users", "users.id", "=", "competenciajueces.idJuez")
+            ->where("RelojCompJuez.idReloj", $objReloj->idReloj)
+            ->select("RelojCompJuez.idCompetenciaJuez","users.nombre","users.apellido")
+            ->get();
 
             $data['id'] = $objReloj->idReloj;
             $data['competencia'] = $objReloj->competencia->nombre;
@@ -399,6 +404,10 @@ class RelojController extends Controller
                         $data['acciones'] = "Iniciar Cronometro";
                     }
                     $data['funcion'] = "iniciarPuntuador";
+
+                    if($objReloj->estado == 10){
+                        $data['disabled'] = "d-none";
+                    }
                     
                 }else{
                     $data['acciones'] = "Esperando Jueces";
@@ -417,8 +426,13 @@ class RelojController extends Controller
                     }
 
                 }else{
-                    $data['acciones'] = "Anotarse";
-                    $data['funcion'] = "joinSala";
+                    if($objReloj->estado > 0){
+                        $data['acciones'] = "...";
+                        $data['funcion'] = "nada";
+                    }else{
+                        $data['acciones'] = "Anotarse";
+                        $data['funcion'] = "joinSala";
+                    }
                 }
             };
 

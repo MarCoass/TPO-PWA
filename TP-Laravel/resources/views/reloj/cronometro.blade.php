@@ -13,9 +13,6 @@
         <div class="col-md-12 text-center">
             <h3 class="display-5" id="contador_{{ $reloj->idReloj }}">90 seg.</h3>
         </div>
-        {{-- <input type="hidden" name="id_competencia" id="id_competencia" value="{{ $reloj->competencia->idCompetencia }}">
-        <input type="hidden" name="id_categoria" id="id_categoria" value="{{ $reloj->categoria->idCategoria }}">
-        <input type="hidden" name="cantJueces" id="cantJueces" value="{{ $reloj->cantJueces }}"> --}}
         <input type="hidden" name="idReloj" id="idReloj" value="{{ $reloj->idReloj }}">
 
         <div class="col-md-12 text-center" id="controlBotonesCronometro" style="opacity: 0;">
