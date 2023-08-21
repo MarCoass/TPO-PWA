@@ -420,6 +420,10 @@ class RelojController extends Controller
                     if($objReloj->estado == 0){
                         $data['acciones'] = "Salir";
                         $data['funcion'] = "quitSala";
+                    }elseif($objReloj->estado == 10){
+                        $data['acciones'] = "...";
+                        $data['funcion'] = "nada";
+                        $data['disabled'] = "d-none";
                     }else{
                         $data['acciones'] = "Ir al puntuador";
                         $data['funcion'] = "irPuntuador";
@@ -429,6 +433,7 @@ class RelojController extends Controller
                     if($objReloj->estado > 0){
                         $data['acciones'] = "...";
                         $data['funcion'] = "nada";
+                        $data['disabled'] = "d-none";
                     }else{
                         $data['acciones'] = "Anotarse";
                         $data['funcion'] = "joinSala";

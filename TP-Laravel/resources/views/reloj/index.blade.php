@@ -34,8 +34,6 @@
             // Vaciar el contenido de la tabla
             $('#relojes_activos').empty();
 
-
-
             // Recorrer el array de datos recibidos
             $.each(data, function(index, item) {
 
@@ -47,8 +45,10 @@
                     disabled = item.disabled;
                 }
                 // Crear una fila con los datos de cada registro
-                if (item.estado == 0 || item.estado == 4) {
+                if (item.estado == 0) {
                     var colores = "bg-info text-white";
+                }else if(item.estado == 10){
+                var colores = "bg-secondary text-white"
                 } else {
                     var colores = "bg-success text-white";
                 }
@@ -93,7 +93,6 @@
                     </div>
                 </td>
             </tr>`;
-
 
                 // Añadir la fila al cuerpo de la tabla
                 $('#relojes_activos').append(row);
@@ -148,7 +147,6 @@
             });
         });
 
-
         function iniciarPuntuador(n) {
             location.href = "/control_cronometro/" + n ;
         }
@@ -171,14 +169,12 @@
             });
         }
 
-
     </script>
 @endsection
 
 @section('contenido')
 
     <div class="row justify-content-center">
-
         <div class="col-lg-6 col-md-12 col-sm-12  pt-3">
             <label class="form-label" for="competencia">Competencia:</label>
             <select class="form-control dropdown-toggle validar" id="competencia" name="competencia" required>
@@ -202,7 +198,6 @@
             <button type="button" class="btn btn-outline-success btn-modal" data-bs-toggle="modal"
                 data-bs-target="#myModal" data-id=""><i class="bi bi-check2-square me-2"></i>Construir reloj</button>
         </div>
-
     </div>
 
 

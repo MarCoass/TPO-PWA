@@ -43,18 +43,27 @@
         // Vaciar el contenido de la tabla
         $('#relojes_activos').empty();
 
-
-
         // Recorrer el array de datos recibidos
         $.each(data, function(index, item) {
             // Crear una fila con los datos de cada registro
-            if(item.estado == 0 || item.estado == 4){
+
+            var disabled = "";
+
+                // Comprobar si el elemento tiene el atributo disabled
+                if (item.disabled) {
+                    // Asignar el atributo disabled a la variable
+                    disabled = item.disabled;
+                }
+
+            if(item.estado == 0){
                 var colores = "bg-info text-white";
+            }else if(item.estado == 10){
+                var colores = "bg-secondary text-white"
             }else{
                 var colores = "bg-success text-white";
             }
 
-            var row = `
+            /* var row = `
             <tr> 
                 <td>
                     <div class="card ` + colores + `">
@@ -71,6 +80,43 @@
                             <div class="col">
                                 <p class="card-text lead"> Acciones</p>
                                 <button onclick=` + item.funcion+'('+item.id+')' + ` class="btn btn-primary">`+item.acciones+`</button> 
+                            </div>
+                        </div> 
+                    </div>
+                </td>
+            </tr>`; */
+            var row = `
+            <tr> 
+                <td>
+                    <div class="card ` + colores + `">
+                        <div class="card-header"> <span class="lead" > ` + item.nombreApellidoCompetidor +
+                    `</span> <span class="fw-bold" >` + item.competencia + ` </span> ` + item.categoria + `</div> 
+                        <div class="card-body row"> 
+
+                            <!--  i n f o   d e   j u e c e s -->
+                            <div class="col">
+                                <p class="card-text lead"> Jueces activos</p> 
+                                <h5 class="card-title">` + item.juecesInscriptos.length + ` de ` + item.cantJueces + `</h5> 
+                            `;
+                                // itero la cantidad de jueces que estan inscripto
+                            $.each(item.juecesInscriptos, function(i,juez){
+                                row += `<p>`;
+                                row += ` ` + juez.apellido + " " + juez.nombre + ` </p> `;
+                            });
+                            
+            row +=                `
+                            </div>
+                            <!--  i n f o   d e   e s t a d o -->
+                            <div class="col">
+                                <p class="card-text lead"> Estado </p>
+                                <h5 class="card-text">` + item.textEstado + `</h5>           
+                            </div>
+
+                            <!--  i n f o   d e   a c c i o n e s -->
+                            <div class="col">
+                                <p class="card-text lead"> Acciones</p> 
+                                <button onclick=` + item.funcion + '(' + item.id + ')' + ` class="btn btn-primary ` +
+                    disabled + `">` + item.acciones + `</button> 
                             </div>
                         </div> 
                     </div>
@@ -97,7 +143,7 @@
                 dataType: 'json',
                 success: function(data) {
                     // Si la petición tiene éxito, actualizar los datos de la tabla
-                    alert(data.mensaje);
+                    //alert(data.mensaje);
                     getData();
                 },
                 error: function(error) {
@@ -118,7 +164,7 @@
                 dataType: 'json',
                 success: function(data) {
                     // Si la petición tiene éxito, actualizar los datos de la tabla
-                    alert(data.mensaje);
+                    //alert(data.mensaje);
                     getData();
                 },
                 error: function(error) {

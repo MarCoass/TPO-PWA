@@ -121,8 +121,12 @@ function actualizarBotones(){
                 $('.puntajePresentacionModal').text(localStorage.getItem("presentacion"))
 
                 //$('#enviarPasada').prop('disabled', false);
-                $("#terminarPuntuacion").removeClass('d-none')
-                
+                $("#terminarPuntuacion").removeClass('d-none');
+            }
+            
+            if(response.estado == 10){
+                console.log("todo tiene un final")
+                $('#modalCategoriaTerminada').modal('show');
             }
             //console.log(localStorage.getItem("exactitud") + " "+ localStorage.getItem("presentacion"))
         },
