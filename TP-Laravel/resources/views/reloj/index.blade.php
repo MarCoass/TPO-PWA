@@ -14,7 +14,7 @@
         function getData() {
             // Hacer una petición GET al método index del controlador
             $.ajax({
-                url: '/relojes',
+                url: '/relojes/'+ $('#competencia').find('option:selected').val(),
                 type: 'GET',
                 dataType: 'json',
                 success: function(data) {
@@ -38,7 +38,6 @@
             $.each(data, function(index, item) {
 
                 var disabled = "";
-
                 // Comprobar si el elemento tiene el atributo disabled
                 if (item.disabled) {
                     // Asignar el atributo disabled a la variable
@@ -48,7 +47,7 @@
                 if (item.estado == 0) {
                     var colores = "bg-info text-white";
                 }else if(item.estado == 10){
-                var colores = "bg-secondary text-white"
+                    var colores = "bg-secondary text-white"
                 } else {
                     var colores = "bg-success text-white";
                 }
@@ -97,10 +96,12 @@
                 // Añadir la fila al cuerpo de la tabla
                 $('#relojes_activos').append(row);
             });
+            if(data.length == 0){
+                $('#relojes_activos').append("<span class='bg-warning'> Esta competencia no tiene relojes creados </span>");
+            }
         }
 
-        // Ejecutar la función getData cada 1 segundo
-        setInterval(getData, 5000);
+        
 
         //esto es para buscar categorias donde hayan competidores de una competencia
         $(document).ready(function() {
@@ -168,6 +169,12 @@
                 },
             });
         }
+    
+        $('#competencia').on('change',function (){
+            // Ejecutar la función getData cada 1 segundo
+            getData();
+            setInterval(getData, 5000);
+        });
 
     </script>
 @endsection

@@ -23,6 +23,38 @@ class PerfilController extends Controller
         $graduacion = null;
         $competidor = null;
 
+        if ($usuario->idRol == 3) {
+            // OBTENEMOS EL COMPETIDOR DEL USUARIO LOGEADO
+            $objCompetidor = Competidor::where('idUser', '=', $idUser)->first();
+            if ($objCompetidor != null) {
+                // TRAEMOS COSITAS PARA COMPETIDOR
+
+                // INICIALIZAMOS MODELOS QUE USAREMOS MÁS ADELANTE
+                $objGraduacion = new Graduacion();
+                $objCompetenciaCompetidor = new CompetenciaCompetidor();
+                $objCompetencia = new Competencia();
+
+                // OBTENEMOS SU CINTURÓN ACTUAL
+                $graduacion = $objGraduacion::find($objCompetidor->idGraduacion);
+
+                $arreglo = $this->traerCompetenciasCompetidor($objCompetidor->idCompetidor, $objCompetenciaCompetidor, $objCompetencia);
+
+                $arregloInscripciones = $this->traerInscripcionesPendientesCompetidor($objCompetidor->idCompetidor, $objCompetenciaCompetidor, $objCompetencia);
+            }
+        }
+
+        // RETORNAMOS LAS COSITAS A LA VISTA UWU
+        return view('verPerfil.verPerfil', compact('arreglo', 'graduacion', 'arregloInscripciones', 'competidor'));
+    }
+
+    public function infoCompetencias(){
+
+        $usuario = auth()->user();
+        $idUser = $usuario->id;
+        // DEFINIMOS COSITAS EN NULL
+        $arreglo = [];
+        $arregloInscripciones = [];
+
         if ($usuario->idRol == 2) {
             // TRAEMOS COSITAS PARA JUEZ
 
@@ -34,31 +66,9 @@ class PerfilController extends Controller
             $arreglo = $this->traerCompetenciasJuez($idUser, $objCompetencia, $objCompetenciaJuez, $objPuntaje);
 
             $arregloInscripciones = $this->traerInscripcionesPendientesJuez($idUser, $objCompetencia, $objCompetenciaJuez);
-        } elseif ($usuario->idRol == 3) {
-            $objCompetidor = new Competidor();
-            // OBTENEMOS EL COMPETIDOR DEL USUARIO LOGEADO
-            $competidor = $objCompetidor::where('idUser', '=', $idUser)->first();
+        } 
 
-            if ($competidor != null) {
-                // TRAEMOS COSITAS PARA COMPETIDOR
-
-                // INICIALIZAMOS MODELOS QUE USAREMOS MÁS ADELANTE NYA
-                $objCompetidor = new Competidor();
-                $objGraduacion = new Graduacion();
-                $objCompetenciaCompetidor = new CompetenciaCompetidor();
-                $objCompetencia = new Competencia();
-
-                // OBTENEMOS SU CINTURÓN ACTUAL (LATIGAME PORFA)
-                $graduacion = $objGraduacion::find($competidor->idGraduacion);
-
-                $arreglo = $this->traerCompetenciasCompetidor($competidor->idCompetidor, $objCompetenciaCompetidor, $objCompetencia);
-
-                $arregloInscripciones = $this->traerInscripcionesPendientesCompetidor($competidor->idCompetidor, $objCompetenciaCompetidor, $objCompetencia);
-            }
-        }
-
-        // RETORNAMOS LAS COSITAS A LA VISTA UWU
-        return view('verPerfil.verPerfil', compact('arreglo', 'graduacion', 'arregloInscripciones', 'competidor'));
+        return view('verPerfil.modalCompPerfil', compact('arreglo', 'arregloInscripciones'))->render();
     }
 
     public function traerCompetenciasCompetidor($idCompetidor, $objCompetenciaCompetidor, $objCompetencia)
@@ -74,12 +84,14 @@ class PerfilController extends Controller
             ->where('competencias.estadoCompetencia', '=', 1)
             ->get();
 
-        // RECORREMOS CADA UNA DE LAS COMPETENCIASCOMPETIDOR PARA OBTENER JUGOSA INFORMACIÓN
+            
+            // RECORREMOS CADA UNA DE LAS COMPETENCIASCOMPETIDOR PARA OBTENER JUGOSA INFORMACIÓN
         foreach ($competenciasCompe as $compeCompe) {
+            
             // OBTENEMOS LOS POOMSAES DE ESA COMPETENCIA UWU
-            $poomsaes = Poomsae::select('poomsae.idPoomsae', 'poomsae.nombre', 'competenciacompetidorpoomsae.pasadas')
-                ->join('competenciacompetidorpoomsae', 'poomsae.idPoomsae', 'competenciacompetidorpoomsae.idPoomsae')
-                ->where('idCompetenciaCompetidor', '=', $compeCompe->idCompetencia)
+            $poomsaes = Poomsae::join('competenciacompetidorpoomsae', 'poomsae.idPoomsae', 'competenciacompetidorpoomsae.idPoomsae')
+                ->where('idCompetenciaCompetidor', '=', $compeCompe->idCompetenciaCompetidor)
+                ->select('poomsae.idPoomsae', 'poomsae.nombre', 'competenciacompetidorpoomsae.pasadas')
                 ->get();
 
             // BUSCAMOS LA COMPETENCIA ACTUAL
@@ -88,6 +100,7 @@ class PerfilController extends Controller
             // ARMAMOS UN ITEM CON LA INFORMACION QUE NOS INTERESA MOSTRAR DE CADA COMPETENCIA
             $item = [
                 'nombre' => $competencia->nombre,
+                'categoria' => $compeCompe->categoria->nombre,
                 'fecha' => $competencia->fecha,
                 'puntaje' => $compeCompe->puntaje,
                 'poomsae1' => $poomsaes[0]->nombre,
@@ -135,6 +148,8 @@ class PerfilController extends Controller
     public function traerCompetenciasJuez($idJuez, $objCompetencia, $objCompetenciaJuez, $objPuntaje)
     {
         $arregloHistorialJuez = [];
+        $arregloCompetidoresPuntuados = [];
+        $idDatos = 1;
         // BUSCAMOS LAS COMPETENCIAS EN LAS QUE PARTICIPÓ EL JUEZ DEL USUARIO LOGEADO
         $competenciasJueces = $objCompetenciaJuez::where('idJuez', '=', $idJuez)->get();
 
@@ -144,12 +159,44 @@ class PerfilController extends Controller
             $competencia = $objCompetencia::find($competenciaJuez->idCompetencia);
             $cantCompetidoresPuntuados = $objPuntaje::where('idCompetenciaJuez', $competenciaJuez->idCompetenciaJuez)->count();
 
+            $buscaPuntajes = Puntaje::where('idCompetenciaJuez', $competenciaJuez->idCompetenciaJuez)->get();
+
+            foreach($buscaPuntajes as $puntajes){
+                $nombreYApellido = $puntajes->competenciaCompetidor->competidor->apellido . " " . $puntajes->competenciaCompetidor->competidor->nombre;
+                $pasada = $puntajes->pasada;
+                $presentacion = $puntajes->puntajePresentacion;
+                $exactitud = $puntajes->puntajeExactitud;
+
+                $poomsaes = Poomsae::join('competenciacompetidorpoomsae', 'poomsae.idPoomsae', 'competenciacompetidorpoomsae.idPoomsae')
+                ->where('idCompetenciaCompetidor', '=', $puntajes->competenciaCompetidor->idCompetenciaCompetidor)
+                ->select('poomsae.idPoomsae', 'poomsae.nombre', 'competenciacompetidorpoomsae.pasadas')
+                ->get();
+
+                if($pasada == 1){
+                    $nombrePoomsae = $poomsaes[0];
+                }if($pasada == 2){
+                    $nombrePoomsae = $poomsaes[1];
+                }
+
+                $puntuaciones = [
+                    'nombreyapellido' => $nombreYApellido,
+                    'pasada' => $pasada,
+                    'poomsae' => $nombrePoomsae->nombre,
+                    'ptosPre' => $presentacion,
+                    'ptosExa' => $exactitud,
+                ];
+
+                array_push($arregloCompetidoresPuntuados, $puntuaciones);
+            }
+
             //GUARDAMOS LAS COSITAS
             $item = [
+                'id' => $idDatos++,
                 'nombre' => $competencia->nombre,
                 'fecha' => $competencia->fecha,
                 'cantidadJueces' => $competencia->cantidadJueces,
-                'cantidadPuntuados' => $cantCompetidoresPuntuados
+                'cantidadPuntuados' => $cantCompetidoresPuntuados,
+                'competidoresPuntuados' => $arregloCompetidoresPuntuados
             ];
 
             // METEMOS LAS COSITAS AL ARREGLO NYA

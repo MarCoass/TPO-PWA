@@ -369,13 +369,27 @@ class RelojController extends Controller
     }
 
     // se obtiene info de relojes para admin y jueces
-    public function obtenerRelojes()
+    public function obtenerRelojes($idCompetencia = null, $verFinalizados = null)
     {
-        $objRelojes = Reloj::all();
-
-        $dataRelojes = [];
-
         $user = auth()->user();
+        $dataRelojes = [];
+        
+        //se debe traer relojes de una competencia en especifico
+        if($idCompetencia){
+            //trae solo los finalizados
+            if($verFinalizados){
+                $objRelojes = Reloj::where('idCompetencia',$idCompetencia)
+                        ->where('estado', '=', 10)
+                        ->get();
+            //trae los no finalizados
+            }else{
+                $objRelojes = Reloj::where('idCompetencia',$idCompetencia)
+                        ->where('estado', '!=', 10)
+                        ->get();
+            }
+        }else{
+            $objRelojes = Reloj::all();
+        }
 
         foreach ($objRelojes as $objReloj){
 

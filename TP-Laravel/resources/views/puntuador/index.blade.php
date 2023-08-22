@@ -23,7 +23,7 @@
     function getData() {
             // Hacer una petición GET al método index del controlador
             $.ajax({
-                url: '/relojes',
+                url: '/relojes/'+ $('#competencia').find('option:selected').val(),
                 type: 'GET',
                 dataType: 'json',
                 success: function(data) {
@@ -63,28 +63,6 @@
                 var colores = "bg-success text-white";
             }
 
-            /* var row = `
-            <tr> 
-                <td>
-                    <div class="card ` + colores + `">
-                        <div class="card-header"> <span class="lead" > ` + item.nombreApellidoCompetidor + `</span> <span class="fw-bold" >` + item.competencia + ` </span> ` + item.categoria + `</div> 
-                        <div class="card-body row"> 
-                            <div class="col">
-                                <p class="card-text lead"> Jueces activos</p> 
-                                <h5 class=" card-title">` + item.juecesInscriptos.length + ` de ` + item.cantJueces + `</h5> 
-                            </div>
-                            <div class="col">
-                                <p class="card-text lead"> Estado </p>
-                                <p class="card-text">` + item.estado + `</p>           
-                            </div>
-                            <div class="col">
-                                <p class="card-text lead"> Acciones</p>
-                                <button onclick=` + item.funcion+'('+item.id+')' + ` class="btn btn-primary">`+item.acciones+`</button> 
-                            </div>
-                        </div> 
-                    </div>
-                </td>
-            </tr>`; */
             var row = `
             <tr> 
                 <td>
@@ -125,10 +103,13 @@
             // Añadir la fila al cuerpo de la tabla
             $('#relojes_activos').append(row);
         });
+        if(data.length == 0){
+                $('#relojes_activos').append("<span class='bg-warning'> No se encuentran relojes creados o ya finalizaron </span>");
+            }
     }
 
-    // Ejecutar la función getData cada 1 segundo
-    setInterval(getData, 5000);
+    // Ejecutar la función getData cada 5 segundo
+    
 
 
 
@@ -178,6 +159,11 @@
             location.href = "/iniciar_puntaje/" + idReloj ;
         }
 
+        $('#competencia').on('change',function (){
+            getData();
+            setInterval(getData, 5000);
+        });
+
 
         
 </script>
@@ -190,57 +176,23 @@
         @include('puntuador.partials.vistaNoDisponible')
 
     </div>
-    @csrf
 
     <div class="mobile">
         <div class="vertical">
             @include('puntuador.partials.vistaNoDisponible')
         </div>
-{{--         <form class="m-5 row" method="post" action="{{ url('/iniciar_puntaje') }}">
-            @csrf
-            <div class="col-lg-6 col-md-12 col-sm-12  pt-3">
-                <label class="form-label" for="competencia">Competencia:</label>
-                <select class="form-control validar" id="competencia" name="competencia" required>
-                    <option value="" disabled selected data-error="Por favor seleccione una competencia válida">
-                        Selecciona una Competencia.</option>
-                    @foreach ($competencias as $row)
-                        <option value="{{ $row->idCompetencia }}">{{ $row->nombre }}</option>
-                    @endforeach
-                </select>
-                <div class="valid-feedback">
-                    ¡Correcto!
-                </div>
-                <div class="invalid-feedback">Seleccione una opcion valida.</div>
-            </div>
+        <div class="col-lg-6 col-md-12 col-sm-12  pt-3">
+            <label for="competencia" class="form-label"> Seleccione la competencia a puntuar</label>
+            <select class="form-control validar" id="competencia" name="competencia" required>
+                <option value="" disabled selected data-error="Por favor seleccione una competencia válida">
+                    Selecciona una Competencia.</option>
+                @foreach ($competencias as $row)
+                    <option value="{{ $row->idCompetencia }}">{{ $row->nombre }}</option>
+                @endforeach
+            </select>
+        </div>
 
-            <div class="col-lg-6 col-md-12 col-sm-12  pt-3">
-                <label class="form-label" for="categoria">Categoria:</label>
-                <select class="form-control validar" id="categoria" name="categoria" required>
-                    <option value="" disabled selected data-error="Por favor seleccione una categoria válida">
-                        Selecciona una categoria.</option>
-                </select>
-                <div class="valid-feedback">
-                    ¡Correcto!
-                </div>
-                <div class="invalid-feedback">Seleccione una opcion valida.</div>
-            </div>
-            <div class="col-lg-6 col-md-12 col-sm-12  pt-3">
-                <label class="form-label" for="competidor">Competidor:</label>
-                <select class="form-control validar" id="competidor" name="competidor" required>
-                    <option value="" disabled selected data-error="Por favor seleccione una graduacion válida">
-                        Selecciona un competidor.</option>
-                </select>
-                <div class="valid-feedback">
-                    ¡Correcto!
-                </div>
-                <div class="invalid-feedback">Seleccione una opcion valida.</div>
-            </div>
-            <div class="col-lg-6 col-12 button-group mb-3 d-flex justify-content-end align-items-center">
-                <button class="btn btn-outline-primary mx-2" type="submit">Iniciar Puntaje</button>
-            </div>
-        </form> --}}
-
-        <table id="relojes_activos" class="table border">
+        <table id="relojes_activos" class="table border mt-2">
             <thead>
                 <tr>
                     <th scope="col">Cargando relojes activos creados</th>

@@ -215,6 +215,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         /* Rutas de Puntuador se pueden mejorar */
         Route::get('/puntuador/puntuador', function(){return view('puntuador.puntuador');})->middleware(['rol:2'])->name('puntuador');
         Route::get('/puntuador/index',  [PuntajeController::class, 'puntuadorindex'])->middleware(['rol:2'])->name('puntuador_index');
+        
         Route::get('/opciones_competidor', [PuntajeController::class, 'obtenerOpcionesCompetidorCategoria'])->middleware(['rol:1,2']);
         
         
@@ -239,7 +240,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/index_reloj', [RelojController::class, 'index'])->middleware(['rol:1'])->name('index_reloj');
         Route::get('/opciones_categoria',[RelojController::class, 'obtenerCategoria']);
 
-        Route::get('/relojes',[RelojController::class, 'obtenerRelojes']);
+        Route::get('/relojes/{id?}',[RelojController::class, 'obtenerRelojes']);
 
 
 
@@ -248,6 +249,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::post('/quitarJuez',[RelojCompJuezController::class, 'quitarJuez']);
         Route::get('/competenciasActivas/{id}',[RelojController::class,'obtenerCompetidoresDeUnaCompetencia']);
         Route::post('/construir_reloj',[RelojController::class,'construirRelojCompetidor']);
+
+        Route::get('/modalCompPerfil',[PerfilController::class,'infoCompetencias']);
 
         route::get('/control_cronometro/{idReloj}',[RelojController::class, 'controlCronometro']);
 

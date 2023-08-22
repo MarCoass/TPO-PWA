@@ -1,4 +1,5 @@
-<div class="modal fade modalTemaDual" id="competenciasPerfil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade modalTemaDual" id="competenciasPerfil" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content modalTemaDual">
             <div class="modal-header">
@@ -9,49 +10,29 @@
             <div class="modal-body">
                 @if (count($arreglo) > 0)
                     <table class="table table-striped table-hover text-center">
-                        @if (auth()->user()->idRol == 2)
-
+                        @if (auth()->user()->idRol == 3)
                             <thead>
                                 <tr>
-                                    <th scope="col">Nombre Competencia</th>
+                                    <th scope="col">Nombre <br> Competencia</th>
                                     <th scope="col">Fecha</th>
-                                    <th scope="col">Cantidad de Jueces</th>
-                                    <th scope="col">Cantidad de Competidores Puntuados</th>
+                                    <th scope="col">1er <br> Pasada</th>
+                                    <th scope="col">2da <br> Pasada</th>
+                                    <th scope="col">Puntaje</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($arreglo as $item)
                                     <tr>
-                                        <th scope="row">{{ $item['nombre'] }}</th>
+                                        <td> <b>{{ $item['nombre'] }} </b> <br>
+                                            {{ $item['categoria'] }}
+                                        </td>
                                         <td>{{ $item['fecha'] }}</td>
-                                        <td>{{ $item['cantidadJueces'] }}</td>
-                                        <td>{{ $item['cantidadPuntuados'] / 2 }}</td>
+                                        <td>{{ $item['poomsae1'] }}</td>
+                                        <td>{{ $item['poomsae2'] }}</td>
+                                        <td>{{ $item['puntaje'] }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
-                        @else
-                            @if (auth()->user()->idRol == 3)
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Nombre Competencia</th>
-                                        <th scope="col">Fecha</th>
-                                        <th scope="col">1er Poomsae</th>
-                                        <th scope="col">2do Poomsae</th>
-                                        <th scope="col">Puntaje</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($arreglo as $item)
-                                        <tr>
-                                            <th scope="row">{{ $item['nombre'] }}</th>
-                                            <td>{{ $item['fecha'] }}</td>
-                                            <td>{{ $item['poomsae1'] }}</td>
-                                            <td>{{ $item['poomsae2'] }}</td>
-                                            <td>{{ $item['puntaje'] }}</td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            @endif
                         @endif
                     </table>
                 @else

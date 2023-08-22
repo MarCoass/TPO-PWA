@@ -33,7 +33,7 @@ class PuntajeController extends Controller
         $puntaje->idCompetenciaCompetidor = $idCompetenciaCompetidor;
         $puntaje->idCompetenciaJuez = $idCompetenciaJuez;
 
-        //Modificando para que primero se cree el puntaje y despues de actualice
+        //Modificando para que primero se cree el puntaje y despues se actualice
         //para lo de mostrar los puntajes en admin
         $puntaje->puntajePresentacion = 0;
         $puntaje->puntajeExactitud = 0;
@@ -53,10 +53,6 @@ class PuntajeController extends Controller
         $competenciaJuez = CompetenciaJuez::find($idCompetenciaJuez);
         $puntaje->competenciaJuez()->associate($competenciaJuez);
 
-        /**
-         * Mi logica para la siguiente es esta: buscar el reloj de la competencia y categoria que corresponde al 
-         * competidor que esta siendo juzgado y se suma el overtime registrado, como se usa el mismo reloj para toda la categoria es solo first
-         */
         $reloj = Reloj::where('idCompetencia', $idCompetenciaCompetidor->idCompetencia)
                 ->where('idCategoria', $idCompetenciaCompetidor->idCategoria)
                 ->first();
@@ -64,9 +60,6 @@ class PuntajeController extends Controller
 
         //guardo el nuevo puntaje
         $puntaje->save();
-
-        //busco el id para la ruta show
-        //$puntajeId = $puntaje->idPuntaje;
 
         $idCompetenciaCompetidor->save();
 
@@ -101,9 +94,18 @@ class PuntajeController extends Controller
     /* aca es donde se selecciona al competidor a puntuar */
     public function  puntuadorindex()
     {
-        return view('puntuador.index');
+        $user = auth()->user();
+
+        $competencias = Competencia::leftJoin('competenciajueces','competencias.idCompetencia','=','competenciajueces.idCompetencia')
+                ->where('competenciajueces.estado','=',1)
+                ->where('competenciajueces.idJuez','=',$user->id)
+                ->where('competencias.estadoCompetencia','=',0)
+                ->get();
+
+        return view('puntuador.index',['competencias' => $competencias]);
     }
 
+    // Inicia puntuador de jueces
     public function iniciar_puntaje($idReloj)
     {
         $reloj = Reloj::find($idReloj);
@@ -135,35 +137,6 @@ class PuntajeController extends Controller
         return view('puntuador.puntuador', ['reloj' => $reloj, 'competencia' => $competencia, 'arrayPoomsaes' => $arrayPoomsaes, 'competidor' => $competidor, 'competencia_competidor' => $competencia_competidor, 'competencia_juez' => $competenciaJuez]);
     }
 
-    /* public function iniciar_puntaje(Request $request)
-    {
-        $id_competencia = $request->input('competencia');
-        $id_competidor = $request->input('competidor');
-
-        $competidor = Competidor::where('idCompetidor', '=', $id_competidor)->get();
-        $competencia = Competencia::where('idCompetencia', '=', $id_competencia)->get();
-
-        $competencia_competidor = CompetenciaCompetidor::where('idCompetidor', '=', $id_competidor)->where('idCompetencia', '=', $id_competencia)->get();
-        $competenciaJuez = CompetenciaJuez::where('idCompetencia', '=', $id_competencia)->where('idJuez', '=', auth()->user()->id)->get();
-
-
-        $existePrimeraPasada = Puntaje::where('idCompetenciaCompetidor', "=", $competencia_competidor[0]->idCompetenciaCompetidor)->where('idCompetenciaJuez', "=", $competenciaJuez[0]->idCompetenciaJuez)->get();
-        $pasada = (($existePrimeraPasada->count() === 0) ? 1 : 2);
-
-        //Busco el poomsae que corresponde a la pasada actual
-        $competenciaCompetidorPoomsae = CompetenciaCompetidorPoomsae::where('idCompetenciaCompetidor', '=', $competencia_competidor[0]->idCompetenciaCompetidor)->where('pasadas', '=', $pasada)->get();
-
-        $arrayPoomsaes = [];
-        //cambios para que al poomsae lo trate como array
-        foreach ($competenciaCompetidorPoomsae as $item) {
-            $arrayPoomsaes[] = Poomsae::find($item->idPoomsae);
-        }
-
-        //modificando para que se cree primero el puntaje y despues solo se actualice
-        $this->store($competencia_competidor[0]->idCompetenciaCompetidor, $competenciaJuez[0]->idCompetenciaJuez);
-        return view('puntuador.puntuador', ['competencia' => $competencia, 'arrayPoomsaes' => $arrayPoomsaes, 'competidor' => $competidor, 'competencia_competidor' => $competencia_competidor, 'competencia_juez' => $competenciaJuez, 'pasada' => $pasada]);
-    } */
-
     public function actualizar_puntaje(Request $request)
     {
         //lacantidad de pasadas como deberiamos saberlo?
@@ -175,6 +148,7 @@ class PuntajeController extends Controller
         return $this->puntuadorindex();
     }
 
+    // busca competidores de una categoria y competencia para poder crear el reloj del competidor de la competencia
     public function obtenerOpcionesCompetidorCategoria(Request $request)
     {
         $categoria = $request->input('categoria');
@@ -185,36 +159,23 @@ class PuntajeController extends Controller
         if ($user->idRol == 1) {
 
             $opciones =  Competidor::leftJoin('competenciacompetidor', 'competidores.idCompetidor', '=', 'competenciacompetidor.idCompetidor')
-            ->whereExists(function ($query) use ($competencia, $categoria) {
-                $query->select(DB::raw(1))
-                    ->from('competenciacompetidorpoomsae')
-                    ->whereColumn('competenciacompetidor.idCompetenciaCompetidor', '=', 'competenciacompetidorpoomsae.idCompetenciaCompetidor');
-            })
-            ->where('competenciacompetidor.idCompetencia', '=', $competencia)
-            ->where('competenciacompetidor.contadorPasadas', '<', 2)
-            ->where('competenciacompetidor.estado', '=', 1)
-            ->where('competenciacompetidor.idCategoria', '=', $categoria)
-            ->get();
+                    ->leftJoin('reloj','competenciacompetidor.idCompetidor','=','reloj.idCompetenciaCompetidor')
+                    ->whereExists(function ($query) use ($competencia, $categoria) {
+                        $query->select(DB::raw(1))
+                        ->from('competenciacompetidorpoomsae')
+                        ->whereColumn('competenciacompetidor.idCompetenciaCompetidor', '=', 'competenciacompetidorpoomsae.idCompetenciaCompetidor');
+                    })
+                    ->where('competenciacompetidor.idCompetencia', '=', $competencia)
+                    ->where('competenciacompetidor.contadorPasadas', '<', 2)
+                    ->where('competenciacompetidor.estado', '=', 1)
+                    ->where('competenciacompetidor.idCategoria', '=', $categoria)
+                    ->whereNull('reloj.idCompetenciaCompetidor') //filtra los competidores que no existan en la tabla reloj
+                    ->select('competidores.nombre','competidores.apellido','competidores.idCompetidor')
+                    ->get();
 
         }else{
-
-            
-
-            $opciones =  Competidor::leftJoin('competenciacompetidor', 'competidores.idCompetidor', '=', 'competenciacompetidor.idCompetidor')
-            ->whereExists(function ($query) use ($competencia, $categoria) {
-                $query->select(DB::raw(1))
-                    ->from('competenciacompetidorpoomsae')
-                    ->whereColumn('competenciacompetidor.idCompetenciaCompetidor', '=', 'competenciacompetidorpoomsae.idCompetenciaCompetidor');
-            })
-            ->where('competenciacompetidor.idCompetencia', '=', $competencia)
-            ->where('competenciacompetidor.contadorPasadas', '<', 2)
-            ->where('competenciacompetidor.estado', '=', 1)
-            ->where('competenciacompetidor.idCategoria', '=', $categoria)
-            ->get();
-
+            $opciones = "acceso restringido";
         }
-
-    
 
         return response()->json($opciones);
     }
