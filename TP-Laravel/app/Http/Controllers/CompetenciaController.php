@@ -68,6 +68,7 @@ class CompetenciaController extends Controller
         $competencia = new Competencia();
         $competencia->nombre = $request->input('nombre');
         $competencia->fecha = $request->input('fecha');
+        $competencia->fechaCierra = $request->input('fechaCierra');
         $competencia->cantidadJueces = $request->input('cantidadJueces');
         // estadoJueces tiene por defecto false en la db
 
@@ -133,6 +134,7 @@ class CompetenciaController extends Controller
         $competencia = Competencia::find($id);
         $competencia->nombre = $request->input('nombre');
         $competencia->fecha = $request->input('fecha');
+        $competencia->fechaCierra = $request->input('fechaCierra');
 
         $juecesAceptados = CompetenciaJuez::where('estado', true)
             ->where('idCompetencia', $competencia->idCompetencia)
@@ -167,6 +169,7 @@ class CompetenciaController extends Controller
             ->with('success', 'Competencia actualizado exitosamente.');
     }
 
+    // Elimina competencia que no este en estadojueces == 1
     /**
      * Remove the specified resource from storage.
      *
@@ -176,13 +179,26 @@ class CompetenciaController extends Controller
     public function destroy($id)
     {
         $competencia = Competencia::find($id);
-        $competencia->delete();
+
+        if($competencia->estadoJueces == 1 ){
+            $mensaje=[
+                'success',
+                'Competencia eliminada exitosamente.'
+            ];    
+        }else{
+            $competencia->delete();
+            $mensaje=[
+                'restricted',
+                'No se puede eliminar competencia inicializada.'
+            ];
+        }
 
         return redirect()
             ->route('index_competencia')
-            ->with('success', 'Competencia eliminada exitosamente.');
+            ->with($mensaje);
     }
 
+    // visualizar presentacion de una competencia
     public function verPresentacion($id)
     {
         //busco la competencia
@@ -250,13 +266,14 @@ class CompetenciaController extends Controller
 
         return compact('competidoresFiltrados');
     }
-
+    //devuelve competencias con jueces completos a todos los competidores
     public function verCompetencias()
     {
         $competencias = Competencia::where('estadoJueces', 1)->get();
         return view('presentacion.competencias', compact('competencias'));
     }
 
+    //devuelve las competencias segun el rol
     public function competenciasCalendario()
     {
         if (auth()->user()->idRol == 1 || auth()->user()->idRol == 2) {

@@ -67,8 +67,9 @@ class CompetenciaCompetidorPoomsaeController extends Controller
 
     public function asignar_poomsae_por_sorteo($id_competencia){
 
-        //asignar poomsae solo a competidores habilitados
-        $competidoresCompetencia = CompetenciaCompetidor::where('estado',1)->where('idCompetencia', $id_competencia)->get();
+        //asignar poomsae a todos los competidores
+        /* $competidoresCompetencia = CompetenciaCompetidor::where('estado',1)->where('idCompetencia', $id_competencia)->get(); */
+        $competidoresCompetencia = CompetenciaCompetidor::where('idCompetencia', $id_competencia)->get();
         $pasadas = [1,2];
 
         foreach($competidoresCompetencia as $row){
@@ -88,12 +89,15 @@ class CompetenciaCompetidorPoomsaeController extends Controller
                 }
         
                 if($poomsae_pasada_1 && $poomsae_pasada_2){
-                $user->notify(new NotificacionGeneral('success','Poomsae Asignado!','Poomsae Pasada 1: '.$poomsae_pasada_1.' Poomsae Pasada 2: '.$poomsae_pasada_2.'  ',' A prepararse!'));
+                    if($row->estado == 1){
+                        $user->notify(new NotificacionGeneral('success','Poomsae Asignado!','Poomsae Pasada 1: '.$poomsae_pasada_1.' Poomsae Pasada 2: '.$poomsae_pasada_2.'  ',' A prepararse!'));
+                    }
                 }
             }
         }
+
         //una vez sorteado el poomsae se cierran las inscripciones y se eliminan competidores no gestionados
-        CompetenciaCompetidorController::eliminacionCompetidoresSinGestionar($id_competencia);
+        CompetenciaCompetidorController::cambioEstadoCompetidoresSinGestionar($id_competencia);
         
         //Llama al controlador para despues retornar la ruta con el id de la competencia
         $CompetenciaCompetidorController = new CompetenciaCompetidorController();
@@ -101,6 +105,25 @@ class CompetenciaCompetidorPoomsaeController extends Controller
         return $CompetenciaCompetidorController->listarCompetidoresPorId($id_competencia);
     }
 
+    public function habAunFinalizadaInscripcion($idCompCompe){
+        /* $objCompetenciaCompetidor = new CompetenciaCompetidor(); */
+        $objCompetenciaCompetidor = CompetenciaCompetidor::find($idCompCompe);
+
+        // OBTENEMOS LOS POOMSAES del competidor DE ESA COMPETENCIA
+        $poomsaes = Poomsae::join('competenciacompetidorpoomsae', 'poomsae.idPoomsae', 'competenciacompetidorpoomsae.idPoomsae')
+        ->where('idCompetenciaCompetidor', '=', $objCompetenciaCompetidor->idCompetenciaCompetidor)
+        ->select('poomsae.idPoomsae', 'poomsae.nombre', 'competenciacompetidorpoomsae.pasadas')
+        ->get();
+
+        $objCompetenciaCompetidor->estado = 1;
+        $objCompetenciaCompetidor->save();
+        
+        $objCompetenciaCompetidor->competidor->user->notify(new NotificacionGeneral('success','Poomsae Asignado!','Poomsae Pasada 1: '.$poomsaes[0]->nombre.' Poomsae Pasada 2: '.$poomsaes[1]->nombre.'  ',' A prepararse!'));
+        //Llama al controlador para despues retornar la ruta con el id de la competencia
+        $CompetenciaCompetidorController = new CompetenciaCompetidorController();
+        
+        return $CompetenciaCompetidorController->listarCompetidoresPorId($objCompetenciaCompetidor->competencia->idCompetencia);
+    }
 
 
 

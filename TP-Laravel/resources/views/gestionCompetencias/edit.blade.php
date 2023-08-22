@@ -10,7 +10,37 @@
 @endsection
 
 @section('librerias')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+@endsection
 
+@section('scripts')
+    <script>
+        function validarFechas() {
+            var fecha = document.getElementById("fecha").value;
+            var fechaCierra = document.getElementById("fechaCierra").value;
+            var fechaCompetencia = moment(fecha);
+            var fechaLimite = moment(fechaCierra);
+            var diferencia = fechaCompetencia.diff(fechaLimite, "days");
+            if (diferencia < 2) {
+                alert("La fecha de competencia debe ser al menos dos días después de la fecha de cierre");
+                $('#fechaCierra').val("")
+                return false;
+            }
+            return true;
+        }
+
+        $('#fechaCierra').on('change', function() {
+            if (!validarFechas()) {
+                /* $('#fechaCierra').val(""); */
+            }
+        })
+
+        $('#fecha').on('change', function() {
+            if (!validarFechas()) {
+                /*  $('#fecha').val(""); */
+            }
+        })
+    </script>
 @endsection
 
 @section('contenido')
@@ -30,22 +60,40 @@
         <div class="col-lg-6 col-12 form-group form-floating mb-3">
             <input type="date" class="form-control" name="fecha" id="fecha" value="{{ $competencia->fecha }}"
                 placeholder="fecha" required="required" autofocus>
-            <label for="floatingName">fecha</label>
+            <label for="floatingName">Fecha Competencia</label>
             @if ($errors->has('fecha'))
                 <span class="text-danger text-left">{{ $errors->first('fecha') }}</span>
             @endif
         </div>
 
+
+        <div class="col-lg-6 col-12 form-group form-floating mb-3">
+            <input type="date" class="form-control" name="fechaCierra" id="fechaCierra" value="{{ $competencia->fechaCierra }}"
+                placeholder="fecha Limite" required="required" autofocus>
+            <label for="floatingName">Fecha limite de inscripcion</label>
+            @if ($errors->has('fechaCierra'))
+                <span class="text-danger text-left">{{ $errors->first('fechaCierra') }}</span>
+            @endif
+        </div>
+
         @if($competencia->estadoJueces == false && count($juecesAceptados) == 0)
-            <div class="col-lg-6 col-12 form-group mb-3">
+            <div class="col-lg-6 col-12 form-group mb-3 row align-items-between">
                 <label for="cantidadJueces" class="form-label">Cantidad de jueces mínima</label>
-                <select name="cantidadJueces" id="cantidadJueces" class="form-control" required>
                     @for($i = 3; $i <= 7; $i = $i+2)
+                    <div class="col-2">
                         @if($i == $competencia->cantidadJueces)
-                            <option value="{{$i}}" selected>{{$i}}</option>
+                        <input class="form-check-input validar" type="radio" name="cantidadJueces" value="{{$i}}" id="radio{{$i}}"
+                    checked>
+                        <label class="form-check-label" for="radio{{$i}}">
+                            {{$i}}
+                        </label>
                         @else
-                            <option value="{{$i}}">{{$i}}</option>
+                            <input class="form-check-input validar" type="radio" name="cantidadJueces" value="{{$i}}" id="radio{{$i}}">
+                        <label class="form-check-label" for="radio{{$i}}">
+                            {{$i}}
+                        </label>
                         @endif
+                    </div>
                     @endfor
                 </select>
             </div>

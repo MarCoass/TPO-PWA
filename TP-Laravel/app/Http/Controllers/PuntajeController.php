@@ -134,7 +134,14 @@ class PuntajeController extends Controller
             $arrayPoomsaes[] = Poomsae::find($item->idPoomsae);
         }
 
-        return view('puntuador.puntuador', ['reloj' => $reloj, 'competencia' => $competencia, 'arrayPoomsaes' => $arrayPoomsaes, 'competidor' => $competidor, 'competencia_competidor' => $competencia_competidor, 'competencia_juez' => $competenciaJuez]);
+        return view('puntuador.puntuador', [
+            'reloj' => $reloj, 
+            'competencia' => $competencia, 
+            'arrayPoomsaes' => $arrayPoomsaes, 
+            'competidor' => $competidor, 
+            'competencia_competidor' => $competencia_competidor, 
+            'competencia_juez' => $competenciaJuez
+        ]);
     }
 
     public function actualizar_puntaje(Request $request)

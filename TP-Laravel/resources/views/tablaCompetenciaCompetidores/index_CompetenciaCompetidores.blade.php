@@ -116,7 +116,7 @@
                     <td>{{ $competidor['nombre'] }} {{ $competidor['apellido'] }}</td>
                     <td>{{ $competidor['fecha'] }}</td>
                     <td>{{ $estadoCompetidor }}</td>
-                    @if ($competencia->estadoCompetencia != 1)
+                    @if ($competencia->estadoCompetencia != 1 && $competencia->estadoInscripcion == 0)
                         <td>
                             @if ($competidor['estado'] == 0)
                                 @if ($competidor['tieneSolicitud'])
@@ -133,8 +133,21 @@
                                         class="btn btn-outline-danger"><i class="bi bi-x-circle me-2"></i>Rechazar</a>
                                 @endif
                             @elseif($competidor['estado'] == 2)
+                                @if ($competidor['tieneSolicitud'])
+                                    <a href="{{ route('competidor_solicitudes', ['id' => $competidor['idUser']]) }}"
+                                class="btn btn-warning"><i class="bi bi-exclamation-triangle-fill me-2"></i>Atender
+                                Solicitudes</a>
+                                    <a href="#" class="btn btn-outline-success disabled"><i
+                                    class="bi bi-check2-square me-2"></i>Habilitar</a>
+                                @else
+                                <a href="{{ route('habilitarIgual', ['id' => $competidor['idCompetenciaCompetidor']]) }}"
+                                    class="btn btn-outline-success"><i
+                                        class="bi bi-check2-square me-2"></i>Habilitar</a>
+
                                 <a href="{{ route('delete_inscripcion_competidor', ['id' => $competidor['idCompetenciaCompetidor']]) }}"
                                     class="btn btn-outline-danger"><i class="bi bi-trash me-2"></i>Eliminar</a>
+                                @endif
+
                             @endif
 
                             @if ($competidor['estado'] == 1 && $competidor['tiene_poomsae_asignado'] == 1)
@@ -150,6 +163,27 @@
                             @endif
 
                         </td>
+                    @elseif ($competencia->estadoInscripcion == 1 && $competencia->estadoCompetencia == 0)
+                    <td>
+
+                        @if($competidor['estado'] == 2)
+                        @if ($competidor['tieneSolicitud'])
+                            <a href="{{ route('competidor_solicitudes', ['id' => $competidor['idUser']]) }}"
+                        class="btn btn-warning"><i class="bi bi-exclamation-triangle-fill me-2"></i>Atender
+                        Solicitudes</a>
+                            <a href="#" class="btn btn-outline-success disabled"><i
+                            class="bi bi-check2-square me-2"></i>Habilitar</a>
+                        @else
+                            <a href="{{ route('habilitarIgual', ['id' => $competidor['idCompetenciaCompetidor']]) }}"
+                            class="btn btn-outline-success"><i
+                                class="bi bi-check2-square me-2"></i>Habilitar</a>
+
+                          <a href="{{ route('delete_inscripcion_competidor', ['id' => $competidor['idCompetenciaCompetidor']]) }}"
+                            class="btn btn-outline-danger"><i class="bi bi-trash me-2"></i>Eliminar</a>
+                        @endif
+                    </td>
+                    @endif
+
                     @endif
                 </tr>
             @endforeach

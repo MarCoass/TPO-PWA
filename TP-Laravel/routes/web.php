@@ -254,6 +254,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
         route::get('/control_cronometro/{idReloj}',[RelojController::class, 'controlCronometro']);
 
+        Route::get('/habilitarIgual/{id}', [CompetenciaCompetidorPoomsaeController::class, 'habAunFinalizadaInscripcion'])->name('habilitarIgual');
 
         Route::post('/siguiente_estado', [RelojController::class, 'siguienteEstado'])->middleware(['rol:1']);
         Route::get('/start', [RelojController::class, 'start'])->middleware(['rol:1']);

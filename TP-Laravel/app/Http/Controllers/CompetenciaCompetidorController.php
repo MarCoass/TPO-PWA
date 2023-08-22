@@ -368,7 +368,7 @@ class CompetenciaCompetidorController extends Controller
             ->with('success', 'Competidor eliminado exitosamente de la competencia. Ahora puede volver a inscribirse');
     }
 
-    public static function eliminacionCompetidoresSinGestionar($idCompetencia){
+    public static function cambioEstadoCompetidoresSinGestionar($idCompetencia){
 
         //Seteo el campo estadoInscripcion de la competencia como 1 "cerrado".
         $competencia = Competencia::find($idCompetencia);
@@ -378,10 +378,10 @@ class CompetenciaCompetidorController extends Controller
         //Busco a los competidores de la competencia que no se llegaron a gestionar.
         $competidoresCompetencia = CompetenciaCompetidor::where('estado',0)->where('idCompetencia', $idCompetencia)->get();
 
-        //Si la consulta no esta vacia continua la iteracion de borrado.
+        //Si la consulta no esta vacia continua la iteracion de cambiar estado.
         if($competidoresCompetencia->isNotEmpty()){
             foreach ($competidoresCompetencia as $row){
-                $row->delete();
+                $row->estado = 2;
             }
         }
 
