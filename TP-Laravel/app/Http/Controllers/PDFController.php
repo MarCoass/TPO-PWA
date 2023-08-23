@@ -21,11 +21,11 @@ class PDFController extends Controller
      * @return \Illuminate\Http\Response
      */
     //public function index($idCompetencia = null,$idEscuela = null)
-    public function index()
+    public function index($idCompetencia,$idEscuela)
     {
         //$objCompetencia = Competencia::find($idCompetencia);
-        $objCompetencia = Competencia::find(1)->first();
-        $objEscuela = Escuela::find(2);
+        $objCompetencia = Competencia::find($idCompetencia)->first();
+        $objEscuela = Escuela::find($idEscuela);
         $objCompetidoresCompetencia = CompetenciaCompetidor::where('idCompetencia',$objCompetencia->idCompetencia)
                 ->join('competidores','competenciacompetidor.idCompetidor','=','competidores.idCompetidor')
                 ->join('users','competidores.idUser','=','users.id')

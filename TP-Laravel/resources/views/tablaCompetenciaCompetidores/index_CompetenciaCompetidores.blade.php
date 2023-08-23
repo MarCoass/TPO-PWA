@@ -71,8 +71,11 @@
     <a href="{{ route('index_competencia') }}" class="btn btn-outline-secondary">Volver</a>
     @if ($competencia->estadoInscripcion != 1)
 
-        <button type="button" class="btn btn-outline-success btn-modal" data-bs-toggle="modal"
-        data-bs-target="#sorteoPoom">Sortear Poomsae</button>
+        <button type="button" class="btn btn-warning bg-opacity-50 btn-modal" data-bs-toggle="modal"
+        data-bs-target="#sorteoPoom"><b>Sortear Poomsae</b></button>
+
+        <button type="button" class="btn btn-outline-info bg-opacity-75 btn-modal" data-bs-toggle="modal"
+        data-bs-target="#escuelasParticipantes"><b>Escuelas participantes</b></button>
 
         {{-- <a href="{{ route('asignar_poomsae_por_sorteo', ['id_competencia' => $competencia->idCompetencia]) }}"
             class="btn btn-outline-success">Sortear Poomsae</a> --}}
@@ -86,6 +89,7 @@
                 <th data-priority="4">GAL</th>
                 <th data-priority="1">Nombre Completo</th>
                 <th data-priority="4">Fecha</th>
+                <th data-priority="5">Escuela</th>
                 <th data-priority="2">Participa</th>
                 @if ($competencia->estadoCompetencia != 1)
                     <th data-priority="1">Acciones</th>
@@ -115,6 +119,7 @@
                     <td>{{ $competidor['gal'] !== null ? $competidor['gal'] : 'Ninguno' }}</td>
                     <td>{{ $competidor['nombre'] }} {{ $competidor['apellido'] }}</td>
                     <td>{{ $competidor['fecha'] }}</td>
+                    <td>{{ $competidor['escuela'] }}</td>
                     <td>{{ $estadoCompetidor }}</td>
                     @if ($competencia->estadoCompetencia != 1 && $competencia->estadoInscripcion == 0)
                         <td>
@@ -227,6 +232,30 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                     @endif
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="escuelasParticipantes">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Descargar lista competidores por escuela</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    
+                    <h5 class="mb-3">Genere el pdf de la escuela</h5>
+                    @foreach ($escuelas as $escuela)
+                    <div class="border rounded bg-secondary bg-opacity-10 mb-2">
+                        <p class="leaf fw-medium pt-1">{{ $escuela->nombre}}</p>
+                        <a class="btn btn-primary mb-2 ml-2" target="_blank" href="/create-pdf-file/{{$competencia->idCompetencia}}/{{$escuela->idEscuela}}"><i class="bi me-2 bi-filetype-pdf"></i>Ver Lista</a>
+                    </div>
+                    @endforeach
+                    
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>

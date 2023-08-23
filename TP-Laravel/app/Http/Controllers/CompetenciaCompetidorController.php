@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categoria;
 use App\Models\Competidor;
 use App\Models\Competencia;
+use App\Models\Escuela;
 use App\Models\CompetenciaCompetidor;
 use App\Models\CompetenciaCompetidorPoomsae;
 use App\Models\Solicitud;
@@ -127,6 +128,8 @@ class CompetenciaCompetidorController extends Controller
         //Variable auxiliar para contar los competidores con estado 1
         $contador = 0;
 
+        $arrayEscuelas = [];
+
         $data = CompetenciaCompetidor::where('idCompetencia', $id)->get();
 
         foreach ($data as $competidor) {
@@ -136,6 +139,7 @@ class CompetenciaCompetidorController extends Controller
                 'nombre' => $competidor->competidor->nombre,
                 'apellido' => $competidor->competidor->apellido,
                 'estado' => $competidor->estado,
+                'escuela' => $competidor->competidor->user->escuela->nombre,
                 'fecha' => $competidor->created_at->format('Y-m-d'),
                 'idUser' => $competidor->competidor->user->id,
                 'tieneSolicitud' => $this->tieneSolicitud($competidor->competidor->user->id),
@@ -150,6 +154,13 @@ class CompetenciaCompetidorController extends Controller
                 }
             }
 
+            //Listo las escuelas
+            $objEscuela = Escuela::where('idEscuela',$competidor->competidor->user->escuela->idEscuela)->first();
+
+            if(!in_array($objEscuela, $arrayEscuelas)){
+                array_push($arrayEscuelas,$objEscuela);
+            }
+            
             
             //Si el competidor tiene estado 1, incrementamos el contador
             if ($competidor->estado == 1) {
@@ -164,9 +175,11 @@ class CompetenciaCompetidorController extends Controller
             $estadoSorteo = "full";
         }
 
+        $escuelas = $arrayEscuelas;
+
         $competencia = Competencia::find($id);
 
-        return view('tablaCompetenciaCompetidores.index_CompetenciaCompetidores', ['competidoresCompetencia' => $competidoresCompetencia, 'competencia' => $competencia, 'estadoSorteo' => $estadoSorteo]);
+        return view('tablaCompetenciaCompetidores.index_CompetenciaCompetidores', ['competidoresCompetencia' => $competidoresCompetencia, 'competencia' => $competencia, 'estadoSorteo' => $estadoSorteo ,'escuelas' => $escuelas]);
     }
 
     /* verifica si el usuario competidor tiene solicitudes */

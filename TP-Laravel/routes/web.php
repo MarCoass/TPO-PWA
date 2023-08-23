@@ -263,7 +263,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/actualizar_reloj', [RelojController::class, 'obtener_estado_reloj']);
         Route::get('/actualizar_informacion/{idReloj}', [RelojController::class, 'buscarPuntuacionActual']);
 
-        Route::get('/create-pdf-file', [PDFController::class, 'index']);
+        Route::get('/create-pdf-file/{idCompetencia}/{idEscuela}', [PDFController::class, 'index']);
 
     });
 
