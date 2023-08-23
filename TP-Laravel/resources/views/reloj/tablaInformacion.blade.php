@@ -53,6 +53,45 @@
                         </td>
                     </tr>
                 @endfor
+                <tr>
+                    <th class="align-middle h2" >Total Pasada </th>
+                    <td>
+                        <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="border-2 border-danger border-top border-start bg-danger bg-gradient bg-opacity-75">Exactitud</th>
+                                        <th scope="col" class="border-2 border-primary border-top border-end bg-primary bg-gradient bg-opacity-75">Presentación</th>
+                                    </tr>
+
+                                </thead>
+                                <tbody>
+                                    <td id="exactitudPrimeraFinal" class="border-2 border-danger border-bottom border-start h3 ft-bold">...</td>
+                                    <td id="presentacionPrimeraFinal" class="border-2 border-primary border-bottom border-end h3 ft-bold">...</td>
+                                    <tr >
+                                        <td colspan="2" id="totalPrimeraFinal" class="border-2 border h2 ft-bold">...</td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="table mb-0">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="border-2 border-danger border-top border-start bg-danger bg-gradient bg-opacity-75">Exactitud</th>
+                                    <th scope="col" class="border-2 border-primary border-top border-end bg-primary bg-gradient bg-opacity-75">Presentación</th>
+                                </tr>
+
+                            </thead>
+                                <tbody>
+                                    <td id="exactitudSegundaFinal" class="border-2 border-danger border-bottom border-start h3 ft-bold">...</td>
+                                    <td id="presentacionSegundaFinal" class="border-2 border-primary border-bottom border-end h3 ft-bold">...</td>
+                                    <tr >
+                                        <td colspan="2" id="totalSegundaFinal" class="border-2 border h2 ft-bold">...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>

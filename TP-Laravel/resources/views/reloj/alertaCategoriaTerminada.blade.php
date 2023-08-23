@@ -6,7 +6,13 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <p>El competidor ya ha sido juzgado</p>
+          <p class="leaf h4">El competidor <span id="nombreDelCompetidor"></span> ya ha sido juzgado</p>
+
+          <h3>El puntaje final es:</h3>
+          <h1>
+            <span class="border p-2" id="decirPuntajeFinal"> ... </span>
+          </h1>
+
         </div>
         <div class="modal-footer">
           <a href="{{route("index_reloj")}}"><button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ir a Relojes</button></a>

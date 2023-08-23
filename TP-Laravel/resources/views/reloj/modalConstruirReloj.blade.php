@@ -100,7 +100,7 @@ $("#categoria").on("click", function () {
             $.each(data, function (key, value) {
                 $("#competidor").append(
                     '<option value="' +
-                        value.idCompetenciaCompetidor +
+                        value.idCompetidor +
                         '">' +
                         value.nombre +
                         " " +

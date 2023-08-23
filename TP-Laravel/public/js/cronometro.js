@@ -49,6 +49,14 @@ function siguienteEstado() {
 
                 $('#modalCategoriaTerminada').modal('show');
             }
+
+            if(response['calcularPasada1']){
+                calcularPasada1(idReloj);
+            }
+
+            if(response['calcularPasada2']){
+                calcularPasada2(idReloj);
+            }
         },
     });
     return resp;
@@ -123,6 +131,15 @@ function actualizarInformacion() {
             let puntajesSegundaPasada = response["segundaPasada"];
             let competidor = response["competidor"];
             let jueces = response["jueces"];
+
+            if(response.puntajeFinal != ""){
+
+                $('#nombreDelCompetidor').text(response.competidor);
+                $('#decirPuntajeFinal').text(response.puntajeFinal);
+
+                
+
+            }
 
             $("#nombreCompetidor").text(competidor);
 
@@ -201,9 +218,63 @@ function actualizarInformacion() {
                     $("#presentacionSegundaPasadaJuez" + i).text("...");
                 }
             }
+            
         }
         },
     });
 }
 
 const intervalInformacion = setInterval(actualizarInformacion, 5000);
+
+
+
+function calcularPasada1(idReloj){
+
+    $.ajax({
+    url: "/calcularPuntajePasada",
+    method: "GET",
+    data: {
+        idReloj: idReloj,
+        //idCompetencia: idCompetencia,
+        //idCompetidor: idCompetidor,
+        numPasada: 1,
+    },
+    headers: {
+        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"), // Necesario para que funcione la petición
+    },
+    success: function (response) {
+        // La petición fue exitosa, procesar la respuesta
+        console.log(response);
+
+        $('#totalPrimeraFinal').text(response.totalPasada);
+        $('#presentacionPrimeraFinal').text(response.totalPresentacion);
+        $('#exactitudPrimeraFinal').text(response.totalExactitud);
+    },
+    });
+}
+
+function calcularPasada2(idReloj){
+
+    $.ajax({
+    url: "/calcularPuntajePasada",
+    method: "GET",
+    data: {
+        idReloj: idReloj,
+        //idCompetencia: idCompetencia,
+        //idCompetidor: idCompetidor,
+        numPasada: 2,
+    },
+    headers: {
+        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"), // Necesario para que funcione la petición
+    },
+    success: function (response) {
+        // La petición fue exitosa, procesar la respuesta
+        console.log(response);
+
+        $('#totalSegundaFinal').text(response.totalPasada);
+        $('#presentacionSegundaFinal').text(response.totalPresentacion);
+        $('#exactitudSegundaFinal').text(response.totalExactitud);
+    },
+    });
+}
+

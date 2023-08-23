@@ -188,6 +188,45 @@ class CompetenciaCompetidorController extends Controller
         return Solicitud::where('idUser', '=', $idUser)->where('estadoSolicitud', '=', 4)->exists();
     }
 
+    //Aca se setea el puntaje final del competidor de la competencia
+    public static function puntajeFinal($id)
+    {
+
+        $resp = false;
+
+        $CompetidorCompetencia = CompetenciaCompetidor::where('idCompetidor',$id)->first();
+        $categoria = $CompetidorCompetencia->idCategoria;
+        $idCompetencia = $CompetidorCompetencia->idCompetencia;
+        $reloj = Reloj::where('idCompetenciaCompetidor',$id)->first();
+
+
+        //busca las 2 pasadas
+        $primeraPasada = Puntaje::where('idCompetenciaCompetidor', '=', $CompetidorCompetencia->idCompetenciaCompetidor)
+                ->where('pasada', '=', '1')
+                ->get();
+        $segundaPasada = Puntaje::where('idCompetenciaCompetidor', '=', $CompetidorCompetencia->idCompetenciaCompetidor)
+                ->where('pasada', '=', '2')
+                ->get();
+
+        $resultadoPrimeraPasada = CompetenciaCompetidorController::calcularPuntaje($primeraPasada, $reloj->idReloj);
+        $resultadoSegundaPasada = CompetenciaCompetidorController::calcularPuntaje($segundaPasada, $reloj->idReloj);
+
+        $total = round(($resultadoPrimeraPasada['totalPasada'] + $resultadoSegundaPasada['totalPasada']) / 2, 1);
+
+        //le asigno el total al competidorCompetencia
+        $CompetidorCompetencia->puntaje = $total;
+        $CompetidorCompetencia->save();
+
+        CompetenciaCompetidorController::revisarSiSePuedeSetearRanking($idCompetencia);
+
+        $competidor = Competidor::find($CompetidorCompetencia->idCompetidor);
+
+        $resp = true;
+
+        return $total;
+    }
+
+    /* //Aca se setea el puntaje final del competidor de la competencia
     public function puntajeFinal($id)
     {
         $CompetidorCompetencia = CompetenciaCompetidor::find($id);
@@ -212,10 +251,10 @@ class CompetenciaCompetidorController extends Controller
 
         $competidor = Competidor::find($CompetidorCompetencia->idCompetidor);
         return view('puntuador/puntajeFinal', ['competenciaCompetidor' => $CompetidorCompetencia, 'resultadoPrimeraPasada' => $resultadoPrimeraPasada, 'resultadoSegundaPasada' => $resultadoSegundaPasada, 'competidor' => $competidor, 'id_competencia' => $idCompetencia]);
-    }
+    } */
 
 
-    public function revisarSiSePuedeSetearRanking($idCompetencia)
+    public static function revisarSiSePuedeSetearRanking($idCompetencia)
     {
         //buscamos todas las competencia competidor con idcompetnecia
         $competencias = CompetenciaCompetidor::where('idCompetencia', $idCompetencia)
@@ -224,11 +263,12 @@ class CompetenciaCompetidorController extends Controller
             ->first();
 
         if ($competencias == null) {
-            $this->setearRanking($idCompetencia);
+            CompetenciaCompetidorController::setearRanking($idCompetencia);
         }
     }
 
     /*Esto para lo del puntuador y jueces */
+    // para verificar el total de jueces y recien hacer el promedio
     public function validarJueces(Request  $request)
     {
         $idCompetencia = $request['idCompetencia'];
@@ -242,9 +282,13 @@ class CompetenciaCompetidorController extends Controller
         $puntajes = Puntaje::where('idCompetenciaCompetidor', $competenciaCompetidor->idCompetenciaCompetidor)
             ->where('pasada', $numPasada)
             ->where('puntajeExactitud', '<>', 0)
-            ->where('puntajePresentacion', '<>', 0)->get();
+            ->where('puntajePresentacion', '<>', 0)
+            ->get();
 
-        $reloj = Reloj::where('idCategoria', $competenciaCompetidor->idCategoria)->where('idCompetencia', $idCompetencia)->get();
+        $reloj = Reloj::where('idCategoria', $competenciaCompetidor->idCategoria)
+            ->where('idCompetencia', $idCompetencia)
+            ->get();
+
         $cantJueces = $reloj[0]->cantJueces;
 
         $puntuacionCompleta = count($puntajes) == $cantJueces;
@@ -261,24 +305,32 @@ class CompetenciaCompetidorController extends Controller
 
     public function calcularPuntajePasada(Request $request)
     {
-        $idCompetencia = $request['idCompetencia'];
-        $idCompetidor = $request['idCompetidor'];
+        //$idCompetencia = $request['idCompetencia'];
+        //$idCompetidor = $request['idCompetidor'];
+        $idReloj = $request['idReloj'];
         $numPasada = $request['numPasada'];
 
+        $reloj = Reloj::find($idReloj);
+
         //busco los puntajes correspondientes
-        $competenciaCompetidor = CompetenciaCompetidor::where('idCompetencia', $idCompetencia)->where('idCompetidor', $idCompetidor)->first();
+        //$competenciaCompetidor = CompetenciaCompetidor::where('idCompetencia', $idCompetencia)->where('idCompetidor', $idCompetidor)->first();
+        
+        $competenciaCompetidor = CompetenciaCompetidor::where('idCompetencia', $reloj->idCompetencia)
+                ->where('idCompetidor', $reloj->competenciacompetidor->competidor->idCompetidor)
+                ->first();
+
         $puntajes = Puntaje::select('*', DB::raw('(puntajePresentacion + puntajeExactitud) AS puntajeTotal'))
             ->where('idCompetenciaCompetidor', $competenciaCompetidor->idCompetenciaCompetidor)
             ->where('pasada', $numPasada)->orderBy('puntajeTotal')
             ->get();
 
         $idCategoria = $competenciaCompetidor->idCategoria;
-        $resultados = $this->calcularPuntaje($puntajes, $idCategoria, $idCompetencia);
+        //$resultados = $this->calcularPuntaje($puntajes, $idCategoria, $idCompetencia);
+        $resultados = $this->calcularPuntaje($puntajes, $reloj->idReloj);
         //Le aumento el contador de pasadas
+        ///CAMBIAR
         $competenciaCompetidor->contadorPasadas = $competenciaCompetidor->contadorPasadas + 1;
         $competenciaCompetidor->save();
-
-
 
         $response = [
             'totalPresentacion' => round($resultados['totalPresentacion'], 1),
@@ -290,12 +342,14 @@ class CompetenciaCompetidorController extends Controller
     }
 
 
-    public function calcularPuntaje($arrayPuntajes, $idCategoria, $idCompetencia)
+    public static function calcularPuntaje($arrayPuntajes, $idReloj)
     {
         //buco la cantidad de jueces del ob reloj
-        $reloj = Reloj::where('idCategoria', $idCategoria)->where('idCompetencia', $idCompetencia)->get();
+        $reloj = Reloj::find($idReloj);
+        $idCompetencia = $reloj->competencia->idCompetencia;
+        $idCategoria = $reloj->idCategoria;
 
-        $cantJueces = $reloj[0]->cantJueces;
+        $cantJueces = $reloj->cantJueces;
 
         //por cada pasada sumo los puntajes de exactitud y presentacion
         $presentacion = 0;
@@ -327,13 +381,13 @@ class CompetenciaCompetidorController extends Controller
         return $resultados;
     }
 
-    public function setearRanking($idCompetencia)
+    public static function setearRanking($idCompetencia)
     {
         $competencia = Competencia::find($idCompetencia);
 
         if ($competencia->estadoCompetencia == 0) {
 
-            $categorias = $this->obtenerCategoriasFiltradas($idCompetencia);
+            $categorias = CompetenciaCompetidorController::obtenerCategoriasFiltradas($idCompetencia);
 
             foreach ($categorias as $cat) {
 
@@ -359,7 +413,7 @@ class CompetenciaCompetidorController extends Controller
         }
     }
 
-    public function obtenerCategoriasFiltradas($idCompetencia)
+    public static function obtenerCategoriasFiltradas($idCompetencia)
     {
         $categorias = Categoria::select('categorias.*')
             ->join('competenciacompetidor', 'categorias.idCategoria', '=', 'competenciacompetidor.idCategoria')

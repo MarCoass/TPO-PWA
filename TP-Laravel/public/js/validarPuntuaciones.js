@@ -41,6 +41,11 @@ var interval = setInterval(function () {
     });
 }, 5000); 
 
+
+//////////////////////////////
+
+
+
 function cargarPuntajeTotal(idCompetencia, idCompetidor, numPasada) {
     $.ajax({
         url: "/calcularPuntajePasada",

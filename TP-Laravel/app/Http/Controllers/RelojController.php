@@ -10,6 +10,7 @@ use App\Models\Competidor;
 use App\Models\Puntaje;
 use App\Models\RelojCompJuez;
 use App\Http\Controllers\RelojCompJuezController;
+use App\Http\Controllers\CompetenciaCompetidorController;
 use App\Models\CompetenciaCompetidor;
 use App\Models\CompetenciaJuez;
 use App\Models\User;
@@ -173,9 +174,17 @@ class RelojController extends Controller
             $reloj->estado++;
             $mensaje = ['success' => true];
         }else{
-            if($reloj->estado == 9){ $reloj->estado++; };
-            $mensaje = ['finPuntuacion' => true];
+            if($reloj->estado == 9){ $reloj->estado++; };          
+
+            $mensaje = ['finPuntuacion' => true,
+                        'calcularPasada2' => true
+                    ];
         }
+        
+            if($reloj->estado == 6){
+                $mensaje = ['calcularPasada1' => true];
+            }
+
         $reloj->save();
 
         return response()->json($mensaje);
@@ -282,9 +291,14 @@ class RelojController extends Controller
         }
 
         //Busco el nombre del competidor
-        $competenciaCompetidor = CompetenciaCompetidor::find($puntajes[0]->idCompetenciaCompetidor);
-        $competidor = Competidor::find($competenciaCompetidor->idCompetidor);
+        //$competenciaCompetidor = CompetenciaCompetidor::find($puntajes[0]->idCompetenciaCompetidor);
+        //$competidor = Competidor::find($competenciaCompetidor->idCompetidor);
+
+        $competidor = $reloj->competenciacompetidor->competidor;
+
         $nombreCompetidor = $competidor->nombre . " " . $competidor->apellido;
+
+        $idDelCompetidor = $competidor->idCompetidor;
 
         //Busco los nombres de los jueces
         $nombresJueces = [];
@@ -297,6 +311,12 @@ class RelojController extends Controller
         $darEstados = $this->darEstados($reloj->estado);
         $siguiente = $this->siguientePasoHab($reloj->estado,$puntajesPrimeraPasada,$puntajesSegundaPasada);
 
+
+        $puntajeFinal = "";
+        if($reloj->estado == 10){
+            $puntajeFinal = CompetenciaCompetidorController::puntajeFinal($competidor->idCompetidor);     
+        }
+
         $response = [
             'primeraPasada' => $puntajesPrimeraPasada,
             'segundaPasada' => $puntajesSegundaPasada,
@@ -307,8 +327,11 @@ class RelojController extends Controller
             'cantJueces' => $reloj->cantJueces,
             'estados' => $darEstados,
             'habBoton' => $siguiente,
-            'estadoReloj' => $reloj->estado
+            'estadoReloj' => $reloj->estado,
+            'puntajeFinal' => $puntajeFinal,
+            'deb' => $idDelCompetidor
         ];
+
 
     }else{
         $response = ['success' => 0];
