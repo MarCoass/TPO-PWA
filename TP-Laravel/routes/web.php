@@ -23,7 +23,8 @@ use App\Http\Controllers\{
     PoomsaeController,
     RelojController,
     NotificacionController,
-    RelojCompJuezController
+    RelojCompJuezController,
+    PDFController
 };
 use Illuminate\Support\Facades\Route;
 
@@ -261,6 +262,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/stop', [RelojController::class, 'stop'])->middleware(['rol:1']);
         Route::get('/actualizar_reloj', [RelojController::class, 'obtener_estado_reloj']);
         Route::get('/actualizar_informacion/{idReloj}', [RelojController::class, 'buscarPuntuacionActual']);
+
+        Route::get('/create-pdf-file', [PDFController::class, 'index']);
+
     });
 
 });

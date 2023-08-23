@@ -291,3 +291,10 @@ y para que cargue el logo en el correo hay que nombrar a app_name como la forma 
 APP_NAME=NeuPoom
 
 ---------------------------------------------------------------
+
+
+creador de pdfs  
+
+https://www.tutsmake.com/laravel-9-generate-pdf-file-using-dompdf-tutorial/
+
+
