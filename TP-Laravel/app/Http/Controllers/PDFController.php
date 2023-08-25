@@ -24,7 +24,7 @@ class PDFController extends Controller
     public function index($idCompetencia,$idEscuela)
     {
         //$objCompetencia = Competencia::find($idCompetencia);
-        $objCompetencia = Competencia::find($idCompetencia)->first();
+        $objCompetencia = Competencia::where('idCompetencia',$idCompetencia)->first();
         $objEscuela = Escuela::find($idEscuela);
         $objCompetidoresCompetencia = CompetenciaCompetidor::where('idCompetencia',$objCompetencia->idCompetencia)
                 ->join('competidores','competenciacompetidor.idCompetidor','=','competidores.idCompetidor')

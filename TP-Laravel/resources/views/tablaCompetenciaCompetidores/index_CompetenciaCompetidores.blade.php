@@ -77,8 +77,6 @@
         <button type="button" class="btn btn-outline-info bg-opacity-75 btn-modal" data-bs-toggle="modal"
         data-bs-target="#escuelasParticipantes"><b>Escuelas participantes</b></button>
 
-        {{-- <a href="{{ route('asignar_poomsae_por_sorteo', ['id_competencia' => $competencia->idCompetencia]) }}"
-            class="btn btn-outline-success">Sortear Poomsae</a> --}}
     @endif
     <br />
 
@@ -162,9 +160,9 @@
                             @endif
 
                             @if ($competidor['estado'] == 1 && $competidor['tiene_poomsae_asignado'] == 0)
-                                <a href="{{ route('asignar_poomsae_competidor', ['id_competencia_competidor' => $competidor['idCompetenciaCompetidor']]) }}"
+                                {{-- <a href="{{ route('asignar_poomsae_competidor', ['id_competencia_competidor' => $competidor['idCompetenciaCompetidor']]) }}"
                                     class="btn btn-outline-success"><i class="bi bi-check2-square me-2"></i>Asignar
-                                    Poomsae</a>
+                                    Poomsae</a> --}}
                             @endif
 
                         </td>

@@ -188,7 +188,7 @@ class CompetenciaCompetidorController extends Controller
         return Solicitud::where('idUser', '=', $idUser)->where('estadoSolicitud', '=', 4)->exists();
     }
 
-    //Aca se setea el puntaje final del competidor de la competencia
+    //Aca se setea el puntaje final del competidor de la competencia colocando el id del competidor
     public static function puntajeFinal($id)
     {
 
@@ -197,7 +197,7 @@ class CompetenciaCompetidorController extends Controller
         $CompetidorCompetencia = CompetenciaCompetidor::where('idCompetidor',$id)->first();
         $categoria = $CompetidorCompetencia->idCategoria;
         $idCompetencia = $CompetidorCompetencia->idCompetencia;
-        $reloj = Reloj::where('idCompetenciaCompetidor',$id)->first();
+        $reloj = Reloj::where('idCompetenciaCompetidor',$CompetidorCompetencia->idCompetenciaCompetidor)->first();
 
 
         //busca las 2 pasadas
@@ -207,6 +207,9 @@ class CompetenciaCompetidorController extends Controller
         $segundaPasada = Puntaje::where('idCompetenciaCompetidor', '=', $CompetidorCompetencia->idCompetenciaCompetidor)
                 ->where('pasada', '=', '2')
                 ->get();
+
+        
+        $tengoIdReloj = $reloj->idReloj; 
 
         $resultadoPrimeraPasada = CompetenciaCompetidorController::calcularPuntaje($primeraPasada, $reloj->idReloj);
         $resultadoSegundaPasada = CompetenciaCompetidorController::calcularPuntaje($segundaPasada, $reloj->idReloj);

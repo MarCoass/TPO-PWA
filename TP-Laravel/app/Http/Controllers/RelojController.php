@@ -128,10 +128,13 @@ class RelojController extends Controller
     //Arma el reloj y lo deja en estado 0 para que ingresen jueces
     public function construirRelojCompetidor(Request $request)
     {    
-        $id_competenciaCompetidor = $request->input('competidor');
+        //$id_competenciaCompetidor = $request->input('competidor');
         $id_competencia = $request->input('idCompetencia');
         $id_categoria = $request->input('categoria');
         $cantJueces = $request->input('cantJueces');
+
+        $obj_competenciaCompetidor = CompetenciaCompetidor::where('idCompetidor', $request->input('competidor'))->first();
+        $id_competenciaCompetidor = $obj_competenciaCompetidor->idCompetenciaCompetidor;
         
         $duplicado = Reloj::where('idCompetencia',  $id_competencia)
                     ->where('idCategoria',  $id_categoria)

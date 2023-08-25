@@ -181,7 +181,7 @@ REPLACE INTO `categorias` (`idCategoria`, `nombre`, `edadMax`, `edadMin`, `gener
 	(19, 'Master 2', 99, 70, 1, 0, '2023-08-23 10:40:58', '2023-08-23 10:40:58'),
 	(20, 'Master 2', 99, 70, 2, 0, '2023-08-23 10:40:58', '2023-08-23 10:40:58');
 
--- Volcando datos para la tabla laravel.competenciacompetidor: ~16 rows (aproximadamente)
+-- Volcando datos para la tabla laravel.competenciacompetidor: ~19 rows (aproximadamente)
 REPLACE INTO `competenciacompetidor` (`idCompetenciaCompetidor`, `idCompetidor`, `idCompetencia`, `idCategoria`, `puntaje`, `contadorPasadas`, `estado`, `created_at`, `updated_at`) VALUES
 	(2, 1, 1, 1, 8.00, 2, 1, '2023-08-23 10:40:59', '2023-08-23 13:39:48'),
 	(3, 2, 1, 1, 5.60, 2, 1, '2023-08-23 10:40:59', '2023-08-23 13:58:19'),
@@ -198,7 +198,10 @@ REPLACE INTO `competenciacompetidor` (`idCompetenciaCompetidor`, `idCompetidor`,
 	(14, 18, 2, 2, 6.30, 2, 1, '2023-08-23 10:40:59', '2023-08-23 17:05:40'),
 	(15, 19, 2, 2, 5.90, 2, 1, '2023-08-23 10:40:59', '2023-08-23 17:01:19'),
 	(16, 20, 2, 2, 7.40, 2, 1, '2023-08-23 10:40:59', '2023-08-23 16:58:21'),
-	(17, 21, 2, 2, 5.70, 2, 1, '2023-08-23 10:40:59', '2023-08-23 16:35:45');
+	(17, 21, 2, 2, 5.70, 2, 1, '2023-08-23 10:40:59', '2023-08-23 16:35:45'),
+	(18, 22, 4, 1, 0.00, 0, 0, '2023-08-23 17:47:43', '2023-08-23 17:48:43'),
+	(19, 23, 4, 1, 0.00, 0, 0, '2023-08-23 17:47:48', '2023-08-23 17:48:43'),
+	(20, 24, 4, 1, 0.00, 0, 0, '2023-08-23 17:47:51', '2023-08-23 17:48:49');
 
 -- Volcando datos para la tabla laravel.competenciacompetidorpoomsae: ~32 rows (aproximadamente)
 REPLACE INTO `competenciacompetidorpoomsae` (`idCompetenciaCompetidorPoomsae`, `idCompetenciaCompetidor`, `idPoomsae`, `pasadas`, `created_at`, `updated_at`) VALUES
@@ -244,14 +247,17 @@ REPLACE INTO `competenciajueces` (`idCompetenciaJuez`, `idCompetencia`, `estado`
 	(6, 2, 1, 10, '2023-08-23 10:40:58', '2023-08-23 10:40:58'),
 	(7, 2, 1, 3, '2023-08-23 10:40:58', '2023-08-23 10:40:58'),
 	(8, 2, 1, 6, '2023-08-23 10:40:59', '2023-08-23 10:40:59'),
-	(9, 2, 1, 7, '2023-08-23 16:02:04', '2023-08-23 16:03:31');
+	(9, 2, 1, 7, '2023-08-23 16:02:04', '2023-08-23 16:03:31'),
+	(10, 4, 1, 7, '2023-08-23 17:33:32', '2023-08-23 17:34:35'),
+	(11, 4, 1, 5, '2023-08-23 17:33:48', '2023-08-23 17:34:30'),
+	(12, 4, 1, 6, '2023-08-23 17:33:52', '2023-08-23 17:34:25');
 
 -- Volcando datos para la tabla laravel.competencias: ~5 rows (aproximadamente)
 REPLACE INTO `competencias` (`idCompetencia`, `nombre`, `fecha`, `fechaCierra`, `flyer`, `bases`, `invitacion`, `cantidadJueces`, `estadoJueces`, `estadoCompetencia`, `estadoInscripcion`, `created_at`, `updated_at`) VALUES
 	(1, 'Competencia Regional', '2023-08-25', '2023-08-23', 'img/CompetenciaRegionalFlyer.png', 'pdf/CompetenciaRegionalBases.pdf', 'pdf/CompetenciaRegionalInvitacion.pdf', 3, 1, 1, 1, '2023-08-23 10:40:57', '2023-08-23 15:01:25'),
 	(2, 'Competencia Juvenil', '2023-08-10', '2023-08-02', 'img/CompetenciaJuvenilFlyer.png', 'pdf/CompetenciaJuvenilBases.pdf', 'pdf/CompetenciaJuvenilInvitacion.pdf', 5, 1, 1, 1, '2023-08-23 10:40:57', '2023-08-23 17:21:41'),
 	(3, 'Competencia Estelar', '2023-08-11', '2023-08-03', 'img/CompetenciaEstelarFlyer.png', 'pdf/CompetenciaEstelarBases.pdf', 'pdf/CompetenciaEstelarInvitacion.pdf', 7, 0, 0, 0, '2023-08-23 10:40:57', '2023-08-23 10:40:57'),
-	(4, 'Competencia Provincial', '2023-09-15', '2023-09-08', 'img/CompetenciaJuvenilFlyer.png', 'pdf/CompetenciaJuvenilBases.pdf', 'pdf/CompetenciaJuvenilInvitacion.pdf', 3, 0, 0, 0, '2023-08-23 10:40:57', '2023-08-23 10:40:57'),
+	(4, 'Competencia Provincial', '2023-09-15', '2023-09-08', 'img/CompetenciaJuvenilFlyer.png', 'pdf/CompetenciaJuvenilBases.pdf', 'pdf/CompetenciaJuvenilInvitacion.pdf', 3, 1, 0, 0, '2023-08-23 10:40:57', '2023-08-23 17:34:35'),
 	(5, 'Competencia Local', '2023-11-10', '2023-11-03', 'img/CompetenciaEstelarFlyer.png', 'pdf/CompetenciaEstelarBases.pdf', 'pdf/CompetenciaEstelarInvitacion.pdf', 3, 0, 0, 0, '2023-08-23 10:40:57', '2023-08-23 10:40:57');
 
 -- Volcando datos para la tabla laravel.competidores: ~21 rows (aproximadamente)
@@ -276,7 +282,10 @@ REPLACE INTO `competidores` (`idCompetidor`, `gal`, `apellido`, `nombre`, `du`, 
 	(18, 'TKD9536117', 'Mertz', 'Kirstin', 41627354, '2009-06-16', 2.00, 7, 'jaycee33@example.net', 1, 1826, 5, 26, 1, '2023-08-23 10:40:56', '2023-08-23 17:21:40'),
 	(19, 'TKD3542462', 'Lesch', 'Urban', 13385127, '1985-10-07', 0.00, 4, 'ziemann.gavin@example.com', 0, 1826, 5, 27, 1, '2023-08-23 10:40:56', '2023-08-23 10:40:56'),
 	(20, 'TKD7774356', 'Daugherty', 'Rowena', 24106074, '1998-12-03', 3.00, 5, 'ehermiston@example.net', 0, 1826, 5, 28, 1, '2023-08-23 10:40:56', '2023-08-23 17:21:40'),
-	(21, 'TKD9763194', 'Kuhlman', 'Josephine', 27737585, '1998-04-21', 0.00, 9, 'smitham.donald@example.org', 0, 1826, 5, 29, 1, '2023-08-23 10:40:57', '2023-08-23 10:40:57');
+	(21, 'TKD9763194', 'Kuhlman', 'Josephine', 27737585, '1998-04-21', 0.00, 9, 'smitham.donald@example.org', 0, 1826, 5, 29, 1, '2023-08-23 10:40:57', '2023-08-23 10:40:57'),
+	(22, NULL, 'papa', 'pedro', 24534543, '2010-01-01', 0.00, 7, 'pedro@gmail.com', 1, 1830, 5, 30, 0, '2023-08-23 17:47:43', '2023-08-23 17:47:43'),
+	(23, NULL, 'pepe', 'pedro', 23425235, '2010-01-01', 0.00, 7, 'pedropepe@gmail.com', 1, 1830, 5, 32, 0, '2023-08-23 17:47:48', '2023-08-23 17:47:48'),
+	(24, NULL, 'morsa', 'pedro', 23432564, '2010-01-01', 0.00, 7, 'pedromorsa@gmail.com', 1, 1830, 5, 31, 0, '2023-08-23 17:47:51', '2023-08-23 17:47:51');
 
 -- Volcando datos para la tabla laravel.escuelas: ~15 rows (aproximadamente)
 REPLACE INTO `escuelas` (`idEscuela`, `nombre`, `nombreApellidoInstructor`, `email`, `telefono`, `created_at`, `updated_at`) VALUES
@@ -2351,23 +2360,29 @@ REPLACE INTO `migrations` (`id`, `migration`, `batch`) VALUES
 REPLACE INTO `notifications` (`id`, `type`, `notifiable_type`, `notifiable_id`, `data`, `read_at`, `created_at`, `updated_at`) VALUES
 	('119b46aa-abd3-4075-957e-10cf3c30428a', 'App\\Notifications\\NotificacionGeneral', 'App\\Models\\User', 7, '{"estado":"success","titulo":"Han aceptado tu inscripcion!.","mensaje":"Ahora estas habilitado para Juzgar en: Competencia Juvenil","descripcion":"Enhorabuena!","fecha":"23\\/08\\/2023"}', '2023-08-23 17:30:26', '2023-08-23 16:03:31', '2023-08-23 17:30:26'),
 	('1535cf5d-6186-485a-affe-73b9d447e045', 'App\\Notifications\\NotificacionGeneral', 'App\\Models\\User', 19, '{"estado":"success","titulo":"Poomsae Asignado!","mensaje":"Poomsae Pasada 1: 1\\u00ba Poomsae TAEGUK IL CHANG Poomsae Pasada 2: 2\\u00ba Poomsae TAEGUK I CHANG  ","descripcion":" A prepararse!","fecha":"23\\/08\\/2023"}', NULL, '2023-08-23 16:08:58', '2023-08-23 16:08:58'),
+	('18736142-9c26-4c55-88b3-6e71b39c5d0c', 'App\\Notifications\\NotificacionGeneral', 'App\\Models\\User', 5, '{"estado":"success","titulo":"Han aceptado tu inscripcion!.","mensaje":"Ahora estas habilitado para Juzgar en: Competencia Provincial","descripcion":"Enhorabuena!","fecha":"23\\/08\\/2023"}', NULL, '2023-08-23 17:34:30', '2023-08-23 17:34:30'),
 	('25fb6d52-5246-43c8-8add-1e49ef8eee12', 'App\\Notifications\\NotificacionGeneral', 'App\\Models\\User', 16, '{"estado":"success","titulo":"Poomsae Asignado!","mensaje":"Poomsae Pasada 1: 1\\u00ba Poomsae TAEGUK IL CHANG Poomsae Pasada 2: 1\\u00ba Poomsae TAEGUK IL CHANG  ","descripcion":" A prepararse!","fecha":"23\\/08\\/2023"}', NULL, '2023-08-23 16:08:58', '2023-08-23 16:08:58'),
 	('34aec11e-e8c8-4dab-92c7-af07edbb71f7', 'App\\Notifications\\NotificacionGeneral', 'App\\Models\\User', 29, '{"estado":"success","titulo":"Poomsae Asignado!","mensaje":"Poomsae Pasada 1: 2\\u00ba Poomsae TAEGUK I CHANG Poomsae Pasada 2: 2\\u00ba Poomsae TAEGUK I CHANG  ","descripcion":" A prepararse!","fecha":"23\\/08\\/2023"}', NULL, '2023-08-23 16:08:59', '2023-08-23 16:08:59'),
 	('3cb619d4-c61b-4edb-ab5e-7b3e3b89ca99', 'App\\Notifications\\NotificacionGeneral', 'App\\Models\\User', 1, '{"estado":"success","titulo":"Ha sido habilitado para competir!","mensaje":"Estas habilitado para competir en Competencia Regional","descripcion":"Exitos!","fecha":"23\\/08\\/2023"}', '2023-08-23 10:55:53', '2023-08-23 10:52:50', '2023-08-23 10:55:53'),
 	('56400b7d-ec5c-4e12-bed1-cd284b0c5be7', 'App\\Notifications\\NotificacionGeneral', 'App\\Models\\User', 27, '{"estado":"success","titulo":"Poomsae Asignado!","mensaje":"Poomsae Pasada 1: 2\\u00ba Poomsae TAEGUK I CHANG Poomsae Pasada 2: 2\\u00ba Poomsae TAEGUK I CHANG  ","descripcion":" A prepararse!","fecha":"23\\/08\\/2023"}', NULL, '2023-08-23 16:08:59', '2023-08-23 16:08:59'),
 	('5baec233-7a49-4d6f-a3a9-280583b84eb9', 'App\\Notifications\\NotificacionGeneral', 'App\\Models\\User', 17, '{"estado":"success","titulo":"Poomsae Asignado!","mensaje":"Poomsae Pasada 1: 1\\u00ba Poomsae TAEGUK IL CHANG Poomsae Pasada 2: 2\\u00ba Poomsae TAEGUK I CHANG  ","descripcion":" A prepararse!","fecha":"23\\/08\\/2023"}', NULL, '2023-08-23 16:08:58', '2023-08-23 16:08:58'),
 	('5c033958-9ba2-43ce-b53d-f945ca81eb68', 'App\\Notifications\\NotificacionGeneral', 'App\\Models\\User', 11, '{"estado":"success","titulo":"Poomsae Asignado!","mensaje":"Poomsae Pasada 1: 1\\u00ba Poomsae TAEGUK IL CHANG Poomsae Pasada 2: 1\\u00ba Poomsae TAEGUK IL CHANG  ","descripcion":" A prepararse!","fecha":"23\\/08\\/2023"}', NULL, '2023-08-23 10:53:55', '2023-08-23 10:53:55'),
+	('5e1b8012-3374-4c84-aa9a-b2068f79b6ff', 'App\\Notifications\\NotificacionGeneral', 'App\\Models\\User', 32, '{"estado":"success","titulo":"Ha sido habilitado para competir!","mensaje":"Estas habilitado para competir en Competencia Provincial","descripcion":"Exitos!","fecha":"23\\/08\\/2023"}', '2023-08-23 17:49:08', '2023-08-23 17:48:44', '2023-08-23 17:49:08'),
 	('71470ebc-de3f-46fc-b9ee-978914c7c5f5', 'App\\Notifications\\NotificacionGeneral', 'App\\Models\\User', 18, '{"estado":"success","titulo":"Poomsae Asignado!","mensaje":"Poomsae Pasada 1: 1\\u00ba Poomsae TAEGUK IL CHANG Poomsae Pasada 2: 1\\u00ba Poomsae TAEGUK IL CHANG  ","descripcion":" A prepararse!","fecha":"23\\/08\\/2023"}', NULL, '2023-08-23 16:08:58', '2023-08-23 16:08:58'),
 	('7330f08d-5812-4443-8920-8e6d5a06651c', 'App\\Notifications\\NotificacionGeneral', 'App\\Models\\User', 28, '{"estado":"success","titulo":"Poomsae Asignado!","mensaje":"Poomsae Pasada 1: 2\\u00ba Poomsae TAEGUK I CHANG Poomsae Pasada 2: 2\\u00ba Poomsae TAEGUK I CHANG  ","descripcion":" A prepararse!","fecha":"23\\/08\\/2023"}', NULL, '2023-08-23 16:08:59', '2023-08-23 16:08:59'),
 	('801d0e09-ef82-46da-8d29-8a527139c0cb', 'App\\Notifications\\NotificacionGeneral', 'App\\Models\\User', 25, '{"estado":"success","titulo":"Poomsae Asignado!","mensaje":"Poomsae Pasada 1: 1\\u00ba Poomsae TAEGUK IL CHANG Poomsae Pasada 2: 1\\u00ba Poomsae TAEGUK IL CHANG  ","descripcion":" A prepararse!","fecha":"23\\/08\\/2023"}', NULL, '2023-08-23 16:08:58', '2023-08-23 16:08:58'),
 	('81f76efa-1642-43a8-b2ea-784183be77bd', 'App\\Notifications\\NotificacionGeneral', 'App\\Models\\User', 8, '{"estado":"restricted","titulo":"Han rechazado tu inscripcion.","mensaje":"Por motivos administrativos no puedes Juzgar en Competencia Juvenil","descripcion":"Disculpe las Molestias.","fecha":"23\\/08\\/2023"}', NULL, '2023-08-23 16:01:54', '2023-08-23 16:01:54'),
 	('851f90b0-bee0-4786-8114-14dbdd19be2d', 'App\\Notifications\\NotificacionGeneral', 'App\\Models\\User', 10, '{"estado":"success","titulo":"Poomsae Asignado!","mensaje":"Poomsae Pasada 1: 1\\u00ba Poomsae TAEGUK IL CHANG Poomsae Pasada 2: 1\\u00ba Poomsae TAEGUK IL CHANG  ","descripcion":" A prepararse!","fecha":"23\\/08\\/2023"}', NULL, '2023-08-23 10:53:55', '2023-08-23 10:53:55'),
 	('97ace0b7-7020-47d6-af81-938630500076', 'App\\Notifications\\NotificacionGeneral', 'App\\Models\\User', 12, '{"estado":"success","titulo":"Poomsae Asignado!","mensaje":"Poomsae Pasada 1: 1\\u00ba Poomsae TAEGUK IL CHANG Poomsae Pasada 2: 2\\u00ba Poomsae TAEGUK I CHANG  ","descripcion":" A prepararse!","fecha":"23\\/08\\/2023"}', NULL, '2023-08-23 10:53:55', '2023-08-23 10:53:55'),
+	('97f86bc5-8efa-4366-9f3e-12b8fb052b23', 'App\\Notifications\\NotificacionGeneral', 'App\\Models\\User', 6, '{"estado":"success","titulo":"Han aceptado tu inscripcion!.","mensaje":"Ahora estas habilitado para Juzgar en: Competencia Provincial","descripcion":"Enhorabuena!","fecha":"23\\/08\\/2023"}', NULL, '2023-08-23 17:34:26', '2023-08-23 17:34:26'),
+	('9bf2caa5-7c43-4b1e-b995-e1656d48adc8', 'App\\Notifications\\NotificacionGeneral', 'App\\Models\\User', 7, '{"estado":"success","titulo":"Han aceptado tu inscripcion!.","mensaje":"Ahora estas habilitado para Juzgar en: Competencia Provincial","descripcion":"Enhorabuena!","fecha":"23\\/08\\/2023"}', NULL, '2023-08-23 17:34:35', '2023-08-23 17:34:35'),
 	('a3e0c91a-8b27-41f0-a327-ea49ad63308d', 'App\\Notifications\\NotificacionGeneral', 'App\\Models\\User', 26, '{"estado":"success","titulo":"Poomsae Asignado!","mensaje":"Poomsae Pasada 1: 2\\u00ba Poomsae TAEGUK I CHANG Poomsae Pasada 2: 1\\u00ba Poomsae TAEGUK IL CHANG  ","descripcion":" A prepararse!","fecha":"23\\/08\\/2023"}', NULL, '2023-08-23 16:08:58', '2023-08-23 16:08:58'),
 	('ac991269-b347-4e33-8997-6d908ba66a35', 'App\\Notifications\\NotificacionGeneral', 'App\\Models\\User', 29, '{"estado":"restricted","titulo":"Han rechazado tu inscripcion.","mensaje":"Por motivos administrativos no puedes competir en Competencia Regional","descripcion":"Disculpe las molestias!","fecha":"23\\/08\\/2023"}', NULL, '2023-08-23 10:52:36', '2023-08-23 10:52:36'),
+	('d1e335aa-f885-43cb-90ca-9eb63a704fc0', 'App\\Notifications\\NotificacionGeneral', 'App\\Models\\User', 30, '{"estado":"success","titulo":"Ha sido habilitado para competir!","mensaje":"Estas habilitado para competir en Competencia Provincial","descripcion":"Exitos!","fecha":"23\\/08\\/2023"}', '2023-08-23 17:49:11', '2023-08-23 17:48:43', '2023-08-23 17:49:11'),
 	('d6659db4-8a6c-45a0-9f85-00fbded3c2fb', 'App\\Notifications\\NotificacionGeneral', 'App\\Models\\User', 1, '{"estado":"success","titulo":"Poomsae Asignado!","mensaje":"Poomsae Pasada 1: 1\\u00ba Poomsae TAEGUK IL CHANG Poomsae Pasada 2: 2\\u00ba Poomsae TAEGUK I CHANG  ","descripcion":" A prepararse!","fecha":"23\\/08\\/2023"}', '2023-08-23 10:55:57', '2023-08-23 10:53:54', '2023-08-23 10:55:57'),
 	('d9a84f63-1498-465a-8383-06b4c217a641', 'App\\Notifications\\NotificacionGeneral', 'App\\Models\\User', 15, '{"estado":"success","titulo":"Poomsae Asignado!","mensaje":"Poomsae Pasada 1: 2\\u00ba Poomsae TAEGUK I CHANG Poomsae Pasada 2: 2\\u00ba Poomsae TAEGUK I CHANG  ","descripcion":" A prepararse!","fecha":"23\\/08\\/2023"}', NULL, '2023-08-23 16:08:58', '2023-08-23 16:08:58'),
 	('d9fceaf0-5a15-480f-b4c1-b3f4fb6849a2', 'App\\Notifications\\NotificacionGeneral', 'App\\Models\\User', 13, '{"estado":"success","titulo":"Poomsae Asignado!","mensaje":"Poomsae Pasada 1: 2\\u00ba Poomsae TAEGUK I CHANG Poomsae Pasada 2: 2\\u00ba Poomsae TAEGUK I CHANG  ","descripcion":" A prepararse!","fecha":"23\\/08\\/2023"}', NULL, '2023-08-23 10:53:55', '2023-08-23 10:53:55'),
+	('e3cbef29-b1ad-4914-b737-55537d45710c', 'App\\Notifications\\NotificacionGeneral', 'App\\Models\\User', 31, '{"estado":"success","titulo":"Ha sido habilitado para competir!","mensaje":"Estas habilitado para competir en Competencia Provincial","descripcion":"Exitos!","fecha":"23\\/08\\/2023"}', '2023-08-23 17:49:05', '2023-08-23 17:48:50', '2023-08-23 17:49:05'),
 	('ff4101f8-6ea7-45c0-b9f4-631d629e6166', 'App\\Notifications\\NotificacionGeneral', 'App\\Models\\User', 14, '{"estado":"success","titulo":"Poomsae Asignado!","mensaje":"Poomsae Pasada 1: 2\\u00ba Poomsae TAEGUK I CHANG Poomsae Pasada 2: 1\\u00ba Poomsae TAEGUK IL CHANG  ","descripcion":" A prepararse!","fecha":"23\\/08\\/2023"}', NULL, '2023-08-23 10:53:55', '2023-08-23 10:53:55');
 
 -- Volcando datos para la tabla laravel.paises: ~214 rows (aproximadamente)
@@ -2805,7 +2820,7 @@ REPLACE INTO `rolpermiso` (`id`, `idRol`, `idPermiso`, `created_at`, `updated_at
 
 -- Volcando datos para la tabla laravel.solicitudes: ~0 rows (aproximadamente)
 
--- Volcando datos para la tabla laravel.users: ~29 rows (aproximadamente)
+-- Volcando datos para la tabla laravel.users: ~32 rows (aproximadamente)
 REPLACE INTO `users` (`id`, `nombre`, `apellido`, `correo`, `usuario`, `password`, `idRol`, `estado`, `idEscuela`, `imagenPerfil`, `remember_token`, `created_at`, `updated_at`) VALUES
 	(1, 'Competidor', 'Competidor', 'competidor@gmail.com', 'Competidor', '$2y$10$PK4.PU.Mxf6231CHSE0/hOnChL0zFVdHMfAtJSJ3xuiVG/PPudih6', 3, 1, 4, NULL, NULL, '2023-08-23 10:40:50', '2023-08-23 10:40:50'),
 	(2, 'Juez', 'Juez', 'juez@gmail.com', 'juez', '$2y$10$IWA07yH0TA45y4wV3EihvehoQjvzGMP9DUmkTTpuJ7WofrkAKhPvC', 2, 1, 7, NULL, NULL, '2023-08-23 10:40:50', '2023-08-23 10:40:50'),
@@ -2835,7 +2850,10 @@ REPLACE INTO `users` (`id`, `nombre`, `apellido`, `correo`, `usuario`, `password
 	(26, 'Kirstin', 'Mertz', 'jaycee33@example.net', 'rose.cassin', '$2y$10$je02.sCgwRZfAauyorARfuK3im56z/ShHIWghBSl3pgQa1m4vjYAm', 3, 1, 7, NULL, NULL, '2023-08-23 10:40:54', '2023-08-23 10:40:54'),
 	(27, 'Urban', 'Lesch', 'ziemann.gavin@example.com', 'tsipes', '$2y$10$cr0CIENj7wduNw8aDICk7.UbeHBYs2yaV/fI9zw318pBdeb0hYQ3S', 3, 1, 2, NULL, NULL, '2023-08-23 10:40:54', '2023-08-23 10:40:54'),
 	(28, 'Rowena', 'Daugherty', 'ehermiston@example.net', 'toy.coty', '$2y$10$h6Jkgw6AyjPD6xz4gB/3LuBjmJrIGIQqsVdBhjOmoR6GFs8jNqyP2', 3, 1, 1, NULL, NULL, '2023-08-23 10:40:55', '2023-08-23 10:40:55'),
-	(29, 'Josephine', 'Kuhlman', 'smitham.donald@example.org', 'will.madge', '$2y$10$V2yYtF/Cc/ES7Ivoo22vku5ENj4WjI1lMfCntBUUgbeLgtiaXhM0e', 3, 1, 3, NULL, NULL, '2023-08-23 10:40:55', '2023-08-23 10:40:55');
+	(29, 'Josephine', 'Kuhlman', 'smitham.donald@example.org', 'will.madge', '$2y$10$V2yYtF/Cc/ES7Ivoo22vku5ENj4WjI1lMfCntBUUgbeLgtiaXhM0e', 3, 1, 3, NULL, NULL, '2023-08-23 10:40:55', '2023-08-23 10:40:55'),
+	(30, 'pedro', 'papa', 'pedro@gmail.com', 'pedropapa', '$2y$10$rm3eD4IJmt8WtR.5QdsjLuVEThfssBnBgvJSrt7uljHLC9AGZOAgG', 3, 1, 1, NULL, NULL, '2023-08-23 17:40:48', '2023-08-23 17:42:28'),
+	(31, 'pedro', 'morsa', 'pedromorsa@gmail.com', 'pedromorsa', '$2y$10$E4nBfWY89u0OsG7mSL4.Nu9sMhou8najdMl7WCTWt6..FDz7KA9na', 3, 1, 1, NULL, NULL, '2023-08-23 17:41:31', '2023-08-23 17:43:30'),
+	(32, 'pedro', 'pepe', 'pedropepe@gmail.com', 'pedropepe', '$2y$10$yx5PSG7/KFuffbFKy848XusjK/phrqebBrhFQYF1JIMe6JRUysEFa', 3, 1, 1, NULL, NULL, '2023-08-23 17:42:09', '2023-08-23 17:42:09');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
